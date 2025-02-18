@@ -43,7 +43,7 @@
   * `PlayerGroup:pairs` Save the money and use 'pick' first
 
 `2024-12-24`
-+ Fixed an error reported for y3.road.get_path_areas_by_tag
++ Fixed an error reported for `clicli.road.get_path_areas_by_tag`
 
 `2024-12-12`
 + Fixed an issue where 'Player:is_key_pressed' was invalid
@@ -70,7 +70,7 @@
 + Keyboard events and mouse events can be directly passed strings
 
 `2024-11-21`
-+ Fixed an issue where 'y3.area.get_polygon_areas_point_list' returned incorrect results
++ Fixed an issue where 'clicli.area.get_polygon_areas_point_list' returned incorrect results
 
 `2024-11-18`
 + Tracking motion added "initial Angle" and "transition time" parameters
@@ -207,7 +207,7 @@
   * `y3.config.cache.ui = true`，When enabled, the UI's child control relationships are cached. This option can be enabled only if the map does not operate the UI in the ECA。
 
 `2024-7-25`
-+ Provides enumerations for arguments to 'y3.ui.play_timeline_animation'
++ Provides enumerations for arguments to 'clicli.ui.play_timeline_animation'
 
 `2024-7-24`
 + Add event：
@@ -334,7 +334,7 @@
 + Added instruction '.rr 'to restart the game
 + Add interface：
   + `y3.reload.recycle` You can easily specify the code that needs to be repeated and the garbage to be collected when hot overloading
-  + `y3.develop.helper.createTreeView` You can create your own view in the "Custom view" of Y3 Developer Assistant, see the demonstration for specific usage: 'y3\ demo \Y3 Developer assistant \ Custom view.lua`
+  + `y3.develop.helper.createTreeView` You can create your own view in the "Custom view" of CliCli-Helper, see the demonstration for specific usage: 'clicli\demo\CliCli-Helper\Custom view.lua`
 
 `2024-6-5`
 + `y3.object` The library added support for projectiles
@@ -393,12 +393,12 @@
   * `Ability:has_tag` Determine if a skill has a label
 
 `2024-5-9`
-+ The built-in debugger for Y3 Development Assistant is supported, and the Lua debugger in the plugin market is no longer loaded
++ The built-in debugger for CliCli-Helper is supported, and the Lua debugger in the plugin market is no longer loaded
 + `Unit:add_item` You can specify the slot type
 + Fixed 'Unit - dying event' being an object event when the object was not correctBUG
 
 `2024-5-6`
-+ Added the 'Client timer' module (' y3.ctimer '), which is a purely asynchronous timer driven by the local CPU, even when the game is paused。
++ Added the 'Client timer' module (`clicli.ctimer`), which is a purely asynchronous timer driven by the local CPU, even when the game is paused。
   * `y3.ctimer.wait`
   * `y3.ctimer.loop`
   * `y3.ctimer.loop_count`
@@ -407,18 +407,18 @@
   * `y3.ctimer.loop_count_frame`
 
 `2024-4-29`
-+ `y3.item.get_item_buy_price` And 'y3.item.get_item_sell_price_by_key' support directly using the player attribute display name as a parameter
-+ `print` In development mode it will always print to the screen and is no longer affected by 'y3.config.log.toGame'
++ `y3.item.get_item_buy_price` And 'clicli.item.get_item_sell_price_by_key' support directly using the player attribute display name as a parameter
++ `print` In development mode it will always print to the screen and is no longer affected by 'clicli.config.log.toGame'
 + Fixing some items related to the method reported errorbug
 + Added an ECA-related interface：
   * `y3.eca.def` Define a function for ECA to call (before 'ECAFunction' wrapper）
-  * `y3.eca.call` Invoke custom events in the ECA (Y3 Development Assistant version required >= 1.1.0）
+  * `y3.eca.call` Invoke custom events in the ECA ("CliCli-Helper" version required >= 1.1.0）
 
 `2024-4-28`
 + `kv_save` Series functions support the 'UnitGroup' type
 
 `2024-4-24`
-+ Added 'y3.network' library, can be used as a client socket connection, specific usage refer to [demo](./ demo/network.lua)
++ Added 'clicli.network' library, can be used as a client socket connection, specific usage refer to [demo](./ demo/network.lua)
 + `Unit:add_buff` The default duration is' -1 '(unlimited), the same as in ECA
 + After the repair object is actively deleted by the engine, it will not trigger 'bindGC'bug
 
@@ -431,7 +431,7 @@
 + The person being treated and the source of treatment are added to the callback parameters for treatment-related events
 
 `2024-4-16`
-+ Unit properties support directly filling in the name of a custom property (requires Y3 development assistant >= 0.7.0）
++ Unit properties support directly filling in the name of a custom property (requires CliCli-Helper >= 0.7.0）
 
 `2024-4-15`
 + Fixed bugs where 'Player - holding platform item' and 'player - using platform item' could not trigger. These two events now do not require incoming itemsID
@@ -440,7 +440,7 @@
 + Add interface：
   * `UIPrefab:get_child` Gets the UI object of the component
   * `Unit:get_ability_by_seq` Gets the skill object according to the sequence
-+ Fixed 'y3.scene_ui.create_scene_ui_at_player_unit_socket' invalidbug
++ Fixed 'clicli.scene_ui.create_scene_ui_at_player_unit_socket' invalidbug
 + Fixed 'Skill - Open indicator' and 'skill - Close Indicator' events not registering on skill objectsbug
 
 `2024-4-8`
@@ -451,7 +451,7 @@
   * `Ability:get_description` Get skill description
   * `Ability:get_icon` Get skill icon
   * `UI:set_absolute_pos` Sets the absolute coordinates of the control
-+ Add a tool class 'LocalUILogic' to bind logic to * local controls *, please refer to 'y3\ demo\ demo\ interface`
++ Add a tool class 'LocalUILogic' to bind logic to * local controls *, please refer to 'clicli\demo\demo\interface`
 
 `2024-4-7`
 + The interface related to unit attributes can use Chinese attribute names and Chinese attribute types
@@ -557,7 +557,7 @@
 + Fixed hot reload not maintaining file load orderbug
 
 `2024-1-12`
-+ Fix 'y3.game.send_custom_event' is invalidbug
++ Fix 'clicli.game.send_custom_event' is invalidbug
 
 `2023-12-25`
 + Add interface：
@@ -604,7 +604,7 @@
 `2023-11-10`
 + Add interface：
   * `UI:set_anim_pos`
-+ Fixed 'y3.object.item[key].on_add' invalidbug
++ Fixed 'clicli.object.item[key].on_add' invalidbug
 
 `2023-11-9`
 + Fix 'initialconfig.bat' did not recursively copy files correctlybug
@@ -837,11 +837,11 @@
       log.debug('End of spell')
   end
   ```
-+ Will automatically determine whether the current is a test mode, you can also use 'y3.game.is_debug_mode()' to determine。
++ Will automatically determine whether the current is a test mode, you can also use 'clicli.game.is_debug_mode()' to determine。
 + In test mode, the built-in test instructions (case sensitive) are enabled）：
   * `.RD` - Overloaded script
-  * `.SS` - Print all live objects in Lua and save the results in 'y3/log/snapshot.txt'
-  * `.CT` - Prints all alive objects in Lua and their reference paths, and saves the result in 'y3/log/catch.txt'
+  * `.SS` - Print all live objects in Lua and save the results in 'clicli/log/snapshot.txt'
+  * `.CT` - Prints all alive objects in Lua and their reference paths, and saves the result in 'clicli/log/catch.txt'
 
 `2023-8-24`
 + Try to use message mode for object events
@@ -985,7 +985,7 @@
 * The following interfaces are added：
   * `UI:set_follow_mouse`
 * Added the 'Sound' class
-* Remove the Sound related interface in 'y3.game' and use the methods in the 'sound' class instead
+* Remove the Sound related interface in 'clicli.game' and use the methods in the 'sound' class instead
   * `y3.game.play_sound_for_player` -> `y3.sound.play`
   * `y3.game.stop_sound_for_player` -> `Sound:stop`
   * `y3.game.play_3d_sound_for_player` -> `y3.sound.play_3d`

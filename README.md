@@ -6,14 +6,14 @@ This project hopes to jointly develop this framework with the majority of users,
 # Quick start
 
 ## Automatic initialization
-* Create a map using the Y3 editor，
+* Create a map using the CliCli editor，
 * Install the extension in VSCode `sumneko.y3-helper`
-* Select "Y3 Developer Assistant" in the left sidebar and click "Initialize Y3 library.”
+* Select "CliCli-Helper" in the left sidebar and click "Initialize CliCli library.”
 
 ## Manual initialization
-* Create a map using the Y3 editor and open the map directory (default is' < Map Project>/maps/EntryMap`）
-* Then replace this project with the 'script/y3' directory in the map
-* You can double-click to run 'script/y3/ initial configuration.bat', it can help you configure the plugin environment and debugger
+* Create a map using the CliCli editor and open the map directory (default is' < Map Project>/maps/EntryMap`）
+* Then replace this project with the 'script/clicli' directory in the map
+* You can double-click to run 'script/clicli/initial configuration.bat', it can help you configure the plugin environment and debugger
 * Open the script folder with VSCode
 
 > Note: If you are using the 1.0 editor, switch the branch of this project to `1.0`
@@ -35,7 +35,7 @@ contain：
 * Hold down the space or click the avatar to focus the lens on this unit
 
 Enabling method：
-* Add 'require "y3 to Lua code.demo. screen"`
+* Add 'require "y3.demo.UI" into Lua code"`
 * In the editor click 'Menu Bar' -> 'Plugins' ->' Plugins Mall ', search for 'LuaLib', install 'LuaLib Example - Interface' (Art resources）
 
 ## Defense plan
@@ -46,7 +46,7 @@ contain：
 * Victory when all monsters are destroyed
 
 Enabling method：
-* Add 'require "y3 to Lua code.demo. Defense plan"`
+* Add 'require "clicli.demo.Defense" into Lua code"`
 * In the editor click 'Menu Bar' -> 'Plugins' ->' Plugins Mall ', search for 'LuaLib', install 'LuaLib Example - Defense Chart' (hero, skill, monster compilation data）
 
 ## Practice room
@@ -57,7 +57,7 @@ contain：
 * Heroes leave the central zone 5 seconds after monster hours
 
 Enabling method：
-* Add 'require "y3 to Lua code.demo. Practice room"`
+* Add 'require "clicli.demo.Practice room" into Lua code"`
 * In the editor, click 'Menu Bar' -> 'Plugins' ->' Plugins Mall ', search for 'LuaLib', install 'LuaLib Example - Training Room' (heroes, skills, monsters compilation data）
 
 ## Equipment synthesis and store purchase
@@ -68,8 +68,8 @@ contain：
 * Purchase items in the store, automatically deduct the existing components and deduct the difference
 
 Enabling method：
-* Create maps using 'Y3' objects (objects for demonstration purposes)）
-* Add 'require "y3 to Lua code.demo. CRAFT"`
+* Create maps using 'CliCli' objects (objects for demonstration purposes)）
+* Add 'require "clicli.demo.craft" into Lua code"`
 * In the editor, click 'Menu Bar' -> 'Plugins' ->' Plugins Mall ', search for 'LuaLib', install 'LuaLib Example - Interface' (to display the store）
 
 # Q&A
@@ -97,14 +97,14 @@ Y3For details, see [this document](./doc/Lua Virtual Machine.md)。
 
 ### How to use logs
 
-log with 'log.info' (' log content ') in the code, and in development mode the log will be written to '.log/lua_player01.log 'in the script directory. When running on the platform, the log is written to 'custom/lua_player01.log' in the map directory. The last two digits of the file name represent your player ID in the game, and multiple log files are generated when the local multiple is opened. When running on the platform, the full log path is approximately '... / kkduizhan/Games/y3/2.0 / game/LocalData/etc/maps / < encryption map>/custom/lua_player01.log` 。
+log with 'log.info' (' log content ') in the code, and in development mode the log will be written to '.log/lua_player01.log 'in the script directory. When running on the platform, the log is written to 'custom/lua_player01.log' in the map directory. The last two digits of the file name represent your player ID in the game, and multiple log files are generated when the local multiple is opened. When running on the platform, the full log path is approximately '... / kkduizhan/Games/clicli/2.0 / game/LocalData/etc/maps / < encryption map>/custom/lua_player01.log` 。
 
 If you just want to take a quick look at it, you can use 'print' and it will be displayed directly in the game. Don't forget to remove the map before uploading it `print` 。
 
 # Additional debugging using VSCode
 
 1. VSCodeSearch the Extension Marketplace to install plug-ins `sumneko.y3-helper`。
-2. Click on the "Y3 Developer Assistant" view in the left sidebar
+2. Click on the "CliCli-Helper" view in the left sidebar
 3. Click "Start Game and attach debugger" in the view to start debugging (shortcut key：`Shift+F5`）
 
 # Engineering structure

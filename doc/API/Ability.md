@@ -354,7 +354,7 @@ function Ability.get_float_attr_by_key(ability_key: py.AbilityKey, key: string)
 ```
 
 Gets the real attribute of the skill type
-> Use 'y3.object.ability[ability_key].data' instead
+> Use 'clicli.object.ability[ability_key].data' instead
 
 @*param* `ability_key` — Skill type id (object compilationid)
 
@@ -437,7 +437,7 @@ function Ability.get_int_attr_by_key(ability_key: py.AbilityKey, key: string)
 ```
 
 Gets the integer attribute of the skill type
-> Use 'y3.object.ability[ability_key].data' instead
+> Use 'clicli.object.ability[ability_key].data' instead
 
 @*param* `ability_key` — Skill type id (object compilationid)
 
@@ -560,7 +560,7 @@ function Ability.get_str_attr_by_key(ability_key: py.AbilityKey, key: py.Ability
 ```
 
 Gets the skill type string property
-> Use 'y3.object.ability[ability_key].data' instead
+> Use 'clicli.object.ability[ability_key].data' instead
 
 @*param* `ability_key` — Skill type id (object compilationid)
 

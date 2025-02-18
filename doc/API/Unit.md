@@ -142,7 +142,7 @@ Increases current mana
 ```
 
 Add multiple states
-Use the enumeration value in 'y3.const.UnitEnumState'
+Use the enumeration value in 'clicli.const.UnitEnumState'
 
 @*param* `state_enum` — status
 ## add_state
@@ -2098,7 +2098,7 @@ Removal motor
 ```
 
 Remove multiple states
-Use the enumeration value in 'y3.const.UnitEnumState'
+Use the enumeration value in 'clicli.const.UnitEnumState'
 
 @*param* `state_enum` — status
 ## remove_state

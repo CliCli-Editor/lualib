@@ -351,7 +351,7 @@ function Develop.Console.show_result(ok: boolean, result: any)
   -> any
 ```
 
-Send a request to the Y3 Development Assistant (coroutine）
+Send a request to the CliCli-Helper (coroutine）
 ## createAttrWatcher
 
 ```lua
@@ -359,7 +359,7 @@ function Develop.Helper.createAttrWatcher(unit: Unit, attrType: y3.Const.UnitAtt
   -> Develop.Helper.TreeNode
 ```
 
-Create a property monitor on the Y3 Development Assistant
+Create a property monitor on the CliCli-Helper
 
 @*param* `unit` — Units to be monitored
 
@@ -373,7 +373,7 @@ function Develop.Helper.createInputBox(optional?: Develop.Helper.InputBox.Option
   -> Develop.Helper.InputBox
 ```
 
-Create an input box on Y3 Development Assistant
+Create an input box on CliCli-Helper
 ## createTreeNode
 
 ```lua
@@ -381,7 +381,7 @@ function Develop.Helper.createTreeNode(name: string, optional?: Develop.Helper.T
   -> Develop.Helper.TreeNode
 ```
 
-Create a node on the Y3 Developer Assistant tree view
+Create a node on the CliCli-Helper tree view
 ## createTreeView
 
 ```lua
@@ -389,14 +389,14 @@ function Develop.Helper.createTreeView(name: string, root: Develop.Helper.TreeNo
   -> Develop.Helper.TreeView
 ```
 
-Create a tree view on the Y3 Developer Assistant view
+Create a tree view on the CliCli-Helper view
 ## init
 
 ```lua
 function Develop.Helper.init(port?: integer)
 ```
 
-Initializes the connection to the Y3 Development Assistant. If you start the game with VSCode, it will connect automatically。
+Initializes the connection to the CliCli-Helper. If you start the game with VSCode, it will connect automatically。
 In other cases, you can call this function connection if required。
 ## isReady
 
@@ -412,14 +412,14 @@ function Develop.Helper.isReady()
 function Develop.Helper.notify(method: string, params: table)
 ```
 
-Send notifications to Y3 Development Assistant
+Send notifications to CliCli-Helper
 ## onReady
 
 ```lua
 function Develop.Helper.onReady(callback: fun())
 ```
 
-Called when Y3 Development Assistant is ready
+Called when CliCli-Helper is ready
 ## prepareForRestart
 
 ```lua
@@ -433,7 +433,7 @@ Ready to restart the game
 function Develop.Helper.print(message: string)
 ```
 
-Print a message on the terminal of the Y3 Development Assistant
+Print a message on the terminal of the CliCli-Helper
 ## registerMethod
 
 ```lua
@@ -446,7 +446,7 @@ function Develop.Helper.registerMethod(method: string, callback: fun(params: any
 function Develop.Helper.request(method: string, params: table, callback?: fun(data: any))
 ```
 
-Send a request to Y3 Development Assistant
+Send a request to CliCli-Helper
 
 @*param* `callback` — Received return value
 ## requestCommand

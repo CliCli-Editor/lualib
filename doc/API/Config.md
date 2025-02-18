@@ -100,7 +100,7 @@ Whether to print to the game window. The default is `false`
 boolean
 ```
 
-Whether to print to Y3 Development Assistant, the default is `true`
+Whether to print to CliCli-Helper, the default is `true`
 
 # Config.Sync
 

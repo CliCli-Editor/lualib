@@ -34,7 +34,7 @@ Binding element
 
 @*param* `child_name` — The empty string represents the master device
 
-@*param* `prefab_logic` — Component logic created using 'y3.local_ui.prefab'
+@*param* `prefab_logic` — Component logic created using 'clicli.local_ui.prefab'
 
 @*param* `prefab_token` — If you bind the same components under different controls and need to refresh them separately, you can set different ones for them token
 ## bind_unit_attr
