@@ -1051,4 +1051,24 @@ M.UIEffectCameraMode = {
 ---@enum(key) clicli.Const.CustomEventName
 M.CustomEventName = {}
 
+---@enum(key) clicli.Const.WeatherType
+M.WeatherType = {
+    ['None'] = 0,
+    ['LightRain'] = 1,
+    ['HeavyRain'] = 2,
+    ['LightSnow'] = 3,
+    ['HeavySnow'] = 4,
+    ['Snowstorm'] = 5,
+    ['MagicRises'] = 6,
+    ['Moonlight'] = 7,
+    ['Daylight'] = 8,
+    ['LittleWind'] = 9,
+    ['Gale'] = 10,
+    ['Dust'] = 11,
+    ['BlueFog'] = 12,
+    ['GreenMist'] = 13,
+    ['RedMist'] = 14,
+    ['WhiteFog'] = 15,
+}
+
 return M

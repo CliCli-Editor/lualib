@@ -310,15 +310,15 @@ end
 
 ---Set area weather
 ---@param area Area
----@param weather integer Specifies the weather
+---@param weather integer | clicli.Const.WeatherType Weather
 function M.set_area_weather(area, weather)
-    GameAPI.update_area_weather(area.handle, weather)
+    GameAPI.update_area_weather(area.handle, clicli.const.WeatherType[weather] or weather)
 end
 
 ---Set global weather
----@param weather integer Specifies the weather
+---@param weather integer | clicli.Const.WeatherType Weather
 function M.set_global_weather(weather)
-    GameAPI.update_global_weather(weather)
+    GameAPI.update_global_weather(clicli.const.WeatherType[weather] or weather)
 end
 
 ---Set the fog effect property
