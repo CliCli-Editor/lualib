@@ -345,7 +345,7 @@ function M.create_unit(owner, unit_id, point, direction)
 end
 
 ---Kill unit
----@param killer Unit
+---@param killer? Unit The killer is unit.
 function M:kill_by(killer)
     self.handle:api_kill(killer and killer.handle or nil)
 end
