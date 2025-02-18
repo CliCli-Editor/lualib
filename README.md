@@ -35,7 +35,7 @@ contain：
 * Hold down the space or click the avatar to focus the lens on this unit
 
 Enabling method：
-* Add 'require "y3.demo.UI" into Lua code"`
+* Add 'require "clicli.demo.UI" into Lua code"`
 * In the editor click 'Menu Bar' -> 'Plugins' ->' Plugins Mall ', search for 'LuaLib', install 'LuaLib Example - Interface' (Art resources）
 
 ## Defense plan
@@ -85,7 +85,7 @@ Try not to call directly. Because there are currently plans to modify CAPI, call
 
 ### ECAHow does ECA call Lua functions when co-developing with Lua？
 
-ECAlua code can be executed directly, or you can refer to [This code](./ demo /ECA call Lua function.lua) to register a binding function for ECA to call。
+ECAlua code can be executed directly, or you can refer to [This code](. demo/ECA call Lua function.lua) to register a binding function for ECA to call。
 
 ### Models and effects used in Lua cannot be displayed？
 

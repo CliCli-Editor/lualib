@@ -418,7 +418,7 @@
 + `kv_save` Series functions support the 'UnitGroup' type
 
 `2024-4-24`
-+ Added 'clicli.network' library, can be used as a client socket connection, specific usage refer to [demo](./ demo/network.lua)
++ Added 'clicli.network' library, can be used as a client socket connection, specific usage refer to [demo](./demo/network.lua)
 + `Unit:add_buff` The default duration is' -1 '(unlimited), the same as in ECA
 + After the repair object is actively deleted by the engine, it will not trigger 'bindGC'bug
 
@@ -618,7 +618,7 @@
   M.data.name = 'This is the changed name'
   ```
 
-  For details, please refer to 'Presentation/Article Compilation'`
+  For details, please refer to 'demo/Article Compilation'`
 
 `2023-11-7`
 + Add interface：
@@ -629,7 +629,7 @@
 
 `2023-11-6`
 + Export all interfaces as markdown files and store them `doc/doc.md`
-+ Fixed a bug in 'Demo /ECA calls Lua function' (' args' in ECA code was written incorrectly `arg`）
++ Fixed a bug in 'Demo/ECA calls Lua function' (' args' in ECA code was written incorrectly `arg`）
 
 
 `2023-11-3`

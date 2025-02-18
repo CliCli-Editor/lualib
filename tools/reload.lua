@@ -2,7 +2,7 @@ local originRequire = require
 
 --Hot heavy duty
 --
---For methods related to hot reload, see 'Demonstration/Hot Reload' for details.
+--For methods related to hot reload, see 'demo/Hot Reload' for details.
 ---@class Reload
 ---@overload fun(optional? : Reload.Optional): self
 local M = Class 'Reload'
