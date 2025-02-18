@@ -12,6 +12,7 @@
 + Add interface：
   * `Unit:set_name_show_type` Set how names are displayed (display unit name or player name）
   * `Item:set_name_show_type` Set how names are displayed (display unit name or player name）
+  * `Unit:transformation` shapeshift
 
 `2024-2-7`
 + Add interface：
