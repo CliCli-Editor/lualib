@@ -29,16 +29,16 @@ clicli.py_converter.register_lua_to_py('py.LinkSfx', function (lua_value)
 end)
 
 ---@class Beam.CreateData
----@field key py.SfxKey 特效id
----@field source Unit|Point 目标
----@field target Unit|Point 目标
----@field time? number 存在时间
----@field source_height? number 高度（只在目标是点时生效）
----@field target_height? number 高度（只在目标是点时生效）
----@field source_socket? string 挂接点（只在目标是单位时生效）
----@field target_socket? string 挂接点（只在目标是单位时生效）
----@field follow_scale? boolean 是否跟随缩放（只在起点是单位时生效）
----@field immediate? boolean 销毁时，是否有过度
+---@field key py.SfxKey Special effect id
+---@field source Unit|Point Target
+---@field target Unit|Point Target
+---@field time? number time of existence
+---@field source_height? number Height (only if the target is a point)
+---@field target_height? number Height (only if the target is a point)
+---@field source_socket? string Mount contact (only if the target is a unit)
+---@field target_socket? string Mount contact (only if the target is a unit)
+---@field follow_scale? boolean Whether to follow scaling (only if starting point is a unit)
+---@field immediate? boolean Specifies whether there is an overshoot when destroying
 
 ---@param data Beam.CreateData
 ---@return Beam
@@ -122,25 +122,25 @@ function M.create(data)
 end
 
 
----链接特效 - 销毁
+---Link effects - Destroy
 function M:remove()
     Delete(self)
 end
 
 
----@param is_show boolean 是否显示
----链接特效 - 显示/隐藏
+---@param is_show boolean Specifies whether to display
+---Link effects - Show/Hide
 function M:show(is_show)
     GameAPI.enable_link_sfx_show(self.handle, is_show)
 end
 
 ---@class Beam.LinkData
----@field point_type clicli.Const.LinkSfxPointType 起点or终点
----@field target Unit|Point 目标
----@field height? number 高度（只在目标是点时生效）
----@field socket? string 挂接点（只在目标是单位时生效）
+---@ field point_type clicli. Const. LinkSfxPointType starting point or a destination
+---@field target Unit|Point Target
+---@field height? number Height (only if the target is a point)
+---@field socket? string Mount contact (only if the target is a unit)
 
----链接特效 - 设置位置
+---Link Effects - Set the location
 ---@param data Beam.LinkData
 function M:set(data)
     local target = data.target
@@ -149,7 +149,7 @@ function M:set(data)
         GameAPI.set_link_sfx_point(
             self.handle,
             data.point_type,
-            -- TODO 见问题2
+            --TODO see question 2
             ---@diagnostic disable-next-line: param-type-mismatch
             target.handle,
             data.height or 0

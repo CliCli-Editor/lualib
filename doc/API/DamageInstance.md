@@ -1,13 +1,13 @@
 # DamageInstance
 
-伤害实例
+Injury instance
 
-会在伤害相关的事件中传递
+Will be transmitted during injury-related events
 
 ## data
 
 ```lua
-EventParam.单位-受到伤害后
+EventParam.Unit-AfterTakingDamage
 ```
 
 ## get_ability
@@ -17,7 +17,7 @@ EventParam.单位-受到伤害后
   -> Ability?
 ```
 
- 获取关联技能
+ Acquire relevant skills
 ## get_attack_type
 
 ```lua
@@ -32,7 +32,7 @@ EventParam.单位-受到伤害后
   -> number
 ```
 
- 获取当前伤害
+ Get current damage
 ## get_damage_type
 
 ```lua
@@ -47,7 +47,7 @@ EventParam.单位-受到伤害后
   -> boolean
 ```
 
- 获取当前伤害是否暴击
+ Gets whether the current damage is critical
 ## is_missed
 
 ```lua
@@ -55,11 +55,11 @@ EventParam.单位-受到伤害后
   -> boolean
 ```
 
- 获取当前伤害是否闪避
+ Gets whether the current damage is evaded
 ## mode
 
 ```lua
-'伤害前'|'伤害后'|'伤害时'
+'Before damage '|' after damage '|' when damage'
 ```
 
 ## origin_damage
@@ -68,26 +68,26 @@ EventParam.单位-受到伤害后
 number
 ```
 
-记录一下最开始的原始伤害
+Record the original damage
 ## set_critical
 
 ```lua
 (method) DamageInstance:set_critical(critical: boolean)
 ```
 
- 设置当前伤害是否暴击
+ Sets whether the current damage is critical
 ## set_damage
 
 ```lua
 (method) DamageInstance:set_damage(damage: number)
 ```
 
- 修改当前伤害
+ Modify current damage
 ## set_missed
 
 ```lua
 (method) DamageInstance:set_missed(missed: boolean)
 ```
 
- 设置当前伤害是否闪避
+ Sets whether to dodge the current damage
 

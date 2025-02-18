@@ -1,8 +1,8 @@
 # Cast
 
-施法实例
+Casting example
 
-会在施法相关的事件中传递
+Will be passed during spell-related events
 
 ## ability
 
@@ -10,7 +10,7 @@
 Ability
 ```
 
-技能
+skill
 ## cast_id
 
 ```lua
@@ -31,7 +31,7 @@ function Cast.get(ability: Ability, cast_id: integer)
   -> Ability
 ```
 
- 获取技能
+ Acquire skills
 ## get_angle
 
 ```lua
@@ -39,7 +39,7 @@ function Cast.get(ability: Ability, cast_id: integer)
   -> number
 ```
 
- 获取施法方向
+ Get casting directions
 ## get_target_destructible
 
 ```lua
@@ -47,7 +47,7 @@ function Cast.get(ability: Ability, cast_id: integer)
   -> Destructible?
 ```
 
- 获取施法目标可破坏物
+ Gets destructible objects from the casting target
 ## get_target_item
 
 ```lua
@@ -55,7 +55,7 @@ function Cast.get(ability: Ability, cast_id: integer)
   -> Item?
 ```
 
- 获取施法目标物品
+ Get the target item
 ## get_target_point
 
 ```lua
@@ -63,7 +63,7 @@ function Cast.get(ability: Ability, cast_id: integer)
   -> Point?
 ```
 
- 获取施法目标点
+ Gets the casting target point
 ## get_target_unit
 
 ```lua
@@ -71,7 +71,7 @@ function Cast.get(ability: Ability, cast_id: integer)
   -> Unit?
 ```
 
- 获取施法目标单位
+ Gets the cast target unit
 ## storage_all
 
 ```lua
@@ -79,7 +79,7 @@ function Cast.get(ability: Ability, cast_id: integer)
   -> table
 ```
 
- 获取存储数据的容器
+ Gets the container for storing data
 ## storage_get
 
 ```lua
@@ -87,14 +87,14 @@ function Cast.get(ability: Ability, cast_id: integer)
   -> any
 ```
 
- 获取存储的值
+ Gets the stored value
 ## storage_set
 
 ```lua
 (method) Storage:storage_set(key: any, value: any)
 ```
 
- 存储任意值
+ Store arbitrary values
 ## storage_table
 
 ```lua

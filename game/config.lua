@@ -1,13 +1,13 @@
----配置
+---disposition
 ---
----可以设置日志、同步等相关的配置
+---You can set log and synchronization configurations
 ---@class Config
 local M = Class 'Config'
 
----同步相关的配置，当设置为 `true` 后将启用同步，
----会产生额外的流量。  
----同步需要一定的时间，获取到的是一小段时间前的状态，
----因此启用同步后不能立即获取状态。  
+---Synchronization related configuration, when set to 'true' will enable synchronization,
+---It generates additional traffic.
+---Synchronization takes a certain amount of time, and what you get is the state from a short time ago,
+---Therefore, the status cannot be obtained immediately after synchronization is enabled.
 ---@class Config.Sync
 ---@field mouse boolean # Sync the player's mouse position
 ---@field key boolean # Sync the player's keyboard and mouse keys
@@ -20,17 +20,17 @@ M.sync = clicli.proxy.new({
     updateRaw = true,
     setter = {
         mouse = function (self, raw, key, value, config)
-            assert(type(value) == 'boolean', ('`Config.sync.%s` 的赋值类型必须是 `boolean`'):format(key))
+            assert(type(value) == 'boolean', ('The assignment type of `Config.sync.%s` must be` boolean `'):format(key))
             GameAPI.force_enable_mouse_sync(value)
             return value
         end,
         key = function (self, raw, key, value, config)
-            assert(type(value) == 'boolean', ('`Config.sync.%s` 的赋值类型必须是 `boolean`'):format(key))
+            assert(type(value) == 'boolean', ('The assignment type of `Config.sync.%s` must be` boolean `'):format(key))
             GameAPI.force_enable_keyboard_sync(value)
             return value
         end,
         camera = function (self, raw, key, value, config)
-            assert(type(value) == 'boolean', ('`Config.sync.%s` 的赋值类型必须是 `boolean`'):format(key))
+            assert(type(value) == 'boolean', ('The assignment type of `Config.sync.%s` must be` boolean `'):format(key))
             GameAPI.force_enable_camera_sync(value)
             return value
         end,
@@ -69,32 +69,32 @@ M.log = clicli.proxy.new({
     }
 })
 
----每秒的逻辑帧率，请将其设置为与你地图中设置的一致。
----目前默认为30帧，未来默认会读取你地图中的设置。
----必须在游戏开始时就设置好，请勿中途修改。
+---Logical frame rate per second, please set it to the same as set in your map.
+---The current default is 30 frames, and in the future the Settings in your map will be read by default.
+---It must be set at the beginning of the game, do not change it in the middle.
 M.logic_frame = GameAPI.api_get_logic_fps
             and GameAPI.api_get_logic_fps()
             or  30
 
----缓存相关的配置，一般要求你不在ECA中操作相关的对象才可以使用缓存。
+---Cache-related configurations generally require that you do not manipulate related objects in the ECA to use the cache.
 M.cache = {
-    ---是否对UI进行缓存。需要保证你没有在ECA中操作UI。
+    ---Whether to cache the UI. Make sure you're not operating the UI in the ECA.
     ui = false,
 }
 
----动态执行代码相关的设置
+---Dynamically execute code related Settings
 M.code = {
-    ---在非debug模式下是否允许执行本地代码。
+    ---Whether native code execution is allowed in non-debug mode.
     enable_local = false,
-    ---在非debug模式下是否允许执行其他玩家广播过来的远程代码。
+    ---Whether to allow remote code broadcast by other players to be executed in non-debug mode.
     enable_remote = false,
 }
 
----界面相关设置
+---Interface related Settings
 M.ui = {
 }
 
----运动器直接使用引擎接口注册
+---The motor is registered directly using the engine interface
 M.mover = {
     enable_internal_regist = false
 }

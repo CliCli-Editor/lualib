@@ -74,7 +74,7 @@ python = {}
 
 function python.debug_ns_timestamp() end
 
---------------- 运动器构造 ------------------
+--------------- Motor construction ------------------
 
 ---@class py.MoverBaseBuilder
 ---@field set_is_face_angle            fun(is_face_angle: boolean)
@@ -85,8 +85,8 @@ function python.debug_ns_timestamp() end
 ---@field set_terrain_block            fun(terrain_block: boolean)
 ---@field set_terrain_collide_interval fun(interval: py.Fixed)
 ---@field set_priority                 fun(priority: integer)
----@field set_related_unit             fun(related_unit?: py.Unit)
----@field set_related_ability          fun(related_ability?: py.Ability)
+---@field set_related_unit             fun(related_unit? : py.Unit)
+---@field set_related_ability          fun(related_ability? : py.Ability)
 ---@field set_is_absolute_height       fun(is_absolute_height: boolean)
 ---@field dict                         py.Dict
 
@@ -212,14 +212,14 @@ function broadcast_lua_msg(id, data) end
 ---@param port? integer
 ---@param timeout? number
 ---@param headers? table
----@param callback? fun(body?: string)
+---@param callback? fun(body? : string)
 function request_url(url, post, body, port, timeout, headers, callback) end
 
----注意：这个结果是本地的（每个玩家返回的结果都不一样）
+---Note: This result is local (each player returns a different result)
 ---@return number
 function os.clock_banned() end
 
----注意：这个结果是本地的（每个玩家返回的结果都不一样）
+---Note: This result is local (each player returns a different result)
 ---@overload fun():number
 ---@overload fun(x: integer): integer
 ---@overload fun(m: integer, n: integer): integer
@@ -234,8 +234,8 @@ function math.random_banned(...) end
 ---@param message string
 function upload_traceback(message) end
 
----启用 `tracy` 进行性能分析
----> 对运行性能有较大影响，仅在需要时启用
+---Enable 'tracy' for performance analysis
+---> This function has significant impact on running performance and is enabled only when required
 ---@param enable boolean
 function enable_lua_profile(enable) end
 
@@ -279,13 +279,13 @@ MoverSystem = nil
 ---@type any
 Blackbox = nil
 
----开始读取弹幕
+---Start reading the barrage
 ---@param port integer
 function start_danmaku(port) end
 
----停止读取弹幕
+---Stop reading the barrage
 function stop_danmaku() end
 
----获取新增弹幕的列表
+---Gets a list of new bullets
 ---@return any[]
 function get_danmaku_comments() end

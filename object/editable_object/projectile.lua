@@ -77,33 +77,33 @@ clicli.py_converter.register_lua_to_py('py.Projectile', function (lua_value)
 end)
 clicli.py_converter.register_py_to_lua('py.ProjectileID', M.get_by_id)
 
----获取投射物的类型ID
+---Gets the type ID of the projectile
 ---@return py.ProjectileKey projectile_key
 function M:get_key()
     return self.handle:api_get_key() or 0
 end
 
----是否存在
----@return boolean is_exist 是否存在
+---Existence or not
+---@return boolean is_exist Whether it exists
 function M:is_exist()
     return  GameAPI.projectile_is_exist(self.handle)
 end
 
----获取投射物高度
----@return number height 高度
+---Gets projectile height
+---@return number height Height
 function M:get_height()
     ---@diagnostic disable-next-line: undefined-field
     return clicli.helper.tonumber(self.handle:api_get_height()) or 0.0
 end
 
----获取投射物剩余持续时间
----@return number duration 投射物剩余持续时间
+---Gets the remaining duration of the projectile
+---@return number duration Remaining duration of projectiles
 function M:get_left_time()
     return clicli.helper.tonumber(self.handle:api_get_left_time()) or 0.0
 end
 
----获取投射物的拥有者
----@return Unit? unit 投射物的拥有者
+---Gets the owner of the projectile
+---@return Unit? unit The owner of the projectile
 function M:get_owner()
     local py_unit = self.handle:api_get_owner()
     if not py_unit then
@@ -112,60 +112,60 @@ function M:get_owner()
     return clicli.unit.get_by_handle(py_unit)
 end
 
----获取投射物朝向
----@return number angle 投射物朝向
+---Gets projectile orientation
+---@return number angle Object orientation
 function M:get_facing()
     return clicli.helper.tonumber(self.handle:api_get_face_angle()) or 0.0
 end
 
----获取投射物所在点
----@return Point point 投射物所在点
+---Get the point where the projectile is
+---@return Point point Indicates the point where the projectile resides
 function M:get_point()
     local py_point = self.handle:api_get_position()
     if not py_point then
         return clicli.point.create(0, 0)
     end
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     local point = clicli.point.get_by_handle(py_point)
     point.z = self:get_height()
     return point
 end
 
----是否拥有标签
----@param  tag string 标签
----@return boolean is_has_tag 是否拥有标签
+---Have a label or not
+---@param tag string Tag
+---@return boolean Whether is_has_tag has a tag
 function M:has_tag(tag)
     return GlobalAPI.has_tag(self.handle, tag)
 end
 
----投射物添加标签
----@param tag string 标签
+---Projectiles add labels
+---@param tag string Tag
 function M:add_tag(tag)
     self.handle:api_add_tag(tag)
 end
 
----投射物移除标签
----@param tag string 标签
+---Projectile removal tag
+---@param tag string Tag
 function M:remove_tag(tag)
     self.handle:api_remove_tag(tag)
 end
 
 ---@class Projectile.CreateData
----@field key py.ProjectileKey 投射物类型ID
----@field target Point|Unit 创建位置
----@field socket? string 投射物关联骨骼，只有当 `target` 为单位时才有效
----@field angle? number 投射物朝向
----@field height? number 投射物高度
----@field time? number 投射物持续时间
----@field owner? Unit|Player 投射物拥有者
----@field ability? Ability 投射物关联技能
----@field visible_rule? integer | clicli.Const.VisibleType 粒子特效可见性规则，默认为`1`
----@field remove_immediately? boolean 是否立即移除表现，如果不填会读表
----@field show_in_fog? boolean 是否在迷雾中显示，默认为`false`
+---@field key py.ProjectileKey Projectiles type ID
+---@field target Point|Unit Create location
+---@field socket? string projectiles associated with bones, valid only if 'target' is a unit
+---@field angle? number Projectile orientation
+---@field height? number Projectile height
+---@field time? number Projectile duration
+---@field owner? Unit|Player Projectile owner
+---@field ability? Ability Projectile association skill
+---@field visible_rule? integer | clicli.Const.VisibleType The particle effect visibility rule, which defaults to '1'
+---@field remove_immediately? boolean Specifies whether to remove the representation immediately. If not filled, the table is read
+---@field show_in_fog? boolean Whether to display in fog, default is' false '
 
 --Create projectiles
----@param data Projectile.CreateData 投射物创建数据
+---@param data Projectile.CreateData Projectiles create data
 ---@return Projectile
 function M.create(data)
     if not data.owner then
@@ -180,7 +180,7 @@ function M.create(data)
         local py_obj = GameAPI.create_projectile_in_scene_new(
             data.key,
             target.handle,
-            -- TODO 见问题3
+            --TODO see question 3
             ---@diagnostic disable-next-line: param-type-mismatch
             data.owner.handle,
             Fix32(data.angle or 0.0),
@@ -201,7 +201,7 @@ function M.create(data)
             target.handle,
             data.socket or 'origin',
             Fix32(data.angle or 0.0),
-            -- TODO 见问题3
+            --TODO see question 3
             ---@diagnostic disable-next-line: param-type-mismatch
             data.owner.handle,
             data.ability and data.ability.handle or nil,
@@ -216,19 +216,19 @@ function M.create(data)
     end
 end
 
----设置所属单位
----@param unit Unit 所属单位
+---Set a unit
+---@param unit Unit to which unit belongs
 function M:set_owner(unit)
     GameAPI.change_projectile_owner(self.handle, unit.handle)
 end
 
----设置关联技能
----@param ability Ability 关联技能
+---Set associated skills
+---@param ability Ability Relate skills
 function M:set_ability(ability)
     GameAPI.change_projectile_ability(self.handle, ability.handle)
 end
 
----销毁
+---destroy
 function M:remove()
     if not self._removed then
         self._removed = true
@@ -238,62 +238,62 @@ function M:remove()
     end
 end
 
----设置高度
----@param height number 高度
+---Set height
+---@param height number Height
 function M:set_height(height)
     self.handle:api_raise_height(Fix32(height))
 end
 
----设置坐标
----@param point Point 点坐标
+---Set coordinates
+---@param point Point Point coordinates
 function M:set_point(point)
-    -- TODO 见问题3
+    --TODO see question 3
     ---@diagnostic disable-next-line: param-type-mismatch
     self.handle:api_set_position(point.handle)
 end
 
----设置朝向
----@param direction number 朝向
+---orientation
+---@param direction number Indicates the direction
 function M:set_facing(direction)
     self.handle:api_set_face_angle(direction)
 end
 
----设置旋转
----@param x number x轴
----@param y number y轴
----@param z number z轴
+---Set rotation
+---@param x number x axis
+---@param y number y axis
+---@param z number z axis
 function M:set_rotation(x, y, z)
     self.handle:api_set_rotation(x, y, z)
 end
 
----设置缩放
----@param x number x轴
----@param y number y轴
----@param z number z轴
+---Set scale
+---@param x number x axis
+---@param y number y axis
+---@param z number z axis
 function M:set_scale(x, y, z)
     self.handle:api_set_scale(x, y, z)
 end
 
----设置动画速度
+---Set animation speed
 ---@param speed number
 function M:set_animation_speed(speed)
     self.handle:api_set_animation_speed(speed)
 end
 
----设置持续时间
----@param duration number 持续时间
+---Set duration
+---@param duration number Indicates the duration
 function M:set_time(duration)
     self.handle:api_set_duration(duration)
 end
 
----增加持续时间
----@param duration number 持续时间
+---Increase duration
+---@param duration number Indicates the duration
 function M:add_time(duration)
     self.handle:api_add_duration(duration)
 end
 
----获得关联技能
----@return Ability? ability 投射物或魔法效果的关联技能
+---Acquire relevant skills
+---@return Ability? ability The ability to associate projectiles or magical effects
 function M:get_ability()
     local py_ability = GlobalAPI.get_related_ability(self.handle)
     if py_ability then

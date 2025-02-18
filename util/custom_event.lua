@@ -4,35 +4,35 @@
 local M = Class 'CustomEvent'
 
 --[[
-注册自定义事件，当触发时，会执行回调函数。
+Register a custom event and, when triggered, execute a callback function。
 
 ```lua
-Obj:event_on('输入', function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', '123', '456')
+Obj:event_notify('input', '123', '456')
 ```
 
-以上会打印：
+The above will print：
 
 ```
-触发了输入事件 123 456
+The input event was triggered 123 456
 ```
 
 ---
 
-注册时可以指定事件的参数：
+You can specify parameters for the event during registration：
 
 ```lua
-Obj:event_on('输入', {'123'}, function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', {'123'}, function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', 1) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123'}, 2) -- 可以触发事件
-Obj:event_notify_with_args('输入', {'456'}, 3) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
+Obj:event_notify('input', 1) --Untriggered event
+Obj:event_notify_with_args('input', {'123'}, 2) --Can trigger event
+Obj:event_notify_with_args('input', {'456'}, 3) --Untriggered event
+Obj:event_notify_with_args('input', {'123', '666'}, 4) --Can trigger event
 ```
 ]]
 ---@overload fun(self: self, event_name:string, callback:Trigger.CallBack):Trigger
@@ -46,38 +46,38 @@ function M:event_on(...)
         callback = args
         args = nil
     end
-    assert(event_name, '缺少事件名')
-    assert(type(callback) == 'function', '缺少回调函数')
+    assert(event_name, 'Missing event name')
+    assert(type(callback) == 'function', 'The callback function is missing')
     local trigger = self.custom_event_manager:event(event_name, args, callback)
     return trigger
 end
 
 --[[
-发起自定义事件（通知模式），同一个对象身上只会有一个正在执行的事件，
-当发生插入结算时，后面的事件会进入队列
+When a custom event is initiated (notification mode), only one event is executed on the same object，
+When an insert settlement occurs, subsequent events are queued
 
 ```lua
-Obj:event_on('获得', function ()
-    print('触发获得')
-    print('发起移除前')
-    Obj:event_notify('移除') -- 实际业务中，可能你获得的buff把你自己杀死了，而死亡会清除buff
-    print('发起移除后')
+Obj:event_on('obtained', function ()
+    print('Trigger acquisition')
+    print('Before removal')
+    Obj:event_notify('Remove') --In real business, maybe the buff you get kills yourself, and death clears the buff
+    print('After removal')
 end)
 
-Obj:event_on('移除', function ()
-    print('触发移除')
+Obj:event_on('Remove', function ()
+    print('Trigger removal')
 end)
 
-Obj:event_notify('获得')
+Obj:event_notify('obtained')
 ```
 
-这段代码会打印：
+This code will print：
 
 ```
-触发获得
-发起移除前
-发起移除后
-触发移除
+Trigger acquisition
+Before removal
+After removal
+Trigger removal
 ```
 ]]
 ---@param event_name string
@@ -101,30 +101,30 @@ function M:event_notify_with_args(event_name, args, ...)
 end
 
 --[[
-发起自定义事件（回执模式），与通知模式不同，允许插入结算。
-可以接受到事件的返回值，有多处注册事件时会按照注册顺序调用，
-当任何事件回调返回了非 `nil` 的值后，后续触发器将不再调用。
+Initiate custom events (receipt mode), which, unlike notification mode, allows for insert billing。
+The return value of the event can be accepted, and the event is called in the order of registration when there are multiple registrations，
+When any event callback returns a non-nil value, subsequent triggers are not called。
 
 ```lua
-Obj:event_on('获取', function (trigger,...)
-    print('获取1')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquired 1')
     return 1
 end)
-Obj:event_on('获取', function (trigger,...)
-    print('获取2')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquired 2')
     return 2
 end)
 
-local result = Obj:event_dispatch('获取')
+local result = Obj:event_dispatch('Acquire')
 
-print('结果为：', result)
+print('The result is:', result)
 ```
 
-以上代码会打印：
+The above code will print：
 
 ```
-获取1
-结果为：    1
+Acquire1
+Turn out：    1
 ```
 ]]
 ---@param event_name string

@@ -315,14 +315,14 @@ function Ability:api_set_autocast_enabled(b) end
 ---@return boolean? # Enable or not
 function Ability:api_is_autocast_enabled() end
 
---Set the skill's build target type (build_id)
+--Set the skill is build target type (build_id)
 ---@param new_build_id py.UnitKey # Unit object ID
 function Ability:api_set_ability_build_id(new_build_id) end
 
 --Gain the ability to build target type
 function Ability:api_get_ability_build_id() end
 
---Set the limits of the skill's build area
+--Set the limits of the skill is build area
 ---@param area py.Area # Area object
 function Ability:api_set_ability_build_area(area) end
 
@@ -355,7 +355,7 @@ function Ability:api_set_ability_is_permanent(is_permanent_ability) end
 ---@param tag string # tag
 function Ability:api_add_filter_unit_tag(tag) end
 
---Removes the skill's filter unit tag
+--Removes the skill is filter unit tag
 ---@param tag string # tag
 ---@return string? # tag
 function Ability:api_remove_filter_unit_tag(tag) end
@@ -364,7 +364,7 @@ function Ability:api_remove_filter_unit_tag(tag) end
 ---@param tag string # tag
 function Ability:api_add_filter_item_tag(tag) end
 
---Removes the tag of the skill's filter item
+--Removes the tag of the skill is filter item
 ---@param tag string # tag
 ---@return string? # tag
 function Ability:api_remove_filter_item_tag(tag) end
@@ -373,7 +373,7 @@ function Ability:api_remove_filter_item_tag(tag) end
 ---@param tag string # tag
 function Ability:api_add_collection_destructible_tags(tag) end
 
---Removes the ability's filter destructible tag
+--Removes the ability is filter destructible tag
 ---@param tag string # tag
 ---@return string? # tag
 function Ability:api_remove_collection_destructible_tags(tag) end

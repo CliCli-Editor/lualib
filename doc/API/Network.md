@@ -19,21 +19,21 @@ key:
 (method) Network:data_reader(callback: fun(read: fun(len: integer|'L'|'l'|nil):string))
 ```
 
-创建一个“阻塞”式的数据读取器，会循环执行 `callback`
-> 与 `on_data` 互斥
+Create a "blocking" type of data reader that will be executed in a loop `callback`
+> It is mutually exclusive with on_data
 
-回调里会给你一个读取函数 `read`，下面是它的说明：
+The callback will give you a read function called 'read'. Here is its description：
 
-按照传入的规则读取数据，如果数据不满足规则，
-那么读取器会休眠直到收到满足规则的数据再返回
-* 如果不传入任何参数：
-  读取所有已收到的数据，类似于 `on_data`
-* 如果传入整数：
-  读取指定字节数的数据。
-* 如果传入 `'l'`：
-  读取一行数据，不包括换行符。
-* 如果传入 `'L'`：
-  读取一行数据，包括换行符。
+Read the data according to the incoming rules, if the data does not meet the rules，
+The reader then sleeps until it receives data that satisfies the rule and returns
+* If no arguments are passed：
+  Read all received data, similar to `on_data`
+* If integer：
+  Reads a specified number of bytes of data。
+* If incoming `'l'`：
+  Reads a row of data, excluding newlines。
+* If incoming `'L'`：
+  Reads a row of data, including newlines。
 ## handle
 
 ```lua
@@ -53,7 +53,7 @@ string
   -> boolean
 ```
 
-是否已连接
+Whether connected
 ## make_error
 
 ```lua
@@ -66,28 +66,28 @@ string
 (method) Network:on_connected(on_connected: Network.OnConnected)
 ```
 
-连接成功后的回调
+Callback after successful connection
 ## on_data
 
 ```lua
 (method) Network:on_data(on_data: Network.OnData)
 ```
 
-收到数据后的回调
+Callback after receiving data
 ## on_disconnected
 
 ```lua
 (method) Network:on_disconnected(on_disconnected: Network.OnDisconnected)
 ```
 
-断开连接后的回调
+Callback after disconnection
 ## on_error
 
 ```lua
 (method) Network:on_error(on_error: Network.OnError)
 ```
 
-发生错误后的回调
+A callback after an error occurs
 ## options
 
 ```lua
@@ -177,26 +177,26 @@ fun(self: Network, error: string)
 integer
 ```
 
-网络缓冲区大小（字节），默认为 2MB
+Network buffer size (bytes), default is 2MB
 ## retry_interval
 
 ```lua
 number
 ```
 
-重连间隔（秒），默认为 5
+Reconnection interval (s). The default value is 5
 ## timeout
 
 ```lua
 number
 ```
 
-连接超时时间（秒），默认为30秒
+Connection timeout (s). The default value is 30 seconds
 ## update_interval
 
 ```lua
 number
 ```
 
-网络更新间隔（秒），默认为 0.2
+Network update interval (seconds). The default is 0.2
 

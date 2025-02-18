@@ -992,12 +992,12 @@ function GameAPI.stop_sound(role, sound, immediately_stop) end
 ---@param play_operation integer # Play operation
 function GameAPI.sound_play_controller(role, sound, play_operation) end
 
---Set the player's sound receiver to follow the lens rays with the ground focus
+--Set the player is sound receiver to follow the lens rays with the ground focus
 ---@param role py.Role # Player
 ---@param camera_ray_direction py.CameraRayDirection # Camera ray direction
 function GameAPI.set_player_listener_to_follow_intersection_of_camera_ray_and_ground(role, camera_ray_direction) end
 
---Set the player's sound receiver to follow the unit
+--Set the player is sound receiver to follow the unit
 ---@param role py.Role # Player
 ---@param unit py.Unit # unit
 function GameAPI.set_player_listener_to_follow_unit(role, unit) end
@@ -1127,13 +1127,13 @@ function GameAPI.request_switch_level(level_id_str, load_same_world, skip_loadin
 ---@return integer # Global archive value
 function GameAPI.get_global_map_archive(key) end
 
---Gets the nickname of the NTH player in the map's globally specified key archive
+--Gets the nickname of the NTH player in the map is globally specified key archive
 ---@param rank_key string # key value
 ---@param num integer # n Place
 ---@return string # nickname
 function GameAPI.get_rank_player_nickname(rank_key, num) end
 
---Gets the save value for the NTH player of the map's globally specified key save
+--Gets the save value for the NTH player of the map is globally specified key save
 ---@param rank_key string # key value
 ---@param num integer # n Place
 ---@return integer # Archive value
@@ -1473,7 +1473,7 @@ function GameAPI.replace_point_texture(area, texture_type, new_texture_type) end
 ---@return integer # Texture type
 function GameAPI.get_texture_type(position) end
 
---Modify the player's surface texture
+--Modify the player is surface texture
 ---@param role py.Role # Player
 ---@param bool_value boolean # Boolean value
 function GameAPI.set_local_terrain_visible(role, bool_value) end
@@ -1537,25 +1537,25 @@ function GameAPI.get_screen_x_resolution() end
 ---@return integer # value
 function GameAPI.get_screen_y_resolution() end
 
---Determine the player's unit type preconditions to meet the requirements
+--Determine the player is unit type preconditions to meet the requirements
 ---@param player py.Role # Player
 ---@param unity_key py.UnitKey # Unit type
 ---@return boolean # Satisfy or not
 function GameAPI.check_unit_key_precondition(player, unity_key) end
 
---Determine the player's item type preconditions to satisfy the need
+--Determine the player is item type preconditions to satisfy the need
 ---@param player py.Role # Player
 ---@param item_key py.ItemKey # Item type
 ---@return boolean # Satisfy or not
 function GameAPI.check_item_key_precondition(player, item_key) end
 
---Determine the player's technology type preconditions to meet the needs
+--Determine the player is technology type preconditions to meet the needs
 ---@param player py.Role # Player
 ---@param tech_key py.TechKey # Science and technology type
 ---@return boolean # Satisfy or not
 function GameAPI.check_tech_key_precondition(player, tech_key) end
 
---Determine the player's skill type preconditions to meet the requirements
+--Determine the player is skill type preconditions to meet the requirements
 ---@param player py.Role # Player
 ---@param ability_key py.AbilityKey # Skill type
 ---@return boolean # Satisfy or not
@@ -1662,7 +1662,7 @@ function GameAPI.get_item_type_unit_tag_pre_condition_require_count(source_item_
 ---@return integer # Required value
 function GameAPI.get_item_type_tech_key_pre_condition_require_count(source_item_key, target_item_key) end
 
---Gets the required value of the item's technology label preconditions
+--Gets the required value of the item is technology label preconditions
 ---@param source_item_key py.ItemKey # Item tested
 ---@param target_item_key string # Search for tech tags
 ---@return integer # Required value
@@ -1749,11 +1749,11 @@ function GameAPI.get_role_ui_comp_real_width(role, comp_uid) end
 ---@param comp_uid string # Control name
 function GameAPI.get_role_ui_comp_real_height(role, comp_uid) end
 
---[Asynchronous] Interface - Get the real x coordinates of the player's mouse
+--[Asynchronous] Interface - Get the real x coordinates of the player is mouse
 ---@param role py.Role # Player
 function GameAPI.get_role_real_mouse_x(role) end
 
---[Asynchronous] Interface - Get the real y coordinates of the player's mouse
+--[Asynchronous] Interface - Get the real y coordinates of the player is mouse
 ---@param role py.Role # Player
 function GameAPI.get_role_real_mouse_y(role) end
 
@@ -2002,14 +2002,14 @@ function GameAPI.set_skill_btn_func_smart_cast_key(role, comp_name, btn) end
 ---@param model_id py.Model # Model id
 function GameAPI.set_ui_model_id(role, comp_name, model_id) end
 
---Set the target store unit of the player's store control
+--Set the target store unit of the player is store control
 ---@param role py.Role # Player
 ---@param comp_name string # Control name
 ---@param shop_unit py.Unit # Shop unit
 ---@param index py.Unit # TAB index
 function GameAPI.set_shop_comp_bind_shop_unit(role, comp_name, shop_unit, index) end
 
---Set the parameters of the player's composition control and refresh them
+--Set the parameters of the player is composition control and refresh them
 ---@param role py.Role # Player
 ---@param comp_name string # Control name
 ---@param item_id py.ItemID # Synthesize the object id
@@ -2427,7 +2427,7 @@ function GameAPI.set_ui_comp_bind_modifier_cd(role, ui_comp, ui_comp_attr, modif
 ---@param enabled boolean # Switch
 function GameAPI.set_chat_send_enabled(role, ui_comp, enabled) end
 
---Show/Don't show player chat
+--Show/Do not show player chat
 ---@param role py.Role # Player
 ---@param ui_comp string # Control uid
 ---@param chat_role py.Role # Player
@@ -2465,22 +2465,22 @@ function GameAPI.set_role_micro_unit(role, unit) end
 ---@param role py.Role # Player
 function GameAPI.close_role_micro_unit(role) end
 
---Set [Player's] peer voice chat listening switch to [Boolean]
+--Set [Player is] peer voice chat listening switch to [Boolean]
 ---@param role py.Role # Player
 ---@param is_open boolean # Switch
 function GameAPI.set_role_camp_sound_switch(role, is_open) end
 
---Set [Player's] peer voice chat speech switch to [Boolean]
+--Set [Player is] peer voice chat speech switch to [Boolean]
 ---@param role py.Role # Player
 ---@param is_open boolean # Switch
 function GameAPI.set_role_camp_micro_switch(role, is_open) end
 
---Set [Player's] nearby Voice chat speech switch to [Boolean]
+--Set [Player is] nearby Voice chat speech switch to [Boolean]
 ---@param role py.Role # Player
 ---@param is_open boolean # Switch
 function GameAPI.set_nearby_micro_switch(role, is_open) end
 
---Set [Player's] nearby voice chat listening switch to [Boolean]
+--Set [Player is] nearby voice chat listening switch to [Boolean]
 ---@param role py.Role # Player
 ---@param is_open boolean # Switch
 function GameAPI.set_nearby_sound_switch(role, is_open) end
@@ -2535,7 +2535,7 @@ function GameAPI.set_ui_comp_bind_format(role, comp_name, format_str) end
 ---@param percent number # percent
 function GameAPI.set_list_view_percent(role, comp_name, percent) end
 
---Get an instance of the player's interface module
+--Get an instance of the player is interface module
 ---@param role py.Role # Player
 ---@param uid string # Interface module instance uid
 ---@return py.UIPrefabIns # Interface module instance
@@ -2609,7 +2609,7 @@ function GameAPI.set_ui_comp_anim_rotate(role, comp_name, start_rotation, end_ro
 ---@return py.UnitKey # Unit object knitting key
 function GameAPI.create_unit_editor_data(old_entity_no) end
 
---Set the focal unit of the camera's perspective rays
+--Set the focal unit of the camera is perspective rays
 ---@param role py.Role # Owned player
 ---@param unit py.Unit # unit
 function GameAPI.set_camera_perspective_ray_unit(role, unit) end
@@ -2676,7 +2676,7 @@ function GameAPI.api_get_collider_bool_attr(collider, attr_name) end
 ---@param value boolean # value
 function GameAPI.api_set_collider_float_attr(collider, attr_name, value) end
 
---Whether the collider's own collision class has a specified type
+--Whether the collider is own collision class has a specified type
 ---@param collider py.Collider # collider
 ---@param mask py.Fixed # mask
 ---@return boolean # Boolean value
@@ -2688,17 +2688,17 @@ function GameAPI.api_is_collider_collision_category(collider, mask) end
 ---@return boolean # Boolean value
 function GameAPI.api_is_collider_collide_with_mask(collider, mask) end
 
---Whether the collider's own collision class has players
+--Whether the collider is own collision class has players
 ---@param collider py.Collider # collider
 ---@return boolean # Boolean value
 function GameAPI.api_is_collider_collision_category_player(collider) end
 
---Whether the collider's own collision class has ground
+--Whether the collider is own collision class has ground
 ---@param collider py.Collider # collider
 ---@return boolean # Boolean value
 function GameAPI.api_is_collider_collision_category_floor(collider) end
 
---Obtains the collider's own collision class
+--Obtains the collider is own collision class
 ---@param collider py.Collider # collider
 ---@return integer # mask
 function GameAPI.api_get_collider_collision_category(collider) end
@@ -2708,7 +2708,7 @@ function GameAPI.api_get_collider_collision_category(collider) end
 ---@return integer # mask
 function GameAPI.api_get_collider_collide_with_mask(collider) end
 
---Sets the collider's own collision class
+--Sets the collider is own collision class
 ---@param collider py.Collider # collider
 ---@param mask integer # mask
 function GameAPI.api_set_collider_collision_category(collider, mask) end
@@ -3584,7 +3584,7 @@ function GameAPI.is_unit_illusion(unit) end
 ---@return py.Unit # Call unit
 function GameAPI.get_illusion_caller_unit(illusion_unit) end
 
---Create a projectile at the unit's mount point
+--Create a projectile at the unit is mount point
 ---@param p_key py.ProjectileKey # Projectile number
 ---@param socket_unit py.Unit # Owning unit of the hanging node
 ---@param socket_name string # Name of the mounting contact
@@ -4292,7 +4292,7 @@ function GameAPI.camera_set_tps_follow_unit(role, unit, sensitive, pitch, yaw, o
 ---@param role py.Role # Player
 function GameAPI.camera_cancel_tps_follow_unit(role) end
 
---Unbind the player's camera
+--Unbind the player is camera
 ---@param role py.Role # Player
 function GameAPI.camera_cancel_follow_unit(role) end
 
@@ -4300,17 +4300,17 @@ function GameAPI.camera_cancel_follow_unit(role) end
 ---@return boolean # Whether to follow
 function GameAPI.camera_is_following_target() end
 
---Set the player's lens focus height
+--Set the player is lens focus height
 ---@param role py.Role # Player
 ---@param y py.Fixed # Altitude
 ---@param move_time? py.Fixed # time
 function GameAPI.camera_set_focus_y(role, y, move_time) end
 
---Set the player's camera to allow movement
+--Set the player is camera to allow movement
 ---@param role py.Role # Player
 function GameAPI.camera_set_move_enable(role) end
 
---Set the player's camera to stop moving
+--Set the player is camera to stop moving
 ---@param role py.Role # Player
 function GameAPI.camera_set_move_not_enable(role) end
 

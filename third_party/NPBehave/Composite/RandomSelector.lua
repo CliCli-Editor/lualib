@@ -2,7 +2,7 @@ local superName = NPBehave.ClassName.Composite
 
 ---@class NPBehave.Composite.RandomSelector: NPBehave.Composite.Composite
 ---@field package __super NPBehave.Composite.Composite
----@overload fun(...: NPBehave.Node): self
+---@overload fun(... : NPBehave.Node): self
 local RandomSelector = Class(NPBehave.ClassName.RandomSelector, superName, function(self, super, ...)
     super("Random Selector", ...)
 end)
@@ -27,7 +27,7 @@ function RandomSelector:DoStart()
 
     self._currentIndex = 0
 
-    -- Shuffling
+    --Shuffling
     local n = #self._randomizedOrder
     while n > 1 do
         local k = math.random(n)

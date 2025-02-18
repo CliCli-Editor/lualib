@@ -1,6 +1,6 @@
 # Trigger
 
-触发器
+flip-flop
 
 ## add_tag
 
@@ -8,7 +8,7 @@
 (method) Trigger:add_tag(tag: any)
 ```
 
-添加标签
+Add tag
 ## all_triggers
 
 ```lua
@@ -21,14 +21,14 @@ table
 (method) Trigger:disable()
 ```
 
-禁用触发器
+Disable trigger
 ## disable_once
 
 ```lua
 (method) Trigger:disable_once()
 ```
 
-在本次事件中禁用此触发器
+Disable this trigger in this event
 ## enable
 
 ```lua
@@ -51,7 +51,7 @@ EventManager?
   4. any
 ```
 
- 运行触发器，最多能返回4个返回值
+ Run the trigger to return up to 4 return values
 ## get_include_name
 
 ```lua
@@ -66,7 +66,7 @@ EventManager?
   -> boolean
 ```
 
-是否有标签
+Label or not
 ## is_enable
 
 ```lua
@@ -81,8 +81,8 @@ EventManager?
   -> boolean
 ```
 
- 检查事件的参数与触发器的参数是否匹配，
- 允许事件的参数数量多余触发器的参数数量。
+ Check that the parameters of the event match the parameters of the trigger，
+ The number of allowed event parameters exceeds the number of trigger parameters。
 ## on_remove
 
 ```lua
@@ -107,7 +107,7 @@ EventManager?
 (method) Trigger:remove_tag(tag: any)
 ```
 
-移除标签
+Remove tag
 ## type
 
 ```lua

@@ -15,7 +15,7 @@ local Timer = Class("NPBehave.Clock.Timer")
 ---@return self
 function Timer:__init()
     self.ScheduledTime = 0.0
-    -- 重复次数, 设为 -1 则重复直至取消注册.
+    --Number of repetitions. If this parameter is set to -1, repeat until registration is cancelled.
     self.Repeat = 0
     self.Used = false
     self.Delay = 0.0
@@ -40,29 +40,29 @@ function Clock:__init()
     ---@type {[fun()]: number}
     self._timerLookup = {}
     ---@private
-    ---@class SortedDictionary.Clock: SortedDictionary --@ 由于不支持泛型提示, 必须手动添加类型提示
+    ---@class sortedDictionary. Clock: SortedDictionary --@ Because generic hints are not supported, you must manually add type hints
     ---@field package get fun(self:self, key: number): NPBehave.Clock.Timer
     ---@field package add fun(self:self, key: number, value: NPBehave.Clock.Timer)
     self._timers = New('SortedDictionary')()
-    ---@type {[fun()]: boolean} 用于标记需要移除的计时器, 模拟`hashset`
+    ---@type {[fun()]: boolean} Used to mark a timer to be removed, simulating a hashset
     self._removeTimers = {}
     ---@type {[fun()]: NPBehave.Clock.AddTimerStruct}
     self._addTimers = {}
     self._isInUpdate = false
     self._timerNum = 0
 
-    self.ElapsedTime = 0.0 -- 经过时间
+    self.ElapsedTime = 0.0 --Elapsed time
     ---@type NPBehave.Clock.Timer[]
     self._timerPool = {}
     self._currentTimerPoolIndex = 0
     return self
 end
 
----注册一个具有随机方差的计时器函数
----@param delay number 延迟时间(以毫秒为单位)
----@param repeat_count number 重复次数, 设为 -1 则重复直至取消注册.
----@param action NPBehave.Tool.BindCallback 回调函数
----@param randomVariance? number 随机方差
+---Register a timer function with random variance
+---@param delay number Delay time (in milliseconds)
+---@param repeat_count number Number of repetitions. If the value is -1, repeat until the registration is cancelled.
+---@ param action NPBehave. Tool. BindCallback callback function
+---@param randomVariance? number random variance
 function Clock:AddTimer(delay, repeat_count, action, randomVariance)
     randomVariance = randomVariance or 0.0
     ---@type NPBehave.Clock.Timer
@@ -105,8 +105,8 @@ function Clock:AddTimer(delay, repeat_count, action, randomVariance)
     timer:ScheduleAbsoluteTime(self.ElapsedTime)
 end
 
----移除计时器
----@param action NPBehave.Tool.BindCallback 回调函数
+---Remove timer
+---@ param action NPBehave. Tool. BindCallback callback function
 function Clock:RemoveTimer(action)
     if not self._isInUpdate then
         if self._timerLookup[action] then
@@ -129,8 +129,8 @@ function Clock:RemoveTimer(action)
     end
 end
 
----检查是否存在计时器
----@param action NPBehave.Tool.BindCallback 回调函数
+---Check for a timer
+---@ param action NPBehave. Tool. BindCallback callback function
 ---@return boolean
 function Clock:HasTimer(action)
     if not self._isInUpdate then
@@ -146,27 +146,27 @@ function Clock:HasTimer(action)
     end
 end
 
----注册一个每帧都会调用的函数
----@param action NPBehave.Tool.BindCallback 要调用的函数
+---Register a function that is called every frame
+---@ param action NPBehave. Tool. BindCallback function to call
 function Clock:AddUpdateObserver(action)
     self:AddTimer(0.0, -1, action)
 end
 
----移除每帧调用的函数
----@param action NPBehave.Tool.BindCallback 要移除的函数
+---Removes functions called per frame
+---@ param action NPBehave. Tool. BindCallback function to remove
 function Clock:RemoveUpdateObserver(action)
     self:RemoveTimer(action)
 end
 
----检查是否存在每帧调用的函数
----@param action NPBehave.Tool.BindCallback 要检查的函数
----@return boolean @是否存在每帧调用的函数
+---Check if there is a function called per frame
+---@ param action NPBehave. Tool. BindCallback check function
+---@return boolean Indicates whether there is a function called per frame
 function Clock:HasUpdateObserver(action)
     return self:HasTimer(action)
 end
 
----更新函数
----@param deltaTime number 时间增量
+---Update function
+---@param deltaTime number Indicates the time increment
 function Clock:Update(deltaTime)
     self.ElapsedTime = self.ElapsedTime + deltaTime
 
@@ -214,8 +214,8 @@ function Clock:Update(deltaTime)
     self._isInUpdate = false
 end
 
----从池中获取计时器
----@return NPBehave.Clock.Timer timer 计时器
+---Gets a timer from the pool
+---@return NPBehave.Clock.Timer timer Indicates a timer
 function Clock:GetTimerFromPool()
     local i = 0
     local l = #self._timerPool

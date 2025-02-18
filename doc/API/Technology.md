@@ -1,6 +1,6 @@
 # Technology
 
-科技
+Science and technology
 
 ## check_precondition_by_key
 
@@ -9,11 +9,11 @@ function Technology.check_precondition_by_key(player: Player, tech_key: py.TechK
   -> is_meet: boolean
 ```
 
-检查科技类型前置条件
+Check the technology type preconditions
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `tech_key` — 技能类型id (物编id)
+@*param* `tech_key` — Skill type id (object compilationid)
 
-@*return* `is_meet` — 技能类型前置条件是否满足
+@*return* `is_meet` — Whether the preconditions for the skill type are met
 

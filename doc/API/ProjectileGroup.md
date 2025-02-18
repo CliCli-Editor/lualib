@@ -1,6 +1,6 @@
 # ProjectileGroup
 
-投射物组
+Projectile set
 
 ## create_lua_projectile_group_from_py
 
@@ -16,11 +16,11 @@ function ProjectileGroup.get_all_projectile_in_shapes(point: Point, shape: Shape
   -> ProjectileGroup
 ```
 
-筛选范围内的所有投射物
+Screen all projectiles within range
 
 @*param* `point` — 点
 
-@*param* `shape` — 筛选范围
+@*param* `shape` — Screening range
 ## get_all_projectiles_with_tag
 
 ```lua
@@ -28,7 +28,7 @@ function ProjectileGroup.get_all_projectiles_with_tag(tag: string)
   -> ProjectileGroup
 ```
 
-获取拥有指定标签的投射物
+Gets the projectile with the specified label
 
 @*param* `tag` — 点
 ## handle
@@ -37,7 +37,7 @@ function ProjectileGroup.get_all_projectiles_with_tag(tag: string)
 py.ProjectileGroup
 ```
 
-投射物组
+Projectile set
 ## pick
 
 ```lua
@@ -45,7 +45,7 @@ py.ProjectileGroup
   -> Projectile[]
 ```
 
-遍历投射物组中投射物做动作
+Move through projectiles in the projectiles group
 ## type
 
 ```lua

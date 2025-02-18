@@ -6,26 +6,26 @@
 integer
 ```
 
-毫秒
+ms
 ## time_zone
 
 ```lua
 integer
 ```
 
-时区
+Time zone
 ## time_zone_stamp
 
 ```lua
 integer
 ```
 
-计算过时区后的时间戳
+Calculate the timestamp after the obsolescence zone
 ## timestamp
 
 ```lua
 integer
 ```
 
-时间戳
+timestamp
 

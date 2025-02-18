@@ -4,7 +4,7 @@ local pairs = pairs
 local ipairs = ipairs
 ---@class NPBehave.Blackboard
 ---@field private _parentBlackboard? NPBehave.Blackboard
----@overload fun(clock: NPBehave.Clock, parent?: NPBehave.Blackboard): NPBehave.Blackboard
+---@overload fun(clock: NPBehave.Clock, parent? : NPBehave.Blackboard): NPBehave.Blackboard
 local Blackboard = Class("NPBehave.Blackboard")
 
 ---@class NPBehave.Blackboard: NPBehave.Tool.MethodDecorator
@@ -23,10 +23,10 @@ local NPBehaveBlackboardType = {
 ---@field public type NPBehaveBlackboardType
 ---@field public value any
 
----创建一个通知结构体
----@param key string 键
----@param type NPBehaveBlackboardType 类型
----@param value any 值
+---Create a notification structure
+---@param key string Indicates the key
+---@param type NPBehaveBlackboardType Type
+---@param value Indicates the value of any
 ---@return NPBehave.Blackboard.Notification
 local function Notification(key, type, value)
     ---@type NPBehave.Blackboard.Notification
@@ -45,30 +45,30 @@ function Blackboard:__init(clock, parent)
     ---@type {[string]: any}
     self._data = {}
     ---@type {[string]: fun(type: NPBehaveBlackboardType, value: any)[]}
-    self._observers = {} -- 观察者, 实际执行的函数
+    self._observers = {} --Observer, the function that actually executes
     self._isNotifying = false
     ---@type {[string]: fun(type: NPBehaveBlackboardType, value: any)[]}
     self._addObservers = {}
     ---@type {[string]: fun(type: NPBehaveBlackboardType, value: any)[]}
     self._removeObservers = {}
-    ---@type NPBehave.Blackboard.Notification[] 通知
+    ---@ type NPBehave. Blackboard. Notification [] notice
     self._notifications = {}
-    ---@type NPBehave.Blackboard.Notification[] 调度通知
+    ---@ type NPBehave. Blackboard. Notification [] dispatch notice
     self._notificationsDispatch = {}
     self._parentBlackboard = parent or nil
-    ---@type {[NPBehave.Blackboard]: boolean} 模拟`hashset`
+    ---@type {[NPBehave.Blackboard]: boolean} emulates' hashset '
     self._children = {}
     return self
 end
 
----启用黑板
+---Enable blackboard
 function Blackboard:Enable()
     if self._parentBlackboard then
         self._parentBlackboard._children[self] = true
     end
 end
 
----禁用黑板
+---Forbidden blackboard
 function Blackboard:Disable()
     if self._parentBlackboard then
         self._parentBlackboard._children[self] = nil
@@ -78,7 +78,7 @@ function Blackboard:Disable()
     end
 end
 
----设置键值
+---Set key value
 ---@param key string
 ---@param value any
 function Blackboard:Set(key, value)
@@ -99,14 +99,14 @@ function Blackboard:Set(key, value)
     end
 end
 
----检查键是否已设置
+---Check whether the key is set
 ---@param key string
 ---@return boolean
 function Blackboard:IsSet(key)
     return self._data[key] ~= nil or (self._parentBlackboard and self._parentBlackboard:IsSet(key)) or false
 end
 
----取消设置键值
+---Example Cancel setting a key value
 ---@param key string
 function Blackboard:Unset(key)
     if self._data[key] then
@@ -116,7 +116,7 @@ function Blackboard:Unset(key)
     end
 end
 
----获取键值
+---Get key value
 ---@param key string
 ---@return any?
 function Blackboard:Get(key)
@@ -141,7 +141,7 @@ local function ListContains(list, value)
     return false
 end
 
----添加观察者
+---Add observer
 ---@param key string
 ---@param observer fun(type: NPBehaveBlackboardType, value: any)
 function Blackboard:AddObserver(key, observer)
@@ -168,7 +168,7 @@ function Blackboard:AddObserver(key, observer)
     end
 end
 
----移除观察者
+---Remove observer
 ---@param key string
 ---@param observer fun(type: NPBehaveBlackboardType, value: any)
 function Blackboard:RemoveObserver(key, observer)
@@ -198,7 +198,7 @@ function Blackboard:RemoveObserver(key, observer)
     end
 end
 
----通知观察者
+---Notify observer
 function Blackboard:NotifyObservers()
     if #self._notifications == 0 then
         return
@@ -219,13 +219,13 @@ function Blackboard:NotifyObservers()
     self._isNotifying = true
     for _, notification in ipairs(self._notificationsDispatch) do
         if not self._observers[notification.key] then
-            -- print("1 do not notify for key:" .. notification.key .. " value: " .. notification.value)
+            --print("1 do not notify for key:" .. notification.key .. " value: " .. notification.value)
             goto continue
         end
 
         local observers = self:GetObserverList(self._observers, notification.key)
         for _, observer in ipairs(observers) do
-            --TODO 实现或许要换成`list`类
+            --The TODO implementation might be replaced with a 'list' class
             if self._removeObservers[notification.key] and ListContains(self._removeObservers[notification.key], observer) then
                 goto continue
             end
@@ -257,7 +257,7 @@ function Blackboard:NotifyObservers()
     self._isNotifying = false
 end
 
----获取观察者列表
+---Get the observer list
 ---@param target {[string]: fun(type: NPBehaveBlackboardType, value: any)[]}
 ---@param key string
 ---@return fun(type: NPBehaveBlackboardType, value: any)[]

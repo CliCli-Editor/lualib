@@ -9,7 +9,7 @@ Extends(NPBehave.ClassName.Repeater, superName, function(self, super, ...)
     super("Repeater", decoratee)
 end)
 
----@param loopCount number 执行装饰器的次数, `-1`为无限重复.
+---@param loopCount number Number of times the decorator is executed, '-1' is infinite repetition.
 ---@param decoratee NPBehave.Node
 ---@return self
 function Repeater:__init(loopCount, decoratee)

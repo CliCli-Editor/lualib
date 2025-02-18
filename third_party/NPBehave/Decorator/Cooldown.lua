@@ -17,7 +17,7 @@ end)
 ---@param decoratee NPBehave.Node
 ---@return self
 function Cooldown:__init(cooldownTime, randomVariation, startAfterDecoratee, resetOnFailure, failOnCooldown, decoratee)
-    assert(cooldownTime > 0, "必须设置冷却时间")
+    assert(cooldownTime > 0, "The cooldown time must be set")
     self._startAfterDecoratee = startAfterDecoratee
     self._cooldownTime = cooldownTime
     self._resetOnFailure = resetOnFailure

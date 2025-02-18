@@ -1,6 +1,6 @@
 # Player
 
-玩家
+Player
 
 ## add
 
@@ -8,9 +8,9 @@
 (method) Player:add(key: string|y3.Const.PlayerAttr, value: number)
 ```
 
-增加属性值
+Increment attribute value
 
-@*param* `key` — 属性名
+@*param* `key` — Attribute name
 
 @*param* `value` — 值
 ## add_global_save_data
@@ -19,7 +19,7 @@
 (method) Player:add_global_save_data(key: string, value: integer)
 ```
 
-增加全局存档
+Add global archive
 
 @*param* `key` — 键
 
@@ -30,11 +30,11 @@
 (method) Player:add_tech_level(tech_type: py.TechKey, level: integer)
 ```
 
-增加科技等级
+Upgrade technology
 
-@*param* `tech_type` — 科技等级
+@*param* `tech_type` — Technological grade
 
-@*param* `level` — 等级
+@*param* `level` — Lv.
 ## create_unit
 
 ```lua
@@ -42,13 +42,13 @@
   -> Unit
 ```
 
-创建单位
+Create unit
 
-@*param* `unit_id` — 单位类型
+@*param* `unit_id` — Unit type
 
-@*param* `point` — 单位
+@*param* `point` — unit
 
-@*param* `facing` — 朝向
+@*param* `facing` — orientation
 ## custom_event_manager
 
 ```lua
@@ -61,37 +61,37 @@ EventManager?
 (method) Player:display_info(msg: string, localize?: boolean)
 ```
 
-向玩家发送提示
+Send hints to the player
 
-@*param* `msg` — 消息
+@*param* `msg` — message
 
-@*param* `localize` — 是否支持语言环境
+@*param* `localize` — Whether locale is supported
 ## display_message
 
 ```lua
 (method) Player:display_message(message: string, localize?: boolean)
 ```
 
- 对玩家显示文本消息
+ Displays a text message to the player
 
-@*param* `message` — 消息
+@*param* `message` — message
 
-@*param* `localize` — 是否支持语言环境
+@*param* `localize` — Whether locale is supported
 ## enable_vignetting
 
 ```lua
 function Player.enable_vignetting(player: Player, is_enable: boolean)
 ```
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `is_enable` — 开关
+@*param* `is_enable` — Switch
 
-设置暗角开关
+Set the dark corner switch
 ## event
 
 ```lua
-fun(self: Player, event: "玩家-加入游戏", callback: fun(trg: Trigger, data: EventParam.玩家-加入游戏)):Trigger
+fun(self: Player, event: "Player - Join the game ", callback: fun(trg: Trigger, data: EventParam). Player - Join the game)):Trigger
 ```
 
 ## event_dispatch
@@ -104,30 +104,30 @@ fun(self: Player, event: "玩家-加入游戏", callback: fun(trg: Trigger, data
   4. any
 ```
 
-发起自定义事件（回执模式），与通知模式不同，允许插入结算。
-可以接受到事件的返回值，有多处注册事件时会按照注册顺序调用，
-当任何事件回调返回了非 `nil` 的值后，后续触发器将不再调用。
+Initiate custom events (receipt mode), which, unlike notification mode, allows for insert billing。
+The return value of the event can be accepted, and the event is called in the order of registration when there are multiple registrations，
+When any event callback returns a non-nil value, subsequent triggers are not called。
 
 ```lua
-Obj:event_on('获取', function (trigger,...)
-    print('获取1')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire1')
     return 1
 end)
-Obj:event_on('获取', function (trigger,...)
-    print('获取2')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire2')
     return 2
 end)
 
-local result = Obj:event_dispatch('获取')
+local result = Obj:event_dispatch('Acquire')
 
-print('结果为：', result)
+print('Turn out：', result)
 ```
 
-以上代码会打印：
+The above code will print：
 
 ```
-获取1
-结果为：    1
+Acquire1
+Turn out：    1
 ```
 
 ## event_dispatch_with_args
@@ -140,38 +140,38 @@ print('结果为：', result)
   4. any
 ```
 
- 发起带事件参数的自定义事件（回执模式）
+ Initiates custom events with event parameters (receipt mode）
 ## event_notify
 
 ```lua
 (method) CustomEvent:event_notify(event_name: string, ...any)
 ```
 
-发起自定义事件（通知模式），同一个对象身上只会有一个正在执行的事件，
-当发生插入结算时，后面的事件会进入队列
+When a custom event is initiated (notification mode), only one event is executed on the same object，
+When an insert settlement occurs, subsequent events are queued
 
 ```lua
-Obj:event_on('获得', function ()
-    print('触发获得')
-    print('发起移除前')
-    Obj:event_notify('移除') -- 实际业务中，可能你获得的buff把你自己杀死了，而死亡会清除buff
-    print('发起移除后')
+Obj:event_on('obtained', function ()
+    print('Trigger acquisition')
+    print('Before removal')
+    Obj:event_notify('Remove ') - In real business, maybe the buff you get kills yourself and the death clearsbuff
+    print('After removal')
 end)
 
-Obj:event_on('移除', function ()
-    print('触发移除')
+Obj:event_on('Remove', function ()
+    print('Trigger removal')
 end)
 
-Obj:event_notify('获得')
+Obj:event_notify('obtained')
 ```
 
-这段代码会打印：
+This code will print：
 
 ```
-触发获得
-发起移除前
-发起移除后
-触发移除
+Trigger acquisition
+Before removal
+After removal
+Trigger removal
 ```
 
 ## event_notify_with_args
@@ -180,7 +180,7 @@ Obj:event_notify('获得')
 (method) CustomEvent:event_notify_with_args(event_name: string, args: any[], ...any)
 ```
 
- 发起带事件参数的自定义事件（通知模式）
+ Initiates custom events with event parameters (notification mode）
 ## event_on
 
 ```lua
@@ -188,35 +188,35 @@ Obj:event_notify('获得')
   -> Trigger
 ```
 
-注册自定义事件，当触发时，会执行回调函数。
+Register a custom event and, when triggered, execute a callback function。
 
 ```lua
-Obj:event_on('输入', function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', '123', '456')
+Obj:event_notify('input', '123', '456')
 ```
 
-以上会打印：
+The above will print：
 
 ```
-触发了输入事件 123 456
+The input event was triggered 123 456
 ```
 
 ---
 
-注册时可以指定事件的参数：
+You can specify parameters for the event during registration：
 
 ```lua
-Obj:event_on('输入', {'123'}, function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', {'123'}, function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', 1) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123'}, 2) -- 可以触发事件
-Obj:event_notify_with_args('输入', {'456'}, 3) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
+Obj:event_notify('Enter ', 1) -- the event cannot be triggered
+Obj:event_notify_with_args('Enter ', {'123'}, 2) -- to trigger the event
+Obj:event_notify_with_args('Enter ', {'456'}, 3) -- cannot fire an event
+Obj:event_notify_with_args('Enter ', {'123', '666'}, 4) -- to trigger the event
 ```
 
 ## exit_game
@@ -225,7 +225,7 @@ Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
 (method) Player:exit_game()
 ```
 
- 退出游戏
+ Quit the game
 ## get_achieve_point
 
 ```lua
@@ -233,7 +233,7 @@ Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
   -> integer|true
 ```
 
-获取玩家当前地图的成就点数
+Get achievement points for the player's current map
 ## get_all_units
 
 ```lua
@@ -241,9 +241,9 @@ Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
   -> unit_group: UnitGroup
 ```
 
-属于某玩家的所有单位
+All units belonging to a player
 
-@*return* `unit_group` — 单位组
+@*return* `unit_group` — Unit group
 ## get_attr
 
 ```lua
@@ -251,11 +251,11 @@ Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
   -> role_res: number
 ```
 
-获取玩家属性
+Get player attributes
 
-@*param* `key` — 属性名
+@*param* `key` — Attribute name
 
-@*return* `role_res` — 玩家属性
+@*return* `role_res` — Player attributes
 ## get_by_handle
 
 ```lua
@@ -270,11 +270,11 @@ function Player.get_by_id(id: integer)
   -> player: Player
 ```
 
-转换玩家ID为玩家
+Convert player ID to player
 
-@*param* `id` — 玩家ID
+@*param* `id` — PlayerID
 
-@*return* `player` — 玩家
+@*return* `player` — Player
 ## get_by_string
 
 ```lua
@@ -282,8 +282,8 @@ function Player.get_by_string(str: string)
   -> Player?
 ```
 
-根据字符串获取玩家，字符串是通过 `tostring(Player)`
-或是使用ECA中的“任意变量转化为字符串”获得的。
+Get the player according to the string, the string is passed `tostring(Player)`
+Or using the "Convert any variable to string" in ECA。
 ## get_camp
 
 ```lua
@@ -295,10 +295,10 @@ function Player.get_by_string(str: string)
 
 ```lua
 (method) Player:get_color()
-  -> HEX颜色: string
+  -> HEXcolour: string
 ```
 
-获取玩家颜色
+Get player colors
 ## get_controller
 
 ```lua
@@ -306,9 +306,9 @@ function Player.get_by_string(str: string)
   -> role_type: y3.Const.RoleType
 ```
 
-获取玩家控制者类型
+Gets the player controller type
 
-@*return* `role_type` — 玩家控制者类型
+@*return* `role_type` — Type of player controller
 ## get_custom_event_manager
 
 ```lua
@@ -323,9 +323,9 @@ function Player.get_by_string(str: string)
   -> exp_rate: number
 ```
 
-获取经验获得率
+Gain experience gain rate
 
-@*return* `exp_rate` — 经验获得率
+@*return* `exp_rate` — Experience gain rate
 ## get_id
 
 ```lua
@@ -333,9 +333,9 @@ function Player.get_by_string(str: string)
   -> role_id_num: integer
 ```
 
-获取玩家ID
+Acquire playersID
 
-@*return* `role_id_num` — 玩家ID
+@*return* `role_id_num` — PlayerID
 ## get_local
 
 ```lua
@@ -343,10 +343,10 @@ function Player.get_local()
   -> Player
 ```
 
- 获取本地玩家，注意这可能会导致不同步！  
-> 警告：如果你不确定这个函数在做什么，请不要使用它！
+ Get local players, be aware that this may cause out-of-sync！  
+> Warning: Do not use this function if you are not sure what it is doing！
 
-> 已废弃：请改用 `y3.player.with_local`
+> Obsolete: Please use instead `y3.player.with_local`
 ## get_map_level
 
 ```lua
@@ -354,7 +354,7 @@ function Player.get_local()
   -> integer
 ```
 
-获取玩家的此地图平台等级
+Get the player's platform level for this map
 ## get_map_level_rank
 
 ```lua
@@ -362,7 +362,7 @@ function Player.get_local()
   -> integer
 ```
 
-获取玩家在本地图的平台等级排名
+Get the player's platform rank in the local chart
 ## get_mouse_pos
 
 ```lua
@@ -370,8 +370,8 @@ function Player.get_local()
   -> point: Point
 ```
 
- 获取鼠标在游戏内的所在点。
- 必须先设置 `y3.config.sync.mouse = true`。
+ Gets the point of the mouse in the game。
+ Must be set `y3.config.sync.mouse = true`。
 
 @*return* `point` — 点
 ## get_mouse_pos_x
@@ -381,9 +381,9 @@ function Player.get_local()
   -> pos_x: number
 ```
 
-获取鼠标在屏幕上的X坐标
+Gets the X-coordinate of the mouse on the screen
 
-@*return* `pos_x` — X坐标
+@*return* `pos_x` — Xcoordinate
 ## get_mouse_pos_y
 
 ```lua
@@ -391,9 +391,9 @@ function Player.get_local()
   -> pos_y: number
 ```
 
-获取鼠标在屏幕上的y坐标
+Gets the y coordinate of the mouse on the screen
 
-@*return* `pos_y` — Y坐标
+@*return* `pos_y` — Ycoordinate
 ## get_mouse_ui_x_percent
 
 ```lua
@@ -401,10 +401,10 @@ function Player.get_local()
   -> x_per: number
 ```
 
-获取玩家鼠标屏幕坐标X的占比。
- 必须先设置 `y3.config.sync.mouse = true`。
+Gets the percentage of the player's mouse screen coordinate X。
+ Must be set `y3.config.sync.mouse = true`。
 
-@*return* `x_per` — X的占比
+@*return* `x_per` — X% of
 ## get_mouse_ui_y_percent
 
 ```lua
@@ -412,10 +412,10 @@ function Player.get_local()
   -> y_per: number
 ```
 
-获取玩家鼠标屏幕坐标y的占比。
- 必须先设置 `y3.config.sync.mouse = true`。
+Gets the percentage of the player's mouse screen coordinate y。
+ Must be set `y3.config.sync.mouse = true`。
 
-@*return* `y_per` — Y的占比
+@*return* `y_per` — Y% of
 ## get_name
 
 ```lua
@@ -423,9 +423,9 @@ function Player.get_local()
   -> role_name: string
 ```
 
-获取玩家名字
+Get player name
 
-@*return* `role_name` — 玩家名字
+@*return* `role_name` — Player name
 ## get_operation_key
 
 ```lua
@@ -433,13 +433,13 @@ function Player.get_local()
   -> shortcut: py.EditableGameFunc
 ```
 
-获取玩家响应键盘按键的基础操作（过滤掉禁止设置的）
+Get the basic actions of the player in response to keyboard keystrokes (filter out the forbidden Settings)）
 
-@*param* `key` — 键名
+@*param* `key` — Key name
 
-@*param* `assist_key` — 键盘按键
+@*param* `assist_key` — Keyboard key
 
-@*return* `shortcut` — 基础操作
+@*return* `shortcut` — Basic operation
 ## get_platform_icon
 
 ```lua
@@ -447,9 +447,9 @@ function Player.get_local()
   -> icon: string
 ```
 
-获取玩家平台头像
+Get the player platform avatar
 
-@*return* `icon` — 平台头像
+@*return* `icon` — Platform avatar
 ## get_platform_icon_url
 
 ```lua
@@ -457,9 +457,9 @@ function Player.get_local()
   -> icon_url: string
 ```
 
-获取玩家平台头像下载地址
+Get the player platform avatar download address
 
-@*return* `icon_url` — 平台头像下载地址
+@*return* `icon_url` — Platform avatar download address
 ## get_platform_id
 
 ```lua
@@ -467,9 +467,9 @@ function Player.get_local()
   -> plat_aid: integer
 ```
 
-获取玩家平台唯一ID
+Get player platform uniqueID
 
-@*return* `plat_aid` — 平台唯一ID
+@*return* `plat_aid` — Platform uniqueID
 ## get_platform_level
 
 ```lua
@@ -477,9 +477,9 @@ function Player.get_local()
   -> map_level: integer
 ```
 
-获取玩家平台等级
+Gain the player platform level
 
-@*return* `map_level` — 平台等级
+@*return* `map_level` — Level of platform
 ## get_platform_model
 
 ```lua
@@ -487,9 +487,9 @@ function Player.get_local()
   -> model: py.ModelKey
 ```
 
-获取玩家平台外观模型
+Get the player platform appearance model
 
-@*return* `model` — 模型id
+@*return* `model` — modelid
 ## get_platform_name
 
 ```lua
@@ -497,9 +497,9 @@ function Player.get_local()
   -> name: string
 ```
 
-获取玩家唯一名称
+Get the player's unique name
 
-@*return* `name` — 属性名称
+@*return* `name` — Attribute name
 ## get_platform_uuid
 
 ```lua
@@ -507,7 +507,7 @@ function Player.get_local()
   -> string
 ```
 
-获取玩家加密UUID
+Get player encryptionUUID
 ## get_played_times
 
 ```lua
@@ -515,7 +515,7 @@ function Player.get_local()
   -> integer
 ```
 
-获取玩家在本地图的累计局数
+Gets the player's accumulated game count on the local graph
 ## get_rank_num
 
 ```lua
@@ -523,11 +523,11 @@ function Player.get_local()
   -> rank_num: integer
 ```
 
-获取整数存档玩家排名
+Get integer save player rank
 
-@*param* `key` — 存档key
+@*param* `key` — On filekey
 
-@*return* `rank_num` — 整数存档玩家排名
+@*return* `rank_num` — Integer save player rank
 ## get_res_icon
 
 ```lua
@@ -535,11 +535,11 @@ function Player.get_res_icon(key: py.RoleResKey)
   -> icon: integer
 ```
 
-获取玩家属性的货币图标
+Gets currency ICONS for player attributes
 
-@*param* `key` — 属性名
+@*param* `key` — Attribute name
 
-@*return* `icon` — 图标id
+@*return* `icon` — iconid
 ## get_res_keys
 
 ```lua
@@ -547,9 +547,9 @@ function Player.get_res_keys(only_coin: boolean)
   -> py.RoleResKey[]
 ```
 
- 获取所有玩家属性的属性名
+ Gets attribute names for all player attributes
 
-@*param* `only_coin` — 只获取货币类型的玩家属性
+@*param* `only_coin` — Only gets player attributes for currency types
 ## get_res_name
 
 ```lua
@@ -557,11 +557,11 @@ function Player.get_res_name(key: py.RoleResKey)
   -> name: string
 ```
 
-获取玩家属性名称
+Gets the player attribute name
 
-@*param* `key` — 属性名
+@*param* `key` — Attribute name
 
-@*return* `name` — 属性名称
+@*return* `name` — Attribute name
 ## get_save_data_bool_value
 
 ```lua
@@ -569,11 +569,11 @@ function Player.get_res_name(key: py.RoleResKey)
   -> bool_value: boolean
 ```
 
-布尔型玩家存档数据
+Boolean player save data
 
-@*param* `index` — 存档key
+@*param* `index` — On filekey
 
-@*return* `bool_value` — 布尔型玩家存档数据
+@*return* `bool_value` — Boolean player save data
 ## get_save_data_float
 
 ```lua
@@ -581,11 +581,11 @@ function Player.get_res_name(key: py.RoleResKey)
   -> int_value: number
 ```
 
-实数型存档数据
+Real type archive data
 
-@*param* `key` — 存档key
+@*param* `key` — On filekey
 
-@*return* `int_value` — 实数型存档数据
+@*return* `int_value` — Real type archive data
 ## get_save_data_int
 
 ```lua
@@ -593,11 +593,11 @@ function Player.get_res_name(key: py.RoleResKey)
   -> int_value: integer
 ```
 
-获取整数型存档数据
+Gets integer archive data
 
-@*param* `key` — 存档key
+@*param* `key` — On filekey
 
-@*return* `int_value` — 整数型存档数据
+@*return* `int_value` — Integer archive data
 ## get_save_data_string
 
 ```lua
@@ -605,11 +605,11 @@ function Player.get_res_name(key: py.RoleResKey)
   -> str_value: string
 ```
 
-字符串型玩家存档数据
+String type player save data
 
-@*param* `key` — 存档key
+@*param* `key` — On filekey
 
-@*return* `str_value` — 字符串玩家存档数据
+@*return* `str_value` — String player save data
 ## get_save_data_table
 
 ```lua
@@ -617,11 +617,11 @@ function Player.get_res_name(key: py.RoleResKey)
   -> table_value: table?
 ```
 
-表格型玩家存档数据
+Tabular player save data
 
-@*param* `key` — 存档key
+@*param* `key` — On filekey
 
-@*return* `table_value` — 表格型玩家存档数据
+@*return* `table_value` — Tabular player save data
 ## get_selecting_unit
 
 ```lua
@@ -643,9 +643,9 @@ function Player.get_res_name(key: py.RoleResKey)
   -> role_status: y3.Const.RoleStatus
 ```
 
-获取玩家游戏状态
+Get the player's game status
 
-@*return* `role_status` — 玩家游戏状态
+@*return* `role_status` — Player game state
 See: [y3.Const.RoleStatus](file:///d%3A/y3-2/games/2.0/game/LocalData/Y3%E5%BA%93%E5%BC%80%E5%8F%913/maps/EntryMap/script/y3/game/const.lua#250#9)
 ## get_store_item_end_time
 
@@ -654,11 +654,11 @@ See: [y3.Const.RoleStatus](file:///d%3A/y3-2/games/2.0/game/LocalData/Y3%E5%BA%9
   -> store_item_end_time: integer
 ```
 
-玩家平台道具到期时间戳
+Player platform item expiration time stamp
 
-@*param* `id` — 平台道具id
+@*param* `id` — Platform itemid
 
-@*return* `store_item_end_time` — 平台道具到期时间戳
+@*return* `store_item_end_time` — Platform item expiration time stamp
 ## get_store_item_number
 
 ```lua
@@ -666,11 +666,11 @@ See: [y3.Const.RoleStatus](file:///d%3A/y3-2/games/2.0/game/LocalData/Y3%E5%BA%9
   -> store_item_cnt: integer
 ```
 
-玩家平台道具数量
+The number of items on the player's platform
 
-@*param* `id` — 平台道具id
+@*param* `id` — Platform itemid
 
-@*return* `store_item_cnt` — 平台道具数量
+@*return* `store_item_cnt` — Number of platform items
 ## get_team_id
 
 ```lua
@@ -678,9 +678,9 @@ See: [y3.Const.RoleStatus](file:///d%3A/y3-2/games/2.0/game/LocalData/Y3%E5%BA%9
   -> camp_id: integer
 ```
 
-获取队伍ID
+Acquire teamID
 
-@*return* `camp_id` — 队伍ID
+@*return* `camp_id` — teamID
 ## get_tech_level
 
 ```lua
@@ -688,18 +688,18 @@ See: [y3.Const.RoleStatus](file:///d%3A/y3-2/games/2.0/game/LocalData/Y3%E5%BA%9
   -> tech_level: integer
 ```
 
-获取科技等级
+Obtain technology grade
 
-@*param* `tech_id` — 科技id
+@*param* `tech_id` — Science and technologyid
 
-@*return* `tech_level` — 科技等级
+@*return* `tech_level` — Technological grade
 ## handle
 
 ```lua
 py.Role
 ```
 
-玩家
+Player
 ## id
 
 ```lua
@@ -713,7 +713,7 @@ integer
   -> boolean
 ```
 
-判断指定成就是否解锁
+Determines whether the specified achievement is unlocked
 ## is_enemy
 
 ```lua
@@ -721,11 +721,11 @@ integer
   -> is_enemy: boolean
 ```
 
-玩家间是否是敌对关系
+Whether the relationship between players is hostile
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*return* `is_enemy` — 是否是敌对关系
+@*return* `is_enemy` — Hostile relationship or not
 ## is_in_fog
 
 ```lua
@@ -733,11 +733,11 @@ integer
   -> is_point_in_fog: boolean
 ```
 
-某个位置是否处于玩家的迷雾中
+Whether a location is in the player's fog
 
 @*param* `point` — 点
 
-@*return* `is_point_in_fog` — 点在迷雾中
+@*return* `is_point_in_fog` — Point in the fog
 ## is_in_group
 
 ```lua
@@ -745,11 +745,11 @@ integer
   -> is_in_group: boolean
 ```
 
-玩家在玩家组中
+The player is in the player group
 
-@*param* `player_group` — 玩家组
+@*param* `player_group` — Player group
 
-@*return* `is_in_group` — 玩家在玩家组中
+@*return* `is_in_group` — The player is in the player group
 ## is_in_shadow
 
 ```lua
@@ -757,21 +757,21 @@ integer
   -> is_point_in_shadow: boolean
 ```
 
-某个位置是否处于玩家的黑色阴影中
+Whether a location is in the player's black shadow
 
 @*param* `point` — 点
 
-@*return* `is_point_in_shadow` — 点在黑色阴影中
+@*return* `is_point_in_shadow` — Point in black shadow
 ## is_key_pressed
 
 ```lua
 (method) Player:is_key_pressed(key: y3.Const.KeyboardKey|y3.Const.MouseKey)
-  -> 是否被按下: boolean
+  -> Whether it is pressed: boolean
 ```
 
-玩家的按键是否被按下
+Whether the player's button is pressed
 
-@*param* `key` — 按键
+@*param* `key` — key
 ## is_middle_join
 
 ```lua
@@ -779,9 +779,9 @@ integer
   -> is_middle_join: boolean
 ```
 
-玩家是否中途加入
+Whether the player joins halfway
 
-@*return* `is_middle_join` — 是否中途加入
+@*return* `is_middle_join` — Whether to join halfway
 ## is_operation_key_occupied
 
 ```lua
@@ -789,14 +789,14 @@ integer
   -> is_conf: boolean
 ```
 
-玩家基础操作快捷键是否被占用
-TODO:功能键lua层表示需要处理
+Whether the player base action shortcuts are occupied
+TODO:Function key lua layer indicates need to be processed
 
-@*param* `key` — 键名
+@*param* `key` — Key name
 
-@*param* `assist_key` — 辅助键名
+@*param* `assist_key` — Secondary key name
 
-@*return* `is_conf` — 是否被占用
+@*return* `is_conf` — Whether it is occupied
 ## is_visible
 
 ```lua
@@ -804,11 +804,11 @@ TODO:功能键lua层表示需要处理
   -> visible: boolean
 ```
 
-玩家是否可以看到某个位置
+Whether the player can see a location
 
 @*param* `point` — 点
 
-@*return* `visible` — 点对于玩家可见
+@*return* `visible` — Points are visible to the player
 ## key
 
 ```lua
@@ -821,9 +821,9 @@ integer?
 (method) Player:kick(reason: string)
 ```
 
-强制踢出
+Forced kick
 
-@*param* `reason` — 踢出原因
+@*param* `reason` — Kick out cause
 ## kv_has
 
 ```lua
@@ -831,7 +831,7 @@ integer?
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -865,7 +865,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## object_event_manager
 
 ```lua
@@ -878,16 +878,16 @@ EventManager?
 (method) Player:open_platform_shop(id: py.StoreKey)
 ```
 
-请求购买平台道具
+Request to purchase platform items
 
-@*param* `id` — 平台道具id
+@*param* `id` — Platform itemid
 ## phandle
 
 ```lua
 py.Role
 ```
 
-玩家
+Player
 ## ref_manager
 
 ```lua
@@ -900,36 +900,36 @@ unknown
 (method) Player:request_random_pool(id: integer, callback: fun(code: 0|1|2|999, result: { [integer]: integer }))
 ```
 
-请求执行随机池掉落
-执行完毕后调用回调函数，返回的参数如下：
-* `code`: 结果代码
-  + `0`: 成功
-  + `1`: 不满足触发间隔
-  + `2`: 不满足每日限制
-  + `999`: 服务器无法连接，必须在平台上才能测试
-* `result`: 结果表，`key` 表示影响的存档编号，`value` 表示改变的值
+Request execution of random pool drop
+After the execution is complete, the callback function is called with the following parameters：
+* `code`: Result code
+  + `0`: Successful
+  + `1`: The trigger interval is not met
+  + `2`: The daily limit is not met
+  + `999`: The server cannot connect and must be on the platform to test
+* `result`: In the result table, 'key' represents the affected archive number and 'value' represents the changed value
 
-@*param* `id` — 随机池的编号
+@*param* `id` — Number of the random pool
 
-@*param* `callback` — 执行完毕后的回调函数
+@*param* `callback` — Callback function after execution
 ## select_unit
 
 ```lua
 (method) Player:select_unit(unit_or_group: Unit|UnitGroup)
 ```
 
-选中单位/单位组
+Select the unit/unit group
 
-@*param* `unit_or_group` — 单位/单位组
+@*param* `unit_or_group` — Unit/unit group
 ## set
 
 ```lua
 (method) Player:set(key: string|y3.Const.PlayerAttr, value: number)
 ```
 
-设置属性值
+Set attribute value
 
-@*param* `key` — 属性名
+@*param* `key` — Attribute name
 
 @*param* `value` — 值
 ## set_all_operation_key
@@ -938,196 +938,196 @@ unknown
 (method) Player:set_all_operation_key(operation: py.AllGameFunc, is_enable: boolean)
 ```
 
-设置玩家的基础操作开关（包含所有基础操作）
-TODO:operation在lua层的表示方式待整理 方法名英文待确认
+Set the player's base action switch (contains all base actions)）
+TODO:operationDescription on the lua layer to be sorted Method Name English to be confirmed
 
-@*param* `operation` — 可编辑操作
+@*param* `operation` — Editable operation
 
-@*param* `is_enable` — 是否开
+@*param* `is_enable` — On or not
 ## set_color_grading
 
 ```lua
 (method) Player:set_color_grading(value: integer)
 ```
 
- 设置滤镜
+ Set filter
 
-@*param* `value` — 滤镜
+@*param* `value` — filter
 ## set_exp_rate
 
 ```lua
 (method) Player:set_exp_rate(rate: number)
 ```
 
-设置经验获得率
+Set the experience gain rate
 
-@*param* `rate` — 经验获得率
+@*param* `rate` — Experience gain rate
 ## set_follow_distance
 
 ```lua
 (method) Player:set_follow_distance(distance: number)
 ```
 
-设置跟随距离
+Set following distance
 
-@*param* `distance` — 距离
+@*param* `distance` — distance
 ## set_hostility
 
 ```lua
 (method) Player:set_hostility(player: Player, is_hostile: boolean)
 ```
 
-设置敌对关系
+antagonize
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `is_hostile` — 是否敌视
+@*param* `is_hostile` — Whether hostile or not
 ## set_local_terrain_visible
 
 ```lua
 (method) Player:set_local_terrain_visible(is_visible: boolean)
 ```
 
-显示/隐藏玩家地表纹理
+Show/hide the player's surface texture
 
-@*param* `is_visible` — 显示/隐藏
+@*param* `is_visible` — Show/hide
 ## set_mouse_click_selection
 
 ```lua
 (method) Player:set_mouse_click_selection(is_enable: boolean)
 ```
 
-为玩家开/关鼠标点选
+Click on/off for the player
 
-@*param* `is_enable` — 是否开鼠标点选
+@*param* `is_enable` — Whether to open the mouse click
 ## set_mouse_drag_selection
 
 ```lua
 (method) Player:set_mouse_drag_selection(is_enable: boolean)
 ```
 
-为玩家开/关鼠标框选
+Open/close the mouse box for the player
 
-@*param* `is_enable` — 是否开鼠标框选
+@*param* `is_enable` — Select whether to open the mouse box
 ## set_mouse_wheel
 
 ```lua
 (method) Player:set_mouse_wheel(is_enable: boolean)
 ```
 
-为玩家开/关鼠标滚轮
+Turn the mouse wheel on/off for the player
 
-@*param* `is_enable` — 是否开鼠标滚轮
+@*param* `is_enable` — Whether to turn on the mouse wheel
 ## set_name
 
 ```lua
 (method) Player:set_name(name: string)
 ```
 
-设置名字
+Set name
 
-@*param* `name` — 名字
+@*param* `name` — Name
 ## set_operation_key
 
 ```lua
 (method) Player:set_operation_key(operation: py.EditableGameFunc, key: py.NormalKey, assist_key: py.RecordKey)
 ```
 
-设置玩家的基础操作快捷键（过滤掉禁止设置的） 
-TODO:operation在lua层的表示方式待整理 方法名英文待确认
+Set the player's basic action shortcuts (filter out the forbidden Settings)） 
+TODO:operationDescription on the lua layer to be sorted Method Name English to be confirmed
 
-@*param* `operation` — 可编辑操作
+@*param* `operation` — Editable operation
 
-@*param* `key` — 功能按键
+@*param* `key` — Function key
 
-@*param* `assist_key` — 辅助按键
+@*param* `assist_key` — Auxiliary key
 ## set_role_vignetting_breath_rate
 
 ```lua
 (method) Player:set_role_vignetting_breath_rate(circle_time: number)
 ```
 
-设置暗角呼吸周期
+Set the dark Angle breathing cycle
 
-@*param* `circle_time` — 呼吸周期
+@*param* `circle_time` — Respiratory cycle
 ## set_strict_group_navigation
 
 ```lua
 (method) Player:set_strict_group_navigation(is_strict: boolean)
 ```
 
-设置群体寻路严格模式
+Set group pathfinding strict mode
 
-@*param* `is_strict` — 是否严格
+@*param* `is_strict` — Whether it is strict
 ## set_team
 
 ```lua
 (method) Player:set_team(id: py.Camp)
 ```
 
-设置队伍ID
+Set up teamID
 ## set_tech_level
 
 ```lua
 (method) Player:set_tech_level(tech_type: py.TechKey, level: integer)
 ```
 
-设置科技等级
+Set technology level
 
-@*param* `tech_type` — 科技等级
+@*param* `tech_type` — Technological grade
 
-@*param* `level` — 等级
+@*param* `level` — Lv.
 ## set_vignetting_change_range
 
 ```lua
 (method) Player:set_vignetting_change_range(range: number)
 ```
 
-设置暗角变化幅度
+Set the amplitude of the dark Angle change
 
-@*param* `range` — 幅度
+@*param* `range` — range
 ## set_vignetting_color
 
 ```lua
 (method) Player:set_vignetting_color(red: number, green: number, blue: number, time: number)
 ```
 
-设置暗角颜色
+Set the dark corner color
 
-@*param* `red` — 颜色r
+@*param* `red` — colourr
 
-@*param* `green` — 颜色g
+@*param* `green` — colourg
 
-@*param* `blue` — 颜色b
+@*param* `blue` — colourb
 
-@*param* `time` — 过渡时间
+@*param* `time` — Transition time
 ## set_vignetting_size
 
 ```lua
 (method) Player:set_vignetting_size(size: number)
 ```
 
-设置暗角大小
+Set the dark Angle size
 
-@*param* `size` — 大小
+@*param* `size` — size
 ## share_vision_of_unit
 
 ```lua
 (method) Player:share_vision_of_unit(unit: Unit, share: boolean)
 ```
 
-获取单位的视野
+Get the unit's view
 
-@*param* `unit` — 单位
+@*param* `unit` — unit
 ## share_vision_with_player
 
 ```lua
 (method) Player:share_vision_with_player(target_player: Player, share: boolean)
 ```
 
-对玩家开放视野
+Open your eyes to the player
 
-@*param* `target_player` — 玩家
+@*param* `target_player` — Player
 ## storage_all
 
 ```lua
@@ -1135,7 +1135,7 @@ TODO:operation在lua层的表示方式待整理 方法名英文待确认
   -> table
 ```
 
- 获取存储数据的容器
+ Gets the container for storing data
 ## storage_get
 
 ```lua
@@ -1143,14 +1143,14 @@ TODO:operation在lua层的表示方式待整理 方法名英文待确认
   -> any
 ```
 
- 获取存储的值
+ Gets the stored value
 ## storage_set
 
 ```lua
 (method) Storage:storage_set(key: any, value: any)
 ```
 
- 存储任意值
+ Store arbitrary values
 ## storage_table
 
 ```lua
@@ -1178,41 +1178,41 @@ string
 (method) Player:upload_save_data()
 ```
 
-上传存档
+Upload archive
 ## upload_tracking_data
 
 ```lua
 (method) Player:upload_tracking_data(key: string, cnt: integer)
 ```
 
- 上传埋点数据
+ Upload the buried data
 ## use_store_item
 
 ```lua
 (method) Player:use_store_item(count: integer, item_id: py.StoreKey)
 ```
 
-消耗玩家平台道具
+Cost the player platform items
 
-@*param* `count` — 个数
+@*param* `count` — number
 
-@*param* `item_id` — 平台道具id
+@*param* `item_id` — Platform itemid
 ## with_local
 
 ```lua
 function Player.with_local(callback: fun(local_player: Player))
 ```
 
-在本地玩家环境中执行代码。  
-在开发模式中会阻止这些代码修改上值、修改全局变量、调用同步函数，因此也会产生额外的开销。（暂时失效）  
-在平台上不会检测，也不会有额外开销。
+Execute code in the local player environment。  
+In development mode, this code is prevented from modifying upper values, modifying global variables, and calling synchronization functions, thus incurring additional overhead. Temporary failure）  
+There is no detection on the platform and no additional overhead。
 
 ---
 
 
 ```lua
 y3.player.with_local(function (local_player)
-    -- 在此回调函数中修改上值、修改全局变量、调用同步函数会给出警告
+    -- Modifying the upper value in this callback function, modifying global variables, and calling the synchronization function will give warnings
     print(local_player)
 end)
 ```

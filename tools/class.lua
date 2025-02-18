@@ -31,10 +31,10 @@ M._errorHandler = error
 ---@field package extendsMap   table<string, boolean>
 ---@field package extendsCalls Class.Extends.CallData[]
 ---@field package extendsKeys  table<string, boolean>
----@field private superCache   table<string, fun(...)>
+---@field private superCache   table<string, fun(...) >
 ---@field package superClass?  Class.Base
 ---@field public  getter       table<any, fun(obj: any)>
----@field package initCalls?   false|fun(...)[]
+---@field package initCalls?   false|fun(...) []
 local Config = {}
 
 ---@param name string
@@ -174,7 +174,7 @@ function M.get(name)
     return M._classes[name]
 end
 
----为一个已有的构造函数创建类型别名
+---Create a type alias for an existing constructor
 ---@param name string
 ---@param creator function
 function M.alias(name, creator)
@@ -243,8 +243,8 @@ function M.isValid(obj)
        and not obj.__deleted__
 end
 
---It is recommended to use 'extended semantics' rather than 'inherited' semantics.
---So 'super' is no longer suitable.
+--It is recommended to use "extended semantics" rather than "inherited" semantics.
+--So  isuper' is no longer suitable.
 ---@deprecated
 ---@param name string
 ---@return fun(...)
@@ -253,7 +253,7 @@ function M.super(name)
     return config:super(name)
 end
 
----@alias Class.Extends.CallData { name: string, init?: fun(self: any, super: (fun(...): Class.Base), ...) }
+---@alias Class.Extends.CallData { name: string, init? : fun(self: any, super: (fun(...) : Class.Base), ...) }
 
 ---@generic Class: string
 ---@generic Extends: string
@@ -387,7 +387,7 @@ function Config:extends(extendsName, init)
     end
     self.extendsMap[extendsName] = true
 
-    do --复制父类的字段与 getter 和 setter
+    do --Copy the fields of the parent class with the getter and setter
         for k, v in pairs(extends) do
             if (not class[k] or self.extendsKeys[k])
             and not k:match '^__' then
@@ -411,7 +411,7 @@ function Config:extends(extendsName, init)
         end
     end
 
-    do --记录父类的init方法
+    do --Records the init method of the parent class
         local rewrite
         for i = 1, #self.extendsCalls do
             local call = self.extendsCalls[i]
@@ -429,7 +429,7 @@ function Config:extends(extendsName, init)
         end
     end
 
-    -- 检查是否需要显性初始化
+    --Check whether explicit initialization is required
     if not init then
         if not extends.__init then
             return
@@ -469,7 +469,7 @@ local isInstanceMap = setmetatable({}, { __index = function (isInstanceMap, myNa
     return map
 end })
 
----检查一个对象是否是某个类的实例
+---Checks whether an object is an instance of a class
 ---@param obj any
 ---@param targetName string
 ---@return boolean

@@ -6,26 +6,26 @@
 table|py.Dict
 ```
 
-请求头
+Request header
 ## port
 
 ```lua
 integer
 ```
 
-端口号
+Port number
 ## post
 
 ```lua
 boolean
 ```
 
-post 请求还是 get 请求
+post The request is still a get request
 ## timeout
 
 ```lua
 number
 ```
 
-超时时间，默认为2秒
+The default timeout period is 2 seconds
 

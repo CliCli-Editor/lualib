@@ -133,7 +133,7 @@ function M:get_target_triggers(args)
     elseif mode == 'array' then
         return self.triggers_with_args and self.triggers_with_args[target], mode, target
     end
-    error('未知的事件参数模式：' .. mode)
+    error('Unknown event parameter mode:' .. mode)
 end
 
 ---@param args? any[]

@@ -1,7 +1,7 @@
 --Unit group
 ---@class UnitGroup
 ---@field handle py.UnitGroup
----@overload fun(py_unit_group?: py.UnitGroup): self
+---@overload fun(py_unit_group? : py.UnitGroup): self
 local M = Class 'UnitGroup'
 
 ---@param py_unit_group py.UnitGroup
@@ -48,16 +48,16 @@ function M:pick()
     return lua_table
 end
 
----遍历单位组，请勿在遍历过程中修改单位组。
+---Traverse the unit group. Do not modify the unit group during the traverse.
 ---```lua
 ---for unit in UnitGroup:pairs() do
----    print(unit)
+---print(unit)
 ---end
 ---```
----也可以直接用 `pairs` 遍历：
+---You can also iterate directly with 'pairs' :
 ---```lua
 ---for unit in pairs(UnitGroup) do
----    print(unit)
+---print(unit)
 ---end
 ---```
 ---@return fun(): Unit?
@@ -81,19 +81,19 @@ function M:select_units()
 end
 
 --Add unit
----@param unit Unit 单位
+---@param unit Unit Unit
 function M:add_unit(unit)
     GameAPI.add_unit_to_group(unit.handle,self.handle)
 end
 
 --Remove unit
----@param unit Unit 单位
+---@param unit Unit Unit
 function M:remove_unit(unit)
     GameAPI.remove_unit_in_group(self.handle, unit.handle)
 end
 
 --Remove unit type
----@param unit_key py.UnitKey 单位类型id
+---@param unit_key py.UnitKey Unit type id
 function M:remove_units_by_key(unit_key)
     GameAPI.remove_unit_in_group_by_key(self.handle, unit_key)
 end
@@ -105,35 +105,35 @@ end
 
 --A random integer in a unit group
 ---@param count integer
----@return UnitGroup unit_group  随机整数个单位
+---@return UnitGroup unit_group A random integer
 function M:pick_random_n(count)
     local py_unit_group =GameAPI.get_random_n_unit_in_group(self.handle, count)
     return M.get_by_handle(py_unit_group)
 end
 
 --Selects the unit for the specified unit type
----@param unit_key py.UnitKey 单位类型id
----@return UnitGroup unit_group 单位组
+---@param unit_key py.UnitKey Unit type id
+---@return UnitGroup unit_group Unit group
 function M.pick_by_key(unit_key)
     local py_unit_group = GameAPI.get_units_by_key(unit_key)
     return M.get_by_handle(py_unit_group)
 end
 
 --Gets the number of units in a unit group
----@return integer unit_group_num 单位数量
+---@return integer unit_group_num Number of units
 function M:count()
     return GameAPI.get_unit_group_num(self.handle)
 end
 
 --The number of unit types in a unit group
 ---@param unit_key py.UnitKey
----@return integer num_of_unit 单位类型的数量
+---@return integer num_of_unit Number of the unit type
 function M:count_by_key(unit_key)
     return GameAPI.get_num_of_unit_key_in_group(self.handle,unit_key)
 end
 
 --Gets the first unit in the unit group
----@return Unit? unit 单位组内第一个单位
+---@return Unit? unit The first unit in a unit group
 function M:get_first()
     local py_unit = GameAPI.get_first_unit_in_group(self.handle)
     if not py_unit then
@@ -143,7 +143,7 @@ function M:get_first()
 end
 
 --Gets a random unit in a unit group
----@return Unit? unit 单位组中随机一个单位
+---@return Unit? unit Indicates a random unit in the unit group
 function M:get_random()
     local py_unit = GameAPI.get_random_unit_in_unit_group(self.handle)
     if not py_unit then
@@ -153,7 +153,7 @@ function M:get_random()
 end
 
 --Gets the last unit in the unit group
----@return Unit? unit 最后一个单位
+---@return Unit? unit The last unit
 function M:get_last()
     local py_unit = GameAPI.get_last_unit_in_group(self.handle)
     if not py_unit then

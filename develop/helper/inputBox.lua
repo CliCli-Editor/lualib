@@ -1,6 +1,6 @@
 local helper = require 'clicli.develop.helper.helper'
 
----输入框的可选项，完全照抄的 VSCode 的接口
+---Input box options that copy exactly VSCode's interface
 ---@class Develop.Helper.InputBox.Optional
 ---@field title? string # title
 ---@field value? string # Initial value
@@ -12,7 +12,7 @@ local helper = require 'clicli.develop.helper.helper'
 ---@field validateInput? fun(value: string): string | nil # An error message is returned indicating that the input is invalid
 
 ---@class Develop.Helper.InputBox: Develop.Helper.InputBox.Optional
----@overload fun(optional?: Develop.Helper.InputBox.Optional): Develop.Helper.InputBox
+---@overload fun(optional? : Develop.Helper.InputBox.Optional): Develop.Helper.InputBox
 local M = Class 'Develop.Helper.InputBox'
 
 ---@private
@@ -38,12 +38,12 @@ function M:__del()
     M.inputBoxMap[self.id] = nil
 end
 
----删除输入框
+---Delete input field
 function M:remove()
     Delete(self)
 end
 
----显示输入框
+---Display input box
 ---@param callback fun(value?: string) # Input the callback function after completion. If the user cancels the input, 'value' is nil.
 function M:show(callback)
     M.inputBoxMap[self.id] = self

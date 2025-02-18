@@ -23,14 +23,14 @@ local Str32   = 'Z'
 local True    = 'T'
 local False   = 'F'
 local Nil     = '!'
-local ArrayB  = '[' -- 开始一张数组的定义
-local ArrayE  = ']' -- 结束一张数组的定义
-local TableB  = 'B' -- 开始一张表的定义
-local TableE  = 'E' -- 结束一张表的定义
-local Ref     = 'R' -- 复用之前定义的字符串或表
-local Custom  = 'C' -- 自定义数据
+local ArrayB  = '[' --Start an array definition
+local ArrayE  = ']' --Ends the definition of an array
+local TableB  = 'B' --Start a table definition
+local TableE  = 'E' --End a table definition
+local Ref     = 'R' --Reuse a previously defined string or table
+local Custom  = 'C' --Custom data
 
-local RefStrLen = 4 -- 字符串长度大于此值时保存引用
+local RefStrLen = 4 --Save a reference if the string length is greater than this value
 
 local EndSymbol = { '<End>' }
 
@@ -108,7 +108,7 @@ function M.encode(data, hook, ignoreUnknownType)
             elseif len < (1 << 32) then
                 buf[#buf+1] = Str32 .. stringPack('s4', value)
             else
-                error('不支持这么长的字符串！')
+                error('This long string is not supported!')
             end
         elseif tp == 'boolean' then
             if value then
@@ -131,14 +131,14 @@ function M.encode(data, hook, ignoreUnknownType)
             refid = refid + 1
             tableMap[value] = refid
             if isArray(value) then
-                -- 数组
+                --array
                 buf[#buf+1] = ArrayB
                 for i = 1, #value do
                     encode(value[i])
                 end
                 buf[#buf+1] = ArrayE
             else
-                -- 哈希表
+                --Hash table
                 buf[#buf+1] = TableB
                 for k, v in next, value do
                     encode(k)
@@ -150,7 +150,7 @@ function M.encode(data, hook, ignoreUnknownType)
             if ignoreUnknownType then
                 return
             end
-            error('不支持的类型！' .. tostring(tp))
+            error('Not supported type!' .. tostring(tp))
         end
     end
 
@@ -161,7 +161,7 @@ end
 
 --Deserialize binary data to Lua values
 ---@param str string
----@param hook? fun(value: Serialization.SupportTypes, tag?: string): Serialization.SupportTypes | nil
+---@param hook? fun(value: Serialization.SupportTypes, tag? : string): Serialization.SupportTypes | nil
 ---@return Serialization.SupportTypes | nil
 function M.decode(str, hook)
     if str == '' then
@@ -280,7 +280,7 @@ function M.decode(str, hook)
             value = hook(value, tag or nil)
             return value
         else
-            error('未知类型！' .. tostring(tp))
+            error('Unknown type!' .. tostring(tp))
         end
     end
 

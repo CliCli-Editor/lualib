@@ -1,6 +1,6 @@
 # UnitGroup
 
-单位组
+Unit group
 
 ## add_unit
 
@@ -8,16 +8,16 @@
 (method) UnitGroup:add_unit(unit: Unit)
 ```
 
-添加单位
+Add unit
 
-@*param* `unit` — 单位
+@*param* `unit` — unit
 ## clear
 
 ```lua
 (method) UnitGroup:clear()
 ```
 
-清空单位组
+Empty unit group
 ## count
 
 ```lua
@@ -25,9 +25,9 @@
   -> unit_group_num: integer
 ```
 
-获取单位组中单位数量
+Gets the number of units in a unit group
 
-@*return* `unit_group_num` — 单位数量
+@*return* `unit_group_num` — Unit quantity
 ## count_by_key
 
 ```lua
@@ -35,9 +35,9 @@
   -> num_of_unit: integer
 ```
 
-单位组中单位类型的数量
+The number of unit types in a unit group
 
-@*return* `num_of_unit` — 单位类型的数量
+@*return* `num_of_unit` — The number of unit types
 ## create
 
 ```lua
@@ -45,7 +45,7 @@ function UnitGroup.create()
   -> UnitGroup
 ```
 
-创建空单位组
+Example Create an empty unit group
 ## get_by_handle
 
 ```lua
@@ -60,9 +60,9 @@ function UnitGroup.get_by_handle(py_unit_group: py.UnitGroup)
   -> unit: Unit?
 ```
 
-获取单位组内第一个单位
+Gets the first unit in the unit group
 
-@*return* `unit` — 单位组内第一个单位
+@*return* `unit` — Unit The first unit in a group
 ## get_last
 
 ```lua
@@ -70,9 +70,9 @@ function UnitGroup.get_by_handle(py_unit_group: py.UnitGroup)
   -> unit: Unit?
 ```
 
-获取单位组内最后一个单位
+Gets the last unit in the unit group
 
-@*return* `unit` — 最后一个单位
+@*return* `unit` — Last unit
 ## get_random
 
 ```lua
@@ -80,16 +80,16 @@ function UnitGroup.get_by_handle(py_unit_group: py.UnitGroup)
   -> unit: Unit?
 ```
 
-获取单位组中随机一个单位
+Gets a random unit in a unit group
 
-@*return* `unit` — 单位组中随机一个单位
+@*return* `unit` — A random unit in the unit group
 ## handle
 
 ```lua
 py.UnitGroup
 ```
 
-单位组
+Unit group
 ## pick
 
 ```lua
@@ -97,7 +97,7 @@ py.UnitGroup
   -> Unit[]
 ```
 
-将单位组转换为Lua的单位数组
+Converts a group of units to an array of units in Lua
 ## pick_by_key
 
 ```lua
@@ -105,11 +105,11 @@ function UnitGroup.pick_by_key(unit_key: py.UnitKey)
   -> unit_group: UnitGroup
 ```
 
-挑选指定单位类型的单位
+Selects the unit for the specified unit type
 
-@*param* `unit_key` — 单位类型id
+@*param* `unit_key` — Unit typeid
 
-@*return* `unit_group` — 单位组
+@*return* `unit_group` — Unit group
 ## pick_random_n
 
 ```lua
@@ -117,32 +117,32 @@ function UnitGroup.pick_by_key(unit_key: py.UnitKey)
   -> unit_group: UnitGroup
 ```
 
-单位组中随机整数个单位
+A random integer in a unit group
 
-@*return* `unit_group` — 随机整数个单位
+@*return* `unit_group` — Random integer units
 ## remove_unit
 
 ```lua
 (method) UnitGroup:remove_unit(unit: Unit)
 ```
 
-移除单位
+Remove unit
 
-@*param* `unit` — 单位
+@*param* `unit` — unit
 ## remove_units_by_key
 
 ```lua
 (method) UnitGroup:remove_units_by_key(unit_key: py.UnitKey)
 ```
 
-移除单位类型
+Remove unit type
 
-@*param* `unit_key` — 单位类型id
+@*param* `unit_key` — Unit typeid
 ## select_units
 
 ```lua
 (method) UnitGroup:select_units()
 ```
 
-根据单位组选中单位
+Select units by unit group
 

@@ -216,7 +216,7 @@ end
 --Pause timer
 function M:pause()
     if self.mode == 'frame' then
-        error('帧计时器不支持暂停，若有此需求请改用 `clicli.ltimer.xxx_frame`')
+        error('Frame timer does not support pause, if you need to use `clicli.ltimer.xxx_frame`')
     end
     GameAPI.pause_timer(self.handle)
 end
@@ -231,32 +231,32 @@ function M:is_running()
     return GameAPI.is_timer_valid(self.handle)
 end
 
----获取计时器经过的时间
----@return number time 计时器经过的时间
+---Gets the elapsed time of the timer
+---@return number time Time elapsed by the timer
 function M:get_elapsed_time()
     return clicli.helper.tonumber(GameAPI.get_timer_elapsed_time(self.handle)) or 0
 end
 
----获取计时器初始计数
----@return integer count 初始计数
+---Gets the timer initial count
+---@return integer count Initial count
 function M:get_init_count()
     return GameAPI.get_timer_init_count(self.handle)
 end
 
----获取计时器剩余时间
----@return number time 计时器剩余时间
+---Gets the remaining time on the timer
+---@return number time Remaining time of the timer
 function M:get_remaining_time()
     return clicli.helper.tonumber(GameAPI.get_timer_remaining_time(self.handle)) or 0
 end
 
----获取计时器剩余计数
----@return integer count 剩余计数
+---Gets the remaining timer count
+---@return integer count Indicates the remaining number
 function M:get_remaining_count()
     return GameAPI.get_timer_remaining_count(self.handle)
 end
 
----获取计时器设置的时间
----@return number time 设置的时间
+---Gets the time set by the timer
+---@return number time Set time
 function M:get_time_out_time()
     return clicli.helper.tonumber(GameAPI.get_timer_time_out_time(self.handle)) or 0
 end

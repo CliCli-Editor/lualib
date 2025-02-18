@@ -1,8 +1,8 @@
 # Command
 
-作弊指令
+Cheat instruction
 
-该功能仅在开发模式有效
+This feature is only available in development mode
 
 ## commands
 
@@ -16,12 +16,12 @@
 function Command.execute(command: string, ...any)
 ```
 
- 执行作弊指令
+ Execute cheat instruction
 ## register
 
 ```lua
 function Command.register(command: string, callback: fun(...any))
 ```
 
- 注册作弊指令（指令名称无视大小写）
+ Register cheat instructions (instruction names are case insensitive）
 

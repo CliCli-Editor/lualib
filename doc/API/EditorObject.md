@@ -1,6 +1,6 @@
 # EditorObject
 
- 物体编辑器
+ Object editor
 
 ## ability
 
@@ -59,9 +59,9 @@ unknown
 Object.Ability
 ```
 
-技能的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
-> 警告：请确保数据类型正确，否则可能导致崩溃  
-> 警告：如果创建过此技能再修改数据，行为是未定义的
+Skill's object data, you can read or modify any object from it (some fields cannot be modified)）  
+> Warning: Make sure the data type is correct, otherwise it may cause a crash  
+> Warning: If you modify the data after creating this skill, the behavior is undefined
 ## data_key
 
 ```lua
@@ -71,7 +71,7 @@ string
 ## event
 
 ```lua
-fun(self: EditorObject.Ability, event: "技能-建造完成", callback: fun(trg: Trigger, data: EventParam.技能-建造完成)):Trigger
+fun(self: EditorObject.Ability, event: "Skill - Build Complete ", callback: fun(trg: Trigger, data: EventParam). Skill - Built complete)):Trigger
 ```
 
 ## event_manager
@@ -98,7 +98,7 @@ unknown?
 py.AbilityKey
 ```
 
-技能编号
+Skill number
 ## kv_has
 
 ```lua
@@ -106,7 +106,7 @@ py.AbilityKey
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -140,7 +140,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## new
 
 ```lua
@@ -148,77 +148,77 @@ lua_type:
   -> EditorObject.Ability
 ```
 
-以此技能为模板创建新的技能物编
+Create a new skill set from this skill template
 ## on_add
 
 ```lua
 fun(ability: Ability)
 ```
 
-技能获得后执行
+Execute after skills are acquired
 ## on_can_cast
 
 ```lua
 fun(ability: Ability, cast: Cast)
 ```
 
-技能即将施法时执行
+Execute when the skill is about to cast
 ## on_cast_channel
 
 ```lua
 fun(ability: Ability, cast: Cast)
 ```
 
-技能引导施法时执行
+Skills guide when casting
 ## on_cast_finish
 
 ```lua
 fun(ability: Ability, cast: Cast)
 ```
 
-技能完成施法时执行
+The skill is executed when the spell is completed
 ## on_cast_shot
 
 ```lua
 fun(ability: Ability, cast: Cast)
 ```
 
-技能出手施法时执行
+The skill is executed when casting spells
 ## on_cast_start
 
 ```lua
 fun(ability: Ability, cast: Cast)
 ```
 
-技能开始施法时执行
+The skill is executed when the spell begins
 ## on_cast_stop
 
 ```lua
 fun(ability: Ability, cast: Cast)
 ```
 
-技能停止施法时执行
+The skill is executed when it stops casting spells
 ## on_cooldown
 
 ```lua
 fun(ability: Ability)
 ```
 
-技能冷却结束后执行
+Execute when cooldown ends
 ## on_lose
 
 ```lua
 fun(ability: Ability)
 ```
 
-技能失去后执行
+Skills lost after execution
 ## on_upgrade
 
 ```lua
 fun(ability: Ability)
 ```
 
-技能升级后执行
+Execute after skill upgrade
 ## type
 
 ```lua
@@ -234,9 +234,9 @@ string
 Object.Buff
 ```
 
-魔法效果的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
-> 警告：请确保数据类型正确，否则可能导致崩溃  
-> 警告：如果创建过此魔法效果再修改数据，行为是未定义的
+Magic effect object data, you can read or modify any object from it (some fields cannot be modified）  
+> Warning: Make sure the data type is correct, otherwise it may cause a crash  
+> Warning: If you create this magic effect and then modify the data, the behavior is undefined
 ## data_key
 
 ```lua
@@ -246,7 +246,7 @@ string
 ## event
 
 ```lua
-fun(self: EditorObject.Buff, event: "效果-获得", callback: fun(trg: Trigger, data: EventParam.效果-获得)):Trigger
+fun(self: EditorObject.Buff, event: "Effect - Get ", callback: fun(trg: Trigger, data: EventParam). Effect - gain)):Trigger
 ```
 
 ## event_manager
@@ -273,7 +273,7 @@ unknown?
 py.ModifierKey
 ```
 
-效果编号
+Effect number
 ## kv_has
 
 ```lua
@@ -281,7 +281,7 @@ py.ModifierKey
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -315,7 +315,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## new
 
 ```lua
@@ -323,42 +323,42 @@ lua_type:
   -> EditorObject.Buff
 ```
 
-以此魔法效果为模板创建新的魔法效果物编
+Create a new magic effect for the template from this magic effect
 ## on_add
 
 ```lua
 fun(buff: Buff)
 ```
 
-效果获得后执行
+After the effect is obtained, execute
 ## on_can_add
 
 ```lua
 fun(buff: Buff)
 ```
 
-效果即将获得时执行
+Execute when the effect is about to be obtained
 ## on_lose
 
 ```lua
 fun(buff: Buff)
 ```
 
-效果失去后执行
+Effect lost after execution
 ## on_pulse
 
 ```lua
 fun(buff: Buff)
 ```
 
-效果心跳后执行
+The effect is executed after heartbeat
 ## on_stack_change
 
 ```lua
 fun(buff: Buff)
 ```
 
-效果层数变化后执行
+Execute after the number of effect layers changes
 ## type
 
 ```lua
@@ -411,9 +411,9 @@ string
 Object.Item
 ```
 
-物品的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
-> 警告：请确保数据类型正确，否则可能导致崩溃  
-> 警告：如果创建过此物品再修改数据，行为是未定义的
+The object's catalog data, from which you can read or modify any catalog (some fields cannot be modified)）  
+> Warning: Make sure the data type is correct, otherwise it may cause a crash  
+> Warning: If you create this item and then modify the data, the behavior is undefined
 ## data_key
 
 ```lua
@@ -423,7 +423,7 @@ string
 ## event
 
 ```lua
-fun(self: EditorObject.Item, event: "物品-获得", callback: fun(trg: Trigger, data: EventParam.物品-获得)):Trigger
+fun(self: EditorObject.Item, event: "Item - Get ", callback: fun(trg: Trigger, data: EventParam. Items - Get)):Trigger
 ```
 
 ## event_manager
@@ -450,7 +450,7 @@ unknown?
 py.ItemKey
 ```
 
-物品编号
+Item number
 ## kv_has
 
 ```lua
@@ -458,7 +458,7 @@ py.ItemKey
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -492,7 +492,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## new
 
 ```lua
@@ -500,56 +500,56 @@ lua_type:
   -> EditorObject.Item
 ```
 
-以此物品为模板创建新的物品物编
+Use this item as a template to create a new item
 ## on_add
 
 ```lua
 fun(item: Item)
 ```
 
-物品获得后执行
+Execute after the item is acquired
 ## on_add_to_bar
 
 ```lua
 fun(item: Item)
 ```
 
-物品进入装备栏后执行
+Execute after the item enters the equipment bar
 ## on_add_to_pkg
 
 ```lua
 fun(item: Item)
 ```
 
-物品进入背包后执行
+Execute after the item enters the backpack
 ## on_create
 
 ```lua
 fun(item: Item)
 ```
 
-物品创建后执行
+Item created after execution
 ## on_lose
 
 ```lua
 fun(item: Item)
 ```
 
-物品失去后执行
+Item lost after execution
 ## on_remove
 
 ```lua
 fun(item: Item)
 ```
 
-物品移除后执行
+Execute after item removal
 ## on_use
 
 ```lua
 fun(item: Item)
 ```
 
-物品使用时执行
+Item is executed when used
 ## type
 
 ```lua
@@ -565,9 +565,9 @@ string
 Object.Projectile
 ```
 
-投射物的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
-> 警告：请确保数据类型正确，否则可能导致崩溃  
-> 警告：如果创建过此投射物再修改数据，行为是未定义的
+The object compilation data of the projectile, you can read or modify any object compilation from it (some fields cannot be modified）  
+> Warning: Make sure the data type is correct, otherwise it may cause a crash  
+> Warning: If you create this projectile and then modify the data, the behavior is undefined
 ## data_key
 
 ```lua
@@ -577,7 +577,7 @@ string
 ## event
 
 ```lua
-fun(self: EditorObject.Projectile, event: "投射物-创建", callback: fun(trg: Trigger, data: EventParam.投射物-创建)):Trigger
+fun(self: EditorObject.Projectile, event: ""Projectile-create ", callback: fun(trg: Trigger, data: EventParam. Projectiles - Created)):Trigger
 ```
 
 ## event_manager
@@ -604,7 +604,7 @@ unknown?
 py.ProjectileKey
 ```
 
-投射物编号
+Projectile number
 ## kv_has
 
 ```lua
@@ -612,7 +612,7 @@ py.ProjectileKey
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -646,7 +646,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## new
 
 ```lua
@@ -654,21 +654,21 @@ lua_type:
   -> EditorObject.Projectile
 ```
 
-以此投射物为模板创建新的投射物
+Create a new projectile from this projectile as a template
 ## on_create
 
 ```lua
 fun(projectile: Projectile)
 ```
 
-投射物创建时执行
+Executed when the projectile is created
 ## on_remove
 
 ```lua
 fun(projectile: Projectile)
 ```
 
-投射物销毁时执行
+Execute when the projectile is destroyed
 ## type
 
 ```lua
@@ -684,9 +684,9 @@ string
 Object.Unit
 ```
 
-单位的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
-> 警告：请确保数据类型正确，否则可能导致崩溃  
-> 警告：如果创建过此单位再修改数据，行为是未定义的
+Unit of object data from which you can read or modify any object (some fields cannot be modified)）  
+> Warning: Make sure the data type is correct, otherwise it may cause a crash  
+> Warning: If you modify the data after creating this unit, the behavior is undefined
 ## data_key
 
 ```lua
@@ -696,7 +696,7 @@ string
 ## event
 
 ```lua
-fun(self: EditorObject.Unit, event: "单位-研发科技", callback: fun(trg: Trigger, data: EventParam.单位-研发科技)):Trigger
+fun(self: EditorObject.Unit, event: "Unit - Research and development technology ", callback: fun(trg: Trigger, data: EventParam). Unit - Research and development technology)):Trigger
 ```
 
 ## event_manager
@@ -723,7 +723,7 @@ unknown?
 py.UnitKey
 ```
 
-单位编号
+Unit number
 ## kv_has
 
 ```lua
@@ -731,7 +731,7 @@ py.UnitKey
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -765,7 +765,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## new
 
 ```lua
@@ -773,28 +773,28 @@ lua_type:
   -> EditorObject.Unit
 ```
 
-以此单位为模板创建新的单位物编
+Use this unit as a template to create a new unit object
 ## on_create
 
 ```lua
 fun(unit: Unit)
 ```
 
-单位创建后执行
+Execute after the unit is created
 ## on_dead
 
 ```lua
 fun(unit: Unit)
 ```
 
-单位死亡后执行
+Executed after the death of the unit
 ## on_remove
 
 ```lua
 fun(unit: Unit)
 ```
 
-单位移除后执行
+Execute after the unit is removed
 ## type
 
 ```lua

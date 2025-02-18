@@ -1,8 +1,8 @@
 --Client timer
 --
---A timer powered by your own computer's CPU that is completely asynchronous (even when executed synchronously)
+--A timer powered by your own computer is CPU that is completely asynchronous (even when executed synchronously)
 --It also continues to time and call back when the game is paused
---If you don't know what asynchrony is, don't use this module!
+--If you do not know what asynchrony is, do not use this module!
 ---@class ClientTimer
 ---@field private include_name? string
 ---@field package id integer

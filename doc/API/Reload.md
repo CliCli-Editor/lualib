@@ -1,8 +1,8 @@
 # Reload
 
-热重载
+Hot heavy duty
 
-热重载相关的方法，详细请看 `演示/热重载`。
+For methods related to hot reload, see 'Demo/Hot Reload' for details`。
 
 ## afterReloadCallbacks
 
@@ -56,8 +56,8 @@ function Reload.include(modname: string)
   2. loaderdata: unknown
 ```
 
- 类似于 `require` ，但是会在重载时重新加载文件。
- 加载文件时遇到错误会返回false而不是抛出异常。
+ Similar to 'require', but reloads the file on reload。
+ An error while loading a file returns false instead of throwing an exception。
 ## includeStack
 
 ```lua
@@ -83,7 +83,7 @@ function Reload.isReloading()
   -> boolean
 ```
 
-是否正在重载
+Is loading
 ## isValidName
 
 ```lua
@@ -91,7 +91,7 @@ function Reload.isReloading()
   -> boolean
 ```
 
- 模块名是否会被重载
+ Whether the module name will be overloaded
 ## modNameMap
 
 ```lua
@@ -104,14 +104,14 @@ table
 function Reload.onAfterReload(callback: Reload.afterReloadCallback)
 ```
 
- 注册在重载之后的回调
+ Register callbacks after reloading
 ## onBeforeReload
 
 ```lua
 function Reload.onBeforeReload(callback: Reload.beforeReloadCallback)
 ```
 
- 注册在重载之前的回调
+ Register callbacks before reloading
 ## optional
 
 ```lua
@@ -125,22 +125,22 @@ function Reload.recycle(callback: fun(trash: fun(obj: <R2>):<R2>):<R1>?)
   -> <R1>
 ```
 
-立即执行回调函数，之后每当发生重载时，
-会再次执行这个回调函数。
+Execute the callback function immediately, and thereafter whenever overloading occurs，
+The callback is executed again。
 ## reload
 
 ```lua
 function Reload.reload(optional?: Reload.Optional)
 ```
 
- 进行重载
+ overload
 ## setDefaultOptional
 
 ```lua
 function Reload.setDefaultOptional(optional?: Reload.Optional)
 ```
 
- 设置默认的重载选项
+ Set default overload options
 ## validMap
 
 ```lua
@@ -156,14 +156,14 @@ table<string, any>
 fun(name: string, reload: Reload):boolean
 ```
 
-过滤函数
+Filter function
 ## list
 
 ```lua
 string[]
 ```
 
-要重载的模块列表
+List of modules to overload
 
 # Reload.afterReloadCallback
 

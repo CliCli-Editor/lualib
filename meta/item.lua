@@ -68,7 +68,7 @@ function Item:api_set_charge_cnt(charge_cnt) end
 ---@param max_charge integer # Maximum charge number
 function Item:api_set_max_charge(max_charge) end
 
---The location of the item entity (if returning the player's location on the player)
+--The location of the item entity (if returning the player is location on the player)
 ---@return py.FVector3? # Item location
 function Item:api_get_position() end
 
@@ -200,7 +200,7 @@ function Item:api_has_tag(tag) end
 ---@param k string # Key to remove
 function Item:api_remove_kv(k) end
 
---Gets the object's corresponding entity in the scene
+--Gets the object is corresponding entity in the scene
 ---@return py.Unit? # Entity in scene
 function Item:api_get_item_unit() end
 

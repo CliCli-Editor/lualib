@@ -1,6 +1,6 @@
 # LocalUILogic
 
-本地UI逻辑框架
+Native UI logic framework
 
 ## apply_kv
 
@@ -21,29 +21,29 @@
   -> LocalUILogic
 ```
 
-附着到一个UI上
+Attach to a UI
 
-@*param* `kv` — 数据使用 `instance:storage_get` 获取
+@*param* `kv` — The data is obtained using 'instance:storage_get'
 ## bind_prefab
 
 ```lua
 (method) LocalUILogic:bind_prefab(child_name: string, prefab_logic: LocalUILogic, prefab_token?: any)
 ```
 
-绑定元件
+Binding element
 
-@*param* `child_name` — 空字符串表示主控件
+@*param* `child_name` — The empty string represents the master device
 
-@*param* `prefab_logic` — 使用 `y3.local_ui.prefab` 创建的元件逻辑
+@*param* `prefab_logic` — Component logic created using 'y3.local_ui.prefab'
 
-@*param* `prefab_token` — 如果你在不同的控件下绑定了相同的元件且需要分开刷新，可以为它们设置不同的 token
+@*param* `prefab_token` — If you bind the same components under different controls and need to refresh them separately, you can set different ones for them token
 ## bind_unit_attr
 
 ```lua
 (method) LocalUILogic:bind_unit_attr(child_name: string, ui_attr: y3.Const.UIAttr, unit_attr: string|y3.Const.UnitAttr)
 ```
 
-将子控件的属性绑定到单位的属性
+Binds the properties of the child control to the properties of the unit
 ## detach
 
 ```lua
@@ -76,24 +76,24 @@
 (method) LocalUILogic:on_event(child_name: string, event: y3.Const.UIEvent, callback: fun(ui: UI, local_player: Player, instance: LocalUILogic))
 ```
 
-订阅控件的本地事件，回调函数在 *本地玩家* 环境中执行。
+Subscribe to the control's local events, and the callback function is executed in the * local player * environment。
 
-@*param* `child_name` — 空字符串表示主控件
+@*param* `child_name` — The empty string represents the master device
 
 ```lua
 event:
-    | '左键-按下'
-    | '左键-抬起'
-    | '左键-点击'
-    | '左键-双击'
-    | '鼠标-悬停'
-    | '鼠标-移入'
-    | '鼠标-移出'
-    | '鼠标-右击'
-    | '右键-按下'
-    | '右键-抬起'
-    | '右键-点击'
-    | '右键-双击'
+    | 'Left button. - Press it'
+    | 'Left click - Lift'
+    | 'Left - click'
+    | 'Left - Double-click'
+    | 'Mouse - Hover'
+    | 'Mouse - Move in'
+    | 'Mouse - Move out'
+    | 'Mouse - right click'
+    | 'Right - Press it'
+    | 'right-right-lift'
+    | 'right-click'
+    | 'right-double-click'
 ```
 ## on_init
 
@@ -101,41 +101,41 @@ event:
 (method) LocalUILogic:on_init(child_name: string, on_init: fun(ui: UI, local_player: Player, instance: LocalUILogic))
 ```
 
-订阅控件的初始化事件，回调函数在 *本地玩家* 环境中执行。
+Subscribe to the initialization event of the control, the callback function is executed in the local player environment。
 
-@*param* `child_name` — 空字符串表示主控件
+@*param* `child_name` — The empty string represents the master device
 ## on_refresh
 
 ```lua
 (method) LocalUILogic:on_refresh(child_name: string, on_refresh: fun(ui: UI, local_player: Player, instance: LocalUILogic))
 ```
 
-订阅控件刷新，回调函数在 *本地玩家* 环境中执行。
+Subscribe to the control refresh, the callback function is executed in the * local player * environment。
 
-@*param* `child_name` — 空字符串表示主控件
+@*param* `child_name` — The empty string represents the master device
 ## refresh
 
 ```lua
 (method) LocalUILogic:refresh(name: string, player?: Player)
 ```
 
-刷新控件，指定的控件以及其子控件都会收到刷新消息。
-参数为 `*` 时，刷新所有控件。
+The refresh control, the specified control, and its child controls receive a refresh message。
+Refresh all controls when the parameter is' * '。
 
-@*param* `player` — 只刷新此玩家的
+@*param* `player` — Refresh only for this player
 ## refresh_prefab
 
 ```lua
 (method) LocalUILogic:refresh_prefab(prefab_token: any, count?: integer, on_create?: fun(index: integer, kv: table))
 ```
 
-刷新元件
+Refresh element
 
-@*param* `prefab_token` — 要刷新的元件，默认为绑定时的元件逻辑
+@*param* `prefab_token` — The component to refresh defaults to the component logic at binding time
 
-@*param* `count` — 修改元件数量
+@*param* `count` — Modify the number of components
 
-@*param* `on_create` — 创建新的元件时回调，`kv` 中默认会将 `index` 设置为这是第几个元件。
+@*param* `on_create` — When creating a new component callback, 'kv' defaults to set 'index' to which component it is。
 ## register_events
 
 ```lua
@@ -155,7 +155,7 @@ event:
   -> table
 ```
 
- 获取存储数据的容器
+ Gets the container for storing data
 ## storage_get
 
 ```lua
@@ -163,14 +163,14 @@ event:
   -> any
 ```
 
- 获取存储的值
+ Gets the stored value
 ## storage_set
 
 ```lua
 (method) Storage:storage_set(key: any, value: any)
 ```
 
- 存储任意值
+ Store arbitrary values
 ## storage_table
 
 ```lua
@@ -243,7 +243,7 @@ string
 LocalUILogic
 ```
 
-本地UI逻辑框架
+Native UI logic framework
 ## prefab_token
 
 ```lua

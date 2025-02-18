@@ -2,11 +2,11 @@
 --
 --Will be transmitted during injury-related events
 ---@class DamageInstance
----@overload fun(data: EventParam.单位-受到伤害后, mode: string): self
+---@overload fun(data: EventParam. Unit - After taking damage, mode: string): self
 local M = Class 'DamageInstance'
 
----@param data EventParam.单位-受到伤害后
----@param mode '伤害前' | '伤害时' | '伤害后'
+---@param data EventParam. Unit - After taking damage
+---@param mode 'before damage' | 'when damage' | 'after damage'
 function M:__init(data, mode)
     ---@private
     self.data = data
@@ -29,11 +29,11 @@ end
 --Modify current damage
 ---@param damage number
 function M:set_damage(damage)
-    assert(self.mode ~= '伤害后', '不能在伤害后修改伤害')
+    assert(self.mode ~= 'After damage', 'Damage cannot be modified after damage is done')
     if not self.origin_damage then
-        self.origin_damage = self.data.damage --记录一下最开始的原始伤害
+        self.origin_damage = self.data.damage --Record the original damage
     end
-    self.data.damage = damage --刷掉伤害，之后的事件拿的伤害值还是老的
+    self.data.damage = damage --Brush away damage, and subsequent events take the same amount of damage
     GameAPI.set_cur_damage(Fix32(damage))
 end
 
@@ -47,7 +47,7 @@ end
 --Sets whether to dodge the current damage
 ---@param missed boolean
 function M:set_missed(missed)
-    assert(self.mode == '伤害前', '只能在伤害前修改伤害是否闪避')
+    assert(self.mode == 'pre-damage', 'Damage dodge can only be modified before damage is done')
     GameAPI.set_cur_damage_is_miss(missed)
 end
 
@@ -61,7 +61,7 @@ end
 --Sets whether the current damage is critical
 ---@param critical boolean
 function M:set_critical(critical)
-    assert(self.mode ~= '伤害后', '只能在伤害前(时)修改伤害是否暴击')
+    assert(self.mode ~= 'After damage', 'Damage Critical can only be changed before (or when) damage is done')
     GameAPI.set_cur_damage_is_critical(critical)
 end
 

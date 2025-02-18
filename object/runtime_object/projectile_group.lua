@@ -29,28 +29,28 @@ clicli.py_converter.register_lua_to_py('py.ProjectileGroup', function (lua_value
     return lua_value.handle
 end)
 
----筛选范围内的所有投射物
----@param point Point 点
----@param shape Shape 筛选范围
+---Screen all projectiles within range
+---@param point Point
+---@param shape Shape Filtering range
 ---@return ProjectileGroup
 function M.get_all_projectile_in_shapes(point, shape)
     local py_projectile_group = GameAPI.filter_projectile_id_list_in_area(
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         point.handle,
         shape.handle)
     return M.create_lua_projectile_group_from_py(py_projectile_group)
 end
 
----获取拥有指定标签的投射物
----@param tag string 点
+---Gets the projectile with the specified label
+---@param tag string
 ---@return ProjectileGroup
 function M.get_all_projectiles_with_tag(tag)
     local py_projectile_group = GameAPI.get_all_projectiles_with_tag(tag)
     return M.create_lua_projectile_group_from_py(py_projectile_group)
 end
 
----遍历投射物组中投射物做动作
+---Move through projectiles in the projectiles group
 ---@return Projectile[]
 function M:pick()
     local lua_table ={}
@@ -61,16 +61,16 @@ function M:pick()
     return lua_table
 end
 
----遍历投射物组，请勿在遍历过程中修改投射物组。
+---Traverse the projectile group, do not modify the projectile group during the traverse.
 ---```lua
 ---for projectile in ProjectileGroup:pairs() do
----    print(projectile)
+---print(projectile)
 ---end
 ---```
----也可以直接用 `pairs` 遍历：
+---You can also iterate directly with 'pairs' :
 ---```lua
 ---for projectile in pairs(ProjectileGroup) do
----    print(projectile)
+---print(projectile)
 ---end
 ---```
 ---@return fun(): Projectile?

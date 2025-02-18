@@ -7,7 +7,7 @@
   -> XDouble
 ```
 
- 取绝对值
+ Absolute value
 ## acos
 
 ```lua
@@ -15,7 +15,7 @@
   -> XDouble
 ```
 
- 反余弦（角度制）
+ Inverse cosine (Angle system）
 ## asin
 
 ```lua
@@ -23,7 +23,7 @@
   -> XDouble
 ```
 
- 反正弦（弧度制）
+ Arcsine (in radians）
 ## atan
 
 ```lua
@@ -31,7 +31,7 @@
   -> XDouble
 ```
 
- 反正切（弧度制）
+ arctangent）
 ## ceil
 
 ```lua
@@ -39,7 +39,7 @@
   -> XDouble
 ```
 
- 向上取整
+ Round up
 ## cos
 
 ```lua
@@ -47,7 +47,7 @@
   -> XDouble
 ```
 
- 余弦（弧度制）
+ Cosine (in radians）
 ## exp
 
 ```lua
@@ -55,7 +55,7 @@
   -> XDouble
 ```
 
- 自然对数
+ Natural logarithm
 ## float
 
 ```lua
@@ -70,7 +70,7 @@
   -> XDouble
 ```
 
- 向下取整
+ Round down
 ## int
 
 ```lua
@@ -78,7 +78,7 @@
   -> integer
 ```
 
- 会取整
+ round-up
 ## log
 
 ```lua
@@ -86,7 +86,7 @@
   -> XDouble
 ```
 
- 取对数
+ Take the logarithm
 ## round
 
 ```lua
@@ -94,7 +94,7 @@
   -> XDouble
 ```
 
- 四舍五入
+ Round it up
 ## sin
 
 ```lua
@@ -102,7 +102,7 @@
   -> XDouble
 ```
 
- 正弦（弧度制）
+ Sine (in radians）
 ## sqrt
 
 ```lua
@@ -110,7 +110,7 @@
   -> XDouble
 ```
 
- 开方
+ Root of a root
 ## tan
 
 ```lua
@@ -118,5 +118,5 @@
   -> XDouble
 ```
 
- 正切（弧度制）
+ Tangent (in radians）
 

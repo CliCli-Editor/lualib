@@ -9,7 +9,7 @@ function GCHost:__del()
     self._gccontainer:remove()
 end
 
---Bind an object's life cycle to itself,
+--Bind an object is life cycle to itself,
 --When it is removed, the object is also removed.
 --If you have already been removed when you call this method,
 --Removes the object immediately and returns' nil ',
@@ -63,7 +63,7 @@ end
 ---@param obj T
 ---@return T
 function GC:add(obj)
-    -- TODO 插件BUG
+    --TODO plug-in BUG
     ---@cast obj table
     if not IsValid(obj) or not IsValid(self) then
         Delete(obj)

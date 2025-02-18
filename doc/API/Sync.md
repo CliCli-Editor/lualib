@@ -1,6 +1,6 @@
 # Sync
 
- 将本地数据同步给所有玩家
+ Sync local data to all players
 
 ## onSync
 
@@ -8,18 +8,18 @@
 function Sync.onSync(id: string, callback: fun(data: Serialization.SupportTypes, source: Player))
 ```
 
- 同步接收数据，回调函数在同步后执行  
- 同一个 id 只能注册一个回调函数，后注册的会覆盖前面的
+ The data is received synchronously, and the callback function is executed after synchronization  
+ Only one callback function can be registered with the same id, and the later ones will overwrite the earlier ones
 ## send
 
 ```lua
 function Sync.send(id: string, data: Serialization.SupportTypes)
 ```
 
- 发送本地的信息，使用 `onSync` 来同步接受数据  
- 请在本地环境中使用此函数
+ Send local messages and use 'onSync' to synchronize receiving data  
+ Use this function in your local environment
 
-@*param* `id` — 以 `$` 开头的 id 保留为内部使用
+@*param* `id` — Ids beginning with '$' are reserved for internal use
 ## syncMap
 
 ```lua

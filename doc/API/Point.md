@@ -9,13 +9,13 @@ function Point.create(x: number, y: number, z?: number)
   -> Point
 ```
 
-坐标转化为点
+Coordinates are converted to points
 
-@*param* `x` — 点X坐标
+@*param* `x` — Point X coordinate
 
-@*param* `y` — 点Y坐标
+@*param* `y` — Point Y coordinate
 
-@*param* `z` — 点Z坐标
+@*param* `z` — Point Z coordinate
 ## get_angle_with
 
 ```lua
@@ -23,7 +23,7 @@ function Point.create(x: number, y: number, z?: number)
   -> number
 ```
 
- 获取与另一个点的方向
+ Gets the direction with another point
 ## get_by_handle
 
 ```lua
@@ -31,7 +31,7 @@ function Point.get_by_handle(py_point: Point.HandleType)
   -> Point
 ```
 
-根据py对象创建点
+Create points based on the py object
 ## get_distance_with
 
 ```lua
@@ -39,7 +39,7 @@ function Point.get_by_handle(py_point: Point.HandleType)
   -> number
 ```
 
- 获取与另一个点的距离
+ Gets the distance from another point
 ## get_point
 
 ```lua
@@ -61,11 +61,11 @@ function Point.get_point_in_path(path: table, index: integer)
   -> Point
 ```
 
-路径中的点
+Point in the path
 
-@*param* `path` — 目标路径
+@*param* `path` — Target path
 
-@*param* `index` — 索引
+@*param* `index` — index
 ## get_point_offset_vector
 
 ```lua
@@ -73,13 +73,13 @@ function Point.get_point_offset_vector(point: Point, direction: number, offset: 
   -> Point
 ```
 
-点向方向偏移
+The point is shifting in the direction
 
 @*param* `point` — 点
 
-@*param* `direction` — 偏移方向点
+@*param* `direction` — Offset point
 
-@*param* `offset` — 偏移量
+@*param* `offset` — offset
 ## get_random_point
 
 ```lua
@@ -87,7 +87,7 @@ function Point.get_point_offset_vector(point: Point, direction: number, offset: 
   -> Point
 ```
 
-获取圆形范围内的随机点
+Gets random points in a circle range
 ## get_x
 
 ```lua
@@ -95,7 +95,7 @@ function Point.get_point_offset_vector(point: Point, direction: number, offset: 
   -> number
 ```
 
-点的x坐标
+The x-coordinate of the point
 ## get_y
 
 ```lua
@@ -103,7 +103,7 @@ function Point.get_point_offset_vector(point: Point, direction: number, offset: 
   -> number
 ```
 
-点的y坐标
+The y coordinate of the point
 ## get_z
 
 ```lua
@@ -111,7 +111,7 @@ function Point.get_point_offset_vector(point: Point, direction: number, offset: 
   -> number
 ```
 
-点的z坐标
+The z coordinate of the point
 ## handle
 
 ```lua
@@ -132,7 +132,7 @@ table
   -> Point
 ```
 
- 移动点
+ Moving point
 ## res_id
 
 ```lua

@@ -1,9 +1,9 @@
 ---@class ECAHelper
 local M = Class 'ECAHelper'
 
----注册ECA函数
+---Register ECA functions
 ---
----可以使用该功能让lua函数在ECA中被调用。
+---You can use this feature to have lua functions called in ECA.
 ---@param name string
 ---@return ECAFunction
 function M.def(name)
@@ -15,16 +15,16 @@ M._call_impls = {}
 
 M._resolves = {}
 
----调用ECA中定义的自定义事件
+---Invoke custom events defined in the ECA
 function M.call(...)
     local impl = M._call_impls[...]
     if not impl then
-        error('不存在此自定义事件：' .. tostring(...))
+        error('This custom event does not exist:' .. tostring(...))
     end
     impl(...)
 end
 
----@param data EventParam.游戏-消息
+---@param data EventParam. Games - Messages
 ---@return table
 function M.resolve(data)
     ---@diagnostic disable-next-line: undefined-field

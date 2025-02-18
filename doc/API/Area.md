@@ -1,6 +1,6 @@
 # Area
 
-区域
+region
 
 ## add_tag
 
@@ -8,21 +8,21 @@
 (method) Area:add_tag(tag: string)
 ```
 
-给区域添加标签
+Label the area
 
 @*param* `tag` — tag
 ## create_circle_area
 
 ```lua
 function Area.create_circle_area(point: Point, radius: number)
-  -> 圆形区域: Area
+  -> Circular region: Area
 ```
 
-创建圆形区域
+Create a circle
 
 @*param* `point` — 点
 
-@*param* `radius` — 半径
+@*param* `radius` — radius
 ## create_polygon_area_by_points
 
 ```lua
@@ -30,9 +30,9 @@ function Area.create_polygon_area_by_points(...Point)
   -> polygon: Area
 ```
 
-沿点创建多边形
+Create polygons along points
 
-@*return* `polygon` — 多边形区域
+@*return* `polygon` — Polygon region
 ## create_rectangle_area
 
 ```lua
@@ -40,15 +40,15 @@ function Area.create_rectangle_area(point: Point, horizontal_length: number, ver
   -> area: Area
 ```
 
-创建矩形区域
+Create a rectangular area
 
 @*param* `point` — 点
 
-@*param* `horizontal_length` — 长度
+@*param* `horizontal_length` — Length
 
-@*param* `vertical_length` — 宽度
+@*param* `vertical_length` — breadth
 
-@*return* `area` — 矩形区域
+@*return* `area` — Rectangular region
 ## create_rectangle_area_from_two_points
 
 ```lua
@@ -56,49 +56,49 @@ function Area.create_rectangle_area_from_two_points(point_one: Point, point_two:
   -> area: Area
 ```
 
-以起点终点创建矩形区域
+Creates a rectangular area with a starting and ending point
 
 @*param* `point_one` — 点1
 
 @*param* `point_two` — 点2
 
-@*return* `area` — 矩形区域
+@*return* `area` — Rectangular region
 ## edit_area_collision
 
 ```lua
 (method) Area:edit_area_collision(collision_layer: integer, is_add: boolean)
 ```
 
-编辑区域碰撞
+Edit area collision
 
-@*param* `collision_layer` — 碰撞类型
+@*param* `collision_layer` — Collision type
 
-@*param* `is_add` — 添加/去除
+@*param* `is_add` — Add/remove
 ## edit_area_fov_block
 
 ```lua
 (method) Area:edit_area_fov_block(fov_block_type: integer, is_add: boolean)
 ```
 
-编辑区域视野阻挡
+Edit area field of view blocked
 
-@*param* `fov_block_type` — 视野阻挡类型
+@*param* `fov_block_type` — Visual field blocking type
 
-@*param* `is_add` — 添加/去除
+@*param* `is_add` — Add/remove
 ## event
 
 ```lua
-fun(self: Area, event: "区域-进入", callback: fun(trg: Trigger, data: EventParam.区域-进入)):Trigger
+fun(self: Area, event: "Area - Enter ", callback: fun(trg: Trigger, data: EventParam. zone-access)):Trigger
 ```
 
 ## get_all_unit_in_area
 
 ```lua
 (method) Area:get_all_unit_in_area()
-  -> 单位组: Unit[]
+  -> Unit group: Unit[]
 ```
 
-区域内的所有单位
+All units in the area
 ## get_by_handle
 
 ```lua
@@ -106,9 +106,9 @@ function Area.get_by_handle(py_area: py.Area, shape?: Area.Shape)
   -> Area
 ```
 
-根据py对象创建区域
+Create a region based on the py object
 
-@*param* `py_area` — py层对象
+@*param* `py_area` — pyLayer object
 
 @*param* `shape` — 见area.enum
 ## get_by_res_id
@@ -118,17 +118,17 @@ function Area.get_by_res_id(res_id: py.AreaID, shape?: Area.Shape)
   -> Area
 ```
 
-@*param* `res_id` — 编辑场景中的id
+@*param* `res_id` — Edit sceneid
 
 @*param* `shape` — 见area.enum
 ## get_center_point
 
 ```lua
 (method) Area:get_center_point()
-  -> 中心点: Point
+  -> Central point: Point
 ```
 
- 获取中心点
+ Get center point
 ## get_circle_areas_by_tag
 
 ```lua
@@ -136,11 +136,11 @@ function Area.get_circle_areas_by_tag(tag: string)
   -> area: Area[]
 ```
 
-按标签获取所有的圆形区域
+Get all the circular areas by label
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 
-@*return* `area` — 矩形区域
+@*return* `area` — Rectangular region
 ## get_circle_by_res_id
 
 ```lua
@@ -148,9 +148,9 @@ function Area.get_circle_by_res_id(res_id: py.AreaID)
   -> Area
 ```
 
-根据场景id获得圆形区域
+Get the circle area based on the scene id
 
-@*param* `res_id` — 编辑场景中的id
+@*param* `res_id` — Edit sceneid
 ## get_map_area
 
 ```lua
@@ -158,39 +158,39 @@ function Area.get_map_area()
   -> Area
 ```
 
-获取完整地图区域
+Get the full map area
 ## get_max_x
 
 ```lua
 (method) Area:get_max_x()
-  -> X坐标: number
+  -> Xcoordinate: number
 ```
 
-获取区域内最大X坐标
+Gets the maximum X coordinate in the region
 ## get_max_y
 
 ```lua
 (method) Area:get_max_y()
-  -> Y坐标: number
+  -> Ycoordinate: number
 ```
 
-获取区域内最大Y坐标
+Gets the maximum Y coordinate in the region
 ## get_min_x
 
 ```lua
 (method) Area:get_min_x()
-  -> X坐标: number
+  -> Xcoordinate: number
 ```
 
-获取区域内最小X坐标
+Gets the minimum X-coordinate in the region
 ## get_min_y
 
 ```lua
 (method) Area:get_min_y()
-  -> Y坐标: number
+  -> Ycoordinate: number
 ```
 
-获取区域内最小Y坐标
+Gets the minimum Y coordinate in the region
 ## get_polygon_areas_by_tag
 
 ```lua
@@ -198,11 +198,11 @@ function Area.get_polygon_areas_by_tag(tag: string)
   -> area: Area[]
 ```
 
-按标签获取所有的多边形区域
+Get all polygon areas by label
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 
-@*return* `area` — 多边形区域表
+@*return* `area` — Polygon area table
 ## get_polygon_areas_point_list
 
 ```lua
@@ -210,11 +210,11 @@ function Area.get_polygon_areas_point_list(polygon: Area)
   -> area: table
 ```
 
-获取多边形的所有顶点
+Gets all the vertices of the polygon
 
-@*param* `polygon` — 多边形区域
+@*param* `polygon` — Polygon region
 
-@*return* `area` — 多边形顶点表
+@*return* `area` — Polygon vertex table
 ## get_polygon_by_res_id
 
 ```lua
@@ -222,17 +222,17 @@ function Area.get_polygon_by_res_id(res_id: py.AreaID)
   -> Area
 ```
 
-根据场景id获得多边形区域
+Get the polygon area based on the scene id
 
-@*param* `res_id` — 编辑场景中的id
+@*param* `res_id` — Edit sceneid
 ## get_radius
 
 ```lua
 (method) Area:get_radius()
-  -> 半径: number
+  -> radius: number
 ```
 
-获得圆形区域半径
+Obtain the radius of the circular area
 ## get_rect_areas_by_tag
 
 ```lua
@@ -240,11 +240,11 @@ function Area.get_rect_areas_by_tag(tag: string)
   -> area: Area[]
 ```
 
-按标签获取所有的矩形区域
+Gets all rectangular areas by label
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 
-@*return* `area` — 矩形区域表
+@*return* `area` — Rectangular region table
 ## get_rectangle_area_last_created
 
 ```lua
@@ -252,7 +252,7 @@ function Area.get_rectangle_area_last_created()
   -> Area
 ```
 
-获得最后创建的矩形区域
+Gets the last rectangular area created
 ## get_rectangle_by_res_id
 
 ```lua
@@ -260,58 +260,58 @@ function Area.get_rectangle_by_res_id(res_id: py.AreaID)
   -> Area
 ```
 
-根据场景id获得矩形区域
+Gets a rectangular area based on the scene id
 
-@*param* `res_id` — 编辑场景中的id
+@*param* `res_id` — Edit sceneid
 ## get_unit_group_in_area
 
 ```lua
 (method) Area:get_unit_group_in_area(player: Player)
-  -> 单位组: UnitGroup
+  -> Unit group: UnitGroup
 ```
 
-区域内玩家单位(单位组)
+Intra-area player units (unit groups)
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## get_unit_in_area_by_camp
 
 ```lua
 (method) Area:get_unit_in_area_by_camp(camp: py.Camp)
-  -> 单位组: Unit[]
+  -> Unit group: Unit[]
 ```
 
-区域内阵营所有单位
+All units of the camp in the area
 ## get_unit_num_in_area
 
 ```lua
 (method) Area:get_unit_num_in_area()
-  -> 数量: integer
+  -> quantity: integer
 ```
 
-区域中单位的数量
+The number of units in the region
 ## get_weather
 
 ```lua
 (method) Area:get_weather()
-  -> 天气枚举: integer
+  -> Weather enumeration: integer
 ```
 
-获得区域天气
+Obtain regional weather
 ## handle
 
 ```lua
 py.Area
 ```
 
-区域
+region
 ## has_tag
 
 ```lua
 (method) Area:has_tag(tag: string)
-  -> 区域是否有tag: boolean
+  -> Whether the area hastag: boolean
 ```
 
-区域是否有tag
+Whether the area hastag
 
 @*param* `tag` — tag
 ## is_point_in_area
@@ -321,7 +321,7 @@ py.Area
   -> boolean
 ```
 
- 点是否在区域内
+ Whether the point is in the area
 
 @*param* `point` — 点
 ## key
@@ -337,7 +337,7 @@ integer?
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -371,7 +371,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## map
 
 ```lua
@@ -391,7 +391,7 @@ EventManager?
   -> Point
 ```
 
- 获取随机点
+ Get random points
 ## ref_manager
 
 ```lua
@@ -404,14 +404,14 @@ unknown
 (method) Area:remove()
 ```
 
-删除区域
+Delete area
 ## remove_tag
 
 ```lua
 (method) Area:remove_tag(tag: string)
 ```
 
-给区域移除标签
+Remove the label from the area
 
 @*param* `tag` — tag
 ## res_id
@@ -426,46 +426,46 @@ integer?
 (method) Area:set_collision(is_collision_effect: boolean, is_land_effect: boolean, is_air_effect: boolean)
 ```
 
-设置区域碰撞
+Set area collision
 
-@*param* `is_collision_effect` — 碰撞是否生效
+@*param* `is_collision_effect` — Effect of collision
 
-@*param* `is_land_effect` — 地面碰撞开关
+@*param* `is_land_effect` — Ground collision switch
 
-@*param* `is_air_effect` — 空中碰撞开关
+@*param* `is_air_effect` — Air collision switch
 ## set_radius
 
 ```lua
 (method) Area:set_radius(radius: number)
 ```
 
-设置圆形区域半径
+Set the radius of the circle area
 
-@*param* `radius` — 半径
+@*param* `radius` — radius
 ## set_size
 
 ```lua
 (method) Area:set_size(horizontal_length: number, vertical_length: number)
 ```
 
-设置矩形区域半径
+Sets the radius of the rectangular area
 
-@*param* `horizontal_length` — 长度
+@*param* `horizontal_length` — Length
 
-@*param* `vertical_length` — 宽度
+@*param* `vertical_length` — breadth
 ## set_visible
 
 ```lua
 (method) Area:set_visible(player: Player, is_visibility: boolean, is_real_visibility: boolean)
 ```
 
-设置多边形区域对玩家可见性
+Set the polygon area visible to the player
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `is_visibility` — 是否开启视野
+@*param* `is_visibility` — Open vision or not
 
-@*param* `is_real_visibility` — 是否开启真实视野
+@*param* `is_real_visibility` — Whether to open the real vision
 ## shape
 
 ```lua

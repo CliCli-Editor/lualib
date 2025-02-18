@@ -8,23 +8,23 @@ local Role = {}
 ---@return py.RoleID? # Player ID
 function Role:api_get_role_id() end
 
---Gets the player's faction ID
----@return integer? # The player's faction ID
+--Gets the player is faction ID
+---@return integer? # The player is faction ID
 function Role:api_get_camp_id() end
 
 --Get the player ID number
 ---@return integer? # Player ID value
 function Role:get_role_id_num() end
 
---Gets the player's faction ID value
----@return integer? # The player's faction ID number
+--Gets the player is faction ID value
+---@return integer? # The player is faction ID number
 function Role:get_camp_id_num() end
 
 --Get player name
 ---@return string? # Player name
 function Role:get_role_name() end
 
---Get the player's unique name
+--Get the player is unique name
 ---@return string? # Player unique name
 function Role:get_role__unique_name() end
 
@@ -40,7 +40,7 @@ function Role:get_role_type() end
 ---@return boolean? # Whether to join halfway
 function Role:is_middle_join() end
 
---Gets the player's faction object
+--Gets the player is faction object
 ---@return py.Camp? # Camp object
 function Role:api_get_camp() end
 
@@ -61,7 +61,7 @@ function Role:set_role_exp_rate(rate) end
 ---@return py.Fixed? # Return multiplier
 function Role:get_role_exp_rate() end
 
---Set the player's birth point
+--Set the player is birth point
 ---@param point py.Point # point
 function Role:set_role_spawn_point(point) end
 
@@ -227,7 +227,7 @@ function Role:get_save_data_str_value(index) end
 ---@return py.Table? # table
 function Role:get_save_data_table_value(index) end
 
---Get the player's encrypted uuid
+--Get the player is encrypted uuid
 function Role:get_encry_uuid() end
 
 --Players use premium items
@@ -245,17 +245,17 @@ function Role:get_store_item_cnt(no) end
 ---@return boolean? # Visible or not
 function Role:get_visibility_of_unit(unit) end
 
---Modify the player's tech level
+--Modify the player is tech level
 ---@param tech_no py.TechKey # Technology number
 ---@param delta_lv integer # Degree of change
 function Role:api_change_tech_level(tech_no, delta_lv) end
 
---Modify the player's tech level
+--Modify the player is tech level
 ---@param tech_no py.TechKey # Technology number
 ---@param lv integer # Lv.
 function Role:api_set_tech_level(tech_no, lv) end
 
---Gain the player's tech level
+--Gain the player is tech level
 ---@param tech_no py.TechKey # Technology number
 ---@return integer? # Technological grade
 function Role:api_get_tech_level(tech_no) end
@@ -318,15 +318,15 @@ function Role:close_source_unit_vision_to_target(unit) end
 ---@param unit_or_unit_groupd py.DynamicTypeMeta # Unit or group of units
 function Role:role_select_unit(unit_or_unit_groupd) end
 
---Open/close the player's mouse click
+--Open/close the player is mouse click
 ---@param value boolean # On/Off
 function Role:set_role_mouse_left_click(value) end
 
---Open/close the player's mouse's box selection
+--Open/close the player is mouse is box selection
 ---@param value boolean # On/Off
 function Role:set_role_mouse_move_select(value) end
 
---Turn on/off the player's mouse wheel
+--Turn on/off the player is mouse wheel
 ---@param value boolean # On/Off
 function Role:set_role_mouse_wheel(value) end
 
@@ -334,26 +334,26 @@ function Role:set_role_mouse_wheel(value) end
 ---@param value boolean # Dark Angle switch
 function Role:set_role_vignetting_enable(value) end
 
---Set the player's dark corner size
+--Set the player is dark corner size
 ---@param value number # Dark Angle size
 function Role:set_role_vignetting_size(value) end
 
---Set the player's dark corner breathing cycle
+--Set the player is dark corner breathing cycle
 ---@param value number # Respiratory cycle
 function Role:set_role_vignetting_breath_rate(value) end
 
---Sets how much the player's dark Angle changes
+--Sets how much the player is dark Angle changes
 ---@param value number # Amplitude of change
 function Role:set_role_vignetting_change_range(value) end
 
---Set the player's dark corner color
+--Set the player is dark corner color
 ---@param r number # R
 ---@param g number # G
 ---@param b number # B
 ---@param interval? number # Interval
 function Role:set_role_vignetting_color(r, g, b, interval) end
 
---Set the player's basic action shortcuts (filter out those that prohibit modification)
+--Set the player is basic action shortcuts (filter out those that prohibit modification)
 ---@param game_func_id py.EditableGameFunc # Editable operation
 ---@param normal_key py.NormalKey # Function key
 ---@param record_key py.RecordKey # Auxiliary key
@@ -376,12 +376,12 @@ function Role:api_is_conf_of_editable_game_func(normal_key, record_key) end
 ---@return py.EditableGameFunc? # Basic operations can be modified
 function Role:api_get_editable_game_func_of_shortcut(normal_key, record_key) end
 
---Set the player's Boolean buried point data
+--Set the player is Boolean buried point data
 ---@param key integer # Boolean key
 ---@param value boolean # Boolean value
 function Role:set_bool_hit_point_data(key, value) end
 
---Set the player's integer buried point data
+--Set the player is integer buried point data
 ---@param key integer # Integer key
 ---@param value integer # integer
 function Role:set_int_hit_point_data(key, value) end
@@ -390,12 +390,12 @@ function Role:set_int_hit_point_data(key, value) end
 ---@param follow_distance py.Fixed # Following distance
 function Role:api_set_follow_distance(follow_distance) end
 
---Sets the player's mouse style
+--Sets the player is mouse style
 ---@param cur_state_key py.CursorState # Mouse state
 ---@param cur_key py.CursorKey # Mouse key
 function Role:api_set_role_cursor(cur_state_key, cur_key) end
 
---Set the player's skill indicator effects
+--Set the player is skill indicator effects
 ---@param skill_indicator_key integer # Indicator effect enumeration
 ---@param effect_key py.SfxKey # Special effects key
 function Role:api_set_role_skill_indicator(skill_indicator_key, effect_key) end
@@ -412,12 +412,12 @@ function Role:api_is_honor_vip() end
 ---@return boolean? # Author or not
 function Role:api_is_cur_map_author() end
 
---Gets the ID of the player's equipment decoration type
+--Gets the ID of the player is equipment decoration type
 ---@param plat_deco_type py.PlatformDecoType # Platform decoration type
 ---@return integer? # Decoration ID
 function Role:api_get_equip_deco_id(plat_deco_type) end
 
---Gets the player's level in the local graph
+--Gets the player is level in the local graph
 ---@return integer? # Map level
 function Role:api_get_map_level() end
 
@@ -425,7 +425,7 @@ function Role:api_get_map_level() end
 ---@return integer? # inning
 function Role:api_get_played_times() end
 
---The player's platform rank in the local chart
+--The player is platform rank in the local chart
 ---@return integer? # Ranking
 function Role:api_get_map_level_rank() end
 
@@ -447,12 +447,12 @@ function Role:api_is_returning_player() end
 ---@return boolean? # Whether to save the current map
 function Role:api_is_bookmark_current_map() end
 
---Get the player's current season ladder ranking points
+--Get the player is current season ladder ranking points
 ---@param ladder_key string # Ladder key
 ---@return integer? # points
 function Role:api_get_ladder_rank_points(ladder_key) end
 
---Get the player's cumulative recharge for the map
+--Get the player is cumulative recharge for the map
 ---@return py.Fixed? # Cumulative recharge
 function Role:api_get_role_total_consume() end
 
@@ -483,7 +483,7 @@ function Role:set_role_vignetting_color_hex(color, interval) end
 ---@param rank integer # Game rankings of the game
 function Role:upload_player_game_rank(rank) end
 
---Gets the player's currently selected unit group
+--Gets the player is currently selected unit group
 ---@return py.UnitGroup? # Unit group
 function Role:api_get_role_select_units() end
 
@@ -491,27 +491,27 @@ function Role:api_get_role_select_units() end
 ---@param save_index integer # Player save field
 function Role:update_player_save_rank(save_index) end
 
---Gets the player's current season ladder number
+--Gets the player is current season ladder number
 ---@param ladder_key string # Ladder key
 ---@return integer? # Season number
 function Role:api_get_current_season_id(ladder_key) end
 
---Get the player's current season ladder rank
+--Get the player is current season ladder rank
 ---@param ladder_key string # Ladder key
 ---@return integer? # Current season standings
 function Role:api_get_current_season_standing(ladder_key) end
 
---Gets the player's current ladder ranking
+--Gets the player is current ladder ranking
 ---@param ladder_key string # Ladder key
 ---@param rank_number integer # Which rank
 ---@return integer? # Ranking times
 function Role:api_get_current_season_standing_number(ladder_key, rank_number) end
 
---Gets the player's current map expeditions
+--Gets the player is current map expeditions
 ---@return integer? # expeditions
 function Role:api_get_number_of_expeditions() end
 
---Get the player's current map adventure duration
+--Get the player is current map adventure duration
 ---@return integer? # Duration of expedition
 function Role:api_get_time_of_expeditions() end
 
@@ -523,7 +523,7 @@ function Role:api_get_role_store_params() end
 ---@return boolean? # Achievement points
 function Role:api_get_role_achieve_point() end
 
---Gets whether the player's current map achievement is unlocked
+--Gets whether the player is current map achievement is unlocked
 ---@param achieve_id string # Achievement ID
 ---@return boolean? # Unlock or not
 function Role:api_get_role_achieve_unlock(achieve_id) end

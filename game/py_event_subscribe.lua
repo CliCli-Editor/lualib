@@ -22,7 +22,7 @@ function M.convert_py_params(event_key, event_params, extra_args)
         return event_params
         --error(string.format('event %s not found', event_key))
     end
-    -- TODO 见问题10，改为用户访问时才会实际访问py层的字段
+    --TODO see question 10, change the user access will actually access the py layer field
     --local lua_params = M.convert_py_params_instant(event_name, event_config, event_params)
     local lua_params = M.convert_py_params_lazy(event_key, event_data, event_params, extra_args)
     return lua_params
@@ -140,7 +140,7 @@ local function extract_addition(event_name, extra_args)
 
     local extra_count = extra_args and #extra_args or 0
     if extra_count < #config.params then
-        error('事件的参数不足！')
+        error('Insufficient parameters for the event!')
     end
     if not extra_args then
         return nil, nil
@@ -235,7 +235,7 @@ function M.unref_args(name, args)
         end
     end
 
-    error('未找到事件的引用！' .. tostring(name))
+    error('No reference for event found!' .. tostring(name))
 end
 
 --The engine does not provide an interface for removing triggers, but events registered with an existing id will be removed before they are
@@ -284,10 +284,10 @@ function M.event_register(event_name, extra_args)
     py_trigger.on_event = function (trigger, event, actor, data)
         local lua_params = M.convert_py_params(py_event_name, data, extra_args)
         game_event.event_notify(event_name, extra_args, lua_params)
-        -- object_event.event_notify(event_name, extra_args, lua_params)
+        --object_event.event_notify(event_name, extra_args, lua_params)
     end
 
-    -- 在初始化时注册的事件会自动启用，但之后注册的事件需要手动启用
+    --Events registered at initialization are automatically enabled, but events registered after that need to be manually enabled
     if M.need_enable_trigger_manualy then
         GameAPI.enable_global_lua_trigger(py_trigger)
     end
@@ -304,7 +304,7 @@ function M.event_unregister(event_name, extra_args)
     local trigger_id = ref.trg_id
     table.insert(M.removed_ids, trigger_id)
 
-    -- 建一个占位的触发器，以尽快释放引用
+    --Build a placeholder trigger to release the reference as soon as possible
     local dummy_trigger = new_global_trigger(trigger_id, 'GAME_INIT', 'ET_GAME_INIT', false)
     if M.need_enable_trigger_manualy then
         GameAPI.enable_global_lua_trigger(dummy_trigger)

@@ -193,7 +193,7 @@ function GameAPI.api_disable_mini_map_alpha_click_range(role, comp_name) end
 ---@param offset_percent_y? py.Fixed # Percentage of deviation in the Y direction
 function GameAPI.create_frame_sequence_on_mini_map(world_pos, sequence_resource, source_player, visible_type, scale, offset_percent_x, offset_percent_y) end
 
---Creates a sequence frame animation on the unit's minimap avatar
+--Creates a sequence frame animation on the unit is minimap avatar
 ---@param unit py.Unit # unit
 ---@param sequence_resource py.Sequence # Sequence frame resource
 ---@param is_loop boolean # Loop or not
@@ -206,7 +206,7 @@ function GameAPI.create_sequence_on_unit_mini_map_icon(unit, sequence_resource, 
 ---@param is_loop boolean # Loop or not
 function GameAPI.set_unit_mini_map_sequence_icon(unit, sequence_resource, is_loop) end
 
---Sets the enemy minimap avatar for the unit's sequence frame type
+--Sets the enemy minimap avatar for the unit is sequence frame type
 ---@param unit py.Unit # unit
 ---@param sequence_resource py.Sequence # Sequence frame resource
 ---@param is_loop boolean # Loop or not

@@ -13,22 +13,22 @@ M.gameSpeedApply = M.gameSpeedApply or false
 M.gamePaused = M.gamePaused or false
 
 function M.createGameSpeed()
-    return clicli.develop.helper.createTreeNode('速度', {
+    return clicli.develop.helper.createTreeNode('speed', {
         description = string.format('%.1f', M.gameSpeed),
-        tooltip = '游戏速度',
+        tooltip = 'Game speed',
         onClick = function (node)
             clicli.develop.helper.createInputBox {
-                title = '设置游戏速度',
+                title = 'Set the game speed',
                 value = string.format('%.1f', M.gameSpeed),
                 validateInput = function (value)
                     if not tonumber(value) then
-                        return '请输入数字'
+                        return 'Please enter the number'
                     end
                     if tonumber(value) < 0 then
-                        return '速度不能小于0'
+                        return 'The velocity cannot be less than 0'
                     end
                     if tonumber(value) > 100 then
-                        return '速度不能大于100'
+                        return 'The speed cannot be greater than 100'
                     end
                     return nil
                 end,
@@ -51,7 +51,7 @@ function M.createGameSpeed()
 end
 
 function M.createGamePause()
-    return clicli.develop.helper.createTreeNode('暂停', {
+    return clicli.develop.helper.createTreeNode('Pause', {
         icon = 'debug-pause',
         onClick = function (node)
             clicli.sync.send('$game_pause', not M.gamePaused)
@@ -67,7 +67,7 @@ function M.createGameTimer()
         local s    = sec % 60
         return string.format('%02d:%02d:%02d', hour, min, s)
     end
-    local node = clicli.develop.helper.createTreeNode('时间', {
+    local node = clicli.develop.helper.createTreeNode('time', {
         icon = 'clock',
         description = formatTime(clicli.ltimer.clock() // 1000),
         childsGetter = function ()
@@ -88,7 +88,7 @@ end
 ---@param source Player
 local function updateGameSpeed(source)
     local speed = M.gameSpeedApply and M.gameSpeed or 1
-    print(string.format('%s 将游戏速度调整为：%.1f', source, speed))
+    print(string.format('%s changes the game speed to: %.1f', source, speed))
     GameAPI.api_set_time_scale(speed)
 end
 
@@ -115,18 +115,18 @@ end)
 clicli.sync.onSync('$game_pause', function (pause, source)
     M.gamePaused = pause
     if pause then
-        print(string.format('%s 暂停了游戏', source))
+        print(string.format('%s pauses the game', source))
         clicli.game.enable_soft_pause()
     else
-        print(string.format('%s 继续了游戏', source))
+        print(string.format('%s continued the game', source))
         clicli.game.resume_soft_pause()
     end
     if M.gamePauseButton then
         if pause then
-            M.gamePauseButton.name = '继续'
+            M.gamePauseButton.name = 'continue'
             M.gamePauseButton.icon = 'debug-start'
         else
-            M.gamePauseButton.name = '暂停'
+            M.gamePauseButton.name = 'Pause'
             M.gamePauseButton.icon = 'debug-pause'
         end
     end
@@ -139,10 +139,10 @@ function M.createMemoryWatcher()
         return string.format('%.2f MB', mem / 1000)
     end
 
-    local node = clicli.develop.helper.createTreeNode('内存占用', {
+    local node = clicli.develop.helper.createTreeNode('Memory footprint', {
         icon = 'eye',
         description = getMemory(),
-        tooltip = '只统计Lua的内存占用',
+        tooltip = 'Only the memory usage of Lua is collected',
     })
     node:bindGC(clicli.ctimer.loop(1, function ()
         node.description = getMemory()
@@ -159,9 +159,9 @@ function M.createTimerWatcher()
         subNodes[mod] = clicli.develop.helper.createTreeNode(mod)
     end
 
-    local node = clicli.develop.helper.createTreeNode('计时器', {
+    local node = clicli.develop.helper.createTreeNode('timepiece', {
         icon = 'watch',
-        tooltip = 'Lua持有的计时器数量(括号内为已经移除但还未被Lua回收的数量)',
+        tooltip = 'Number of timers held by Lua (in parentheses are the number removed but not yet reclaimed by Lua)',
         childs = {
             subNodes['timer'],
             subNodes['ltimer'],
@@ -174,11 +174,11 @@ function M.createTimerWatcher()
         local all = 0
         local alive = 0
         for mod, count in pairs(counts) do
-            subNodes[mod].description = string.format('数量：%d(%d)', count.alive, count.all - count.alive)
+            subNodes[mod].description = string.format('Quantity: %d(%d)', count.alive, count.all - count.alive)
             all = all + count.all
             alive = alive + count.alive
         end
-        node.description = string.format('总计：%d(%d)', alive, all - alive)
+        node.description = string.format('Total: %d(%d)', alive, all - alive)
     end)):execute()
 
     return node
@@ -186,14 +186,14 @@ end
 
 ---@return Develop.Helper.TreeNode
 function M.createTriggerWatcher()
-    local node = clicli.develop.helper.createTreeNode('触发器', {
+    local node = clicli.develop.helper.createTreeNode('flip-flop', {
         icon = 'eye',
-        tooltip = 'Lua持有的触发器数量(括号内为已经移除但还未被Lua回收的数量)',
+        tooltip = 'Number of triggers held by Lua (in parentheses are the number removed but not yet reclaimed by Lua)',
     })
 
     node:bindGC(clicli.ctimer.loop(1, function ()
         local count = watcher.triggerWatcher.count()
-        node.description = string.format('总计：%d(%d)', count.alive, count.all - count.alive)
+        node.description = string.format('Total: %d(%d)', count.alive, count.all - count.alive)
     end)):execute()
 
     return node
@@ -211,9 +211,9 @@ function M.createRefWatcher()
         return n
     end
 
-    local node = clicli.develop.helper.createTreeNode('引用', {
+    local node = clicli.develop.helper.createTreeNode('quote', {
         icon = 'list-selection',
-        tooltip = 'Lua持有的对象数量( 存活 | 死亡 | 未回收 )',
+        tooltip = 'Number of objects held by Lua (alive | dead | not reclaimed)',
         childsGetter = function (node)
             local childs = {}
             for className, ref in clicli.util.sortPairs(reflib.all_managers) do
@@ -260,9 +260,9 @@ function M.createRefWatcher()
 end
 
 function M.createTracy()
-    return clicli.develop.helper.createTreeNode('启动Tracy', {
+    return clicli.develop.helper.createTreeNode('Activate Tracy', {
         icon = 'rss',
-        tooltip = '对Lua进行性能分析，但是会大幅影响运行效率',
+        tooltip = 'The performance analysis of Lua will greatly affect the operating efficiency',
         onClick = function ()
             enable_lua_profile(true)
             helper.request('createTracy', {})
@@ -271,9 +271,9 @@ function M.createTracy()
 end
 
 function M.createReloadButton()
-    local node = clicli.develop.helper.createTreeNode('重载Lua', {
+    local node = clicli.develop.helper.createTreeNode('Heavy duty Lua', {
         icon = 'refresh',
-        tooltip = '省的你输入 `.rd`',
+        tooltip = 'Save you by typing `.rd `',
         onClick = function ()
             clicli.develop.command.execute('RD')
         end,
@@ -283,9 +283,9 @@ function M.createReloadButton()
 end
 
 function M.createRestartGameButton()
-    local node = clicli.develop.helper.createTreeNode('重启游戏', {
+    local node = clicli.develop.helper.createTreeNode('Restart the game', {
         icon = 'warning',
-        tooltip = '省的你输入 `.rr`',
+        tooltip = 'Save you by typing `.rr `',
         onClick = function ()
             clicli.develop.command.execute('RR')
         end,
@@ -294,52 +294,52 @@ function M.createRestartGameButton()
     return node
 end
 
----给这个变量重新赋值即可重新定义排版，语法自己研究吧
+---Reassigning this variable redefines the layout. You can study the syntax yourself
 M.attrLayout = [[
-生命 ${生命} / ${最大生命}
-    最大生命
-    生命恢复
-    百分比生命恢复
-魔法 ${魔法} / ${最大魔法}
-    最大魔法
-    魔法恢复
-移动速度
-物理攻击
-    攻击速度
-    攻击间隔
-    攻击范围
-    暴击率
-    暴击伤害
-    物理穿透
-    物理穿透比例
-    物理吸血
-    伤害加成
-    命中率
-法术攻击
-    法术攻击
-    法术穿透
-    法术穿透比例
-    法术吸血
-    冷却缩减
-防御 ${物理防御} | ${法术防御}
-    物理防御
-    法术防御
-    被治疗加成
-    躲避率
-    受伤减免
-属性 ${力量} | ${敏捷} | ${智力}
-    力量
-    敏捷
-    智力
-    主属性
-白天视野
-    白天扇形视野半径
-    白天扇形视野夹角
-    夜晚视野
-    夜晚扇形视野半径
-    夜晚扇形视野夹角
-    真实视野
-自定义属性
+Life ${life} / ${maximum life}
+    Maximum life
+    Life recovery
+    Percent health recovery
+Magic ${magic} / ${Maximum magic}
+    Maximum magic
+    Magic recovery
+Moving speed
+Physical attack
+    Attack speed
+    Attack interval
+    Attack range
+    Critical Hit Chance
+    Critical hit damage
+    Physical penetration
+    Physical penetration ratio
+    Physical blood feeding
+    Damage bonus
+    Hit rate
+Spell attack
+    Spell attack
+    Spell penetration
+    Spell penetration ratio
+    Spell sucking
+    Cooling reduction
+Defense ${Physical defense} | ${Spell defense}
+    Physical defense
+    Spell defense
+    Bonus by healing
+    Dodge rate
+    Injury relief
+Attributes ${Strength} | ${Agility} | ${Intelligence}
+    strength
+    Agility
+    intelligence
+    Primary attribute
+Daytime visual field
+    Daytime fan-field radius
+    Angle of daytime fan-shaped field of view
+    Night vision
+    Radius of the fan field of view at night
+    Angle of fan view at night
+    True field of view
+Custom attribute
     ...
 ]]
 
@@ -494,7 +494,7 @@ end
 function M.createSelectingButton()
     local list = clicli.linked_table.create()
 
-    local node = clicli.develop.helper.createTreeNode('选中单位', {
+    local node = clicli.develop.helper.createTreeNode('Selected unit', {
         icon = 'organization',
         onInit = function (node)
             local function updateSelecting()
@@ -503,7 +503,7 @@ function M.createSelectingButton()
                 if first then
                     node.description = string.format('%s(%d)', first:get_name(), first:get_id())
                 else
-                    node.description = '未选中单位'
+                    node.description = 'Unselected unit'
                 end
                 node:refresh()
             end
@@ -520,12 +520,12 @@ function M.createSelectingButton()
 
                 updateSelecting()
 
-                node:bindGC(clicli.game:event('本地-选中-单位', function (trg, data)
+                node:bindGC(clicli.game:event('Local - Select - Unit', function (trg, data)
                     list:pop(data.unit)
                     list:pushHead(data.unit)
                     updateSelecting()
                 end))
-                node:bindGC(clicli.game:event('本地-选中-单位组', function (trg, data)
+                node:bindGC(clicli.game:event('Local - Select - Unit Group', function (trg, data)
                     local last
                     for _, unit in ipairs(data.unit_group_id_list:pick()) do
                         list:pop(unit)
@@ -584,7 +584,7 @@ end
 function M.create()
     local treeView
     clicli.player.with_local(function (local_player)
-        local name = string.format('仪表盘（%s）', local_player:get_name())
+        local name = string.format('Instrument Panel (%s)', local_player:get_name())
         clicli.reload.recycle(function (trash)
             treeView = trash(clicli.develop.helper.createTreeView(name, M.createRoot(name)))
         end)

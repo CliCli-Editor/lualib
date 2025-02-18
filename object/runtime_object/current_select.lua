@@ -5,56 +5,56 @@
 ---@field package _local_selecting_group? UnitGroup
 local M = Class 'Player'
 
----获取选中的单位（同步）
+---Get selected units (sync)
 ---@return Unit?
 function M:get_selecting_unit()
     return self._selecting_unit
 end
 
----获取选中的单位组（同步）
+---Get the selected unit group (Sync)
 ---@return UnitGroup?
 function M:get_selecting_unit_group()
     return self._selecting_group
 end
 
----获取本地选中的单位（本地）
+---Get Local Selected units (Local)
 ---@return Unit?
 function M:get_local_selecting_unit()
     return self._local_selecting_unit
 end
 
----获取本地选中的单位组（本地）
+---Get Local Selected Unit Group (Local)
 ---@return UnitGroup?
 function M:get_local_selecting_unit_group()
     return self._local_selecting_group
 end
 
-clicli.game:event('选中-单位', function (trg, data)
+clicli.game:event('select-unit', function (trg, data)
     data.player._selecting_unit = data.unit
     data.player._selecting_group = nil
 end)
 
-clicli.game:event('选中-单位组', function (trg, data)
+clicli.game:event('Select - Unit Group', function (trg, data)
     data.player._selecting_unit = data.unit_group_id_list:get_first()
     data.player._selecting_group = data.unit_group_id_list
 end)
 
-clicli.game:event('选中-取消', function (trg, data)
+clicli.game:event('Check - cancel', function (trg, data)
     data.player._selecting_unit = nil
     data.player._selecting_group = nil
 end)
 
-clicli.game:event('本地-选中-单位', function (trg, data)
+clicli.game:event('Local - Select - Unit', function (trg, data)
     data.player._local_selecting_unit = data.unit
     data.player._local_selecting_group = nil
 end)
 
-clicli.game:event('本地-选中-单位组', function (trg, data)
+clicli.game:event('Local - Select - Unit Group', function (trg, data)
     data.player._local_selecting_unit = data.unit_group_id_list:get_first()
     data.player._local_selecting_group = data.unit_group_id_list
 end)
 
-clicli.game:event('本地-选中-取消', function (trg, data)
+clicli.game:event('Local - Select - Cancel', function (trg, data)
     data.player._local_selecting_unit = nil
     data.player._local_selecting_group = nil
 end)

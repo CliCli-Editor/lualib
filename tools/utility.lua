@@ -39,7 +39,7 @@ local function formatNumber(n)
     if n == inf
     or n == -inf
     or n == nan
-    or n ~= n then -- IEEE 标准中，NAN 不等于自己。但是某些实现中没有遵守这个规则
+    or n ~= n then --In IEEE standards, NAN is not equal to oneself. However, some implementations do not follow this rule
         return ('%q'):format(n)
     end
     if isInteger(n) then
@@ -83,7 +83,7 @@ local RESERVED = {
 ---@class Utility
 local m = {}
 
---- 打印表的结构
+---Print the structure of the table
 ---@param tbl any
 ---@param option? table
 ---@return string
@@ -190,7 +190,7 @@ function m.dump(tbl, option)
     return tableConcat(lines, '\r\n')
 end
 
---- 递归判断A与B是否相等
+---Recursively determines whether A and B are equal
 ---@param valueA any
 ---@param valueB any
 ---@return boolean
@@ -285,14 +285,14 @@ local function sortTable(tbl)
     return setmetatable(tbl, mt)
 end
 
---- 创建一个有序表
+---Create an ordered table
 ---@param tbl? table
 ---@return table
 function m.container(tbl)
     return sortTable(tbl)
 end
 
---- 读取文件
+---Read file
 ---@param path string
 ---@param keepBom? boolean
 ---@return string? text
@@ -319,7 +319,7 @@ function m.loadFile(path, keepBom)
     return text
 end
 
---- 写入文件
+---Write to file
 ---@param path string
 ---@param content string
 ---@return boolean ok
@@ -336,7 +336,7 @@ function m.saveFile(path, content)
     end
 end
 
---- 计数器
+---counter
 ---@param init? integer
 ---@param step? integer
 ---@return fun():integer
@@ -351,7 +351,7 @@ function m.counter(init, step)
     end
 end
 
---- 排序后遍历
+---Sort and iterate
 ---@generic K, V
 ---@param t table<K, V>
 ---@param sorter? fun(a: K, b: K): boolean
@@ -370,7 +370,7 @@ function m.sortPairs(t, sorter)
     end
 end
 
---- 深拷贝（不处理元表）
+---Deep copy (no meta table processing)
 ---@param source  table
 ---@param target? table
 ---@return table
@@ -395,7 +395,7 @@ function m.deepCopy(source, target)
     return copy(source, target)
 end
 
---- 序列化
+---serialization
 ---@param t table
 ---@return table
 function m.unpack(t)
@@ -424,7 +424,7 @@ function m.unpack(t)
     return result
 end
 
---- 反序列化
+---deserialization
 ---@param t table
 ---@return table
 function m.pack(t)
@@ -450,7 +450,7 @@ function m.pack(t)
     return pack(1)
 end
 
---- defer
+---defer
 local deferMT = { __close = function (self) self[1]() end }
 function m.defer(callback)
     return setmetatable({ callback }, deferMT)
@@ -609,10 +609,10 @@ function m.tableMultiRemove(t, index)
     end
 end
 
----遍历文本的每一行
+---Walk through each line of text
 ---@param text string
 ---@param keepNL? boolean # Keep newlines
----@return fun():string?, integer?
+---@return fun():string? , integer?
 function m.eachLine(text, keepNL)
     local offset = 1
     local lineCount = 0
@@ -709,7 +709,7 @@ function m.sortCallbackOfScore(datas, scores)
     end
 end
 
----裁剪字符串
+---Crop string
 ---@param str string
 ---@param mode? '"left"'|'"right"'
 ---@return string
@@ -729,7 +729,7 @@ end
 function m.expandPath(path, env)
     if path:sub(1, 1) == '~' then
         local home = getenv('HOME')
-        if not home then -- has to be Windows
+        if not home then --has to be Windows
             home = getenv 'USERPROFILE' or (getenv 'HOMEDRIVE' .. getenv 'HOMEPATH')
         end
         return home .. path:sub(2)
@@ -753,7 +753,7 @@ end
 ---@class switch
 ---@field cachedCases string[]
 ---@field map table<string, function>
----@field _default fun(...):...
+---@field _default fun(...) :...
 local switchMT = {}
 switchMT.__index = switchMT
 
@@ -764,7 +764,7 @@ function switchMT:case(name)
     return self
 end
 
----@param callback async fun(...):...
+---@param callback async fun(...) :...
 ---@return switch
 function switchMT:call(callback)
     for i = 1, #self.cachedCases do
@@ -778,7 +778,7 @@ function switchMT:call(callback)
     return self
 end
 
----@param callback fun(...):...
+---@param callback fun(...) :...
 ---@return switch
 function switchMT:default(callback)
     self._default = callback

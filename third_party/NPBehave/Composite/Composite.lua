@@ -15,7 +15,7 @@ end)
 ---@param ... NPBehave.Node
 ---@return self
 function Composite:__init(name, ...)
-    -- 转换为数组
+    --Convert to array
     self.Children = {...}
     for _, node in ipairs(self.Children) do
         node:SetParent(self)

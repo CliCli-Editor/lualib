@@ -1,6 +1,6 @@
 # Camera
 
-镜头
+Lens
 
 ## apply
 
@@ -8,76 +8,76 @@
 (method) Camera:apply(player_or_group?: Player|PlayerGroup, duration?: number, slope_mode?: y3.Const.CameraMoveMode)
 ```
 
- 引用镜头
+ Reference shot
 
-@*param* `player_or_group` — 玩家或玩家组，默认为所有玩家
+@*param* `player_or_group` — Players or groups of players, all players by default
 
-@*param* `duration` — 过渡时间，默认为0
+@*param* `duration` — Transition time, the default is0
 
-@*param* `slope_mode` — 过渡模式，默认为匀速
+@*param* `slope_mode` — Transition mode, the default is constant speed
 ## camera_shake
 
 ```lua
 function Camera.camera_shake(player: Player, strength: number, speed: number, time: number, shake_type: integer)
 ```
 
-镜头摇晃镜头
+Camera wobble
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `strength` — 晃动幅度
+@*param* `strength` — Swing amplitude
 
-@*param* `speed` — 速率
+@*param* `speed` — speed
 
-@*param* `time` — 持续时间
+@*param* `time` — duration
 
-@*param* `shake_type` — 震动模式
+@*param* `shake_type` — Vibration mode
 ## camera_shake_with_decay
 
 ```lua
 function Camera.camera_shake_with_decay(player: Player, shake: number, attenuation: number, frequency: number, time: number, shake_type: integer)
 ```
 
-镜头带衰减震动
+The lens tape attenuates vibration
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `shake` — 震动幅度
+@*param* `shake` — Amplitude of vibration
 
-@*param* `attenuation` — 衰减
+@*param* `attenuation` — attenuation
 
-@*param* `frequency` — 频率
+@*param* `frequency` — frequency
 
-@*param* `time` — 持续时间
+@*param* `time` — duration
 
-@*param* `shake_type` — 震动模式
+@*param* `shake_type` — Vibration mode
 ## cancel_area_limit
 
 ```lua
 function Camera.cancel_area_limit(player: Player)
 ```
 
-关闭镜头限制移动
+Turn off the lens to restrict movement
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## cancel_camera_follow_unit
 
 ```lua
 function Camera.cancel_camera_follow_unit(player: Player)
 ```
 
-设置镜头取消跟随
+Set the lens to unfollow
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## cancel_tps_follow_unit
 
 ```lua
 function Camera.cancel_tps_follow_unit(player: Player)
 ```
 
-取消镜头第三人称跟随单位
+Cancel the lens third person following unit
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## create_camera
 
 ```lua
@@ -85,37 +85,37 @@ function Camera.create_camera(point: Point, focal_length: number, focal_height: 
   -> Camera
 ```
 
-创建镜头
+Create shot
 
-@*param* `point` — 镜头所在点
+@*param* `point` — Shot point
 
-@*param* `focal_length` — 焦距
+@*param* `focal_length` — Focus Distance
 
-@*param* `focal_height` — 焦点高度
+@*param* `focal_height` — Focal height
 
-@*param* `yaw` — 镜头的yaw
+@*param* `yaw` — Lens'yaw
 
-@*param* `pitch` — 镜头的pitch
+@*param* `pitch` — Lens'pitch
 
-@*param* `range_of_visibility` — 远景裁切范围
+@*param* `range_of_visibility` — Vision cut scope
 ## disable_camera_move
 
 ```lua
 function Camera.disable_camera_move(player: Player)
 ```
 
-禁止玩家镜头移动
+Disable player camera movement
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## enable_camera_move
 
 ```lua
 function Camera.enable_camera_move(player: Player)
 ```
 
-允许玩家镜头移动
+Allows the player to move the camera
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## get_by_handle
 
 ```lua
@@ -130,243 +130,243 @@ function Camera.get_by_res_id(res_id: integer)
   -> Camera
 ```
 
- 获取摆放在场景上的镜头
+ Get the lens placed on the scene
 ## get_camera_center_raycast
 
 ```lua
 function Camera.get_camera_center_raycast(player: Player)
-  -> 摄像机中心射线的碰撞点: Point
+  -> The collision point of the central ray of the camera: Point
 ```
 
- 获取玩家摄像机中心射线的碰撞点。
- 必须先设置 `y3.config.sync.camera = true`
+ Gets the collision point of the center ray of the player's camera。
+ Must be set `y3.config.sync.camera = true`
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## get_player_camera_direction
 
 ```lua
 function Camera.get_player_camera_direction(player: Player)
-  -> 摄像机朝向: Point
+  -> Camera orientation: Point
 ```
 
- 获取玩家摄像机朝向。
- 必须先设置 `y3.config.sync.camera = true`
+ Get the player camera orientation。
+ Must be set `y3.config.sync.camera = true`
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## handle
 
 ```lua
 py.Camera
 ```
 
-镜头配置
+Lens configuration
 ## is_camera_playing_timeline
 
 ```lua
 function Camera.is_camera_playing_timeline(player: Player)
-  -> 是否正在播放动画: boolean
+  -> Whether an animation is playing: boolean
 ```
 
-玩家镜头是否正在播放动画
+Whether the player camera is playing an animation
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## limit_in_rectangle_area
 
 ```lua
 function Camera.limit_in_rectangle_area(player: Player, area: Area)
 ```
 
-限制镜头移动范围
+Limit lens movement
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `area` — 移动范围区域
+@*param* `area` — Moving range area
 ## linear_move_by_time
 
 ```lua
 function Camera.linear_move_by_time(player: Player, point: Point, time: number, move_type: integer)
 ```
 
-线性移动（时间）
+Linear movement (time）
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `point` — 目标点
+@*param* `point` — Target point
 
-@*param* `time` — 过渡时间
+@*param* `time` — Transition time
 
-@*param* `move_type` — 移动模式
+@*param* `move_type` — Mobile mode
 ## look_at_point
 
 ```lua
 function Camera.look_at_point(player: Player, point: Point, time: number)
 ```
 
-设置镜头朝向点
+Set the lens to face the point
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `point` — 目标点
+@*param* `point` — Target point
 
-@*param* `time` — 过渡时间
+@*param* `time` — Transition time
 ## play_camera_timeline
 
 ```lua
 function Camera.play_camera_timeline(player: Player, camera_timeline_id: py.CamlineID)
 ```
 
-播放镜头动画
+Play shot animation
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `camera_timeline_id` — 镜头动画ID
+@*param* `camera_timeline_id` — Shot animationID
 ## set_camera_follow_unit
 
 ```lua
 function Camera.set_camera_follow_unit(player: Player, unit: Unit, x: number, y: number, height: number)
 ```
 
-设置镜头跟随单位
+Set the lens following unit
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `unit` — 目标单位
+@*param* `unit` — Target unit
 
-@*param* `x` — 过渡时间
+@*param* `x` — Transition time
 
-@*param* `y` — 移动模式
+@*param* `y` — Mobile mode
 
-@*param* `height` — 高度
+@*param* `height` — Altitude
 ## set_distance
 
 ```lua
 function Camera.set_distance(player: Player, value: number, time: number)
 ```
 
-设置焦点距离
+Set focus distance
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
 @*param* `value` — 值
 
-@*param* `time` — 过渡时间
+@*param* `time` — Transition time
 ## set_focus_height
 
 ```lua
 function Camera.set_focus_height(player: Player, value: number, time: number)
 ```
 
-设置镜头焦点高度
+Set the lens focus height
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
 @*param* `value` — 值
 
-@*param* `time` — 过渡时间
+@*param* `time` — Transition time
 ## set_keyboard_move_camera_speed
 
 ```lua
 function Camera.set_keyboard_move_camera_speed(player: Player, speed: number)
 ```
 
-设置镜头移动速度（键盘）
+Set the camera movement speed (keyboard）
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `speed` — 移动速度
+@*param* `speed` — Moving speed
 ## set_max_distance
 
 ```lua
 function Camera.set_max_distance(player: Player, value: number)
 ```
 
-设置镜头高度上限
+Set the maximum lens height
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `value` — 高度上限
+@*param* `value` — Upper limit of height
 ## set_mouse_move_camera_speed
 
 ```lua
 function Camera.set_mouse_move_camera_speed(player: Player, speed: number)
 ```
 
-设置镜头移动速度（鼠标）
+Set the lens movement speed (mouse）
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `speed` — 移动速度
+@*param* `speed` — Moving speed
 ## set_moving_with_mouse
 
 ```lua
 function Camera.set_moving_with_mouse(player: Player, state: boolean)
 ```
 
-设置是否可以鼠标移动镜头
+Set whether the mouse can move the lens
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `state` — 开关
+@*param* `state` — Switch
 ## set_rotate
 
 ```lua
 function Camera.set_rotate(player: Player, angle_type: py.CameraRotate, value: number, time: number)
 ```
 
-设置镜头角度
+Set the lens Angle
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `angle_type` — 角度类型
+@*param* `angle_type` — Angle type
 
 @*param* `value` — 值
 
-@*param* `time` — 过渡时间
+@*param* `time` — Transition time
 ## set_tps_follow_unit
 
 ```lua
 function Camera.set_tps_follow_unit(player: Player, unit: Unit, sensitivity?: number, yaw?: number, pitch?: number, x_offset?: number, y_offset?: number, z_offset?: number, camera_distance?: number)
 ```
 
-设置镜头第三人称跟随单位
+Set the lens third person following unit
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `unit` — 目标单位
+@*param* `unit` — Target unit
 
-@*param* `sensitivity` — 灵敏度
+@*param* `sensitivity` — sensitivity
 
 @*param* `yaw` — yaw
 
 @*param* `pitch` — pitch
 
-@*param* `x_offset` — 偏移量X
+@*param* `x_offset` — offsetX
 
-@*param* `y_offset` — 偏移量Y
+@*param* `y_offset` — offsetY
 
-@*param* `z_offset` — 偏移高度
+@*param* `z_offset` — Offset height
 
-@*param* `camera_distance` — 距离焦点距离
+@*param* `camera_distance` — Distance from focus
 ## show_tps_mode_mouse
 
 ```lua
 function Camera.show_tps_mode_mouse(player: Player, switch: boolean)
 ```
 
-设置TPS视角鼠标显示
+Set TPS Angle mouse display
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `switch` — 是否显示鼠标
+@*param* `switch` — Show mouse or not
 ## stop_camera_timeline
 
 ```lua
 function Camera.stop_camera_timeline(player: Player)
 ```
 
-停止镜头动画
+Stop shot animation
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## type
 
 ```lua

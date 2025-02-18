@@ -1,8 +1,8 @@
 # Timer
 
-同步计时器
+Synchronous timer
 
-所有玩家必须使用一致的计时器，否则会造成不同步
+All players must use the same timer, otherwise it will be out of sync
 
 ## all_timers
 
@@ -17,11 +17,11 @@ function Timer.count_loop(timeout: number, times: integer, on_timer: fun(timer: 
   -> Timer
 ```
 
- 循环执行，可以指定最大次数
+ Loop execution, you can specify a maximum number of times
 
-@*param* `desc` — 描述
+@*param* `desc` — Description
 
-@*param* `immediate` — 是否立即执行一次(计入最大次数)
+@*param* `immediate` — Whether to execute once immediately (count the maximum number of times)
 ## count_loop_frame
 
 ```lua
@@ -29,10 +29,10 @@ function Timer.count_loop_frame(frame: integer, times: integer, on_timer: fun(ti
   -> Timer
 ```
 
- 每经过一定帧数后执行，可以指定最大次数
-> 请改用 `y3.ltimer.count_loop_frame`
+ You can specify the maximum number of frames to be executed after a certain number of frames
+> Please change to... `y3.ltimer.count_loop_frame`
 
-@*param* `desc` — 描述
+@*param* `desc` — Description
 ## desc
 
 ```lua
@@ -45,7 +45,7 @@ string
 (method) Timer:execute(...any)
 ```
 
- 立即执行
+ Immediate execution
 ## get_by_handle
 
 ```lua
@@ -60,9 +60,9 @@ function Timer.get_by_handle(py_timer: py.Timer, on_timer: Timer.OnTimer)
   -> time: number
 ```
 
-获取计时器经过的时间
+Gets the elapsed time of the timer
 
-@*return* `time` — 计时器经过的时间
+@*return* `time` — The elapsed time of the timer
 ## get_include_name
 
 ```lua
@@ -77,9 +77,9 @@ function Timer.get_by_handle(py_timer: py.Timer, on_timer: Timer.OnTimer)
   -> count: integer
 ```
 
-获取计时器初始计数
+Gets the timer initial count
 
-@*return* `count` — 初始计数
+@*return* `count` — Initial count
 ## get_remaining_count
 
 ```lua
@@ -87,9 +87,9 @@ function Timer.get_by_handle(py_timer: py.Timer, on_timer: Timer.OnTimer)
   -> count: integer
 ```
 
-获取计时器剩余计数
+Gets the remaining timer count
 
-@*return* `count` — 剩余计数
+@*return* `count` — Residual count
 ## get_remaining_time
 
 ```lua
@@ -97,9 +97,9 @@ function Timer.get_by_handle(py_timer: py.Timer, on_timer: Timer.OnTimer)
   -> time: number
 ```
 
-获取计时器剩余时间
+Gets the remaining time on the timer
 
-@*return* `time` — 计时器剩余时间
+@*return* `time` — Timer remaining time
 ## get_time_out_time
 
 ```lua
@@ -107,16 +107,16 @@ function Timer.get_by_handle(py_timer: py.Timer, on_timer: Timer.OnTimer)
   -> time: number
 ```
 
-获取计时器设置的时间
+Gets the time set by the timer
 
-@*return* `time` — 设置的时间
+@*return* `time` — Set time
 ## handle
 
 ```lua
 py.Timer
 ```
 
-计时器
+timepiece
 ## id
 
 ```lua
@@ -149,7 +149,7 @@ unknown
   -> boolean
 ```
 
- 是否在运行
+ Whether it is running
 ## loop
 
 ```lua
@@ -157,11 +157,11 @@ function Timer.loop(timeout: number, on_timer: fun(timer: Timer, count: integer)
   -> Timer
 ```
 
- 循环执行
+ Loop execution
 
-@*param* `desc` — 描述
+@*param* `desc` — Description
 
-@*param* `immediate` — 是否立即执行一次
+@*param* `immediate` — Whether to execute it immediately
 ## loop_frame
 
 ```lua
@@ -169,10 +169,10 @@ function Timer.loop_frame(frame: integer, on_timer: fun(timer: Timer, count: int
   -> Timer
 ```
 
- 每经过一定帧数后执行
-> 请改用 `y3.ltimer.loop_frame`
+ Execute after a certain number of frames
+> Please change to... `y3.ltimer.loop_frame`
 
-@*param* `desc` — 描述
+@*param* `desc` — Description
 ## mode
 
 ```lua
@@ -192,28 +192,28 @@ function Timer.pairs()
   -> fun():Timer?
 ```
 
- 遍历所有的计时器，仅用于调试（可能会遍历到已经失效的）
+ Iterate over all timers for debugging purposes only (you may iterate over the ones that have expired)）
 ## pause
 
 ```lua
 (method) Timer:pause()
 ```
 
- 暂停计时器
+ Pause timer
 ## remove
 
 ```lua
 (method) Timer:remove()
 ```
 
- 移除计时器
+ Remove timer
 ## resume
 
 ```lua
 (method) Timer:resume()
 ```
 
- 继续计时器
+ Continue timer
 ## type
 
 ```lua
@@ -227,9 +227,9 @@ function Timer.wait(timeout: number, on_timer: fun(timer: Timer), desc?: string)
   -> Timer
 ```
 
- 等待时间后执行
+ Wait for the execution time
 
-@*param* `desc` — 描述
+@*param* `desc` — Description
 ## wait_frame
 
 ```lua
@@ -237,10 +237,10 @@ function Timer.wait_frame(frame: integer, on_timer: fun(timer: Timer), desc?: st
   -> Timer
 ```
 
- 等待一定帧数后执行
-> 请改用 `y3.ltimer.wait_frame`
+ Wait for a certain number of frames before executing
+> Please change to... `y3.ltimer.wait_frame`
 
-@*param* `desc` — 描述
+@*param* `desc` — Description
 
 # Timer.Mode
 

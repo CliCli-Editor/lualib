@@ -91,7 +91,7 @@ local metaKV = { __mode = 'kv' }
 function M.new(obj, config, custom)
     local tp = type(obj)
     if tp ~= 'table' and tp ~= 'userdata' then
-        error('只有table和userdata可以被代理')
+        error('Only table and userdata can be brokered')
     end
     config = config or defaultConfig
 

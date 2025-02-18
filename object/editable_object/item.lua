@@ -59,8 +59,8 @@ M.ref_manager = New 'Ref' ('Item', function (id)
     return New 'Item' (id, py_item)
 end)
 
----通过py层的技能实例获取lua层的道具实例
----@param  py_item py.Item py层的道具实例
+---Get an item instance in lua from a skill instance in py
+---@param py_item py.Item py layer item instance
 ---@return Item? # Returns the lua layer item instance after being initialized in the lua layer
 function M.get_by_handle(py_item)
     if not py_item then
@@ -85,8 +85,8 @@ end
 
 clicli.py_converter.register_py_to_lua('py.ItemID', M.get_by_id)
 
----是否存在
----@return boolean is_exist 是否存在
+---Existence or not
+---@return boolean is_exist Whether it exists
 function M:is_exist()
     return  GameAPI.item_is_exist(self.handle)
 end
@@ -97,15 +97,15 @@ function M:get_id()
     return self.id
 end
 
----存在标签
----@param tag string 删除标签
----@return boolean is_has_tag 是否有标签
+---Presence tag
+---@param tag string Deletes a tag
+---@return boolean is_has_tag Whether there is a tag
 function M:has_tag(tag)
     return self.handle:api_has_tag(tag) or false
 end
 
----是否在场景中
----@return boolean is_in_scene 是否在场景中
+---Whether it is in the scene
+---@return boolean Whether is_in_scene is in the scene
 function M:is_in_scene()
     if not self:is_exist() then
         return false
@@ -113,22 +113,22 @@ function M:is_in_scene()
     return self.handle:api_is_in_scene() or false
 end
 
----物品在物品栏
----@return boolean is_in_bar 是否在物品栏
+---Items are in the inventory
+---@return boolean Whether is_in_bar is in the inventory
 function M:is_in_bar()
     return self.handle:api_is_in_bar() or false
 end
 
----物品在背包栏
----@return boolean is_in_bag 是否在背包栏
+---Items in the backpack bar
+---@return boolean Whether is_in_bag is in the backpack column
 function M:is_in_bag()
     return self.handle:api_is_in_pkg() or false
 end
 
----遍历物品的单位属性
----@return string[] keys 属性key
+---Traverse the unit properties of the item
+---@return string[] keys Attribute key
 function M:attr_pick()
-    -- 去掉首尾的方括号
+    --Remove the square brackets
     local tmp = tostring(GameAPI.iter_unit_attr_of_item(self.handle)):sub(2, -2)
     local result = {}
     for match in tmp:gmatch("'([^']+)'") do
@@ -137,11 +137,11 @@ function M:attr_pick()
     return result
 end
 
----遍历物品类型的单位属性
----@param item_key py.ItemKey 物品类型
----@return string[] keys 属性key
+---Iterate over the unit properties of the item type
+---@param item_key py.ItemKey Item type
+---@return string[] keys Attribute key
 function M.attr_pick_by_key(item_key)
-    -- 去掉首尾的方括号
+    --Remove the square brackets
     local tmp = tostring(GameAPI.iter_unit_attr_of_item_name(item_key)):sub(2, -2)
     local result = {}
     for match in tmp:gmatch("'([^']+)'") do
@@ -150,7 +150,7 @@ function M.attr_pick_by_key(item_key)
     return result
 end
 
----删除物品
+---Delete item
 function M:remove()
     if not self._removed then
         self._removed = true
@@ -160,175 +160,175 @@ function M:remove()
     end
 end
 
----丢弃物品到点
----@param point Point 目标点
----@param count integer 丢弃数量
+---Discard items to point
+---@param point Point Target point
+---@param count integer Specifies the number of discarded items
 function M:drop(point, count)
     ---@diagnostic disable-next-line: param-type-mismatch
     self.handle:api_drop_self(point.handle, count)
 end
 
----移动到点 
----@param point Point 点
+---Move to point
+---@param point Point
 function M:set_point(point)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     self.handle:api_transmit(point.handle)
 end
 
----设置物品的名称
----@param name string 名字
+---Set the name of the item
+---@param name string Name
 function M:set_name(name)
     self.handle:set_name(name)
 end
 
----设置物品的描述
----@param description string 描述
+---Set the description of the item
+---@param description string Description
 function M:set_description(description)
     self.handle:api_set_desc(description)
 end
 
----设置物品的图标
----@param picture_id py.Texture 图片id
+---Set the item's icon
+---@param picture_id py.Texture Image id
 function M:set_icon(picture_id)
     self.handle:api_set_item_icon(picture_id)
 end
 
----获取物品的图标
+---Gets the icon of the item
 ---@return py.Texture
 function M:get_icon()
     return self.handle:api_get_item_icon() or 0
 end
 
----设置所属玩家
----@param player Player 所属玩家
+---Set owned players
+---@param player Belongs to the Player
 function M:set_owner_player(player)
     self.handle:api_set_creator(player.handle)
 end
 
----设置等级
----@param level integer 等级
+---Set level
+---@param level integer Specifies the level
 function M:set_level(level)
     self.handle:api_set_level(level)
 end
 
----设置充能数
----@param charge integer 充能数
+---Set the charge amount
+---@param charge integer Charge integer
 function M:set_charge(charge)
     self.handle:api_set_charge_cnt(charge)
 end
 
----增加充能数
----@param charge integer 充能数
+---Increase charge number
+---@param charge integer Charge integer
 function M:add_charge(charge)
     self.handle:api_add_charge(charge)
 end
 
----设置最大充能数
----@param charge integer 最大充能数 
+---Set the maximum charge number
+---@param charge integer Maximum charge number
 function M:set_max_charge(charge)
     self.handle:api_set_max_charge(charge)
 end
 
----设置堆叠数
----@param stack integer 堆叠数
+---Set the number of stacks
+---@param stack integer Specifies the number of stacks
 function M:set_stack(stack)
     self.handle:api_set_stack_cnt(stack)
 end
 
----增加堆叠数
----@param stack integer 堆叠数
+---Increase stack count
+---@param stack integer Specifies the number of stacks
 function M:add_stack(stack)
     self.handle:api_add_stack(stack)
 end
 
----设置属性
----@param attr_name string 属性名
----@param value number 属性值
----@param attr_type string 属性类型
+---Set attribute
+---@param attr_name string Attribute name
+---@param value number Attribute value
+---@param attr_type string Attribute type
 function M:set_attr(attr_name, value, attr_type)
     self.handle:api_set_attr(attr_type, attr_name, value)
 end
 
----设置基础属性
----@param key string 属性key
----@param value number 属性值
+---Set base properties
+---@param key string Attribute key
+---@param value number Attribute value
 function M:set_attribute(key, value)
     self.handle:api_set_attr("ATTR_BASE", key, value)
 end
 
----增加基础属性
----@param key string 属性key
----@param value number 属性值
+---Add base attributes
+---@param key string Attribute key
+---@param value number Attribute value
 function M:add_attribute(key, value)
     self.handle:api_change_attr("ATTR_BASE", key, value)
 end
 
----获取物品的基础属性
----@param key string 属性key
+---Gets the basic properties of an item
+---@param key string Attribute key
 ---@return number
 function M:get_attribute(key)
     return clicli.helper.tonumber(self.handle:api_get_attr("ATTR_BASE", key)) or 0.0
 end
 
----设置增益属性
----@param key string 属性key
----@param value number 属性值
+---Set gain attribute
+---@param key string Attribute key
+---@param value number Attribute value
 function M:set_bonus_attribute(key, value)
     self.handle:api_set_attr("ATTR_BONUS", key, value)
 end
 
----增加增益属性
----@param key string 属性key
----@param value number 属性值
+---Increase gain attribute
+---@param key string Attribute key
+---@param value number Attribute value
 function M:add_bonus_attribute(key, value)
     self.handle:api_change_attr("ATTR_BONUS", key, value)
 end
 
----获取物品的增益属性
----@param key string 属性key
+---Gets the item's gain attribute
+---@param key string Attribute key
 ---@return number
 function M:get_bonus_attribute(key)
     return clicli.helper.tonumber(self.handle:api_get_attr("ATTR_BONUS", key)) or 0.0
 end
----设置生命值
----@param value number 生命值
+---Set health
+---@param value number Health value
 function M:set_hp(value)
     self.handle:api_set_hp(value)
 end
 
----给物品添加被动技能
----@param ability_id py.AbilityKey 技能id
----@param level integer 等级
+---Adds passive abilities to items
+---@param ability_id py.AbilityKey Skill id
+---@param level integer Specifies the level
 function M:add_passive_ability(ability_id, level)
     self.handle:api_item_add_passive_ability(ability_id, level)
 end
 
----设置丢弃状态
----@param dropable boolean 状态
+---Set discard state
+---@param dropable boolean status
 function M:set_droppable(dropable)
     self.handle:api_set_droppable(dropable)
 end
 
----添加标签
----@param tag string 标签
+---Add tag
+---@param tag string Tag
 function M:add_tag(tag)
     self.handle:api_add_tag(tag)
 end
 
----@param tag string 标签
+---@param tag string Tag
 function M:remove_tag(tag)
     self.handle:api_remove_tag(tag)
 end
 
----设置物品可否出售
----@param state boolean 是否可出售
+---Sets whether items can be sold
+---@param state boolean Whether to sell
 function M:set_sale_state(state)
     self.handle:api_set_sale_state(state)
 end
 
----设置物品缩放
----@param scale number 缩放
+---Set item scale
+---@param scale number Scaling
 function M:set_scale(scale)
     self.handle:api_set_scale(scale)
 end
@@ -339,28 +339,28 @@ function M:set_visible(is_visible)
     self.handle:api_set_item_visible(is_visible)
 end
 
----设置物品朝向
----@param facing number 朝向
+---Orient items
+---@param facing number one
 function M:set_facing(facing)
     self.handle:api_set_face_angle(facing)
 end
 
----获取物品类型id
----@return py.ItemKey key 类型
+---Gets the item type id
+---@returnpy.ItemKey Specifies the key type
 function M:get_key()
     return self.handle:api_get_key() or 0
 end
 
----设置物品商品售价
----@param id py.ItemKey 物品id
----@param player_attr_name py.RoleResKey 玩家属性
----@param price number 价格
+---Set item prices
+---@param id py.ItemKey Item id
+---@param player_attr_name py.RoleResKey Player attributes
+---@param price number Price
 function M.set_shop_price(id, player_attr_name, price)
     GameAPI.set_item_buy_price(id, player_attr_name, price)
 end
 
----物品持有者
----@return Unit? owner 持有者
+---possessor
+---@return Unit? owner
 function M:get_owner()
     if not IsValid(self) then
         return nil
@@ -372,80 +372,80 @@ function M:get_owner()
     return clicli.unit.get_by_handle(py_owner)
 end
 
----物品所在点
----@return Point position 物品所在点
+---Item location
+---@return Point position The point where the item is located
 function M:get_point()
     local py_point = self.handle:api_get_position()
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     return clicli.point.get_by_handle(py_point)
 end
 
----物品堆叠数
----@return integer stacks 堆叠数
+---Item stack
+---@return integer stacks Number of stacks
 function M:get_stack()
     return self.handle:api_get_stack_cnt() or 0
 end
 
----获取堆叠类型
+---Get stack type
 ---@return
----| 0 # 无
----| 1 # 充能
----| 2 # 堆叠
+---| 0 # None
+---| 1 # Charge
+---| 2 # Stack
 function M:get_stack_type()
     return self.handle:api_get_stack_type() or 0
 end
 
----物品充能数
----@return integer charges 充能数
+---Item charge number
+---@return integer charges number of charges
 function M:get_charge()
     return self.handle:api_get_charge_cnt() or 0
 end
 
----获取最大充能数
----@return integer max_charge 最大充能数
+---Get the maximum charge number
+---@return integer max_charge Maximum number of charged energies
 function M:get_max_charge()
     return self.handle:api_get_max_charge() or 0
 end
 
----获取物品等级
----@return integer level 物品等级
+---Get item level
+---@return integer level Item level
 function M:get_level()
     return self.handle:api_get_level() or 0
 end
 
----获取物品的生命值
----@return number hp 物品的生命值
+---Gain item health
+---@return number hp item health
 function M:get_hp()
     return clicli.helper.tonumber(self.handle:api_get_hp()) or 0.0
 end
 
----获取物品名
----@return string name 物品名字
+---Get item name
+---@return string name Item name
 function M:get_name()
     return self.handle:get_name() or ''
 end
 
----获取物品描述
----@return string description 物品描述
+---Get item description
+---@return string description Item description
 function M:get_description()
     return self.handle:api_get_desc() or ''
 end
 
----获取物品缩放
----@return number scale 物品缩放
+---Get item scaling
+---@return number scale Item scaling
 function M:get_scale()
     return clicli.helper.tonumber(self.handle:api_get_scale()) or 0.0
 end
 
----获取物品的朝向
----@return number angel 朝向
+---Gets the orientation of the item
+---@return number angel orientation
 function M:get_facing()
     return clicli.helper.tonumber(self.handle:api_get_face_angle()) or 0.0
 end
 
----获取物品的主动技能
----@return Ability? ability 主动技能
+---The active skill of acquiring objects
+---@return Ability? ability Active skills
 function M:get_ability()
     local py_ability = self.handle:api_get_positive_ability()
     if not py_ability then
@@ -454,9 +454,9 @@ function M:get_ability()
     return clicli.ability.get_by_handle(py_ability)
 end
 
----获取物品的被动技能
+---Passive ability to acquire items
 ---@param index integer
----@return Ability? ability 被动技能
+---@return Ability? ability Passive skills
 function M:get_passive_ability(index)
     local py_ability = self.handle:api_get_passive_ability(index)
     if not py_ability then
@@ -465,8 +465,8 @@ function M:get_passive_ability(index)
     return clicli.ability.get_by_handle(py_ability)
 end
 
----获取物品在单位身上的格子位置
----@return integer index 格子位置
+---Gets the grid position of the item on the body of the unit
+---@return integer index Specifies the cell position
 function M:get_slot()
     if not self.handle:api_get_owner() then
         return -1
@@ -474,8 +474,8 @@ function M:get_slot()
     return self.handle:api_get_item_slot_idx() or -1
 end
 
----获取物品的拥有玩家
----@return Player? player 玩家
+---The owning player who acquires the item
+---@return Player? player
 function M:get_owner_player()
     if not IsValid(self) then
         return nil
@@ -487,8 +487,8 @@ function M:get_owner_player()
     return clicli.player.get_by_handle(py_player)
 end
 
----获取物品在单位身上的背包槽类型
----@return py.SlotType 背包槽类型
+---Get items on the unit body in the backpack slot type
+---@returnpy. SlotType Indicates the slot type of a backpack
 function M:get_slot_type()
     if not self.handle:api_get_owner() then
         return -1
@@ -496,20 +496,20 @@ function M:get_slot_type()
     return self.handle:api_get_item_slot_type() or -1
 end
 
---------------------------------------------------------类的方法--------------------------------------------------------
+----- -- -- -- -- -- -- -- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - class method - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
----检查物品类型前置条件
----@param player Player 玩家
----@param item_key py.ItemKey 物品类型ID
+---Check item type preconditions
+---@param player Player
+---@param item_key py.ItemKey ID of the item type
 ---@return boolean
 function M.check_precondition_by_key(player, item_key)
     return GameAPI.check_item_key_precondition(player.handle, item_key)
 end
 
----创建物品到点
----@param point Point 点
----@param item_key py.ItemKey 道具类型
----@param player? Player 玩家
+---Create item to point
+---@param point Point
+---@param item_key py.ItemKey Item type
+---@param player? Player
 ---@return Item
 function M.create_item(point, item_key, player)
     if not player then
@@ -519,64 +519,64 @@ function M.create_item(point, item_key, player)
     return M.get_by_handle(py_item) --[[@as Item]]
 end
 
----获取物品购买售价
----@param item_key py.ItemKey 类型
+---Get item purchase price
+---@param item_key py.ItemKey type
 ---@param key clicli.Const.PlayerAttr | string # Player attributes
----@return number price 价格
+---@return number price Price
 function M.get_item_buy_price_by_key(item_key, key)
     key = clicli.const.PlayerAttr[key] or key
     ---@cast key py.RoleResKey
     return clicli.helper.tonumber(GameAPI.get_item_buy_price(item_key, key)) or 0.0
 end
 
----获取物品出售售价
----@param item_key py.ItemKey 类型
+---Get item selling price
+---@param item_key py.ItemKey type
 ---@param key clicli.Const.PlayerAttr | string # Player attributes
----@return number price 价格
+---@return number price Price
 function M.get_item_sell_price_by_key(item_key, key)
     key = clicli.const.PlayerAttr[key] or key
     ---@cast key py.RoleResKey
     return clicli.helper.tonumber(GameAPI.get_item_sell_price(item_key, key)) or 0.0
 end
 
----获得区域内所有物品
----@param area Area 区域
+---Get all items in the area
+---@param area Area
 ---@return ItemGroup
 function M.get_item_group_in_area(area)
     local py_item_group = GameAPI.get_item_group_in_area(area.handle)
     return clicli.item_group.create_lua_item_group_from_py(py_item_group)
 end
 
----获取物品类型名
----@param item_key py.ItemKey 物品类型
+---Gets the item type name
+---@param item_key py.ItemKey Item type
 ---@return string
 function M.get_name_by_key(item_key)
     return GameAPI.get_item_conf_name(item_key)
 end
 
----获取物品类型的icon的图片id
----@param item_key py.ItemKey 物品类型
+---Gets the image id of the icon for the item type
+---@param item_key py.ItemKey Item type
 ---@return py.Texture
 function M.get_icon_id_by_key(item_key)
     return GameAPI.get_icon_id_by_item_type(item_key)--[[@as py.Texture]]
 end
 
----获取物品类型的描述
----@param item_key py.ItemKey 物品类型
+---Get a description of the item type
+---@param item_key py.ItemKey Item type
 ---@return string
 function M.get_description_by_key(item_key)
     return GameAPI.get_item_desc_by_type(item_key)
 end
 
----获取物品模型
----@return py.ModelKey model_key 模型类型
+---Get item model
+---@returnpy. ModelKey model_key Model type
 function M:get_model()
     return self.handle:api_get_item_model() or 0
 end
 
----获取物品类型的模型
----@param item_key py.ItemKey 物品类型
----@return py.ModelKey model_key 模型类型
+---Gets a model of the item type
+---@param item_key py.ItemKey Item type
+---@returnpy. ModelKey model_key Model type
 function M.get_model_by_key(item_key)
     return GameAPI.api_get_item_type_model(item_key)
 end
@@ -597,19 +597,19 @@ function M.get_num_of_player_attr(item_key, role_res_key)
     return GameAPI.api_get_value_of_item_name_comp_res(item_key, role_res_key)
 end
 
----获取物品类型的基础属性
----@param key string 属性key
----@param item_key py.ItemKey 物品类型
+---Gets the base attributes of the item type
+---@param key string Attribute key
+---@param item_key py.ItemKey Item type
 ---@return number
 function M.get_attribute_by_key(item_key, key)
     ---@diagnostic disable-next-line: return-type-mismatch
     return GameAPI.api_get_attr_of_item_key(item_key, "ATTR_BASE", key)
 end
 
----物品类型是否存在标签
----@param tag string 标签
----@param item_key py.ItemKey 物品类型
----@return boolean is_has_tag 是否有标签
+---Item type Whether a label exists
+---@param tag string Tag
+---@param item_key py.ItemKey Item type
+---@return boolean is_has_tag Whether there is a tag
 function M.has_tag_by_key(tag, item_key)
     return GameAPI.item_key_has_tag(item_key, tag)
 end
@@ -632,8 +632,8 @@ function M:is_destroyed()
     return yes
 end
 
----设置物品名称显示样式
----@param name_bar_type integer 名字显示样式
+---Set the item name display style
+---@param name_bar_type integer Specifies the name display style
 function M:set_name_bar_type(name_bar_type)
     ---@diagnostic disable-next-line: undefined-field
     self.handle:api_set_name_bar_type(name_bar_type)

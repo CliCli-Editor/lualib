@@ -3,12 +3,12 @@
 ---@field private option Log.Option
 ---@field private logLevel table<Log.Level, integer>
 ---@field private needTraceBack table<Log.Level, boolean>
----@field trace fun(...): string, string
----@field debug fun(...): string, string
----@field info  fun(...): string, string
----@field warn  fun(...): string, string
----@field error fun(...): string, string
----@field fatal fun(...): string, string
+---@field trace fun(...) : string, string
+---@field debug fun(...) : string, string
+---@field info  fun(...) : string, string
+---@field warn  fun(...) : string, string
+---@field error fun(...) : string, string
+---@field fatal fun(...) : string, string
 ---@overload fun(option: Log.Option): Log
 local M = Class 'Log'
 

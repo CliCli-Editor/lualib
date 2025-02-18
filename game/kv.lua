@@ -74,11 +74,11 @@ end
 local function kv_save_from_handle(handle, key, value)
     local py_value, tp = get_py_value_and_type(value)
     if py_value == nil then
-        error('不支持的类型：' .. tp)
+        error('Unsupported types:' .. tp)
     end
     local api = GameAPI['add_' .. tp .. '_kv']
     if not api then
-        error('不支持的类型：' .. tp)
+        error('Unsupported types:' .. tp)
     end
     api(handle, key, py_value)
 end
@@ -90,11 +90,11 @@ end
 local function kv_save_from_key(kv_key, object_key, key, value)
     local py_value, tp = get_py_value_and_type(value)
     if py_value == nil then
-        error('不支持的类型：' .. tp)
+        error('Unsupported types:' .. tp)
     end
     local api = GameAPI['set_' .. kv_key .. '_' .. tp .. '_kv']
     if not api then
-        error('不支持的类型：' .. tp)
+        error('Unsupported types:' .. tp)
     end
     api(object_key, key, py_value)
 end
@@ -158,7 +158,7 @@ local function kv_load_from_handle(handle, key, lua_type)
             return lua_value
         end
     end
-    error('不支持的类型：' .. lua_type)
+    error('Unsupported types:' .. lua_type)
 end
 
 ---@param kv_key string
@@ -174,7 +174,7 @@ local function kv_load_from_key(kv_key, object_key, key, lua_type)
     end
     local api = GameAPI['get_' .. kv_key .. '_' .. py_type .. '_kv']
     if not api then
-        error('不支持的类型：' .. lua_type)
+        error('Unsupported types:' .. lua_type)
     end
     local py_value = api(object_key, key)
     if py_type == 'float' then
@@ -183,7 +183,7 @@ local function kv_load_from_key(kv_key, object_key, key, lua_type)
     return py_value
 end
 
----保存自定义键值对。可以与ECA互通。
+---Save custom key-value pairs. Interwork with ECA.
 ---@param key string
 ---@param value KV.SupportType
 function M:kv_save(key, value)
@@ -195,7 +195,7 @@ function M:kv_save(key, value)
     end
 end
 
----是否拥有指定键值对。可以与ECA互通。
+---Whether the specified key - value pair is owned. Interwork with ECA.
 ---@param key string
 ---@return boolean
 function M:kv_has(key)
@@ -208,7 +208,7 @@ function M:kv_has(key)
     return false
 end
 
----删除键值对。可以与ECA互通。
+---Example Delete a key-value pair. Interwork with ECA.
 function M:kv_remove(key)
     if self.handle then
         kv_remove_from_handle(self.handle, key)
@@ -218,7 +218,7 @@ function M:kv_remove(key)
     end
 end
 
----读取键值对。可以与ECA互通。
+---Read key-value pairs. Interwork with ECA.
 ---@param key string
 ---@param lua_type 'boolean' | 'number' | 'integer' | 'string' | 'table' | KV.SupportTypeEnum # 'integer' can also represent the unit type, skill type, and so on.
 ---@return any
@@ -232,17 +232,17 @@ function M:kv_load(key, lua_type)
     return nil
 end
 
----将对象身上的所有键值对序列化为字符串。
+---Serialize all key-value pairs on the object to strings.
 ---@return string
 function M:kv_serialize()
     if self.handle then
         ---@diagnostic disable-next-line: undefined-field
         return GameAPI.api_serialize_kv(self.handle)
     end
-    error('暂不支持物编对象的KV序列化')
+    error('KV serialization of objects is not currently supported')
 end
 
----将字符串反序列化为键值对应用到对象身上。
+---Deserialize a string to a key value corresponding to an object.
 ---@param kv string
 function M:kv_deserialize(kv)
     if self.handle then
@@ -250,7 +250,7 @@ function M:kv_deserialize(kv)
         GameAPI.api_deserialize_kv(self.handle, kv)
         return
     end
-    error('暂不支持物编对象的KV反序列化')
+    error('KV deserialization of objects is not currently supported')
 end
 
 return M

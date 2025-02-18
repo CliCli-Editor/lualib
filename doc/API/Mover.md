@@ -13,7 +13,7 @@ function Mover.get_by_handle(py_mover: py.Mover)
 py.Mover
 ```
 
-运动器类型
+Motor type
 ## init
 
 ```lua
@@ -54,14 +54,14 @@ function Mover.mover_target(mover_unit: Projectile|Unit, mover_data: Mover.Creat
 (method) Mover:remove()
 ```
 
- 移除运动器
+ Removal motor
 ## stop
 
 ```lua
 (method) Mover:stop()
 ```
 
- 打断运动器
+ interrupter
 ## storage_all
 
 ```lua
@@ -69,7 +69,7 @@ function Mover.mover_target(mover_unit: Projectile|Unit, mover_data: Mover.Creat
   -> table
 ```
 
- 获取存储数据的容器
+ Gets the container for storing data
 ## storage_get
 
 ```lua
@@ -77,14 +77,14 @@ function Mover.mover_target(mover_unit: Projectile|Unit, mover_data: Mover.Creat
   -> any
 ```
 
- 获取存储的值
+ Gets the stored value
 ## storage_set
 
 ```lua
 (method) Storage:storage_set(key: any, value: any)
 ```
 
- 存储任意值
+ Store arbitrary values
 ## storage_table
 
 ```lua
@@ -157,112 +157,112 @@ function Mover.wrap_target_args(args: Mover.CreateData.Target)
 Ability
 ```
 
-关联技能
+Relevance skill
 ## absolute_height
 
 ```lua
 boolean
 ```
 
-是否使用绝对高度
+Whether absolute height is used
 ## block_interval
 
 ```lua
 number
 ```
 
-触发地形阻挡事件的间隔
+The interval at which a terrain blocking event is triggered
 ## face_angle
 
 ```lua
 boolean
 ```
 
-是否始终面向运动方向
+Whether to always face the direction of motion
 ## hit_interval
 
 ```lua
 number
 ```
 
-碰撞同一个单位的间隔
+Collision with the same unit interval
 ## hit_radius
 
 ```lua
 number
 ```
 
-碰撞范围
+Collision range
 ## hit_same
 
 ```lua
 boolean
 ```
 
-能否重复碰撞同一单位
+Whether to repeatedly collide with the same unit
 ## hit_type
 
 ```lua
 integer
 ```
 
-碰撞类型 0： 敌人；1： 盟友；2： 全部
+Collision type 0: enemy; 1: Allies; 2: All
 ## on_block
 
 ```lua
 fun(self: Mover)
 ```
 
-碰撞地形回调
+Collision terrain callback
 ## on_break
 
 ```lua
 fun(self: Mover)
 ```
 
-运动打断回调
+Motion interrupt callback
 ## on_finish
 
 ```lua
 fun(self: Mover)
 ```
 
-运动结束回调
+End of motion callback
 ## on_hit
 
 ```lua
 fun(self: Mover, unit: Unit)
 ```
 
-碰撞单位回调
+Collision unit callback
 ## on_remove
 
 ```lua
 fun(self: Mover)
 ```
 
-运动移除回调
+Motion remove callback
 ## priority
 
 ```lua
 integer
 ```
 
-优先级
+priority
 ## terrain_block
 
 ```lua
 boolean
 ```
 
-是否会被地形阻挡
+Whether it will be blocked by terrain
 ## unit
 
 ```lua
 Unit
 ```
 
-关联单位
+Associated unit
 
 # Mover.CreateData.Curve
 
@@ -272,175 +272,175 @@ Unit
 Ability
 ```
 
-关联技能
+Relevance skill
 ## absolute_height
 
 ```lua
 boolean
 ```
 
-是否使用绝对高度
+Whether absolute height is used
 ## acceleration
 
 ```lua
 number
 ```
 
-加速度
+acceleration
 ## angle
 
 ```lua
 number
 ```
 
-运动方向
+Direction of motion
 ## block_interval
 
 ```lua
 number
 ```
 
-触发地形阻挡事件的间隔
+The interval at which a terrain blocking event is triggered
 ## distance
 
 ```lua
 number
 ```
 
-运动距离
+Motion distance
 ## face_angle
 
 ```lua
 boolean
 ```
 
-是否始终面向运动方向
+Whether to always face the direction of motion
 ## fin_height
 
 ```lua
 number
 ```
 
-终点高度
+Terminal height
 ## hit_interval
 
 ```lua
 number
 ```
 
-碰撞同一个单位的间隔
+Collision with the same unit interval
 ## hit_radius
 
 ```lua
 number
 ```
 
-碰撞范围
+Collision range
 ## hit_same
 
 ```lua
 boolean
 ```
 
-能否重复碰撞同一单位
+Whether to repeatedly collide with the same unit
 ## hit_type
 
 ```lua
 integer
 ```
 
-碰撞类型 0： 敌人；1： 盟友；2： 全部
+Collision type 0: enemy; 1: Allies; 2: All
 ## init_height
 
 ```lua
 number
 ```
 
-初始高度
+Initial altitude
 ## max_speed
 
 ```lua
 number
 ```
 
-最大速度
+Maximum speed
 ## min_speed
 
 ```lua
 number
 ```
 
-最小速度
+Minimum speed
 ## on_block
 
 ```lua
 fun(self: Mover)
 ```
 
-碰撞地形回调
+Collision terrain callback
 ## on_break
 
 ```lua
 fun(self: Mover)
 ```
 
-运动打断回调
+Motion interrupt callback
 ## on_finish
 
 ```lua
 fun(self: Mover)
 ```
 
-运动结束回调
+End of motion callback
 ## on_hit
 
 ```lua
 fun(self: Mover, unit: Unit)
 ```
 
-碰撞单位回调
+Collision unit callback
 ## on_remove
 
 ```lua
 fun(self: Mover)
 ```
 
-运动移除回调
+Motion remove callback
 ## path
 
 ```lua
 (Point|py.FixedVec2)[]
 ```
 
-路径点
+waypoint
 ## priority
 
 ```lua
 integer
 ```
 
-优先级
+priority
 ## speed
 
 ```lua
 number
 ```
 
-初始速度
+Initial velocity
 ## terrain_block
 
 ```lua
 boolean
 ```
 
-是否会被地形阻挡
+Whether it will be blocked by terrain
 ## unit
 
 ```lua
 Unit
 ```
 
-关联单位
+Associated unit
 
 # Mover.CreateData.Line
 
@@ -450,175 +450,175 @@ Unit
 Ability
 ```
 
-关联技能
+Relevance skill
 ## absolute_height
 
 ```lua
 boolean
 ```
 
-是否使用绝对高度
+Whether absolute height is used
 ## acceleration
 
 ```lua
 number
 ```
 
-加速度
+acceleration
 ## angle
 
 ```lua
 number
 ```
 
-运动方向
+Direction of motion
 ## block_interval
 
 ```lua
 number
 ```
 
-触发地形阻挡事件的间隔
+The interval at which a terrain blocking event is triggered
 ## distance
 
 ```lua
 number
 ```
 
-运动距离
+Motion distance
 ## face_angle
 
 ```lua
 boolean
 ```
 
-是否始终面向运动方向
+Whether to always face the direction of motion
 ## fin_height
 
 ```lua
 number
 ```
 
-终点高度
+Terminal height
 ## hit_interval
 
 ```lua
 number
 ```
 
-碰撞同一个单位的间隔
+Collision with the same unit interval
 ## hit_radius
 
 ```lua
 number
 ```
 
-碰撞范围
+Collision range
 ## hit_same
 
 ```lua
 boolean
 ```
 
-能否重复碰撞同一单位
+Whether to repeatedly collide with the same unit
 ## hit_type
 
 ```lua
 integer
 ```
 
-碰撞类型 0： 敌人；1： 盟友；2： 全部
+Collision type 0: enemy; 1: Allies; 2: All
 ## init_height
 
 ```lua
 number
 ```
 
-初始高度
+Initial altitude
 ## max_speed
 
 ```lua
 number
 ```
 
-最大速度
+Maximum speed
 ## min_speed
 
 ```lua
 number
 ```
 
-最小速度
+Minimum speed
 ## on_block
 
 ```lua
 fun(self: Mover)
 ```
 
-碰撞地形回调
+Collision terrain callback
 ## on_break
 
 ```lua
 fun(self: Mover)
 ```
 
-运动打断回调
+Motion interrupt callback
 ## on_finish
 
 ```lua
 fun(self: Mover)
 ```
 
-运动结束回调
+End of motion callback
 ## on_hit
 
 ```lua
 fun(self: Mover, unit: Unit)
 ```
 
-碰撞单位回调
+Collision unit callback
 ## on_remove
 
 ```lua
 fun(self: Mover)
 ```
 
-运动移除回调
+Motion remove callback
 ## parabola_height
 
 ```lua
 number
 ```
 
-抛物线顶点高度
+Height of the vertex of the parabola
 ## priority
 
 ```lua
 integer
 ```
 
-优先级
+priority
 ## speed
 
 ```lua
 number
 ```
 
-初始速度
+Initial velocity
 ## terrain_block
 
 ```lua
 boolean
 ```
 
-是否会被地形阻挡
+Whether it will be blocked by terrain
 ## unit
 
 ```lua
 Unit
 ```
 
-关联单位
+Associated unit
 
 # Mover.CreateData.Round
 
@@ -628,182 +628,182 @@ Unit
 Ability
 ```
 
-关联技能
+Relevance skill
 ## absolute_height
 
 ```lua
 boolean
 ```
 
-是否使用绝对高度
+Whether absolute height is used
 ## angle_speed
 
 ```lua
 number
 ```
 
-环绕速度
+Circling velocity
 ## block_interval
 
 ```lua
 number
 ```
 
-触发地形阻挡事件的间隔
+The interval at which a terrain blocking event is triggered
 ## clock_wise
 
 ```lua
 boolean
 ```
 
-是否顺时针
+Clockwise or not
 ## face_angle
 
 ```lua
 boolean
 ```
 
-是否始终面向运动方向
+Whether to always face the direction of motion
 ## height
 
 ```lua
 number
 ```
 
-环绕高度
+Circling height
 ## hit_interval
 
 ```lua
 number
 ```
 
-碰撞同一个单位的间隔
+Collision with the same unit interval
 ## hit_radius
 
 ```lua
 number
 ```
 
-碰撞范围
+Collision range
 ## hit_same
 
 ```lua
 boolean
 ```
 
-能否重复碰撞同一单位
+Whether to repeatedly collide with the same unit
 ## hit_type
 
 ```lua
 integer
 ```
 
-碰撞类型 0： 敌人；1： 盟友；2： 全部
+Collision type 0: enemy; 1: Allies; 2: All
 ## init_angle
 
 ```lua
 number
 ```
 
-初始角度
+Initial Angle
 ## lifting_speed
 
 ```lua
 number
 ```
 
-提升速度
+Lifting speed
 ## on_block
 
 ```lua
 fun(self: Mover)
 ```
 
-碰撞地形回调
+Collision terrain callback
 ## on_break
 
 ```lua
 fun(self: Mover)
 ```
 
-运动打断回调
+Motion interrupt callback
 ## on_finish
 
 ```lua
 fun(self: Mover)
 ```
 
-运动结束回调
+End of motion callback
 ## on_hit
 
 ```lua
 fun(self: Mover, unit: Unit)
 ```
 
-碰撞单位回调
+Collision unit callback
 ## on_remove
 
 ```lua
 fun(self: Mover)
 ```
 
-运动移除回调
+Motion remove callback
 ## priority
 
 ```lua
 integer
 ```
 
-优先级
+priority
 ## radius
 
 ```lua
 number
 ```
 
-环绕半径
+Circumferential radius
 ## radius_speed
 
 ```lua
 number
 ```
 
-半径变化速度
+Velocity of radius change
 ## round_time
 
 ```lua
 number
 ```
 
-环绕时间
+Circling time
 ## target
 
 ```lua
 Point|Unit
 ```
 
-环绕目标
+Circling target
 ## target_point
 
 ```lua
 Point
 ```
 
-目标点
+Target point
 ## terrain_block
 
 ```lua
 boolean
 ```
 
-是否会被地形阻挡
+Whether it will be blocked by terrain
 ## unit
 
 ```lua
 Unit
 ```
 
-关联单位
+Associated unit
 
 # Mover.CreateData.Target
 
@@ -813,173 +813,173 @@ Unit
 Ability
 ```
 
-关联技能
+Relevance skill
 ## absolute_height
 
 ```lua
 boolean
 ```
 
-是否使用绝对高度
+Whether absolute height is used
 ## acceleration
 
 ```lua
 number
 ```
 
-加速度
+acceleration
 ## bind_point
 
 ```lua
 string
 ```
 
-绑定点
+Binding point
 ## block_interval
 
 ```lua
 number
 ```
 
-触发地形阻挡事件的间隔
+The interval at which a terrain blocking event is triggered
 ## face_angle
 
 ```lua
 boolean
 ```
 
-是否始终面向运动方向
+Whether to always face the direction of motion
 ## height
 
 ```lua
 number
 ```
 
-初始高度
+Initial altitude
 ## hit_interval
 
 ```lua
 number
 ```
 
-碰撞同一个单位的间隔
+Collision with the same unit interval
 ## hit_radius
 
 ```lua
 number
 ```
 
-碰撞范围
+Collision range
 ## hit_same
 
 ```lua
 boolean
 ```
 
-能否重复碰撞同一单位
+Whether to repeatedly collide with the same unit
 ## hit_type
 
 ```lua
 integer
 ```
 
-碰撞类型 0： 敌人；1： 盟友；2： 全部
+Collision type 0: enemy; 1: Allies; 2: All
 ## max_speed
 
 ```lua
 number
 ```
 
-最大速度
+Maximum speed
 ## min_speed
 
 ```lua
 number
 ```
 
-最小速度
+Minimum speed
 ## on_block
 
 ```lua
 fun(self: Mover)
 ```
 
-碰撞地形回调
+Collision terrain callback
 ## on_break
 
 ```lua
 fun(self: Mover)
 ```
 
-运动打断回调
+Motion interrupt callback
 ## on_finish
 
 ```lua
 fun(self: Mover)
 ```
 
-运动结束回调
+End of motion callback
 ## on_hit
 
 ```lua
 fun(self: Mover, unit: Unit)
 ```
 
-碰撞单位回调
+Collision unit callback
 ## on_remove
 
 ```lua
 fun(self: Mover)
 ```
 
-运动移除回调
+Motion remove callback
 ## parabola_height
 
 ```lua
 number
 ```
 
-抛物线顶点高度
+Height of the vertex of the parabola
 ## priority
 
 ```lua
 integer
 ```
 
-优先级
+priority
 ## speed
 
 ```lua
 number
 ```
 
-初始速度
+Initial velocity
 ## target
 
 ```lua
 Destructible|Item|Unit
 ```
 
-追踪目标
+Tracking target
 ## target_distance
 
 ```lua
 number
 ```
 
-撞击目标的距离
+The distance to the target
 ## terrain_block
 
 ```lua
 boolean
 ```
 
-是否会被地形阻挡
+Whether it will be blocked by terrain
 ## unit
 
 ```lua
 Unit
 ```
 
-关联单位
+Associated unit
 

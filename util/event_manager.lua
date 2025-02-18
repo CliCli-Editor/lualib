@@ -75,8 +75,8 @@ end
 
 function M:make_stack_overflow_error(last_events)
     local msg = {}
-    msg[#msg+1] = '事件死循环！'
-    msg[#msg+1] = '最后10个事件为：'
+    msg[#msg+1] = 'An endless loop of events!'
+    msg[#msg+1] = 'The last 10 events are:'
     msg[#msg+1] = table.concat(last_events, ' -> ')
     error(table.concat(msg, '\n'))
 end
@@ -105,9 +105,9 @@ function M:release_stack()
         list:pop(box)
         self:raw_notify(table.unpack(box, 1, box.n))
     end
-    --跑到这里说明有死循环，走异常处理
+    --Running here means there's a dead loop. Go exception handling
     local last_events = {}
-    --探测最后10个事件
+    --Probe the last 10 events
     for i = 1, 10 do
         local box = list:getHead()
         if not box then

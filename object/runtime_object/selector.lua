@@ -179,9 +179,9 @@ end
 
 ---@enum(key) Selector.SortType
 local sort_type = {
-    ['由近到远'] = 0,
-    ['由远到近'] = 1,
-    ['随机'] = 2,
+    ['FromNearToFar'] = 0,
+    ['FromFarToNear'] = 1,
+    ['Random'] = 2,
 }
 
 --Sort - Sort in a certain way
@@ -198,10 +198,10 @@ end
 function M:get()
     local pos = self._pos
     local shape = self._shape
-    assert(pos, '必须设置中心点！')
-    assert(shape, '必须设置形状！')
+    assert(pos, 'Must set the center point!')
+    assert(shape, 'Must set the shape!')
     local py_unit_group = GameAPI.filter_unit_id_list_in_area_v2(
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         pos.handle,
         shape.handle,

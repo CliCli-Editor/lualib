@@ -16,11 +16,11 @@ M.config["Unknown-et_logic_unit_destroy"] = {
     },
 }
 
----@alias EventParam.Game-Initialization EventParam.ET_GAME_INIT
-M.config["Game-Initialization"] = {
+---@alias EventParam.Game - initialization EventParam.ET_GAME_INIT
+M.config["Game - initialization"] = {
     desc = "Triggered when the game is initialized.",
     key = "ET_GAME_INIT",
-    name = "Game-Initialization",
+    name = "Game - initialization",
     params = {
     },
 }
@@ -34,20 +34,20 @@ M.config["Game-FrameChasingComplete"] = {
     },
 }
 
----@alias EventParam.Game-LogicIsOutOfSync EventParam.ET_GAME_SNAPSHOT_MISMATCH
-M.config["Game-LogicIsOutOfSync"] = {
+---@alias EventParam.Game - Logic is out of sync EventParam.ET_GAME_SNAPSHOT_MISMATCH
+M.config["Game - Logic is out of sync"] = {
     desc = "",
     key = "ET_GAME_SNAPSHOT_MISMATCH",
-    name = "Game-LogicIsOutOfSync",
+    name = "Game - Logic is out of sync",
     params = {
     },
 }
 
----@alias EventParam.Game-TerrainPresetsLoadedComplete EventParam.ET_SCENE_PRESET_LOADING_FINISH
-M.config["Game-TerrainPresetsLoadedComplete"] = {
+---@alias EventParam.Game - Terrain presets loaded complete EventParam.ET_SCENE_PRESET_LOADING_FINISH
+M.config["Game - Terrain presets loaded complete"] = {
     desc = "",
     key = "ET_SCENE_PRESET_LOADING_FINISH",
-    name = "Game-TerrainPresetsLoadedComplete",
+    name = "Game - Terrain presets loaded complete",
     params = {
     },
 }
@@ -158,11 +158,11 @@ M.config["Unknown-et_actor_attr_updated"] = {
     },
 }
 
----@alias EventParam.Zone-access EventParam.ET_AREA_ENTER
-M.config["Zone-access"] = {
+---@alias EventParam.zone-access EventParam.ET_AREA_ENTER
+M.config["zone-access"] = {
     desc = "Triggered when any unit enters the zone",
     key = "ET_AREA_ENTER",
-    name = "Zone-access",
+    name = "zone-access",
     object = "Area",
     params = {
         [1] = {
@@ -174,11 +174,11 @@ M.config["Zone-access"] = {
     },
 }
 
----@alias EventParam.Zone-Leave EventParam.ET_AREA_LEAVE
-M.config["Zone-Leave"] = {
+---@alias EventParam.Zone - leave EventParam.ET_AREA_LEAVE
+M.config["Zone - leave"] = {
     desc = "Triggered when any unit leaves the zone",
     key = "ET_AREA_LEAVE",
-    name = "Zone-Leave",
+    name = "Zone - leave",
     object = "Area",
     params = {
         [1] = {
@@ -190,20 +190,20 @@ M.config["Zone-Leave"] = {
     },
 }
 
----@alias EventParam.Game-httpReturn EventParam.ET_HTTP_RESPONSE
-M.config["Game-httpReturn"] = {
+---@alias EventParam.Game -http return EventParam.ET_HTTP_RESPONSE
+M.config["Game -http return"] = {
     desc = "",
     key = "ET_HTTP_RESPONSE",
-    name = "Game-httpReturn",
+    name = "Game -http return",
     params = {
     },
 }
 
----@alias EventParam.Games-ReceiveBroadcastInformation EventParam.ET_BROADCAST_LUA_MSG
-M.config["Games-ReceiveBroadcastInformation"] = {
+---@alias EventParam.Games - Receive broadcast information EventParam.ET_BROADCAST_LUA_MSG
+M.config["Games - Receive broadcast information"] = {
     desc = "",
     key = "ET_BROADCAST_LUA_MSG",
-    name = "Games-ReceiveBroadcastInformation",
+    name = "Games - Receive broadcast information",
     params = {
     },
 }
@@ -336,7 +336,7 @@ M.config["Player-TechnologyEnhancement"] = {
 
 ---@alias EventParam.Player-TechDown EventParam.ET_ROLE_TECH_DOWNGRADE
 M.config["Player-TechDown"] = {
-    desc = "Triggers each level the player's tech drops",
+    desc = "Triggers each level the player is tech drops",
     key = "ET_ROLE_TECH_DOWNGRADE",
     name = "Player-TechDown",
     object = "Player",
@@ -346,7 +346,7 @@ M.config["Player-TechDown"] = {
 
 ---@alias EventParam.Player-TechnologyChanges EventParam.ET_ROLE_TECH_CHANGED
 M.config["Player-TechnologyChanges"] = {
-    desc = "Triggered when the player's technology changes, changing multiple levels at a time will only trigger once",
+    desc = "Triggered when the player is technology changes, changing multiple levels at a time will only trigger once",
     key = "ET_ROLE_TECH_CHANGED",
     name = "Player-TechnologyChanges",
     object = "Player",
@@ -394,11 +394,11 @@ M.config["Player-RelationshipChanges"] = {
     },
 }
 
----@alias EventParam.Player-Reconnect EventParam.ET_ROLE_RECONNECT
-M.config["Player-Reconnect"] = {
+---@alias EventParam.Player - Reconnect EventParam.ET_ROLE_RECONNECT
+M.config["Player - Reconnect"] = {
     desc = "Triggered when the player reconnects",
     key = "ET_ROLE_RECONNECT",
-    name = "Player-Reconnect",
+    name = "Player - Reconnect",
     object = "Player",
     params = {
     },
@@ -607,11 +607,11 @@ M.config["Unknown-et_unit_enter_mover_state"] = {
     },
 }
 
----@alias EventParam.Unit-Remove EventParam.ET_UNIT_REMOVE
-M.config["Unit-Remove"] = {
+---@alias EventParam.Unit - Remove EventParam.ET_UNIT_REMOVE
+M.config["Unit - Remove"] = {
     desc = "Triggered when the unit is removed",
     key = "ET_UNIT_REMOVE",
-    name = "Unit-Remove",
+    name = "Unit - Remove",
     object = "Unit",
     params = {
     },
@@ -637,11 +637,11 @@ M.config["Unit-EndOfTransmission"] = {
     },
 }
 
----@alias EventParam.Unit-AttributeChange EventParam.ET_UNIT_ATTR_CHANGE
-M.config["Unit-AttributeChange"] = {
+---@alias EventParam.Unit - Attribute change EventParam.ET_UNIT_ATTR_CHANGE
+M.config["Unit - Attribute change"] = {
     desc = "Triggered after the specified property of the specified unit is changed",
     key = "ET_UNIT_ATTR_CHANGE",
-    name = "Unit-AttributeChange",
+    name = "Unit - Attribute change",
     object = "Unit",
     params = {
         [1] = {
@@ -670,12 +670,12 @@ M.config["Unit-AboutToDie"] = {
     },
 }
 
----@alias EventParam.Unit-Death EventParam.ET_UNIT_DIE
-M.config["Unit-Death"] = {
+---@alias EventParam.Unit - Death EventParam.ET_UNIT_DIE
+M.config["Unit - Death"] = {
     desc = "Triggered after unit death",
     key = "ET_UNIT_DIE",
     master = "unit",
-    name = "Unit-Death",
+    name = "Unit - Death",
     object = "Unit",
     params = {
     },
@@ -880,11 +880,11 @@ M.config["Unit-BeforeGainingExperience"] = {
     },
 }
 
----@alias EventParam.Unit-AfterGainingExperience EventParam.ET_UNIT_ON_ADD_EXP
-M.config["Unit-AfterGainingExperience"] = {
+---@alias EventParam.Unit - After gaining experience EventParam.ET_UNIT_ON_ADD_EXP
+M.config["Unit - After gaining experience"] = {
     desc = "Unit triggers after gaining experience",
     key = "ET_UNIT_ON_ADD_EXP",
-    name = "Unit-AfterGainingExperience",
+    name = "Unit - After gaining experience",
     object = "Unit",
     params = {
     },
@@ -910,11 +910,11 @@ M.config["Unit-Kill"] = {
     },
 }
 
----@alias EventParam.Unit-Create EventParam.ET_UNIT_BORN
-M.config["Unit-Create"] = {
+---@alias EventParam.Unit - Create EventParam.ET_UNIT_BORN
+M.config["Unit - Create"] = {
     desc = "Triggered after a unit is created",
     key = "ET_UNIT_BORN",
-    name = "Unit-Create",
+    name = "Unit - Create",
     object = "Unit",
     params = {
     },
@@ -950,11 +950,11 @@ M.config["Unknown-et_unit_create_slave"] = {
     },
 }
 
----@alias EventParam.Unit-AboutToPickUpItems EventParam.ET_UNIT_TRY_PICK_ITEM
-M.config["Unit-AboutToPickUpItems"] = {
+---@alias EventParam.Unit - About to pick up items EventParam.ET_UNIT_TRY_PICK_ITEM
+M.config["Unit - About to pick up items"] = {
     desc = "",
     key = "ET_UNIT_TRY_PICK_ITEM",
-    name = "Unit-AboutToPickUpItems",
+    name = "Unit - About to pick up items",
     object = "Unit",
     params = {
     },
@@ -970,21 +970,21 @@ M.config["Unit-TogglesDefaultBehavior"] = {
     },
 }
 
----@alias EventParam.Unit-ApproachingEnemy EventParam.ET_UNIT_TRY_ACQUIRE_TARGET
-M.config["Unit-ApproachingEnemy"] = {
+---@alias EventParam.Unit - Approaching enemy EventParam.ET_UNIT_TRY_ACQUIRE_TARGET
+M.config["Unit - Approaching enemy"] = {
     desc = "",
     key = "ET_UNIT_TRY_ACQUIRE_TARGET",
-    name = "Unit-ApproachingEnemy",
+    name = "Unit - Approaching enemy",
     object = "Unit",
     params = {
     },
 }
 
----@alias EventParam.Unit-SpottedTarget EventParam.ET_UNIT_ACQUIRED_TARGET
-M.config["Unit-SpottedTarget"] = {
+---@alias EventParam.Unit - Spotted target EventParam.ET_UNIT_ACQUIRED_TARGET
+M.config["Unit - Spotted target"] = {
     desc = "",
     key = "ET_UNIT_ACQUIRED_TARGET",
-    name = "Unit-SpottedTarget",
+    name = "Unit - Spotted target",
     object = "Unit",
     params = {
     },
@@ -1105,11 +1105,11 @@ M.config["Unit-Resurrection"] = {
     },
 }
 
----@alias EventParam.Unit-Upgrade EventParam.ET_UPGRADE_UNIT
-M.config["Unit-Upgrade"] = {
+---@alias EventParam.Unit - Upgrade EventParam.ET_UPGRADE_UNIT
+M.config["Unit - Upgrade"] = {
     desc = "Triggered after the unit is upgraded",
     key = "ET_UPGRADE_UNIT",
-    name = "Unit-Upgrade",
+    name = "Unit - Upgrade",
     object = "Unit",
     params = {
     },
@@ -1291,8 +1291,8 @@ M.config["TechnologyType-PreconditionNotValid"] = {
     },
 }
 
----@alias EventParam.Skills-Upgrades EventParam.ET_ABILITY_UPGRADE
-M.config["Skills-Upgrades"] = {
+---@alias EventParam.Skills - Upgrades EventParam.ET_ABILITY_UPGRADE
+M.config["Skills - Upgrades"] = {
     desc = "Triggered after skill level",
     extraObjs = {
         [1] = {
@@ -1301,14 +1301,14 @@ M.config["Skills-Upgrades"] = {
         },
     },
     key = "ET_ABILITY_UPGRADE",
-    name = "Skills-Upgrades",
+    name = "Skills - Upgrades",
     object = "Ability",
     params = {
     },
 }
 
----@alias EventParam.Casting.-AboutToBegin EventParam.ET_ABILITY_CS_START
-M.config["Casting.-AboutToBegin"] = {
+---@alias EventParam.Casting. - About to begin EventParam.ET_ABILITY_CS_START
+M.config["Casting. - About to begin"] = {
     desc = "Triggered when a spell is about to be cast",
     dispatch = true,
     extraObjs = {
@@ -1318,7 +1318,7 @@ M.config["Casting.-AboutToBegin"] = {
         },
     },
     key = "ET_ABILITY_CS_START",
-    name = "Casting.-AboutToBegin",
+    name = "Casting. - About to begin",
     object = "Ability",
     params = {
     },
@@ -1334,8 +1334,8 @@ M.config["Unknown-et_ability_cs_end"] = {
     },
 }
 
----@alias EventParam.CastTheSpell.-HereWeGo EventParam.ET_ABILITY_PS_START
-M.config["CastTheSpell.-HereWeGo"] = {
+---@alias EventParam.Cast the spell. - Here we go EventParam.ET_ABILITY_PS_START
+M.config["Cast the spell. - Here we go"] = {
     desc = "When the spell begins, it triggers before the front shake begins",
     extraObjs = {
         [1] = {
@@ -1344,14 +1344,14 @@ M.config["CastTheSpell.-HereWeGo"] = {
         },
     },
     key = "ET_ABILITY_PS_START",
-    name = "CastTheSpell.-HereWeGo",
+    name = "Cast the spell. - Here we go",
     object = "Ability",
     params = {
     },
 }
 
----@alias EventParam.Cast-Guide EventParam.ET_ABILITY_PS_END
-M.config["Cast-Guide"] = {
+---@alias EventParam.Cast - Guide EventParam.ET_ABILITY_PS_END
+M.config["Cast - Guide"] = {
     desc = "After the front shake is complete, continue to guide the front trigger",
     extraObjs = {
         [1] = {
@@ -1360,7 +1360,7 @@ M.config["Cast-Guide"] = {
         },
     },
     key = "ET_ABILITY_PS_END",
-    name = "Cast-Guide",
+    name = "Cast - Guide",
     object = "Ability",
     params = {
     },
@@ -1376,8 +1376,8 @@ M.config["Unknown-et_item_ability_ps_end"] = {
     },
 }
 
----@alias EventParam.CastSpells.-Strike EventParam.ET_ABILITY_SP_END
-M.config["CastSpells.-Strike"] = {
+---@alias EventParam.Cast spells. - Strike EventParam.ET_ABILITY_SP_END
+M.config["Cast spells. - Strike"] = {
     desc = "After continuing to boot, the backshake is triggered before starting",
     extraObjs = {
         [1] = {
@@ -1386,14 +1386,14 @@ M.config["CastSpells.-Strike"] = {
         },
     },
     key = "ET_ABILITY_SP_END",
-    name = "CastSpells.-Strike",
+    name = "Cast spells. - Strike",
     object = "Ability",
     params = {
     },
 }
 
----@alias EventParam.CastASpell.-Finished EventParam.ET_ABILITY_CST_END
-M.config["CastASpell.-Finished"] = {
+---@alias EventParam.Cast a spell. - Finished EventParam.ET_ABILITY_CST_END
+M.config["Cast a spell. - Finished"] = {
     desc = "Trigger when the back shake ends. It only triggers when the spell is properly completed.",
     extraObjs = {
         [1] = {
@@ -1402,14 +1402,14 @@ M.config["CastASpell.-Finished"] = {
         },
     },
     key = "ET_ABILITY_CST_END",
-    name = "CastASpell.-Finished",
+    name = "Cast a spell. - Finished",
     object = "Ability",
     params = {
     },
 }
 
----@alias EventParam.CastSpells.-Over EventParam.ET_ABILITY_BS_END
-M.config["CastSpells.-Over"] = {
+---@alias EventParam.Cast spells. - Over EventParam.ET_ABILITY_BS_END
+M.config["Cast spells. - Over"] = {
     desc = "The entire spell is triggered after the performance is over",
     extraObjs = {
         [1] = {
@@ -1418,7 +1418,7 @@ M.config["CastSpells.-Over"] = {
         },
     },
     key = "ET_ABILITY_BS_END",
-    name = "CastSpells.-Over",
+    name = "Cast spells. - Over",
     object = "Ability",
     params = {
     },
@@ -1436,7 +1436,7 @@ M.config["Unknown-et_ability_cs_interrupt"] = {
 
 ---@alias EventParam.CastASpell.-InterruptTheStart EventParam.ET_ABILITY_PS_INTERRUPT
 M.config["CastASpell.-InterruptTheStart"] = {
-    desc = "Interrupted between 'start' and 'lead.",
+    desc = "Interrupted between  istart' and 'lead.",
     extraObjs = {
         [1] = {
             getter = function (self) return self:get_owner() end,
@@ -1468,7 +1468,7 @@ M.config["CastSpells.-InterruptTheLead"] = {
 
 ---@alias EventParam.CastASpell.-BreakTheShot EventParam.ET_ABILITY_CST_INTERRUPT
 M.config["CastASpell.-BreakTheShot"] = {
-    desc = "Interrupted between 'shot' and 'done.",
+    desc = "Interrupted between  ishot' and 'done.",
     extraObjs = {
         [1] = {
             getter = function (self) return self:get_owner() end,
@@ -1492,8 +1492,8 @@ M.config["Unknown-et_ability_bs_interrupt"] = {
     },
 }
 
----@alias EventParam.CastSpells.-Stop EventParam.ET_ABILITY_END
-M.config["CastSpells.-Stop"] = {
+---@alias EventParam.Cast spells. - Stop EventParam.ET_ABILITY_END
+M.config["Cast spells. - Stop"] = {
     desc = "Triggered after a spell has stopped, is the last event in the casting process.",
     extraObjs = {
         [1] = {
@@ -1502,14 +1502,14 @@ M.config["CastSpells.-Stop"] = {
         },
     },
     key = "ET_ABILITY_END",
-    name = "CastSpells.-Stop",
+    name = "Cast spells. - Stop",
     object = "Ability",
     params = {
     },
 }
 
----@alias EventParam.Skills-Acquisition EventParam.ET_ABILITY_OBTAIN
-M.config["Skills-Acquisition"] = {
+---@alias EventParam.Skills - Acquisition EventParam.ET_ABILITY_OBTAIN
+M.config["Skills - Acquisition"] = {
     desc = "Triggered after gaining a skill",
     extraObjs = {
         [1] = {
@@ -1518,14 +1518,14 @@ M.config["Skills-Acquisition"] = {
         },
     },
     key = "ET_ABILITY_OBTAIN",
-    name = "Skills-Acquisition",
+    name = "Skills - Acquisition",
     object = "Ability",
     params = {
     },
 }
 
----@alias EventParam.SkillLoss EventParam.ET_ABILITY_LOSE
-M.config["SkillLoss"] = {
+---@alias EventParam.Skill loss EventParam.ET_ABILITY_LOSE
+M.config["Skill loss"] = {
     desc = "Triggered after loss of skill",
     extraObjs = {
         [1] = {
@@ -1534,7 +1534,7 @@ M.config["SkillLoss"] = {
         },
     },
     key = "ET_ABILITY_LOSE",
-    name = "SkillLoss",
+    name = "Skill loss",
     object = "Ability",
     params = {
     },
@@ -1588,8 +1588,8 @@ M.config["Skills-Enabled"] = {
     },
 }
 
----@alias EventParam.Skill-CooldownEnds EventParam.ET_ABILITY_CD_END
-M.config["Skill-CooldownEnds"] = {
+---@alias EventParam.Skill - Cooldown ends EventParam.ET_ABILITY_CD_END
+M.config["Skill - Cooldown ends"] = {
     desc = "Trigger when cooldown ends",
     extraObjs = {
         [1] = {
@@ -1598,7 +1598,7 @@ M.config["Skill-CooldownEnds"] = {
         },
     },
     key = "ET_ABILITY_CD_END",
-    name = "Skill-CooldownEnds",
+    name = "Skill - Cooldown ends",
     object = "Ability",
     params = {
     },
@@ -1625,8 +1625,8 @@ M.config["Skills-CustomAnimationAxis"] = {
     },
 }
 
----@alias EventParam.Effect-Gain EventParam.ET_OBTAIN_MODIFIER
-M.config["Effect-Gain"] = {
+---@alias EventParam.Effect - gain EventParam.ET_OBTAIN_MODIFIER
+M.config["Effect - gain"] = {
     desc = "Triggered after obtaining a magic effect",
     extraObjs = {
         [1] = {
@@ -1635,14 +1635,14 @@ M.config["Effect-Gain"] = {
         },
     },
     key = "ET_OBTAIN_MODIFIER",
-    name = "Effect-Gain",
+    name = "Effect - gain",
     object = "Buff",
     params = {
     },
 }
 
----@alias EventParam.Effect-loss EventParam.ET_LOSS_MODIFIER
-M.config["Effect-loss"] = {
+---@alias EventParam.effect-loss EventParam.ET_LOSS_MODIFIER
+M.config["effect-loss"] = {
     desc = "Triggered after losing magic effects",
     extraObjs = {
         [1] = {
@@ -1651,14 +1651,14 @@ M.config["Effect-loss"] = {
         },
     },
     key = "ET_LOSS_MODIFIER",
-    name = "Effect-loss",
+    name = "effect-loss",
     object = "Buff",
     params = {
     },
 }
 
----@alias EventParam.Effect-Heartbeat EventParam.ET_MODIFIER_CYCLE_TRIGGER
-M.config["Effect-Heartbeat"] = {
+---@alias EventParam.Effect - Heartbeat EventParam.ET_MODIFIER_CYCLE_TRIGGER
+M.config["Effect - Heartbeat"] = {
     desc = "Periodic triggering of magical effects",
     extraObjs = {
         [1] = {
@@ -1667,7 +1667,7 @@ M.config["Effect-Heartbeat"] = {
         },
     },
     key = "ET_MODIFIER_CYCLE_TRIGGER",
-    name = "Effect-Heartbeat",
+    name = "Effect - Heartbeat",
     object = "Buff",
     params = {
     },
@@ -1689,8 +1689,8 @@ M.config["Effects-Overlay"] = {
     },
 }
 
----@alias EventParam.Effect-NumberOfLayersChange EventParam.ET_MODIFIER_LAYER_CHANGE
-M.config["Effect-NumberOfLayersChange"] = {
+---@alias EventParam.Effect - Number of layers change EventParam.ET_MODIFIER_LAYER_CHANGE
+M.config["Effect - Number of layers change"] = {
     desc = "Trigger when the number of magic effect layers changes",
     extraObjs = {
         [1] = {
@@ -1699,14 +1699,14 @@ M.config["Effect-NumberOfLayersChange"] = {
         },
     },
     key = "ET_MODIFIER_LAYER_CHANGE",
-    name = "Effect-NumberOfLayersChange",
+    name = "Effect - Number of layers change",
     object = "Buff",
     params = {
     },
 }
 
----@alias EventParam.Effect-ComingSoon EventParam.ET_MODIFIER_GET_BEFORE_CREATE
-M.config["Effect-ComingSoon"] = {
+---@alias EventParam.Effect - Coming soon EventParam.ET_MODIFIER_GET_BEFORE_CREATE
+M.config["Effect - Coming soon"] = {
     desc = "Trigger before magic effect is obtained",
     dispatch = true,
     extraObjs = {
@@ -1716,7 +1716,7 @@ M.config["Effect-ComingSoon"] = {
         },
     },
     key = "ET_MODIFIER_GET_BEFORE_CREATE",
-    name = "Effect-ComingSoon",
+    name = "Effect - Coming soon",
     object = "Buff",
     params = {
     },
@@ -1809,11 +1809,11 @@ M.config["Check-Destructible"] = {
     },
 }
 
----@alias EventParam.Local-Select-Destructible EventParam.ET_ASYNC_SELECT_DEST
-M.config["Local-Select-Destructible"] = {
+---@alias EventParam.Local - Select - Destructible EventParam.ET_ASYNC_SELECT_DEST
+M.config["Local - Select - Destructible"] = {
     desc = "Local players select destructible when triggered",
     key = "ET_ASYNC_SELECT_DEST",
-    name = "Local-Select-Destructible",
+    name = "Local - Select - Destructible",
     object = "Player",
     params = {
     },
@@ -1829,32 +1829,32 @@ M.config["Destructible-Remove"] = {
     },
 }
 
----@alias EventParam.Projectiles-Created EventParam.ET_PRODUCE_PROJECTILE
-M.config["Projectiles-Created"] = {
+---@alias EventParam.Projectiles - Created EventParam.ET_PRODUCE_PROJECTILE
+M.config["Projectiles - Created"] = {
     desc = "Triggers after projectile creation",
     key = "ET_PRODUCE_PROJECTILE",
-    name = "Projectiles-Created",
+    name = "Projectiles - Created",
     object = "Projectile",
     params = {
     },
 }
 
----@alias EventParam.Projectiles-Death EventParam.ET_DEATH_PROJECTILE
-M.config["Projectiles-Death"] = {
+---@alias EventParam.Projectiles - Death EventParam.ET_DEATH_PROJECTILE
+M.config["Projectiles - Death"] = {
     desc = "Triggered when the projectile dies",
     key = "ET_DEATH_PROJECTILE",
-    name = "Projectiles-Death",
+    name = "Projectiles - Death",
     object = "Projectile",
     params = {
     },
 }
 
----@alias EventParam.Interface-Message EventParam.ET_TRIGGER_COMPONENT_EVENT
-M.config["Interface-Message"] = {
+---@alias EventParam.Interface - Message EventParam.ET_TRIGGER_COMPONENT_EVENT
+M.config["Interface - Message"] = {
     desc = "Trigger the user-defined event marked on the interface",
     from_global = true,
     key = "ET_TRIGGER_COMPONENT_EVENT",
-    name = "Interface-Message",
+    name = "Interface - Message",
     object = "Player",
     params = {
         [1] = {
@@ -1865,12 +1865,12 @@ M.config["Interface-Message"] = {
     },
 }
 
----@alias EventParam.Interface-SliderChanges EventParam.ET_TRIGGER_UI_SLIDER_CHANGE_EVENT
-M.config["Interface-SliderChanges"] = {
+---@alias EventParam.Interface - Slider changes EventParam.ET_TRIGGER_UI_SLIDER_CHANGE_EVENT
+M.config["Interface - Slider changes"] = {
     desc = "Triggered when the slider changes",
     from_global = true,
     key = "ET_TRIGGER_UI_SLIDER_CHANGE_EVENT",
-    name = "Interface-SliderChanges",
+    name = "Interface - Slider changes",
     object = "Player",
     params = {
         [1] = {
@@ -1884,12 +1884,12 @@ M.config["Interface-SliderChanges"] = {
     },
 }
 
----@alias EventParam.Interface-ChatBoxVisibilityChanges EventParam.ET_TRIGGER_UI_CHATBOX_VISIBLE_CHANGE_EVENT
-M.config["Interface-ChatBoxVisibilityChanges"] = {
+---@alias EventParam.Interface - Chat box visibility changes EventParam.ET_TRIGGER_UI_CHATBOX_VISIBLE_CHANGE_EVENT
+M.config["Interface - Chat box visibility changes"] = {
     desc = "Triggered when chat box visibility changes",
     from_global = true,
     key = "ET_TRIGGER_UI_CHATBOX_VISIBLE_CHANGE_EVENT",
-    name = "Interface-ChatBoxVisibilityChanges",
+    name = "Interface - Chat box visibility changes",
     object = "Player",
     params = {
         [1] = {
@@ -1903,12 +1903,12 @@ M.config["Interface-ChatBoxVisibilityChanges"] = {
     },
 }
 
----@alias EventParam.Interface-EquipmentDragAndDrop EventParam.ET_TRIGGER_UI_EQUIP_SLOT_DRAG_EVENT
-M.config["Interface-EquipmentDragAndDrop"] = {
+---@alias EventParam.Interface - Equipment drag and drop EventParam.ET_TRIGGER_UI_EQUIP_SLOT_DRAG_EVENT
+M.config["Interface - Equipment drag and drop"] = {
     desc = "",
     from_global = true,
     key = "ET_TRIGGER_UI_EQUIP_SLOT_DRAG_EVENT",
-    name = "Interface-EquipmentDragAndDrop",
+    name = "Interface - Equipment drag and drop",
     object = "Player",
     params = {
         [1] = {
@@ -1922,12 +1922,12 @@ M.config["Interface-EquipmentDragAndDrop"] = {
     },
 }
 
----@alias EventParam.Screen-CheckBoxChanges EventParam.ET_TRIGGER_UI_CHECKBOX_CHANGE_EVENT
-M.config["Screen-CheckBoxChanges"] = {
+---@alias EventParam.Screen - Check box changes EventParam.ET_TRIGGER_UI_CHECKBOX_CHANGE_EVENT
+M.config["Screen - Check box changes"] = {
     desc = "Triggered when the check box changes",
     from_global = true,
     key = "ET_TRIGGER_UI_CHECKBOX_CHANGE_EVENT",
-    name = "Screen-CheckBoxChanges",
+    name = "Screen - Check box changes",
     object = "Player",
     params = {
         [1] = {
@@ -1941,12 +1941,12 @@ M.config["Screen-CheckBoxChanges"] = {
     },
 }
 
----@alias EventParam.Screen-VideoPlaybackIsComplete EventParam.ET_TRIGGER_UI_VIDEO_END_EVENT
-M.config["Screen-VideoPlaybackIsComplete"] = {
+---@alias EventParam.Screen - Video playback is complete EventParam.ET_TRIGGER_UI_VIDEO_END_EVENT
+M.config["Screen - Video playback is complete"] = {
     desc = "",
     from_global = true,
     key = "ET_TRIGGER_UI_VIDEO_END_EVENT",
-    name = "Screen-VideoPlaybackIsComplete",
+    name = "Screen - Video playback is complete",
     object = "Player",
     params = {
         [1] = {
@@ -1960,12 +1960,12 @@ M.config["Screen-VideoPlaybackIsComplete"] = {
     },
 }
 
----@alias EventParam.Local-interface-inputBoxGetsFocus EventParam.ET_TRIGGER_UI_INPUT_FIELD_GET_FOCUS_EVENT
-M.config["Local-interface-inputBoxGetsFocus"] = {
+---@alias EventParam.Local-interface-input box gets focus EventParam.ET_TRIGGER_UI_INPUT_FIELD_GET_FOCUS_EVENT
+M.config["Local-interface-input box gets focus"] = {
     desc = "",
     from_global = true,
     key = "ET_TRIGGER_UI_INPUT_FIELD_GET_FOCUS_EVENT",
-    name = "Local-interface-inputBoxGetsFocus",
+    name = "Local-interface-input box gets focus",
     object = "Player",
     params = {
         [1] = {
@@ -1979,12 +1979,12 @@ M.config["Local-interface-inputBoxGetsFocus"] = {
     },
 }
 
----@alias EventParam.Local-interface-inputBoxOutOfFocus EventParam.ET_TRIGGER_UI_INPUT_FIELD_LOST_FOCUS_EVENT
-M.config["Local-interface-inputBoxOutOfFocus"] = {
+---@alias EventParam.Local-interface-input box out of focus EventParam.ET_TRIGGER_UI_INPUT_FIELD_LOST_FOCUS_EVENT
+M.config["Local-interface-input box out of focus"] = {
     desc = "",
     from_global = true,
     key = "ET_TRIGGER_UI_INPUT_FIELD_LOST_FOCUS_EVENT",
-    name = "Local-interface-inputBoxOutOfFocus",
+    name = "Local-interface-input box out of focus",
     object = "Player",
     params = {
         [1] = {
@@ -1998,12 +1998,12 @@ M.config["Local-interface-inputBoxOutOfFocus"] = {
     },
 }
 
----@alias EventParam.Local-Interface-InputBoxContentChanged EventParam.ET_TRIGGER_UI_INPUT_FIELD_TEXT_CHANGED_EVENT
-M.config["Local-Interface-InputBoxContentChanged"] = {
+---@alias EventParam.Local - Interface - Input box content changed EventParam.ET_TRIGGER_UI_INPUT_FIELD_TEXT_CHANGED_EVENT
+M.config["Local - Interface - Input box content changed"] = {
     desc = "",
     from_global = true,
     key = "ET_TRIGGER_UI_INPUT_FIELD_TEXT_CHANGED_EVENT",
-    name = "Local-Interface-InputBoxContentChanged",
+    name = "Local - Interface - Input box content changed",
     object = "Player",
     params = {
         [1] = {
@@ -2017,12 +2017,12 @@ M.config["Local-Interface-InputBoxContentChanged"] = {
     },
 }
 
----@alias EventParam.Keyboard.-PressIt EventParam.ET_KEYBOARD_KEY_DOWN_EVENT
-M.config["Keyboard.-PressIt"] = {
+---@alias EventParam.Keyboard. - Press it EventParam.ET_KEYBOARD_KEY_DOWN_EVENT
+M.config["Keyboard. - Press it"] = {
     desc = "Triggered when a key on the keyboard is pressed",
     from_global = true,
     key = "ET_KEYBOARD_KEY_DOWN_EVENT",
-    name = "Keyboard.-PressIt",
+    name = "Keyboard. - Press it",
     object = "Player",
     params = {
         [1] = {
@@ -2057,12 +2057,12 @@ M.config["Keyboard-Lift"] = {
     },
 }
 
----@alias EventParam.Local-Keyboard-Press EventParam.ET_ASYNC_KEYBOARD_KEY_DOWN_EVENT
-M.config["Local-Keyboard-Press"] = {
+---@alias EventParam.Local - Keyboard - Press EventParam.ET_ASYNC_KEYBOARD_KEY_DOWN_EVENT
+M.config["Local - Keyboard - Press"] = {
     desc = "Triggered when a key on the keyboard is pressed",
     from_global = true,
     key = "ET_ASYNC_KEYBOARD_KEY_DOWN_EVENT",
-    name = "Local-Keyboard-Press",
+    name = "Local - Keyboard - Press",
     object = "Player",
     params = {
         [1] = {
@@ -2077,12 +2077,12 @@ M.config["Local-Keyboard-Press"] = {
     },
 }
 
----@alias EventParam.Local-Keyboard-Lift EventParam.ET_ASYNC_KEYBOARD_KEY_UP_EVENT
-M.config["Local-Keyboard-Lift"] = {
+---@alias EventParam.Local - Keyboard - Lift EventParam.ET_ASYNC_KEYBOARD_KEY_UP_EVENT
+M.config["Local - Keyboard - Lift"] = {
     desc = "Triggered when a key on the keyboard is lifted",
     from_global = true,
     key = "ET_ASYNC_KEYBOARD_KEY_UP_EVENT",
-    name = "Local-Keyboard-Lift",
+    name = "Local - Keyboard - Lift",
     object = "Player",
     params = {
         [1] = {
@@ -2157,12 +2157,12 @@ M.config["Mouse-double-click"] = {
     },
 }
 
----@alias EventParam.Local-Mouse-PressDown EventParam.ET_ASYNC_MOUSE_KEY_DOWN_EVENT
-M.config["Local-Mouse-PressDown"] = {
+---@alias EventParam.Local - Mouse - Press down EventParam.ET_ASYNC_MOUSE_KEY_DOWN_EVENT
+M.config["Local - Mouse - Press down"] = {
     desc = "Triggered when a key on the mouse is pressed",
     from_global = true,
     key = "ET_ASYNC_MOUSE_KEY_DOWN_EVENT",
-    name = "Local-Mouse-PressDown",
+    name = "Local - Mouse - Press down",
     object = "Player",
     params = {
         [1] = {
@@ -2177,12 +2177,12 @@ M.config["Local-Mouse-PressDown"] = {
     },
 }
 
----@alias EventParam.Local-Mouse-Lift EventParam.ET_ASYNC_MOUSE_KEY_UP_EVENT
-M.config["Local-Mouse-Lift"] = {
+---@alias EventParam.Local - Mouse - Lift EventParam.ET_ASYNC_MOUSE_KEY_UP_EVENT
+M.config["Local - Mouse - Lift"] = {
     desc = "Triggered when a key on the mouse is lifted",
     from_global = true,
     key = "ET_ASYNC_MOUSE_KEY_UP_EVENT",
-    name = "Local-Mouse-Lift",
+    name = "Local - Mouse - Lift",
     object = "Player",
     params = {
         [1] = {
@@ -2197,12 +2197,12 @@ M.config["Local-Mouse-Lift"] = {
     },
 }
 
----@alias EventParam.Local-Mouse-DoubleClick EventParam.ET_ASYNC_MOUSE_KEY_DB_CLICK_EVENT
-M.config["Local-Mouse-DoubleClick"] = {
+---@alias EventParam.Local - Mouse - Double click EventParam.ET_ASYNC_MOUSE_KEY_DB_CLICK_EVENT
+M.config["Local - Mouse - Double click"] = {
     desc = "Triggered when a key on the mouse is double-clicked",
     from_global = true,
     key = "ET_ASYNC_MOUSE_KEY_DB_CLICK_EVENT",
-    name = "Local-Mouse-DoubleClick",
+    name = "Local - Mouse - Double click",
     object = "Player",
     params = {
         [1] = {
@@ -2277,12 +2277,12 @@ M.config["Mouse-DoubleClickTheUnit"] = {
     },
 }
 
----@alias EventParam.Local-Mouse-PressTheUnit EventParam.ET_MOUSE_KEY_DOWN_UNIT_EVENT
-M.config["Local-Mouse-PressTheUnit"] = {
+---@alias EventParam.Local - Mouse - Press the unit EventParam.ET_MOUSE_KEY_DOWN_UNIT_EVENT
+M.config["Local - Mouse - Press the unit"] = {
     desc = "Triggered when a key on the mouse is pressed against the unit",
     from_global = true,
     key = "ET_MOUSE_KEY_DOWN_UNIT_EVENT",
-    name = "Local-Mouse-PressTheUnit",
+    name = "Local - Mouse - Press the unit",
     object = "Player",
     params = {
         [1] = {
@@ -2297,12 +2297,12 @@ M.config["Local-Mouse-PressTheUnit"] = {
     },
 }
 
----@alias EventParam.Local-Mouse-LiftUnit EventParam.ET_MOUSE_KEY_UP_UNIT_EVENT
-M.config["Local-Mouse-LiftUnit"] = {
+---@alias EventParam.Local - mouse - lift unit EventParam.ET_MOUSE_KEY_UP_UNIT_EVENT
+M.config["Local - mouse - lift unit"] = {
     desc = "Triggered when a key on the mouse is raised against the unit",
     from_global = true,
     key = "ET_MOUSE_KEY_UP_UNIT_EVENT",
-    name = "Local-Mouse-LiftUnit",
+    name = "Local - mouse - lift unit",
     object = "Player",
     params = {
         [1] = {
@@ -2317,12 +2317,12 @@ M.config["Local-Mouse-LiftUnit"] = {
     },
 }
 
----@alias EventParam.Local-Mouse-DoubleClickTheUnit EventParam.ET_MOUSE_KEY_DB_CLICK_UNIT_EVENT
-M.config["Local-Mouse-DoubleClickTheUnit"] = {
+---@alias EventParam.Local - Mouse - Double click the unit EventParam.ET_MOUSE_KEY_DB_CLICK_UNIT_EVENT
+M.config["Local - Mouse - Double click the unit"] = {
     desc = "A key on the mouse is triggered when the unit is double-clicked",
     from_global = true,
     key = "ET_MOUSE_KEY_DB_CLICK_UNIT_EVENT",
-    name = "Local-Mouse-DoubleClickTheUnit",
+    name = "Local - Mouse - Double click the unit",
     object = "Player",
     params = {
         [1] = {
@@ -2348,12 +2348,12 @@ M.config["Mouse-move"] = {
     },
 }
 
----@alias EventParam.Local-Mouse-Move EventParam.ET_ASYNC_MOUSE_MOVE_EVENT
-M.config["Local-Mouse-Move"] = {
+---@alias EventParam.Local - Mouse - Move EventParam.ET_ASYNC_MOUSE_MOVE_EVENT
+M.config["Local - Mouse - Move"] = {
     desc = "Triggered when mouse moves",
     from_global = true,
     key = "ET_ASYNC_MOUSE_MOVE_EVENT",
-    name = "Local-Mouse-Move",
+    name = "Local - Mouse - Move",
     object = "Player",
     params = {
     },
@@ -2379,12 +2379,12 @@ M.config["Mouse-Wheel"] = {
     },
 }
 
----@alias EventParam.Local-Mouse-Wheel EventParam.ET_ASYNC_MOUSE_WHEEL_EVENT
-M.config["Local-Mouse-Wheel"] = {
+---@alias EventParam.Local - Mouse - Wheel EventParam.ET_ASYNC_MOUSE_WHEEL_EVENT
+M.config["Local - Mouse - Wheel"] = {
     desc = "Triggered when the mouse wheel is scrolling",
     from_global = true,
     key = "ET_ASYNC_MOUSE_WHEEL_EVENT",
-    name = "Local-Mouse-Wheel",
+    name = "Local - Mouse - Wheel",
     object = "Player",
     params = {
         [1] = {
@@ -2399,61 +2399,61 @@ M.config["Local-Mouse-Wheel"] = {
     },
 }
 
----@alias EventParam.Select-unit EventParam.ET_SELECT_UNIT
-M.config["Select-unit"] = {
+---@alias EventParam.select-unit EventParam.ET_SELECT_UNIT
+M.config["select-unit"] = {
     desc = "Triggered when the player selects a unit",
     key = "ET_SELECT_UNIT",
-    name = "Select-unit",
+    name = "select-unit",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Local-Select-Unit EventParam.ET_ASYNC_SELECT_UNIT
-M.config["Local-Select-Unit"] = {
+---@alias EventParam.Local - Select - Unit EventParam.ET_ASYNC_SELECT_UNIT
+M.config["Local - Select - Unit"] = {
     desc = "Triggered when local players select a unit",
     key = "ET_ASYNC_SELECT_UNIT",
-    name = "Local-Select-Unit",
+    name = "Local - Select - Unit",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Check-Cancel EventParam.CANCEL_SELECT_UNIT
-M.config["Check-Cancel"] = {
+---@alias EventParam.Check - cancel EventParam.CANCEL_SELECT_UNIT
+M.config["Check - cancel"] = {
     desc = "Triggered when the player actively unselects",
     key = "CANCEL_SELECT_UNIT",
-    name = "Check-Cancel",
+    name = "Check - cancel",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Local-Select-Cancel EventParam.ET_ASYNC_CANCEL_SELECT_UNIT
-M.config["Local-Select-Cancel"] = {
-    desc = "Triggered when the player's selected status is cancelled",
+---@alias EventParam.Local - Select - Cancel EventParam.ET_ASYNC_CANCEL_SELECT_UNIT
+M.config["Local - Select - Cancel"] = {
+    desc = "Triggered when the player is selected status is cancelled",
     key = "ET_ASYNC_CANCEL_SELECT_UNIT",
-    name = "Local-Select-Cancel",
+    name = "Local - Select - Cancel",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Selected-LostUnit EventParam.LOST_SELECT_UNIT
-M.config["Selected-LostUnit"] = {
+---@alias EventParam.Selected - Lost unit EventParam.LOST_SELECT_UNIT
+M.config["Selected - Lost unit"] = {
     desc = "Triggered when the player passively loses the selected status of the unit",
     key = "LOST_SELECT_UNIT",
-    name = "Selected-LostUnit",
+    name = "Selected - Lost unit",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Local-Selected-LostUnit EventParam.ET_ASYNC_LOST_SELECT_UNIT
-M.config["Local-Selected-LostUnit"] = {
+---@alias EventParam.Local - Selected - Lost unit EventParam.ET_ASYNC_LOST_SELECT_UNIT
+M.config["Local - Selected - Lost unit"] = {
     desc = "Triggered when a local player passively loses the selected status of a unit",
     key = "ET_ASYNC_LOST_SELECT_UNIT",
-    name = "Local-Selected-LostUnit",
+    name = "Local - Selected - Lost unit",
     object = "Player",
     params = {
     },
@@ -2469,11 +2469,11 @@ M.config["Select-item"] = {
     },
 }
 
----@alias EventParam.Local-Select-Items EventParam.ET_ASYNC_SELECT_ITEM
-M.config["Local-Select-Items"] = {
+---@alias EventParam.Local - Select - Items EventParam.ET_ASYNC_SELECT_ITEM
+M.config["Local - Select - Items"] = {
     desc = "Triggered when local players select an item",
     key = "ET_ASYNC_SELECT_ITEM",
-    name = "Local-Select-Items",
+    name = "Local - Select - Items",
     object = "Player",
     params = {
     },
@@ -2511,21 +2511,21 @@ M.config["Mouse-DoubleClickDestructible"] = {
     },
 }
 
----@alias EventParam.Select-UnitGroup EventParam.ET_SELECT_UNIT_GROUP
-M.config["Select-UnitGroup"] = {
+---@alias EventParam.Select - Unit Group EventParam.ET_SELECT_UNIT_GROUP
+M.config["Select - Unit Group"] = {
     desc = "Triggered when the player selects a unit group",
     key = "ET_SELECT_UNIT_GROUP",
-    name = "Select-UnitGroup",
+    name = "Select - Unit Group",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Local-Select-UnitGroup EventParam.ET_ASYNC_SELECT_UNIT_GROUP
-M.config["Local-Select-UnitGroup"] = {
+---@alias EventParam.Local - Select - Unit Group EventParam.ET_ASYNC_SELECT_UNIT_GROUP
+M.config["Local - Select - Unit Group"] = {
     desc = "Triggered when a local player selects a unit group",
     key = "ET_ASYNC_SELECT_UNIT_GROUP",
-    name = "Local-Select-UnitGroup",
+    name = "Local - Select - Unit Group",
     object = "Player",
     params = {
     },
@@ -2533,7 +2533,7 @@ M.config["Local-Select-UnitGroup"] = {
 
 ---@alias EventParam.Skills-TurnOnTheIndicator EventParam.ET_START_SKILL_POINTER
 M.config["Skills-TurnOnTheIndicator"] = {
-    desc = "Skill's aiming indicator is displayed when triggered",
+    desc = "Skill is aiming indicator is displayed when triggered",
     extraObjs = {
         [1] = {
             getter = function (self) return self:get_owner() end,
@@ -2565,7 +2565,7 @@ M.config["Skills-BuildSkillsBeforeReleasing"] = {
 
 ---@alias EventParam.Skills-TurnOffTheIndicator EventParam.ET_STOP_SKILL_POINTER
 M.config["Skills-TurnOffTheIndicator"] = {
-    desc = "Triggered when the skill's aiming indicator disappears",
+    desc = "Triggered when the skill is aiming indicator disappears",
     extraObjs = {
         [1] = {
             getter = function (self) return self:get_owner() end,
@@ -2579,41 +2579,41 @@ M.config["Skills-TurnOffTheIndicator"] = {
     },
 }
 
----@alias EventParam.Items-Get EventParam.ET_UNIT_ADD_ITEM
-M.config["Items-Get"] = {
+---@alias EventParam.Items - Get EventParam.ET_UNIT_ADD_ITEM
+M.config["Items - Get"] = {
     desc = "Triggered when a unit gets an item",
     key = "ET_UNIT_ADD_ITEM",
-    name = "Items-Get",
+    name = "Items - Get",
     object = "Item",
     params = {
     },
 }
 
----@alias EventParam.Items-EnterTheInventory EventParam.ET_UNIT_ADD_ITEM_TO_BAR
-M.config["Items-EnterTheInventory"] = {
-    desc = "Triggers when items enter a unit's inventory",
+---@alias EventParam.Items - Enter the inventory EventParam.ET_UNIT_ADD_ITEM_TO_BAR
+M.config["Items - Enter the inventory"] = {
+    desc = "Triggers when items enter a unit is inventory",
     key = "ET_UNIT_ADD_ITEM_TO_BAR",
-    name = "Items-EnterTheInventory",
+    name = "Items - Enter the inventory",
     object = "Item",
     params = {
     },
 }
 
----@alias EventParam.Items-EnterBackpack EventParam.ET_UNIT_ADD_ITEM_TO_PKG
-M.config["Items-EnterBackpack"] = {
-    desc = "Triggers when items enter the unit's backpack",
+---@alias EventParam.Items - Enter backpack EventParam.ET_UNIT_ADD_ITEM_TO_PKG
+M.config["Items - Enter backpack"] = {
+    desc = "Triggers when items enter the unit is backpack",
     key = "ET_UNIT_ADD_ITEM_TO_PKG",
-    name = "Items-EnterBackpack",
+    name = "Items - Enter backpack",
     object = "Item",
     params = {
     },
 }
 
----@alias EventParam.Item-Lost EventParam.ET_UNIT_REMOVE_ITEM
-M.config["Item-Lost"] = {
+---@alias EventParam.Item - lost EventParam.ET_UNIT_REMOVE_ITEM
+M.config["Item - lost"] = {
     desc = "Triggered when units lose items",
     key = "ET_UNIT_REMOVE_ITEM",
-    name = "Item-Lost",
+    name = "Item - lost",
     object = "Item",
     params = {
     },
@@ -2631,7 +2631,7 @@ M.config["Items-LeaveTheInventory"] = {
 
 ---@alias EventParam.Items-LeaveTheBackpack EventParam.ET_UNIT_REMOVE_ITEM_FROM_PKG
 M.config["Items-LeaveTheBackpack"] = {
-    desc = "Item triggers when leaving the unit's backpack",
+    desc = "Item triggers when leaving the unit is backpack",
     key = "ET_UNIT_REMOVE_ITEM_FROM_PKG",
     name = "Items-LeaveTheBackpack",
     object = "Item",
@@ -2639,11 +2639,11 @@ M.config["Items-LeaveTheBackpack"] = {
     },
 }
 
----@alias EventParam.Items-Use EventParam.ET_UNIT_USE_ITEM
-M.config["Items-Use"] = {
+---@alias EventParam.Items - Use EventParam.ET_UNIT_USE_ITEM
+M.config["Items - Use"] = {
     desc = "Triggered when a unit uses an item",
     key = "ET_UNIT_USE_ITEM",
-    name = "Items-Use",
+    name = "Items - Use",
     object = "Item",
     params = {
     },
@@ -2689,21 +2689,21 @@ M.config["Item-ChargeChanges"] = {
     },
 }
 
----@alias EventParam.Items-Create EventParam.ET_ITEM_ON_CREATE
-M.config["Items-Create"] = {
+---@alias EventParam.Items - Create EventParam.ET_ITEM_ON_CREATE
+M.config["Items - Create"] = {
     desc = "Triggered when item is created",
     key = "ET_ITEM_ON_CREATE",
-    name = "Items-Create",
+    name = "Items - Create",
     object = "Item",
     params = {
     },
 }
 
----@alias EventParam.Items-Removal EventParam.ET_ITEM_ON_DESTROY
-M.config["Items-Removal"] = {
+---@alias EventParam.Items - Removal EventParam.ET_ITEM_ON_DESTROY
+M.config["Items - Removal"] = {
     desc = "Triggered when item is removed",
     key = "ET_ITEM_ON_DESTROY",
-    name = "Items-Removal",
+    name = "Items - Removal",
     object = "Item",
     params = {
     },
@@ -2739,84 +2739,84 @@ M.config["Item-CollectionCreation"] = {
     },
 }
 
----@alias EventParam.Command-AttackMove EventParam.ET_ATTACK_MOVE_CMD
-M.config["Command-AttackMove"] = {
+---@alias EventParam.Command - Attack move EventParam.ET_ATTACK_MOVE_CMD
+M.config["Command - Attack move"] = {
     desc = "",
     key = "ET_ATTACK_MOVE_CMD",
-    name = "Command-AttackMove",
+    name = "Command - Attack move",
     object = "Unit",
     params = {
     },
 }
 
----@alias EventParam.Command-SellItems EventParam.ET_SELL_ITEM_CMD
-M.config["Command-SellItems"] = {
+---@alias EventParam.Command - Sell items EventParam.ET_SELL_ITEM_CMD
+M.config["Command - Sell items"] = {
     desc = "",
     key = "ET_SELL_ITEM_CMD",
-    name = "Command-SellItems",
+    name = "Command - Sell items",
     object = "Unit",
     params = {
     },
 }
 
----@alias EventParam.Command-CastAbilities EventParam.ET_AI_RELEASE_SKILL_CMD
-M.config["Command-CastAbilities"] = {
+---@alias EventParam.Command - Cast abilities EventParam.ET_AI_RELEASE_SKILL_CMD
+M.config["Command - Cast abilities"] = {
     desc = "",
     key = "ET_AI_RELEASE_SKILL_CMD",
-    name = "Command-CastAbilities",
+    name = "Command - Cast abilities",
     object = "Unit",
     params = {
     },
 }
 
----@alias EventParam.Command-patrol EventParam.ET_PATROL_CMD
-M.config["Command-patrol"] = {
+---@alias EventParam.command-patrol EventParam.ET_PATROL_CMD
+M.config["command-patrol"] = {
     desc = "",
     key = "ET_PATROL_CMD",
-    name = "Command-patrol",
+    name = "command-patrol",
     object = "Unit",
     params = {
     },
 }
 
----@alias EventParam.Command-move EventParam.ET_MOVE_UNIT_TO_TARGET_CMD
-M.config["Command-move"] = {
+---@alias EventParam.command-move EventParam.ET_MOVE_UNIT_TO_TARGET_CMD
+M.config["command-move"] = {
     desc = "",
     key = "ET_MOVE_UNIT_TO_TARGET_CMD",
-    name = "Command-move",
+    name = "command-move",
     object = "Unit",
     params = {
     },
 }
 
----@alias EventParam.Mouse-Hover EventParam.ET_MOUSE_HOVER_EVENT
-M.config["Mouse-Hover"] = {
+---@alias EventParam.Mouse - Hover EventParam.ET_MOUSE_HOVER_EVENT
+M.config["Mouse - Hover"] = {
     desc = "Hovering to enter or leave will trigger",
     from_global = true,
     key = "ET_MOUSE_HOVER_EVENT",
-    name = "Mouse-Hover",
+    name = "Mouse - Hover",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Local-Mouse-Hover EventParam.ET_ASYNC_MOUSE_HOVER_EVENT
-M.config["Local-Mouse-Hover"] = {
+---@alias EventParam.Local - Mouse - Hover EventParam.ET_ASYNC_MOUSE_HOVER_EVENT
+M.config["Local - Mouse - Hover"] = {
     desc = "Hovering to enter or leave will trigger",
     from_global = true,
     key = "ET_ASYNC_MOUSE_HOVER_EVENT",
-    name = "Local-Mouse-Hover",
+    name = "Local - Mouse - Hover",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Player-SendMessage EventParam.ET_CHAT_SEND_GM
-M.config["Player-SendMessage"] = {
+---@alias EventParam.Player - Send message EventParam.ET_CHAT_SEND_GM
+M.config["Player - Send message"] = {
     desc = "Triggered when the player sends any message",
     from_global = true,
     key = "ET_CHAT_SEND_GM",
-    name = "Player-SendMessage",
+    name = "Player - Send message",
     object = "Player",
     params = {
     },
@@ -2842,7 +2842,7 @@ M.config["Games-News"] = {
 
 ---@alias EventParam.Player-VoiceSpeech EventParam.ET_MICRO_SPEAK
 M.config["Player-VoiceSpeech"] = {
-    desc = "The player's start voice and end voice will trigger",
+    desc = "The player is start voice and end voice will trigger",
     from_global = true,
     key = "ET_MICRO_SPEAK",
     name = "Player-VoiceSpeech",
@@ -2861,41 +2861,41 @@ M.config["Unknown-et_unit_3d_active"] = {
     },
 }
 
----@alias EventParam.Player-PlatformItemChanges EventParam.ET_ROLE_STORE_ITEM_CHANGED
-M.config["Player-PlatformItemChanges"] = {
-    desc = "Triggers when the player's platform item changes",
+---@alias EventParam.Player - platform item changes EventParam.ET_ROLE_STORE_ITEM_CHANGED
+M.config["Player - platform item changes"] = {
+    desc = "Triggers when the player is platform item changes",
     key = "ET_ROLE_STORE_ITEM_CHANGED",
-    name = "Player-PlatformItemChanges",
+    name = "Player - platform item changes",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Player-PlatformMallWindowChanges EventParam.ET_ROLE_STORE_PAGE_STATE_CHANGED
-M.config["Player-PlatformMallWindowChanges"] = {
+---@alias EventParam.Player - Platform mall window changes EventParam.ET_ROLE_STORE_PAGE_STATE_CHANGED
+M.config["Player - Platform mall window changes"] = {
     desc = "Platform mall window change event",
     from_global = true,
     key = "ET_ROLE_STORE_PAGE_STATE_CHANGED",
-    name = "Player-PlatformMallWindowChanges",
+    name = "Player - Platform mall window changes",
     object = "Player",
     params = {
     },
 }
 
----@alias EventParam.Console-Input EventParam.ET_LUA_CONSOLE_COMMAND
-M.config["Console-Input"] = {
+---@alias EventParam.Console - Input EventParam.ET_LUA_CONSOLE_COMMAND
+M.config["Console - Input"] = {
     desc = "",
     key = "ET_LUA_CONSOLE_COMMAND",
-    name = "Console-Input",
+    name = "Console - Input",
     params = {
     },
 }
 
----@alias EventParam.Console-RequestCompletion EventParam.ET_LUA_CONSOLE_TIPS
-M.config["Console-RequestCompletion"] = {
+---@alias EventParam.Console - Request completion EventParam.ET_LUA_CONSOLE_TIPS
+M.config["Console - Request completion"] = {
     desc = "",
     key = "ET_LUA_CONSOLE_TIPS",
-    name = "Console-RequestCompletion",
+    name = "Console - Request completion",
     params = {
     },
 }
@@ -3009,597 +3009,597 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 }
 
 ---@class Game
----@field event fun(self: self, event: "Game-Initialization", callback: fun(trg: Trigger, data: EventParam.Game-Initialization)): Trigger
----@field event fun(self: self, event: "Game-FrameChasingComplete", callback: fun(trg: Trigger, data: EventParam.Game-FrameChasingComplete)): Trigger
----@field event fun(self: self, event: "Game-LogicIsOutOfSync", callback: fun(trg: Trigger, data: EventParam.Game-LogicIsOutOfSync)): Trigger
----@field event fun(self: self, event: "Game-TerrainPresetsLoadedComplete", callback: fun(trg: Trigger, data: EventParam.Game-TerrainPresetsLoadedComplete)): Trigger
----@field event fun(self: self, event: "Game-Over", callback: fun(trg: Trigger, data: EventParam.Game-Over)): Trigger
----@field event fun(self: self, event: "Game-Pause", callback: fun(trg: Trigger, data: EventParam.Game-Pause)): Trigger
----@field event fun(self: self, event: "Game-Recovery", callback: fun(trg: Trigger, data: EventParam.Game-Recovery)): Trigger
----@field event fun(self: self, event: "Game-DayAndNightChange", callback: fun(trg: Trigger, data: EventParam.Game-DayAndNightChange)): Trigger
----@field event fun(self: self, event: "Zone-access", area: Area, callback: fun(trg: Trigger, data: EventParam.Zone-access)): Trigger
----@field event fun(self: self, event: "Zone-Leave", area: Area, callback: fun(trg: Trigger, data: EventParam.Zone-Leave)): Trigger
----@field event fun(self: self, event: "Game-httpReturn", callback: fun(trg: Trigger, data: EventParam.Game-httpReturn)): Trigger
----@field event fun(self: self, event: "Games-ReceiveBroadcastInformation", callback: fun(trg: Trigger, data: EventParam.Games-ReceiveBroadcastInformation)): Trigger
----@field event fun(self: self, event: "Player-JoinTheGame", callback: fun(trg: Trigger, data: EventParam.Player-JoinTheGame)): Trigger
----@field event fun(self: self, event: "Player-LeaveTheGame", callback: fun(trg: Trigger, data: EventParam.Player-LeaveTheGame)): Trigger
----@field event fun(self: self, event: "Player-DroppedCall", callback: fun(trg: Trigger, data: EventParam.Player-DroppedCall)): Trigger
----@field event fun(self: self, event: "Player-UsePlatformItems", callback: fun(trg: Trigger, data: EventParam.Player-UsePlatformItems)): Trigger
----@field event fun(self: self, event: "Player-HoldsPlatformItems", callback: fun(trg: Trigger, data: EventParam.Player-HoldsPlatformItems)): Trigger
----@field event fun(self: self, event: "Player-AttributesChange", callback: fun(trg: Trigger, data: EventParam.Player-AttributesChange)): Trigger
----@field event fun(self: self, event: "Player-SendTheSpecifiedMessage", msg: string, callback: fun(trg: Trigger, data: EventParam.Player-SendTheSpecifiedMessage)): Trigger
----@field event fun(self: self, event: "Player-TechnologyEnhancement", callback: fun(trg: Trigger, data: EventParam.Player-TechnologyEnhancement)): Trigger
----@field event fun(self: self, event: "Player-TechDown", callback: fun(trg: Trigger, data: EventParam.Player-TechDown)): Trigger
----@field event fun(self: self, event: "Player-TechnologyChanges", callback: fun(trg: Trigger, data: EventParam.Player-TechnologyChanges)): Trigger
----@field event fun(self: self, event: "Unit-ResearchAndDevelopmentTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-ResearchAndDevelopmentTechnology)): Trigger
----@field event fun(self: self, event: "Unit-AccessToTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-AccessToTechnology)): Trigger
----@field event fun(self: self, event: "Unit-LostTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-LostTechnology)): Trigger
----@field event fun(self: self, event: "Player-RelationshipChanges", callback: fun(trg: Trigger, data: EventParam.Player-RelationshipChanges)): Trigger
----@field event fun(self: self, event: "Player-Reconnect", callback: fun(trg: Trigger, data: EventParam.Player-Reconnect)): Trigger
----@field event fun(self: self, event: "Unit-BuildingUpgradeStarts", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeStarts)): Trigger
----@field event fun(self: self, event: "Unit-BuildingUpgradeCancelled", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeCancelled)): Trigger
----@field event fun(self: self, event: "Unit-BuildingUpgradeCompleted", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeCompleted)): Trigger
----@field event fun(self: self, event: "Unit-ConstructionBegins", callback: fun(trg: Trigger, data: EventParam.Unit-ConstructionBegins)): Trigger
----@field event fun(self: self, event: "Unit-BuildCancelled", callback: fun(trg: Trigger, data: EventParam.Unit-BuildCancelled)): Trigger
----@field event fun(self: self, event: "Unit-ConstructionCompleted", callback: fun(trg: Trigger, data: EventParam.Unit-ConstructionCompleted)): Trigger
----@field event fun(self: self, event: "Skill-BuiltComplete", callback: fun(trg: Trigger, data: EventParam.Skill-BuiltComplete)): Trigger
----@field event fun(self: self, event: "Skills-Learning", callback: fun(trg: Trigger, data: EventParam.Skills-Learning)): Trigger
----@field event fun(self: self, event: "Skills-AvailableStatusChanges", callback: fun(trg: Trigger, data: EventParam.Skills-AvailableStatusChanges)): Trigger
----@field event fun(self: self, event: "Skill-SilentStateChanges", callback: fun(trg: Trigger, data: EventParam.Skill-SilentStateChanges)): Trigger
----@field event fun(self: self, event: "Skills-IconChanges", callback: fun(trg: Trigger, data: EventParam.Skills-IconChanges)): Trigger
----@field event fun(self: self, event: "Unit-NameChange", callback: fun(trg: Trigger, data: EventParam.Unit-NameChange)): Trigger
----@field event fun(self: self, event: "Unit-MinimapIconChanges", callback: fun(trg: Trigger, data: EventParam.Unit-MinimapIconChanges)): Trigger
----@field event fun(self: self, event: "Unit-HeadChange", callback: fun(trg: Trigger, data: EventParam.Unit-HeadChange)): Trigger
----@field event fun(self: self, event: "Unit-Remove", callback: fun(trg: Trigger, data: EventParam.Unit-Remove)): Trigger
----@field event fun(self: self, event: "Unit-AfterRemoval", callback: fun(trg: Trigger, data: EventParam.Unit-AfterRemoval)): Trigger
----@field event fun(self: self, event: "Unit-EndOfTransmission", callback: fun(trg: Trigger, data: EventParam.Unit-EndOfTransmission)): Trigger
----@field event fun(self: self, event: "Unit-AttributeChange", unit: Unit, attr: string, callback: fun(trg: Trigger, data: EventParam.Unit-AttributeChange)): Trigger
----@field event fun(self: self, event: "Unit-AboutToDie", callback: fun(trg: Trigger, data: EventParam.Unit-AboutToDie)): Trigger
----@field event fun(self: self, event: "Unit-Death", callback: fun(trg: Trigger, data: EventParam.Unit-Death)): Trigger
----@field event fun(self: self, event: "Unit-BeforeTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeTakingDamage)): Trigger
----@field event fun(self: self, event: "Unit-BeforeDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeDealingDamage)): Trigger
----@field event fun(self: self, event: "Unit-WhenTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-WhenTakingDamage)): Trigger
----@field event fun(self: self, event: "Unit-WhenDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-WhenDealingDamage)): Trigger
----@field event fun(self: self, event: "Unit-AfterDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-AfterDealingDamage)): Trigger
----@field event fun(self: self, event: "Unit-AfterTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-AfterTakingDamage)): Trigger
----@field event fun(self: self, event: "Unit-BeforeBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeBeingTreated)): Trigger
----@field event fun(self: self, event: "Unit-AfterBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-AfterBeingTreated)): Trigger
----@field event fun(self: self, event: "Unit-WhenBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-WhenBeingTreated)): Trigger
----@field event fun(self: self, event: "Player-PropertiesIconChanges", callback: fun(trg: Trigger, data: EventParam.Player-PropertiesIconChanges)): Trigger
----@field event fun(self: self, event: "Unit-CastSkills", callback: fun(trg: Trigger, data: EventParam.Unit-CastSkills)): Trigger
----@field event fun(self: self, event: "Unit-BeforeGainingExperience", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeGainingExperience)): Trigger
----@field event fun(self: self, event: "Unit-AfterGainingExperience", callback: fun(trg: Trigger, data: EventParam.Unit-AfterGainingExperience)): Trigger
----@field event fun(self: self, event: "Unit-ReceiveCommand", callback: fun(trg: Trigger, data: EventParam.Unit-ReceiveCommand)): Trigger
----@field event fun(self: self, event: "Unit-Kill", callback: fun(trg: Trigger, data: EventParam.Unit-Kill)): Trigger
----@field event fun(self: self, event: "Unit-Create", callback: fun(trg: Trigger, data: EventParam.Unit-Create)): Trigger
----@field event fun(self: self, event: "Unit-EnterTheBattle", callback: fun(trg: Trigger, data: EventParam.Unit-EnterTheBattle)): Trigger
----@field event fun(self: self, event: "Unit-OutOfCombat", callback: fun(trg: Trigger, data: EventParam.Unit-OutOfCombat)): Trigger
----@field event fun(self: self, event: "Unit-AboutToPickUpItems", callback: fun(trg: Trigger, data: EventParam.Unit-AboutToPickUpItems)): Trigger
----@field event fun(self: self, event: "Unit-TogglesDefaultBehavior", callback: fun(trg: Trigger, data: EventParam.Unit-TogglesDefaultBehavior)): Trigger
----@field event fun(self: self, event: "Unit-ApproachingEnemy", callback: fun(trg: Trigger, data: EventParam.Unit-ApproachingEnemy)): Trigger
----@field event fun(self: self, event: "Unit-SpottedTarget", callback: fun(trg: Trigger, data: EventParam.Unit-SpottedTarget)): Trigger
----@field event fun(self: self, event: "Local-BoneCollision", callback: fun(trg: Trigger, data: EventParam.Local-BoneCollision)): Trigger
----@field event fun(self: self, event: "Physical-BoneCollision", callback: fun(trg: Trigger, data: EventParam.Physical-BoneCollision)): Trigger
----@field event fun(self: self, event: "Unit-PurchaseItems", callback: fun(trg: Trigger, data: EventParam.Unit-PurchaseItems)): Trigger
----@field event fun(self: self, event: "Units-PurchaseUnits", callback: fun(trg: Trigger, data: EventParam.Units-PurchaseUnits)): Trigger
----@field event fun(self: self, event: "Unit-ItemsForSale", callback: fun(trg: Trigger, data: EventParam.Unit-ItemsForSale)): Trigger
----@field event fun(self: self, event: "Store-MerchandiseChanges", callback: fun(trg: Trigger, data: EventParam.Store-MerchandiseChanges)): Trigger
----@field event fun(self: self, event: "Store-StockChanges", callback: fun(trg: Trigger, data: EventParam.Store-StockChanges)): Trigger
----@field event fun(self: self, event: "Store-PriceChanges", callback: fun(trg: Trigger, data: EventParam.Store-PriceChanges)): Trigger
----@field event fun(self: self, event: "Unit-ItemComposition", callback: fun(trg: Trigger, data: EventParam.Unit-ItemComposition)): Trigger
----@field event fun(self: self, event: "Unit-PurchaseItemCompositing", callback: fun(trg: Trigger, data: EventParam.Unit-PurchaseItemCompositing)): Trigger
----@field event fun(self: self, event: "Unit-Resurrection", callback: fun(trg: Trigger, data: EventParam.Unit-Resurrection)): Trigger
----@field event fun(self: self, event: "Unit-Upgrade", callback: fun(trg: Trigger, data: EventParam.Unit-Upgrade)): Trigger
----@field event fun(self: self, event: "Unit-IntoTheGrass", callback: fun(trg: Trigger, data: EventParam.Unit-IntoTheGrass)): Trigger
----@field event fun(self: self, event: "Unit-GetOutOfTheGrass", callback: fun(trg: Trigger, data: EventParam.Unit-GetOutOfTheGrass)): Trigger
----@field event fun(self: self, event: "Unit-ChangeOwnership", callback: fun(trg: Trigger, data: EventParam.Unit-ChangeOwnership)): Trigger
----@field event fun(self: self, event: "UnitType-ThePrerequisiteIsTrue", callback: fun(trg: Trigger, data: EventParam.UnitType-ThePrerequisiteIsTrue)): Trigger
----@field event fun(self: self, event: "UnitType-ThePreconditionIsNotValid", callback: fun(trg: Trigger, data: EventParam.UnitType-ThePreconditionIsNotValid)): Trigger
----@field event fun(self: self, event: "ItemType-PreconditionsHold", callback: fun(trg: Trigger, data: EventParam.ItemType-PreconditionsHold)): Trigger
----@field event fun(self: self, event: "ItemType-PreconditionsAreNotValid", callback: fun(trg: Trigger, data: EventParam.ItemType-PreconditionsAreNotValid)): Trigger
----@field event fun(self: self, event: "SkillType-ThePrerequisiteIsTrue", callback: fun(trg: Trigger, data: EventParam.SkillType-ThePrerequisiteIsTrue)): Trigger
----@field event fun(self: self, event: "SkillType-PreconditionsAreNotValid", callback: fun(trg: Trigger, data: EventParam.SkillType-PreconditionsAreNotValid)): Trigger
----@field event fun(self: self, event: "TechnologyType-PreconditionsHold", callback: fun(trg: Trigger, data: EventParam.TechnologyType-PreconditionsHold)): Trigger
----@field event fun(self: self, event: "TechnologyType-PreconditionNotValid", callback: fun(trg: Trigger, data: EventParam.TechnologyType-PreconditionNotValid)): Trigger
----@field event fun(self: self, event: "Skills-Upgrades", callback: fun(trg: Trigger, data: EventParam.Skills-Upgrades)): Trigger
----@field event fun(self: self, event: "Casting.-AboutToBegin", callback: fun(trg: Trigger, data: EventParam.Casting.-AboutToBegin)): Trigger
----@field event fun(self: self, event: "CastTheSpell.-HereWeGo", callback: fun(trg: Trigger, data: EventParam.CastTheSpell.-HereWeGo)): Trigger
----@field event fun(self: self, event: "Cast-Guide", callback: fun(trg: Trigger, data: EventParam.Cast-Guide)): Trigger
----@field event fun(self: self, event: "CastSpells.-Strike", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Strike)): Trigger
----@field event fun(self: self, event: "CastASpell.-Finished", callback: fun(trg: Trigger, data: EventParam.CastASpell.-Finished)): Trigger
----@field event fun(self: self, event: "CastSpells.-Over", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Over)): Trigger
----@field event fun(self: self, event: "CastASpell.-InterruptTheStart", callback: fun(trg: Trigger, data: EventParam.CastASpell.-InterruptTheStart)): Trigger
----@field event fun(self: self, event: "CastSpells.-InterruptTheLead", callback: fun(trg: Trigger, data: EventParam.CastSpells.-InterruptTheLead)): Trigger
----@field event fun(self: self, event: "CastASpell.-BreakTheShot", callback: fun(trg: Trigger, data: EventParam.CastASpell.-BreakTheShot)): Trigger
----@field event fun(self: self, event: "CastSpells.-Stop", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Stop)): Trigger
----@field event fun(self: self, event: "Skills-Acquisition", callback: fun(trg: Trigger, data: EventParam.Skills-Acquisition)): Trigger
----@field event fun(self: self, event: "SkillLoss", callback: fun(trg: Trigger, data: EventParam.SkillLoss)): Trigger
----@field event fun(self: self, event: "Skill-exchange", callback: fun(trg: Trigger, data: EventParam.Skill-exchange)): Trigger
----@field event fun(self: self, event: "Skills-Disabled", callback: fun(trg: Trigger, data: EventParam.Skills-Disabled)): Trigger
----@field event fun(self: self, event: "Skills-Enabled", callback: fun(trg: Trigger, data: EventParam.Skills-Enabled)): Trigger
----@field event fun(self: self, event: "Skill-CooldownEnds", callback: fun(trg: Trigger, data: EventParam.Skill-CooldownEnds)): Trigger
----@field event fun(self: self, event: "Skills-CustomAnimationAxis", string: string, callback: fun(trg: Trigger, data: EventParam.Skills-CustomAnimationAxis)): Trigger
----@field event fun(self: self, event: "Effect-Gain", callback: fun(trg: Trigger, data: EventParam.Effect-Gain)): Trigger
----@field event fun(self: self, event: "Effect-loss", callback: fun(trg: Trigger, data: EventParam.Effect-loss)): Trigger
----@field event fun(self: self, event: "Effect-Heartbeat", callback: fun(trg: Trigger, data: EventParam.Effect-Heartbeat)): Trigger
----@field event fun(self: self, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
----@field event fun(self: self, event: "Effect-NumberOfLayersChange", callback: fun(trg: Trigger, data: EventParam.Effect-NumberOfLayersChange)): Trigger
----@field event fun(self: self, event: "Effect-ComingSoon", callback: fun(trg: Trigger, data: EventParam.Effect-ComingSoon)): Trigger
----@field event fun(self: self, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
----@field event fun(self: self, event: "Destructible-Create", callback: fun(trg: Trigger, data: EventParam.Destructible-Create)): Trigger
----@field event fun(self: self, event: "Destructible-Death", callback: fun(trg: Trigger, data: EventParam.Destructible-Death)): Trigger
----@field event fun(self: self, event: "Destructible.-Resurrection", callback: fun(trg: Trigger, data: EventParam.Destructible.-Resurrection)): Trigger
----@field event fun(self: self, event: "Destructible-ResourceChange", callback: fun(trg: Trigger, data: EventParam.Destructible-ResourceChange)): Trigger
----@field event fun(self: self, event: "Destructible-Collection", callback: fun(trg: Trigger, data: EventParam.Destructible-Collection)): Trigger
----@field event fun(self: self, event: "Destructible-Damaged", callback: fun(trg: Trigger, data: EventParam.Destructible-Damaged)): Trigger
----@field event fun(self: self, event: "Check-Destructible", callback: fun(trg: Trigger, data: EventParam.Check-Destructible)): Trigger
----@field event fun(self: self, event: "Local-Select-Destructible", callback: fun(trg: Trigger, data: EventParam.Local-Select-Destructible)): Trigger
----@field event fun(self: self, event: "Destructible-Remove", callback: fun(trg: Trigger, data: EventParam.Destructible-Remove)): Trigger
----@field event fun(self: self, event: "Projectiles-Created", callback: fun(trg: Trigger, data: EventParam.Projectiles-Created)): Trigger
----@field event fun(self: self, event: "Projectiles-Death", callback: fun(trg: Trigger, data: EventParam.Projectiles-Death)): Trigger
----@field event fun(self: self, event: "Interface-Message", event_name: string, callback: fun(trg: Trigger, data: EventParam.Interface-Message)): Trigger
----@field event fun(self: self, event: "Interface-SliderChanges", ui: UI, callback: fun(trg: Trigger, data: EventParam.Interface-SliderChanges)): Trigger
----@field event fun(self: self, event: "Interface-ChatBoxVisibilityChanges", ui: UI, callback: fun(trg: Trigger, data: EventParam.Interface-ChatBoxVisibilityChanges)): Trigger
----@field event fun(self: self, event: "Interface-EquipmentDragAndDrop", ui: UI, callback: fun(trg: Trigger, data: EventParam.Interface-EquipmentDragAndDrop)): Trigger
----@field event fun(self: self, event: "Screen-CheckBoxChanges", ui: UI, callback: fun(trg: Trigger, data: EventParam.Screen-CheckBoxChanges)): Trigger
----@field event fun(self: self, event: "Screen-VideoPlaybackIsComplete", ui: UI, callback: fun(trg: Trigger, data: EventParam.Screen-VideoPlaybackIsComplete)): Trigger
----@field event fun(self: self, event: "Local-interface-inputBoxGetsFocus", ui: UI, callback: fun(trg: Trigger, data: EventParam.Local-interface-inputBoxGetsFocus)): Trigger
----@field event fun(self: self, event: "Local-interface-inputBoxOutOfFocus", ui: UI, callback: fun(trg: Trigger, data: EventParam.Local-interface-inputBoxOutOfFocus)): Trigger
----@field event fun(self: self, event: "Local-Interface-InputBoxContentChanged", ui: UI, callback: fun(trg: Trigger, data: EventParam.Local-Interface-InputBoxContentChanged)): Trigger
----@field event fun(self: self, event: "Keyboard.-PressIt", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam.Keyboard.-PressIt)): Trigger
----@field event fun(self: self, event: "Keyboard-Lift", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam.Keyboard-Lift)): Trigger
----@field event fun(self: self, event: "Local-Keyboard-Press", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Keyboard-Press)): Trigger
----@field event fun(self: self, event: "Local-Keyboard-Lift", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Keyboard-Lift)): Trigger
----@field event fun(self: self, event: "Mouse-PressIt", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-PressIt)): Trigger
----@field event fun(self: self, event: "Mouse-lift", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-lift)): Trigger
----@field event fun(self: self, event: "Mouse-double-click", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-double-click)): Trigger
----@field event fun(self: self, event: "Local-Mouse-PressDown", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-PressDown)): Trigger
----@field event fun(self: self, event: "Local-Mouse-Lift", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-Lift)): Trigger
----@field event fun(self: self, event: "Local-Mouse-DoubleClick", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-DoubleClick)): Trigger
----@field event fun(self: self, event: "Mouse-PressTheUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-PressTheUnit)): Trigger
----@field event fun(self: self, event: "Mouse-LiftUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-LiftUnit)): Trigger
----@field event fun(self: self, event: "Mouse-DoubleClickTheUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-DoubleClickTheUnit)): Trigger
----@field event fun(self: self, event: "Local-Mouse-PressTheUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-PressTheUnit)): Trigger
----@field event fun(self: self, event: "Local-Mouse-LiftUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-LiftUnit)): Trigger
----@field event fun(self: self, event: "Local-Mouse-DoubleClickTheUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-DoubleClickTheUnit)): Trigger
----@field event fun(self: self, event: "Mouse-move", callback: fun(trg: Trigger, data: EventParam.Mouse-move)): Trigger
----@field event fun(self: self, event: "Local-Mouse-Move", callback: fun(trg: Trigger, data: EventParam.Local-Mouse-Move)): Trigger
----@field event fun(self: self, event: "Mouse-Wheel", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-Wheel)): Trigger
----@field event fun(self: self, event: "Local-Mouse-Wheel", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-Wheel)): Trigger
----@field event fun(self: self, event: "Select-unit", callback: fun(trg: Trigger, data: EventParam.Select-unit)): Trigger
----@field event fun(self: self, event: "Local-Select-Unit", callback: fun(trg: Trigger, data: EventParam.Local-Select-Unit)): Trigger
----@field event fun(self: self, event: "Check-Cancel", callback: fun(trg: Trigger, data: EventParam.Check-Cancel)): Trigger
----@field event fun(self: self, event: "Local-Select-Cancel", callback: fun(trg: Trigger, data: EventParam.Local-Select-Cancel)): Trigger
----@field event fun(self: self, event: "Selected-LostUnit", callback: fun(trg: Trigger, data: EventParam.Selected-LostUnit)): Trigger
----@field event fun(self: self, event: "Local-Selected-LostUnit", callback: fun(trg: Trigger, data: EventParam.Local-Selected-LostUnit)): Trigger
----@field event fun(self: self, event: "Select-item", callback: fun(trg: Trigger, data: EventParam.Select-item)): Trigger
----@field event fun(self: self, event: "Local-Select-Items", callback: fun(trg: Trigger, data: EventParam.Local-Select-Items)): Trigger
----@field event fun(self: self, event: "Player-CheatingDetected", callback: fun(trg: Trigger, data: EventParam.Player-CheatingDetected)): Trigger
----@field event fun(self: self, event: "Mouse-DoubleClickTheItem", callback: fun(trg: Trigger, data: EventParam.Mouse-DoubleClickTheItem)): Trigger
----@field event fun(self: self, event: "Mouse-DoubleClickDestructible", callback: fun(trg: Trigger, data: EventParam.Mouse-DoubleClickDestructible)): Trigger
----@field event fun(self: self, event: "Select-UnitGroup", callback: fun(trg: Trigger, data: EventParam.Select-UnitGroup)): Trigger
----@field event fun(self: self, event: "Local-Select-UnitGroup", callback: fun(trg: Trigger, data: EventParam.Local-Select-UnitGroup)): Trigger
----@field event fun(self: self, event: "Skills-TurnOnTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOnTheIndicator)): Trigger
----@field event fun(self: self, event: "Skills-BuildSkillsBeforeReleasing", callback: fun(trg: Trigger, data: EventParam.Skills-BuildSkillsBeforeReleasing)): Trigger
----@field event fun(self: self, event: "Skills-TurnOffTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOffTheIndicator)): Trigger
----@field event fun(self: self, event: "Items-Get", callback: fun(trg: Trigger, data: EventParam.Items-Get)): Trigger
----@field event fun(self: self, event: "Items-EnterTheInventory", callback: fun(trg: Trigger, data: EventParam.Items-EnterTheInventory)): Trigger
----@field event fun(self: self, event: "Items-EnterBackpack", callback: fun(trg: Trigger, data: EventParam.Items-EnterBackpack)): Trigger
----@field event fun(self: self, event: "Item-Lost", callback: fun(trg: Trigger, data: EventParam.Item-Lost)): Trigger
----@field event fun(self: self, event: "Items-LeaveTheInventory", callback: fun(trg: Trigger, data: EventParam.Items-LeaveTheInventory)): Trigger
----@field event fun(self: self, event: "Items-LeaveTheBackpack", callback: fun(trg: Trigger, data: EventParam.Items-LeaveTheBackpack)): Trigger
----@field event fun(self: self, event: "Items-Use", callback: fun(trg: Trigger, data: EventParam.Items-Use)): Trigger
----@field event fun(self: self, event: "Unit-PathfindingBegins", callback: fun(trg: Trigger, data: EventParam.Unit-PathfindingBegins)): Trigger
----@field event fun(self: self, event: "Unit-PathfindingEnds", callback: fun(trg: Trigger, data: EventParam.Unit-PathfindingEnds)): Trigger
----@field event fun(self: self, event: "Item-StackChanges", callback: fun(trg: Trigger, data: EventParam.Item-StackChanges)): Trigger
----@field event fun(self: self, event: "Item-ChargeChanges", callback: fun(trg: Trigger, data: EventParam.Item-ChargeChanges)): Trigger
----@field event fun(self: self, event: "Items-Create", callback: fun(trg: Trigger, data: EventParam.Items-Create)): Trigger
----@field event fun(self: self, event: "Items-Removal", callback: fun(trg: Trigger, data: EventParam.Items-Removal)): Trigger
----@field event fun(self: self, event: "Items-ForSale", callback: fun(trg: Trigger, data: EventParam.Items-ForSale)): Trigger
----@field event fun(self: self, event: "Item-Death", callback: fun(trg: Trigger, data: EventParam.Item-Death)): Trigger
----@field event fun(self: self, event: "Item-CollectionCreation", callback: fun(trg: Trigger, data: EventParam.Item-CollectionCreation)): Trigger
----@field event fun(self: self, event: "Command-AttackMove", callback: fun(trg: Trigger, data: EventParam.Command-AttackMove)): Trigger
----@field event fun(self: self, event: "Command-SellItems", callback: fun(trg: Trigger, data: EventParam.Command-SellItems)): Trigger
----@field event fun(self: self, event: "Command-CastAbilities", callback: fun(trg: Trigger, data: EventParam.Command-CastAbilities)): Trigger
----@field event fun(self: self, event: "Command-patrol", callback: fun(trg: Trigger, data: EventParam.Command-patrol)): Trigger
----@field event fun(self: self, event: "Command-move", callback: fun(trg: Trigger, data: EventParam.Command-move)): Trigger
----@field event fun(self: self, event: "Mouse-Hover", callback: fun(trg: Trigger, data: EventParam.Mouse-Hover)): Trigger
----@field event fun(self: self, event: "Local-Mouse-Hover", callback: fun(trg: Trigger, data: EventParam.Local-Mouse-Hover)): Trigger
----@field event fun(self: self, event: "Player-SendMessage", callback: fun(trg: Trigger, data: EventParam.Player-SendMessage)): Trigger
----@field event fun(self: self, event: "Games-News", event_id: integer, callback: fun(trg: Trigger, data: EventParam.Games-News)): Trigger
----@field event fun(self: self, event: "Player-VoiceSpeech", callback: fun(trg: Trigger, data: EventParam.Player-VoiceSpeech)): Trigger
----@field event fun(self: self, event: "Player-PlatformItemChanges", callback: fun(trg: Trigger, data: EventParam.Player-PlatformItemChanges)): Trigger
----@field event fun(self: self, event: "Player-PlatformMallWindowChanges", callback: fun(trg: Trigger, data: EventParam.Player-PlatformMallWindowChanges)): Trigger
----@field event fun(self: self, event: "Console-Input", callback: fun(trg: Trigger, data: EventParam.Console-Input)): Trigger
----@field event fun(self: self, event: "Console-RequestCompletion", callback: fun(trg: Trigger, data: EventParam.Console-RequestCompletion)): Trigger
----@field event fun(self: self, event: "Steam-ReceiveAFriendRequest", callback: fun(trg: Trigger, data: EventParam.Steam-ReceiveAFriendRequest)): Trigger
----@field event fun(self: self, event: "Steam-ReceivedDeletedByFriends", callback: fun(trg: Trigger, data: EventParam.Steam-ReceivedDeletedByFriends)): Trigger
----@field event fun(self: self, event: "Steam-FriendsOnlineStatusChanges", callback: fun(trg: Trigger, data: EventParam.Steam-FriendsOnlineStatusChanges)): Trigger
----@field event fun(self: self, event: "Steam-LocalPlayerTeamChanges", callback: fun(trg: Trigger, data: EventParam.Steam-LocalPlayerTeamChanges)): Trigger
----@field event fun(self: self, event: "Steam-ReceiveATeamInvitation", callback: fun(trg: Trigger, data: EventParam.Steam-ReceiveATeamInvitation)): Trigger
----@field event fun(self: self, event: "Steam-EnterTheLobby", callback: fun(trg: Trigger, data: EventParam.Steam-EnterTheLobby)): Trigger
----@field event fun(self: self, event: "Steam-StartMatching", callback: fun(trg: Trigger, data: EventParam.Steam-StartMatching)): Trigger
----@field event fun(self: self, event: "Steam-CancelTheMatch", callback: fun(trg: Trigger, data: EventParam.Steam-CancelTheMatch)): Trigger
----@field event fun(self: self, event: "Steam-LocalRoomInformationChanges", callback: fun(trg: Trigger, data: EventParam.Steam-LocalRoomInformationChanges)): Trigger
----@field event fun(self: self, event: "Steam-BeInvitedToJoinTheRoom", callback: fun(trg: Trigger, data: EventParam.Steam-BeInvitedToJoinTheRoom)): Trigger
----@field event fun(self: self, event: "Steam-KickedOutOfTheRoom", callback: fun(trg: Trigger, data: EventParam.Steam-KickedOutOfTheRoom)): Trigger
----@field event fun(self: self, event: "Steam-CreatedRoomSuccessfully", callback: fun(trg: Trigger, data: EventParam.Steam-CreatedRoomSuccessfully)): Trigger
+---@field event fun(self: self, event: "game-initialization ", callback: fun(trg: Trigger, data: EventParam). Game - initialization)): Trigger
+---@field event fun(self: self, event: "Game - frame completion ", callback: fun(trg: Trigger, data: EventParam). Game - Frame completion)): Trigger
+---@field event fun(self: self, event: "game-logic asynchronous ", callback: fun(trg: Trigger, data: EventParam). Game - logic out of sync)): Trigger
+---@field event fun(self: self, event: "Game - terrain presets loaded complete ", callback: fun(trg: Trigger, data: EventParam). Game - Terrain presets load complete)): Trigger
+---@field event fun(self: self, event: "Game - end ", callback: fun(trg: Trigger, data: EventParam). Game - over)): Trigger
+---@field event fun(self: self, event: "game-pause ", callback: fun(trg: Trigger, data: EventParam). Game - Pause)): Trigger
+---@field event fun(self: self, event: "game-recovery ", callback: fun(trg: Trigger, data: EventParam). Game - Recovery)): Trigger
+---@field event fun(self: self, event: "Game - day and night change ", callback: fun(trg: Trigger, data: EventParam). Game - Day and Night change)): Trigger
+---@field event fun(self: self, event: "area-enter ", area: Area, callback: fun(trg: Trigger, data: EventParam). Zone - Enter)): Trigger
+---@field event fun(self: self, event: "area-leave ", area: Area, callback: fun(trg: Trigger, data: EventParam). Zone - Leave)): Trigger
+---@field event fun(self: self, event: "Game -http return ", callback: fun(trg: Trigger, data: EventParam). Game -http return)): Trigger
+---@field event fun(self: self, event: "Game - Receive broadcast information ", callback: fun(trg: Trigger, data: EventParam). Game - Receive broadcast information)): Trigger
+---@field event fun(self: self, event: "Player - join game ", callback: fun(trg: Trigger, data: EventParam). Player - Join the game)): Trigger
+---@field event fun(self: self, event: "Player - leaving the game ", callback: fun(trg: Trigger, data: EventParam). Player - Leave the game)): Trigger
+---@field event fun(self: self, event: "player-dropped ", callback: fun(trg: Trigger, data: EventParam). Player - dropped)): Trigger
+---@field event fun(self: self, event: "Player - use platform item ", callback: fun(trg: Trigger, data: EventParam). Player - using platform items)): Trigger
+---@field event fun(self: self, event: "Player - holding platform item ", callback: fun(trg: Trigger, data: EventParam). Player - holding a platform item)): Trigger
+---@field event fun(self: self, event: "Player - attribute change ", callback: fun(trg: Trigger, data: EventParam). Player - Attribute change)): Trigger
+---@field event fun(self: self, event: "Player - send specified message ", msg: string, callback: fun(trg: Trigger, data: EventParam). Player - send specified message)): Trigger
+---@field event fun(self: self, event: "Player - tech boost ", callback: fun(trg: Trigger, data: EventParam). Player - Tech boost)): Trigger
+---@field event fun(self: self, event: "Player-tech drop ", callback: fun(trg: Trigger, data: EventParam). Player - Tech reduced)): Trigger
+---@field event fun(self: self, event: "Player-tech change ", callback: fun(trg: Trigger, data: EventParam). Player - Technology change)): Trigger
+---@field event fun(self: self, event: "Unit - R&D technology ", callback: fun(trg: Trigger, data: EventParam). Unit - Research and development technology)): Trigger
+---@field event fun(self: self, event: "unit - get tech ", callback: fun(trg: Trigger, data: EventParam). Unit - Get Tech)): Trigger
+---@field event fun(self: self, event: "Unit - lost tech ", callback: fun(trg: Trigger, data: EventParam). Unit - Lost tech)): Trigger
+---@field event fun(self: self, event: "Player-relationship change ", callback: fun(trg: Trigger, data: EventParam). Player - Relationship change)): Trigger
+---@field event fun(self: self, event: "player-reconnection ", callback: fun(trg: Trigger, data: EventParam). Player - reconnect)): Trigger
+---@field event fun(self: self, event: "Units-building upgrade starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Building upgrade starts)): Trigger
+---@field event fun(self: self, event: "Unit-building upgrade cancelled ", callback: fun(trg: Trigger, data: EventParam). Unit - Building upgrade cancelled)): Trigger
+---@field event fun(self: self, event: "Unit - building upgrade completed ", callback: fun(trg: Trigger, data: EventParam). Unit - Building upgrade completed)): Trigger
+---@field event fun(self: self, event: "Units-build starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Build starts)): Trigger
+---@field event fun(self: self, event: "unit-build cancel ", callback: fun(trg: Trigger, data: EventParam). Unit - Build cancelled)): Trigger
+---@field event fun(self: self, event: "Unit - build completed ", callback: fun(trg: Trigger, data: EventParam). Unit - Built)): Trigger
+---@field event fun(self: self, event: "Skill - build completed ", callback: fun(trg: Trigger, data: EventParam). Skill - Build completed)): Trigger
+---@field event fun(self: self, event: "Skill - learning ", callback: fun(trg: Trigger, data: EventParam). Skills - Learning)): Trigger
+---@field event fun(self: self, event: "Skill - availability status change ", callback: fun(trg: Trigger, data: EventParam). Skills - Available status changes)): Trigger
+---@field event fun(self: self, event: "Skills-silence status change ", callback: fun(trg: Trigger, data: EventParam). Skill - Silent state change)): Trigger
+---@field event fun(self: self, event: "Skill - icon change ", callback: fun(trg: Trigger, data: EventParam). Skill - Icon change)): Trigger
+---@field event fun(self: self, event: "unit-name change ", callback: fun(trg: Trigger, data: EventParam). Unit - Name change)): Trigger
+---@field event fun(self: self, event: "units-minimap icon change ", callback: fun(trg: Trigger, data: EventParam). Unit - minimap icon change)): Trigger
+---@field event fun(self: self, event: "units-avatar change ", callback: fun(trg: Trigger, data: EventParam). Unit - Avatar change)): Trigger
+---@field event fun(self: self, event: "unit-remove ", callback: fun(trg: Trigger, data: EventParam). Unit - remove)): Trigger
+---@field event fun(self: self, event: "unit - after removal ", callback: fun(trg: Trigger, data: EventParam). Unit - after removal)): Trigger
+---@field event fun(self: self, event: "units-end of transmission ", callback: fun(trg: Trigger, data: EventParam). Unit - End of transfer)): Trigger
+---@field event fun(self: self, event: "unit-attribute change ", unit: Unit, attr: string, callback: fun(trg: Trigger, data: EventParam). Unit - Attribute change)): Trigger
+---@field event fun(self: self, event: "Unit - dying ", callback: fun(trg: Trigger, data: EventParam). Unit - About to die)): Trigger
+---@field event fun(self: self, event: "unit-death ", callback: fun(trg: Trigger, data: EventParam). Unit - death)): Trigger
+---@field event fun(self: self, event: "Unit - before taking damage ", callback: fun(trg: Trigger, data: EventParam). Unit - Before taking damage)): Trigger
+---@field event fun(self: self, event: "unit - before dealing damage ", callback: fun(trg: Trigger, data: EventParam). Unit - Before dealing damage)): Trigger
+---@field event fun(self: self, event: "Unit - when damaged ", callback: fun(trg: Trigger, data: EventParam). Unit - When taking damage)): Trigger
+---@field event fun(self: self, event: "unit - when dealing damage ", callback: fun(trg: Trigger, data: EventParam). Unit - When dealing damage)): Trigger
+---@field event fun(self: self, event: "Unit - after dealing damage ", callback: fun(trg: Trigger, data: EventParam). Unit - After dealing damage)): Trigger
+---@field event fun(self: self, event: "Unit - after taking damage ", callback: fun(trg: Trigger, data: EventParam). Unit - After taking damage)): Trigger
+---@field event fun(self: self, event: "unit - before treatment ", callback: fun(trg: Trigger, data: EventParam). Unit - Before receiving treatment)): Trigger
+---@field event fun(self: self, event: "Unit - after healing ", callback: fun(trg: Trigger, data: EventParam). Unit - after being healed)): Trigger
+---@field event fun(self: self, event: "Unit - when healed ", callback: fun(trg: Trigger, data: EventParam). Unit - when treated)): Trigger
+---@field event fun(self: self, event: "Player-attribute icon change ", callback: fun(trg: Trigger, data: EventParam). Player - Attribute icon changes)): Trigger
+---@field event fun(self: self, event: "unit-cast skill ", callback: fun(trg: Trigger, data: EventParam). Unit - Cast skill)): Trigger
+---@field event fun(self: self, event: "Unit - before experience ", callback: fun(trg: Trigger, data: EventParam). Unit - Before gaining experience)): Trigger
+---@field event fun(self: self, event: "Unit - after experience ", callback: fun(trg: Trigger, data: EventParam). Unit - After gaining experience)): Trigger
+---@field event fun(self: self, event: "unit - receive command ", callback: fun(trg: Trigger, data: EventParam). Unit - Receive command)): Trigger
+---@field event fun(self: self, event: "unit - kill ", callback: fun(trg: Trigger, data: EventParam). Unit - Kill)): Trigger
+---@field event fun(self: self, event: "unit-create ", callback: fun(trg: Trigger, data: EventParam). Unit - create)): Trigger
+---@field event fun(self: self, event: "Unit - enter battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
+---@field event fun(self: self, event: "Unit - out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
+---@field event fun(self: self, event: "Unit - item to be picked up ", callback: fun(trg: Trigger, data: EventParam). Unit - About to pick up item)): Trigger
+---@field event fun(self: self, event: "unit - switch default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
+---@field event fun(self: self, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam). Unit - Imminent enemy)): Trigger
+---@field event fun(self: self, event: "unit - discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
+---@field event fun(self: self, event: "local-bone collision ", callback: fun(trg: Trigger, data: EventParam). Local - Bone collision)): Trigger
+---@field event fun(self: self, event: "physical-bone collision ", callback: fun(trg: Trigger, data: EventParam). Physical - Bone collision)): Trigger
+---@field event fun(self: self, event: "Unit - purchase item ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item)): Trigger
+---@field event fun(self: self, event: "unit - purchase unit ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase unit)): Trigger
+---@field event fun(self: self, event: "Unit - item for sale ", callback: fun(trg: Trigger, data: EventParam). Unit - Item for sale)): Trigger
+---@field event fun(self: self, event: "store-item change ", callback: fun(trg: Trigger, data: EventParam). Store - Item change)): Trigger
+---@field event fun(self: self, event: "Store-inventory change ", callback: fun(trg: Trigger, data: EventParam). Store - Inventory change)): Trigger
+---@field event fun(self: self, event: "Store-price change ", callback: fun(trg: Trigger, data: EventParam). Store - Price change)): Trigger
+---@field event fun(self: self, event: "units-item composition ", callback: fun(trg: Trigger, data: EventParam). Unit - item composition)): Trigger
+---@field event fun(self: self, event: "Units-purchase item composition ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item synthesis)): Trigger
+---@field event fun(self: self, event: "unit-resurrection ", callback: fun(trg: Trigger, data: EventParam). Unit - Resurrection)): Trigger
+---@field event fun(self: self, event: "unit - upgrade ", callback: fun(trg: Trigger, data: EventParam). Unit - upgrade)): Trigger
+---@field event fun(self: self, event: "Unit - into the grass ", callback: fun(trg: Trigger, data: EventParam). Unit - Into the grass)): Trigger
+---@field event fun(self: self, event: "Unit - leave the grass ", callback: fun(trg: Trigger, data: EventParam. Unit - Leave the grass)): Trigger
+---@field event fun(self: self, event: "unit - change ownership ", callback: fun(trg: Trigger, data: EventParam). Unit - Change ownership)): Trigger
+---@field event fun(self: self, event: "Unit type - conditional ", callback: fun(trg: Trigger, data: EventParam). Unit type - Conditional)): Trigger
+---@field event fun(self: self, event: "Unit type - precondition not true ", callback: fun(trg: Trigger, data: EventParam). Unit type - Precondition not true)): Trigger
+---@field event fun(self: self, event: "Item type - prerequisite held ", callback: fun(trg: Trigger, data: EventParam). Item Type - precondition held)): Trigger
+---@field event fun(self: self, event: "Item type - precondition not true ", callback: fun(trg: Trigger, data: EventParam). Item type - precondition not true)): Trigger
+---@field event fun(self: self, event: "Skill type - prerequisite is true ", callback: fun(trg: Trigger, data: EventParam). Skill Type - preconditions held)): Trigger
+---@field event fun(self: self, event: "Skill type - prerequisite not true ", callback: fun(trg: Trigger, data: EventParam). Skill type - precondition not true)): Trigger
+---@field event fun(self: self, event: "Technology type - prerequisite is true ", callback: fun(trg: Trigger, data: EventParam). Tech type - Precondition held)): Trigger
+---@field event fun(self: self, event: "Tech type - precondition not true ", callback: fun(trg: Trigger, data: EventParam). Tech type - Precondition not true)): Trigger
+---@field event fun(self: self, event: "Skill - upgrade ", callback: fun(trg: Trigger, data: EventParam). Skills - Level up)): Trigger
+---@field event fun(self: self, event: "Casting - about to begin ", callback: fun(trg: Trigger, data: EventParam). Casting - About to begin)): Trigger
+---@field event fun(self: self, event: "Cast - start ", callback: fun(trg: Trigger, data: EventParam). Cast - Start)): Trigger
+---@field event fun(self: self, event: "cast - boot ", callback: fun(trg: Trigger, data: EventParam). Cast - Guide)): Trigger
+---@field event fun(self: self, event: "Cast - shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Strike)): Trigger
+---@field event fun(self: self, event: "spell-finished ", callback: fun(trg: Trigger, data: EventParam). Cast - Finished)): Trigger
+---@field event fun(self: self, event: "spell-end ", callback: fun(trg: Trigger, data: EventParam). Spell - End)): Trigger
+---@field event fun(self: self, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
+---@field event fun(self: self, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
+---@field event fun(self: self, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: self, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
+---@field event fun(self: self, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
+---@field event fun(self: self, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
+---@field event fun(self: self, event: "Skill - exchange ", callback: fun(trg: Trigger, data: EventParam). Skill - Exchange)): Trigger
+---@field event fun(self: self, event: "Skill - disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
+---@field event fun(self: self, event: "Skill - enabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
+---@field event fun(self: self, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
+---@field event fun(self: self, event: "Skill - Custom action axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
+---@field event fun(self: self, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
+---@field event fun(self: self, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
+---@field event fun(self: self, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
+---@field event fun(self: self, event: "Effect - overlay ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
+---@field event fun(self: self, event: "Effect - layer change ", callback: fun(trg: Trigger, data: EventParam). Effect - layer change)): Trigger
+---@field event fun(self: self, event: "Effect - about to get ", callback: fun(trg: Trigger, data: EventParam). Effect - Coming soon)): Trigger
+---@field event fun(self: self, event: "effect-overlay ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
+---@field event fun(self: self, event: "destruction-create ", callback: fun(trg: Trigger, data: EventParam). Destructible - create)): Trigger
+---@field event fun(self: self, event: "Destruction-death ", callback: fun(trg: Trigger, data: EventParam). Destructible - death)): Trigger
+---@field event fun(self: self, event: "Destruction-resurrection ", callback: fun(trg: Trigger, data: EventParam). Destructible - Resurrection)): Trigger
+---@field event fun(self: self, event: "Destructible - resource change ", callback: fun(trg: Trigger, data: EventParam). Destructible - Resource change)): Trigger
+---@field event fun(self: self, event: "Destruction-collection ", callback: fun(trg: Trigger, data: EventParam). Destructible - collection)): Trigger
+---@field event fun(self: self, event: "Destructible - damaged ", callback: fun(trg: Trigger, data: EventParam). Destructible - Takes damage)): Trigger
+---@field event fun(self: self, event: "Select-Destructible ", callback: fun(trg: Trigger, data: EventParam). Check - Destructible)): Trigger
+---@field event fun(self: self, event: "local-select-destructible ", callback: fun(trg: Trigger, data: EventParam). Local - checked - Destructible)): Trigger
+---@field event fun(self: self, event: "Destruction-remove ", callback: fun(trg: Trigger, data: EventParam). Destructible - remove)): Trigger
+---@field event fun(self: self, event: "project-create ", callback: fun(trg: Trigger, data: EventParam). Projectiles - Create)): Trigger
+---@field event fun(self: self, event: "project-death ", callback: fun(trg: Trigger, data: EventParam). Projectiles - death)): Trigger
+---@field event fun(self: self, event: "interface-message ", event_name: string, callback: fun(trg: Trigger, data: EventParam). Interface - Message)): Trigger
+---@field event fun(self: self, event: "interface-slider change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Slider change)): Trigger
+---@field event fun(self: self, event: "ui - chat box visibility change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Chat box visibility changes)): Trigger
+---@field event fun(self: self, event: "interface - device drag ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Equipment Drag)): Trigger
+---@field event fun(self: self, event: "interface - check box change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Check box changes)): Trigger
+---@field event fun(self: self, event: "ui - video play completed ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Screen - Video playback completed)): Trigger
+---@field event fun(self: self, event: "local-interface-input field gets focus ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Local-interface-input box gets focus)): Trigger
+---@field event fun(self: self, event: "local-interface-input field out of focus ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Local-interface-input box out of focus)): Trigger
+---@field event fun(self: self, event: "Local - interface - input field content change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Local - Interface - Input box content change)): Trigger
+---@field event fun(self: self, event: "keyboard-press ", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam. Keyboard - press)): Trigger
+---@field event fun(self: self, event: "keyboard-lift ", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam. Keyboard - lift)): Trigger
+---@field event fun(self: self, event: "local-keyboard-press ", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Keyboard - Press)): Trigger
+---@field event fun(self: self, event: "local-keyboard-lift ", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Keyboard - Lift)): Trigger
+---@field event fun(self: self, event: "mouse-press ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - press)): Trigger
+---@field event fun(self: self, event: "mouse-lift ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - lift)): Trigger
+---@field event fun(self: self, event: "mouse-double-click ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - double click)): Trigger
+---@field event fun(self: self, event: "locale-mouse-press ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Mouse - press)): Trigger
+---@field event fun(self: self, event: "local-mouse-lift ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Mouse - lift)): Trigger
+---@field event fun(self: self, event: "local-mouse-double-click ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - mouse - double-click)): Trigger
+---@field event fun(self: self, event: "mouse-press the unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - press the unit)): Trigger
+---@field event fun(self: self, event: "mouse-lift unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - lift unit)): Trigger
+---@field event fun(self: self, event: "mouse-double-click unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - double click unit)): Trigger
+---@field event fun(self: self, event: "local - mouse - press unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Mouse - press unit)): Trigger
+---@field event fun(self: self, event: "local-mouse-lift unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - mouse - lift unit)): Trigger
+---@field event fun(self: self, event: "local-mouse-double-click unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Mouse - Double click unit)): Trigger
+---@field event fun(self: self, event: "mouse-move ", callback: fun(trg: Trigger, data: EventParam). Mouse - move)): Trigger
+---@field event fun(self: self, event: "local-mouse-move ", callback: fun(trg: Trigger, data: EventParam). Local - Mouse - Move)): Trigger
+---@field event fun(self: self, event: "mouse-wheel ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - wheel)): Trigger
+---@field event fun(self: self, event: "local-mouse-wheel ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - mouse - wheel)): Trigger
+---@field event fun(self: self, event: "select-unit ", callback: fun(trg: Trigger, data: EventParam). Select - unit)): Trigger
+---@field event fun(self: self, event: "local-select-unit ", callback: fun(trg: Trigger, data: EventParam). Local - Checked - unit)): Trigger
+---@field event fun(self: self, event: "Select-cancel ", callback: fun(trg: Trigger, data: EventParam). Check - cancel)): Trigger
+---@field event fun(self: self, event: "local-select-cancel ", callback: fun(trg: Trigger, data: EventParam). Local - Check - cancel)): Trigger
+---@field event fun(self: self, event: "Select-lose unit ", callback: fun(trg: Trigger, data: EventParam). Check - lose units)): Trigger
+---@field event fun(self: self, event: "local-select-lose unit ", callback: fun(trg: Trigger, data: EventParam). Local - Selected - lost unit)): Trigger
+---@field event fun(self: self, event: "Select-item ", callback: fun(trg: Trigger, data: EventParam). Check - item)): Trigger
+---@field event fun(self: self, event: "local-select-item ", callback: fun(trg: Trigger, data: EventParam). Local - Select - Item)): Trigger
+---@field event fun(self: self, event: "Player - Cheating detected ", callback: fun(trg: Trigger, data: EventParam). Player - Cheating detected)): Trigger
+---@field event fun(self: self, event: "Mouse - double click item ", callback: fun(trg: Trigger, data: EventParam). Mouse - double click the item)): Trigger
+---@field event fun(self: self, event: "mouse-double-click destructible ", callback: fun(trg: Trigger, data: EventParam). Mouse - Double click Destructible)): Trigger
+---@field event fun(self: self, event: "Select -unit group ", callback: fun(trg: Trigger, data: EventParam). Select -Unit group)): Trigger
+---@field event fun(self: self, event: "local-select-unit group ", callback: fun(trg: Trigger, data: EventParam). Local - Selected - Unit group)): Trigger
+---@field event fun(self: self, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
+---@field event fun(self: self, event: "Skill - Build skill before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
+---@field event fun(self: self, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
+---@field event fun(self: self, event: "item-get ", callback: fun(trg: Trigger, data: EventParam). Item - Get)): Trigger
+---@field event fun(self: self, event: "Item - Enter inventory ", callback: fun(trg: Trigger, data: EventParam). Item - Enter Item bar)): Trigger
+---@field event fun(self: self, event: "Item - Enter backpack ", callback: fun(trg: Trigger, data: EventParam). Item - Enter backpack)): Trigger
+---@field event fun(self: self, event: "item-lose ", callback: fun(trg: Trigger, data: EventParam). Item - lost)): Trigger
+---@field event fun(self: self, event: "Item - leaving inventory ", callback: fun(trg: Trigger, data: EventParam). Item - Leave inventory)): Trigger
+---@field event fun(self: self, event: "Item - leave backpack ", callback: fun(trg: Trigger, data: EventParam). Item - Leave backpack)): Trigger
+---@field event fun(self: self, event: "item-use ", callback: fun(trg: Trigger, data: EventParam). Item - Use)): Trigger
+---@field event fun(self: self, event: "unit - Pathfinding starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Pathfinding starts)): Trigger
+---@field event fun(self: self, event: "unit - end of pathfinding ", callback: fun(trg: Trigger, data: EventParam). Unit - End of pathfinding)): Trigger
+---@field event fun(self: self, event: "item-stack change ", callback: fun(trg: Trigger, data: EventParam). Item - Stack change)): Trigger
+---@field event fun(self: self, event: "Item-charge change ", callback: fun(trg: Trigger, data: EventParam). Item - Charge change)): Trigger
+---@field event fun(self: self, event: "item-create ", callback: fun(trg: Trigger, data: EventParam). Item - Created)): Trigger
+---@field event fun(self: self, event: "item-remove ", callback: fun(trg: Trigger, data: EventParam). Item - Removed)): Trigger
+---@field event fun(self: self, event: "Items-for-sale ", callback: fun(trg: Trigger, data: EventParam). Item - for sale)): Trigger
+---@field event fun(self: self, event: "item-death ", callback: fun(trg: Trigger, data: EventParam). Item - Death)): Trigger
+---@field event fun(self: self, event: "Item-collection creation ", callback: fun(trg: Trigger, data: EventParam). Item - Collection Creation)): Trigger
+---@field event fun(self: self, event: "command-attack move ", callback: fun(trg: Trigger, data: EventParam). Command - Attack Move)): Trigger
+---@field event fun(self: self, event: "Command - sell item ", callback: fun(trg: Trigger, data: EventParam). Command - Sell items)): Trigger
+---@field event fun(self: self, event: "command - cast skill ", callback: fun(trg: Trigger, data: EventParam). Command - Cast skill)): Trigger
+---@field event fun(self: self, event: "command-patrol ", callback: fun(trg: Trigger, data: EventParam). Command - Patrol)): Trigger
+---@field event fun(self: self, event: "command-move ", callback: fun(trg: Trigger, data: EventParam). Command - Move)): Trigger
+---@field event fun(self: self, event: "mouse-hover ", callback: fun(trg: Trigger, data: EventParam). Mouse - hover)): Trigger
+---@field event fun(self: self, event: "local-mouse-hover ", callback: fun(trg: Trigger, data: EventParam). Local - Mouse - hover)): Trigger
+---@field event fun(self: self, event: "Player - send message ", callback: fun(trg: Trigger, data: EventParam). Player - Send message)): Trigger
+---@field event fun(self: self, event: "game-message ", event_id: integer, callback: fun(trg: Trigger, data: EventParam. Game - message)): Trigger
+---@field event fun(self: self, event: "Player - voice speak ", callback: fun(trg: Trigger, data: EventParam). Player - Voice speak)): Trigger
+---@field event fun(self: self, event: "Player-platform item change ", callback: fun(trg: Trigger, data: EventParam). Player - platform item change)): Trigger
+---@field event fun(self: self, event: "Player-platform mall window changes ", callback: fun(trg: Trigger, data: EventParam). Player - Platform mall window changes)): Trigger
+---@field event fun(self: self, event: "console-input ", callback: fun(trg: Trigger, data: EventParam). Console - input)): Trigger
+---@field event fun(self: self, event: "console-request completion ", callback: fun(trg: Trigger, data: EventParam). Console - Request completion)): Trigger
+---@field event fun(self: self, event: "steam- Received friend request ", callback: fun(trg: Trigger, data: EventParam.steam- Received friend request)): Trigger
+---@field event fun(self: self, event: "steam- received deleted by friends ", callback: fun(trg: Trigger, data: EventParam.steam- Received deleted by friends)): Trigger
+---@field event fun(self: self, event: "steam- Friend online status change ", callback: fun(trg: Trigger, data: EventParam.steam- Friend online status change)): Trigger
+---@field event fun(self: self, event: "steam- Local player team changes ", callback: fun(trg: Trigger, data: EventParam.steam- Local player team changes)): Trigger
+---@field event fun(self: self, event: "steam- Received team invitation ", callback: fun(trg: Trigger, data: EventParam.steam- Received team invitation)): Trigger
+---@field event fun(self: self, event: "steam- into the hall ", callback: fun(trg: Trigger, data: EventParam.steam- into the hall)): Trigger
+---@field event fun(self: self, event: "steam- start matching ", callback: fun(trg: Trigger, data: EventParam.steam- Start matching)): Trigger
+---@field event fun(self: self, event: "steam- cancel match ", callback: fun(trg: Trigger, data: EventParam.steam- cancel match)): Trigger
+---@field event fun(self: self, event: "steam- local room information changes ", callback: fun(trg: Trigger, data: EventParam.steam- local room information changes)): Trigger
+---@field event fun(self: self, event: "steam- invited to the room ", callback: fun(trg: Trigger, data: EventParam.steam- invited to the room)): Trigger
+---@field event fun(self: self, event: "steam- kicked out of room ", callback: fun(trg: Trigger, data: EventParam.steam- kicked out of room)): Trigger
+---@field event fun(self: self, event: "steam- room created successfully ", callback: fun(trg: Trigger, data: EventParam.steam- Room created successfully)): Trigger
 
 ---@class Ability
----@field event fun(self: Ability, event: "Skill-BuiltComplete", callback: fun(trg: Trigger, data: EventParam.Skill-BuiltComplete)): Trigger
----@field event fun(self: Ability, event: "Skills-Learning", callback: fun(trg: Trigger, data: EventParam.Skills-Learning)): Trigger
----@field event fun(self: Ability, event: "Skills-AvailableStatusChanges", callback: fun(trg: Trigger, data: EventParam.Skills-AvailableStatusChanges)): Trigger
----@field event fun(self: Ability, event: "Skill-SilentStateChanges", callback: fun(trg: Trigger, data: EventParam.Skill-SilentStateChanges)): Trigger
----@field event fun(self: Ability, event: "Skills-Upgrades", callback: fun(trg: Trigger, data: EventParam.Skills-Upgrades)): Trigger
----@field event fun(self: Ability, event: "Casting.-AboutToBegin", callback: fun(trg: Trigger, data: EventParam.Casting.-AboutToBegin)): Trigger
----@field event fun(self: Ability, event: "CastTheSpell.-HereWeGo", callback: fun(trg: Trigger, data: EventParam.CastTheSpell.-HereWeGo)): Trigger
----@field event fun(self: Ability, event: "Cast-Guide", callback: fun(trg: Trigger, data: EventParam.Cast-Guide)): Trigger
----@field event fun(self: Ability, event: "CastSpells.-Strike", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Strike)): Trigger
----@field event fun(self: Ability, event: "CastASpell.-Finished", callback: fun(trg: Trigger, data: EventParam.CastASpell.-Finished)): Trigger
----@field event fun(self: Ability, event: "CastSpells.-Over", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Over)): Trigger
----@field event fun(self: Ability, event: "CastASpell.-InterruptTheStart", callback: fun(trg: Trigger, data: EventParam.CastASpell.-InterruptTheStart)): Trigger
----@field event fun(self: Ability, event: "CastSpells.-InterruptTheLead", callback: fun(trg: Trigger, data: EventParam.CastSpells.-InterruptTheLead)): Trigger
----@field event fun(self: Ability, event: "CastASpell.-BreakTheShot", callback: fun(trg: Trigger, data: EventParam.CastASpell.-BreakTheShot)): Trigger
----@field event fun(self: Ability, event: "CastSpells.-Stop", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Stop)): Trigger
----@field event fun(self: Ability, event: "Skills-Acquisition", callback: fun(trg: Trigger, data: EventParam.Skills-Acquisition)): Trigger
----@field event fun(self: Ability, event: "SkillLoss", callback: fun(trg: Trigger, data: EventParam.SkillLoss)): Trigger
----@field event fun(self: Ability, event: "Skill-exchange", callback: fun(trg: Trigger, data: EventParam.Skill-exchange)): Trigger
----@field event fun(self: Ability, event: "Skills-Disabled", callback: fun(trg: Trigger, data: EventParam.Skills-Disabled)): Trigger
----@field event fun(self: Ability, event: "Skills-Enabled", callback: fun(trg: Trigger, data: EventParam.Skills-Enabled)): Trigger
----@field event fun(self: Ability, event: "Skill-CooldownEnds", callback: fun(trg: Trigger, data: EventParam.Skill-CooldownEnds)): Trigger
----@field event fun(self: Ability, event: "Skills-CustomAnimationAxis", string: string, callback: fun(trg: Trigger, data: EventParam.Skills-CustomAnimationAxis)): Trigger
----@field event fun(self: Ability, event: "Skills-TurnOnTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOnTheIndicator)): Trigger
----@field event fun(self: Ability, event: "Skills-BuildSkillsBeforeReleasing", callback: fun(trg: Trigger, data: EventParam.Skills-BuildSkillsBeforeReleasing)): Trigger
----@field event fun(self: Ability, event: "Skills-TurnOffTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOffTheIndicator)): Trigger
+---@field event fun(self: Ability, event: "Skill - build completed ", callback: fun(trg: Trigger, data: EventParam). Skill - Build completed)): Trigger
+---@field event fun(self: Ability, event: "Skill - learning ", callback: fun(trg: Trigger, data: EventParam). Skills - Learning)): Trigger
+---@field event fun(self: Ability, event: "Skills-availability status change ", callback: fun(trg: Trigger, data: EventParam). Skills - Available status changes)): Trigger
+---@field event fun(self: Ability, event: "Skills-silence status change ", callback: fun(trg: Trigger, data: EventParam). Skill - Silent state change)): Trigger
+---@field event fun(self: Ability, event: "Skill - upgrade ", callback: fun(trg: Trigger, data: EventParam). Skills - Level up)): Trigger
+---@field event fun(self: Ability, event: "Casting - about to begin ", callback: fun(trg: Trigger, data: EventParam). Casting - About to begin)): Trigger
+---@field event fun(self: Ability, event: "Cast - start ", callback: fun(trg: Trigger, data: EventParam). Cast - Start)): Trigger
+---@field event fun(self: Ability, event: "cast - lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Guide)): Trigger
+---@field event fun(self: Ability, event: "Cast - shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Strike)): Trigger
+---@field event fun(self: Ability, event: "spell-finish ", callback: fun(trg: Trigger, data: EventParam). Cast - Finished)): Trigger
+---@field event fun(self: Ability, event: "spell-end ", callback: fun(trg: Trigger, data: EventParam). Spell - End)): Trigger
+---@field event fun(self: Ability, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
+---@field event fun(self: Ability, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
+---@field event fun(self: Ability, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: Ability, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
+---@field event fun(self: Ability, event: "Skill - acquire ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
+---@field event fun(self: Ability, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
+---@field event fun(self: Ability, event: "Skills-exchange ", callback: fun(trg: Trigger, data: EventParam). Skill - Exchange)): Trigger
+---@field event fun(self: Ability, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
+---@field event fun(self: Ability, event: "Skills-enabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
+---@field event fun(self: Ability, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
+---@field event fun(self: Ability, event: "Skill - Custom animation axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
+---@field event fun(self: Ability, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
+---@field event fun(self: Ability, event: "Skill - Build skill before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
+---@field event fun(self: Ability, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
 
 ---@class Area
----@field event fun(self: Area, event: "Zone-access", callback: fun(trg: Trigger, data: EventParam.Zone-access)): Trigger
----@field event fun(self: Area, event: "Zone-Leave", callback: fun(trg: Trigger, data: EventParam.Zone-Leave)): Trigger
+---@field event fun(self: Area, event: "area-enter ", callback: fun(trg: Trigger, data: EventParam). Zone - Enter)): Trigger
+---@field event fun(self: Area, event: "area-leave ", callback: fun(trg: Trigger, data: EventParam). Zone - Leave)): Trigger
 
 ---@class Buff
----@field event fun(self: Buff, event: "Effect-Gain", callback: fun(trg: Trigger, data: EventParam.Effect-Gain)): Trigger
----@field event fun(self: Buff, event: "Effect-loss", callback: fun(trg: Trigger, data: EventParam.Effect-loss)): Trigger
----@field event fun(self: Buff, event: "Effect-Heartbeat", callback: fun(trg: Trigger, data: EventParam.Effect-Heartbeat)): Trigger
----@field event fun(self: Buff, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
----@field event fun(self: Buff, event: "Effect-NumberOfLayersChange", callback: fun(trg: Trigger, data: EventParam.Effect-NumberOfLayersChange)): Trigger
----@field event fun(self: Buff, event: "Effect-ComingSoon", callback: fun(trg: Trigger, data: EventParam.Effect-ComingSoon)): Trigger
----@field event fun(self: Buff, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
+---@field event fun(self: Buff, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
+---@field event fun(self: Buff, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
+---@field event fun(self: Buff, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
+---@field event fun(self: Buff, event: "Effect - overlay ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
+---@field event fun(self: Buff, event: "Effect - layer change ", callback: fun(trg: Trigger, data: EventParam). Effect - layer change)): Trigger
+---@field event fun(self: Buff, event: "Effect - coming soon ", callback: fun(trg: Trigger, data: EventParam). Effect - Coming soon)): Trigger
+---@field event fun(self: Buff, event: "effect - override ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
 
 ---@class Destructible
----@field event fun(self: Destructible, event: "Destructible-Create", callback: fun(trg: Trigger, data: EventParam.Destructible-Create)): Trigger
----@field event fun(self: Destructible, event: "Destructible-Death", callback: fun(trg: Trigger, data: EventParam.Destructible-Death)): Trigger
----@field event fun(self: Destructible, event: "Destructible.-Resurrection", callback: fun(trg: Trigger, data: EventParam.Destructible.-Resurrection)): Trigger
----@field event fun(self: Destructible, event: "Destructible-ResourceChange", callback: fun(trg: Trigger, data: EventParam.Destructible-ResourceChange)): Trigger
----@field event fun(self: Destructible, event: "Destructible-Collection", callback: fun(trg: Trigger, data: EventParam.Destructible-Collection)): Trigger
----@field event fun(self: Destructible, event: "Destructible-Damaged", callback: fun(trg: Trigger, data: EventParam.Destructible-Damaged)): Trigger
----@field event fun(self: Destructible, event: "Destructible-Remove", callback: fun(trg: Trigger, data: EventParam.Destructible-Remove)): Trigger
+---@field event fun(self: Destructible, event: "destructible - create ", callback: fun(trg: Trigger, data: EventParam). Destructible - create)): Trigger
+---@field event fun(self: Destructible, event: "destructible, death ", callback: fun(trg: Trigger, data: EventParam. Destructible - death)): Trigger
+---@field event fun(self: Destructible, event: "Destructible," callback: fun(trg: Trigger, data: EventParam). Destructible - Resurrection)): Trigger
+---@field event fun(self: Destructible, event: "destructible, resource change ", callback: fun(trg: Trigger, data: EventParam). Destructible - Resource change)): Trigger
+---@field event fun(self: Destructible, event: "destructible, collection ", callback: fun(trg: Trigger, data: EventParam). Destructible - collection)): Trigger
+---@field event fun(self: Destructible, event: "Destructible ", callback: fun(trg: Trigger, data: EventParam). Destructible - Takes damage)): Trigger
+---@field event fun(self: Destructible, event: "Destructible - remove ", callback: fun(trg: Trigger, data: EventParam). Destructible - remove)): Trigger
 
 ---@class Item
----@field event fun(self: Item, event: "Items-Get", callback: fun(trg: Trigger, data: EventParam.Items-Get)): Trigger
----@field event fun(self: Item, event: "Items-EnterTheInventory", callback: fun(trg: Trigger, data: EventParam.Items-EnterTheInventory)): Trigger
----@field event fun(self: Item, event: "Items-EnterBackpack", callback: fun(trg: Trigger, data: EventParam.Items-EnterBackpack)): Trigger
----@field event fun(self: Item, event: "Item-Lost", callback: fun(trg: Trigger, data: EventParam.Item-Lost)): Trigger
----@field event fun(self: Item, event: "Items-LeaveTheInventory", callback: fun(trg: Trigger, data: EventParam.Items-LeaveTheInventory)): Trigger
----@field event fun(self: Item, event: "Items-LeaveTheBackpack", callback: fun(trg: Trigger, data: EventParam.Items-LeaveTheBackpack)): Trigger
----@field event fun(self: Item, event: "Items-Use", callback: fun(trg: Trigger, data: EventParam.Items-Use)): Trigger
----@field event fun(self: Item, event: "Item-StackChanges", callback: fun(trg: Trigger, data: EventParam.Item-StackChanges)): Trigger
----@field event fun(self: Item, event: "Item-ChargeChanges", callback: fun(trg: Trigger, data: EventParam.Item-ChargeChanges)): Trigger
----@field event fun(self: Item, event: "Items-Create", callback: fun(trg: Trigger, data: EventParam.Items-Create)): Trigger
----@field event fun(self: Item, event: "Items-Removal", callback: fun(trg: Trigger, data: EventParam.Items-Removal)): Trigger
----@field event fun(self: Item, event: "Items-ForSale", callback: fun(trg: Trigger, data: EventParam.Items-ForSale)): Trigger
----@field event fun(self: Item, event: "Item-Death", callback: fun(trg: Trigger, data: EventParam.Item-Death)): Trigger
----@field event fun(self: Item, event: "Item-CollectionCreation", callback: fun(trg: Trigger, data: EventParam.Item-CollectionCreation)): Trigger
+---@field event fun(self: Item, event: "item-get ", callback: fun(trg: Trigger, data: EventParam). Item - Get)): Trigger
+---@field event fun(self: Item, event: "Item - Enter item ", callback: fun(trg: Trigger, data: EventParam). Item - Enter Item bar)): Trigger
+---@field event fun(self: Item, event: "Item - Enter backpack ", callback: fun(trg: Trigger, data: EventParam). Item - Enter backpack)): Trigger
+---@field event fun(self: Item, event: "item-lose ", callback: fun(trg: Trigger, data: EventParam). Item - lost)): Trigger
+---@field event fun(self: Item, event: "Item - leaving the inventory ", callback: fun(trg: Trigger, data: EventParam). Item - Leave inventory)): Trigger
+---@field event fun(self: Item, event: "Item - leave backpack ", callback: fun(trg: Trigger, data: EventParam). Item - Leave backpack)): Trigger
+---@field event fun(self: Item, event: "item-use ", callback: fun(trg: Trigger, data: EventParam). Item - Use)): Trigger
+---@field event fun(self: Item, event: "item-stack change ", callback: fun(trg: Trigger, data: EventParam). Item - Stack change)): Trigger
+---@field event fun(self: Item, event: "item-charge change ", callback: fun(trg: Trigger, data: EventParam). Item - Charge change)): Trigger
+---@field event fun(self: Item, event: "item-create ", callback: fun(trg: Trigger, data: EventParam). Item - Created)): Trigger
+---@field event fun(self: Item, event: "item-remove ", callback: fun(trg: Trigger, data: EventParam). Item - Removed)): Trigger
+---@field event fun(self: Item, event: "item-sale ", callback: fun(trg: Trigger, data: EventParam). Item - for sale)): Trigger
+---@field event fun(self: Item, event: "item-death ", callback: fun(trg: Trigger, data: EventParam). Item - Death)): Trigger
+---@field event fun(self: Item, event: "Item - collection creation ", callback: fun(trg: Trigger, data: EventParam). Item - Collection Creation)): Trigger
 
 ---@class Player
----@field event fun(self: Player, event: "Player-JoinTheGame", callback: fun(trg: Trigger, data: EventParam.Player-JoinTheGame)): Trigger
----@field event fun(self: Player, event: "Player-LeaveTheGame", callback: fun(trg: Trigger, data: EventParam.Player-LeaveTheGame)): Trigger
----@field event fun(self: Player, event: "Player-DroppedCall", callback: fun(trg: Trigger, data: EventParam.Player-DroppedCall)): Trigger
----@field event fun(self: Player, event: "Player-UsePlatformItems", callback: fun(trg: Trigger, data: EventParam.Player-UsePlatformItems)): Trigger
----@field event fun(self: Player, event: "Player-HoldsPlatformItems", callback: fun(trg: Trigger, data: EventParam.Player-HoldsPlatformItems)): Trigger
----@field event fun(self: Player, event: "Player-AttributesChange", callback: fun(trg: Trigger, data: EventParam.Player-AttributesChange)): Trigger
----@field event fun(self: Player, event: "Player-SendTheSpecifiedMessage", msg: string, callback: fun(trg: Trigger, data: EventParam.Player-SendTheSpecifiedMessage)): Trigger
----@field event fun(self: Player, event: "Player-TechnologyEnhancement", callback: fun(trg: Trigger, data: EventParam.Player-TechnologyEnhancement)): Trigger
----@field event fun(self: Player, event: "Player-TechDown", callback: fun(trg: Trigger, data: EventParam.Player-TechDown)): Trigger
----@field event fun(self: Player, event: "Player-TechnologyChanges", callback: fun(trg: Trigger, data: EventParam.Player-TechnologyChanges)): Trigger
----@field event fun(self: Player, event: "Player-RelationshipChanges", callback: fun(trg: Trigger, data: EventParam.Player-RelationshipChanges)): Trigger
----@field event fun(self: Player, event: "Player-Reconnect", callback: fun(trg: Trigger, data: EventParam.Player-Reconnect)): Trigger
----@field event fun(self: Player, event: "Check-Destructible", callback: fun(trg: Trigger, data: EventParam.Check-Destructible)): Trigger
----@field event fun(self: Player, event: "Local-Select-Destructible", callback: fun(trg: Trigger, data: EventParam.Local-Select-Destructible)): Trigger
----@field event fun(self: Player, event: "Interface-Message", event_name: string, callback: fun(trg: Trigger, data: EventParam.Interface-Message)): Trigger
----@field event fun(self: Player, event: "Interface-SliderChanges", ui: UI, callback: fun(trg: Trigger, data: EventParam.Interface-SliderChanges)): Trigger
----@field event fun(self: Player, event: "Interface-ChatBoxVisibilityChanges", ui: UI, callback: fun(trg: Trigger, data: EventParam.Interface-ChatBoxVisibilityChanges)): Trigger
----@field event fun(self: Player, event: "Interface-EquipmentDragAndDrop", ui: UI, callback: fun(trg: Trigger, data: EventParam.Interface-EquipmentDragAndDrop)): Trigger
----@field event fun(self: Player, event: "Screen-CheckBoxChanges", ui: UI, callback: fun(trg: Trigger, data: EventParam.Screen-CheckBoxChanges)): Trigger
----@field event fun(self: Player, event: "Screen-VideoPlaybackIsComplete", ui: UI, callback: fun(trg: Trigger, data: EventParam.Screen-VideoPlaybackIsComplete)): Trigger
----@field event fun(self: Player, event: "Local-interface-inputBoxGetsFocus", ui: UI, callback: fun(trg: Trigger, data: EventParam.Local-interface-inputBoxGetsFocus)): Trigger
----@field event fun(self: Player, event: "Local-interface-inputBoxOutOfFocus", ui: UI, callback: fun(trg: Trigger, data: EventParam.Local-interface-inputBoxOutOfFocus)): Trigger
----@field event fun(self: Player, event: "Local-Interface-InputBoxContentChanged", ui: UI, callback: fun(trg: Trigger, data: EventParam.Local-Interface-InputBoxContentChanged)): Trigger
----@field event fun(self: Player, event: "Keyboard.-PressIt", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam.Keyboard.-PressIt)): Trigger
----@field event fun(self: Player, event: "Keyboard-Lift", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam.Keyboard-Lift)): Trigger
----@field event fun(self: Player, event: "Local-Keyboard-Press", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Keyboard-Press)): Trigger
----@field event fun(self: Player, event: "Local-Keyboard-Lift", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Keyboard-Lift)): Trigger
----@field event fun(self: Player, event: "Mouse-PressIt", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-PressIt)): Trigger
----@field event fun(self: Player, event: "Mouse-lift", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-lift)): Trigger
----@field event fun(self: Player, event: "Mouse-double-click", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-double-click)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-PressDown", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-PressDown)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-Lift", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-Lift)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-DoubleClick", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-DoubleClick)): Trigger
----@field event fun(self: Player, event: "Mouse-PressTheUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-PressTheUnit)): Trigger
----@field event fun(self: Player, event: "Mouse-LiftUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-LiftUnit)): Trigger
----@field event fun(self: Player, event: "Mouse-DoubleClickTheUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-DoubleClickTheUnit)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-PressTheUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-PressTheUnit)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-LiftUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-LiftUnit)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-DoubleClickTheUnit", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-DoubleClickTheUnit)): Trigger
----@field event fun(self: Player, event: "Mouse-move", callback: fun(trg: Trigger, data: EventParam.Mouse-move)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-Move", callback: fun(trg: Trigger, data: EventParam.Local-Mouse-Move)): Trigger
----@field event fun(self: Player, event: "Mouse-Wheel", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Mouse-Wheel)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-Wheel", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam.Local-Mouse-Wheel)): Trigger
----@field event fun(self: Player, event: "Select-unit", callback: fun(trg: Trigger, data: EventParam.Select-unit)): Trigger
----@field event fun(self: Player, event: "Local-Select-Unit", callback: fun(trg: Trigger, data: EventParam.Local-Select-Unit)): Trigger
----@field event fun(self: Player, event: "Check-Cancel", callback: fun(trg: Trigger, data: EventParam.Check-Cancel)): Trigger
----@field event fun(self: Player, event: "Local-Select-Cancel", callback: fun(trg: Trigger, data: EventParam.Local-Select-Cancel)): Trigger
----@field event fun(self: Player, event: "Selected-LostUnit", callback: fun(trg: Trigger, data: EventParam.Selected-LostUnit)): Trigger
----@field event fun(self: Player, event: "Local-Selected-LostUnit", callback: fun(trg: Trigger, data: EventParam.Local-Selected-LostUnit)): Trigger
----@field event fun(self: Player, event: "Select-item", callback: fun(trg: Trigger, data: EventParam.Select-item)): Trigger
----@field event fun(self: Player, event: "Local-Select-Items", callback: fun(trg: Trigger, data: EventParam.Local-Select-Items)): Trigger
----@field event fun(self: Player, event: "Player-CheatingDetected", callback: fun(trg: Trigger, data: EventParam.Player-CheatingDetected)): Trigger
----@field event fun(self: Player, event: "Mouse-DoubleClickTheItem", callback: fun(trg: Trigger, data: EventParam.Mouse-DoubleClickTheItem)): Trigger
----@field event fun(self: Player, event: "Mouse-DoubleClickDestructible", callback: fun(trg: Trigger, data: EventParam.Mouse-DoubleClickDestructible)): Trigger
----@field event fun(self: Player, event: "Select-UnitGroup", callback: fun(trg: Trigger, data: EventParam.Select-UnitGroup)): Trigger
----@field event fun(self: Player, event: "Local-Select-UnitGroup", callback: fun(trg: Trigger, data: EventParam.Local-Select-UnitGroup)): Trigger
----@field event fun(self: Player, event: "Mouse-Hover", callback: fun(trg: Trigger, data: EventParam.Mouse-Hover)): Trigger
----@field event fun(self: Player, event: "Local-Mouse-Hover", callback: fun(trg: Trigger, data: EventParam.Local-Mouse-Hover)): Trigger
----@field event fun(self: Player, event: "Player-SendMessage", callback: fun(trg: Trigger, data: EventParam.Player-SendMessage)): Trigger
----@field event fun(self: Player, event: "Player-VoiceSpeech", callback: fun(trg: Trigger, data: EventParam.Player-VoiceSpeech)): Trigger
----@field event fun(self: Player, event: "Player-PlatformItemChanges", callback: fun(trg: Trigger, data: EventParam.Player-PlatformItemChanges)): Trigger
----@field event fun(self: Player, event: "Player-PlatformMallWindowChanges", callback: fun(trg: Trigger, data: EventParam.Player-PlatformMallWindowChanges)): Trigger
+---@field event fun(self: Player, event: "Player - join game ", callback: fun(trg: Trigger, data: EventParam). Player - Join the game)): Trigger
+---@field event fun(self: Player, event: "Player - leaving game ", callback: fun(trg: Trigger, data: EventParam). Player - Leave the game)): Trigger
+---@field event fun(self: Player, event: "player-dropped ", callback: fun(trg: Trigger, data: EventParam). Player - dropped)): Trigger
+---@field event fun(self: Player, event: "Player - use platform item ", callback: fun(trg: Trigger, data: EventParam). Player - using platform items)): Trigger
+---@field event fun(self: Player, event: "Player - holding platform item ", callback: fun(trg: Trigger, data: EventParam). Player - holding a platform item)): Trigger
+---@field event fun(self: Player, event: "player-attribute change ", callback: fun(trg: Trigger, data: EventParam). Player - Attribute change)): Trigger
+---@field event fun(self: Player, event: "Player - send specified message ", msg: string, callback: fun(trg: Trigger, data: EventParam). Player - send specified message)): Trigger
+---@field event fun(self: Player, event: "Player - tech boost ", callback: fun(trg: Trigger, data: EventParam). Player - Tech boost)): Trigger
+---@field event fun(self: Player, event: "Player - tech down ", callback: fun(trg: Trigger, data: EventParam). Player - Tech reduced)): Trigger
+---@field event fun(self: Player, event: "Player-tech change ", callback: fun(trg: Trigger, data: EventParam). Player - Technology change)): Trigger
+---@field event fun(self: Player, event: "Player-relationship change ", callback: fun(trg: Trigger, data: EventParam). Player - Relationship change)): Trigger
+---@field event fun(self: Player, event: "player-reconnection ", callback: fun(trg: Trigger, data: EventParam). Player - reconnect)): Trigger
+---@field event fun(self: Player, event: "Select-Destructible ", callback: fun(trg: Trigger, data: EventParam). Check - Destructible)): Trigger
+---@field event fun(self: Player, event: "local-select-destructible ", callback: fun(trg: Trigger, data: EventParam). Local - checked - Destructible)): Trigger
+---@field event fun(self: Player, event: "interface-message ", event_name: string, callback: fun(trg: Trigger, data: EventParam). Interface - Message)): Trigger
+---@field event fun(self: Player, event: "interface-slider change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Slider change)): Trigger
+---@field event fun(self: Player, event: "ui - chat box visibility change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Chat box visibility changes)): Trigger
+---@field event fun(self: Player, event: "interface-device drag ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Equipment Drag)): Trigger
+---@field event fun(self: Player, event: "interface - check box change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Check box changes)): Trigger
+---@field event fun(self: Player, event: "ui - video play completed ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Screen - Video playback completed)): Trigger
+---@field event fun(self: Player, event: "Local-interface-input field gets focus ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Local-interface-input box gets focus)): Trigger
+---@field event fun(self: Player, event: "local-interface-input field out of focus ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Local-interface-input box out of focus)): Trigger
+---@field event fun(self: Player, event: "local-interface-input field content change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Local - Interface - Input box content change)): Trigger
+---@field event fun(self: Player, event: "keyboard-press ", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam. Keyboard - press)): Trigger
+---@field event fun(self: Player, event: "keyboard-lift ", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam. Keyboard - lift)): Trigger
+---@field event fun(self: Player, event: "local-keyboard-press ", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Keyboard - Press)): Trigger
+---@field event fun(self: Player, event: "local-keyboard-lift ", key: clicli.Const.KeyboardKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Keyboard - Lift)): Trigger
+---@field event fun(self: Player, event: "mouse-press ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - press)): Trigger
+---@field event fun(self: Player, event: "mouse-lift ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - lift)): Trigger
+---@field event fun(self: Player, event: "mouse-double-click ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - double click)): Trigger
+---@field event fun(self: Player, event: "local-mouse-press ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Mouse - press)): Trigger
+---@field event fun(self: Player, event: "local-mouse-lift ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Mouse - lift)): Trigger
+---@field event fun(self: Player, event: "local-mouse-double-click ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - mouse - double-click)): Trigger
+---@field event fun(self: Player, event: "mouse-press the unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - press the unit)): Trigger
+---@field event fun(self: Player, event: "mouse-lift unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - lift unit)): Trigger
+---@field event fun(self: Player, event: "mouse-double-click unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - double click unit)): Trigger
+---@field event fun(self: Player, event: "local - mouse - press unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Mouse - press unit)): Trigger
+---@field event fun(self: Player, event: "local-mouse-lift unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - mouse - lift unit)): Trigger
+---@field event fun(self: Player, event: "Local - mouse - double click unit ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - Mouse - Double click unit)): Trigger
+---@field event fun(self: Player, event: "mouse-move ", callback: fun(trg: Trigger, data: EventParam). Mouse - move)): Trigger
+---@field event fun(self: Player, event: "local-mouse-move ", callback: fun(trg: Trigger, data: EventParam). Local - Mouse - Move)): Trigger
+---@field event fun(self: Player, event: "mouse-wheel ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Mouse - wheel)): Trigger
+---@field event fun(self: Player, event: "local-mouse-wheel ", key: clicli.Const.MouseKey|integer, callback: fun(trg: Trigger, data: EventParam. Local - mouse - wheel)): Trigger
+---@field event fun(self: Player, event: "Select-unit ", callback: fun(trg: Trigger, data: EventParam). Select - unit)): Trigger
+---@field event fun(self: Player, event: "local-select-unit ", callback: fun(trg: Trigger, data: EventParam). Local - Checked - unit)): Trigger
+---@field event fun(self: Player, event: "Select-cancel ", callback: fun(trg: Trigger, data: EventParam). Check - cancel)): Trigger
+---@field event fun(self: Player, event: "local-select-cancel ", callback: fun(trg: Trigger, data: EventParam). Local - Check - cancel)): Trigger
+---@field event fun(self: Player, event: "Select-lose unit ", callback: fun(trg: Trigger, data: EventParam). Check - lose units)): Trigger
+---@field event fun(self: Player, event: "local-select-lose unit ", callback: fun(trg: Trigger, data: EventParam). Local - Selected - lost unit)): Trigger
+---@field event fun(self: Player, event: "Select-item ", callback: fun(trg: Trigger, data: EventParam). Check - item)): Trigger
+---@field event fun(self: Player, event: "local-select-item ", callback: fun(trg: Trigger, data: EventParam). Local - Select - Item)): Trigger
+---@field event fun(self: Player, event: "Player - Cheating detected ", callback: fun(trg: Trigger, data: EventParam). Player - Cheating detected)): Trigger
+---@field event fun(self: Player, event: "mouse-double-click item ", callback: fun(trg: Trigger, data: EventParam). Mouse - double click the item)): Trigger
+---@field event fun(self: Player, event: "mouse-double-click destructible ", callback: fun(trg: Trigger, data: EventParam). Mouse - Double click Destructible)): Trigger
+---@field event fun(self: Player, event: "Select -unit group ", callback: fun(trg: Trigger, data: EventParam). Select -Unit group)): Trigger
+---@field event fun(self: Player, event: "local-select-unit group ", callback: fun(trg: Trigger, data: EventParam). Local - Selected - Unit group)): Trigger
+---@field event fun(self: Player, event: "mouse-hover ", callback: fun(trg: Trigger, data: EventParam). Mouse - hover)): Trigger
+---@field event fun(self: Player, event: "local-mouse-hover ", callback: fun(trg: Trigger, data: EventParam). Local - Mouse - hover)): Trigger
+---@field event fun(self: Player, event: "Player - send message ", callback: fun(trg: Trigger, data: EventParam). Player - Send message)): Trigger
+---@field event fun(self: Player, event: "player-voice speech ", callback: fun(trg: Trigger, data: EventParam). Player - Voice speak)): Trigger
+---@field event fun(self: Player, event: "Player-platform item change ", callback: fun(trg: Trigger, data: EventParam). Player - platform item change)): Trigger
+---@field event fun(self: Player, event: "Player-platform mall window changes ", callback: fun(trg: Trigger, data: EventParam). Player - Platform mall window changes)): Trigger
 
 ---@class Projectile
----@field event fun(self: Projectile, event: "Projectiles-Created", callback: fun(trg: Trigger, data: EventParam.Projectiles-Created)): Trigger
----@field event fun(self: Projectile, event: "Projectiles-Death", callback: fun(trg: Trigger, data: EventParam.Projectiles-Death)): Trigger
+---@field event fun(self: Projectile, event: "projectile-create ", callback: fun(trg: Trigger, data: EventParam). Projectiles - Create)): Trigger
+---@field event fun(self: Projectile, event: "projectile-death ", callback: fun(trg: Trigger, data: EventParam). Projectiles - death)): Trigger
 
 ---@class Unit
----@field event fun(self: Unit, event: "Unit-ResearchAndDevelopmentTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-ResearchAndDevelopmentTechnology)): Trigger
----@field event fun(self: Unit, event: "Unit-AccessToTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-AccessToTechnology)): Trigger
----@field event fun(self: Unit, event: "Unit-LostTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-LostTechnology)): Trigger
----@field event fun(self: Unit, event: "Unit-BuildingUpgradeStarts", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeStarts)): Trigger
----@field event fun(self: Unit, event: "Unit-BuildingUpgradeCancelled", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeCancelled)): Trigger
----@field event fun(self: Unit, event: "Unit-BuildingUpgradeCompleted", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeCompleted)): Trigger
----@field event fun(self: Unit, event: "Unit-ConstructionBegins", callback: fun(trg: Trigger, data: EventParam.Unit-ConstructionBegins)): Trigger
----@field event fun(self: Unit, event: "Unit-BuildCancelled", callback: fun(trg: Trigger, data: EventParam.Unit-BuildCancelled)): Trigger
----@field event fun(self: Unit, event: "Unit-ConstructionCompleted", callback: fun(trg: Trigger, data: EventParam.Unit-ConstructionCompleted)): Trigger
----@field event fun(self: Unit, event: "Skill-BuiltComplete", callback: fun(trg: Trigger, data: EventParam.Skill-BuiltComplete)): Trigger
----@field event fun(self: Unit, event: "Skills-Learning", callback: fun(trg: Trigger, data: EventParam.Skills-Learning)): Trigger
----@field event fun(self: Unit, event: "Skills-AvailableStatusChanges", callback: fun(trg: Trigger, data: EventParam.Skills-AvailableStatusChanges)): Trigger
----@field event fun(self: Unit, event: "Skill-SilentStateChanges", callback: fun(trg: Trigger, data: EventParam.Skill-SilentStateChanges)): Trigger
----@field event fun(self: Unit, event: "Unit-NameChange", callback: fun(trg: Trigger, data: EventParam.Unit-NameChange)): Trigger
----@field event fun(self: Unit, event: "Unit-MinimapIconChanges", callback: fun(trg: Trigger, data: EventParam.Unit-MinimapIconChanges)): Trigger
----@field event fun(self: Unit, event: "Unit-HeadChange", callback: fun(trg: Trigger, data: EventParam.Unit-HeadChange)): Trigger
----@field event fun(self: Unit, event: "Unit-Remove", callback: fun(trg: Trigger, data: EventParam.Unit-Remove)): Trigger
----@field event fun(self: Unit, event: "Unit-AfterRemoval", callback: fun(trg: Trigger, data: EventParam.Unit-AfterRemoval)): Trigger
----@field event fun(self: Unit, event: "Unit-EndOfTransmission", callback: fun(trg: Trigger, data: EventParam.Unit-EndOfTransmission)): Trigger
----@field event fun(self: Unit, event: "Unit-AttributeChange", attr: string, callback: fun(trg: Trigger, data: EventParam.Unit-AttributeChange)): Trigger
----@field event fun(self: Unit, event: "Unit-AboutToDie", callback: fun(trg: Trigger, data: EventParam.Unit-AboutToDie)): Trigger
----@field event fun(self: Unit, event: "Unit-Death", callback: fun(trg: Trigger, data: EventParam.Unit-Death)): Trigger
----@field event fun(self: Unit, event: "Unit-BeforeTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeTakingDamage)): Trigger
----@field event fun(self: Unit, event: "Unit-BeforeDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeDealingDamage)): Trigger
----@field event fun(self: Unit, event: "Unit-WhenTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-WhenTakingDamage)): Trigger
----@field event fun(self: Unit, event: "Unit-WhenDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-WhenDealingDamage)): Trigger
----@field event fun(self: Unit, event: "Unit-AfterDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-AfterDealingDamage)): Trigger
----@field event fun(self: Unit, event: "Unit-AfterTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-AfterTakingDamage)): Trigger
----@field event fun(self: Unit, event: "Unit-BeforeBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeBeingTreated)): Trigger
----@field event fun(self: Unit, event: "Unit-AfterBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-AfterBeingTreated)): Trigger
----@field event fun(self: Unit, event: "Unit-WhenBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-WhenBeingTreated)): Trigger
----@field event fun(self: Unit, event: "Unit-CastSkills", callback: fun(trg: Trigger, data: EventParam.Unit-CastSkills)): Trigger
----@field event fun(self: Unit, event: "Unit-BeforeGainingExperience", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeGainingExperience)): Trigger
----@field event fun(self: Unit, event: "Unit-AfterGainingExperience", callback: fun(trg: Trigger, data: EventParam.Unit-AfterGainingExperience)): Trigger
----@field event fun(self: Unit, event: "Unit-ReceiveCommand", callback: fun(trg: Trigger, data: EventParam.Unit-ReceiveCommand)): Trigger
----@field event fun(self: Unit, event: "Unit-Kill", callback: fun(trg: Trigger, data: EventParam.Unit-Kill)): Trigger
----@field event fun(self: Unit, event: "Unit-Create", callback: fun(trg: Trigger, data: EventParam.Unit-Create)): Trigger
----@field event fun(self: Unit, event: "Unit-EnterTheBattle", callback: fun(trg: Trigger, data: EventParam.Unit-EnterTheBattle)): Trigger
----@field event fun(self: Unit, event: "Unit-OutOfCombat", callback: fun(trg: Trigger, data: EventParam.Unit-OutOfCombat)): Trigger
----@field event fun(self: Unit, event: "Unit-AboutToPickUpItems", callback: fun(trg: Trigger, data: EventParam.Unit-AboutToPickUpItems)): Trigger
----@field event fun(self: Unit, event: "Unit-TogglesDefaultBehavior", callback: fun(trg: Trigger, data: EventParam.Unit-TogglesDefaultBehavior)): Trigger
----@field event fun(self: Unit, event: "Unit-ApproachingEnemy", callback: fun(trg: Trigger, data: EventParam.Unit-ApproachingEnemy)): Trigger
----@field event fun(self: Unit, event: "Unit-SpottedTarget", callback: fun(trg: Trigger, data: EventParam.Unit-SpottedTarget)): Trigger
----@field event fun(self: Unit, event: "Unit-PurchaseItems", callback: fun(trg: Trigger, data: EventParam.Unit-PurchaseItems)): Trigger
----@field event fun(self: Unit, event: "Units-PurchaseUnits", callback: fun(trg: Trigger, data: EventParam.Units-PurchaseUnits)): Trigger
----@field event fun(self: Unit, event: "Unit-ItemsForSale", callback: fun(trg: Trigger, data: EventParam.Unit-ItemsForSale)): Trigger
----@field event fun(self: Unit, event: "Unit-ItemComposition", callback: fun(trg: Trigger, data: EventParam.Unit-ItemComposition)): Trigger
----@field event fun(self: Unit, event: "Unit-PurchaseItemCompositing", callback: fun(trg: Trigger, data: EventParam.Unit-PurchaseItemCompositing)): Trigger
----@field event fun(self: Unit, event: "Unit-Resurrection", callback: fun(trg: Trigger, data: EventParam.Unit-Resurrection)): Trigger
----@field event fun(self: Unit, event: "Unit-Upgrade", callback: fun(trg: Trigger, data: EventParam.Unit-Upgrade)): Trigger
----@field event fun(self: Unit, event: "Unit-IntoTheGrass", callback: fun(trg: Trigger, data: EventParam.Unit-IntoTheGrass)): Trigger
----@field event fun(self: Unit, event: "Unit-GetOutOfTheGrass", callback: fun(trg: Trigger, data: EventParam.Unit-GetOutOfTheGrass)): Trigger
----@field event fun(self: Unit, event: "Unit-ChangeOwnership", callback: fun(trg: Trigger, data: EventParam.Unit-ChangeOwnership)): Trigger
----@field event fun(self: Unit, event: "SkillType-ThePrerequisiteIsTrue", callback: fun(trg: Trigger, data: EventParam.SkillType-ThePrerequisiteIsTrue)): Trigger
----@field event fun(self: Unit, event: "SkillType-PreconditionsAreNotValid", callback: fun(trg: Trigger, data: EventParam.SkillType-PreconditionsAreNotValid)): Trigger
----@field event fun(self: Unit, event: "TechnologyType-PreconditionsHold", callback: fun(trg: Trigger, data: EventParam.TechnologyType-PreconditionsHold)): Trigger
----@field event fun(self: Unit, event: "TechnologyType-PreconditionNotValid", callback: fun(trg: Trigger, data: EventParam.TechnologyType-PreconditionNotValid)): Trigger
----@field event fun(self: Unit, event: "Skills-Upgrades", callback: fun(trg: Trigger, data: EventParam.Skills-Upgrades)): Trigger
----@field event fun(self: Unit, event: "Casting.-AboutToBegin", callback: fun(trg: Trigger, data: EventParam.Casting.-AboutToBegin)): Trigger
----@field event fun(self: Unit, event: "CastTheSpell.-HereWeGo", callback: fun(trg: Trigger, data: EventParam.CastTheSpell.-HereWeGo)): Trigger
----@field event fun(self: Unit, event: "Cast-Guide", callback: fun(trg: Trigger, data: EventParam.Cast-Guide)): Trigger
----@field event fun(self: Unit, event: "CastSpells.-Strike", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Strike)): Trigger
----@field event fun(self: Unit, event: "CastASpell.-Finished", callback: fun(trg: Trigger, data: EventParam.CastASpell.-Finished)): Trigger
----@field event fun(self: Unit, event: "CastSpells.-Over", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Over)): Trigger
----@field event fun(self: Unit, event: "CastASpell.-InterruptTheStart", callback: fun(trg: Trigger, data: EventParam.CastASpell.-InterruptTheStart)): Trigger
----@field event fun(self: Unit, event: "CastSpells.-InterruptTheLead", callback: fun(trg: Trigger, data: EventParam.CastSpells.-InterruptTheLead)): Trigger
----@field event fun(self: Unit, event: "CastASpell.-BreakTheShot", callback: fun(trg: Trigger, data: EventParam.CastASpell.-BreakTheShot)): Trigger
----@field event fun(self: Unit, event: "CastSpells.-Stop", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Stop)): Trigger
----@field event fun(self: Unit, event: "Skills-Acquisition", callback: fun(trg: Trigger, data: EventParam.Skills-Acquisition)): Trigger
----@field event fun(self: Unit, event: "SkillLoss", callback: fun(trg: Trigger, data: EventParam.SkillLoss)): Trigger
----@field event fun(self: Unit, event: "Skill-exchange", callback: fun(trg: Trigger, data: EventParam.Skill-exchange)): Trigger
----@field event fun(self: Unit, event: "Skills-Disabled", callback: fun(trg: Trigger, data: EventParam.Skills-Disabled)): Trigger
----@field event fun(self: Unit, event: "Skills-Enabled", callback: fun(trg: Trigger, data: EventParam.Skills-Enabled)): Trigger
----@field event fun(self: Unit, event: "Skill-CooldownEnds", callback: fun(trg: Trigger, data: EventParam.Skill-CooldownEnds)): Trigger
----@field event fun(self: Unit, event: "Skills-CustomAnimationAxis", string: string, callback: fun(trg: Trigger, data: EventParam.Skills-CustomAnimationAxis)): Trigger
----@field event fun(self: Unit, event: "Effect-Gain", callback: fun(trg: Trigger, data: EventParam.Effect-Gain)): Trigger
----@field event fun(self: Unit, event: "Effect-loss", callback: fun(trg: Trigger, data: EventParam.Effect-loss)): Trigger
----@field event fun(self: Unit, event: "Effect-Heartbeat", callback: fun(trg: Trigger, data: EventParam.Effect-Heartbeat)): Trigger
----@field event fun(self: Unit, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
----@field event fun(self: Unit, event: "Effect-NumberOfLayersChange", callback: fun(trg: Trigger, data: EventParam.Effect-NumberOfLayersChange)): Trigger
----@field event fun(self: Unit, event: "Effect-ComingSoon", callback: fun(trg: Trigger, data: EventParam.Effect-ComingSoon)): Trigger
----@field event fun(self: Unit, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
----@field event fun(self: Unit, event: "Skills-TurnOnTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOnTheIndicator)): Trigger
----@field event fun(self: Unit, event: "Skills-BuildSkillsBeforeReleasing", callback: fun(trg: Trigger, data: EventParam.Skills-BuildSkillsBeforeReleasing)): Trigger
----@field event fun(self: Unit, event: "Skills-TurnOffTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOffTheIndicator)): Trigger
----@field event fun(self: Unit, event: "Unit-PathfindingBegins", callback: fun(trg: Trigger, data: EventParam.Unit-PathfindingBegins)): Trigger
----@field event fun(self: Unit, event: "Unit-PathfindingEnds", callback: fun(trg: Trigger, data: EventParam.Unit-PathfindingEnds)): Trigger
----@field event fun(self: Unit, event: "Command-AttackMove", callback: fun(trg: Trigger, data: EventParam.Command-AttackMove)): Trigger
----@field event fun(self: Unit, event: "Command-SellItems", callback: fun(trg: Trigger, data: EventParam.Command-SellItems)): Trigger
----@field event fun(self: Unit, event: "Command-CastAbilities", callback: fun(trg: Trigger, data: EventParam.Command-CastAbilities)): Trigger
----@field event fun(self: Unit, event: "Command-patrol", callback: fun(trg: Trigger, data: EventParam.Command-patrol)): Trigger
----@field event fun(self: Unit, event: "Command-move", callback: fun(trg: Trigger, data: EventParam.Command-move)): Trigger
+---@field event fun(self: Unit, event: "Unit - R&D technology ", callback: fun(trg: Trigger, data: EventParam). Unit - Research and development technology)): Trigger
+---@field event fun(self: Unit, event: "unit - get tech ", callback: fun(trg: Trigger, data: EventParam). Unit - Get Tech)): Trigger
+---@field event fun(self: Unit, event: "unit-lost tech ", callback: fun(trg: Trigger, data: EventParam). Unit - Lost tech)): Trigger
+---@field event fun(self: Unit, event: "Unit-building upgrade starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Building upgrade starts)): Trigger
+---@field event fun(self: Unit, event: "Unit-building upgrade cancelled ", callback: fun(trg: Trigger, data: EventParam). Unit - Building upgrade cancelled)): Trigger
+---@field event fun(self: Unit, event: "Unit-building upgrade completed ", callback: fun(trg: Trigger, data: EventParam). Unit - Building upgrade completed)): Trigger
+---@field event fun(self: Unit, event: "Units-build starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Build starts)): Trigger
+---@field event fun(self: Unit, event: "unit-build cancel ", callback: fun(trg: Trigger, data: EventParam). Unit - Build cancelled)): Trigger
+---@field event fun(self: Unit, event: "Units-build completed ", callback: fun(trg: Trigger, data: EventParam). Unit - Built)): Trigger
+---@field event fun(self: Unit, event: "Skill - build completed ", callback: fun(trg: Trigger, data: EventParam). Skill - Build completed)): Trigger
+---@field event fun(self: Unit, event: "Skill - learning ", callback: fun(trg: Trigger, data: EventParam). Skills - Learning)): Trigger
+---@field event fun(self: Unit, event: "Skills-availability status change ", callback: fun(trg: Trigger, data: EventParam). Skills - Available status changes)): Trigger
+---@field event fun(self: Unit, event: "Skills-silence status change ", callback: fun(trg: Trigger, data: EventParam). Skill - Silent state change)): Trigger
+---@field event fun(self: Unit, event: "unit-name change ", callback: fun(trg: Trigger, data: EventParam). Unit - Name change)): Trigger
+---@field event fun(self: Unit, event: "unit-minimap icon change ", callback: fun(trg: Trigger, data: EventParam). Unit - minimap icon change)): Trigger
+---@field event fun(self: Unit, event: "unit-avatar change ", callback: fun(trg: Trigger, data: EventParam). Unit - Avatar change)): Trigger
+---@field event fun(self: Unit, event: "unit-remove ", callback: fun(trg: Trigger, data: EventParam). Unit - remove)): Trigger
+---@field event fun(self: Unit, event: "Unit - after removal ", callback: fun(trg: Trigger, data: EventParam). Unit - after removal)): Trigger
+---@field event fun(self: Unit, event: "unit-end of transfer ", callback: fun(trg: Trigger, data: EventParam). Unit - End of transfer)): Trigger
+---@field event fun(self: Unit, event: "unit-attribute change ", attr: string, callback: fun(trg: Trigger, data: EventParam). Unit - Attribute change)): Trigger
+---@field event fun(self: Unit, event: "Unit - dying ", callback: fun(trg: Trigger, data: EventParam). Unit - About to die)): Trigger
+---@field event fun(self: Unit, event: "unit-death ", callback: fun(trg: Trigger, data: EventParam). Unit - death)): Trigger
+---@field event fun(self: Unit, event: "unit - before taking damage ", callback: fun(trg: Trigger, data: EventParam). Unit - Before taking damage)): Trigger
+---@field event fun(self: Unit, event: "unit - before doing damage ", callback: fun(trg: Trigger, data: EventParam). Unit - Before dealing damage)): Trigger
+---@field event fun(self: Unit, event: "unit - when damaged ", callback: fun(trg: Trigger, data: EventParam). Unit - When taking damage)): Trigger
+---@field event fun(self: Unit, event: "when the unit deals damage ", callback: fun(trg: Trigger, data: EventParam). Unit - When dealing damage)): Trigger
+---@field event fun(self: Unit, event: "after dealing damage ", callback: fun(trg: Trigger, data: EventParam). Unit - After dealing damage)): Trigger
+---@field event fun(self: Unit, event: "Unit - after taking damage ", callback: fun(trg: Trigger, data: EventParam). Unit - After taking damage)): Trigger
+---@field event fun(self: Unit, event: "Unit - before treatment ", callback: fun(trg: Trigger, data: EventParam). Unit - Before receiving treatment)): Trigger
+---@field event fun(self: Unit, event: "Unit - after healing ", callback: fun(trg: Trigger, data: EventParam). Unit - after being healed)): Trigger
+---@field event fun(self: Unit, event: "Unit - when healed ", callback: fun(trg: Trigger, data: EventParam). Unit - when treated)): Trigger
+---@field event fun(self: Unit, event: "unit-cast skill ", callback: fun(trg: Trigger, data: EventParam). Unit - Cast skill)): Trigger
+---@field event fun(self: Unit, event: "Unit - before experience ", callback: fun(trg: Trigger, data: EventParam. Unit - Before gaining experience)): Trigger
+---@field event fun(self: Unit, event: "Unit - after experience ", callback: fun(trg: Trigger, data: EventParam. Unit - After gaining experience)): Trigger
+---@field event fun(self: Unit, event: "unit-receive command ", callback: fun(trg: Trigger, data: EventParam). Unit - Receive command)): Trigger
+---@field event fun(self: Unit, event: "unit-kill ", callback: fun(trg: Trigger, data: EventParam). Unit - Kill)): Trigger
+---@field event fun(self: Unit, event: "unit-create ", callback: fun(trg: Trigger, data: EventParam). Unit - create)): Trigger
+---@field event fun(self: Unit, event: "Unit - into battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
+---@field event fun(self: Unit, event: "Unit - out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
+---@field event fun(self: Unit, event: "Unit - about to pick up item ", callback: fun(trg: Trigger, data: EventParam). Unit - About to pick up item)): Trigger
+---@field event fun(self: Unit, event: "unit-switch default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
+---@field event fun(self: Unit, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam. Unit - Imminent enemy)): Trigger
+---@field event fun(self: Unit, event: "unit-discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
+---@field event fun(self: Unit, event: "unit - purchase item ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item)): Trigger
+---@field event fun(self: Unit, event: "unit - buy unit ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase unit)): Trigger
+---@field event fun(self: Unit, event: "Unit - item for sale ", callback: fun(trg: Trigger, data: EventParam). Unit - Item for sale)): Trigger
+---@field event fun(self: Unit, event: "unit-item composition ", callback: fun(trg: Trigger, data: EventParam). Unit - item composition)): Trigger
+---@field event fun(self: Unit, event: "units-purchase item composition ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item synthesis)): Trigger
+---@field event fun(self: Unit, event: "unit-resurrection ", callback: fun(trg: Trigger, data: EventParam). Unit - Resurrection)): Trigger
+---@field event fun(self: Unit, event: "unit-upgrade ", callback: fun(trg: Trigger, data: EventParam). Unit - upgrade)): Trigger
+---@field event fun(self: Unit, event: "Unit - into the grass ", callback: fun(trg: Trigger, data: EventParam). Unit - Into the grass)): Trigger
+---@field event fun(self: Unit, event: "Unit - leave the grass ", callback: fun(trg: Trigger, data: EventParam). Unit - Leave the grass)): Trigger
+---@field event fun(self: Unit, event: "unit - change ownership ", callback: fun(trg: Trigger, data: EventParam). Unit - Change ownership)): Trigger
+---@field event fun(self: Unit, event: "Skill type - prerequisite is true ", callback: fun(trg: Trigger, data: EventParam). Skill Type - preconditions held)): Trigger
+---@field event fun(self: Unit, event: "Skill type - prerequisite not true ", callback: fun(trg: Trigger, data: EventParam). Skill type - precondition not true)): Trigger
+---@field event fun(self: Unit, event: "Tech type - prerequisite is true ", callback: fun(trg: Trigger, data: EventParam). Tech type - Precondition held)): Trigger
+---@field event fun(self: Unit, event: "Tech type - precondition not true ", callback: fun(trg: Trigger, data: EventParam). Tech type - Precondition not true)): Trigger
+---@field event fun(self: Unit, event: "Skill - upgrade ", callback: fun(trg: Trigger, data: EventParam). Skills - Level up)): Trigger
+---@field event fun(self: Unit, event: "Casting - about to begin ", callback: fun(trg: Trigger, data: EventParam). Casting - About to begin)): Trigger
+---@field event fun(self: Unit, event: "Cast - start ", callback: fun(trg: Trigger, data: EventParam). Cast - Start)): Trigger
+---@field event fun(self: Unit, event: "cast - boot ", callback: fun(trg: Trigger, data: EventParam). Cast - Guide)): Trigger
+---@field event fun(self: Unit, event: "Cast - shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Strike)): Trigger
+---@field event fun(self: Unit, event: "spell-finished ", callback: fun(trg: Trigger, data: EventParam). Cast - Finished)): Trigger
+---@field event fun(self: Unit, event: "spell-end ", callback: fun(trg: Trigger, data: EventParam). Spell - End)): Trigger
+---@field event fun(self: Unit, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
+---@field event fun(self: Unit, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
+---@field event fun(self: Unit, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: Unit, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
+---@field event fun(self: Unit, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
+---@field event fun(self: Unit, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
+---@field event fun(self: Unit, event: "Skills-exchange ", callback: fun(trg: Trigger, data: EventParam). Skill - Exchange)): Trigger
+---@field event fun(self: Unit, event: "Skill - disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
+---@field event fun(self: Unit, event: "Skill - enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
+---@field event fun(self: Unit, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
+---@field event fun(self: Unit, event: "Skill - Custom action axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
+---@field event fun(self: Unit, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
+---@field event fun(self: Unit, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
+---@field event fun(self: Unit, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
+---@field event fun(self: Unit, event: "Effect - overlay ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
+---@field event fun(self: Unit, event: "Effect - layer change ", callback: fun(trg: Trigger, data: EventParam). Effect - layer change)): Trigger
+---@field event fun(self: Unit, event: "Effect - coming soon ", callback: fun(trg: Trigger, data: EventParam). Effect - Coming soon)): Trigger
+---@field event fun(self: Unit, event: "effect - overlay ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
+---@field event fun(self: Unit, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
+---@field event fun(self: Unit, event: "Skill - Build skill before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
+---@field event fun(self: Unit, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
+---@field event fun(self: Unit, event: "unit-pathfinding starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Pathfinding starts)): Trigger
+---@field event fun(self: Unit, event: "unit-pathfinding end ", callback: fun(trg: Trigger, data: EventParam). Unit - End of pathfinding)): Trigger
+---@field event fun(self: Unit, event: "command-attack move ", callback: fun(trg: Trigger, data: EventParam). Command - Attack Move)): Trigger
+---@field event fun(self: Unit, event: "Command - sell item ", callback: fun(trg: Trigger, data: EventParam). Command - Sell items)): Trigger
+---@field event fun(self: Unit, event: "command - cast skill ", callback: fun(trg: Trigger, data: EventParam). Command - Cast skill)): Trigger
+---@field event fun(self: Unit, event: "command-patrol ", callback: fun(trg: Trigger, data: EventParam). Command - Patrol)): Trigger
+---@field event fun(self: Unit, event: "command-move ", callback: fun(trg: Trigger, data: EventParam). Command - Move)): Trigger
 
 ---@class EditorObject.Ability
----@field event fun(self: EditorObject.Ability, event: "Skill-BuiltComplete", callback: fun(trg: Trigger, data: EventParam.Skill-BuiltComplete)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-Learning", callback: fun(trg: Trigger, data: EventParam.Skills-Learning)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-AvailableStatusChanges", callback: fun(trg: Trigger, data: EventParam.Skills-AvailableStatusChanges)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skill-SilentStateChanges", callback: fun(trg: Trigger, data: EventParam.Skill-SilentStateChanges)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-Upgrades", callback: fun(trg: Trigger, data: EventParam.Skills-Upgrades)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Casting.-AboutToBegin", callback: fun(trg: Trigger, data: EventParam.Casting.-AboutToBegin)): Trigger
----@field event fun(self: EditorObject.Ability, event: "CastTheSpell.-HereWeGo", callback: fun(trg: Trigger, data: EventParam.CastTheSpell.-HereWeGo)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Cast-Guide", callback: fun(trg: Trigger, data: EventParam.Cast-Guide)): Trigger
----@field event fun(self: EditorObject.Ability, event: "CastSpells.-Strike", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Strike)): Trigger
----@field event fun(self: EditorObject.Ability, event: "CastASpell.-Finished", callback: fun(trg: Trigger, data: EventParam.CastASpell.-Finished)): Trigger
----@field event fun(self: EditorObject.Ability, event: "CastSpells.-Over", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Over)): Trigger
----@field event fun(self: EditorObject.Ability, event: "CastASpell.-InterruptTheStart", callback: fun(trg: Trigger, data: EventParam.CastASpell.-InterruptTheStart)): Trigger
----@field event fun(self: EditorObject.Ability, event: "CastSpells.-InterruptTheLead", callback: fun(trg: Trigger, data: EventParam.CastSpells.-InterruptTheLead)): Trigger
----@field event fun(self: EditorObject.Ability, event: "CastASpell.-BreakTheShot", callback: fun(trg: Trigger, data: EventParam.CastASpell.-BreakTheShot)): Trigger
----@field event fun(self: EditorObject.Ability, event: "CastSpells.-Stop", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Stop)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-Acquisition", callback: fun(trg: Trigger, data: EventParam.Skills-Acquisition)): Trigger
----@field event fun(self: EditorObject.Ability, event: "SkillLoss", callback: fun(trg: Trigger, data: EventParam.SkillLoss)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skill-exchange", callback: fun(trg: Trigger, data: EventParam.Skill-exchange)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-Disabled", callback: fun(trg: Trigger, data: EventParam.Skills-Disabled)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-Enabled", callback: fun(trg: Trigger, data: EventParam.Skills-Enabled)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skill-CooldownEnds", callback: fun(trg: Trigger, data: EventParam.Skill-CooldownEnds)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-CustomAnimationAxis", callback: fun(trg: Trigger, data: EventParam.Skills-CustomAnimationAxis)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-TurnOnTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOnTheIndicator)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-BuildSkillsBeforeReleasing", callback: fun(trg: Trigger, data: EventParam.Skills-BuildSkillsBeforeReleasing)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skills-TurnOffTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOffTheIndicator)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skill - build completed ", callback: fun(trg: Trigger, data: EventParam). Skill - Build completed)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skills-learning ", callback: fun(trg: Trigger, data: EventParam). Skills - Learning)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skills-availability status change ", callback: fun(trg: Trigger, data: EventParam). Skills - Available status changes)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skills-silence state change ", callback: fun(trg: Trigger, data: EventParam). Skill - Silent state change)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "skill - upgrade ", callback: fun(trg: Trigger, data: EventParam). Skills - Level up)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Casting - about to begin ", callback: fun(trg: Trigger, data: EventParam). Casting - About to begin)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Cast - start ", callback: fun(trg: Trigger, data: EventParam). Cast - Start)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "spell-bootstrap ", callback: fun(trg: Trigger, data: EventParam). Cast - Guide)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Cast - shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Strike)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "spell-finish ", callback: fun(trg: Trigger, data: EventParam). Cast - Finished)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "spell-end ", callback: fun(trg: Trigger, data: EventParam). Spell - End)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Spell-interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "skills-acquired ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "skills-exchange ", callback: fun(trg: Trigger, data: EventParam). Skill - Exchange)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skills-enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skill - custom action axis ", callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skill - Build skill before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
 
 ---@class EditorObject.Buff
----@field event fun(self: EditorObject.Buff, event: "Effect-Gain", callback: fun(trg: Trigger, data: EventParam.Effect-Gain)): Trigger
----@field event fun(self: EditorObject.Buff, event: "Effect-loss", callback: fun(trg: Trigger, data: EventParam.Effect-loss)): Trigger
----@field event fun(self: EditorObject.Buff, event: "Effect-Heartbeat", callback: fun(trg: Trigger, data: EventParam.Effect-Heartbeat)): Trigger
----@field event fun(self: EditorObject.Buff, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
----@field event fun(self: EditorObject.Buff, event: "Effect-NumberOfLayersChange", callback: fun(trg: Trigger, data: EventParam.Effect-NumberOfLayersChange)): Trigger
----@field event fun(self: EditorObject.Buff, event: "Effect-ComingSoon", callback: fun(trg: Trigger, data: EventParam.Effect-ComingSoon)): Trigger
----@field event fun(self: EditorObject.Buff, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
+---@field event fun(self: EditorObject.Buff, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
+---@field event fun(self: EditorObject.Buff, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
+---@field event fun(self: EditorObject.Buff, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
+---@field event fun(self: EditorObject.Buff, event: "Effect - overlay ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
+---@field event fun(self: EditorObject.Buff, event: "Effect - layer change ", callback: fun(trg: Trigger, data: EventParam). Effect - layer change)): Trigger
+---@field event fun(self: EditorObject.Buff, event: "Effect - coming soon ", callback: fun(trg: Trigger, data: EventParam). Effect - Coming soon)): Trigger
+---@field event fun(self: EditorObject.Buff, event: "effect - override ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
 
 ---@class EditorObject.Item
----@field event fun(self: EditorObject.Item, event: "Items-Get", callback: fun(trg: Trigger, data: EventParam.Items-Get)): Trigger
----@field event fun(self: EditorObject.Item, event: "Items-EnterTheInventory", callback: fun(trg: Trigger, data: EventParam.Items-EnterTheInventory)): Trigger
----@field event fun(self: EditorObject.Item, event: "Items-EnterBackpack", callback: fun(trg: Trigger, data: EventParam.Items-EnterBackpack)): Trigger
----@field event fun(self: EditorObject.Item, event: "Item-Lost", callback: fun(trg: Trigger, data: EventParam.Item-Lost)): Trigger
----@field event fun(self: EditorObject.Item, event: "Items-LeaveTheInventory", callback: fun(trg: Trigger, data: EventParam.Items-LeaveTheInventory)): Trigger
----@field event fun(self: EditorObject.Item, event: "Items-LeaveTheBackpack", callback: fun(trg: Trigger, data: EventParam.Items-LeaveTheBackpack)): Trigger
----@field event fun(self: EditorObject.Item, event: "Items-Use", callback: fun(trg: Trigger, data: EventParam.Items-Use)): Trigger
----@field event fun(self: EditorObject.Item, event: "Item-StackChanges", callback: fun(trg: Trigger, data: EventParam.Item-StackChanges)): Trigger
----@field event fun(self: EditorObject.Item, event: "Item-ChargeChanges", callback: fun(trg: Trigger, data: EventParam.Item-ChargeChanges)): Trigger
----@field event fun(self: EditorObject.Item, event: "Items-Create", callback: fun(trg: Trigger, data: EventParam.Items-Create)): Trigger
----@field event fun(self: EditorObject.Item, event: "Items-Removal", callback: fun(trg: Trigger, data: EventParam.Items-Removal)): Trigger
----@field event fun(self: EditorObject.Item, event: "Items-ForSale", callback: fun(trg: Trigger, data: EventParam.Items-ForSale)): Trigger
----@field event fun(self: EditorObject.Item, event: "Item-Death", callback: fun(trg: Trigger, data: EventParam.Item-Death)): Trigger
----@field event fun(self: EditorObject.Item, event: "Item-CollectionCreation", callback: fun(trg: Trigger, data: EventParam.Item-CollectionCreation)): Trigger
+---@field event fun(self: EditorObject.Item, event: "item-get ", callback: fun(trg: Trigger, data: EventParam). Item - Get)): Trigger
+---@field event fun(self: EditorObject.Item, event: "Item - Enter item ", callback: fun(trg: Trigger, data: EventParam). Item - Enter Item bar)): Trigger
+---@field event fun(self: EditorObject.Item, event: "Item - Enter backpack ", callback: fun(trg: Trigger, data: EventParam). Item - Enter backpack)): Trigger
+---@field event fun(self: EditorObject.Item, event: "item-lose ", callback: fun(trg: Trigger, data: EventParam). Item - lost)): Trigger
+---@field event fun(self: EditorObject.Item, event: "Item - leaves inventory ", callback: fun(trg: Trigger, data: EventParam). Item - Leave inventory)): Trigger
+---@field event fun(self: EditorObject.Item, event: "Item - leave backpack ", callback: fun(trg: Trigger, data: EventParam). Item - Leave backpack)): Trigger
+---@field event fun(self: EditorObject.Item, event: "item-use ", callback: fun(trg: Trigger, data: EventParam). Item - Use)): Trigger
+---@field event fun(self: EditorObject.Item, event: "item-stack change ", callback: fun(trg: Trigger, data: EventParam). Item - Stack change)): Trigger
+---@field event fun(self: EditorObject.Item, event: "Item-charge change ", callback: fun(trg: Trigger, data: EventParam). Item - Charge change)): Trigger
+---@field event fun(self: EditorObject.Item, event: "item-create ", callback: fun(trg: Trigger, data: EventParam). Item - Created)): Trigger
+---@field event fun(self: EditorObject.Item, event: "item-remove ", callback: fun(trg: Trigger, data: EventParam). Item - Removed)): Trigger
+---@field event fun(self: EditorObject.Item, event: "Item-sale ", callback: fun(trg: Trigger, data: EventParam). Item - for sale)): Trigger
+---@field event fun(self: EditorObject.Item, event: "item-death ", callback: fun(trg: Trigger, data: EventParam). Item - Death)): Trigger
+---@field event fun(self: EditorObject.Item, event: "Item - collection creation ", callback: fun(trg: Trigger, data: EventParam). Item - Collection Creation)): Trigger
 
 ---@class EditorObject.Projectile
----@field event fun(self: EditorObject.Projectile, event: "Projectiles-Created", callback: fun(trg: Trigger, data: EventParam.Projectiles-Created)): Trigger
----@field event fun(self: EditorObject.Projectile, event: "Projectiles-Death", callback: fun(trg: Trigger, data: EventParam.Projectiles-Death)): Trigger
+---@field event fun(self: EditorObject.Projectile, event: "projectile-create ", callback: fun(trg: Trigger, data: EventParam). Projectiles - Create)): Trigger
+---@field event fun(self: EditorObject.Projectile, event: "projectile-death ", callback: fun(trg: Trigger, data: EventParam). Projectiles - death)): Trigger
 
 ---@class EditorObject.Unit
----@field event fun(self: EditorObject.Unit, event: "Unit-ResearchAndDevelopmentTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-ResearchAndDevelopmentTechnology)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AccessToTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-AccessToTechnology)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-LostTechnology", callback: fun(trg: Trigger, data: EventParam.Unit-LostTechnology)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-BuildingUpgradeStarts", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeStarts)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-BuildingUpgradeCancelled", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeCancelled)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-BuildingUpgradeCompleted", callback: fun(trg: Trigger, data: EventParam.Unit-BuildingUpgradeCompleted)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-ConstructionBegins", callback: fun(trg: Trigger, data: EventParam.Unit-ConstructionBegins)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-BuildCancelled", callback: fun(trg: Trigger, data: EventParam.Unit-BuildCancelled)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-ConstructionCompleted", callback: fun(trg: Trigger, data: EventParam.Unit-ConstructionCompleted)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skill-BuiltComplete", callback: fun(trg: Trigger, data: EventParam.Skill-BuiltComplete)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-Learning", callback: fun(trg: Trigger, data: EventParam.Skills-Learning)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-AvailableStatusChanges", callback: fun(trg: Trigger, data: EventParam.Skills-AvailableStatusChanges)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skill-SilentStateChanges", callback: fun(trg: Trigger, data: EventParam.Skill-SilentStateChanges)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-NameChange", callback: fun(trg: Trigger, data: EventParam.Unit-NameChange)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-MinimapIconChanges", callback: fun(trg: Trigger, data: EventParam.Unit-MinimapIconChanges)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-HeadChange", callback: fun(trg: Trigger, data: EventParam.Unit-HeadChange)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-Remove", callback: fun(trg: Trigger, data: EventParam.Unit-Remove)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AfterRemoval", callback: fun(trg: Trigger, data: EventParam.Unit-AfterRemoval)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-EndOfTransmission", callback: fun(trg: Trigger, data: EventParam.Unit-EndOfTransmission)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AttributeChange", callback: fun(trg: Trigger, data: EventParam.Unit-AttributeChange)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AboutToDie", callback: fun(trg: Trigger, data: EventParam.Unit-AboutToDie)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-Death", callback: fun(trg: Trigger, data: EventParam.Unit-Death)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-BeforeTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeTakingDamage)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-BeforeDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeDealingDamage)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-WhenTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-WhenTakingDamage)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-WhenDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-WhenDealingDamage)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AfterDealingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-AfterDealingDamage)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AfterTakingDamage", callback: fun(trg: Trigger, data: EventParam.Unit-AfterTakingDamage)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-BeforeBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeBeingTreated)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AfterBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-AfterBeingTreated)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-WhenBeingTreated", callback: fun(trg: Trigger, data: EventParam.Unit-WhenBeingTreated)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-CastSkills", callback: fun(trg: Trigger, data: EventParam.Unit-CastSkills)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-BeforeGainingExperience", callback: fun(trg: Trigger, data: EventParam.Unit-BeforeGainingExperience)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AfterGainingExperience", callback: fun(trg: Trigger, data: EventParam.Unit-AfterGainingExperience)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-ReceiveCommand", callback: fun(trg: Trigger, data: EventParam.Unit-ReceiveCommand)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-Kill", callback: fun(trg: Trigger, data: EventParam.Unit-Kill)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-Create", callback: fun(trg: Trigger, data: EventParam.Unit-Create)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-EnterTheBattle", callback: fun(trg: Trigger, data: EventParam.Unit-EnterTheBattle)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-OutOfCombat", callback: fun(trg: Trigger, data: EventParam.Unit-OutOfCombat)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-AboutToPickUpItems", callback: fun(trg: Trigger, data: EventParam.Unit-AboutToPickUpItems)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-TogglesDefaultBehavior", callback: fun(trg: Trigger, data: EventParam.Unit-TogglesDefaultBehavior)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-ApproachingEnemy", callback: fun(trg: Trigger, data: EventParam.Unit-ApproachingEnemy)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-SpottedTarget", callback: fun(trg: Trigger, data: EventParam.Unit-SpottedTarget)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-PurchaseItems", callback: fun(trg: Trigger, data: EventParam.Unit-PurchaseItems)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Units-PurchaseUnits", callback: fun(trg: Trigger, data: EventParam.Units-PurchaseUnits)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-ItemsForSale", callback: fun(trg: Trigger, data: EventParam.Unit-ItemsForSale)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-ItemComposition", callback: fun(trg: Trigger, data: EventParam.Unit-ItemComposition)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-PurchaseItemCompositing", callback: fun(trg: Trigger, data: EventParam.Unit-PurchaseItemCompositing)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-Resurrection", callback: fun(trg: Trigger, data: EventParam.Unit-Resurrection)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-Upgrade", callback: fun(trg: Trigger, data: EventParam.Unit-Upgrade)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-IntoTheGrass", callback: fun(trg: Trigger, data: EventParam.Unit-IntoTheGrass)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-GetOutOfTheGrass", callback: fun(trg: Trigger, data: EventParam.Unit-GetOutOfTheGrass)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-ChangeOwnership", callback: fun(trg: Trigger, data: EventParam.Unit-ChangeOwnership)): Trigger
----@field event fun(self: EditorObject.Unit, event: "SkillType-ThePrerequisiteIsTrue", callback: fun(trg: Trigger, data: EventParam.SkillType-ThePrerequisiteIsTrue)): Trigger
----@field event fun(self: EditorObject.Unit, event: "SkillType-PreconditionsAreNotValid", callback: fun(trg: Trigger, data: EventParam.SkillType-PreconditionsAreNotValid)): Trigger
----@field event fun(self: EditorObject.Unit, event: "TechnologyType-PreconditionsHold", callback: fun(trg: Trigger, data: EventParam.TechnologyType-PreconditionsHold)): Trigger
----@field event fun(self: EditorObject.Unit, event: "TechnologyType-PreconditionNotValid", callback: fun(trg: Trigger, data: EventParam.TechnologyType-PreconditionNotValid)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-Upgrades", callback: fun(trg: Trigger, data: EventParam.Skills-Upgrades)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Casting.-AboutToBegin", callback: fun(trg: Trigger, data: EventParam.Casting.-AboutToBegin)): Trigger
----@field event fun(self: EditorObject.Unit, event: "CastTheSpell.-HereWeGo", callback: fun(trg: Trigger, data: EventParam.CastTheSpell.-HereWeGo)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Cast-Guide", callback: fun(trg: Trigger, data: EventParam.Cast-Guide)): Trigger
----@field event fun(self: EditorObject.Unit, event: "CastSpells.-Strike", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Strike)): Trigger
----@field event fun(self: EditorObject.Unit, event: "CastASpell.-Finished", callback: fun(trg: Trigger, data: EventParam.CastASpell.-Finished)): Trigger
----@field event fun(self: EditorObject.Unit, event: "CastSpells.-Over", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Over)): Trigger
----@field event fun(self: EditorObject.Unit, event: "CastASpell.-InterruptTheStart", callback: fun(trg: Trigger, data: EventParam.CastASpell.-InterruptTheStart)): Trigger
----@field event fun(self: EditorObject.Unit, event: "CastSpells.-InterruptTheLead", callback: fun(trg: Trigger, data: EventParam.CastSpells.-InterruptTheLead)): Trigger
----@field event fun(self: EditorObject.Unit, event: "CastASpell.-BreakTheShot", callback: fun(trg: Trigger, data: EventParam.CastASpell.-BreakTheShot)): Trigger
----@field event fun(self: EditorObject.Unit, event: "CastSpells.-Stop", callback: fun(trg: Trigger, data: EventParam.CastSpells.-Stop)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-Acquisition", callback: fun(trg: Trigger, data: EventParam.Skills-Acquisition)): Trigger
----@field event fun(self: EditorObject.Unit, event: "SkillLoss", callback: fun(trg: Trigger, data: EventParam.SkillLoss)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skill-exchange", callback: fun(trg: Trigger, data: EventParam.Skill-exchange)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-Disabled", callback: fun(trg: Trigger, data: EventParam.Skills-Disabled)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-Enabled", callback: fun(trg: Trigger, data: EventParam.Skills-Enabled)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skill-CooldownEnds", callback: fun(trg: Trigger, data: EventParam.Skill-CooldownEnds)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-CustomAnimationAxis", callback: fun(trg: Trigger, data: EventParam.Skills-CustomAnimationAxis)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Effect-Gain", callback: fun(trg: Trigger, data: EventParam.Effect-Gain)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Effect-loss", callback: fun(trg: Trigger, data: EventParam.Effect-loss)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Effect-Heartbeat", callback: fun(trg: Trigger, data: EventParam.Effect-Heartbeat)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Effect-NumberOfLayersChange", callback: fun(trg: Trigger, data: EventParam.Effect-NumberOfLayersChange)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Effect-ComingSoon", callback: fun(trg: Trigger, data: EventParam.Effect-ComingSoon)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Effects-Overlay", callback: fun(trg: Trigger, data: EventParam.Effects-Overlay)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-TurnOnTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOnTheIndicator)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-BuildSkillsBeforeReleasing", callback: fun(trg: Trigger, data: EventParam.Skills-BuildSkillsBeforeReleasing)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skills-TurnOffTheIndicator", callback: fun(trg: Trigger, data: EventParam.Skills-TurnOffTheIndicator)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-PathfindingBegins", callback: fun(trg: Trigger, data: EventParam.Unit-PathfindingBegins)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Unit-PathfindingEnds", callback: fun(trg: Trigger, data: EventParam.Unit-PathfindingEnds)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Command-AttackMove", callback: fun(trg: Trigger, data: EventParam.Command-AttackMove)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Command-SellItems", callback: fun(trg: Trigger, data: EventParam.Command-SellItems)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Command-CastAbilities", callback: fun(trg: Trigger, data: EventParam.Command-CastAbilities)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Command-patrol", callback: fun(trg: Trigger, data: EventParam.Command-patrol)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Command-move", callback: fun(trg: Trigger, data: EventParam.Command-move)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-R&D technology ", callback: fun(trg: Trigger, data: EventParam). Unit - Research and development technology)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-get tech ", callback: fun(trg: Trigger, data: EventParam. Unit - Get Tech)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-lost tech ", callback: fun(trg: Trigger, data: EventParam. Unit - Lost tech)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit-building upgrade starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Building upgrade starts)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit-building upgrade cancelled ", callback: fun(trg: Trigger, data: EventParam. Unit - Building upgrade cancelled)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit-building upgrade complete ", callback: fun(trg: Trigger, data: EventParam). Unit - Building upgrade completed)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "units-build starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Build starts)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-build cancel ", callback: fun(trg: Trigger, data: EventParam). Unit - Build cancelled)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Units-build completed ", callback: fun(trg: Trigger, data: EventParam). Unit - Built)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - build completed ", callback: fun(trg: Trigger, data: EventParam). Skill - Build completed)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - learning ", callback: fun(trg: Trigger, data: EventParam). Skills - Learning)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skills-available status change ", callback: fun(trg: Trigger, data: EventParam). Skills - Available status changes)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skills-silence status change ", callback: fun(trg: Trigger, data: EventParam). Skill - Silent state change)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-name change ", callback: fun(trg: Trigger, data: EventParam). Unit - Name change)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-minimap icon change ", callback: fun(trg: Trigger, data: EventParam. Unit - minimap icon change)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-avatar change ", callback: fun(trg: Trigger, data: EventParam). Unit - Avatar change)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-remove ", callback: fun(trg: Trigger, data: EventParam). Unit - remove)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-after removal ", callback: fun(trg: Trigger, data: EventParam. Unit - after removal)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-end of transfer ", callback: fun(trg: Trigger, data: EventParam). Unit - End of transfer)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-attribute change ", callback: fun(trg: Trigger, data: EventParam). Unit - Attribute change)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - dying ", callback: fun(trg: Trigger, data: EventParam. Unit - About to die)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-death ", callback: fun(trg: Trigger, data: EventParam). Unit - death)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - before damage ", callback: fun(trg: Trigger, data: EventParam). Unit - Before taking damage)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - before damage ", callback: fun(trg: Trigger, data: EventParam). Unit - Before dealing damage)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - when damaged ", callback: fun(trg: Trigger, data: EventParam). Unit - When taking damage)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - when dealing damage ", callback: fun(trg: Trigger, data: EventParam). Unit - When dealing damage)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - after dealing damage ", callback: fun(trg: Trigger, data: EventParam). Unit - After dealing damage)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - after taking damage ", callback: fun(trg: Trigger, data: EventParam). Unit - After taking damage)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - before treatment ", callback: fun(trg: Trigger, data: EventParam. Unit - Before receiving treatment)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - after healing ", callback: fun(trg: Trigger, data: EventParam. Unit - after being healed)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - when healed ", callback: fun(trg: Trigger, data: EventParam. Unit - when treated)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-cast skill ", callback: fun(trg: Trigger, data: EventParam). Unit - Cast skill)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - before experience ", callback: fun(trg: Trigger, data: EventParam). Unit - Before gaining experience)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - after experience ", callback: fun(trg: Trigger, data: EventParam. Unit - After gaining experience)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-receive command ", callback: fun(trg: Trigger, data: EventParam). Unit - Receive command)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-kill ", callback: fun(trg: Trigger, data: EventParam). Unit - Kill)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-create ", callback: fun(trg: Trigger, data: EventParam). Unit - create)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "units-enter battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "units-out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - about to pick up item ", callback: fun(trg: Trigger, data: EventParam. Unit - About to pick up item)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-toggle default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam. Unit - Imminent enemy)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - purchase item ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit - buy unit ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase unit)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "units-items for sale ", callback: fun(trg: Trigger, data: EventParam. Unit - Item for sale)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-object composition ", callback: fun(trg: Trigger, data: EventParam). Unit - item composition)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "units-purchase item composition ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item synthesis)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-resurrect ", callback: fun(trg: Trigger, data: EventParam). Unit - Resurrection)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-upgrade ", callback: fun(trg: Trigger, data: EventParam). Unit - upgrade)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - into the grass ", callback: fun(trg: Trigger, data: EventParam. Unit - Into the grass)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - leave the grass ", callback: fun(trg: Trigger, data: EventParam. Unit - Leave the grass)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Unit - change ownership ", callback: fun(trg: Trigger, data: EventParam). Unit - Change ownership)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill type - preconditions are true ", callback: fun(trg: Trigger, data: EventParam). Skill Type - preconditions held)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill type - precondition not true ", callback: fun(trg: Trigger, data: EventParam). Skill type - precondition not true)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Tech type - prerequisite is true ", callback: fun(trg: Trigger, data: EventParam). Tech type - Precondition held)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Tech type - precondition not true ", callback: fun(trg: Trigger, data: EventParam). Tech type - Precondition not true)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - upgrade ", callback: fun(trg: Trigger, data: EventParam). Skills - Level up)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Cast - about to begin ", callback: fun(trg: Trigger, data: EventParam). Casting - About to begin)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "spell-start ", callback: fun(trg: Trigger, data: EventParam). Cast - Start)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "spell-boot ", callback: fun(trg: Trigger, data: EventParam). Cast - Guide)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Cast - shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Strike)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "spell-finished ", callback: fun(trg: Trigger, data: EventParam). Cast - Finished)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "spell-end ", callback: fun(trg: Trigger, data: EventParam). Spell - End)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Spell-interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Cast - interrupt boot ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "skills-exchange ", callback: fun(trg: Trigger, data: EventParam). Skill - Exchange)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - Custom action axis ", callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Effect - overlay ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Effect - layer change ", callback: fun(trg: Trigger, data: EventParam). Effect - layer change)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Effect - coming soon ", callback: fun(trg: Trigger, data: EventParam). Effect - Coming soon)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "effect - overlay ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - Build before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Units-pathfinding starts ", callback: fun(trg: Trigger, data: EventParam). Unit - Pathfinding starts)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "unit-pathfinding end ", callback: fun(trg: Trigger, data: EventParam). Unit - End of pathfinding)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "command - attack move ", callback: fun(trg: Trigger, data: EventParam). Command - Attack Move)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "command - sell item ", callback: fun(trg: Trigger, data: EventParam). Command - Sell items)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "command - cast skill ", callback: fun(trg: Trigger, data: EventParam). Command - Cast skill)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "command - patrol ", callback: fun(trg: Trigger, data: EventParam). Command - Patrol)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "command - move ", callback: fun(trg: Trigger, data: EventParam). Command - Move)): Trigger
 
 return M

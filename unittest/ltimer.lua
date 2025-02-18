@@ -123,4 +123,4 @@ do
     assert(table.concat(res, ',') == '1,2,3,2,3,2,3')
 end
 
-print('ltimer 测试通过')
+print('The ltimer test passed')

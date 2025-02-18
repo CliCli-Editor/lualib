@@ -8,59 +8,59 @@ local rad = math.rad(1)
 ---@class Math
 local M = Class 'Math'
 
----获取随机角度
+---Get random Angle
 ---@return number
 function M.get_random_angle()
     return GameAPI.get_random_angle():float()
 end
 
----范围内随机实数
----@param min number 范围内最小实数
----@param max number 范围内最大实数
----@return number float 随机实数
+---Random real numbers in the range
+---@param min number The minimum real number in the range
+---@param max number Maximum real number in the range
+---@return number float A random real number
 function M.random_float(min, max)
     return GameAPI.get_random_fixed(Fix32(min), Fix32(max)):float()
 end
 
----正弦（角度制）
----@param value number 实数
----@return number float 实数
+---sine
+---@param value number Real number
+---@return number float Real number
 function M.sin(value)
     return math.sin(value * rad)
 end
 
----余弦（角度制）
----@param value number 实数
----@return number float 实数
+---cosine
+---@param value number Real number
+---@return number float Real number
 function M.cos(value)
     return math.cos(value * rad)
 end
 
----正切（角度制）
----@param value number 实数
----@return number float 实数
+---tangent
+---@param value number Real number
+---@return number float Real number
 function M.tan(value)
     return math.tan(value * rad)
 end
 
----反正弦（角度制）
----@param value number 实数
----@return number float 实数
+---arcsine
+---@param value number Real number
+---@return number float Real number
 function M.asin(value)
     return math.asin(value) * deg
 end
 
----反余弦（角度制）
----@param value number 实数
----@return number float 实数
+---Inverse cosine
+---@param value number Real number
+---@return number float Real number
 function M.acos(value)
     return math.acos(value) * deg
 end
 
----反正切（角度制）
+---Inverse tangent
 ---@param y number
 ---@param x number
----@return number float 实数
+---@return number float Real number
 function M.atan(y, x)
     return math.atan(y, x) * deg
 end
@@ -68,8 +68,8 @@ end
 --Calculate the Angle between 2 angles (Angle system)
 ---@param r1 number
 ---@param r2 number
----@return number angle 夹角，取值范围[0, 180]
----@return number direction 方向，1为顺时针，-1为逆时针
+---@return number angle The value range is [0, 180]
+---@return number direction Indicates the direction. 1 indicates the clockwise direction and -1 indicates the counterclockwise direction
 function M.includedAngle(r1, r2)
     local r = (r1 - r2) % 360
     if r >= 180 then
@@ -88,8 +88,8 @@ function M.isBetween(number, min, max)
     return number >= min and number <= max
 end
 
----获取随机种子
----@return integer seed 随机种子
+---Get random seeds
+---@return integer seed Indicates the random seed
 function M.get_random_seed()
     return GameAPI.get_random_seed()
 end

@@ -57,7 +57,7 @@ M.ref_manager = New 'Ref' ('Ability', function (id, py_ability)
     return New 'Ability' (id, py_ability)
 end)
 
----通过py层的技能实例获取lua层的技能实例
+---Obtain the lua layer skill instance from the py layer skill instance
 ---@param py_ability py.Ability # py layer skill instance
 ---@return Ability? ability # Returns the lua layer skill instance after being initialized at the lua layer
 function M.get_by_handle(py_ability)
@@ -84,32 +84,32 @@ function M:get_key()
     return self.handle:api_get_ability_id()
 end
 
----是否受冷却缩减影响
----@return boolean is_influenced 是否受冷却缩减影响
+---Whether it is affected by cooling loss
+---@return boolean is_influenced Whether cooling reduction is affected
 function M:is_cd_reduce()
     return self.handle:api_get_influenced_by_cd_reduce() or false
 end
 
----消耗生命是否会死亡
----@return boolean is_cost 消耗生命是否会死亡
+---Consuming life will lead to death
+---@return boolean is_cost Whether life will die if consumed
 function M:is_cost_hp_can_die()
     return self.handle:api_get_cost_hp_can_die() or false
 end
 
----生命不足是否可以释放
----@return boolean can_cast 生命不足是否可以释放
+---Whether life deficiency can be released
+---@return boolean can_cast Specifies whether to release the lives that are insufficient
 function M:can_cast_when_hp_insufficient()
     return self.handle:api_get_can_cast_when_hp_insufficient() or false
 end
 
----是否具有标签
----@param tag string 标签
+---Tagged or not
+---@param tag string Tag
 ---@return boolean
 function M:has_tag(tag)
     return GlobalAPI.has_tag(self.handle,tag)
 end
 
----获取技能类型的所有标签
+---Gets all labels for skill types
 ---@param item_key py.ItemKey
 ---@return string[]
 function M.get_tags_by_key(item_key)
@@ -117,9 +117,9 @@ function M.get_tags_by_key(item_key)
     return clicli.helper.unpack_list(utags)
 end
 
----技能类型是否具有标签
+---Whether the skill type has a label
 ---@param item_key py.ItemKey
----@param tag string 标签
+---@param tag string Tag
 ---@return boolean
 function M.has_tag_by_key(item_key, tag)
     local tags = M.get_tags_by_key(item_key)
@@ -132,74 +132,74 @@ function M.has_tag_by_key(item_key, tag)
 end
 
 --Add tag
----@param tag string 标签
+---@param tag string Tag
 function M:add_tag(tag)
     self.handle:api_add_tag(tag)
 end
 
----移除标签
----@param tag string 标签
+---Remove tag
+---@param tag string Tag
 function M:remove_tag(tag)
     self.handle:api_remove_tag(tag)
 end
 
----启用技能
+---Enabling skill
 function M:enable()
     self.handle:api_enable()
 end
 
----禁用技能
+---Forbidden skill
 function M:disable()
     self.handle:api_disable()
 end
 
----进入冷却
+---Entry cooling
 function M:restart_cd()
     self.handle:api_restart_cd()
 end
 
----完成冷却
+---Complete cooling
 function M:complete_cd()
     self.handle:api_immediately_clear_cd()
 end
 
----停止施放技能
+---Stop casting skills
 function M:stop_cast()
     self.handle:api_ability_stop()
 end
 
----移除技能
+---Remove skill
 function M:remove()
     if not self._removed then
         self._removed = true
         self:stop_cast()
         if not self._removed_by_py then
-            -- 在移除技能时再次调用移除接口会导致游戏崩溃
+            --Calling the removal interface again while removing a skill will cause the game to crash
             self.handle:api_remove()
         end
     end
 end
 
----设置技能等级
----@param level integer 等级
+---Set skill level
+---@param level integer Specifies the level
 function M:set_level(level)
     self.handle:api_set_level(level)
 end
 
 --Gain skill level
----@return integer level 等级
+---@return integer level Indicates the level
 function M:get_level()
     return self.handle:api_get_level() or 0
 end
 
----增加冷却时间
----@param value number 冷却
+---Increased cooldown
+---@param value number Cool down
 function M:add_cd(value)
     self.handle:api_change_ability_cd_cold_down(Fix32(value))
 end
 
----设置充能层数
----@param value integer 层数
+---Set the number of charging layers
+---@param value integer Specifies the number of layers
 function M:set_stack(value)
     self.handle:api_set_ability_stack_count(value)
 end
@@ -208,68 +208,68 @@ function M:get_name()
     return self.handle:api_get_name()
 end
 
----设置实数属性
----@param key clicli.Const.AbilityFloatAttr | string 属性key
----@param value number 属性值
+---Sets the real number property
+---@ param key clicli. Const. AbilityFloatAttr | key string attribute
+---@param value number Attribute value
 function M:set_float_attr(key, value)
     self.handle:api_set_float_attr(clicli.const.AbilityFloatAttr[key] or key, Fix32(value))
 end
 
----设置整数属性
----@param key clicli.Const.AbilityIntAttr | string 属性key
----@param value integer 属性值
+---Set integer properties
+---@ param key clicli. Const. AbilityIntAttr | key string attribute
+---@param value integer Specifies the value of the attribute
 function M:set_int_attr(key, value)
     self.handle:api_set_int_attr(clicli.const.AbilityIntAttr[key] or key, value)
 end
 
----设置剩余冷却时间
----@param value number 剩余冷却时间
+---Set the remaining cooldown time
+---@param value number Remaining cooling time
 function M:set_cd(value)
     self.handle:api_set_ability_cd(Fix32(value))
 end
 
----增加技能等级
----@param value integer 等级
+---Increase skill level
+---@param value integer Specifies the level
 function M:add_level(value)
     self.handle:api_add_level(value)
 end
 
----增加技能充能层数
----@param value integer 层数
+---Increased the number of skill recharge levels
+---@param value integer Specifies the number of layers
 function M:add_stack(value)
     self.handle:api_add_ability_stack_count(value)
 end
 
----增加技能剩余冷却时间
----@param value number 剩余冷却时间
+---Increased the skill's remaining cooldown
+---@param value number Remaining cooling time
 function M:add_remaining_cd(value)
     self.handle:api_add_ability_cd(Fix32(value))
 end
 
----增加实数属性
----@param key string 属性key
----@param value number 属性值
+---Added real attribute
+---@param key string Attribute key
+---@param value number Attribute value
 function M:add_float_attr(key, value)
     self.handle:api_add_float_attr(key, Fix32(value))
 end
 
----增加整数属性
----@param key string 属性key
----@param value integer 属性值
+---Increment integer attribute
+---@param key string Attribute key
+---@param value integer Specifies the value of the attribute
 function M:add_int_attr(key, value)
     self.handle:api_add_int_attr(key, value)
 end
 
----设置技能名字
----@param name string 技能名字
+---Set skill name
+---@param name string Skill name
 function M:set_name(name)
     self.handle:api_set_name(name)
 end
 
----设置技能描述
----@param des string 描述
+---Set skill description
+---@param des string Description
 function M:set_description(des)
-    -- TODO 见问题1
+    --TODO see question 1
     ---@diagnostic disable-next-line: param-type-mismatch
     self.handle:api_set_str_attr("desc", des)
 end
@@ -281,173 +281,173 @@ function M:get_description()
     return self.handle:api_get_str_attr("desc") or ''
 end
 
----学习技能
+---Learning skill
 function M:learn()
     self.handle:api_learn_ability()
 end
 
----设置技能剩余充能时间
----@param value number 剩余充能时间
+---Set the remaining charge time of a skill
+---@param value number Remaining charging time
 function M:set_charge_time(value)
     self.handle:api_set_ability_cur_stack_cd(Fix32(value))
 end
 
----设置技能施法范围
----@param value number 施法范围
+---Set the scope of a skill cast
+---@param value number Casting range
 function M:set_range(value)
     self.handle:api_set_ability_cast_range(Fix32(value))
 end
 
----获取技能施法范围
+---Gain skill casting scope
 ---@return number # Scope of casting
 function M:get_range()
     return clicli.helper.tonumber(self.handle:api_get_ability_cast_range()) or 0.0
 end
 
----设置技能玩家属性消耗
----@param key string 属性key
----@param value number 属性值
+---Set skill player stat cost
+---@param key string Attribute key
+---@param value number Attribute value
 function M:set_player_attr_cost(key, value)
     self.handle:api_set_ability_player_attr_cost(key, Fix32(value))
 end
 
----增加技能玩家属性消耗
----@param key string 属性key
----@param value number 属性值
+---Increased skill player stat cost
+---@param key string Attribute key
+---@param value number Attribute value
 function M:add_player_attr_cost(key, value)
     self.handle:api_add_ability_player_attr_cost(key, Fix32(value))
 end
 
----设置技能是否受冷却缩减的影响
----@param is_influenced boolean 属性key
+---Sets whether skills are affected by cooldown reduction
+---@param is_influenced boolean attribute key
 function M:set_cd_reduce(is_influenced)
     self.handle:api_set_influenced_by_cd_reduce(is_influenced)
 end
 
----设置消耗生命是否会死亡
----@param can_die boolean 是否会死亡
+---Set whether consuming life will result in death
+---@param can_die boolean Specifies whether to die
 function M:set_is_cost_hp_can_die(can_die)
     self.handle:api_set_cost_hp_can_die(can_die)
 end
 
----设置生命不足时是否可以释放技能
----@param can_cast boolean 是否可以释放
+---Sets whether skills can be released when life is low
+---@param can_cast boolean Specifies whether the value can be released
 function M:set_can_cast_when_hp_insufficient(can_cast)
     self.handle:api_set_can_cast_when_hp_insufficient(can_cast)
 end
 
----设置扇形指示器半径
----@param value number 半径
+---Set the fan indicator radius
+---@param value number Radius
 function M:set_sector_radius(value)
     self.handle:api_set_ability_sector_radius(Fix32(value))
 end
 
----设置扇形指示器夹角
----@param value number 角度
+---Set the Angle of the sector indicator
+---@param value number Angle
 function M:set_sector_angle(value)
     self.handle:api_set_ability_sector_angle(Fix32(value))
 end
 
----设置箭头/多段指示器长度
----@param value number 长度
+---Sets the arrow/multi-segment indicator length
+---@param value number Length
 function M:set_arrow_length(value)
     self.handle:api_set_ability_arrow_length(Fix32(value))
 end
 
----设置箭头/多段指示器宽度
----@param value number 宽度
+---Set the arrow/multi-segment indicator width
+---@param value number Width
 function M:set_arrow_width(value)
     self.handle:api_set_ability_arrow_width(Fix32(value))
 end
 
 
----设置箭圆形指示器半径
----@param value number 半径
+---Set arrow circle indicator radius
+---@param value number Radius
 function M:set_circle_radius(value)
     self.handle:api_set_ability_circle_radius(Fix32(value))
 end
 
----设置技能指示器类型
----@param type clicli.Const.AbilityPointerType 技能指示器类型
+---Set the skill indicator type
+---@ param type clicli. Const. AbilityPointerType skill type indicator
 function M:set_pointer_type(type)
     self.handle:api_set_ability_pointer_type(type)
 end
 
----获取技能当前剩余充能时间
+---Gets the remaining charge time of the skill
 ---@return number
 function M:get_charge_time()
     return clicli.helper.tonumber(self.handle:api_get_stack_cd_left_time()) or 0.0
 end
 
----获取技能种类
----@return clicli.Const.AbilityType type 技能种类
+---Acquire skill types
+---@return clicli.Const.AbilityType type of the skill
 function M:get_type()
     return self.handle:api_get_type() or 0
 end
 
----获取技能所在技能位
----@return clicli.Const.AbilityIndex index 技能所在技能位
+---Obtain the skill bit where the skill resides
+---@ return clicli. Const. AbilityIndex index in skills
 function M:get_slot()
     return self.handle:api_get_ability_index() or 0
 end
 
----获取技能在单位身上的序号
----@return py.AbilitySeq seq 技能序号
+---Gets the serial number of the skill on the unit
+---@returnpy.AbilitySeq Indicates the seq skill number
 function M:get_seq()
     return self.handle:api_get_ability_seq() or 0
 end
 
----获取技能消耗的玩家属性值
----@param key clicli.Const.PlayerAttr | string 属性key
----@return number cost 玩家属性值
+---Gets the player attribute value for skill cost
+---@param key clicli.Const.PlayerAttr | string Attribute key
+---@return number cost Player attribute value
 function M:get_player_attr_cost(key)
     key = clicli.const.PlayerAttr[key] or key
     return clicli.helper.tonumber(self.handle:api_get_ability_player_attr_cost(key)) or 0.0
 end
 
----获取技能释放类型 AbilityCastType
----@return py.AbilityCastType type 技能释放类型
+---Obtains the skill release type AbilityCastType
+---@returnpy. AbilityCastType type of skill release
 function M:get_cast_type()
     return self.handle:api_get_ability_cast_type() or 0
 end
 
----自动施法是否开启
----@return boolean is_enabled 是否开启
+---Whether automatic casting is enabled
+---@return boolean Whether is_enabled is enabled
 function M:is_autocast_enabled()
     return self.handle:api_is_autocast_enabled() or false
 end
 
----获取技能公式类型的kv
----@param key string 键值key
----@return number value 值
+---Get skill formula type kv
+---@param key string key value
+---@return number value Indicates the value
 function M:get_formula_kv(key)
     return clicli.helper.tonumber(self.handle:api_calc_ability_formula_kv(key)) or 0.0
 end
 
----获取实数属性
----@param key clicli.Const.AbilityFloatAttr | string 键值key
----@return number value 值
+---Gets the real number attribute
+---@ param key clicli. Const. AbilityFloatAttr | string keys key
+---@return number value Indicates the value
 function M:get_float_attr(key)
     return clicli.helper.tonumber(self.handle:api_get_float_attr(clicli.const.AbilityFloatAttr[key] or key)) or 0.0
 end
 
----获取整数属性
----@param key clicli.Const.AbilityIntAttr | string 键值key
----@return number value 值
+---Get integer properties
+---@ param key clicli. Const. AbilityIntAttr | string keys key
+---@return number value Indicates the value
 function M:get_int_attr(key)
     return self.handle:api_get_int_attr(clicli.const.AbilityIntAttr[key] or key) or 0
 end
 
----获取字符串属性
----@param key string 键值key
----@return string value 值
+---Get string attribute
+---@param key string key value
+---@return string value Indicates the value
 function M:get_string_attr(key)
     ---@diagnostic disable-next-line: param-type-mismatch
     return self.handle:api_get_str_attr(key) or ''
 end
 
----获取技能的拥有者
----@return Unit? owner 技能拥有者
+---Acquire the owner of the skill
+---@return Unit? owner Skill owner
 function M:get_owner()
     local py_unit = self.handle:api_get_owner()
     if not py_unit then
@@ -456,20 +456,20 @@ function M:get_owner()
     return clicli.unit.get_by_handle(py_unit)
 end
 
----获取当前冷却时间
----@return number time 当前冷却时间
+---Gets the current cooldown time
+---@return number time Current cooling time
 function M:get_cd()
     return clicli.helper.tonumber(self.handle:api_get_cd_left_time()) or 0.0
 end
 
----是否存在
----@return boolean is_exist 是否存在
+---Existence or not
+---@return boolean is_exist Whether it exists
 function M:is_exist()
     return GameAPI.ability_is_exist(self.handle)
 end
 
----@param cast integer 施法ID
----@return Unit|Destructible|Item|Point|nil target 目标
+---@param cast integer Cast ID
+---@return Unit|Destructible|Item|Point|nil target
 function M:get_target(cast)
     local unit = GameAPI.get_target_unit_in_ability(self.handle,cast)
     if unit then
@@ -494,31 +494,31 @@ function M:get_target(cast)
     return nil
 end
 
----显示技能指示器
----@param player Player 玩家
+---Display skill indicator
+---@param player Player
 function M:show_indicator(player)
     GameAPI.create_preview_skill_pointer(player.handle, self.handle)
 end
 
----开关自动施法
----@param enable boolean 开关
+---Switch automatically casts spells
+---@param enable boolean switch
 function M:set_autocast(enable)
     self.handle:api_set_autocast_enabled(enable)
 end
 
---------------------------------------------------------类的方法--------------------------------------------------------
+----- -- -- -- -- -- -- -- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - class method - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
----检查技能类型前置条件
----@param player Player 玩家
----@param ability_key py.AbilityKey 技能类型id (物编id)
----@return boolean is_meet 技能类型前置条件是否满足
+---Check the preconditions for the skill type
+---@param player Player
+---@param ability_key py.AbilityKey Skill type id (Object id)
+---@return boolean is_meet Whether the preconditions for the skill type are met
 function M.check_precondition_by_key(player, ability_key)
     return GameAPI.check_ability_key_precondition(player.handle, ability_key)
 end
 
----技能类型是否受冷却缩减影响
----@param ability_key py.AbilityKey 技能类型id (物编id)
----@return boolean is_influenced 技能类型是否受冷却缩减影响
+---Whether the skill type is affected by cooldown reduction
+---@param ability_key py.AbilityKey Skill type id (Object id)
+---@return boolean is_influenced Whether the skill type is affected by cooldown reduction
 function M.is_cd_reduce_by_key(ability_key)
     return GameAPI.api_get_influenced_by_cd_reduce(ability_key)
 end
@@ -526,9 +526,9 @@ end
 --Gets the real attribute of the skill type
 --> Use 'clicli.object.ability[ability_key].data' instead
 ---@deprecated
----@param ability_key py.AbilityKey 技能类型id (物编id)
----@param key string 键值key
----@return number value 值
+---@param ability_key py.AbilityKey Skill type id (Object id)
+---@param key string key value
+---@return number value Indicates the value
 function M.get_float_attr_by_key(ability_key, key)
     return clicli.helper.tonumber(GameAPI.get_ability_conf_float_attr(ability_key, key)) or 0.0
 end
@@ -536,54 +536,54 @@ end
 --Gets the integer attribute of the skill type
 --> Use 'clicli.object.ability[ability_key].data' instead
 ---@deprecated
----@param ability_key py.AbilityKey 技能类型id (物编id)
----@param key string 键值key
----@return integer value 值
+---@param ability_key py.AbilityKey Skill type id (Object id)
+---@param key string key value
+---@return integer value Specifies the value
 function M.get_int_attr_by_key(ability_key, key)
     return GameAPI.get_ability_conf_int_attr(ability_key,key)
 end
 
----设置玩家的普攻预览状态
----@param player Player 玩家
----@param state boolean 状态 开/关
+---Set the player's attack preview status
+---@param player Player
+---@param state boolean Status On/off
 function M.set_normal_attack_preview_state(player, state)
     GameAPI.set_preview_common_atk_range(player.handle, state)
 end
 
----设置玩家的指示器在智能施法时是否显示
----@param player Player 玩家
----@param state boolean 状态 开/关
+---Sets whether the player's indicator is displayed while smart casting
+---@param player Player
+---@param state boolean Status On/off
 function M.set_smart_cast_with_pointer(player, state)
     GameAPI.set_smart_cast_with_pointer(player.handle, state)
 end
 
----关闭技能指示器
----@param player Player 玩家
+---Turn off skill indicator
+---@param player Player
 function M.hide_pointer(player)
     GameAPI.clear_preview_skill_pointer(player.handle)
 end
 
----获取技能类型的icon图标的图片ID
----@param ability_key py.AbilityKey 技能类型id (物编id)
----@return py.Texture id 图片ID
+---Gets the picture ID of the icon icon for the skill type
+---@param ability_key py.AbilityKey Skill type id (Object id)
+---@returnpy. Texture id Image ID
 function M.get_icon_by_key(ability_key)
     return GameAPI.get_icon_id_by_ability_type(ability_key) --[[@as py.Texture]]
 end
 
 --Get skill icon
----@return py.Texture id 图片ID
+---@returnpy. Texture id Image ID
 function M:get_icon()
     return M.get_icon_by_key(self:get_key())
 end
 
----获取技能类型公式属性
----@param ability_id py.AbilityKey 技能类型id(物编id)
----@param attr_name string 属性名称
----@param level integer 技能等级
----@param stack_count integer 技能层数
----@param unit_hp_max number 单位最大生命
----@param unit_hp_cur number 单位当前生命
----@return number value 值
+---Gets the skill type formula properties
+---@param ability_id py.AbilityKey Skill type id(object id)
+---@param attr_name string Attribute name
+---@param level integer Skill level
+---@param stack_count integer Specifies the number of skill layers
+---@param unit_hp_max number Maximum life of a unit
+---@param unit_hp_cur number The current life of the unit
+---@return number value Indicates the value
 function M.get_formula_attr_by_key(ability_id, attr_name, level, stack_count, unit_hp_max, unit_hp_cur)
     return clicli.helper.tonumber(GameAPI.get_ability_conf_formula_attr(ability_id, attr_name, level, stack_count, Fix32(unit_hp_max), Fix32(unit_hp_cur))) or 0.0
 end
@@ -591,16 +591,16 @@ end
 --Gets the skill type string property
 --> Please use 'clicli.object.ability[ability_key].data' instead
 ---@deprecated
----@param ability_key py.AbilityKey 技能类型id (物编id)
----@param key py.AbilityStrAttr 键值key
----@return string str 值
+---@param ability_key py.AbilityKey Skill type id (Object id)
+---@param key py.AbilityStrAttr key value key
+---@return string str value
 function M.get_str_attr_by_key(ability_key, key)
     return GameAPI.get_ability_conf_str_attr(ability_key, key)
 end
 
 --Get the skill name based on the skill key
 ---@param ability_key py.AbilityKey
----@return string name 技能名字
+---@return string name Skill name
 function M.get_name_by_key(ability_key)
     ---@diagnostic disable-next-line: param-type-mismatch
     return GameAPI.get_ability_conf_str_attr(ability_key, 'name')
@@ -608,38 +608,38 @@ end
 
 --Obtain the skill description based on the skill key
 ---@param ability_key py.AbilityKey
----@return string des 描述
+---@return string des description
 function M.get_description_by_key(ability_key)
     ---@diagnostic disable-next-line: param-type-mismatch
     return GameAPI.get_ability_conf_str_attr(ability_key, 'description')
 end
 
----设置技能图标
----@param icon_id integer 图片id
+---Set skill icon
+---@param icon_id integer Image id
 function M:set_icon(icon_id)
     self.handle:api_set_ability_icon(icon_id)
 end
 
----设置技能的建造朝向
----@param angle number 角度
+---Set the building orientation of the skill
+---@param angle number Indicates the Angle
 function M:set_build_rotate(angle)
     self.handle:api_set_ability_build_rotate(Fix32(angle))
 end
 
----获取技能的指示器类型
+---Gets the indicator type of the skill
 ---@return clicli.Const.AbilityPointerType
 function M:get_skill_pointer()
     return self.handle:api_get_ability_skill_pointer() or 0
 end
 
----获取技能类型的指示器类型
+---Gets the indicator type for the skill type
 ---@param name py.AbilityKey
 ---@return clicli.Const.AbilityPointerType
 function M.get_skill_type_pointer(name)
     return GameAPI.get_ability_key_skill_pointer(name)
 end
 
----设置技能最大CD
+---Set the skill Max CD
 ---@param value number
 function M:set_max_cd(value)
     self:set_float_attr("cold_down_time", value)
@@ -651,13 +651,13 @@ function M:get_max_cd()
     return self:get_float_attr("cold_down_time")
 end
 
----进入技能准备施法状态
----@param player Player 玩家
+---Enter skill ready to cast
+---@param player Player
 function M:pre_cast(player)
     GameAPI.start_skill_pointer(player.handle, self.handle)
 end
 
----阻止即将开始的施法，只能在“施法-即将开始”事件中使用
+---Block spells that are about to begin, and can only be used during the "Spell - About to Begin" event
 function M:prevent_cast()
     self.handle:api_break_ability_in_cs()
 end
@@ -672,7 +672,7 @@ function M:get_item()
     return clicli.item.get_by_handle(py_item)
 end
 
---Set the skill's build target type (build_id)
+--Set the skill is build target type (build_id)
 ---@param build_id py.UnitKey # Unit object ID
 function M:set_ability_build_id(build_id)
     self.handle:api_set_ability_build_id(build_id or 0)

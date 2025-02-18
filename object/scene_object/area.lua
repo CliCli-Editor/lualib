@@ -17,7 +17,7 @@ M.type = 'area'
 
 ---@package
 ---@param id py.AreaID
----@param shape Area.Shape 见area.enum
+---@param shape Area.Shape See area.enum
 ---@return Area
 M.ref_manager = New 'Ref' ('Area', function (id, shape)
     local py_area
@@ -43,10 +43,10 @@ M.ref_manager = New 'Ref' ('Area', function (id, shape)
             shape = M.SHAPE.POLYGON
             goto FOUND
         end
-        error('未找到区域')
+        error('Not found region')
         ::FOUND::
     else
-        error('不支持的区域类型')
+        error('The region type is not supported')
     end
     local area = New 'Area' (py_area, shape)
     return area
@@ -79,9 +79,9 @@ M.SHAPE = {
     POLYGON   = 3,
 }
 
----根据py对象创建区域
----@param py_area py.Area py层对象
----@param shape? Area.Shape 见area.enum
+---Create a region based on the py object
+---@param py_area py.Area layer object
+---@param shape? Area.Shape See area.enum
 ---@return Area
 function M.get_by_handle(py_area, shape)
     local id = GameAPI.get_area_resource_id(py_area) --[[@as py.AreaID]]
@@ -94,8 +94,8 @@ clicli.py_converter.register_lua_to_py('py.Area', function (lua_value)
     return lua_value.handle
 end)
 
----@param res_id py.AreaID 编辑场景中的id
----@param shape? Area.Shape 见area.enum
+---@param res_id py.AreaID Specifies the id in the edit scene
+---@param shape? Area.Shape See area.enum
 ---@return Area
 function M.get_by_res_id(res_id, shape)
     local area = M.ref_manager:get(res_id, shape)
@@ -104,55 +104,55 @@ end
 
 clicli.py_converter.register_py_to_lua('py.AreaID', M.get_by_res_id)
 
----根据场景id获得圆形区域
----@param res_id py.AreaID 编辑场景中的id
+---Get the circle area based on the scene id
+---@param res_id py.AreaID Specifies the id in the edit scene
 ---@return Area
 function M.get_circle_by_res_id(res_id)
     return M.get_by_res_id(res_id, M.SHAPE.CIRCLE)
 end
 
----根据场景id获得矩形区域
----@param res_id py.AreaID 编辑场景中的id
+---Gets a rectangular area based on the scene id
+---@param res_id py.AreaID Specifies the id in the edit scene
 ---@return Area
 function M.get_rectangle_by_res_id(res_id)
     return M.get_by_res_id(res_id, M.SHAPE.RECTANGLE)
 end
 
----根据场景id获得多边形区域
----@param res_id py.AreaID 编辑场景中的id
+---Get the polygon area based on the scene id
+---@param res_id py.AreaID Specifies the id in the edit scene
 ---@return Area
 function M.get_polygon_by_res_id(res_id)
     return M.get_by_res_id(res_id, M.SHAPE.POLYGON)
 end
 
----删除区域
+---Delete area
 function M:remove()
     Delete(self)
 end
 
----设置区域碰撞
----@param is_collision_effect boolean  碰撞是否生效
----@param is_land_effect boolean  地面碰撞开关
----@param is_air_effect boolean  空中碰撞开关
+---Set area collision
+---@param is_collision_effect boolean Specifies whether the collision takes effect
+---@param is_land_effect boolean Ground collision switch
+---@param is_air_effect boolean Indicates the air collision switch
 function M:set_collision(is_collision_effect, is_land_effect, is_air_effect)
     GameAPI.set_area_collision(self.handle, is_collision_effect, is_land_effect, is_air_effect)
 end
 
----给区域添加标签
+---Label the area
 ---@param tag string tag
 function M:add_tag(tag)
     GameAPI.add_area_tag(self.handle, tag)
 end
 
----给区域移除标签
+---Remove the label from the area
 ---@param tag string tag
 function M:remove_tag(tag)
     GameAPI.remove_area_tag(self.handle, tag)
 end
 
----区域是否有tag
+---Whether the area has a tag
 ---@param tag string tag
----@return boolean 区域是否有tag
+---@return boolean Specifies whether the area has a tag
 function M:has_tag(tag)
     if M.SHAPE == M.SHAPE.CIRCLE then
         return GameAPI.if_cir_area_has_tag(self.handle, tag)
@@ -162,10 +162,10 @@ function M:has_tag(tag)
     return false
 end
 
----设置多边形区域对玩家可见性
----@param player Player 玩家
----@param is_visibility boolean 是否开启视野
----@param is_real_visibility boolean 是否开启真实视野
+---Set the polygon area visible to the player
+---@param player Player
+---@param is_visibility boolean Specifies whether to enable the field of view
+---@param is_real_visibility boolean Specifies whether the real field of view is enabled
 function M:set_visible(player, is_visibility, is_real_visibility)
     local handle = self.handle
     if self.shape == M.SHAPE.CIRCLE then
@@ -180,25 +180,25 @@ function M:set_visible(player, is_visibility, is_real_visibility)
     end
 end
 
----设置圆形区域半径
----@param radius number 半径
+---Set the radius of the circle area
+---@param radius number Radius
 function M:set_radius(radius)
     if self.shape == M.SHAPE.CIRCLE then
         GameAPI.set_cir_area_radius(self.handle--[[@as py.CirArea]], Fix32(radius))
     end
 end
 
----设置矩形区域半径
----@param horizontal_length number 长度
----@param vertical_length number 宽度
+---Sets the radius of the rectangular area
+---@param horizontal_length number Indicates the length
+---@param vertical_length number Width
 function M:set_size(horizontal_length, vertical_length)
     if self.shape == M.SHAPE.RECTANGLE then
         GameAPI.set_rect_area_radius(self.handle--[[@as py.RecArea]], Fix32(horizontal_length), Fix32(vertical_length))
     end
 end
 
----获得圆形区域半径
----@return number 半径
+---Obtain the radius of the circular area
+---@return number Radius
 function M:get_radius()
     if self.shape == M.SHAPE.CIRCLE then
         return clicli.helper.tonumber(GameAPI.get_circle_area_radius(self.handle--[[@as py.CirArea]])) or 0.0
@@ -206,8 +206,8 @@ function M:get_radius()
     return 0
 end
 
----获取区域内最小X坐标
----@return number X坐标
+---Gets the minimum X-coordinate in the region
+---@return number X coordinates
 function M:get_min_x()
     if self.shape == M.SHAPE.CIRCLE then
         return clicli.helper.tonumber(GameAPI.get_circle_area_min_x(self.handle--[[@as py.CirArea]])) or 0.0
@@ -218,8 +218,8 @@ function M:get_min_x()
     return 0
 end
 
----获取区域内最小Y坐标
----@return number Y坐标
+---Gets the minimum Y coordinate in the region
+---@return number Y coordinates
 function M:get_min_y()
     if self.shape == M.SHAPE.CIRCLE then
         return clicli.helper.tonumber(GameAPI.get_circle_area_min_y(self.handle--[[@as py.CirArea]])) or 0.0
@@ -230,8 +230,8 @@ function M:get_min_y()
     return 0
 end
 
----获取区域内最大X坐标
----@return number X坐标
+---Gets the maximum X coordinate in the region
+---@return number X coordinates
 function M:get_max_x()
     if self.shape == M.SHAPE.CIRCLE then
         return clicli.helper.tonumber(GameAPI.get_circle_area_max_x(self.handle--[[@as py.CirArea]])) or 0.0
@@ -242,8 +242,8 @@ function M:get_max_x()
     return 0
 end
 
----获取区域内最大Y坐标
----@return number Y坐标
+---Gets the maximum Y coordinate in the region
+---@return number Y coordinates
 function M:get_max_y()
     if self.shape == M.SHAPE.CIRCLE then
         return clicli.helper.tonumber(GameAPI.get_circle_area_max_y(self.handle--[[@as py.CirArea]])) or 0.0
@@ -255,21 +255,21 @@ function M:get_max_y()
 end
 
 --Get center point
----@return Point 中心点
+---@return Point Indicates the center point
 function M:get_center_point()
     if self.shape == M.SHAPE.CIRCLE then
         local py_point = GameAPI.get_circle_center_point(self.handle--[[@as py.CirArea]])
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         return clicli.point.get_by_handle(py_point)
     end
     if self.shape == M.SHAPE.RECTANGLE then
         local py_point = GameAPI.get_rec_center_point(self.handle--[[@as py.RecArea]])
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         return clicli.point.get_by_handle(py_point)
     end
-    error('不支持的区域类型')
+    error('The region type is not supported')
 end
 
 --Get random points
@@ -277,43 +277,43 @@ end
 function M:random_point()
     if self.shape == M.SHAPE.CIRCLE then
         local py_point = GameAPI.get_random_point_in_circular_area(self.handle--[[@as py.CirArea]])
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         return clicli.point.get_by_handle(py_point)
     end
     if self.shape == M.SHAPE.POLYGON then
         local py_point = GameAPI.get_random_point_in_poly_area(self.handle--[[@as py.PolyArea]])
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         return clicli.point.get_by_handle(py_point)
     end
     if self.shape == M.SHAPE.RECTANGLE then
         local py_point = GameAPI.get_random_point_in_rec_area(self.handle--[[@as py.RecArea]])
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         return clicli.point.get_by_handle(py_point)
     end
-    error('不支持的区域类型')
+    error('The region type is not supported')
 end
 
 
----获得区域天气
----@return integer 天气枚举
+---Obtain regional weather
+---@return integer Specifies the weather enumeration
 function M:get_weather()
     return GameAPI.get_area_weather(self.handle)
 end
 
----区域内的所有单位
----@return Unit[] 单位组
+---All units in the area
+---@return Unit[] Unit group
 function M:get_all_unit_in_area()
     local py_unit_list = GameAPI.get_unit_group_in_area(self.handle)
     local units = clicli.helper.unpack_list(py_unit_list, clicli.unit.get_by_id)
     return units
 end
 
----区域内阵营所有单位
+---All units of the camp in the area
 ---@param camp py.Camp
----@return Unit[] 单位组
+---@return Unit[] Unit group
 function M:get_unit_in_area_by_camp(camp)
     local u = {}
     for _, player in ipairs(clicli.player_group.get_player_group_by_camp(camp):pick()) do
@@ -324,90 +324,90 @@ function M:get_unit_in_area_by_camp(camp)
     return u
 end
 
----区域内玩家单位(单位组)
----@param player Player 玩家
----@return UnitGroup 单位组
+---Regional player units (unit groups)
+---@param player Player
+---@return UnitGroup Unit group
 function M:get_unit_group_in_area(player)
     local py_unit_group = GameAPI.get_unit_group_belong_to_player_in_area(self.handle, player.handle)
     return clicli.unit_group.get_by_handle(py_unit_group)
 end
 
----区域中单位的数量
----@return integer 数量
+---The number of units in the region
+---@return integer Specifies the number
 function M:get_unit_num_in_area()
     return GameAPI.get_unit_num_in_area(self.handle)
 end
 
----编辑区域碰撞
----@param collision_layer integer 碰撞类型
----@param is_add boolean  添加/去除
+---Edit area collision
+---@param collision_layer integer Indicates the collision type
+---@param is_add boolean Add/remove
 function M:edit_area_collision(collision_layer, is_add)
     GameAPI.edit_area_collision(self.handle, collision_layer, is_add)
 end
 
----编辑区域视野阻挡
----@param fov_block_type integer 视野阻挡类型
----@param is_add boolean  添加/去除
+---Edit area field of view blocked
+---@param fov_block_type integer Specifies the field of view blocking type
+---@param is_add boolean Add/remove
 function M:edit_area_fov_block(fov_block_type, is_add)
     GameAPI.edit_area_fov_block(self.handle, fov_block_type, is_add)
 end
 
 --Whether the point is in the area
----@param point Point 点
+---@param point Point
 ---@return boolean
 function M:is_point_in_area(point)
     return GameAPI.judge_point_in_area(point.handle, self.handle)
 end
 
---------------------------------------------------------类的方法--------------------------------------------------------
+----- -- -- -- -- -- -- -- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - class method - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
----获取完整地图区域
+---Get the full map area
 ---@return Area
 function M.get_map_area()
     local py_area = GameAPI.get_usable_map_range()
     return M.get_by_handle(py_area, M.SHAPE.RECTANGLE)
 end
 
----获得最后创建的矩形区域
+---Gets the last rectangular area created
 ---@return Area
 function M.get_rectangle_area_last_created()
     local py_area = GameAPI.get_rec_area_last_created()
     return M.get_by_handle(py_area, M.SHAPE.RECTANGLE)
 end
 
----创建圆形区域
----@param point Point 点
----@param radius number 半径
----@return Area 圆形区域
+---Create a circle
+---@param point Point
+---@param radius number Radius
+---@return Area Indicates the circle area
 function M.create_circle_area(point, radius)
     local py_area = GameAPI.create_new_cir_area(point.handle, Fix32(radius))
     return M.get_by_handle(py_area, M.SHAPE.CIRCLE)
 end
 
----创建矩形区域
----@param point Point 点
----@param horizontal_length number 长度
----@param vertical_length number 宽度
----@return Area area 矩形区域
+---Create a rectangular area
+---@param point Point
+---@param horizontal_length number Indicates the length
+---@param vertical_length number Width
+---@return Area area Indicates a rectangular area
 function M.create_rectangle_area(point, horizontal_length, vertical_length)
     local py_area = GameAPI.create_rect_area_by_center(point.handle, Fix32(horizontal_length), Fix32(vertical_length))
     return M.get_by_handle(py_area, M.SHAPE.RECTANGLE)
 end
 
----以起点终点创建矩形区域
----@param point_one Point 点1
----@param point_two Point 点2
----@return Area area 矩形区域
+---Creates a rectangular area with a starting and ending point
+---@param point_one Point Point 1
+---@param point_two Point Point 2
+---@return Area area Indicates a rectangular area
 function M.create_rectangle_area_from_two_points(point_one, point_two)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     local py_area = GameAPI.create_rec_area_from_two_points(point_one.handle, point_two.handle)
     return M.get_by_handle(py_area, M.SHAPE.RECTANGLE)
 end
 
----沿点创建多边形
+---Create polygons along points
 ---@param ... Point
----@return Area polygon 多边形区域
+---@return Area polygon. @return area Polygon
 function M.create_polygon_area_by_points(...)
     local points = {...}
     local py_points = {}
@@ -418,9 +418,9 @@ function M.create_polygon_area_by_points(...)
     return M.get_by_handle(py_area, M.SHAPE.POLYGON)
 end
 
----按标签获取所有的圆形区域
----@param tag string 标签
----@return Area[] area 矩形区域
+---Get all the circular areas by label
+---@param tag string Tag
+---@return Area[] area Indicates a rectangular area
 function M.get_circle_areas_by_tag(tag)
     local py_list = GameAPI.get_cir_areas_by_tag(tag)
     local areas = clicli.helper.unpack_list(py_list, function (py_object)
@@ -429,9 +429,9 @@ function M.get_circle_areas_by_tag(tag)
     return areas
 end
 
----按标签获取所有的矩形区域
----@param tag string 标签
----@return Area[] area 矩形区域表
+---Gets all rectangular areas by label
+---@param tag string Tag
+---@return Area[] area Indicates the table of the rectangular area
 function M.get_rect_areas_by_tag(tag)
     local py_list = GameAPI.get_rect_areas_by_tag(tag)
     local areas = clicli.helper.unpack_list(py_list, function (py_object)
@@ -440,9 +440,9 @@ function M.get_rect_areas_by_tag(tag)
     return areas
 end
 
----按标签获取所有的多边形区域
----@param tag string 标签
----@return Area[] area 多边形区域表
+---Get all polygon areas by label
+---@param tag string Tag
+---@return Area[] area Indicates the polygon area
 function M.get_polygon_areas_by_tag(tag)
     local py_list = GameAPI.get_polygon_areas_by_tag(tag)
     local areas = clicli.helper.unpack_list(py_list, function (py_object)
@@ -451,11 +451,11 @@ function M.get_polygon_areas_by_tag(tag)
     return areas
 end
 
----获取多边形的所有顶点
----@param polygon Area 多边形区域
----@return table area 多边形顶点表
+---Gets all the vertices of the polygon
+---@param polygon Area Polygon area
+---@return table area Table of polygon vertices
 function M.get_polygon_areas_point_list(polygon)
-    assert(polygon.shape == M.SHAPE.POLYGON, '不是多边形区域')
+    assert(polygon.shape == M.SHAPE.POLYGON, 'Non-polygon region')
     local handle = polygon.handle
     ---@cast handle py.PolyArea
     local py_list = GameAPI.get_poly_area_point_list(handle)

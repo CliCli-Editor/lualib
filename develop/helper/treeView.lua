@@ -214,7 +214,7 @@ Node._updateCooldown = false
 ---@private
 Node._needUpdate = false
 
----更新此节点的数据（不包含子节点）。
+---Update the data for this node (excluding child nodes).
 function Node:update()
     if not Node.nodeMap[self.id] then
         return
@@ -246,7 +246,7 @@ function Node:update()
     end)
 end
 
----通知子节点有变化。
+---Notify the child node of a change.
 function Node:refresh()
     if not Node.nodeMap[self.id] then
         return

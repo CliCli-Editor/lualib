@@ -1,6 +1,6 @@
 # Projectile
 
-投射物
+projectile
 
 ## add_tag
 
@@ -8,25 +8,25 @@
 (method) Projectile:add_tag(tag: string)
 ```
 
-投射物添加标签
+Projectiles add labels
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## add_time
 
 ```lua
 (method) Projectile:add_time(duration: number)
 ```
 
-增加持续时间
+Increase duration
 
-@*param* `duration` — 持续时间
+@*param* `duration` — duration
 ## break_mover
 
 ```lua
 (method) Projectile:break_mover()
 ```
 
-打断运动器
+interrupter
 ## create
 
 ```lua
@@ -34,13 +34,13 @@ function Projectile.create(data: Projectile.CreateData)
   -> Projectile
 ```
 
- 创建投射物
+ Create projectiles
 
-@*param* `data` — 投射物创建数据
+@*param* `data` — Projectiles create data
 ## event
 
 ```lua
-fun(self: Projectile, event: "投射物-创建", callback: fun(trg: Trigger, data: EventParam.投射物-创建)):Trigger
+fun(self: Projectile, event: ""Projectile-create ", callback: fun(trg: Trigger, data: EventParam. Projectiles - Created)):Trigger
 ```
 
 ## get_ability
@@ -50,9 +50,9 @@ fun(self: Projectile, event: "投射物-创建", callback: fun(trg: Trigger, dat
   -> ability: Ability?
 ```
 
-获得关联技能
+Acquire relevant skills
 
-@*return* `ability` — 投射物或魔法效果的关联技能
+@*return* `ability` — The ability to associate projectiles or magic effects
 ## get_by_handle
 
 ```lua
@@ -74,9 +74,9 @@ function Projectile.get_by_id(id: py.ProjectileID)
   -> angle: number
 ```
 
-获取投射物朝向
+Gets projectile orientation
 
-@*return* `angle` — 投射物朝向
+@*return* `angle` — Projectile orientation
 ## get_height
 
 ```lua
@@ -84,9 +84,9 @@ function Projectile.get_by_id(id: py.ProjectileID)
   -> height: number
 ```
 
-获取投射物高度
+Gets projectile height
 
-@*return* `height` — 高度
+@*return* `height` — Altitude
 ## get_key
 
 ```lua
@@ -94,7 +94,7 @@ function Projectile.get_by_id(id: py.ProjectileID)
   -> projectile_key: py.ProjectileKey
 ```
 
-获取投射物的类型ID
+Gets the type of projectileID
 ## get_left_time
 
 ```lua
@@ -102,9 +102,9 @@ function Projectile.get_by_id(id: py.ProjectileID)
   -> duration: number
 ```
 
-获取投射物剩余持续时间
+Gets the remaining duration of the projectile
 
-@*return* `duration` — 投射物剩余持续时间
+@*return* `duration` — The remaining duration of the projectile
 ## get_owner
 
 ```lua
@@ -112,9 +112,9 @@ function Projectile.get_by_id(id: py.ProjectileID)
   -> unit: Unit?
 ```
 
-获取投射物的拥有者
+Gets the owner of the projectile
 
-@*return* `unit` — 投射物的拥有者
+@*return* `unit` — The owner of the projectile
 ## get_point
 
 ```lua
@@ -122,16 +122,16 @@ function Projectile.get_by_id(id: py.ProjectileID)
   -> point: Point
 ```
 
-获取投射物所在点
+Get the point where the projectile is
 
-@*return* `point` — 投射物所在点
+@*return* `point` — The point where the projectile is
 ## handle
 
 ```lua
 py.ProjectileEntity
 ```
 
-投掷物对象
+Projectile object
 ## has_tag
 
 ```lua
@@ -139,11 +139,11 @@ py.ProjectileEntity
   -> is_has_tag: boolean
 ```
 
-是否拥有标签
+Have a label or not
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 
-@*return* `is_has_tag` — 是否拥有标签
+@*return* `is_has_tag` — Have a label or not
 ## id
 
 ```lua
@@ -164,9 +164,9 @@ integer
   -> is_exist: boolean
 ```
 
-是否存在
+Existence or not
 
-@*return* `is_exist` — 是否存在
+@*return* `is_exist` — Existence or not
 ## key
 
 ```lua
@@ -180,7 +180,7 @@ integer?
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -214,7 +214,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## mover_curve
 
 ```lua
@@ -222,7 +222,7 @@ lua_type:
   -> Mover
 ```
 
-创建曲线运动器
+Create a curve mover
 ## mover_line
 
 ```lua
@@ -230,7 +230,7 @@ lua_type:
   -> Mover
 ```
 
-创建直线运动器
+Create a linear motion device
 ## mover_round
 
 ```lua
@@ -238,7 +238,7 @@ lua_type:
   -> Mover
 ```
 
-创建环绕运动器
+Create a surround motion
 ## mover_target
 
 ```lua
@@ -246,7 +246,7 @@ lua_type:
   -> Mover
 ```
 
-创建追踪运动器
+Create a tracker
 ## object_event_manager
 
 ```lua
@@ -259,7 +259,7 @@ EventManager?
 py.ProjectileEntity
 ```
 
-投掷物对象
+Projectile object
 ## ref_manager
 
 ```lua
@@ -272,82 +272,82 @@ unknown
 (method) Projectile:remove()
 ```
 
-销毁
+destroy
 ## remove_mover
 
 ```lua
 (method) Projectile:remove_mover()
 ```
 
-移除运动器
+Removal motor
 ## remove_tag
 
 ```lua
 (method) Projectile:remove_tag(tag: string)
 ```
 
-投射物移除标签
+Projectile removal tag
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## set_ability
 
 ```lua
 (method) Projectile:set_ability(ability: Ability)
 ```
 
-设置关联技能
+Set associated skills
 
-@*param* `ability` — 关联技能
+@*param* `ability` — Relevance skill
 ## set_animation_speed
 
 ```lua
 (method) Projectile:set_animation_speed(speed: number)
 ```
 
-设置动画速度
+Set animation speed
 ## set_facing
 
 ```lua
 (method) Projectile:set_facing(direction: number)
 ```
 
-设置朝向
+orientation
 
-@*param* `direction` — 朝向
+@*param* `direction` — orientation
 ## set_height
 
 ```lua
 (method) Projectile:set_height(height: number)
 ```
 
-设置高度
+Set height
 
-@*param* `height` — 高度
+@*param* `height` — Altitude
 ## set_owner
 
 ```lua
 (method) Projectile:set_owner(unit: Unit)
 ```
 
-设置所属单位
+Set a unit
 
-@*param* `unit` — 所属单位
+@*param* `unit` — Affiliated unit
 ## set_point
 
 ```lua
 (method) Projectile:set_point(point: Point)
 ```
 
-设置坐标
+Set coordinates
 
-@*param* `point` — 点坐标
+@*param* `point` — Point coordinates
 ## set_rotation
 
 ```lua
 (method) Projectile:set_rotation(x: number, y: number, z: number)
 ```
 
-设置旋转
+Set rotation
 
 @*param* `x` — x轴
 
@@ -360,7 +360,7 @@ unknown
 (method) Projectile:set_scale(x: number, y: number, z: number)
 ```
 
-设置缩放
+Set scale
 
 @*param* `x` — x轴
 
@@ -373,20 +373,20 @@ unknown
 (method) Projectile:set_time(duration: number)
 ```
 
-设置持续时间
+Set duration
 
-@*param* `duration` — 持续时间
+@*param* `duration` — duration
 ## set_visible
 
 ```lua
 (method) Projectile:set_visible(visible: boolean, player_or_group?: Player|PlayerGroup)
 ```
 
-设置投射物的可见性
+Sets the visibility of the projectile
 
-@*param* `visible` — 是否可见
+@*param* `visible` — Visible or not
 
-@*param* `player_or_group` — 应用于哪些玩家，默认为所有玩家
+@*param* `player_or_group` — To which players, default is all players
 ## storage_all
 
 ```lua
@@ -394,7 +394,7 @@ unknown
   -> table
 ```
 
- 获取存储数据的容器
+ Gets the container for storing data
 ## storage_get
 
 ```lua
@@ -402,14 +402,14 @@ unknown
   -> any
 ```
 
- 获取存储的值
+ Gets the stored value
 ## storage_set
 
 ```lua
 (method) Storage:storage_set(key: any, value: any)
 ```
 
- 存储任意值
+ Store arbitrary values
 ## storage_table
 
 ```lua
@@ -440,68 +440,68 @@ string
 Ability
 ```
 
-投射物关联技能
+Projectile association skills
 ## angle
 
 ```lua
 number
 ```
 
-投射物朝向
+Projectile orientation
 ## height
 
 ```lua
 number
 ```
 
-投射物高度
+Projectile height
 ## key
 
 ```lua
 py.ProjectileKey
 ```
 
-投射物类型ID
+Projectile typeID
 ## owner
 
 ```lua
 Player|Unit
 ```
 
-投射物拥有者
+Projectile owner
 ## remove_immediately
 
 ```lua
 boolean
 ```
 
-是否立即移除表现，如果不填会读表
+Whether to remove the representation immediately, if not filled will read the table
 ## socket
 
 ```lua
 string
 ```
 
-投射物关联骨骼，只有当 `target` 为单位时才有效
+Projectiles associated with bones, effective only if 'target' is the unit
 ## target
 
 ```lua
 Point|Unit
 ```
 
-创建位置
+Create location
 ## time
 
 ```lua
 number
 ```
 
-投射物持续时间
+Projectile duration
 ## visible_rule
 
 ```lua
 integer|y3.Const.VisibleType
 ```
 
-粒子特效可见性规则，默认为`1`
+Particle effects visibility rules, default is`1`
 

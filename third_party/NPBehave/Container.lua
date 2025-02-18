@@ -1,7 +1,7 @@
 local assert = assert
 ---@class NPBehave.Container: NPBehave.Node
 ---@overload fun(name: string): self
----@field Collapse boolean 崩溃
+---@field Collapse boolean crashes
 local Container = Class("NPBehave.Container")
 
 ---@class NPBehave.Container: NPBehave.Node
@@ -18,7 +18,7 @@ end
 ---@param child NPBehave.Node
 ---@param succeeded boolean
 function Container:ChildStopped(child, succeeded)
-    assert(self.currentState ~= NPBehave.Enum.NodeState.Inactive, "容器的子容器在容器处于非活动状态时被停止.")
+    assert(self.currentState ~= NPBehave.Enum.NodeState.Inactive, "Child containers of a container are stopped when the container is inactive.")
     self:DoChildStopped(child, succeeded)
 end
 

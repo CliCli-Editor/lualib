@@ -51,7 +51,7 @@ end
 ---@param new_value any
 local function build_upvalue_error_message(func, name, old_value, new_value)
     local info = getinfo(func, 'Sl')
-    log.warn(string.format('你在本地玩家环境中把上值【%s】的值从【%s】修改为了【%s】。为了保证同步已将值恢复。\n环境位置：%s:%d'
+    log.warn(string.format('You change the value of the upper value [%s] from [%s] to [%s] in the local player environment. Values have been restored to ensure synchronization. \n Environment location :% s:%d'
         , name
         , old_value
         , new_value
@@ -66,7 +66,7 @@ end
 ---@param new_value any
 local function build_variable_error_message(t, k, old_value, new_value)
     local info = getinfo(3, 'Sl')
-    log.warn(string.format('你在本地环境中把变量【%s】的值从【%s】修改为了【%s】。\n修改位置：%s:%d'
+    log.warn(string.format('You change the value of the variable [%s] from [%s] to [%s] in the local environment. \n Modified position :% s:%d'
         , k
         , old_value
         , new_value
@@ -77,23 +77,23 @@ end
 
 ---@param name string
 local function build_call_error_message(name)
-    log.warn(string.format('不能在本地环境中调用API【%s】\n%s'
+    log.warn(string.format('API [%s] \n%s cannot be invoked in a local environment'
         , name
         , debug.traceback()
     ))
 end
 
 function M:__close()
-    -- TODO
-    --目前无法判断本地环境内的局部变量被子函数修改的情况，
-    --暂时屏蔽此功能
+    --TODO
+    --It is currently impossible to determine the local variable quilt function modification in the local environment,
+    --Temporarily block this feature
     do return end
     for i, old_value in ipairs(self.uv_values) do
         local name, value = getupvalue(self.func, i)
-        --如果是没代理过的上值，则恢复原样；
-        --如果是已经代理过的上值，它的引用已经
-        --和真正的上值不是同一个引用了，所以
-        --也可以直接修改
+        --If it is the upper value that has not been represented, restore the original value.
+        --If it is a brokered value, its reference is already
+        --It's not the same reference as the real upvalue, so
+        --You can also modify it directly
         if old_value ~= value then
             setupvalue(self.func, i, old_value)
             build_upvalue_error_message(self.func, name, old_value, value)
@@ -197,12 +197,12 @@ M.proxy_config = {
 ---@param func function
 ---@return function
 function M.check_function_in_sandbox(name, func)
-    --检查是否是“有害”函数，如果是则拒绝执行
+    --Checks whether it is a "harmful" function, and rejects execution if it is
     if M.is_name_must_sync(name) then
         build_call_error_message(name)
         return function () end
     end
-    --包装回调函数
+    --Wrap the callback function
     local info = getinfo(func, 'u')
     if info.nparams == 0 then
         return func

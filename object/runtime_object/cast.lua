@@ -94,7 +94,7 @@ end
 function M.get(ability, cast_id)
     if not ability._castMap then
         ability._castMap = {}
-        ability:event('施法-结束', function (trg, data)
+        ability:event('Cast spells. - Over', function (trg, data)
             local id = data.cast.cast_id
             local cast = ability._castMap[id]
             if cast then

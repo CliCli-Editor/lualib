@@ -1,6 +1,6 @@
 # Develop.Arg
 
-启动参数
+Startup parameter
 
 
 # Develop.Attr
@@ -17,7 +17,7 @@ y3.Const.UnitAttr
 Unit
 ```
 
-单位
+unit
 ## watch
 
 ```lua
@@ -25,11 +25,11 @@ Unit
   -> Develop.Attr.Watch
 ```
 
-监控属性变化，当属性从“不满足条件”变化为“满足条件”时触发回调
+The callback is triggered when the attribute changes from Not Met to Met
 
-@*param* `value` — 表达式，如 `>= 100`，``` == `最大生命` ```
+@*param* `value` — Expressions such as' >= 100 ', '==' maximum life` ```
 
-@*param* `callback` — 回调函数
+@*param* `callback` — Callback function
 
 # Develop.Attr.Accept
 
@@ -91,7 +91,7 @@ boolean
 Trigger
 ```
 
-触发器
+flip-flop
 
 # Develop.Attr.Watch.Callback
 
@@ -109,7 +109,7 @@ fun(attr: Develop.Attr, watch: Develop.Attr.Watch, oldValue: number)
 function Develop.Code.on_sync(id: string, handler: Develop.Code.SyncHandler)
 ```
 
-注册同步处理器
+Registered sync processor
 ## run
 
 ```lua
@@ -118,15 +118,15 @@ function Develop.Code.run(code: string, env?: table)
   2. any
 ```
 
-执行本地代码
+Execute native code
 
-@*param* `code` — 要执行的代码
+@*param* `code` — Code to execute
 
-@*param* `env` — 执行环境
+@*param* `env` — Execution environment
 
-@*return* — 是否执行成功
+@*return* — Whether the execution is successful
 
-@*return* — 执行结果
+@*return* — Execution result
 ## sync_run
 
 ```lua
@@ -135,17 +135,17 @@ function Develop.Code.sync_run(code: string, data?: table<string, any>, id?: str
   2. string?
 ```
 
-广播后同步执行代码，必须由本地发起
+The code is executed synchronously after broadcast and must be locally initiated
 
-@*param* `code` — 要执行的代码
+@*param* `code` — Code to execute
 
-@*param* `data` — 数据，代码里可以直接访问到
+@*param* `data` — Data, can be accessed directly in the code
 
-@*param* `id` — 处理器ID
+@*param* `id` — processorID
 
-@*return* — 是否执行成功
+@*return* — Whether the execution is successful
 
-@*return* — 错误消息
+@*return* — Error message
 ## wrap_code
 
 ```lua
@@ -164,20 +164,20 @@ function Develop.Code.wrap_code(code: any, env: any)
 fun(suc: boolean, result: any, data: any)
 ```
 
-代码执行后带着结果调用此函数
+This function is called after the code executes with the result
 ## env
 
 ```lua
 fun(data: any):table?
 ```
 
-返回一个表，用于作为执行环境
+Returns a table to be used as the execution environment
 
 # Develop.Command
 
-作弊指令
+Cheat instruction
 
-该功能仅在开发模式有效
+This feature is only available in development mode
 
 ## commands
 
@@ -191,7 +191,7 @@ fun(data: any):table?
 function Develop.Command.execute(command: string, ...any)
 ```
 
- 执行作弊指令
+ Execute cheat instruction
 ## getAllCommands
 
 ```lua
@@ -219,7 +219,7 @@ function Develop.Command.getParams()
 function Develop.Command.input(prefix: string, input: string, player?: Player)
 ```
 
- 输入作弊指令
+ Enter cheat instruction
 ## params
 
 ```lua
@@ -232,7 +232,7 @@ Develop.Command.ExecuteParam
 function Develop.Command.register(command: string, info: function|Develop.Command.InfoParam)
 ```
 
- 注册作弊指令（指令名称无视大小写）
+ Register cheat instructions (instruction names are case insensitive）
 
 # Develop.Command.ExecuteParam
 
@@ -242,21 +242,21 @@ function Develop.Command.register(command: string, info: function|Develop.Comman
 string[]
 ```
 
-命令参数
+Command parameter
 ## command
 
 ```lua
 string
 ```
 
-输入的命令（和输入一致，不保证大小写状态）
+The entered command is the same as the input, and case status is not guaranteed）
 ## player
 
 ```lua
 Player
 ```
 
-调用命令的玩家
+The player who invokes the command
 
 # Develop.Command.Info
 
@@ -333,7 +333,7 @@ function Develop.Console.getHelpInfo()
 function Develop.Console.input(input: string)
 ```
 
-控制台输入
+Console input
 ## show_result
 
 ```lua
@@ -351,7 +351,7 @@ function Develop.Console.show_result(ok: boolean, result: any)
   -> any
 ```
 
-向《Y3开发助手》发送请求（协程）
+Send a request to the Y3 Development Assistant (coroutine）
 ## createAttrWatcher
 
 ```lua
@@ -359,13 +359,13 @@ function Develop.Helper.createAttrWatcher(unit: Unit, attrType: y3.Const.UnitAtt
   -> Develop.Helper.TreeNode
 ```
 
-在《Y3开发助手》上创建一个属性监视器
+Create a property monitor on the Y3 Development Assistant
 
-@*param* `unit` — 要监视的单位
+@*param* `unit` — Units to be monitored
 
-@*param* `attrType` — 属性名
+@*param* `attrType` — Attribute name
 
-@*param* `condition` — 断点表达式，如 `>= 100`，``` <= `最大生命` / 2 ```
+@*param* `condition` — Breakpoint expressions, such as' >= 100 ', '<=' maximum life` / 2 ```
 ## createInputBox
 
 ```lua
@@ -373,7 +373,7 @@ function Develop.Helper.createInputBox(optional?: Develop.Helper.InputBox.Option
   -> Develop.Helper.InputBox
 ```
 
-在《Y3开发助手》上创建一个输入框
+Create an input box on Y3 Development Assistant
 ## createTreeNode
 
 ```lua
@@ -381,7 +381,7 @@ function Develop.Helper.createTreeNode(name: string, optional?: Develop.Helper.T
   -> Develop.Helper.TreeNode
 ```
 
-在《Y3开发助手》的树形视图上创建一个节点
+Create a node on the Y3 Developer Assistant tree view
 ## createTreeView
 
 ```lua
@@ -389,15 +389,15 @@ function Develop.Helper.createTreeView(name: string, root: Develop.Helper.TreeNo
   -> Develop.Helper.TreeView
 ```
 
-在《Y3开发助手》的视图上创建一个树形视图
+Create a tree view on the Y3 Developer Assistant view
 ## init
 
 ```lua
 function Develop.Helper.init(port?: integer)
 ```
 
-初始化与《Y3开发助手》的连接。如果用VSCode启动游戏，会自动连接。
-其他情况若有需求可以调用此函数连接。
+Initializes the connection to the Y3 Development Assistant. If you start the game with VSCode, it will connect automatically。
+In other cases, you can call this function connection if required。
 ## isReady
 
 ```lua
@@ -405,35 +405,35 @@ function Develop.Helper.isReady()
   -> boolean
 ```
 
-《Y3开发助手》是否准备好
+《Y3Whether Development Assistant is ready
 ## notify
 
 ```lua
 function Develop.Helper.notify(method: string, params: table)
 ```
 
-向《Y3开发助手》发送通知
+Send notifications to Y3 Development Assistant
 ## onReady
 
 ```lua
 function Develop.Helper.onReady(callback: fun())
 ```
 
-当《Y3开发助手》准备好时调用
+Called when Y3 Development Assistant is ready
 ## prepareForRestart
 
 ```lua
 function Develop.Helper.prepareForRestart(options: Develop.Helper.RestartOptions)
 ```
 
-准备重启游戏
+Ready to restart the game
 ## print
 
 ```lua
 function Develop.Helper.print(message: string)
 ```
 
-在《Y3开发助手》的终端上打印消息
+Print a message on the terminal of the Y3 Development Assistant
 ## registerMethod
 
 ```lua
@@ -446,9 +446,9 @@ function Develop.Helper.registerMethod(method: string, callback: fun(params: any
 function Develop.Helper.request(method: string, params: table, callback?: fun(data: any))
 ```
 
-向《Y3开发助手》发送请求
+Send a request to Y3 Development Assistant
 
-@*param* `callback` — 接收返回值
+@*param* `callback` — Received return value
 ## requestCommand
 
 ```lua
@@ -480,7 +480,7 @@ function Develop.Helper.response(id: integer, result: any, err?: string)
 
 @*return*
 
-@*return* — 设置断点
+@*return* — Set breakpoint
 ## childs
 
 ```lua
@@ -523,7 +523,7 @@ boolean?
 string
 ```
 
-给这个变量重新赋值即可重新定义排版，语法自己研究吧
+Reassigning this variable redefines the layout. You can study the syntax yourself
 ## create
 
 ```lua
@@ -657,7 +657,7 @@ integer
 boolean
 ```
 
-是否在失去焦点时关闭
+Whether to close when you lose focus
 ## inputBoxMap
 
 ```lua
@@ -670,69 +670,69 @@ boolean
 boolean
 ```
 
-是否是密码框
+Password or not box
 ## placeHolder
 
 ```lua
 string
 ```
 
-占位符
+placeholder
 ## prompt
 
 ```lua
 string
 ```
 
-提示
+Tips
 ## remove
 
 ```lua
 (method) Develop.Helper.InputBox:remove()
 ```
 
-删除输入框
+Delete input field
 ## show
 
 ```lua
 (method) Develop.Helper.InputBox:show(callback: fun(value?: string))
 ```
 
-显示输入框
+Display input box
 
-@*param* `callback` — 输入完成后的回调函数。如果用户取消输入，`value` 为 `nil`。
+@*param* `callback` — Input the callback function after completion. If the user cancels the input, 'value' is `nil`。
 ## title
 
 ```lua
 string
 ```
 
-标题
+title
 ## validateInput
 
 ```lua
 fun(value: string):string|nil
 ```
 
-返回一个错误消息表示输入不合法
+An error message is returned indicating that the input is invalid
 ## value
 
 ```lua
 string
 ```
 
-初始值
+Initial value
 ## valueSelection
 
 ```lua
 [integer, integer]
 ```
 
-初始选中的文本范围(光标位置，第一个字符前为0)
+Initially selected text range (cursor position, before the first character0)
 
 # Develop.Helper.InputBox.Optional
 
-输入框的可选项，完全照抄的 VSCode 的接口
+Input box options that copy exactly VSCode's interface
 
 ## ignoreFocusOut
 
@@ -740,56 +740,56 @@ string
 boolean
 ```
 
-是否在失去焦点时关闭
+Whether to close when you lose focus
 ## password
 
 ```lua
 boolean
 ```
 
-是否是密码框
+Password or not box
 ## placeHolder
 
 ```lua
 string
 ```
 
-占位符
+placeholder
 ## prompt
 
 ```lua
 string
 ```
 
-提示
+Tips
 ## title
 
 ```lua
 string
 ```
 
-标题
+title
 ## validateInput
 
 ```lua
 fun(value: string):string|nil
 ```
 
-返回一个错误消息表示输入不合法
+An error message is returned indicating that the input is invalid
 ## value
 
 ```lua
 string
 ```
 
-初始值
+Initial value
 ## valueSelection
 
 ```lua
 [integer, integer]
 ```
 
-初始选中的文本范围(光标位置，第一个字符前为0)
+Initially selected text range (cursor position, before the first character0)
 
 # Develop.Helper.RestartOptions
 
@@ -799,7 +799,7 @@ string
 boolean
 ```
 
-是否需要启动调试器。如果省略，会根据当前是否附加了调试器来决定是否需要调试器。
+Whether to start the debugger. If omitted, it determines whether a debugger is needed based on whether it is currently attached。
 
 # Develop.Helper.TreeNode
 
@@ -827,7 +827,7 @@ boolean
 boolean
 ```
 
-复选框状态
+Checkbox status
 ## childs
 
 ```lua
@@ -840,14 +840,14 @@ Develop.Helper.TreeNode[]?
 string
 ```
 
-描述
+Description
 ## icon
 
 ```lua
 string
 ```
 
-图标
+icon
 ## id
 
 ```lua
@@ -905,7 +905,7 @@ Develop.Helper.TreeNode.Optional
 (method) Develop.Helper.TreeNode:refresh()
 ```
 
-通知子节点有变化。
+Notify the child node of a change。
 ## remove
 
 ```lua
@@ -918,14 +918,14 @@ Develop.Helper.TreeNode.Optional
 string
 ```
 
-提示
+Tips
 ## update
 
 ```lua
 (method) Develop.Helper.TreeNode:update()
 ```
 
-更新此节点的数据（不包含子节点）。
+Update the data for this node (excluding child nodes)）。
 
 # Develop.Helper.TreeNode.Optional
 
@@ -935,98 +935,98 @@ string
 boolean?
 ```
 
-复选框状态，应该要配合 `onCheck` 与 `onUnCheck` 使用
+Check box status should be used with 'onCheck' and 'onUnCheck'
 ## childs
 
 ```lua
 Develop.Helper.TreeNode[]
 ```
 
-子节点列表。如果子节点计算量较大，可以改用 `childsGetter` 来获取子节点
+List of child nodes. If the child node is computationally heavy, you can use 'childsGetter' to get the child node
 ## childsGetter
 
 ```lua
 fun(node: Develop.Helper.TreeNode):Develop.Helper.TreeNode[]
 ```
 
-当试图展开节点时，会调用这个函数获取子节点，和 `childs` 互斥
+When trying to expand a node, this function is called to get the child node, and 'childs' is mutually exclusive
 ## description
 
 ```lua
 string?
 ```
 
-描述
+Description
 ## icon
 
 ```lua
 string?
 ```
 
-图标，见 https://code.visualstudio.com/api/references/icons-in-labels#icon-listing
+Icon, see https://code.visualstudio.com/api/references/icons-in-labels#icon-listing
 ## onCheck
 
 ```lua
 fun(node: Develop.Helper.TreeNode)
 ```
 
-当节点复选框被勾选时调用
+Called when the node check box is checked
 ## onClick
 
 ```lua
 fun(node: Develop.Helper.TreeNode)
 ```
 
-当节点被点击时调用
+Called when a node is clicked
 ## onCollapse
 
 ```lua
 fun(node: Develop.Helper.TreeNode)
 ```
 
-当节点被折叠时调用
+Called when a node is collapsed
 ## onExpand
 
 ```lua
 fun(node: Develop.Helper.TreeNode)
 ```
 
-当节点被展开时调用
+Called when a node is expanded
 ## onInit
 
 ```lua
 fun(node: Develop.Helper.TreeNode)
 ```
 
-当节点创建第一次可见时调用
+Called when the node is created for the first time visible
 ## onInvisible
 
 ```lua
 fun(node: Develop.Helper.TreeNode)
 ```
 
-当节点看不到时调用
+Called when the node is not visible
 ## onUnCheck
 
 ```lua
 fun(node: Develop.Helper.TreeNode)
 ```
 
-当节点复选框被取消勾选时调用
+Called when the node check box is unchecked
 ## onVisible
 
 ```lua
 fun(node: Develop.Helper.TreeNode)
 ```
 
-当节点能被看到时调用
+Called when the node can be seen
 ## tooltip
 
 ```lua
 string?
 ```
 
-提示
+Tips
 
 # Develop.Helper.TreeView
 
@@ -1093,21 +1093,21 @@ function Develop.TriggerWatcher.report()
   -> { count: integer, cost: number, time: number, average: number, tops: string[] }|nil
 ```
 
-获取监控报告
+Obtain monitoring report
 ## start
 
 ```lua
 function Develop.TriggerWatcher.start()
 ```
 
-开始监控触发器
+Start monitor trigger
 ## stop
 
 ```lua
 function Develop.TriggerWatcher.stop()
 ```
 
-停止监控触发器
+Stop monitor trigger
 
 # Develop.TriggerWatcherInstance
 
@@ -1117,7 +1117,7 @@ function Develop.TriggerWatcher.stop()
 unknown
 ```
 
-结束时间（毫秒）
+End time (milliseconds）
 ## makeReport
 
 ```lua
@@ -1125,9 +1125,9 @@ unknown
   -> { count: integer, cost: number, time: number, average: number, tops: string[] }
 ```
 
-@*param* `inTime` — 只统计最后X秒的数据
+@*param* `inTime` — Only the last X seconds are counted
 
-@*param* `topCount` — 统计前X个耗时最长的函数位置
+@*param* `topCount` — The positions of the first X functions that take the longest time are counted
 ## originalExecute
 
 ```lua
@@ -1158,5 +1158,5 @@ table
 unknown
 ```
 
-开始时间（毫秒）
+Start time (milliseconds）
 

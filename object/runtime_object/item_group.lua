@@ -45,16 +45,16 @@ function M:pick()
     return lua_table
 end
 
----遍历物品组，请勿在遍历过程中修改物品组。
+---Walk through the item group, do not modify the item group during the walk.
 ---```lua
 ---for item in ItemGroup:pairs() do
----    print(item)
+---print(item)
 ---end
 ---```
----也可以直接用 `pairs` 遍历：
+---You can also iterate directly with 'pairs' :
 ---```lua
 ---for item in pairs(ItemGroup) do
----    print(item)
+---print(item)
 ---end
 ---```
 ---@return fun(): Item?
@@ -72,13 +72,13 @@ function M:pairs()
     end
 end
 
----筛选范围内的所有物品
----@param point Point 点
----@param shape Shape 筛选范围
+---Sift through all items in the range
+---@param point Point
+---@param shape Shape Filtering range
 ---@return ItemGroup
 function M.get_all_items_in_shapes(point,shape)
     local py_item_group = GameAPI.get_all_items_in_shapes(
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         point.handle,
         shape.handle

@@ -21,7 +21,7 @@ function TimeMin:__init(limit, randomVariation, waitOnFailure, decoratee)
     self._isLimitReached = false
     self._isDecorateeDone = false
     self._isDecorateeSuccess = false
-    assert(limit > 0, "limit 必须大于 0")
+    assert(limit > 0, "limit must be greater than 0")
     return self
 end
 

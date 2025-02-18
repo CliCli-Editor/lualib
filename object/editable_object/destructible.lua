@@ -49,7 +49,7 @@ M.ref_manager = New 'Ref' ('Destructible', function (id)
     return New 'Destructible' (py_destructible)
 end)
 
----通过py层的可破坏物实例获取lua层的可破坏物对象
+---Get the destructible object of the lua layer through the destructible instance of the py layer
 ---@param  py_destructible py.Destructible
 ---@return Destructible?
 function M.get_by_handle(py_destructible)
@@ -66,7 +66,7 @@ clicli.py_converter.register_lua_to_py('py.Destructible', function (lua_value)
     return lua_value.handle
 end)
 
---Gets lua's destructible object by the destructible's unique ID
+--Gets lua is destructible object by the destructible is unique ID
 ---@param id py.DestructibleID
 ---@return Destructible?
 function M.get_by_id(id)
@@ -76,8 +76,8 @@ end
 
 clicli.py_converter.register_py_to_lua('py.DestructibleID', M.get_by_id)
 
----是否存在
----@return boolean is_exist 是否存在
+---Existence or not
+---@return boolean is_exist Whether it exists
 function M:is_exist()
     return  GameAPI.destructible_is_exist(self.handle)
 end
@@ -88,49 +88,49 @@ function M:get_id()
     return self.id
 end
 
----可破坏物能否被技能指示器选中
----@return boolean is_lockable 能否被选中
+---Whether destructible objects are selected by the skill indicator
+---@return boolean Whether is_lockable can be selected
 function M:can_be_ability_target()
     return self.handle:api_is_ability_target() or false
 end
 
----可破坏物能否被攻击
----@return boolean is_attackable 能否被攻击
+---Whether destructible objects can be attacked
+---@return boolean Whether is_attackable can be attacked
 function M:can_be_attacked()
     return self.handle:api_is_attacked() or false
 end
 
----可破坏物能否被选中
----@return boolean is_selectable 能否被选中
+---Whether destructible objects can be selected
+---@return boolean Whether is_selectable can be selected
 function M:can_be_selected()
     return self.handle:api_is_selected() or false
 end
 
----可破坏物能否被采集
----@return boolean is_collectable 能否被采集
+---Whether the destructible material can be collected
+---@return boolean Whether is_collectable can be collected
 function M:can_be_collected()
     return self.handle:api_is_collected() or false
 end
 
----可破坏物是否可见
----@return boolean is_visible 是否可见
+---Whether the destructible is visible
+---@return boolean is_visible Whether it is visible
 function M:is_visible()
     return self.handle:api_is_visible() or false
 end
 
----可破坏物是否存活
----@return boolean is_alive 是否存活
+---Whether the destructible is alive
+---@return boolean Whether is_alive is alive
 function M:is_alive()
     return self.handle:api_is_alive() or false
 end
 
----@param killer_unit Unit 凶手
----杀死可破坏物
+---@param killer_unit Unit The killer
+---Kill the destructible
 function M:kill(killer_unit)
     self.handle:api_kill(killer_unit.handle)
 end
 
----删除可破坏物
+---Remove destructible objects
 function M:remove()
     if not self._removed then
         self._removed = true
@@ -140,154 +140,154 @@ function M:remove()
     end
 end
 
----复活可破坏物
+---Resurrection destructible
 function M:reborn()
     self.handle:api_revivie_new()
 end
 
----移动到点
----@param point Point 目标点
+---Move to point
+---@param point Point Target point
 function M:set_point(point)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     self.handle:api_transmit(point.handle)
 end
 
----设置生命值
----@param value number 生命值
+---Set health
+---@param value number Health value
 function M:set_hp(value)
     self.handle:api_set_hp(Fix32(value))
 end
 
----@param value number 生命值
----增加当前生命值
+---@param value number Health value
+---Increases current health
 function M:add_hp(value)
     self.handle:api_add_hp_cur_value(Fix32(value))
 end
 
----@param value number 生命值
----设置最大生命值
+---@param value number Health value
+---Set the maximum health
 function M:set_max_hp(value)
     self.handle:api_set_max_hp(Fix32(value))
 end
 
----@param value number 生命值
----增加最大生命值
+---@param value number Health value
+---Increases maximum health
 function M:add_max_hp(value)
     self.handle:api_add_hp_max_value(Fix32(value))
 end
 
----@param value number 资源数
----设置当前资源数
+---@param value number Number of resources
+---Set the number of current resources
 function M:set_resource(value)
     self.handle:api_set_cur_source_nums(Fix32(value))
 end
 
----@param value number 资源数
----增加当前资源数
+---@param value number Number of resources
+---Example Increase the number of current resources
 function M:add_resource(value)
     self.handle:api_add_sp_cur_value(Fix32(value))
 end
 
----@param value number 资源数
----设置最大资源数
+---@param value number Number of resources
+---Set the maximum number of resources
 function M:set_max_resource(value)
     self.handle:api_set_max_source_nums(Fix32(value))
 end
 
----@param value number 资源数
----增加最大资源数
+---@param value number Number of resources
+---Increase the maximum number of resources
 function M:add_max_resource(value)
     self.handle:api_add_sp_max_value(Fix32(value))
 end
 
----@param name string 名字
----设置名称
+---@param name string Name
+---Set name
 function M:set_name(name)
     self.handle:api_set_name(name)
 end
 
----@param description string 描述
----设置描述
+---@param description string Description
+---Set description
 function M:set_description(description)
     self.handle:api_set_str_attr("description", description)
 end
 
----设置缩放
----@param x number x轴缩放
----@param y number y轴缩放
----@param z number z轴缩放
+---Set scale
+---@param x number x axis scaling
+---@param y number Scaling the Y-axis
+---@param z number Z-axis scaling
 function M:set_scale(x, y, z)
     self.handle:api_set_scale(Fix32(x), Fix32(y), Fix32(z))
 end
 
----设置朝向
----@param angle number 朝向角度
+---orientation
+---@param angle number Indicates the orientation Angle
 function M:set_facing(angle)
     self.handle:api_set_face_angle(Fix32(angle))
 end
 
----设置高度
----@param height number 高度
+---Set height
+---@param height number Height
 function M:set_height(height)
     self.handle:api_set_height_offset(Fix32(height))
 end
 
----增加高度
----@param height number 高度
+---Gain height
+---@param height number Height
 function M:add_height(height)
     self.handle:api_add_height_offset(Fix32(height))
 end
 
----设置能否被技能指示器锁定
----@param can_be_ability_target boolean 能否被技能指示器锁定
+---Sets whether the skill indicator can be locked
+---@param can_be_ability_target boolean Specifies whether it can be locked by the skill indicator
 function M:set_can_be_ability_target(can_be_ability_target)
     self.handle:api_set_dest_is_ability_target(can_be_ability_target)
 end
 
----设置能否被攻击
----@param is_attackable boolean 能否被攻击
+---Set whether to be attacked
+---@param is_attackable boolean Indicates whether the value can be attacked
 function M:set_can_be_attacked(is_attackable)
     self.handle:api_set_dest_is_attacked(is_attackable)
 end
 
----设置能否被选中
----@param is_selectable boolean 能否被选中
+---Sets whether to be selected
+---@param is_selectable boolean Whether the value can be selected
 function M:set_can_be_selected(is_selectable)
     self.handle:api_set_dest_is_selected(is_selectable)
 end
 
----设置能否被采集
----@param is_collectable boolean 能否被采集
+---Sets whether to be collected
+---@param is_collectable boolean Whether the value can be collected
 function M:set_can_be_collected(is_collectable)
     self.handle:api_set_dest_is_collected(is_collectable)
 end
 
----增加标签
----@param tag string 标签
+---Add label
+---@param tag string Tag
 function M:add_tag(tag)
     self.handle:api_add_tag(tag)
 end
 
----移除标签
----@param tag string 标签
+---Remove tag
+---@param tag string Tag
 function M:remove_tag(tag)
     self.handle:api_remove_tag(tag)
 end
 
----是否具有标签
----@param tag_name string 标签
----@return boolean has_tag 具有标签
+---Tagged or not
+---@param tag_name string Tag
+---@return boolean has_tag Specifies a tag
 function M:has_tag(tag_name)
     return GlobalAPI.has_tag(self.handle, tag_name)
 end
 
----播放动画
----@param anim_name string 动画名字
----@param start_time? number 开始时间
----@param end_time? number 结束时间(默认-1表示播放到最后)
----@param is_loop? boolean 是否循环
----@param speed? number 速度
+---Play animation
+---@param anim_name string Animation name
+---@param start_time? number Start time
+---@param end_time? number End time (Default -1 indicates last playback)
+---@param is_loop? boolean loop or not
+---@param speed? number speed
 function M:play_animation(anim_name, start_time, end_time, is_loop, speed)
     self.handle:api_play_animation(
         anim_name,
@@ -298,128 +298,128 @@ function M:play_animation(anim_name, start_time, end_time, is_loop, speed)
     )
 end
 
----停止动画
----@param anim_name string 动画名字
+---Stop animation
+---@param anim_name string Animation name
 function M:stop_animation(anim_name)
     self.handle:api_stop_animation(anim_name)
 end
 
----替换模型
----@param model_id py.ModelKey 模型id
+---Replacement model
+---@param model_id py.ModelKey Model id
 function M:replace_model(model_id)
     self.handle:api_replace_model(model_id)
 end
 
----取消替换模型
----@param model_id py.ModelKey 模型id
+---Cancel replacement model
+---@param model_id py.ModelKey Model id
 function M:cancel_replace_model(model_id)
     self.handle:api_cancel_replace_model(model_id)
 end
 
----显示/隐藏
----@param is_visible boolean 是否显示
+---Show/hide
+---@param is_visible boolean Specifies whether to display
 function M:set_visible(is_visible)
     self.handle:api_show_hide(is_visible)
 end
 
----获取可破坏物类型
----@return py.DestructibleKey type 可破坏物类型
+---Gets the destructible type
+---@return py.DestructibleKey type Destructible type
 function M:get_key()
     return GameAPI.get_dest_type(self.handle)
 end
 
----获取可破坏物的名称
----@return string name 可破坏物的名称
+---Gets the name of the destructible
+---@return string name Name of the destructible
 function M:get_name()
     return self.handle:api_get_str_attr("name") or ''
 end
 
----获取可破坏物描述
----@return string description 描述
+---Get destructible description
+---@return string description Indicates the description
 function M:get_description()
     return self.handle:api_get_str_attr("description") or ''
 end
 
----获取可破坏物的生命值
----@return number cur_hp 生命值
+---Gain the health of destructible objects
+---@return number cur_hp health
 function M:get_hp()
     return clicli.helper.tonumber(self.handle:api_get_float_attr("hp_cur")) or 0.0
 end
 
----获取可破坏物的资源名称
----@return string source_name 资源名称
+---Gets the resource name of the destructible
+---@return string source_name Resource name
 function M:get_resource_name()
     return self.handle:api_get_str_attr("source_desc") or ''
 end
 
----获取可破坏物的生命值
----@return number hp 可破坏物的生命值
+---Gain the health of destructible objects
+---@return number hp Destructible health
 function M:get_max_hp()
     return clicli.helper.tonumber(self.handle:api_get_float_attr("hp_max")) or 0.0
 end
 
----获取可破坏物的当前资源数
----@return number source_number 当前资源数
+---Gets the current number of resources for destructible
+---@return number source_number Number of the current resource
 function M:get_resource()
     return self.handle:api_get_dest_cur_source_nums() or 0.0
 end
 
----获取可破坏物的最大资源数
----@return number max_number 最大资源数
+---Gets the maximum number of resources for destructible objects
+---@return number max_number Maximum number of resources
 function M:get_max_resource()
     return self.handle:api_get_dest_max_source_nums() or 0.0
 end
 
----获取可破坏物的玩家属性名
----@return py.RoleResKey player_res_key 玩家属性
+---Gets the destructible player attribute name
+---RoleResKey player_res_key Player attribute
 function M:get_resource_type()
     return self.handle:api_get_role_res_of_dest() or ''
 end
 
----获取可破坏物的物品类型ID
----@return py.ItemKey item_key 物品类型ID
+---Gets the item type ID of the destructible
+---@returnpy. ItemKey item_key ID of the item type
 function M:get_item_type()
     return self.handle:api_get_item_type_of_dest() or 0
 end
 
----获取可破坏物的模型
----@return py.ModelKey model_key 模型id
+---Get a destructible model
+---@returnpy. ModelKey model_key Model id
 function M:get_model()
     return self.handle:api_get_dest_model() or 0
 end
 
----获取可破坏物的高度
----@return number height 高度
+---Get the height of destructible
+---@return number height Height
 function M:get_height()
     return clicli.helper.tonumber(self.handle:api_get_dest_height_offset()) or 0.0
 end
 
----获取可破坏物的面向角度
----@return number rotation 面向角度
+---Get the destructible oriented Angle
+---@return number rotation Angle oriented
 function M:get_facing()
     return clicli.helper.tonumber(self.handle:api_get_dest_face_angle()) or 0.0
 end
 
----获取可破坏物对象的位置
----@return Point point 可破坏物的位置
+---Gets the location of the destructible object
+---@return point Indicates the location of the destructible object
 function M:get_position()
     local py_point = self.handle:api_get_position()
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     return clicli.point.get_by_handle(py_point)
 end
 
---------------------------------------------类的方法--------------------------------------------
+----- -- -- -- -- -- -- -- -- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - class method - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
----创建可破坏物
----@param type_id py.DestructibleKey 可破坏物类型id
----@param point Point 创建到点
----@param angle number 面向角度
----@param scale_x? number 缩放x
----@param scale_y? number 缩放y
----@param scale_z? number 缩放z
----@param height? number 高度
----@return Destructible destructible 可破坏物
+---Create destructible objects
+---@param type_id py.DestructibleKey id of the destructible type
+---@param point Point Creates a point to point
+---@param angle number Indicates the Angle orientation
+---@param scale_x? number Scale x
+---@param scale_y? number scale y
+---@param scale_z? number scale z
+---@param height? number height
+---@return Destructible destructible. Destructible
 function M.create_destructible(type_id, point, angle, scale_x, scale_y, scale_z, height)
     if not scale_x then scale_x = 1 end
     if not scale_y then scale_y = 1 end
@@ -430,29 +430,29 @@ function M.create_destructible(type_id, point, angle, scale_x, scale_y, scale_z,
     return clicli.destructible.get_by_handle(py_destructible) --[[@as Destructible]]
 end
 
----获取可破坏物类型的名称
----@param key py.DestructibleKey 类型id
----@return string name 名称
+---Gets the name of the destructible type
+---@param key py.DestructibleKey Type id
+---@return string name Indicates the name
 function M.get_name_by_key(key)
     return GameAPI.get_dest_name_by_type(key)
 end
 
----获取可破坏物类型的描述
----@param key py.DestructibleKey 类型id
----@return string description 描述
+---Gets a description of the destructible type
+---@param key py.DestructibleKey Type id
+---@return string description Indicates the description
 function M.get_description_by_key(key)
     return GameAPI.get_dest_desc_by_type(key)
 end
 
----获取可破坏物类型的模型
----@param key py.DestructibleKey 类型id
----@return py.ModelKey model 模型id
+---Gets a model of the destructible type
+---@param key py.DestructibleKey Type id
+---@return py.ModelKey model id of the model
 function M.get_model_by_type(key)
     return GameAPI.get_model_key_of_dest_key(key)
 end
 
----遍历区域中的所有可破坏物
----@param area Area 区域对象
+---Traverse all destructible objects in the area
+---@param area Area Area object
 ---@return Destructible[]
 function M.pick(area)
     ---@type Destructible[]
@@ -465,12 +465,12 @@ function M.pick(area)
     return destructibles
 end
 
----@param point Point 点
----@param shape Shape 区域
----@return table destructible_list 可破坏物列表
----获取不同形状范围内的可破坏物列表
+---@param point Point
+---@param shape Shape area
+---@return table destructible_list List of destructible objects
+---Gets a list of destructible objects in different shape ranges
 function M.pick_in_shape(point, shape)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     local py_list = GameAPI.get_all_dest_in_shapes(point.handle, shape.handle)
     local lua_table = {}

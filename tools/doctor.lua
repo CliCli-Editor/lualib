@@ -150,10 +150,10 @@ local function formatName(obj)
         if isInteger(obj) then
             return ('number:%d'):format(obj)
         else
-            -- 如果浮点数可以完全表示为整数，那么就转换为整数
+            --If a floating point number can be fully represented as an integer, then it is converted to an integer
             local str = ('%.10f'):format(obj):gsub('%.?[0]+$', '')
             if str:find('.', 1, true) then
-                -- 如果浮点数不能表示为整数，那么再加上它的精确表示法
+                --If a floating point number cannot be represented as an integer, then its exact representation is added
                 str = ('%s(%q)'):format(str, obj)
             end
             return 'number:' .. str
@@ -203,8 +203,8 @@ local function formatName(obj)
     end
 end
 
---- 获取内存快照，生成一个内部数据结构。
---- 一般不用这个API，改用 report 或 catch。
+---Take a memory snapshot to generate an internal data structure.
+---Instead of using this API, use report or catch instead.
 ---@return table
 m.snapshot = private(function ()
     if m._lastCache then
@@ -377,7 +377,7 @@ m.snapshot = private(function ()
     end
 
     local function findThread(trd, result)
-        -- 不查找主线程，主线程一定是临时的（视为弱引用）
+        --Do not look for the main thread, the main thread must be temporary (considered a weak reference)
         if m._ignoreMainThread and trd == registry[1] then
             return nil
         end
@@ -419,7 +419,7 @@ m.snapshot = private(function ()
     end
 
     local function findMainThread()
-        -- 不查找主线程，主线程一定是临时的（视为弱引用）
+        --Do not look for the main thread, the main thread must be temporary (considered a weak reference)
         if m._ignoreMainThread then
             return nil
         end
@@ -504,7 +504,7 @@ m.snapshot = private(function ()
         return mark[obj]
     end
 
-    -- TODO: Lua 5.1中，主线程与_G都不在注册表里
+    --TODO: In Lua 5.1, neither the main thread nor _G are in the registry
     local root = private {
         name = formatName(registry),
         type = 'root',
@@ -548,16 +548,16 @@ m.snapshot = private(function ()
     return result
 end)
 
---- 遍历虚拟机，寻找对象的引用。
---- 输入既可以是对象实体，也可以是对象的描述（从其他接口的返回值中复制过来）。
---- 返回字符串数组的数组，每个字符串描述了如何从根节点引用到指定的对象。
---- 可以同时查找多个对象。
+---Traverse the virtual machine, looking for references to objects.
+---The input can be either an object entity or a description of the object (copied from the return value of another interface).
+---Returns an array of arrays of strings, each describing how to refer from the root node to the specified object.
+---Multiple objects can be found at the same time.
 ---@param ... any
 ---@return string[][]
 m.catch = private(function (...)
     local targets = {}
     if not ... then
-        error('没有指定目标')
+        error('No target specified')
     end
     if ... == '*' then
         setmetatable(targets, {
@@ -635,13 +635,13 @@ local function countTable(t)
     return n
 end
 
---- 生成一个内存快照的报告。
---- 你应当将其输出到一个文件里再查看。
+---Generates a memory snapshot report.
+---You should output it to a file and look at it again.
 ---@return {
---- report: Doctor.Report[],
---- stringInfo: Doctor.StringInfo,
---- weakTableInfo: Doctor.WeakTableInfo,
---- gcTableInfo: Doctor.GCTableInfo,
+---report: Doctor.Report[],
+---stringInfo: Doctor.StringInfo,
+---weakTableInfo: Doctor.WeakTableInfo,
+---gcTableInfo: Doctor.GCTableInfo,
 ---}
 m.report = private(function ()
     local snapshot = m.snapshot()
@@ -722,13 +722,13 @@ m.report = private(function ()
     }
 end)
 
---- 在进行快照相关操作时排除掉的对象。
---- 你可以用这个功能排除掉一些数据表。
+---Objects excluded during snapshot-related operations.
+---You can use this feature to exclude some data tables.
 m.exclude = private(function (...)
     m._exclude = {...}
 end)
 
---- 比较2个报告
+---Compare the two reports
 ---@param old table
 ---@param new table
 ---@return table
@@ -749,13 +749,13 @@ m.compare = private(function (old, new)
     return ret
 end)
 
---- 是否忽略主线程的栈
+---Whether to ignore the stack of the main thread
 ---@param flag boolean
 m.ignoreMainThread = private(function (flag)
     m._ignoreMainThread = flag
 end)
 
---- 是否对表或者userdata进行 tostring（调用它们的 __tostring 元方法）
+---Whether to tostring tables or userdata (call their __tostring metamethods)
 ---@param toStringTable Doctor.ToStringLevel
 ---@param toStringUserdata Doctor.ToStringLevel
 m.toString = private(function (toStringTable, toStringUserdata)
@@ -763,8 +763,8 @@ m.toString = private(function (toStringTable, toStringUserdata)
     m._toStringUserdata = toStringUserdata
 end)
 
---- 是否启用缓存，启用后会始终使用第一次查找的结果，
---- 适用于连续查找引用。如果想要查找新的引用需要先关闭缓存。
+---If caching is enabled, the results of the first lookup will always be used.
+---Suitable for continuous lookup references. If you want to find new references, you need to turn off the cache first.
 ---@param flag boolean
 m.enableCache = private(function (flag)
     if flag then
@@ -775,7 +775,7 @@ m.enableCache = private(function (flag)
     end
 end)
 
---- 立即清除缓存
+---Clear cache now
 m.flushCache = private(function ()
     m._lastCache = nil
 end)

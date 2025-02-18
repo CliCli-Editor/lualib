@@ -148,7 +148,7 @@ function M.wrap_callbacks(mover_data)
         end
     end
 
-    -- TODO 目前没有运动移除的全局事件，因此在每个运动的移除回调中析构自己
+    --TODO currently has no global event for motion removal, so it destructs itself in each motion's removal callback
     ---@type fun(mover: py.Mover)
     local on_remove = function ()
         Delete(mover)
@@ -172,13 +172,13 @@ function M.wrap_internal_callbacks(mover_data)
         mover = m
     end
 
-    ---@type fun(mover: py.Mover, unit: py.Unit?)?
+    ---@type fun(mover: py.Mover, unit: py.Unit?) ?
     if mover_data.on_hit then
         ---@type fun(mover: py.Mover, unit: py.Unit?)
         local hit_func = mover_data.on_hit
         ---@param unit_id integer
         mover_data.on_hit = function (unit_id)
-            -- local py_unit = GameAPI.get_mover_collide_unit()
+            --local py_unit = GameAPI.get_mover_collide_unit()
             local unit = clicli.unit.get_by_id(unit_id)
             xpcall(hit_func, log.error, mover, unit)
         end
@@ -208,7 +208,7 @@ function M.wrap_internal_callbacks(mover_data)
         end
     end
 
-    -- TODO 目前没有运动移除的全局事件，因此在每个运动的移除回调中析构自己
+    --TODO currently has no global event for motion removal, so it destructs itself in each motion's removal callback
 
     ---@type fun(mover: py.Mover)
     local remove_func = mover_data.on_remove
@@ -334,7 +334,7 @@ function M.wrap_round_args(args)
     else
         ---@cast target Point
         builder.set_is_to_unit(false)
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         local x, y = target:get_x(), target:get_y()
         builder.set_target_pos(Fix32Vec2(x / 100.0, y / 100.0))
@@ -346,8 +346,8 @@ function M.wrap_round_args(args)
     builder.set_round_time             (Fix32(args.round_time or 0))
     builder.set_centrifugal_velocity   (Fix32(args.radius_speed or 0.0))
     builder.set_lifting_velocity       (Fix32(args.lifting_speed or 0.0))
-    -- hack
-    -- 这都能被我找出来，真是太🐮🍺🌶
+    --hack
+    --It's amazing that I could find out 🐮🍺🌶
     builder.dict['init_height']        = (Fix32(args.height or 0.0))
     builder.dict['is_open_bind_point'] = (args.height ~= nil)
 
@@ -378,11 +378,11 @@ local DUMMY_FUNCTION = function() end
 ---@param mover_data Mover.CreateData.Line
 ---@return Mover
 function M.mover_line(mover_unit, mover_data)
-    assert(mover_data.speed,    '缺少字段：speed')
-    assert(mover_data.angle,    '缺少字段：angle')
-    assert(mover_data.distance, '缺少字段：distance')
+    assert(mover_data.speed,    'Missing field: speed')
+    assert(mover_data.angle,    'Missing field: angle')
+    assert(mover_data.distance, 'Missing field: distance')
     if clicli.config.mover.enable_internal_regist then
-        --todo 补全一下CreateMoverComponent和MoverSystem的meta
+        --todo complete the meta for CreateMoverComponent and MoverSystem
         local update_mover = M.wrap_internal_callbacks(mover_data)
         local comp = CreateMoverComponent.create_line_mover(mover_data)
         local py_mover = MoverSystem():create_mover(mover_unit.handle, comp)
@@ -412,11 +412,11 @@ end
 ---@param mover_data Mover.CreateData.Target
 ---@return Mover
 function M.mover_target(mover_unit, mover_data)
-    assert(mover_data.speed,        '缺少字段：speed')
-    assert(mover_data.target_distance, '缺少字段：target_distance')
-    assert(mover_data.target,       '缺少字段：target')
+    assert(mover_data.speed,        'Missing field: speed')
+    assert(mover_data.target_distance, 'Missing field: target_distance')
+    assert(mover_data.target,       'Missing field: target')
     if clicli.config.mover.enable_internal_regist then
-        --todo 补全一下CreateMoverComponent和MoverSystem的meta
+        --todo complete the meta for CreateMoverComponent and MoverSystem
         local update_mover = M.wrap_internal_callbacks(mover_data)
         local comp = CreateMoverComponent.create_chasing_mover(mover_data)
         local py_mover = MoverSystem():create_mover(mover_unit.handle, comp)
@@ -446,11 +446,11 @@ end
 ---@param mover_data Mover.CreateData.Curve
 ---@return Mover
 function M.mover_curve(mover_unit, mover_data)
-    assert(mover_data.speed,    '缺少字段：speed')
-    assert(mover_data.angle,    '缺少字段：angle')
-    assert(mover_data.distance, '缺少字段：distance')
+    assert(mover_data.speed,    'Missing field: speed')
+    assert(mover_data.angle,    'Missing field: angle')
+    assert(mover_data.distance, 'Missing field: distance')
     if clicli.config.mover.enable_internal_regist then
-        --todo 补全一下CreateMoverComponent和MoverSystem的meta
+        --todo complete the meta for CreateMoverComponent and MoverSystem
         local update_mover = M.wrap_internal_callbacks(mover_data)
         local comp = CreateMoverComponent.create_curved_mover(mover_data)
         local py_mover = MoverSystem():create_mover(mover_unit.handle, comp)
@@ -480,9 +480,9 @@ end
 ---@param mover_data Mover.CreateData.Round
 ---@return Mover
 function M.mover_round(mover_unit, mover_data)
-    assert(mover_data.target, '缺少字段：target')
+    assert(mover_data.target, 'Missing field: target')
     if clicli.config.mover.enable_internal_regist then
-        --todo 补全一下CreateMoverComponent和MoverSystem的meta
+        --todo complete the meta for CreateMoverComponent and MoverSystem
         local update_mover = M.wrap_internal_callbacks(mover_data)
         local comp = CreateMoverComponent.create_round_mover(mover_data)
         local py_mover = MoverSystem():create_mover(mover_unit.handle, comp)
@@ -514,7 +514,7 @@ local Unit = Class 'Unit'
 ---@class Projectile
 local Projectile = Class 'Projectile'
 
----创建直线运动器
+---Create a linear motion device
 ---@param mover_data Mover.CreateData.Line
 ---@return Mover
 function Unit:mover_line(mover_data)
@@ -522,7 +522,7 @@ function Unit:mover_line(mover_data)
     return mover
 end
 
----创建直线运动器
+---Create a linear motion device
 ---@param mover_data Mover.CreateData.Line
 ---@return Mover
 function Projectile:mover_line(mover_data)
@@ -530,7 +530,7 @@ function Projectile:mover_line(mover_data)
     return mover
 end
 
----创建追踪运动器
+---Create a tracker
 ---@param mover_data Mover.CreateData.Target
 ---@return Mover
 function Unit:mover_target(mover_data)
@@ -538,7 +538,7 @@ function Unit:mover_target(mover_data)
     return mover
 end
 
----创建追踪运动器
+---Create a tracker
 ---@param mover_data Mover.CreateData.Target
 ---@return Mover
 function Projectile:mover_target(mover_data)
@@ -546,7 +546,7 @@ function Projectile:mover_target(mover_data)
     return mover
 end
 
----创建曲线运动器
+---Create a curve mover
 ---@param mover_data Mover.CreateData.Curve
 ---@return Mover
 function Unit:mover_curve(mover_data)
@@ -554,7 +554,7 @@ function Unit:mover_curve(mover_data)
     return mover
 end
 
----创建曲线运动器
+---Create a curve mover
 ---@param mover_data Mover.CreateData.Curve
 ---@return Mover
 function Projectile:mover_curve(mover_data)
@@ -562,7 +562,7 @@ function Projectile:mover_curve(mover_data)
     return mover
 end
 
----创建环绕运动器
+---Create a surround motion
 ---@param mover_data Mover.CreateData.Round
 ---@return Mover
 function Unit:mover_round(mover_data)
@@ -570,7 +570,7 @@ function Unit:mover_round(mover_data)
     return mover
 end
 
----创建环绕运动器
+---Create a surround motion
 ---@param mover_data Mover.CreateData.Round
 ---@return Mover
 function Projectile:mover_round(mover_data)
@@ -578,26 +578,26 @@ function Projectile:mover_round(mover_data)
     return mover
 end
 
----打断运动器
+---interrupter
 function Unit:break_mover()
     GameAPI.break_unit_mover(self.handle)
 end
 
----移除运动器
+---Removal motor
 function Unit:remove_mover()
     GameAPI.remove_unit_mover(self.handle)
 end
 
----打断运动器
+---interrupter
 function Projectile:break_mover()
-    -- TODO 见问题8
+    --TODO see question 8
     ---@diagnostic disable-next-line: param-type-mismatch
     GameAPI.break_unit_mover(self.handle)
 end
 
----移除运动器
+---Removal motor
 function Projectile:remove_mover()
-    -- TODO 见问题8
+    --TODO see question 8
     ---@diagnostic disable-next-line: param-type-mismatch
     GameAPI.remove_unit_mover(self.handle)
 end

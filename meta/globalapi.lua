@@ -764,7 +764,7 @@ function GlobalAPI.item_to_str(obj) end
 function GlobalAPI.item_group_to_str(obj) end
 
 --Motion machine to string
----@param obj_id py.Mover # kinetoscope
+---@param obj_id py.Mover # Kinetoscope
 ---@return string # Character string
 function GlobalAPI.mover_entity_to_str(obj_id) end
 
@@ -935,7 +935,7 @@ function GlobalAPI.str_to_unit_attr_type(obj) end
 
 --String to UI event
 ---@param obj string # Character string
----@return string # UI event
+---@return string # UiEvent
 function GlobalAPI.str_to_ui_event(obj) end
 
 --Control to string

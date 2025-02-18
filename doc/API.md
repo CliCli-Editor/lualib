@@ -1,83 +1,83 @@
-# [Ability](API/Ability.md) 技能
+# [Ability](API/Ability.md) skill
 
-# [Area](API/Area.md) 区域
+# [Area](API/Area.md) region
 
 # [Await](API/Await.md) 
 
-# [Beam](API/Beam.md) 闪电特效（光束）
+# [Beam](API/Beam.md) Lightning effects (Beams）
 
-# [Buff](API/Buff.md) 魔法效果
+# [Buff](API/Buff.md) Magic effect
 
-# [Camera](API/Camera.md) 镜头
+# [Camera](API/Camera.md) Lens
 
-# [Cast](API/Cast.md) 施法实例
+# [Cast](API/Cast.md) Casting example
 
-会在施法相关的事件中传递
+Will be passed during spell-related events
 
-# [ClientTimer](API/ClientTimer.md) 客户端计时器
+# [ClientTimer](API/ClientTimer.md) Client timer
 
-由你自己电脑的CPU驱动的计时器，完全是异步的（即使是同步执行）
-在游戏暂停时也会继续计时并回调
-> 如果你不知道什么是异步，请不要使用这个模块！
+A timer, powered by your own computer's CPU, is completely asynchronous (even when executed synchronously)）
+It also continues to time and call back when the game is paused
+> If you don't know what asynchrony is, please don't use this module！
 
-# [Config](API/Config.md) 配置
+# [Config](API/Config.md) disposition
 
-可以设置日志、同步等相关的配置
+You can set log and synchronization configurations
 
-# [DamageInstance](API/DamageInstance.md) 伤害实例
+# [DamageInstance](API/DamageInstance.md) Injury instance
 
-会在伤害相关的事件中传递
+Will be transmitted during injury-related events
 
-# [Destructible](API/Destructible.md) 可破坏物
+# [Destructible](API/Destructible.md) destructible
 
 # [Develop](API/Develop.md) 
 
-# [ECAFunction](API/ECAFunction.md) 注册ECA函数
+# [ECAFunction](API/ECAFunction.md) Register ECA functions
 
-可以使用该功能让lua函数在ECA中被调用。
+You can use this feature to have lua functions called in ECA。
 
 # [ECAHelper](API/ECAHelper.md) 
 
-# [EditorObject](API/EditorObject.md)  物体编辑器
+# [EditorObject](API/EditorObject.md)  Object editor
 
 # [Enum](API/Enum.md) 
 
 # [GCBuffer](API/GCBuffer.md) 
 
-# [Game](API/Game.md) 游戏接口
+# [Game](API/Game.md) Game interface
 
-# [Ground](API/Ground.md) 地面
+# [Ground](API/Ground.md) ground
 
-地面碰撞相关方法
+Ground collision correlation method
 
-# [HealInstance](API/HealInstance.md) 治疗实例
+# [HealInstance](API/HealInstance.md) Treatment instance
 
-在治疗相关的事件中传递
+Transmission during treatment-related events
 
 # [HttpRequestOptions](API/HttpRequestOptions.md) 
 
-# [Item](API/Item.md) 物品
+# [Item](API/Item.md) item
 
-# [ItemGroup](API/ItemGroup.md) 物品组
+# [ItemGroup](API/ItemGroup.md) Item group
 
 # [KKNetwork](API/KKNetwork.md) 
 
-# [Light](API/Light.md) 光照
+# [Light](API/Light.md) illumination
 
-用来修改光照、阴影等效果
+Used to modify lighting, shadows, and other effects
 
 # [LocalPlayer](API/LocalPlayer.md) 
 
-# [LocalTimer](API/LocalTimer.md) 本地计时器
+# [LocalTimer](API/LocalTimer.md) Local timer
 
-支持异步创建或回调（只要你自己保证不会引发其他不同步的问题）
-如果是同步执行的，那么会确保同步回调
+Support asynchronous creation or callbacks (as long as you promise not to cause other out-of-sync problems)）
+If it is executed synchronously, then synchronous callbacks are ensured
 
-# [LocalUILogic](API/LocalUILogic.md) 本地UI逻辑框架
+# [LocalUILogic](API/LocalUILogic.md) Native UI logic framework
 
-# [Math](API/Math.md) 数学库
+# [Math](API/Math.md) Mathematical library
 
-均使用角度制
+All use Angle system
 
 # [Mover](API/Mover.md) 
 
@@ -148,63 +148,63 @@
 
 # [Network](API/Network.md) 
 
-# [Particle](API/Particle.md) 粒子特效
+# [Particle](API/Particle.md) Particle effect
 
-# [Player](API/Player.md) 玩家
+# [Player](API/Player.md) Player
 
-# [PlayerGroup](API/PlayerGroup.md) 玩家组
+# [PlayerGroup](API/PlayerGroup.md) Player group
 
 # [Point](API/Point.md) 点
 
 # [Pool](API/Pool.md) 
 
-# [Projectile](API/Projectile.md) 投射物
+# [Projectile](API/Projectile.md) projectile
 
-# [ProjectileGroup](API/ProjectileGroup.md) 投射物组
+# [ProjectileGroup](API/ProjectileGroup.md) Projectile set
 
 # [PyProxy](API/PyProxy.md) 
 
-# [Reload](API/Reload.md) 热重载
+# [Reload](API/Reload.md) Hot heavy duty
 
-热重载相关的方法，详细请看 `演示/热重载`。
+For methods related to hot reload, see 'Demo/Hot Reload' for details`。
 
-# [Road](API/Road.md) 路径
+# [Road](API/Road.md) path
 
 # [SDBMHash](API/SDBMHash.md) 
 
 # [SandBox](API/SandBox.md) 
 
-# [SaveData](API/SaveData.md) 存档
+# [SaveData](API/SaveData.md) On file
 
-# [Selector](API/Selector.md) 选取器
+# [Selector](API/Selector.md) chooser
 
-用来选取某个区域内的单位
+Used to select units within a region
 
 # [ServerTime](API/ServerTime.md) 
 
-# [Shape](API/Shape.md) 形状
+# [Shape](API/Shape.md) shape
 
 # [SortedDictionary](API/SortedDictionary.md) 
 
-# [Sound](API/Sound.md) 声音
+# [Sound](API/Sound.md) Audio
 
-# [Sync](API/Sync.md)  将本地数据同步给所有玩家
+# [Sync](API/Sync.md)  Sync local data to all players
 
 # [Synthesis](API/Synthesis.md) 
 
-# [Technology](API/Technology.md) 科技
+# [Technology](API/Technology.md) Science and technology
 
-# [Timer](API/Timer.md) 同步计时器
+# [Timer](API/Timer.md) Synchronous timer
 
-所有玩家必须使用一致的计时器，否则会造成不同步
+All players must use the same timer, otherwise it will be out of sync
 
-# [Trigger](API/Trigger.md) 触发器
+# [Trigger](API/Trigger.md) flip-flop
 
-# [UIPrefab](API/UIPrefab.md) 界面元件
+# [UIPrefab](API/UIPrefab.md) Interface element
 
-# [Unit](API/Unit.md) 单位
+# [Unit](API/Unit.md) unit
 
-# [UnitGroup](API/UnitGroup.md) 单位组
+# [UnitGroup](API/UnitGroup.md) Unit group
 
 # [UnitTest](API/UnitTest.md) 
 
@@ -212,7 +212,7 @@
 
 # [oslib](API/oslib.md) 
 
-[查看文档](command:extension.lua.doc?["en-us/54/manual.html/pdf-os"])
+[View document](command:extension.lua.doc?["en-us/54/manual.html/pdf-os"])
 
 # [Const](API/Const.md) 
 

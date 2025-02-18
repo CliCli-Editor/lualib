@@ -39,7 +39,7 @@ local cur_frame = 0
 local cur_ms = 0
 local id = 0
 
----@type table<integer, { [integer]: LocalTimer, need_sort?: true }>
+---@type table<integer, { [integer]: LocalTimer, need_sort? : true }>
 local timer_queues = {}
 
 ---@param time number
@@ -124,12 +124,12 @@ function M:wakeup()
     self:set_time_out()
 end
 
----立即执行
+---Immediate execution
 function M:execute(...)
     xpcall(self.on_timer, log.error, self, self.runned_count, ...)
 end
 
----移除计时器
+---Remove timer
 function M:remove()
     Delete(self)
 end
@@ -176,7 +176,7 @@ function M:pop()
     queue.need_sort = true
 end
 
----暂停计时器
+---Pause timer
 function M:pause()
     if self.pausing or self.removed then
         return
@@ -186,7 +186,7 @@ function M:pause()
     self:pop()
 end
 
----恢复计时器
+---Recovery timer
 function M:resume()
     if not self.pausing or self.removed then
         return
@@ -201,13 +201,13 @@ function M:resume()
     end
 end
 
----是否正在运行
+---Whether it is running
 function M:is_running()
     return  not self.removed
         and not self.pausing
 end
 
----获取经过的时间
+---Get the elapsed time
 ---@return number
 function M:get_elapsed_time()
     if self.removed then
@@ -222,13 +222,13 @@ function M:get_elapsed_time()
     return (cur_ms - self.start_ms - self.paused_ms) / 1000.0
 end
 
----获取初始计数
+---Get initial count
 ---@return integer
 function M:get_init_count()
     return self.count
 end
 
----获取剩余时间
+---Get remaining time
 ---@return number
 function M:get_remaining_time()
     if self.removed or self.waking_up then
@@ -240,7 +240,7 @@ function M:get_remaining_time()
     return (self.target_ms - cur_ms) / 1000.0
 end
 
----设置剩余时间（不能在计时器到期时设置）
+---Set the remaining time (cannot be set when the timer expires)
 ---@param sec number
 function M:set_remaining_time(sec)
     if self.removed or self.waking_up then
@@ -252,7 +252,7 @@ function M:set_remaining_time(sec)
     self:set_time_out()
 end
 
----获取剩余计数
+---Get residual count
 ---@return integer
 function M:get_remaining_count()
     if self.count <= 0 then
@@ -261,19 +261,19 @@ function M:get_remaining_count()
     return self.count - self.runned_count
 end
 
----设置剩余计数（设置为 <= 0 的数值将变为无次数限制）
+---Set the remaining count (values set to <= 0 will become no count limit)
 ---@param count integer
 function M:set_remaining_count(count)
     self.count = self.runned_count + count
 end
 
----获取计时器周期
+---Get timer cycle
 ---@return number
 function M:get_time_out_time()
     return self.time
 end
 
----设置计时器周期（从下个循环开始生效）
+---Set timer period (effective from next cycle)
 ---@param time number
 function M:set_time_out_time(time)
     self.time = time
@@ -286,7 +286,7 @@ function M:get_include_name()
     return self.include_name
 end
 
----等待时间后执行
+---Wait for the execution time
 ---@param timeout number
 ---@param on_timer LocalTimer.OnTimer
 ---@return LocalTimer
@@ -295,7 +295,7 @@ function M.wait(timeout, on_timer)
     return timer
 end
 
----等待一定帧数后执行
+---Wait for a certain number of frames before executing
 ---@param frame integer
 ---@param on_timer LocalTimer.OnTimer
 ---@return LocalTimer
@@ -304,7 +304,7 @@ function M.wait_frame(frame, on_timer)
     return timer
 end
 
----循环执行
+---Loop execution
 ---@param timeout number
 ---@param on_timer LocalTimer.OnTimer
 ---@return LocalTimer
@@ -313,7 +313,7 @@ function M.loop(timeout, on_timer)
     return timer
 end
 
----每经过一定帧数后执行
+---Execute after a certain number of frames
 ---@param frame integer
 ---@param on_timer LocalTimer.OnTimer
 ---@return LocalTimer
@@ -322,7 +322,7 @@ function M.loop_frame(frame, on_timer)
     return timer
 end
 
----循环执行，可以指定最大次数
+---Loop execution, you can specify a maximum number of times
 ---@param timeout number
 ---@param count integer
 ---@param on_timer LocalTimer.OnTimer
@@ -332,7 +332,7 @@ function M.loop_count(timeout, count, on_timer)
     return timer
 end
 
----每经过一定帧数后执行，可以指定最大次数
+---You can specify the maximum number of frames to be executed after a certain number of frames
 ---@param frame integer
 ---@param count integer
 ---@param on_timer LocalTimer.OnTimer
@@ -342,7 +342,7 @@ function M.loop_count_frame(frame, count, on_timer)
     return timer
 end
 
----遍历所有的计时器，仅用于调试（可能会遍历到已经失效的）
+---Iterate over all timers for debugging purposes only (it may be possible to iterate over an invalid one)
 ---@return fun():LocalTimer?
 function M.pairs()
     local timers = {}

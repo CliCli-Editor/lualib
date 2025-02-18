@@ -28,7 +28,7 @@ function Context:__init()
     return self;
 end
 
----获取共享黑板
+---Get shared blackboard
 ---@param key string
 ---@return NPBehave.Blackboard
 function Context.GetSharedBlackboard(key)

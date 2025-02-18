@@ -9,11 +9,11 @@ local API = {}
 function M:__init()
     ---@type Develop.Helper.TreeNode[]
     self.childs = {}
-    self.root = clicli.develop.helper.createTreeNode('属性监控', {
+    self.root = clicli.develop.helper.createTreeNode('Attribute monitoring', {
         icon = 'compass',
         childs = self.childs,
     })
-    self.tree = clicli.develop.helper.createTreeView('属性监控', self.root)
+    self.tree = clicli.develop.helper.createTreeView('Attribute monitoring', self.root)
 end
 
 function M:__del()
@@ -52,11 +52,11 @@ function M:add(unit, attr)
             end
             local template = [[
 
-已触发属性断点：
+Attribute breakpoints have been triggered：
 %s(%d)：%s
 %s -> %s
 
-断点表达式为：
+The breakpoint expression is：
 %s]]
             local msg = string.format(template
                 , unit:get_name()
@@ -73,13 +73,13 @@ function M:add(unit, attr)
         break_point:bindGC(watch)
     end
 
-    break_point = clicli.develop.helper.createTreeNode('断点', {
+    break_point = clicli.develop.helper.createTreeNode('breakpoint', {
         icon = 'eye',
         check = true,
         onClick = function ()
-            local prompt = '请输入表达式，如 “>= 100”，“<= `最大生命` / 2”'
+            local prompt = 'Please enter expressions such as ">= 100", "<= `Max life` / 2"'
             clicli.develop.helper.createInputBox {
-                title = '监控属性变化',
+                title = 'Monitor attribute change',
                 value = watch and watch.conditionStr,
                 prompt = prompt,
                 validateInput = function (value)
@@ -88,7 +88,7 @@ function M:add(unit, attr)
                     end
                     local f, err = dattr.compileCondition(value)
                     if not f then
-                        return '表达式错误：' .. err .. '\n' .. prompt
+                        return 'Expression error:' .. err .. '\n' .. prompt
                     end
                     return nil
                 end,
@@ -108,10 +108,10 @@ function M:add(unit, attr)
         childsGetter = function (node)
             return {
                 break_point,
-                clicli.develop.helper.createTreeNode('详情', {
+                clicli.develop.helper.createTreeNode('details', {
                     icon = 'info',
                     onInit = function (node)
-                        local attrTypes = {'基础', '基础加成', '增益', '增益加成', '最终加成'}
+                        local attrTypes = {'Basics', 'Base markup', 'gain', 'Gain addition', 'Final markup'}
                         local childs = {}
 
                         for _, attr_type in ipairs(attrTypes) do
@@ -134,7 +134,7 @@ function M:add(unit, attr)
                         node.childs = childs
                     end,
                 }),
-                clicli.develop.helper.createTreeNode('删除', {
+                clicli.develop.helper.createTreeNode('delete', {
                     icon = 'trash',
                     onClick = function ()
                         node:remove()
@@ -176,12 +176,12 @@ end
 function API.show_modify(unit, attr, options)
     local attr_type = options and options.attr_type
     local can_create_watch = options and options.can_create_watch or false
-    local prompt = ('修改%s值。使用 + 开头表示增加值。'):format(attr_type or '基础')
+    local prompt = ('Example Modify the %s value. Use a + to indicate value added.'):format(attr_type or 'Basics')
     if can_create_watch then
-        prompt = prompt .. '使用 ~ 创建一个新的监视。使用表达式创建断点。'
+        prompt = prompt .. 'Create a new monitor using ~. Use expressions to create breakpoints.'
     end
     clicli.develop.helper.createInputBox({
-        title = string.format('修改 "%s(%d)" 的 "%s"'
+        title = string.format('Modify "%s" of "%s(%d)"'
             , unit:get_name()
             , unit:get_id()
             , attr
@@ -192,7 +192,7 @@ function API.show_modify(unit, attr, options)
         prompt = prompt,
         validateInput = function (value)
             if value == '' then
-                return '请输入要修改的值!'
+                return 'Please enter the value you want to modify!'
             end
             if value == '~' and can_create_watch then
                 return nil
@@ -203,7 +203,7 @@ function API.show_modify(unit, attr, options)
                 if f then
                     return nil
                 else
-                    return '断点表达式错误：' .. err
+                    return 'Breakpoint expression error:' .. err
                 end
             end
             if op == '+' then
@@ -213,7 +213,7 @@ function API.show_modify(unit, attr, options)
             if num then
                 return nil
             else
-                return '不是有效数字!'
+                return 'Not a significant number!'
             end
         end
     }):show(function (value)

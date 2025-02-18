@@ -39,7 +39,7 @@ function DataModule:make_new_key()
             return i
         end
     end
-    error('无法找到可用的物编key：' .. tostring(last_key))
+    error('No available item found. key:' .. tostring(last_key))
 end
 
 ---@class EditorObject.Event
@@ -57,7 +57,7 @@ local function initGameEventProxy(self, name)
     local objects = M[otype]
     local config = event_configs.config[name]
     if not config or not config.object then
-        error(string.format('事件“%s”无法作为对象事件', name))
+        error(string.format('Event `%s` cannot be treated as an object event', name))
     end
     return clicli.game:event(name, function (trg, data)
         local master = get_master(name, data)
@@ -96,12 +96,12 @@ end
 ---@field on_create? fun(unit: Unit) # Execute after the unit is created
 ---@field on_remove? fun(unit: Unit) # Execute after the unit is removed
 ---@field on_dead? fun(unit: Unit) # Executed after the death of the unit
----单位的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
----如果想要修改数据，请使用 `new` 方法创建新的物编，并在创建时传入要修改的数据
+---Unit of object data, you can read or modify any object from it (some fields cannot be modified)
+---If you want to modify the data, create a new object using the 'new' method and pass in the data to be modified at creation time
 ---@field data Object.Unit
----单位的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
----如果想要修改数据，请使用 `new` 方法创建新的物编，并在创建时传入要修改的数据  
----使用该字段读取的数据会自动转成lua类型，写入时也会自动转成python类型。
+---Unit of object data, you can read or modify any object from it (some fields cannot be modified)
+---If you want to modify the data, create a new object using the 'new' method and pass in the data to be modified at creation time
+---Data read using this field is automatically converted to lua type and is automatically converted to python type when written.
 ---@field lua_data Object.Unit
 local Unit = Class 'EditorObject.Unit'
 
@@ -147,12 +147,12 @@ end)
 ---@field on_add_to_pkg? fun(item: Item) # Execute after the item enters the backpack
 ---@field on_add_to_bar? fun(item: Item) # Execute after the item enters the equipment bar
 ---@field on_use? fun(item: Item) # Item is executed when used
----物品的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
+---Item's catalog data, you can read or modify any catalog from it (some fields cannot be modified)
 --> Warning: Make sure the data type is correct, otherwise it may cause a crash
 --> Warning: If you create this item and then modify the data, the behavior is undefined
 ---@field data Object.Item
----物品的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
----使用该字段读取的数据会自动转成lua类型，写入时也会自动转成python类型。
+---Item's catalog data, you can read or modify any catalog from it (some fields cannot be modified)
+---Data read using this field is automatically converted to lua type and is automatically converted to python type when written.
 ---@field lua_data Object.Item
 local Item = Class 'EditorObject.Item'
 
@@ -191,12 +191,12 @@ end)
 ---@field on_lose? fun(buff: Buff) # Effect lost after execution
 ---@field on_pulse? fun(buff: Buff) # The effect is executed after heartbeat
 ---@field on_stack_change? fun(buff: Buff) # Execute after the number of effect layers changes
----魔法效果的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
+---Magic effect object data, you can read or modify any object from it (some fields cannot be modified)
 --> Warning: Make sure the data type is correct, otherwise it may cause a crash
 --> Warning: If you modify the data after creating this magic effect, the behavior is undefined
 ---@field data Object.Buff
----魔法效果的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
----使用该字段读取的数据会自动转成lua类型，写入时也会自动转成python类型。
+---Magic effect object data, you can read or modify any object from it (some fields cannot be modified)
+---Data read using this field is automatically converted to lua type and is automatically converted to python type when written.
 ---@field lua_data Object.Buff
 local Buff = Class 'EditorObject.Buff'
 
@@ -240,12 +240,12 @@ end)
 ---@field on_cast_shot? fun(ability: Ability, cast: Cast) # The skill is executed when casting spells
 ---@field on_cast_finish? fun(ability: Ability, cast: Cast) # The skill is executed when the spell is completed
 ---@field on_cast_stop? fun(ability: Ability, cast: Cast) # The skill is executed when it stops casting spells
----技能的物编数据，你可以从里面读取任意物编  
----如果想要修改数据，请使用 `new` 方法创建新的物编，并在创建时传入要修改的数据
+---Skill's object compilation data, you can read any object compilation from it
+---If you want to modify the data, create a new object using the 'new' method and pass in the data to be modified at creation time
 ---@field data Object.Ability
----技能的物编数据，你可以从里面读取任意物编  
----如果想要修改数据，请使用 `new` 方法创建新的物编，并在创建时传入要修改的数据  
----使用该字段读取的数据会自动转成lua类型，写入时也会自动转成python类型。
+---Skill's object compilation data, you can read any object compilation from it
+---If you want to modify the data, create a new object using the 'new' method and pass in the data to be modified at creation time
+---Data read using this field is automatically converted to lua type and is automatically converted to python type when written.
 ---@field lua_data Object.Ability
 local Ability = Class 'EditorObject.Ability'
 
@@ -286,12 +286,12 @@ end)
 ---@field key py.ProjectileKey
 ---@field on_create? fun(projectile: Projectile) # Executed when the projectile is created
 ---@field on_remove? fun(projectile: Projectile) # Execute when the projectile is destroyed
----投射物的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
+---The object compilation data of the projectile, you can read or modify any object compilation from it (some fields cannot be modified)
 --> Warning: Make sure the data type is correct, otherwise it may cause a crash
 --> Warning: If you create this projectile and modify the data, the behavior is undefined
 ---@field data Object.Projectile
----投射物的物编数据，你可以从里面读取或修改任意物编（部分字段无法修改）  
----使用该字段读取的数据会自动转成lua类型，写入时也会自动转成python类型。
+---The object compilation data of the projectile, you can read or modify any object compilation from it (some fields cannot be modified)
+---Data read using this field is automatically converted to lua type and is automatically converted to python type when written.
 ---@field lua_data Object.Projectile
 local Projectile = Class 'EditorObject.Projectile'
 
@@ -390,163 +390,163 @@ do
     end
 
     subscribe(Unit, 'on_create', function ()
-        clicli.game:event('单位-创建', function (trg, data)
+        clicli.game:event('Unit - Create', function (trg, data)
             M.callMethod('unit', 'on_create', data.unit:get_key(), data.unit, data.unit)
         end)
     end)
 
     subscribe(Unit, 'on_remove', function ()
-        clicli.game:event('单位-移除', function (trg, data)
+        clicli.game:event('Unit - Remove', function (trg, data)
             M.callMethod('unit', 'on_remove', data.unit:get_key(), data.unit, data.unit)
         end)
     end)
 
     subscribe(Unit, 'on_dead', function ()
-        clicli.game:event('单位-死亡', function (trg, data)
+        clicli.game:event('Unit - Death', function (trg, data)
             M.callMethod('unit', 'on_dead', data.unit:get_key(), data.unit, data.unit)
         end)
     end)
 
     subscribe(Item, 'on_add', function ()
-        clicli.game:event('物品-获得', function (trg, data)
+        clicli.game:event('Items - Get', function (trg, data)
             M.callMethod('item', 'on_add', data.item:get_key(), data.item, data.item)
         end)
     end)
 
     subscribe(Item, 'on_lose', function ()
-        clicli.game:event('物品-失去', function (trg, data)
+        clicli.game:event('Item - lost', function (trg, data)
             M.callMethod('item', 'on_lose', data.item:get_key(), data.item, data.item)
         end)
     end)
 
     subscribe(Item, 'on_create', function ()
-        clicli.game:event('物品-创建', function (trg, data)
+        clicli.game:event('Items - Create', function (trg, data)
             M.callMethod('item', 'on_create', data.item:get_key(), data.item, data.item)
         end)
     end)
 
     subscribe(Item, 'on_remove', function ()
-        clicli.game:event('物品-移除', function (trg, data)
+        clicli.game:event('Items - Removal', function (trg, data)
             M.callMethod('item', 'on_remove', data.item:get_key(), data.item, data.item)
         end)
     end)
 
     subscribe(Item, 'on_add_to_pkg', function ()
-        clicli.game:event('物品-进入背包', function(trg, data)
+        clicli.game:event('Items - Enter backpack', function(trg, data)
             M.callMethod('item', 'on_add_to_pkg', data.item:get_key(), data.item, data.item)
         end)
     end)
 
     subscribe(Item, 'on_add_to_bar', function ()
-        clicli.game:event('物品-进入物品栏', function(trg, data)
+        clicli.game:event('Items - Enter the inventory', function(trg, data)
             M.callMethod('item', 'on_add_to_bar', data.item:get_key(), data.item, data.item)
         end)
     end)
 
     subscribe(Item, 'on_use', function ()
-        clicli.game:event('物品-使用', function(trg, data)
+        clicli.game:event('Items - Use', function(trg, data)
             M.callMethod('item', 'on_use', data.item:get_key(), data.item, data.item)
         end)
     end)
 
     subscribe(Buff, 'on_can_add', function ()
-        clicli.game:event('效果-即将获得', function (trg, data)
+        clicli.game:event('Effect - Coming soon', function (trg, data)
             M.callMethod('buff', 'on_can_add', data.buff:get_key(), data.buff, data.buff)
         end)
     end)
 
     subscribe(Buff, 'on_add', function ()
-        clicli.game:event('效果-获得', function (trg, data)
+        clicli.game:event('Effect - gain', function (trg, data)
             M.callMethod('buff', 'on_add', data.buff:get_key(), data.buff, data.buff)
         end)
     end)
 
     subscribe(Buff, 'on_lose', function ()
-        clicli.game:event('效果-失去', function (trg, data)
+        clicli.game:event('effect-loss', function (trg, data)
             M.callMethod('buff', 'on_lose', data.buff:get_key(), data.buff, data.buff)
         end)
     end)
 
     subscribe(Buff, 'on_pulse', function ()
-        clicli.game:event('效果-心跳', function (trg, data)
+        clicli.game:event('Effect - Heartbeat', function (trg, data)
             M.callMethod('buff', 'on_pulse', data.buff:get_key(), data.buff, data.buff)
         end)
     end)
 
     subscribe(Buff, 'on_stack_change', function ()
-        clicli.game:event('效果-层数变化', function (trg, data)
+        clicli.game:event('Effect - Number of layers change', function (trg, data)
             M.callMethod('buff', 'on_stack_change', data.buff:get_key(), data.buff, data.buff)
         end)
     end)
 
     subscribe(Ability, 'on_add', function ()
-        clicli.game:event('技能-获得', function (trg, data)
+        clicli.game:event('Skills - Acquisition', function (trg, data)
             M.callMethod('ability', 'on_add', data.ability:get_key(), data.ability, data.ability)
         end)
     end)
 
     subscribe(Ability, 'on_lose', function ()
-        clicli.game:event('技能-失去', function (trg, data)
+        clicli.game:event('Skill loss', function (trg, data)
             M.callMethod('ability', 'on_lose', data.ability:get_key(), data.ability, data.ability)
         end)
     end)
 
     subscribe(Ability, 'on_cooldown', function ()
-        clicli.game:event('技能-冷却结束', function (trg, data)
+        clicli.game:event('Skill - Cooldown ends', function (trg, data)
             M.callMethod('ability', 'on_cooldown', data.ability:get_key(), data.ability, data.ability)
         end)
     end)
 
     subscribe(Ability, 'on_upgrade', function ()
-        clicli.game:event('技能-升级', function (trg, data)
+        clicli.game:event('Skills - Upgrades', function (trg, data)
             M.callMethod('ability', 'on_upgrade', data.ability:get_key(), data.ability, data.ability)
         end)
     end)
 
     subscribe(Ability, 'on_can_cast', function ()
-        clicli.game:event('施法-即将开始', function (trg, data)
+        clicli.game:event('Casting. - About to begin', function (trg, data)
             M.callMethod('ability', 'on_can_cast', data.ability:get_key(), nil, data.ability, data.cast)
         end)
     end)
 
     subscribe(Ability, 'on_cast_start', function ()
-        clicli.game:event('施法-开始', function (trg, data)
+        clicli.game:event('Cast the spell. - Here we go', function (trg, data)
             M.callMethod('ability', 'on_cast_start', data.ability:get_key(), nil, data.ability, data.cast)
         end)
     end)
 
     subscribe(Ability, 'on_cast_channel', function ()
-        clicli.game:event('施法-引导', function (trg, data)
+        clicli.game:event('Cast - Guide', function (trg, data)
             M.callMethod('ability', 'on_cast_channel', data.ability:get_key(), nil, data.ability, data.cast)
         end)
     end)
 
     subscribe(Ability, 'on_cast_shot', function ()
-        clicli.game:event('施法-出手', function (trg, data)
+        clicli.game:event('Cast spells. - Strike', function (trg, data)
             M.callMethod('ability', 'on_cast_shot', data.ability:get_key(), nil, data.ability, data.cast)
         end)
     end)
 
     subscribe(Ability, 'on_cast_finish', function ()
-        clicli.game:event('施法-完成', function (trg, data)
+        clicli.game:event('Cast a spell. - Finished', function (trg, data)
             M.callMethod('ability', 'on_cast_finish', data.ability:get_key(), nil, data.ability, data.cast)
         end)
     end)
 
     subscribe(Ability, 'on_cast_stop', function ()
-        clicli.game:event('施法-停止', function (trg, data)
+        clicli.game:event('Cast spells. - Stop', function (trg, data)
             M.callMethod('ability', 'on_cast_stop', data.ability:get_key(), nil, data.ability, data.cast)
         end)
     end)
 
     subscribe(Projectile, 'on_create', function ()
-        clicli.game:event('投射物-创建', function (trg, data)
+        clicli.game:event('Projectiles - Created', function (trg, data)
             M.callMethod('projectile', 'on_create', data.projectile:get_key(), data.projectile, data.projectile)
         end)
     end)
 
     subscribe(Projectile, 'on_remove', function ()
-        clicli.game:event('投射物-死亡', function (trg, data)
+        clicli.game:event('Projectiles - Death', function (trg, data)
             M.callMethod('projectile', 'on_remove', data.projectile:get_key(), data.projectile, data.projectile)
         end)
     end)

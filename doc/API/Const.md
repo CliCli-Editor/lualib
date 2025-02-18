@@ -1,6 +1,6 @@
 # y3.Const
 
-常量
+constant
 
 ## AbilityCastType
 
@@ -414,7 +414,7 @@ enum y3.Const.VisibleType
 # y3.Const.AbilityFloatAttr
 
 ```lua
-"技能消耗" | "生命值消耗" | "冷却时间" | "技能伤害值" | "释放范围" | "施法开始" | "施法完成" | "施法出手" | "施法引导" | "技能影响范围" | "充能时间"
+"Skills consumption "|" "|" HP consumption cooldown "|" skill damage "|" "|" release range cast started "|" cast completed sell casting "|" "|" cast lead "|" "|" effect range to recharge time"
 ```
 
 
@@ -444,7 +444,7 @@ enum y3.Const.VisibleType
 # y3.Const.AbilityIntAttr
 
 ```lua
-"最大等级" | "最大充能数" | "当前等级" | "当前充能数"
+"Maximum level "|" Maximum charge level "|" Current level "|" Current charge level"
 ```
 
 
@@ -467,7 +467,7 @@ enum y3.Const.VisibleType
 # y3.Const.AbilityStrAttr
 
 ```lua
-"名称" | "描述"
+"Description of name "|""
 ```
 
 
@@ -479,53 +479,53 @@ enum y3.Const.VisibleType
     NORMAL: integer = 1,
     COMMON: integer = 2,
     HERO: integer = 3,
-    隐藏: integer = 0,
-    普通: integer = 1,
-    命令: integer = 2,
-    英雄: integer = 3,
+    Hidden: integer = 0,
+    Normal: integer = 1,
+    command: integer = 2,
+    Hero: integer = 3,
 }
 ```
 
 
-# y3.Const.AbilityType.命令
+# y3.Const.AbilityType.command
 
 
-# y3.Const.AbilityType.普通
+# y3.Const.AbilityType.Normal
 
 
-# y3.Const.AbilityType.英雄
+# y3.Const.AbilityType.Hero
 
 
-# y3.Const.AbilityType.隐藏
+# y3.Const.AbilityType.Hidden
 
 
 # y3.Const.AbilityTypeAlias
 
 ```lua
 y3.Const.AbilityTypeAlias:
-    | '隐藏'
-    | '普通'
-    | '命令'
-    | '英雄'
+    | 'Hidden'
+    | 'Normal'
+    | 'command'
+    | 'Hero'
 ```
 
 
 ```lua
-'命令'|'普通'|'英雄'|'隐藏'
+'Command '|' normal '|' hero '|' hide'
 ```
 
 
 # y3.Const.CameraMoveMode
 
 ```lua
-"ACC" | "SMOOTH" | "DEC" | "匀速" | "匀加速" | "匀减速"
+"ACC" | "SMOOTH" | "DEC" | "Uniform speed "|" uniform acceleration "|" uniform deceleration"
 ```
 
 
 # y3.Const.CollisionLayers
 
 ```lua
-"地面" | "空中" | "水面" | "物件"
+"Ground "|" air "|" water "|" object"
 ```
 
 
@@ -533,26 +533,26 @@ y3.Const.AbilityTypeAlias:
 
 ```lua
 y3.Const.CursorState:
-    | '常态悬浮'
-    | '常态选取'
-    | '常态禁用'
-    | '敌方建筑单位悬浮'
-    | '敌方非建筑单位悬浮'
-    | '敌方建筑单位选取'
-    | '敌方非建筑单位选取'
-    | '己方建筑单位悬浮'
-    | '己方非建筑单位悬浮'
-    | '己方建筑单位选取'
-    | '己方非建筑单位选取'
-    | '友方建筑单位悬浮'
-    | '友方非建筑单位悬浮'
-    | '友方建筑单位选取'
-    | '友方非建筑单位选取'
+    | 'Normal suspension'
+    | 'Normal selection'
+    | 'Normal disable'
+    | 'Enemy building units levitate'
+    | 'Enemy non-construction units levitate'
+    | 'Enemy building unit selected'
+    | 'Enemy non-building units selected'
+    | 'Own building unit suspension'
+    | 'Own non-construction unit suspension'
+    | 'Choose your own building unit'
+    | 'Choose your own non-construction unit'
+    | 'Friendly building unit suspension'
+    | 'Friend-side non-construction unit suspension'
+    | 'Friendly building unit selection'
+    | 'Friendly non-construction unit selection'
 ```
 
 
 ```lua
-'友方建筑单位悬浮'|'友方建筑单位选取'|'友方非建筑单位悬浮'|'友方非建筑单位选取'|'己方建筑单位悬浮'...(+10)
+'Friendly building unit suspension '|' Friendly building unit select '|' friendly non-building unit suspension '|' friendly non-building unit select '|' own building unit suspension'...(+10)
 ```
 
 
@@ -571,11 +571,11 @@ y3.Const.CursorState:
 
 ```lua
 y3.Const.DamageTextType:
-    | 'get_gold' -- 获取金币
-    | 'heal' -- 治疗
-    | 'magic' -- 法术
-    | 'physics' -- 物理
-    | 'real' -- 真实
+    | 'get_gold' -- Get gold
+    | 'heal' -- heal
+    | 'magic' -- magic
+    | 'physics' -- physics
+    | 'real' -- truth
 ```
 
 
@@ -588,14 +588,14 @@ y3.Const.DamageTextType:
 
 ```lua
 y3.Const.DamageType:
-    | '物理'
-    | '法术'
-    | '真实'
+    | 'physics'
+    | 'magic'
+    | 'truth'
 ```
 
 
 ```lua
-'法术'|'物理'|'真实'
+'Spell '|' physics '|' real'
 ```
 
 
@@ -618,20 +618,20 @@ y3.Const.DamageType:
 
 ```lua
 {
-    ease_in曲线: integer = 1,
-    ease_out曲线: integer = 2,
-    ease_in_out曲线: integer = 3,
+    ease_incurve: integer = 1,
+    ease_outcurve: integer = 2,
+    ease_in_outcurve: integer = 3,
 }
 ```
 
 
-# y3.Const.EaseType.ease_in_out曲线
+# y3.Const.EaseType.ease_in_outcurve
 
 
-# y3.Const.EaseType.ease_in曲线
+# y3.Const.EaseType.ease_incurve
 
 
-# y3.Const.EaseType.ease_out曲线
+# y3.Const.EaseType.ease_outcurve
 
 
 # y3.Const.EffectType
@@ -656,13 +656,13 @@ y3.Const.AbilityEventType|y3.Const.DestructibleEventType|y3.Const.GlobalEventTyp
 
 # y3.Const.FloatTextJumpType
 
-TODO：应该解析文件
+TODO：Should parse file
 
 
 # y3.Const.FloatTextType
 
 ```lua
-"物理伤害" | "魔法伤害" | "真实伤害" | "治疗" | "获取金币" | "系统字体" | "微软雅黑" | "华康黑体W9" | "华康黑体W12" | "华康标题宋W9" | "华康魏碑W7" | "华康新综艺体W7" | "华康新综艺体W9" | "华康圆体W5" | "华康圆体W7" | "华康圆体W9"
+"Physical damage spell damage "|" "|" real harm "|" "|" "|" a source treatment system font "|" Microsoft jas black "|" huakang bold W9 "|" huakang bold W12 "|" hua kang title song W9 hua kang wei rubbings W7 "|" "|" hua kang new variety of body W7 "| "Huakang New Variety Show W9" |" Huakang Round body W5" | "Huakang round body W7" |" Huakang round bodyW9"
 ```
 
 
@@ -728,7 +728,7 @@ TODO：应该解析文件
 # y3.Const.HarmTextType
 
 ```lua
-"系统字体" | "物理伤害" | "物理暴击" | "治疗" | "魔法伤害" | "魔法暴击" | "真实伤害" | "金币获取" | "魔兽获取金币" | "魔兽获取木材" | "嘲讽" | "沉默" | "定身" | "减速" | "晕眩" | "致盲"
+"System font "|" physical crit physical damage "|" "|" "|" "|" magic spell damage treatment crit "|" real harm "|" gold to obtain access to gold "|" "|" warcraft get wood "|" taunt "|" "|" freeze silence "|" slow "| "Dizziness" | "blinding"
 ```
 
 
@@ -975,7 +975,7 @@ TODO：应该解析文件
 # y3.Const.SfxRotateType
 
 ```lua
-"跟随节点" | "跟随模型" | "不跟随"
+"Follows node "|" follows model "|" does not follow"
 ```
 
 
@@ -983,36 +983,36 @@ TODO：应该解析文件
 
 ```lua
 {
-    物品栏: integer = 1,
-    背包栏: integer = 0,
+    Inventory Panel: integer = 1,
+    Backpack rail: integer = 0,
 }
 ```
 
 
-# y3.Const.ShiftSlotType.物品栏
+# y3.Const.ShiftSlotType.Inventory Panel
 
 
-# y3.Const.ShiftSlotType.背包栏
+# y3.Const.ShiftSlotType.Backpack rail
 
 
 # y3.Const.ShiftSlotTypeAlias
 
 ```lua
 y3.Const.ShiftSlotTypeAlias:
-    | '物品栏'
-    | '背包栏'
+    | 'Inventory Panel'
+    | 'Backpack rail'
 ```
 
 
 ```lua
-'物品栏'|'背包栏'
+'Item bar '|' Backpack bar'
 ```
 
 
 # y3.Const.SignalType
 
 ```lua
-"普通" | "黄色" | "蓝色"
+"Ordinary "|" yellow "|" blue"
 ```
 
 
@@ -1037,7 +1037,7 @@ y3.Const.ShiftSlotTypeAlias:
 # y3.Const.UIAttr
 
 ```lua
-"文本" | "最大值" | "当前值"
+"Current value of the text "|" maximum value "|""
 ```
 
 
@@ -1045,55 +1045,55 @@ y3.Const.ShiftSlotTypeAlias:
 
 ```lua
 {
-    常态: integer = 1,
-    悬浮: integer = 2,
-    按下: integer = 3,
-    禁用: integer = 4,
+    normality: integer = 1,
+    suspension: integer = 2,
+    press: integer = 3,
+    forbidden: integer = 4,
 }
 ```
 
 
-# y3.Const.UIButtonStatus.常态
+# y3.Const.UIButtonStatus.normality
 
 
-# y3.Const.UIButtonStatus.悬浮
+# y3.Const.UIButtonStatus.suspension
 
 
-# y3.Const.UIButtonStatus.按下
+# y3.Const.UIButtonStatus.press
 
 
-# y3.Const.UIButtonStatus.禁用
+# y3.Const.UIButtonStatus.forbidden
 
 
 # y3.Const.UIComponentType
 
 ```lua
 y3.Const.UIComponentType:
-    | '物品'
-    | '按钮'
-    | '富文本'
-    | '文本'
-    | '图片'
-    | '进度条'
-    | '模型'
-    | '空节点'
-    | '标签页'
-    | '设置'
-    | '列表'
-    | '滑动条'
-    | '聊天'
-    | '轮播图'
-    | '语音开关'
-    | '输入框'
-    | '地图'
-    | '技能按钮'
-    | '魔法效果'
-    | '序列帧'
+    | 'item'
+    | 'Button'
+    | 'Rich text'
+    | 'text'
+    | 'picture'
+    | 'Progress bar'
+    | 'model'
+    | 'Empty node'
+    | 'Label page'
+    | 'Settings'
+    | 'list'
+    | 'slider'
+    | 'chat'
+    | 'Carousel map'
+    | 'Voice switch'
+    | 'Input field'
+    | 'map'
+    | 'Skill button'
+    | 'Magic effect'
+    | 'Sequence frame'
 ```
 
 
 ```lua
-'列表'|'图片'|'地图'|'富文本'|'序列帧'...(+15)
+'List '|' images '|' maps '|' rich text '|' sequence frames'...(+15)
 ```
 
 
@@ -1101,23 +1101,23 @@ y3.Const.UIComponentType:
 
 ```lua
 y3.Const.UIEvent:
-    | '左键-按下'
-    | '左键-抬起'
-    | '左键-点击'
-    | '左键-双击'
-    | '鼠标-悬停'
-    | '鼠标-移入'
-    | '鼠标-移出'
-    | '鼠标-右击'
-    | '右键-按下'
-    | '右键-抬起'
-    | '右键-点击'
-    | '右键-双击'
+    | 'Left button. - Press it'
+    | 'Left click - Lift'
+    | 'Left - click'
+    | 'Left - Double-click'
+    | 'Mouse - Hover'
+    | 'Mouse - Move in'
+    | 'Mouse - Move out'
+    | 'Mouse - right click'
+    | 'Right - Press it'
+    | 'right-right-lift'
+    | 'right-click'
+    | 'right-double-click'
 ```
 
 
 ```lua
-'右键-双击'|'右键-抬起'|'右键-按下'|'右键-点击'|'左键-双击'...(+7)
+'Right - Double click '|' right - lift '|' right - press '|' right - left click '|' - Double click'...(+7)
 ```
 
 
@@ -1142,7 +1142,7 @@ y3.Const.UIHAlignmentType:
 
 
 ```lua
-'中'|'右'|'左'
+'Middle '|' right '|' left'
 ```
 
 
@@ -1150,15 +1150,15 @@ y3.Const.UIHAlignmentType:
 
 ```lua
 y3.Const.UIRelativeParentPosType:
-    | '顶部'
-    | '底部'
-    | '左侧'
-    | '右侧'
+    | 'upper'
+    | 'bottom'
+    | 'Left side'
+    | 'Right side'
 ```
 
 
 ```lua
-'右侧'|'左侧'|'底部'|'顶部'
+'Right side '|' left side '|' bottom '|' top'
 ```
 
 
@@ -1173,28 +1173,28 @@ y3.Const.UIVAlignmentType:
 
 
 ```lua
-'上'|'下'|'中'
+'Up '|' down '|''
 ```
 
 
 # y3.Const.UnitAttr
 
 ```lua
-"生命" | "魔法" | "最大生命" | "生命恢复" | "最大魔法" | "魔法恢复" | "物理攻击" | "法术攻击" | "物理防御" | "法术防御" | "攻击速度" | "冷却缩减" | "命中率" | "躲避率" | "暴击率" | "暴击伤害" | "物理穿透" | "法术穿透" | "物理吸血" | "法术吸血" | "物理穿透比例" | "法术穿透比例" | "受伤减免" | "伤害加成" | "被治疗加成" | "移动速度" | "真实视野" | "攻击间隔" | "攻击范围" | "白天视野" | "夜晚视野" | "白天扇形视野半径" | "夜晚扇形视野半径" | "白天扇形视野夹角" | "夜晚扇形视野夹角" | "百分比生命恢复"
+"Life "|" "|" "|" biggest life magic healing "|" "|" maximum magic magic recovery "|" "|" spell physical attacks against physical defense "|" "|" spell defense "|" "|" attack speed reduced cooling rate of shooting "|" "|" to avoid "| Critical damage "crit rate" | "" |" physical penetration "|" spell penetration "|" physical vampire "|" spell vampire | "" |" physical penetration "spell penetration ratio" | "injury relief" | "damage" | "bonus to be treated" | "speed" | | "true" "Attack interval" | "attack range" | "daytime field of view" | "night field of view" | "daytime sector radius" | "night sector radius" | "daytime sector Angle" | "night sector Angle" | "percent health recovery"
 ```
 
 
 # y3.Const.UnitAttrType
 
 ```lua
-"基础" | "基础加成" | "增益" | "增益加成" | "最终加成"
+"Base "|" Base bonus "|" gain "|" gain bonus "|" Final bonus"
 ```
 
 
 # y3.Const.UnitEnumState
 
 ```lua
-"禁止普攻" | "禁止施法" | "禁止移动" | "禁止转向" | "动画定帧" | "无法施加运动" | "无法被技能指示器锁定" | "无法被选中" | "隐身" | "无视静态碰撞" | "无视动态碰撞" | "不会死亡" | "无敌" | "无法控制" | "无法被攻击" | "AI无视" | "物理伤害免疫" | "魔法伤害免疫" | "负面魔法效果免疫" | "隐藏" | "无法被筛选器选中" | "真实伤害免疫" | "禁止使用道具"
+"Ban's attack "|" casting "|" "|" ban mobile prohibit to "|" animation fixed frame "|" "|" cannot exert movement skills cannot be indicator lock "|" cannot be selected "|" "|" stealth ignore static collision "|" to ignore the dynamic collision "|" no death "| "Invincible" | "uncontrollable" | "cannot be attacked" | "AI" | "physical damage immune" | "magical damage immune" | "negative buffs immune" | "hidden" | "cannot be filter selected" | "real damage immune" | "banning the use of props"
 ```
 
 
@@ -1244,7 +1244,7 @@ y3.Const.UIVAlignmentType:
 # y3.Const.VisibleType
 
 ```lua
-"全体" | "自己" | "友方" | "敌方"
+"All |, ourselves, |, friends, |, the enemy"
 ```
 
 

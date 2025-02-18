@@ -29,7 +29,7 @@ function M.wrap_code(code, env)
     return nil, nil, (err:gsub('^code:1:', '[Error]: '))
 end
 
----执行本地代码
+---Execute native code
 ---@param code string # Code to execute
 ---@param env? table # Execution environment
 ---@return boolean # Whether the execution is successful
@@ -39,8 +39,8 @@ function M.run(code, env)
 
     if not debug_mode then
         if not clicli.config.code.enable_local then
-            log.error('不允许执行本地代码：\n' .. tostring(code))
-            return false, '不允许执行本地代码'
+            log.error('Execution of local code: \n is not allowed' .. tostring(code))
+            return false, 'Execution of local code is not allowed'
         end
     end
 
@@ -50,7 +50,7 @@ function M.run(code, env)
     end
 
     if not debug_mode then
-        log.warn('执行本地代码：\n' .. fcode)
+        log.warn('Execute local code: \n' .. fcode)
     end
 
     local ok, result = pcall(f)
@@ -59,13 +59,13 @@ function M.run(code, env)
     end
 
     if not debug_mode then
-        log.debug('执行结果：' .. tostring(result))
+        log.debug('Execution result:' .. tostring(result))
     end
 
     return true, result
 end
 
----广播后同步执行代码，必须由本地发起
+---The code is executed synchronously after broadcast and must be locally initiated
 ---@param code string # Code to execute
 ---@param data? table<string, any> # Data, can be accessed directly in the code
 ---@param id? string # Processor ID
@@ -76,8 +76,8 @@ function M.sync_run(code, data, id)
 
     if not debug_mode then
         if not clicli.config.code.enable_remote then
-            log.error('不允许执行远程代码：\n' .. tostring(code))
-            return false, '不允许执行远程代码'
+            log.error('Remote code execution is not allowed: \n' .. tostring(code))
+            return false, 'Remote code execution is not allowed'
         end
     end
 
@@ -87,7 +87,7 @@ function M.sync_run(code, data, id)
     end
 
     if not debug_mode then
-        log.warn('发起远程代码：\n' .. code)
+        log.warn('Initiate remote code: \n' .. code)
     end
 
     clicli.sync.send('$sync_run', {
@@ -106,13 +106,13 @@ clicli.sync.onSync('$sync_run', function (data, source)
 
     if not debug_mode then
         if not clicli.config.code.enable_remote then
-            log.error(string.format('%s 广播了远程代码，已拒绝：\n%s'
+            log.error(string.format('%s broadcast remote code, rejected: \n%s'
                 , source
                 , tostring(data.code)
             ))
             return
         end
-        log.warn(string.format('%s 广播了远程代码：\n%s'
+        log.warn(string.format('%s broadcasts the remote code: \n%s'
             , source
             , tostring(data.code)
         ))
@@ -141,7 +141,7 @@ clicli.sync.onSync('$sync_run', function (data, source)
     end
 
     if not debug_mode then
-        log.debug('执行结果：' .. tostring(result))
+        log.debug('Execution result:' .. tostring(result))
     end
 
     if handler and handler.complete then
@@ -149,7 +149,7 @@ clicli.sync.onSync('$sync_run', function (data, source)
     end
 end)
 
----注册同步处理器
+---Registered sync processor
 ---@param id string
 ---@param handler Develop.Code.SyncHandler
 function M.on_sync(id, handler)

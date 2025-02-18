@@ -1,6 +1,6 @@
 # Road
 
-路径
+path
 
 ## add_point
 
@@ -8,9 +8,9 @@
 (method) Road:add_point(index: integer, point: Point)
 ```
 
-给路径添加点
+Add points to the path
 
-@*param* `index` — 序号
+@*param* `index` — Serial number
 
 @*param* `point` — 点
 ## add_tag
@@ -19,19 +19,19 @@
 (method) Road:add_tag(tag: string)
 ```
 
-给路径添加标签
+Label the path
 
-@*param* `tag` — 序号
+@*param* `tag` — Serial number
 ## create_path
 
 ```lua
 function Road.create_path(start_point: Point)
-  -> 创建的路径: Road
+  -> Created path: Road
 ```
 
-以点为起点创建路径
+Create a path from a point
 
-@*param* `start_point` — 起点
+@*param* `start_point` — Starting point
 ## get_by_handle
 
 ```lua
@@ -43,12 +43,12 @@ function Road.get_by_handle(py_road: py.Road)
 
 ```lua
 function Road.get_path_areas_by_tag(tag: string)
-  -> 路径: Road[]
+  -> path: Road[]
 ```
 
-按标签获取所有的路径
+Get all paths by label
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## get_point_count
 
 ```lua
@@ -56,7 +56,7 @@ function Road.get_path_areas_by_tag(tag: string)
   -> integer
 ```
 
-获取路径中点的个数
+Gets the number of points in a path
 ## get_road_by_res_id
 
 ```lua
@@ -70,15 +70,15 @@ function Road.get_road_by_res_id(res_id: integer)
 py.Road
 ```
 
-路径
+path
 ## has_tag
 
 ```lua
 (method) Road:has_tag(tag: string)
-  -> 路径是否有tag: boolean
+  -> Whether the path hastag: boolean
 ```
 
-路径是否有tag
+Whether the path hastag
 
 @*param* `tag` — tag
 ## map
@@ -93,25 +93,25 @@ table
 (method) Road:remove_path()
 ```
 
-删除路径
+Delete path
 ## remove_point
 
 ```lua
 (method) Road:remove_point(index: integer)
 ```
 
-给路径移除点
+Remove points from paths
 
-@*param* `index` — 序号
+@*param* `index` — Serial number
 ## remove_tag
 
 ```lua
 (method) Road:remove_tag(tag: string)
 ```
 
-给路径移除标签
+Remove labels from paths
 
-@*param* `tag` — 序号
+@*param* `tag` — Serial number
 ## res_id
 
 ```lua

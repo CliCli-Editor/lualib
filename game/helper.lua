@@ -104,7 +104,7 @@ local function as_py(v, mark)
         mark = mark or {}
         if mark[v] ~= nil then
             if mark[v] == false then
-                error('元组不支持循环引用！')
+                error('Tuples do not support circular references!')
             end
             return mark[v]
         end
@@ -146,7 +146,7 @@ end
 ---@return py.Tuple
 function M.py_tuple(t)
     if not pytuple then
-        error('需要编辑器2月版本更新后才可使用此功能！')
+        error('You need to update the February version of the editor to use this feature!')
     end
     local set
     if t then
@@ -158,7 +158,7 @@ function M.py_tuple(t)
     return pytuple(set)
 end
 
----将py.Dict转换为table
+---Convert py.Dict to table
 ---@param dict py.Dict
 ---@return table
 function M.dict_to_table(dict)

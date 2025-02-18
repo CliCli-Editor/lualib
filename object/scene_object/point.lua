@@ -5,7 +5,7 @@
 ---@field handle Point.HandleType
 ---@field res_id? integer
 ---@overload fun(py_point: Point.HandleType): self
----@overload fun(x: number, y: number, z?: number): self
+---@overload fun(x: number, y: number, z? : number): self
 local M = Class 'Point'
 
 M.type = 'point'
@@ -22,7 +22,7 @@ end
 ---@return self
 function M:__init(py_point)
     if not py_point then
-        error('传进来的 py_point 为空！')
+        error('The py_point passed in is empty!')
     end
     self.handle = py_point
     return self
@@ -52,7 +52,7 @@ function M.get_point_by_res_id(res_id)
     return M.map[res_id]
 end
 
----根据py对象创建点
+---Create points based on the py object
 ---@param py_point Point.HandleType
 ---@return Point
 function M.get_by_handle(py_point)
@@ -70,7 +70,7 @@ clicli.py_converter.register_lua_to_py('py.Vector3', function (lua_value)
     return lua_value.handle
 end)
 
----点的x坐标
+---The x-coordinate of the point
 ---@return number
 function M:get_x()
     if not self.x then
@@ -80,7 +80,7 @@ function M:get_x()
     return self.x
 end
 
----点的y坐标
+---The y coordinate of the point
 ---@return number
 function M:get_y()
     if not self.y then
@@ -90,7 +90,7 @@ function M:get_y()
     return self.y
 end
 
----点的z坐标
+---The z coordinate of the point
 ---@return number
 function M:get_z()
     if not self.z then
@@ -117,15 +117,15 @@ function M:move(x, y, z)
     return M.create(nx, ny, nz)
 end
 
----坐标转化为点
----@param x number 点X坐标
----@param y number 点Y坐标
----@param z? number 点Z坐标
+---Coordinates are converted to points
+---@param x number Point X coordinate
+---@param y number Point Y coordinate
+---@param z? number point Z coordinates
 ---@return Point
 function M.create(x, y, z)
     ---@diagnostic disable-next-line: param-type-mismatch
     local py_point = Fix32Vec3(x / 100, (z or 0) / 100, y / 100)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     local p = M.get_by_handle(py_point)
     p.x = x
@@ -134,22 +134,22 @@ function M.create(x, y, z)
     return p
 end
 
----点向方向偏移
----@param point Point 点
----@param direction number 偏移方向点
----@param offset number 偏移量
+---The point is shifting in the direction
+---@param point Point
+---@param direction number Indicates the offset direction
+---@param offset number Indicates the offset
 ---@return Point
 function M.get_point_offset_vector(point, direction, offset)
     ---@diagnostic disable-next-line: undefined-field
     local py_point = point.handle:get_point_offset_vector(direction, offset)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     return M.get_by_handle(py_point)
 end
 
----路径中的点
----@param path table 目标路径
----@param index integer 索引
+---Point in the path
+---@param path table Target path
+---@param index integer Indicates the index
 ---@return Point
 function M.get_point_in_path(path,index)
     local py_point = GlobalAPI.get_point_in_route(path.handle, index)
@@ -160,7 +160,7 @@ end
 ---@param other Point
 ---@return number
 function M:get_angle_with(other)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch, undefined-field
     return clicli.helper.tonumber(self.handle:get_angle_with(other.handle)) or 0.0
 end
@@ -169,7 +169,7 @@ end
 ---@param other Point
 ---@return number
 function M:get_distance_with(other)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch, undefined-field
     return clicli.helper.tonumber(self.handle:get_distance_with(other.handle)) or 0.0
 end

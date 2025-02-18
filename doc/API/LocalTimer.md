@@ -1,9 +1,9 @@
 # LocalTimer
 
-本地计时器
+Local timer
 
-支持异步创建或回调（只要你自己保证不会引发其他不同步的问题）
-如果是同步执行的，那么会确保同步回调
+Support asynchronous creation or callbacks (as long as you promise not to cause other out-of-sync problems)）
+If it is executed synchronously, then synchronous callbacks are ensured
 
 ## all_timers
 
@@ -18,7 +18,7 @@ function LocalTimer.clock()
   -> number
 ```
 
-获取当前逻辑时间（毫秒）
+Gets the current logical time (milliseconds）
 ## count
 
 ```lua
@@ -31,7 +31,7 @@ integer
 (method) LocalTimer:execute(...any)
 ```
 
- 立即执行
+ Immediate execution
 ## get_elapsed_time
 
 ```lua
@@ -39,7 +39,7 @@ integer
   -> number
 ```
 
- 获取经过的时间
+ Get the elapsed time
 ## get_include_name
 
 ```lua
@@ -54,7 +54,7 @@ integer
   -> integer
 ```
 
- 获取初始计数
+ Get initial count
 ## get_remaining_count
 
 ```lua
@@ -62,7 +62,7 @@ integer
   -> integer
 ```
 
- 获取剩余计数
+ Get residual count
 ## get_remaining_time
 
 ```lua
@@ -70,7 +70,7 @@ integer
   -> number
 ```
 
- 获取剩余时间
+ Get remaining time
 ## get_time_out_time
 
 ```lua
@@ -78,7 +78,7 @@ integer
   -> number
 ```
 
- 获取计时器设置的时间
+ Gets the time set by the timer
 ## id
 
 ```lua
@@ -104,7 +104,7 @@ integer
   -> boolean
 ```
 
- 是否正在运行
+ Whether it is running
 ## loop
 
 ```lua
@@ -112,7 +112,7 @@ function LocalTimer.loop(timeout: number, on_timer: LocalTimer.OnTimer)
   -> LocalTimer
 ```
 
- 循环执行
+ Loop execution
 ## loop_count
 
 ```lua
@@ -120,7 +120,7 @@ function LocalTimer.loop_count(timeout: number, count: integer, on_timer: LocalT
   -> LocalTimer
 ```
 
- 循环执行，可以指定最大次数
+ Loop execution, you can specify a maximum number of times
 ## loop_count_frame
 
 ```lua
@@ -128,7 +128,7 @@ function LocalTimer.loop_count_frame(frame: integer, count: integer, on_timer: L
   -> LocalTimer
 ```
 
- 每经过一定帧数后执行，可以指定最大次数
+ You can specify the maximum number of frames to be executed after a certain number of frames
 ## loop_frame
 
 ```lua
@@ -136,7 +136,7 @@ function LocalTimer.loop_frame(frame: integer, on_timer: LocalTimer.OnTimer)
   -> LocalTimer
 ```
 
- 每经过一定帧数后执行
+ Execute after a certain number of frames
 ## mode
 
 ```lua
@@ -156,14 +156,14 @@ function LocalTimer.pairs()
   -> fun():LocalTimer?
 ```
 
- 遍历所有的计时器，仅用于调试（可能会遍历到已经失效的）
+ Iterate over all timers for debugging purposes only (you may iterate over the ones that have expired)）
 ## pause
 
 ```lua
 (method) LocalTimer:pause()
 ```
 
- 暂停计时器
+ Pause timer
 ## paused_at
 
 ```lua
@@ -206,7 +206,7 @@ integer?
 (method) LocalTimer:remove()
 ```
 
- 移除计时器
+ Remove timer
 ## removed
 
 ```lua
@@ -219,7 +219,7 @@ boolean?
 (method) LocalTimer:resume()
 ```
 
- 恢复计时器
+ Recovery timer
 ## runned_count
 
 ```lua
@@ -263,7 +263,7 @@ function LocalTimer.wait(timeout: number, on_timer: LocalTimer.OnTimer)
   -> LocalTimer
 ```
 
- 等待时间后执行
+ Wait for the execution time
 ## wait_frame
 
 ```lua
@@ -271,7 +271,7 @@ function LocalTimer.wait_frame(frame: integer, on_timer: LocalTimer.OnTimer)
   -> LocalTimer
 ```
 
- 等待一定帧数后执行
+ Wait for a certain number of frames before executing
 ## wakeup
 
 ```lua

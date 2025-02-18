@@ -60,9 +60,9 @@ pcall(function ()
         return
     end
 
-    -- 关闭调试器的自动更新，之后每帧手动更新一次
+    --Turn off automatic updates for the debugger, then manually update every frame
     LDBG:event('autoUpdate', false)
 
-    -- 等待调试器连接
+    --Wait for the debugger to connect
     waitDebugger(false)
 end)

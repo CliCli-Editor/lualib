@@ -6,21 +6,21 @@
 (method) NPBehave.Blackboard:AddObserver(key: string, observer: fun(type: NPBehaveBlackboardType, value: any))
 ```
 
-添加观察者
+Add observer
 ## Disable
 
 ```lua
 (method) NPBehave.Blackboard:Disable()
 ```
 
-禁用黑板
+Forbidden blackboard
 ## Enable
 
 ```lua
 (method) NPBehave.Blackboard:Enable()
 ```
 
-启用黑板
+Enable blackboard
 ## Get
 
 ```lua
@@ -28,7 +28,7 @@
   -> any
 ```
 
-获取键值
+Get key value
 ## GetObserverList
 
 ```lua
@@ -36,7 +36,7 @@
   -> fun(type: NPBehaveBlackboardType, value: any)[]
 ```
 
-获取观察者列表
+Get the observer list
 ## IsSet
 
 ```lua
@@ -44,35 +44,35 @@
   -> boolean
 ```
 
-检查键是否已设置
+Check whether the key is set
 ## NotifyObservers
 
 ```lua
 (method) NPBehave.Blackboard:NotifyObservers()
 ```
 
-通知观察者
+Notify observer
 ## RemoveObserver
 
 ```lua
 (method) NPBehave.Blackboard:RemoveObserver(key: string, observer: fun(type: NPBehaveBlackboardType, value: any))
 ```
 
-移除观察者
+Remove observer
 ## Set
 
 ```lua
 (method) NPBehave.Blackboard:Set(key: string, value: any)
 ```
 
-设置键值
+Set key value
 ## Unset
 
 ```lua
 (method) NPBehave.Blackboard:Unset(key: string)
 ```
 
-取消设置键值
+Example Cancel setting a key value
 ## bind
 
 ```lua
@@ -80,7 +80,7 @@
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## funcBindCache
 
 ```lua
@@ -117,31 +117,31 @@ any
 (method) NPBehave.Clock:AddTimer(delay: number, repeat_count: number, action: NPBehave.Tool.BindCallback, randomVariance?: number)
 ```
 
-注册一个具有随机方差的计时器函数
+Register a timer function with random variance
 
-@*param* `delay` — 延迟时间(以毫秒为单位)
+@*param* `delay` — Delay time (in milliseconds)
 
-@*param* `repeat_count` — 重复次数, 设为 -1 则重复直至取消注册.
+@*param* `repeat_count` — Number of repetitions. If this parameter is set to -1, repeat until registration is cancelled.
 
-@*param* `action` — 回调函数
+@*param* `action` — Callback function
 
-@*param* `randomVariance` — 随机方差
+@*param* `randomVariance` — Random variance
 ## AddUpdateObserver
 
 ```lua
 (method) NPBehave.Clock:AddUpdateObserver(action: NPBehave.Tool.BindCallback)
 ```
 
-注册一个每帧都会调用的函数
+Register a function that is called every frame
 
-@*param* `action` — 要调用的函数
+@*param* `action` — The function to call
 ## ElapsedTime
 
 ```lua
 number
 ```
 
- 经过时间
+ Elapsed time
 ## GetTimerFromPool
 
 ```lua
@@ -149,9 +149,9 @@ number
   -> timer: NPBehave.Clock.Timer
 ```
 
-从池中获取计时器
+Gets a timer from the pool
 
-@*return* `timer` — 计时器
+@*return* `timer` — timepiece
 ## HasTimer
 
 ```lua
@@ -159,9 +159,9 @@ number
   -> boolean
 ```
 
-检查是否存在计时器
+Check for a timer
 
-@*param* `action` — 回调函数
+@*param* `action` — Callback function
 ## HasUpdateObserver
 
 ```lua
@@ -169,38 +169,38 @@ number
   -> boolean
 ```
 
-检查是否存在每帧调用的函数
+Check if there is a function called per frame
 
-@*param* `action` — 要检查的函数
+@*param* `action` — Function to check
 
-@*return* — 是否存在每帧调用的函数
+@*return* — Whether there is a function called per frame
 ## RemoveTimer
 
 ```lua
 (method) NPBehave.Clock:RemoveTimer(action: NPBehave.Tool.BindCallback)
 ```
 
-移除计时器
+Remove timer
 
-@*param* `action` — 回调函数
+@*param* `action` — Callback function
 ## RemoveUpdateObserver
 
 ```lua
 (method) NPBehave.Clock:RemoveUpdateObserver(action: NPBehave.Tool.BindCallback)
 ```
 
-移除每帧调用的函数
+Removes functions called per frame
 
-@*param* `action` — 要移除的函数
+@*param* `action` — The function to remove
 ## Update
 
 ```lua
 (method) NPBehave.Clock:Update(deltaTime: number)
 ```
 
-更新函数
+Update function
 
-@*param* `deltaTime` — 时间增量
+@*param* `deltaTime` — Time increment
 
 # NPBehave.Clock.AddTimerStruct
 
@@ -243,7 +243,7 @@ number
 integer
 ```
 
- 重复次数, 设为 -1 则重复直至取消注册.
+ Number of repetitions. If this parameter is set to -1, repeat until registration is cancelled.
 ## ScheduleAbsoluteTime
 
 ```lua
@@ -309,7 +309,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -338,7 +338,7 @@ abstract<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -373,7 +373,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -439,7 +439,7 @@ override<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -499,7 +499,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -528,7 +528,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -563,7 +563,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -628,7 +628,7 @@ override<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -688,7 +688,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -717,7 +717,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -752,7 +752,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -823,7 +823,7 @@ override<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -883,7 +883,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -912,7 +912,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -947,7 +947,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -1018,7 +1018,7 @@ override<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -1078,7 +1078,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -1107,7 +1107,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -1142,7 +1142,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -1213,7 +1213,7 @@ override<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -1273,7 +1273,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -1302,7 +1302,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -1337,7 +1337,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -1408,7 +1408,7 @@ override<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -1462,7 +1462,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -1491,7 +1491,7 @@ abstract<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -1526,7 +1526,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -1578,7 +1578,7 @@ virtual<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -1586,7 +1586,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -1636,7 +1636,7 @@ function NPBehave.Context.GetSharedBlackboard(key: string)
   -> NPBehave.Blackboard
 ```
 
-获取共享黑板
+Get shared blackboard
 ## Instance
 
 ```lua
@@ -1686,7 +1686,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -1770,7 +1770,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -1842,7 +1842,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## StopsOnChange
 
 ```lua
@@ -1856,7 +1856,7 @@ NPBehave.Enum.Stops
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -1910,7 +1910,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -1994,7 +1994,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -2066,7 +2066,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## StopsOnChange
 
 ```lua
@@ -2080,7 +2080,7 @@ NPBehave.Enum.Stops
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -2134,7 +2134,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -2218,7 +2218,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -2284,7 +2284,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## StopsOnChange
 
 ```lua
@@ -2298,7 +2298,7 @@ NPBehave.Enum.Stops
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -2352,7 +2352,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -2387,7 +2387,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -2422,7 +2422,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -2474,7 +2474,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## TimeoutReached
 
 ```lua
@@ -2488,7 +2488,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -2542,7 +2542,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -2577,7 +2577,7 @@ abstract<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -2612,7 +2612,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -2664,7 +2664,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -2672,7 +2672,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -2726,7 +2726,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -2761,7 +2761,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -2796,7 +2796,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -2848,7 +2848,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -2856,7 +2856,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -2910,7 +2910,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -2945,7 +2945,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -2980,7 +2980,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -3032,7 +3032,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -3040,7 +3040,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -3094,7 +3094,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -3129,7 +3129,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -3164,7 +3164,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -3216,7 +3216,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -3224,7 +3224,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -3278,7 +3278,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -3313,7 +3313,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -3348,7 +3348,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -3400,7 +3400,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -3408,7 +3408,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -3462,7 +3462,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -3545,7 +3545,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -3611,7 +3611,7 @@ abstract
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## StopsOnChange
 
 ```lua
@@ -3625,7 +3625,7 @@ NPBehave.Enum.Stops
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -3679,7 +3679,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -3714,7 +3714,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -3749,7 +3749,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -3801,7 +3801,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -3809,7 +3809,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -3863,7 +3863,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -3898,7 +3898,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -3933,7 +3933,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -3991,7 +3991,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -3999,7 +3999,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -4053,7 +4053,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -4088,7 +4088,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -4109,7 +4109,7 @@ override<br>
 (method) NPBehave.Decorator.Service:InvokeServiceMethodWithRandomVariation()
 ```
 
-带随机变化的调用服务方法
+Invoke service methods with random variation
 ## IsActive
 
 ```lua
@@ -4181,7 +4181,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -4189,7 +4189,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -4243,7 +4243,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -4278,7 +4278,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -4313,7 +4313,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -4365,7 +4365,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -4373,7 +4373,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -4427,7 +4427,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -4462,7 +4462,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -4497,7 +4497,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -4549,7 +4549,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## TimeoutReached
 
 ```lua
@@ -4563,7 +4563,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -4617,7 +4617,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -4652,7 +4652,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -4687,7 +4687,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -4739,7 +4739,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## TimeoutReached
 
 ```lua
@@ -4753,7 +4753,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -4813,7 +4813,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -4848,7 +4848,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -4934,7 +4934,7 @@ override<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -4942,7 +4942,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -5102,7 +5102,7 @@ function NPBehave.Context.GetSharedBlackboard(key: string)
   -> NPBehave.Blackboard
 ```
 
-获取共享黑板
+Get shared blackboard
 ## Instance
 
 ```lua
@@ -5178,7 +5178,7 @@ virtual<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -5213,7 +5213,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -5265,7 +5265,7 @@ virtual<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -5273,7 +5273,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -5339,7 +5339,7 @@ NPBehave.Clock
 boolean
 ```
 
-崩溃
+collapse
 ## CurrentState
 
 ```lua
@@ -5374,7 +5374,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -5409,7 +5409,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -5460,7 +5460,7 @@ NPBehave.Root
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -5468,7 +5468,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -5531,7 +5531,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -5566,7 +5566,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -5624,7 +5624,7 @@ virtual<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -5632,7 +5632,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -5718,7 +5718,7 @@ virtual<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -5753,7 +5753,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -5805,7 +5805,7 @@ virtual<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -5813,7 +5813,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -5876,7 +5876,7 @@ override<br>
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -5911,7 +5911,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -5969,7 +5969,7 @@ virtual<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -5977,7 +5977,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -6066,7 +6066,7 @@ NPBehave.Enum.NodeState
 ```
 
 virtual<br>
- 处于非活动状态时调用, 目的是让装饰者删除任何正在等待的观察者.
+ Called when in an inactive state in order to have the decorator remove any waiting observers.
 ## DoStart
 
 ```lua
@@ -6101,7 +6101,7 @@ boolean
 string
 ```
 
-显示标签
+Display label
 ## Name
 
 ```lua
@@ -6153,7 +6153,7 @@ virtual<br>
 ```
 
 virtual<br>
-这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+This must absolutely be the last call in the function, and do not modify any state after the call stops!!! 
 ## bind
 
 ```lua
@@ -6161,7 +6161,7 @@ virtual<br>
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## currentState
 
 ```lua
@@ -6193,7 +6193,7 @@ string
   -> NPBehave.Tool.BindCallback
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## funcBindCache
 
 ```lua

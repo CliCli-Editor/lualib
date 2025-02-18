@@ -1,7 +1,7 @@
 --Native UI logic framework
 ---@class LocalUILogic
 ---@field private _main? UI
----@overload fun(main?: string | UI): self
+---@overload fun(main? : string | UI): self
 local M = Class 'LocalUILogic'
 
 ---@class LocalUILogic: Storage
@@ -65,7 +65,7 @@ function M:__init(path_or_ui)
     end
 end
 
----删除本地UI逻辑
+---Delete the local UI logic
 function M:remove()
     Delete(self)
 end
@@ -109,8 +109,8 @@ end
 ---@param kv? table # The data is obtained using 'instance:storage_get'
 ---@return LocalUILogic
 function M:attach(ui, kv)
-    assert(not self._main, '已经附着到UI上了！')
-    --如果自己是模板，就复制一个实例出来再附着
+    assert(not self._main, 'It`s attached to the UI!')
+    --If you are a template, copy an instance and attach it
     if self._as_template then
         local instance = self:make_instance(kv)
         instance:attach(ui)
@@ -190,7 +190,7 @@ function M:on_refresh(child_name, on_refresh)
     })
 end
 
---Subscribe to the control's local events, and the callback function is executed in the * local player * environment.
+--Subscribe to the control is local events, and the callback function is executed in the * local player * environment.
 ---@param child_name string # The empty string represents the master device
 ---@param event clicli.Const.UIEvent
 ---@param callback fun(ui: UI, local_player: Player, instance: LocalUILogic)
@@ -231,7 +231,7 @@ end
 ---@param on_refresh? fun(ui: UI, local_player: Player, instance: LocalUILogic) # To refresh the callback before the component, you can take the opportunity to set the properties of the component with the 'instance:storage_set'.
 function M:refresh_prefab(prefab_token, count, on_create, on_refresh)
     if not self._main then
-        error('还未初始化完成，请放到 `on_init` 事件中执行！')
+        error('The initialization is not complete, please put in the `on_init` event to execute!')
     end
     for _, info in ipairs(self._prefab_infos) do
         if info.prefab_token ~= prefab_token then
@@ -304,7 +304,7 @@ function M:register_events()
                 info.on_event(ui, local_player, self)
             end)
         else
-            log.error('控件不存在！', info.name)
+            log.error('Control does not exist!', info.name)
         end
     end
 end
@@ -342,7 +342,7 @@ function M:init()
         if ui then
             xpcall(info.on_init, log.error, ui, local_player, self)
         else
-            log.error('控件不存在！', info.name)
+            log.error('Control does not exist!', info.name)
         end
     end
 end
@@ -389,7 +389,7 @@ function M:refreshAll()
                     xpcall(info.on_refresh, log.error, ui, local_player, self)
                 end
             else
-                log.error('控件不存在！', info.name)
+                log.error('Control does not exist!', info.name)
             end
         end
     end

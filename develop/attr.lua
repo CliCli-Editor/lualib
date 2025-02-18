@@ -63,7 +63,7 @@ function Watch:__init(attr, value, callback)
     self.isSatisfied = self.condition(attr.unit, attr.unit:get_attr(attr.attr))
 
     local unit = attr.unit
-    self.trigger = unit:event('单位-属性变化', clicli.const.UnitAttr[attr.attr], function (trg, data)
+    self.trigger = unit:event('Unit - Attribute change', clicli.const.UnitAttr[attr.attr], function (trg, data)
         local suc, result = xpcall(self.condition, log.error, unit, unit:get_attr(attr.attr))
         if not suc then
             trg:remove()
@@ -85,7 +85,7 @@ function Watch:remove()
     Delete(self)
 end
 
----监控属性变化，当属性从“不满足条件”变化为“满足条件”时触发回调
+---The callback is triggered when the attribute changes from Not Met to Met
 ---@param value Develop.Attr.Accept # Expressions such as' >= 100 ', '==' Max life ` ```
 ---@param callback Develop.Attr.Watch.Callback # Callback function
 ---@return Develop.Attr.Watch
@@ -118,7 +118,7 @@ function API.compileCondition(value)
         local f, msg = compileConditionString(value)
         return f, msg
     end
-    error('不支持的条件类型' .. type(value))
+    error('Unsupported condition type' .. type(value))
 end
 
 return API

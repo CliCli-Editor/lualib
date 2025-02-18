@@ -4842,82 +4842,82 @@ function GameAPI.create_round_mover(unit, target_unit, circle_radius, angle_velo
 function GameAPI.create_curved_mover(unit, angle, max_dist, init_velocity, acceleration, max_velocity, min_velocity, init_height, fin_height, collision_type, collision_radius, is_face_angle, is_multi_collision, terrain_block, priority, is_absolute_height, path, f_mover_finish, f_mover_interrupt, f_mover_removed, f_terrain_collide, f_unit_collide) end
 
 --Get the motor type
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@return integer # Motor type
 function GameAPI.get_mover_type(mover_id) end
 
 --Erasing motor
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 function GameAPI.remove_mover(mover_id) end
 
 --interrupter
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 function GameAPI.break_mover(mover_id) end
 
 --Get the unit of motion
 ---@param unit py.Unit # unit
----@return py.Mover # kinetoscope
+---@return py.Mover # Kinetoscope
 function GameAPI.get_unit_mover(unit) end
 
 --Gets the priority of the exerciser
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@return integer # priority
 function GameAPI.get_mover_priority(mover_id) end
 
 --Set the priority of the exerciser
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@param priority integer # priority
 function GameAPI.set_mover_priority(mover_id, priority) end
 
 --Set the properties of the motion device
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@param key integer # Attribute name
 ---@param value py.Fixed # Attribute value
 function GameAPI.set_mover_property(mover_id, key, value) end
 
 --Gets the properties of the motion device
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@param key integer # Attribute name
 ---@return py.Fixed # Attribute value
 function GameAPI.get_mover_property(mover_id, key) end
 
 --Obtain the motion direction of the motor
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@return py.Fixed # Angle
 function GameAPI.get_mover_angle(mover_id) end
 
 --Set the motion direction of the motor
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@param angle py.Fixed # direction
 function GameAPI.set_mover_angle(mover_id, angle) end
 
 --Set the collision range of the motor
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@param radius py.Fixed # Collision range
 function GameAPI.set_mover_collision_radius(mover_id, radius) end
 
 --Get the collision range of the motor
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@return py.Fixed # Collision range
 function GameAPI.get_mover_collision_radius(mover_id) end
 
 --Set the associated unit of the motor
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@param unit py.Unit # Associated unit
 function GameAPI.set_mover_relate_unit(mover_id, unit) end
 
 --Get the associated unit of the motor
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@return py.Unit # Associated unit
 function GameAPI.get_mover_relate_unit(mover_id) end
 
 --Set the associated skills of the motor
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@param ability py.Ability # Relevance skill
 function GameAPI.set_mover_relate_ability(mover_id, ability) end
 
 --Gain motor association skills
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@return py.Ability # Relevance skill
 function GameAPI.get_mover_relate_ability(mover_id) end
 

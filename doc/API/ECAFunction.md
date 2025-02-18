@@ -1,8 +1,8 @@
 # ECAFunction
 
-注册ECA函数
+Register ECA functions
 
-可以使用该功能让lua函数在ECA中被调用。
+You can use this feature to have lua functions called in ECA。
 
 ## call
 
@@ -10,7 +10,7 @@
 (method) ECAFunction:call(func: function)
 ```
 
-执行的函数
+Executed function
 ## call_name
 
 ```lua
@@ -42,7 +42,7 @@ function
   -> ECAFunction
 ```
 
-添加参数
+Add parameter
 ## with_return
 
 ```lua
@@ -50,5 +50,5 @@ function
   -> ECAFunction
 ```
 
-添加返回值
+Add return value
 

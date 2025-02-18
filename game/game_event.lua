@@ -41,7 +41,7 @@ function M:subscribe_event(event_type, ...)
         callback = extra_args[nargs]
         extra_args[nargs] = nil
     else
-        error('缺少回调函数！')
+        error('Missing callback function!')
     end
 
     clicli.py_event_sub.event_register(event_type, extra_args)

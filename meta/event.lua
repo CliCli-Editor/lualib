@@ -2068,7 +2068,7 @@ event.ET_UNIT_BE_HURT = {
         lua_type = "DamageInstance",
         lua_desc = "Injury instance",
         lua_code = function (data)
-            local instance = New 'DamageInstance' (data, "伤害前")
+            local instance = New 'DamageInstance' (data, "pre-damage")
             return instance
         end,
     },
@@ -2147,7 +2147,7 @@ event.ET_UNIT_HURT_OTHER = {
         lua_type = "DamageInstance",
         lua_desc = "Injury instance",
         lua_code = function (data)
-            local instance = New 'DamageInstance' (data, "伤害前")
+            local instance = New 'DamageInstance' (data, "pre-damage")
             return instance
         end,
     },
@@ -2226,7 +2226,7 @@ event.ET_UNIT_BE_HURT_BEFORE_APPLY = {
         lua_type = "DamageInstance",
         lua_desc = "Injury instance",
         lua_code = function (data)
-            local instance = New 'DamageInstance' (data, "伤害时")
+            local instance = New 'DamageInstance' (data, "Damage time")
             return instance
         end,
     },
@@ -2305,7 +2305,7 @@ event.ET_UNIT_HURT_OTHER_BEFORE_APPLY = {
         lua_type = "DamageInstance",
         lua_desc = "Injury instance",
         lua_code = function (data)
-            local instance = New 'DamageInstance' (data, "伤害时")
+            local instance = New 'DamageInstance' (data, "Damage time")
             return instance
         end,
     },
@@ -2393,7 +2393,7 @@ event.ET_UNIT_HURT_OTHER_FINISH = {
         lua_type = "DamageInstance",
         lua_desc = "Injury instance",
         lua_code = function (data)
-            local instance = New 'DamageInstance' (data, "伤害后")
+            local instance = New 'DamageInstance' (data, "After damage")
             return instance
         end,
     },
@@ -2481,7 +2481,7 @@ event.ET_UNIT_BE_HURT_COMPLETE = {
         lua_type = "DamageInstance",
         lua_desc = "Injury instance",
         lua_code = function (data)
-            local instance = New 'DamageInstance' (data, "伤害后")
+            local instance = New 'DamageInstance' (data, "After damage")
             return instance
         end,
     },
@@ -2517,7 +2517,7 @@ event.ET_UNIT_GET_CURE_BEFORE_APPLY = {
         lua_type = "HealInstance",
         lua_desc = "Treatment instance",
         lua_code = function (data)
-            local instance = New 'HealInstance' (data, "治疗前")
+            local instance = New 'HealInstance' (data, "pre-treatment")
             return instance
         end,
     },
@@ -2577,7 +2577,7 @@ event.ET_UNIT_GET_CURE = {
         lua_type = "HealInstance",
         lua_desc = "Treatment instance",
         lua_code = function (data)
-            local instance = New 'HealInstance' (data, "治疗时")
+            local instance = New 'HealInstance' (data, "During treatment")
             return instance
         end,
     },
@@ -9396,8 +9396,8 @@ event.ET_CUSTOM_EVENT = {
 ---@class EventParam.ET_EVENT_CUSTOM
 ---@field c_param_1 integer # Event parameter
 ---@field c_param_dict py.Dict # Custom parameter list
----@field data table # 
----@field event string # 
+---@field data table #
+---@field event string #
 
 --Custom event
 event.ET_EVENT_CUSTOM = {

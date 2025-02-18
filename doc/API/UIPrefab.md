@@ -1,6 +1,6 @@
 # UIPrefab
 
-界面元件
+Interface element
 
 ## create
 
@@ -9,13 +9,13 @@ function UIPrefab.create(player: Player, prefab_name: string, parent_ui: UI)
   -> UIPrefab
 ```
 
-创建界面模块实例
+Example Create an interface module instance
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `prefab_name` — 界面模块id
+@*param* `prefab_name` — Interface moduleid
 
-@*param* `parent_ui` — 父控件
+@*param* `parent_ui` — Parent control
 ## get_by_handle
 
 ```lua
@@ -23,11 +23,11 @@ function UIPrefab.get_by_handle(player: Player, prefab_name: string)
   -> UIPrefab
 ```
 
-通过py层的界面实例获取lua层的界面实例
+Obtain the interface instance of the lua layer from the interface instance of the py layer
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*return* — 返回在lua层初始化后的lua层技能实例
+@*return* — Returns the lua layer skill instance after being initialized at the lua layer
 ## get_child
 
 ```lua
@@ -35,10 +35,10 @@ function UIPrefab.get_by_handle(player: Player, prefab_name: string)
   -> UI?
 ```
 
-获取 UIPrefab 的 UI 实例
->注意！这里的 path 是相对于 *节点第一层之后* 的（就是节点列表里有个默认不能删的节点，那个是第一层）
+Gets the UI instance of UIPrefab
+>Attention! The path here is relative to the node after the first layer (that is, there is a node in the node list that cannot be deleted by default, that is the first layer)）
 
-@*param* `child_path` — 路径，默认为根节点。
+@*param* `child_path` — Path, the default is the root node。
 ## get_ui
 
 ```lua
@@ -46,10 +46,10 @@ function UIPrefab.get_by_handle(player: Player, prefab_name: string)
   -> UI
 ```
 
- 获取 UIPrefab 的 UI 实例
->请改用 `get_child` 方法
+ Gets the UI instance of UIPrefab
+>Use the get_child method instead
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## handle
 
 ```lua
@@ -69,7 +69,7 @@ integer?
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -103,21 +103,21 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## player
 
 ```lua
 Player
 ```
 
-玩家
+Player
 ## remove
 
 ```lua
 (method) UIPrefab:remove()
 ```
 
-删除界面模块实例
+Example Delete an interface module instance
 ## type
 
 ```lua

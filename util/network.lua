@@ -1,5 +1,5 @@
 ---@class Network
----@overload fun(ip: string, port: integer, options?: Network.Options): self
+---@overload fun(ip: string, port: integer, options? : Network.Options): self
 local M = Class 'Network'
 
 ---@private
@@ -31,7 +31,7 @@ function M:__init(ip, port, options)
     self.options.buffer_size = self.options.buffer_size or (1024 * 1024 * 2)
     self.options.update_interval = self.options.update_interval or 0.2
     self.options.retry_interval = self.options.retry_interval or 5
-    log.debug('Network 初始化：', self)
+    log.debug('Network initialization:', self)
 
     ---@private
     self.update_timer = clicli.ctimer.loop(self.options.update_interval, function ()
@@ -47,7 +47,7 @@ function M:__init(ip, port, options)
             t:remove()
             return
         end
-        log.debug('Network 重连：', self, self:is_connecting())
+        log.debug('Network reconnection:', self, self:is_connecting())
         if self.handle.reset and false then
             self.handle:reset()
         else
@@ -63,13 +63,13 @@ function M:__init(ip, port, options)
             if self.state ~= 'started' then
                 return
             end
-            self:make_error('连接超时')
+            self:make_error('Connection timeout')
         end)
     end
 end
 
 function M:__del()
-    log.debug('Network 销毁：', self)
+    log.debug('Network destruction:', self)
     self.state = 'dead'
     self.handle:destroy()
     self.update_timer:remove()
@@ -90,7 +90,7 @@ function M:make_error(err)
     if self.state == 'dead' then
         return
     end
-    log.debug('Network 错误：', self, err)
+    log.debug('Network error:', self, err)
     self.state = 'error'
     self:callback('error', err)
     self:remove()
@@ -106,7 +106,7 @@ function M:update()
     if self.state == 'new' then
         local ok, suc, err = pcall(self.handle.init, self.handle, self.ip, self.port, self.options.buffer_size)
         if not ok then
-            log.debug('Network 初始化失败：', self, suc)
+            log.debug('Network initialization failed:', self, suc)
             self.state = 'sleep'
             return
         end
@@ -127,7 +127,7 @@ function M:update()
     end
     if self.state == 'started' then
         if self:is_connecting() then
-            log.debug('Network 已连接：', self)
+            log.debug('Network connected:', self)
             self.state = 'connected'
             self:callback('connected')
         end
@@ -135,7 +135,7 @@ function M:update()
     end
     if self.state == 'connected' then
         if not self:is_connecting() then
-            log.debug('Network 断开连接：', self)
+            log.debug('Network disconnection:', self)
             self.state = 'disconnected'
             self.handle:stop()
             self:callback('disconnected')
@@ -195,7 +195,7 @@ function M:on_data(on_data)
     self._on_data = on_data
 end
 
---Create a 'blocking' data reader that loops through the 'callback'
+--Create a "blocking" data reader that loops through the 'callback'
 --> is mutually exclusive with on_data
 --
 --The callback will give you a read function 'read', here is its description:
@@ -222,9 +222,9 @@ function M:data_reader(callback)
             xpcall(callback, log.error, reader)
             if not read_once then
                 log.error([[
-数据读取器在本次循环中没有读取任何数据！
-请确保你在读取器中至少调用过一次有效的 `read` 函数！
-读取器已休眠，将在收到新数据后重新激活。
+The data reader did not read any data in this loop！
+Make sure you call a valid 'read' function at least once in the reader！
+The reader sleeps and will be reactivated when new data is received。
 ]])
                 coroutine.yield()
             end
@@ -234,20 +234,20 @@ function M:data_reader(callback)
     self:on_data(function (_, data)
         buffer = buffer .. data
         if #buffer > self.options.buffer_size then
-            self:make_error('缓冲区溢出!')
+            self:make_error('Buffer overflow!')
             return
         end
         coroutine.resume(co)
     end)
 
     ---@async
-    ---@param what nil|integer|'l'|'L' # 要读取的内容
+    ---@param what nil|integer|'l'|'L' # What to read
     ---@return string
     local function read(what)
         if what == nil then
             if #buffer == 0 then
                 coroutine.yield()
-                --一定是收到数据后才被唤醒的，因此不用再判断缓存了
+                --It must have woken up after receiving the data, so there is no need to judge the cache
             end
             read_once = true
             buffer = ''
@@ -292,7 +292,7 @@ function M:data_reader(callback)
             buffer = buffer:sub(what + 1)
             return data
         end
-        error('无效的读取规则:' .. tostring(what))
+        error('Invalid read rule:' .. tostring(what))
     end
 
     coroutine.resume(co, read)

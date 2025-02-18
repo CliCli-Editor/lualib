@@ -6,7 +6,7 @@ Bind = {}
 --You can use this feature to have lua functions called in ECA.
 ---@class ECAFunction
 ---@field call_name string
----@field params {key: string, type: string, optional?: boolean}[]
+---@field params {key: string, type: string, optional? : boolean}[]
 ---@field returns {key: string, type: string}[]
 ---@field func function
 ---@overload fun(name: string): self
@@ -27,10 +27,10 @@ function M:_unpack_params(error_handler, ...)
     for i, param in ipairs(self.params) do
         local py_value = param_list[i]
         if py_value == nil and not param.optional then
-            error(('第 %d 个参数 %s 为空！'):format(i, param.key))
+            error(('The %d parameter %s is null!'):format(i, param.key))
         end
         local ok, lua_value = xpcall(clicli.py_converter.py_to_lua, function (...)
-            error_handler('第【' .. i .. '】个参数【' .. param.key .. '】转换失败：\n', ...)
+            error_handler('# [' .. i .. '【 parameter 】' .. param.key .. '【 Conversion failure: \n', ...)
         end, param.type, py_value)
         if not ok then
             return
@@ -102,11 +102,11 @@ end
 ---@param func function
 function M:call(func)
     if Bind[self.call_name] and not clicli.reload.isReloading() then
-        error(('不能重复定义绑定函数: %s'):format(self.call_name))
+        error(('Binding functions cannot be defined repeatedly: %s'):format(self.call_name))
     end
     self.func = func
     local function error_handler(...)
-        log.error('在【' .. self.call_name .. '】中发生错误：\n', ...)
+        log.error('At [' .. self.call_name .. 'An error occurred in: \n', ...)
     end
     Bind[self.call_name] = function (...)
         return self:_pack_returns(error_handler, xpcall(self.func, error_handler, self:_unpack_params(error_handler, ...)))

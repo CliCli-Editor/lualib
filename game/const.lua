@@ -4,9 +4,9 @@ local M = {}
 
 ---@enum clicli.Const.EaseType
 M.EaseType = {
-    ['ease_in曲线'] = 1,
-    ['ease_out曲线'] = 2,
-    ['ease_in_out曲线'] = 3,
+    ['ease_inCurve'] = 1,
+    ['ease_outCurve'] = 2,
+    ['ease_in_outCurve'] = 3,
 }
 
 M.IterKey = {
@@ -53,109 +53,109 @@ M.UnitState = {
 
 ---@enum(key) clicli.Const.UnitAttr
 M.UnitAttr = {
-    ['生命'] = 'hp_cur',
-    ['魔法'] = 'mp_cur',
-    ['最大生命'] = 'hp_max',
-    ['生命恢复'] = 'hp_rec',
-    ['最大魔法'] = 'mp_max',
-    ['魔法恢复'] = 'mp_rec',
-    ['物理攻击'] = 'attack_phy',
-    ['法术攻击'] = 'attack_mag',
-    ['物理防御'] = 'defense_phy',
-    ['法术防御'] = 'defense_mag',
-    ['攻击速度'] = 'attack_speed', --百分比
-    ['冷却缩减'] = 'cd_reduce', --百分比
-    ['命中率'] = 'hit_rate', --百分比
-    ['躲避率'] = 'dodge_rate', --百分比
-    ['暴击率'] = 'critical_chance', --百分比
-    ['暴击伤害'] = 'critical_dmg', --百分比
-    ['物理穿透'] = 'pene_phy',
-    ['法术穿透'] = 'pene_mag',
-    ['物理吸血'] = 'vampire_phy', --百分比
-    ['法术吸血'] = 'vampire_mag', --百分比
-    ['物理穿透比例'] = 'pene_phy_ratio', --百分比
-    ['法术穿透比例'] = 'pene_mag_ratio', --百分比
-    ['受伤减免'] = 'dmg_reduction', --百分比
-    ['伤害加成'] = 'extra_dmg', --百分比
-    ['被治疗加成'] = 'healing_effect', --百分比
-    ['移动速度'] = 'ori_speed',
-    ['真实视野'] = 'vision_true',
-    ['攻击间隔'] = 'attack_interval',
-    ['攻击范围'] = 'attack_range',
-    ['白天视野'] = 'vision_rng',
-    ['夜晚视野'] = 'vision_night',
-    ['白天扇形视野半径'] = 'vision_sector_rng',
-    ['夜晚扇形视野半径'] = 'vision_sector_night',
-    ['白天扇形视野夹角'] = 'vision_sector_angle_day',
-    ['夜晚扇形视野夹角'] = 'vision_sector_angle_night',
-    ['百分比生命恢复'] = 'hp_rec_percent',
+    ['Life'] = 'hp_cur',
+    ['Magic'] = 'mp_cur',
+    ['MaximumLife'] = 'hp_max',
+    ['LifeIsRestored'] = 'hp_rec',
+    ['GreatestMagic'] = 'mp_max',
+    ['MagicRecovery'] = 'mp_rec',
+    ['PhysicalAttack'] = 'attack_phy',
+    ['SpellAttack'] = 'attack_mag',
+    ['PhysicalDefense'] = 'defense_phy',
+    ['SpellDefense'] = 'defense_mag',
+    ['AttackSpeed'] = 'attack_speed', --percent
+    ['CoolingReduction'] = 'cd_reduce', --percent
+    ['HitRate'] = 'hit_rate', --percent
+    ['AvoidanceRate'] = 'dodge_rate', --percent
+    ['CriticalHitRate'] = 'critical_chance', --percent
+    ['CriticalHitDamage'] = 'critical_dmg', --percent
+    ['PhysicalPenetration'] = 'pene_phy',
+    ['SpellPenetration'] = 'pene_mag',
+    ['PhysicalBloodsucking'] = 'vampire_phy', --percent
+    ['SpellBloodsucking'] = 'vampire_mag', --percent
+    ['PhysicalPenetrationRatio'] = 'pene_phy_ratio', --percent
+    ['SpellPenetrationRatio'] = 'pene_mag_ratio', --percent
+    ['InjuryRelief'] = 'dmg_reduction', --percent
+    ['DamageBonus'] = 'extra_dmg', --percent
+    ['HealedBonus'] = 'healing_effect', --percent
+    ['MovingSpeed'] = 'ori_speed',
+    ['RealVision'] = 'vision_true',
+    ['AttackInterval'] = 'attack_interval',
+    ['AttackRange'] = 'attack_range',
+    ['DaytimeVision'] = 'vision_rng',
+    ['NightVision'] = 'vision_night',
+    ['DaytimeSectorRadius'] = 'vision_sector_rng',
+    ['FanFieldOfViewRadiusAtNight'] = 'vision_sector_night',
+    ['DaytimeFan-fieldAngle'] = 'vision_sector_angle_day',
+    ['FanAngleOfViewAtNight'] = 'vision_sector_angle_night',
+    ['%HealthRestored'] = 'hp_rec_percent',
 }
 
 M.UnitKeyFloatAttr = {
-    ['ROTATE_SPEED'] = 'rotate_speed', -- 转身速度
-    ['CANCEL_ALARM_RANGE'] = 'cancel_alarm_range', -- 取消警戒范围
-    ['ALARM_RANGE'] = 'alarm_range', -- 警戒范围
-    ['BODY_SIZE'] = 'body_size', -- 缩放
-    ['CD_REDUCE'] = 'cd_reduce', -- 冷却缩减
-    ['VISION_RNG'] = 'vision_rng', -- 视野范围
-    ['HP_MAX'] = 'hp_max', -- 最大生命
-    ['HP_REC'] = 'hp_rec', -- 生命恢复
-    ['MP_MAX'] = 'mp_max', -- 最大魔法
-    ['MP_REC'] = 'mp_rec', -- 魔法恢复
-    ['ORI_SPEED'] = 'ori_speed', -- 施法速度
-    ['ATTACK_PHY'] = 'attack_phy', -- 物理攻击力
-    ['ATTACK_MAG'] = 'attack_mag', -- 法术攻击力
-    ['DEFENSE_PHY'] = 'defense_phy', -- 物理防御力
-    ['DEFENSE_MAG'] = 'defense_mag', -- 法术防御力
-    ['ATTACK_SPEED'] = 'attack_speed', -- 攻击速度
-    ['CRITICAL_CHANCE'] = 'critical_chance', -- 暴击率
-    ['CRITICAL_DMG'] = 'critical_dmg', -- 暴击伤害
-    ['PENE_PHY'] = 'pene_phy', -- 物理穿透
-    ['PENE_MAG'] = 'pene_mag', -- 法术穿透
-    ['VAMPIRE_PHY'] = 'vampire_phy', -- 物理吸血
-    ['VAMPIRE_MAG'] = 'vampire_mag', -- 法术吸血
-    ['PENE_PHY_RATIO'] = 'pene_phy_ratio', -- 物理穿透
-    ['PENE_MAG_RATIO'] = 'pene_mag_ratio', -- 法术穿透
-    ['DMG_REDUCTION'] = 'dmg_reduction', -- 伤害减免
-    ['HIT_RATE'] = 'hit_rate', -- 命中率
-    ['DODGE_RATE'] = 'dodge_rate', -- 躲避率
-    ['ATTACK_RANGE'] = 'attack_range', -- 攻速
+    ['ROTATE_SPEED'] = 'rotate_speed', --Turn speed
+    ['CANCEL_ALARM_RANGE'] = 'cancel_alarm_range', --de-alert
+    ['ALARM_RANGE'] = 'alarm_range', --Warning range
+    ['BODY_SIZE'] = 'body_size', --Zoom
+    ['CD_REDUCE'] = 'cd_reduce', --Cooling reduction
+    ['VISION_RNG'] = 'vision_rng', --Field of vision
+    ['HP_MAX'] = 'hp_max', --Maximum life
+    ['HP_REC'] = 'hp_rec', --Life recovery
+    ['MP_MAX'] = 'mp_max', --Maximum magic
+    ['MP_REC'] = 'mp_rec', --Magic recovery
+    ['ORI_SPEED'] = 'ori_speed', --Casting speed
+    ['ATTACK_PHY'] = 'attack_phy', --Physical attack
+    ['ATTACK_MAG'] = 'attack_mag', --Spell damage
+    ['DEFENSE_PHY'] = 'defense_phy', --Physical defense
+    ['DEFENSE_MAG'] = 'defense_mag', --Spell defense
+    ['ATTACK_SPEED'] = 'attack_speed', --Attack speed
+    ['CRITICAL_CHANCE'] = 'critical_chance', --Critical Hit Chance
+    ['CRITICAL_DMG'] = 'critical_dmg', --Critical hit damage
+    ['PENE_PHY'] = 'pene_phy', --Physical penetration
+    ['PENE_MAG'] = 'pene_mag', --Spell penetration
+    ['VAMPIRE_PHY'] = 'vampire_phy', --Physical blood feeding
+    ['VAMPIRE_MAG'] = 'vampire_mag', --Spell sucking
+    ['PENE_PHY_RATIO'] = 'pene_phy_ratio', --Physical penetration
+    ['PENE_MAG_RATIO'] = 'pene_mag_ratio', --Spell penetration
+    ['DMG_REDUCTION'] = 'dmg_reduction', --Injury relief
+    ['HIT_RATE'] = 'hit_rate', --Hit rate
+    ['DODGE_RATE'] = 'dodge_rate', --Dodge rate
+    ['ATTACK_RANGE'] = 'attack_range', --Atk SPD
 }
 
 ---@enum(key) clicli.Const.UnitAttrType
 M.UnitAttrType = {
-    ["基础"] = "ATTR_BASE",
-    ["基础加成"] = "ATTR_BASE_RATIO", --百分比
-    ["增益"] = "ATTR_BONUS",
-    ["增益加成"] = "ATTR_BONUS_RATIO", --百分比
-    ["最终加成"] = "ATTR_ALL_RATIO", --百分比
+    ["Foundation"] = "ATTR_BASE",
+    ["BaseBonus"] = "ATTR_BASE_RATIO", --percent
+    ["Gain"] = "ATTR_BONUS",
+    ["GainBonus"] = "ATTR_BONUS_RATIO", --percent
+    ["FinalMarkup"] = "ATTR_ALL_RATIO", --percent
 }
 
 ---@enum(key) clicli.Const.UnitEnumState
 M.UnitEnumState = {
-    ["禁止普攻"] = 1 << 1,
-    ["禁止施法"] = 1 << 2,
-    ["禁止移动"] = 1 << 3,
-    ["禁止转向"] = 1 << 4,
-    ["动画定帧"] = 1 << 5,
-    ["无法施加运动"] = 1 << 6,
-    ["无法被技能指示器锁定"] = 1 << 7,
-    ["无法被选中"] = 1 << 8,
-    ["隐身"] = 1 << 9,
-    ["无视静态碰撞"] = 1 << 10,
-    ["无视动态碰撞"] = 1 << 11,
-    ["不会死亡"] = 1 << 12,
-    ["无敌"] = 1 << 13,
-    ["无法控制"] = 1 << 14,
-    ["无法被攻击"] = 1 << 15,
-    ["AI无视"] = 1 << 16,
-    ["物理伤害免疫"] = 1 << 17,
-    ["魔法伤害免疫"] = 1 << 18,
-    ["负面魔法效果免疫"] = 1 << 19,
-    ["隐藏"] = 1 << 20,
-    ["无法被筛选器选中"] = 1 << 21,
-    ["真实伤害免疫"] = 1 << 22,
-    ["禁止使用道具"] = 1 << 23,
+    ["NoGeneralAttack"] = 1 << 1,
+    ["DoNotCastSpells"] = 1 << 2,
+    ["DoNotMove"] = 1 << 3,
+    ["NoTurning"] = 1 << 4,
+    ["AnimationFrame"] = 1 << 5,
+    ["UnableToExertMotion"] = 1 << 6,
+    ["CannotBeLockedBySkillIndicator"] = 1 << 7,
+    ["CannotBeSelected"] = 1 << 8,
+    ["Invisible"] = 1 << 9,
+    ["IgnoreStaticCollisions"] = 1 << 10,
+    ["IgnoreDynamicCollisions"] = 1 << 11,
+    ["WillNotDie"] = 1 << 12,
+    ["Invincible"] = 1 << 13,
+    ["OutOfControl"] = 1 << 14,
+    ["Can'tBeAttacked"] = 1 << 15,
+    ["aiIgnores"] = 1 << 16,
+    ["PhysicalDamageImmunity"] = 1 << 17,
+    ["MagicDamageImmunity"] = 1 << 18,
+    ["ImmunityToNegativeMagicEffects"] = 1 << 19,
+    ["Hide"] = 1 << 20,
+    ["CannotBeSelectedByTheFilter"] = 1 << 21,
+    ["RealDamageImmunity"] = 1 << 22,
+    ["NoProps"] = 1 << 23,
 }
 
 ---@enum(key) clicli.Const.PlayerAttr
@@ -168,14 +168,14 @@ M.ModifyType = {
 }
 
 ---@alias clicli.Const.DamageType
----| '物理'
----| '法术'
----| '真实'
+---| 'Physics'
+---| 'Spells'
+---| 'Real'
 
 M.DamageTypeMap = {
-    ['物理'] = 0,
-    ['法术'] = 1,
-    ['真实'] = 2,
+    ['Physics'] = 0,
+    ['Magic'] = 1,
+    ['Real'] = 2,
 }
 
 ---@enum clicli.Const.DMGType
@@ -193,10 +193,10 @@ M.AbilityCategory = {
 }
 
 ---@alias clicli.Const.AbilityTypeAlias
----| '隐藏'
----| '普通'
----| '命令'
----| '英雄'
+---| 'hidden'
+---| 'Ordinary'
+---| 'Command'
+---| 'Heroes'
 
 ---@enum clicli.Const.AbilityType
 M.AbilityType = {
@@ -204,10 +204,10 @@ M.AbilityType = {
    NORMAL  = 1,
    COMMON  = 2,
    HERO    = 3,
-   ['隐藏'] = 0,
-   ['普通'] = 1,
-   ['命令'] = 2,
-   ['英雄'] = 3,
+   ['Hide'] = 0,
+   ['Ordinary'] = 1,
+   ['Command'] = 2,
+   ['Hero'] = 3,
 }
 
 M.AbilityCastType = {
@@ -266,122 +266,122 @@ M.MovementObstacleProcessType = {
 
 ---@enum(key) clicli.Const.MouseKey
 M.MouseKey = {
-    LEFT = 0xF0, -- 左键
-    RIGHT = 0xF1, -- 右键
-    MIDDLE = 0xF2, -- 中键
-    WHEEL_UP = 0xF3, -- 上滚
-    WHEEL_DOWN = 0xF4, -- 下滚
+    LEFT = 0xF0, --Left button
+    RIGHT = 0xF1, --Right button
+    MIDDLE = 0xF2, --Middle key
+    WHEEL_UP = 0xF3, --overroll
+    WHEEL_DOWN = 0xF4, --Roll down
 }
 
 ---@enum(key) clicli.Const.KeyboardKey
 M.KeyboardKey = {
     ['NONE'] = 0x00,
-    ['ESCAPE'] = 0x01, -- ESC
-    ['KEY_1'] = 0x02, -- 1
-    ['KEY_2'] = 0x03, -- 2
-    ['KEY_3'] = 0x04, -- 3
-    ['KEY_4'] = 0x05, -- 4
-    ['KEY_5'] = 0x06, -- 5
-    ['KEY_6'] = 0x07, -- 6
-    ['KEY_7'] = 0x08, -- 7
-    ['KEY_8'] = 0x09, -- 8
-    ['KEY_9'] = 0x0A, -- 9
-    ['KEY_0'] = 0x0B, -- 0
-    ['MINUS'] = 0x0C, -- -
-    ['EQUAL'] = 0x0D, -- =
-    ['BACKSPACE'] = 0x0E, -- Backspace
-    ['TAB'] = 0x0F, -- Tab
-    ['Q'] = 0x10, -- Q
-    ['W'] = 0x11, -- W
-    ['E'] = 0x12, -- E
-    ['R'] = 0x13, -- R
-    ['T'] = 0x14, -- T
-    ['Y'] = 0x15, -- Y
-    ['U'] = 0x16, -- U
-    ['I'] = 0x17, -- I
-    ['O'] = 0x18, -- O
-    ['P'] = 0x19, -- P
-    ['LBRACKET'] = 0x1A, -- [
-    ['RBRACKET'] = 0x1B, -- ]
-    ['RETURN'] = 0x1C, -- Enter
-    ['ENTER'] = 0x1C, -- Enter
-    ['LCTRL'] = 0x1D, -- 左Ctrl
-    ['A'] = 0x1E, -- A
-    ['S'] = 0x1F, -- S
-    ['D'] = 0x20, -- D
-    ['F'] = 0x21, -- F
-    ['G'] = 0x22, -- G
-    ['H'] = 0x23, -- H
-    ['J'] = 0x24, -- J
-    ['K'] = 0x25, -- K
-    ['L'] = 0x26, -- L
-    ['SEMICOLON'] = 0x27, -- ;
-    ['APOSTROPHE'] = 0x28, -- '
-    ['GRAVE'] = 0x29, -- `
-    ['LSHIFT'] = 0x2A, -- 左Shift
-    ['BACKSLASH'] = 0x2B, -- \
-    ['Z'] = 0x2C, -- Z
-    ['X'] = 0x2D, -- X
-    ['C'] = 0x2E, -- C
-    ['V'] = 0x2F, -- V
-    ['B'] = 0x30, -- B
-    ['N'] = 0x31, -- N
-    ['M'] = 0x32, -- M
-    ['COMMA'] = 0x33, -- ,
-    ['PERIOD'] = 0x34, -- .
-    ['SLASH'] = 0x35, -- /
-    ['RSHIFT'] = 0x36, -- 右Shift
-    ['NUM_STAR'] = 0x37, -- 小键盘*
-    ['LALT'] = 0x38, -- 左Alt
-    ['SPACE'] = 0x39, -- Space
-    ['CAPSLOCK'] = 0x3A, -- CAPSLOCK
-    ['F1'] = 0x3B, -- F1
-    ['F2'] = 0x3C, -- F2
-    ['F3'] = 0x3D, -- F3
-    ['F4'] = 0x3E, -- F4
-    ['F5'] = 0x3F, -- F5
-    ['F6'] = 0x40, -- F6
-    ['F7'] = 0x41, -- F7
-    ['F8'] = 0x42, -- F8
-    ['F9'] = 0x43, -- F9
-    ['F10'] = 0x44, -- F10
-    ['PAUSE'] = 0x45, -- Pause
-    ['SCROLL_LOCK'] = 0x46, -- Scroll Lock
-    ['NUM_7'] = 0x47, -- 小键盘7
-    ['NUM_8'] = 0x48, -- 小键盘8
-    ['NUM_9'] = 0x49, -- 小键盘9
-    ['NUM_MINUS'] = 0x4A, -- 小键盘-
-    ['NUM_4'] = 0x4B, -- 小键盘4
-    ['NUM_5'] = 0x4C, -- 小键盘5
-    ['NUM_6'] = 0x4D, -- 小键盘6
-    ['NUM_ADD'] = 0x4E, -- 小键盘+
-    ['NUM_1'] = 0x4F, -- 小键盘1
-    ['NUM_2'] = 0x50, -- 小键盘2
-    ['NUM_3'] = 0x51, -- 小键盘3
-    ['NUM_0'] = 0x52, -- 小键盘0
-    ['NUM_PERIOD'] = 0x53, -- 小键盘.
-    ['F11'] = 0x57, -- F11
-    ['F12'] = 0x58, -- F12
-    ['NUM_ENTER'] = 0x9C, -- 小键盘Enter
-    ['RCTRL'] = 0x9D, -- 右Ctrl
-    ['NUM_COMMA'] = 0xB3, -- 小键盘,
-    ['NUM_SLASH'] = 0xB5, -- 小键盘/
-    ['SYSRQ'] = 0xB7, -- 系统重启
-    ['R_ALT'] = 0xB8, -- 右Alt
-    ['NUM_LOCK'] = 0xC5, -- NumLock
-    ['HOME'] = 0xC7, -- Home
-    ['UPARROW'] = 0xC8, -- ↑
-    ['PAGEUP'] = 0xC9, -- PageUp
-    ['LEFTARROW'] = 0xCB, -- ←
-    ['RIGHTARROW'] = 0xCD, -- →
-    ['END'] = 0xCF, -- End
-    ['DOWNARROW'] = 0xD0, -- ↓
-    ['PAGEDOWN'] = 0xD1, -- PageDown
-    ['INSERT'] = 0xD2, -- Insert
-    ['DELETE'] = 0xD3, -- Delete
-    ['LWIN'] = 0xDB, -- 左Win
-    ['RWIN'] = 0xDC, -- 右Win
-    ['APPS'] = 0xDD, -- 应用
+    ['ESCAPE'] = 0x01, --ESC
+    ['KEY_1'] = 0x02, --one
+    ['KEY_2'] = 0x03, --2
+    ['KEY_3'] = 0x04, --3
+    ['KEY_4'] = 0x05, --4
+    ['KEY_5'] = 0x06, --5
+    ['KEY_6'] = 0x07, --6
+    ['KEY_7'] = 0x08, --7
+    ['KEY_8'] = 0x09, --8
+    ['KEY_9'] = 0x0A, --9
+    ['KEY_0'] = 0x0B, --0
+    ['MINUS'] = 0x0C, ---
+    ['EQUAL'] = 0x0D, --=
+    ['BACKSPACE'] = 0x0E, --Backspace
+    ['TAB'] = 0x0F, --Tab
+    ['Q'] = 0x10, --Q
+    ['W'] = 0x11, --W
+    ['E'] = 0x12, --E
+    ['R'] = 0x13, --R
+    ['T'] = 0x14, --T
+    ['Y'] = 0x15, --Y
+    ['U'] = 0x16, --U
+    ['I'] = 0x17, --I
+    ['O'] = 0x18, --O
+    ['P'] = 0x19, --P
+    ['LBRACKET'] = 0x1A, --[
+    ['RBRACKET'] = 0x1B, --]
+    ['RETURN'] = 0x1C, --Enter
+    ['ENTER'] = 0x1C, --Enter
+    ['LCTRL'] = 0x1D, --Left Ctrl
+    ['A'] = 0x1E, --A
+    ['S'] = 0x1F, --S
+    ['D'] = 0x20, --D
+    ['F'] = 0x21, --F
+    ['G'] = 0x22, --G
+    ['H'] = 0x23, --H
+    ['J'] = 0x24, --J
+    ['K'] = 0x25, --K
+    ['L'] = 0x26, --L
+    ['SEMICOLON'] = 0x27, --;
+    ['APOSTROPHE'] = 0x28, --'
+    ['GRAVE'] = 0x29, --`
+    ['LSHIFT'] = 0x2A, --Left Shift
+    ['BACKSLASH'] = 0x2B, --\
+    ['Z'] = 0x2C, --Z
+    ['X'] = 0x2D, --X
+    ['C'] = 0x2E, --C
+    ['V'] = 0x2F, --V
+    ['B'] = 0x30, --B
+    ['N'] = 0x31, --N
+    ['M'] = 0x32, --M
+    ['COMMA'] = 0x33, --,
+    ['PERIOD'] = 0x34, --.
+    ['SLASH'] = 0x35, --/
+    ['RSHIFT'] = 0x36, --Right Shift
+    ['NUM_STAR'] = 0x37, --Keypad *
+    ['LALT'] = 0x38, --Left Alt
+    ['SPACE'] = 0x39, --Space
+    ['CAPSLOCK'] = 0x3A, --CAPSLOCK
+    ['F1'] = 0x3B, --F1
+    ['F2'] = 0x3C, --F2
+    ['F3'] = 0x3D, --F3
+    ['F4'] = 0x3E, --F4
+    ['F5'] = 0x3F, --F5
+    ['F6'] = 0x40, --F6
+    ['F7'] = 0x41, --F7
+    ['F8'] = 0x42, --F8
+    ['F9'] = 0x43, --F9
+    ['F10'] = 0x44, --F10
+    ['PAUSE'] = 0x45, --Pause
+    ['SCROLL_LOCK'] = 0x46, --Scroll Lock
+    ['NUM_7'] = 0x47, --Keypad 7
+    ['NUM_8'] = 0x48, --Keypad 8
+    ['NUM_9'] = 0x49, --Keypad 9
+    ['NUM_MINUS'] = 0x4A, --Keypad -
+    ['NUM_4'] = 0x4B, --Keypad 4
+    ['NUM_5'] = 0x4C, --Keypad 5
+    ['NUM_6'] = 0x4D, --Keypad 6
+    ['NUM_ADD'] = 0x4E, --Keypad +
+    ['NUM_1'] = 0x4F, --Keypad 1
+    ['NUM_2'] = 0x50, --Keypad 2
+    ['NUM_3'] = 0x51, --Keypad 3
+    ['NUM_0'] = 0x52, --Keypad 0
+    ['NUM_PERIOD'] = 0x53, --A small keyboard.
+    ['F11'] = 0x57, --F11
+    ['F12'] = 0x58, --F12
+    ['NUM_ENTER'] = 0x9C, --Keypad Enter
+    ['RCTRL'] = 0x9D, --Right Ctrl
+    ['NUM_COMMA'] = 0xB3, --Small keyboard,
+    ['NUM_SLASH'] = 0xB5, --Keypad /
+    ['SYSRQ'] = 0xB7, --System restart
+    ['R_ALT'] = 0xB8, --Right Alt
+    ['NUM_LOCK'] = 0xC5, --NumLock
+    ['HOME'] = 0xC7, --Home
+    ['UPARROW'] = 0xC8, --write
+    ['PAGEUP'] = 0xC9, --PageUp
+    ['LEFTARROW'] = 0xCB, --please
+    ['RIGHTARROW'] = 0xCD, ---
+    ['END'] = 0xCF, --End
+    ['DOWNARROW'] = 0xD0, --left
+    ['PAGEDOWN'] = 0xD1, --PageDown
+    ['INSERT'] = 0xD2, --Insert
+    ['DELETE'] = 0xD3, --Delete
+    ['LWIN'] = 0xDB, --Left Win
+    ['RWIN'] = 0xDC, --Right Win
+    ['APPS'] = 0xDD, --Apply
 }
 
 M.GameResult = {
@@ -412,10 +412,10 @@ M.OnceRecycle = {
 
 ---@enum(key) clicli.Const.VisibleType
 M.VisibleType = {
-    ['全体'] = 1,
-    ['自己'] = 2,
-    ['友方'] = 3,
-    ['敌方'] = 4,
+    ['All'] = 1,
+    ['Myself'] = 2,
+    ['FriendlySide'] = 3,
+    ['Enemy'] = 4,
 }
 
 ---@enum clicli.Const.LinkSfxPointType
@@ -426,9 +426,9 @@ M.LinkSfxPointType = {
 
 ---@enum(key) clicli.Const.SfxRotateType
 M.SfxRotateType = {
-    ['跟随节点'] = 0,
-    ['跟随模型'] = 1,
-    ['不跟随'] = 2,
+    ['FollowNode'] = 0,
+    ['FollowTheModel'] = 1,
+    ['DoNotFollow'] = 2,
 }
 
 ---@enum clicli.Const.SlotType
@@ -439,13 +439,13 @@ M.SlotType = {
 }
 
 ---@alias clicli.Const.ShiftSlotTypeAlias
----| '物品栏'
----| '背包栏'
+---| 'Inventory'
+---| 'Backpack bar'
 
 ---@enum clicli.Const.ShiftSlotType
 M.ShiftSlotType = {
-    ['物品栏'] = 1,
-    ['背包栏'] = 0,
+    ['Inventory'] = 1,
+    ['BackpackBar'] = 0,
 }
 
 ---@enum clicli.Const.EffectType
@@ -488,9 +488,9 @@ M.CameraMoveMode = {
     ['ACC'] = 1,
     ['SMOOTH'] = 0,
     ['DEC'] = 2,
-    ['匀速'] = 0,
-    ['匀加速'] = 1,
-    ['匀减速'] = 2,
+    ['UniformSpeed'] = 0,
+    ['UniformAcceleration'] = 1,
+    ['UniformDeceleration'] = 2,
 }
 
 M.CameraShakeMode = {
@@ -505,9 +505,9 @@ M.CameraShakeMode = {
 
 ---@enum(key) clicli.Const.SignalType
 M.SignalType = {
-    ['普通'] = 1,
-    ['黄色'] = 2,
-    ['蓝色'] = 3,
+    ['Ordinary'] = 1,
+    ['Yellow'] = 2,
+    ['Blue'] = 3,
 }
 
 ---@enum clicli.Const.GlobalEventType
@@ -681,313 +681,313 @@ M.DestructibleEventType = {
 }
 
 ---@alias clicli.Const.UIEvent
----| '左键-按下'
----| '左键-抬起'
----| '左键-点击'
----| '左键-双击'
----| '鼠标-悬停'
----| '鼠标-移入'
----| '鼠标-移出'
----| '鼠标-右击'
----| '右键-按下'
----| '右键-抬起'
----| '右键-点击'
----| '右键-双击'
+---| 'Left - press down'
+---| 'Left - lift'
+---| 'Left-click'
+---| 'Left-double-click'
+---| 'Mouse-hover'
+---| 'Mouse - move in'
+---| 'Mouse - move out'
+---| 'Mouse - right click'
+---| 'Right click - press down'
+---| 'Right-click - lift'
+---| 'Right - click'
+---| 'Right-click - double-click'
 
 M.UIEventMap = {
-    -- 旧
-    ['空']       = -1,
-    ['点击-开始'] = 1,
-    ['点击-结束'] = 2,
-    ['点击-持续'] = 3,
-    ['鼠标-双击'] = 22,
-    --['鼠标-悬停'] = 23,
-    --['鼠标-移入'] = 24,
-    --['鼠标-移出'] = 25,
-    ['鼠标-右击'] = 26,
-    -- 新
-    ['左键-按下'] = 1,
-    ['左键-抬起'] = 2,
-    ['左键-按住'] = 3,
-    ['左键-点击'] = 30,
-    ['左键-双击'] = 22,
-    ['鼠标-悬停'] = 23,
-    ['鼠标-移入'] = 24,
-    ['鼠标-移出'] = 25,
-    ['右键-按下'] = 32,
-    ['右键-抬起'] = 33,
-    ['右键-按住'] = 34,
-    ['右键-点击'] = 34,
-    ['右键-双击'] = 35,
+    --The old
+    ['Empty']       = -1,
+    ['Click-start'] = 1,
+    ['Click-end'] = 2,
+    ['Click-continue'] = 3,
+    ['Mouse-DoubleClick'] = 22,
+    --[' mouse-hover '] = 23,
+    --[' Mouse - move in '] = 24,
+    --[' Mouse - move out '] = 25,
+    ['Mouse-RightClick'] = 26,
+    --new
+    ['Left-PressDown'] = 1,
+    ['Left-click-Lift'] = 2,
+    ['LeftButton-HoldDown'] = 3,
+    ['Left-Click'] = 30,
+    ['Left-click-DoubleClick'] = 22,
+    ['Mouse-hover'] = 23,
+    ['Mouse-MoveIn'] = 24,
+    ['Mouse-MoveOut'] = 25,
+    ['Right-PressDown'] = 32,
+    ['Right-Lift'] = 33,
+    ['RightClick-Hold'] = 34,
+    ['Right-Click'] = 34,
+    ['Right-DoubleClick'] = 35,
 }
 
 ---@alias clicli.Const.DamageTextType
----| 'get_gold' # 获取金币
----| 'heal'     # 治疗
----| 'magic'    # 法术
----| 'physics'  # 物理
----| 'real'     # 真实
+---| 'get_gold' # gets gold coins
+---| 'heal' # heal
+---| 'magic' # spells
+---| 'physics' # Physics
+---| 'real' # real
 
 ---@alias clicli.Const.UIComponentType
----| '物品'
----| '按钮'
----| '富文本'
----| '文本'
----| '图片'
----| '进度条'
----| '模型'
----| '空节点'
----| '标签页'
----| '设置'
----| '列表'
----| '滑动条'
----| '聊天'
----| '轮播图'
----| '语音开关'
----| '输入框'
----| '地图'
----| '技能按钮'
----| '魔法效果'
----| '序列帧'
----| '特效'
+---| 'Articles'
+---| 'Button'
+---| 'Rich text'
+---| 'Text'
+---| 'Pictures'
+---| 'Progress bar'
+---| 'Model'
+---| 'empty node'
+---| 'TAB pages'
+---| 'Settings'
+---| 'List'
+---| 'Sliders'
+---| 'Chat'
+---| 'Rotograph'
+---| 'Voice switch'
+---| 'Input field'
+---| 'Map'
+---| 'Skills Button'
+---| 'Magic Effects'
+---| 'Sequence frames'
+---| 'Special Effects'
 
 M.UIComponentType = {
     Node = 0,
     Button = 1,
-    ['按钮'] = 1,
+    ['Button'] = 1,
     Layer = 2,
     TextLabel = 3,
-    ['文本'] = 3,
+    ['Text'] = 3,
     Image = 4,
-    ['图片'] = 4,
+    ['Picture'] = 4,
     Progress = 5,
-    ['进度条'] = 5,
+    ['ProgressBar'] = 5,
     Model = 6,
-    ['模型'] = 6,
+    ['Model'] = 6,
     Layout = 7,
-    ['空节点'] = 7,
+    ['EmptyNode'] = 7,
     TabWidget = 8,
-    ['标签页'] = 8,
+    ['Tab'] = 8,
     TabPage = 9,
     ScrollView = 10,
-    ['列表'] = 10,
+    ['List'] = 10,
     Slider = 11,
-    ['滑动条'] = 11,
+    ['Slider'] = 11,
     Background = 14,
     InputField = 15,
-    ['输入框'] = 15,
+    ['InputBox'] = 15,
     MiniMap = 16,
-    ['地图'] = 16,
+    ['Map'] = 16,
     SkillBtn = 17,
-    ['技能按钮'] = 17,
+    ['SkillButton'] = 17,
     BuffList = 18,
-    ['魔法效果'] = 18,
+    ['MagicEffect'] = 18,
     BuffItem = 19,
     EquipSlot = 20,
-    ['物品'] = 20,
+    ['Article'] = 20,
     ShopPanel = 21,
     GoodsItem = 22,
     ComposePanel = 23,
     ChatBox = 24,
     GridView = 25,
     RichText = 26,
-    ['富文本'] = 26,
+    ['RichText'] = 26,
     SettingPanel = 27,
-    ['设置'] = 27,
-    -- timeline工程动画
+    ['Settings'] = 27,
+    --timeline project animation
     AnimationEffect = 28,
     ComboBox = 29,
     ComboBoxItem = 30,
-    -- 序列帧动画
+    --Sequence frame animation
     SequenceAnimation = 31,
-    -- 新聊天
+    --New Chat
     NewChatBox = 32,
-    ['聊天'] = 32,
+    ['Chat'] = 32,
     PageView = 33,
-    ['轮播图'] = 33,
+    ['Carousel'] = 33,
     AudioSwitch = 34,
-    ['语音开关'] = 34,
-    -- spine骨骼动画
+    ['VoiceSwitch'] = 34,
+    --spine animation
     Spine = 35,
-    -- 新的序列帧动画组件
+    --New sequence frame animation component
     NewSequenceAnimation = 38,
-    ['序列帧'] = 38,
-    ['特效'] = 49,
+    ['SequenceFrame'] = 38,
+    ['SpecialEffects'] = 49,
 }
 
 ---@alias clicli.Const.UIVAlignmentType
----| '上'
----| '中'
----| '下'
+---| 'up'
+---| 'middle'
+---| 'down'
 
 M.UIVAlignmentType = {
-    ['上'] = 0,
-    ['中'] = 8,
-    ['下'] = 16,
+    ['Up'] = 0,
+    ['Middle'] = 8,
+    ['Down'] = 16,
 }
 
 ---@alias clicli.Const.UIHAlignmentType
----| '左'
----| '中'
----| '右'
+---| 'Left'
+---| 'middle'
+---| 'Right'
 
 M.UIHAlignmentType = {
-    ['左'] = 1,
-    ['中'] = 2,
-    ['右'] = 4,
+    ['Left'] = 1,
+    ['Middle'] = 2,
+    ['Right'] = 4,
 }
 
 ---@alias clicli.Const.CursorState
----| '常态悬浮'
----| '常态选取'
----| '常态禁用'
----| '敌方建筑单位悬浮'
----| '敌方非建筑单位悬浮'
----| '敌方建筑单位选取'
----| '敌方非建筑单位选取'
----| '己方建筑单位悬浮'
----| '己方非建筑单位悬浮'
----| '己方建筑单位选取'
----| '己方非建筑单位选取'
----| '友方建筑单位悬浮'
----| '友方非建筑单位悬浮'
----| '友方建筑单位选取'
----| '友方非建筑单位选取'
+---| 'Normal suspension'
+---| 'Normal selection'
+---| 'Normally disabled'
+---| 'Enemy building unit suspended'
+---| 'Enemy non-construction units suspended'
+---| 'Enemy Building Unit Selection'
+---| 'Enemy non-building unit Selection'
+---| 'Own building unit suspended'
+---| 'Own non-construction unit suspension'
+---| 'Choose your own building unit'
+---| 'Choose your own non-building unit'
+---| 'Friendly building unit suspension'
+---| 'Friendly non-construction Unit suspension'
+---| 'Choose a Friendly Building Unit'
+---| 'Friendly non-building unit Selection'
 
 M.CursorState = {
-    ['常态悬浮'] = 'nm_hover',
-    ['常态选取'] = 'nm_selected',
-    ['常态禁用'] = 'nm_disabled',
-    ['敌方建筑单位悬浮'] = 'e_b_u_hover',
-    ['敌方非建筑单位悬浮'] = 'e_nb_u_hover',
-    ['敌方建筑单位选取'] = 'e_b_u_selected',
-    ['敌方非建筑单位选取'] = 'e_nb_u_selected',
-    ['己方建筑单位悬浮'] = 'o_b_u_hover',
-    ['己方非建筑单位悬浮'] = 'o_nb_u_hover',
-    ['己方建筑单位选取'] = 'o_b_u_selected',
-    ['己方非建筑单位选取'] = 'o_nb_u_selected',
-    ['友方建筑单位悬浮'] = 'f_b_u_hover',
-    ['友方非建筑单位悬浮'] = 'f_nb_u_hover',
-    ['友方建筑单位选取'] = 'f_b_u_selected',
-    ['友方非建筑单位选取'] = 'f_nb_u_selected',
+    ['NormalSuspension'] = 'nm_hover',
+    ['NormalSelection'] = 'nm_selected',
+    ['NormalDisabled'] = 'nm_disabled',
+    ['EnemyBuildingUnitsAreSuspended'] = 'e_b_u_hover',
+    ['EnemyNon-constructionUnitsSuspended'] = 'e_nb_u_hover',
+    ['EnemyBuildingUnitSelection'] = 'e_b_u_selected',
+    ['EnemyNon-buildingUnitSelection'] = 'e_nb_u_selected',
+    ['OwnBuildingUnitSuspended'] = 'o_b_u_hover',
+    ['OwnNon-constructionUnitSuspended'] = 'o_nb_u_hover',
+    ['OwnBuildingUnitSelection'] = 'o_b_u_selected',
+    ['OwnNon-constructionUnitSelection'] = 'o_nb_u_selected',
+    ['FriendlyBuildingUnitSuspended'] = 'f_b_u_hover',
+    ['FriendlyNon-constructionUnitSuspension'] = 'f_nb_u_hover',
+    ['FriendlyBuildingUnitSelection'] = 'f_b_u_selected',
+    ['FriendlyNon-constructionUnitSelection'] = 'f_nb_u_selected',
 }
 
 ---@enum(key) clicli.Const.HarmTextType
 M.HarmTextType = {
-    ['系统字体'] = 0,
-    ['物理伤害'] = 1,
-    ['物理暴击'] = 2,
-    ['治疗'] = 3,
-    ['魔法伤害'] = 4,
-    ['魔法暴击'] = 5,
-    ['真实伤害'] = 6,
-    ['金币获取'] = 7,
-    ['魔兽获取金币'] = 90,
-    ['魔兽获取木材'] = 91,
-    ['嘲讽'] = 113,
-    ['沉默'] = 114,
-    ['定身'] = 115,
-    ['减速'] = 116,
-    ['晕眩'] = 117,
-    ['致盲'] = 118,
+    ['SystemFont'] = 0,
+    ['PhysicalDamage'] = 1,
+    ['PhysicalCriticalStrike'] = 2,
+    ['Treatment'] = 3,
+    ['MagicDamage'] = 4,
+    ['MagicCriticalStrike'] = 5,
+    ['RealInjury'] = 6,
+    ['GoldAcquisition'] = 7,
+    ['WarcraftGetsGold'] = 90,
+    ['WarcraftGetsWood'] = 91,
+    ['Taunt'] = 113,
+    ['Silence'] = 114,
+    ['Fixed'] = 115,
+    ['SlowDown'] = 116,
+    ['Dizzy'] = 117,
+    ['Blinding'] = 118,
 }
 
 ---@enum(key) clicli.Const.FloatTextType
 M.FloatTextType = {
-    ['物理伤害'] = 'physics',
-    ['魔法伤害'] = 'magic',
-    ['真实伤害'] = 'real',
-    ['治疗'] = 'heal',
-    ['获取金币'] = 'get_gold',
-    ['系统字体'] = 0,
+    ['PhysicalDamage'] = 'physics',
+    ['MagicDamage'] = 'magic',
+    ['RealInjury'] = 'real',
+    ['Treatment'] = 'heal',
+    ['GetGold'] = 'get_gold',
+    ['SystemFont'] = 0,
     --
-    ['微软雅黑'] = 'MSYH',
-    ['华康黑体W9'] = 'HKHeiW9',
-    ['华康黑体W12'] = 'HKHeiW12',
-    ['华康标题宋W9'] = 'HKSongW9',
-    ['华康魏碑W7'] = 'HKWeiBeiW7',
-    ['华康新综艺体W7'] = 'HKXinZongYiW7',
-    ['华康新综艺体W9'] = 'HKXinZongYiW9',
-    ['华康圆体W5'] = 'HKYuanW5',
-    ['华康圆体W7'] = 'HKYuanW7',
-    ['华康圆体W9'] = 'HKYuanW9',
+    ['MicrosoftYahei'] = 'MSYH',
+    ['HuakangBlackBodyW9'] = 'HKHeiW9',
+    ['HuakangBlackBodyW12'] = 'HKHeiW12',
+    ['HuaKangTitleSongW9'] = 'HKSongW9',
+    ['HuaKangWeiSteleW7'] = 'HKWeiBeiW7',
+    ['HuakangNewVarietyStyleW7'] = 'HKXinZongYiW7',
+    ['HuakangNewVarietyStyleW9'] = 'HKXinZongYiW9',
+    ['HuakangRoundBodyW5'] = 'HKYuanW5',
+    ['HuakangRoundBodyW7'] = 'HKYuanW7',
+    ['HuakangRoundBodyW9'] = 'HKYuanW9',
 }
 
 ---@enum(key) clicli.Const.FloatTextJumpType
 M.FloatTextJumpType = {
-    ['伤害_左上'] = 934231441,
-    ['伤害_中上'] = 934269508,
-    ['伤害_右上'] = 934266669,
-    ['伤害_左下'] = 934252831,
-    ['金币跳字'] = 934277693,
+    ['Injury_TopLeft'] = 934231441,
+    ['Hurt_MiddleUp'] = 934269508,
+    ['Damage_TopRight'] = 934266669,
+    ['Injury_LowerLeft'] = 934252831,
+    ['GoldCoinJump'] = 934277693,
 }
 
 ---@enum(key) clicli.Const.UIAnimKey
 M.UIAnimKey = {}
 
 ---@alias clicli.Const.UIRelativeParentPosType
----| '顶部'
----| '底部'
----| '左侧'
----| '右侧'
+---| 'Top'
+---| 'Bottom'
+---| 'Left side'
+---| 'Right side'
 
 M.UIRelativeParentPosType = {
-    ["顶部"] = 0,
-    ["底部"] = 1,
-    ["左侧"] = 2,
-    ["右侧"] = 3,
+    ["Top"] = 0,
+    ["Bottom"] = 1,
+    ["LeftSide"] = 2,
+    ["RightSide"] = 3,
 }
 
 ---@enum clicli.Const.UIButtonStatus
 M.UIButtonStatus = {
-    ['常态'] = 1,
-    ['悬浮'] = 2,
-    ['按下'] = 3,
-    ['禁用'] = 4,
+    ['Normal'] = 1,
+    ['Suspension'] = 2,
+    ['PressDown'] = 3,
+    ['Disable'] = 4,
 }
 
 ---@enum (key) clicli.Const.UIAttr
 M.UIAttr = {
-    ["文本"] = "text_bind",
-    ["最大值"] = "max_value_bind",
-    ["当前值"] = "current_value_bind",
+    ["Text"] = "text_bind",
+    ["MaximumValue"] = "max_value_bind",
+    ["CurrentValue"] = "current_value_bind",
 }
 
 ---@enum(key) clicli.Const.AbilityIntAttr
 M.AbilityIntAttr = {
-    ["最大等级"] = "ability_max_level",
-    ["最大充能数"] = "ability_max_stack_count",
-    ["当前等级"] = "ability_level",
-    ["当前充能数"] = "cur_stack_count",
+    ["MaximumLevel"] = "ability_max_level",
+    ["MaximumChargeNumber"] = "ability_max_stack_count",
+    ["CurrentLevel"] = "ability_level",
+    ["CurrentChargeNumber"] = "cur_stack_count",
 }
 
 ---@enum(key) clicli.Const.AbilityStrAttr
 M.AbilityStrAttr = {
-    ["名称"] = "name",
-    ["描述"] = "description",
+    ["Name"] = "name",
+    ["Description"] = "description",
 }
 
 ---@enum(key) clicli.Const.AbilityFloatAttr
 M.AbilityFloatAttr = {
-    ['技能消耗'] = 'ability_cost',
-    ['生命值消耗'] = 'ability_hp_cost',
-    ['冷却时间'] = 'cold_down_time',
-    ['技能伤害值'] = 'ability_damage',
-    ['释放范围'] = 'ability_cast_range',
-    ['施法开始'] = 'ability_cast_point',
-    ['施法完成'] = 'ability_bw_point',
-    ['施法出手'] = 'ability_channel_time',
-    ['施法引导'] = 'ability_prepare_time',
-    ['技能影响范围'] = 'ability_damage_range',
-    ['充能时间'] = 'ability_stack_cd',
+    ['SkillDrain'] = 'ability_cost',
+    ['HealthCost'] = 'ability_hp_cost',
+    ['CooldownTime'] = 'cold_down_time',
+    ['AbilityDamage'] = 'ability_damage',
+    ['ReleaseRange'] = 'ability_cast_range',
+    ['SpellcastingBegins'] = 'ability_cast_point',
+    ['SpellComplete'] = 'ability_bw_point',
+    ['CastASpell'] = 'ability_channel_time',
+    ['CastGuide'] = 'ability_prepare_time',
+    ['SkillSphere'] = 'ability_damage_range',
+    ['ChargeTime'] = 'ability_stack_cd',
 }
 
 ---@enum(key) clicli.Const.CollisionLayers
 M.CollisionLayers = {
-    ['地面'] = 1 << 5,
-    ['空中'] = 1 << 6,
-    ['水面'] = 1 << 7,
-    ['物件'] = 1 << 8,
+    ['Ground'] = 1 << 5,
+    ['InTheAir'] = 1 << 6,
+    ['WaterSurface'] = 1 << 7,
+    ['Object'] = 1 << 8,
 }
 
 ---@enum(key) clicli.Const.SceneUI
@@ -995,57 +995,57 @@ M.SceneUI = {}
 
 ---@enum(key) clicli.Const.PlatFormRoleCommunityType
 M.PlatFormRoleCommunityType = {
-    ['发帖累计获赞'] = 0,
-    ['精华帖数量'] = 1,
-    ['回复帖子的次数'] = 2,
-    ['帖子收到的欢乐数'] = 3,
-    ['是否在社区发过贴'] = 4,
-    ['是否版主'] = 5,
-    ['社区主题数量'] = 6,
+    ['PostAccumulatedLikes'] = 0,
+    ['NumberOfEssencePosts'] = 1,
+    ['NumberOfRepliesToPosts'] = 2,
+    ['NumberOfHappyPostsReceived'] = 3,
+    ['HaveYouPostedInTheCommunity?'] = 4,
+    ['WhetherToModerator'] = 5,
+    ['NumberOfCommunityTopics'] = 6,
 }
 
 ---@enum(key) clicli.Const.SignInDaysType
 M.SignInDaysType = {
-    ['累计签到'] = 0,
-    ['最多连续签到'] = 1,
-    ['当前连续签到'] = 2,
+    ['CumulativeCheck-in'] = 0,
+    ['MaximumConsecutiveCheck-in'] = 1,
+    ['CurrentContinuousCheck-in'] = 2,
 }
 
 ---@enum clicli.Const.SteamOnlineState
 M.SteamOnlineState = {
-    ['离线'] = 1,
-    ['空闲'] = 2,
-    ['房间中'] = 3,
-    ['匹配中'] = 4,
-    ['游戏中'] = 5,
+    ['Offline'] = 1,
+    ['Free'] = 2,
+    ['InTheRoom'] = 3,
+    ['Matching'] = 4,
+    ['InTheGame'] = 5,
 }
 
 ---@enum clicli.Const.SteamRoomState
 M.SteamRoomState = {
-    ['大厅'] = 0,
-    ['倒计时'] = 1,
-    ['游戏中'] = 2,
+    ['Hall'] = 0,
+    ['Countdown'] = 1,
+    ['InTheGame'] = 2,
 }
 
 ---@enum clicli.Const.SteamRoomSlotState
 M.SteamRoomSlotState = {
-    ['打开'] = 0,
-    ['关闭'] = 1,
-    ['简单电脑'] = 5,
-    ['困难电脑'] = 6,
+    ['Open'] = 0,
+    ['Close'] = 1,
+    ['SimpleComputer'] = 5,
+    ['HardComputer'] = 6,
 }
 
 ---@enum(key) clicli.Const.RoadPatrolType
 M.RoadPatrolType = {
-    ['单向'] = 0,
-    ['往返'] = 1,
-    ['循环'] = 2,
+    ['One-way'] = 0,
+    ['RoundTrip'] = 1,
+    ['Loop'] = 2,
 }
 
 ---@enum(key) clicli.Const.UIEffectCameraMode
 M.UIEffectCameraMode = {
-    ['自定义模式'] = 0,
-    ['智能模式'] = 1,
+    ['CustomMode'] = 0,
+    ['IntelligentMode'] = 1,
 }
 
 ---@enum(key) clicli.Const.CustomEventName

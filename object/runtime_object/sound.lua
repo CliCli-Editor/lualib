@@ -20,9 +20,9 @@ end
 ---@field fade_in? number # Involution time
 ---@field fade_out? number # Fade out time
 
----播放声音
----@param player Player 玩家
----@param sound py.AudioKey 声音
+---Play sound
+---@param player Player
+---@param sound py.AudioKey Sound
 ---@param options Sound.PlayOptions? # Play option
 ---@return Sound?
 function M.play(player, sound, options)
@@ -43,17 +43,17 @@ end
 ---@field height? number # Altitude
 ---@field ensure? boolean # Ensure to play
 
----播放3D声音
----@param player Player 玩家
----@param sound py.AudioKey 声音
----@param point Point 目标点
+---Play 3D sound
+---@param player Player
+---@param sound py.AudioKey Sound
+---@param point Point Target point
 ---@param options Sound.Play3DOptions? # Play option
 ---@return Sound?
 function M.play_3d(player, sound, point, options)
     local py_sound = GameAPI.play_3d_sound_for_player(
         player.handle,
         sound,
-        -- TODO 见问题2
+        --TODO see question 2
         ---@diagnostic disable-next-line: param-type-mismatch
         point.handle,
         options and options.height or 0.0,
@@ -74,10 +74,10 @@ end
 ---@field offset_y? number # Y-axis migration
 ---@field offset_z? number # Z-axis migration
 
----跟随单位播放声音
----@param player Player 玩家
----@param sound py.AudioKey 声音
----@param unit Unit 跟随的单位
+---Follow the unit to play the sound
+---@param player Player
+---@param sound py.AudioKey Sound
+---@param unit Unit that unit follows
 ---@param options Sound.PlayUnitOptions? # Play option
 ---@return Sound?
 function M.play_with_object(player, sound, unit, options)
@@ -99,16 +99,16 @@ function M.play_with_object(player, sound, unit, options)
     return M.get_by_handle(py_sound)
 end
 
----停止播放声音
----@param player Player 玩家
----@param is_immediately? boolean 是否立即停止
+---Stop playing sound
+---@param player Player
+---@param is_immediately? boolean Whether to stop immediately
 function M:stop(player, is_immediately)
     GameAPI.stop_sound(player.handle, self.handle, not is_immediately or false)
 end
 
 --Set volume
----@param player Player 玩家
----@param volume integer 音量(0-100)
+---@param player Player
+---@param volume integer Volume (0-100)
 function M:set_volume(player, volume)
     GameAPI.set_sound_volume(player.handle, self.handle, volume)
 end

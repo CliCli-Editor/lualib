@@ -25,4 +25,4 @@ require 'clicli.unittest.eventtest'
 require 'clicli.unittest.eventperform'
 require 'clicli.unittest.ltimer'
 
-print('测试完成！')
+print('Test complete!')

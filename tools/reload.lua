@@ -4,7 +4,7 @@ local originRequire = require
 --
 --For methods related to hot reload, see 'Demonstration/Hot Reload' for details.
 ---@class Reload
----@overload fun(optional?: Reload.Optional): self
+---@overload fun(optional? : Reload.Optional): self
 local M = Class 'Reload'
 
 ---@private
@@ -18,18 +18,18 @@ M.includedNames = {}
 ---@alias Reload.beforeReloadCallback fun(reload: Reload, willReload: boolean)
 
 ---@private
----@type {name?: string, callback: Reload.beforeReloadCallback}[]
+---@type {name? : string, callback: Reload.beforeReloadCallback}[]
 M.beforeReloadCallbacks = {}
 
 ---@alias Reload.afterReloadCallback fun(reload: Reload, hasReloaded: boolean)
 
 ---@private
----@type {name?: string, callback: Reload.afterReloadCallback}[]
+---@type {name? : string, callback: Reload.afterReloadCallback}[]
 M.afterReloadCallbacks = {}
 
 ---@class Reload.Optional
----@field list? string[] -- 要重载的模块列表
----@field filter? fun(name: string, reload: Reload): boolean -- 过滤函数
+---@field list? string[] -- List of modules to overload
+---@field filter? fun(name: string, reload: Reload): boolean -- filter function
 
 ---@private
 ---@type Reload.Optional?
@@ -202,7 +202,7 @@ function M.reload(optional)
     reload:fire()
 end
 
----是否正在重载
+---Is loading
 ---@return boolean
 function M.isReloading()
     return M._reloading == true

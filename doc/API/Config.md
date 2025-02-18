@@ -1,8 +1,8 @@
 # Config
 
-配置
+disposition
 
-可以设置日志、同步等相关的配置
+You can set log and synchronization configurations
 
 ## cache
 
@@ -22,33 +22,33 @@ table
 string
 ```
 
- 是否是debug模式
+ Yes No debug mode
 ## log
 
 ```lua
 unknown
 ```
 
- 日志相关的配置
+ Log related configuration
 ## logic_frame
 
 ```lua
 integer
 ```
 
-每秒的逻辑帧率，请将其设置为与你地图中设置的一致。
-目前默认为30帧，未来默认会读取你地图中的设置。
-必须在游戏开始时就设置好，请勿中途修改。
+Logical frame rate per second, please set it to the same as set in your map。
+The current default is 30 frames, and in the future the Settings in your map will be read by default。
+It must be set at the beginning of the game, do not change it in the middle。
 ## sync
 
 ```lua
 unknown
 ```
 
- 同步相关的配置，当设置为 `true` 后将启用同步，
- 会产生额外的流量。  
- 同步需要一定的时间，获取到的是一小段时间前的状态，
- 因此启用同步后不能立即获取状态。  
+ Sync-related configurations, which are enabled when set to 'true'，
+ It generates additional traffic。  
+ Synchronization takes a certain amount of time, and the state obtained is a short period of time ago，
+ Therefore, the status cannot be obtained immediately after synchronization is enabled。  
 
 # Config.Log
 
@@ -58,56 +58,56 @@ unknown
 Log.Level
 ```
 
-日志等级，默认为 `debug`
+Log level. The default value is `debug`
 ## logger
 
 ```lua
 fun(level: Log.Level, message: string, timeStamp: string):boolean
 ```
 
-自定义的日志处理函数，返回 `true` 将阻止默认的日志处理。在处理函数的执行过程中会屏蔽此函数。
+A custom log handler that returns' true 'will block the default log handler. This function is masked during the execution of the handler function。
 ## toConsole
 
 ```lua
 boolean
 ```
 
-是否打印到控制台中，默认为 `true`
+Whether to print to the console. The default is `true`
 ## toDialog
 
 ```lua
 boolean
 ```
 
-是否打印到Dialog窗口，默认为 `true`
+Whether to print to a Dialog window. The default is `true`
 ## toFile
 
 ```lua
 boolean
 ```
 
-是否打印到文件中，默认为 `true`
+Whether to print to a file. The default value is `true`
 ## toGame
 
 ```lua
 boolean
 ```
 
-是否打印到游戏窗口中，默认为 `false`
+Whether to print to the game window. The default is `false`
 ## toHelper
 
 ```lua
 boolean
 ```
 
-是否打印到《Y3开发助手》中，默认为 `true`
+Whether to print to Y3 Development Assistant, the default is `true`
 
 # Config.Sync
 
- 同步相关的配置，当设置为 `true` 后将启用同步，
- 会产生额外的流量。  
- 同步需要一定的时间，获取到的是一小段时间前的状态，
- 因此启用同步后不能立即获取状态。  
+ Sync-related configurations, which are enabled when set to 'true'，
+ It generates additional traffic。  
+ Synchronization takes a certain amount of time, and the state obtained is a short period of time ago，
+ Therefore, the status cannot be obtained immediately after synchronization is enabled。  
 
 ## camera
 
@@ -115,19 +115,19 @@ boolean
 boolean
 ```
 
-同步玩家的镜头
+Sync the player's shots
 ## key
 
 ```lua
 boolean
 ```
 
-同步玩家的键盘与鼠标按键
+Sync the player's keyboard and mouse keys
 ## mouse
 
 ```lua
 boolean
 ```
 
-同步玩家的鼠标位置
+Sync the player's mouse position
 

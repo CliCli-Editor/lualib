@@ -1,8 +1,8 @@
 # Selector
 
-选取器
+chooser
 
-用来选取某个区域内的单位
+Used to select units within a region
 
 ## count
 
@@ -11,7 +11,7 @@
   -> Selector
 ```
 
- 选项 - 选取的数量
+ Options - The number of selections
 ## create
 
 ```lua
@@ -19,7 +19,7 @@ function Selector.create()
   -> Selector
 ```
 
- 创建选取器
+ Create picker
 ## get
 
 ```lua
@@ -27,7 +27,7 @@ function Selector.create()
   -> UnitGroup
 ```
 
- 进行选取
+ Make selection
 ## in_range
 
 ```lua
@@ -35,7 +35,7 @@ function Selector.create()
   -> Selector
 ```
 
- 形状 - 在圆形区域内
+ Shape - In a circular area
 ## in_shape
 
 ```lua
@@ -43,7 +43,7 @@ function Selector.create()
   -> Selector
 ```
 
- 形状 - 添加形状对象
+ Shape - Adds shape objects
 ## in_state
 
 ```lua
@@ -51,7 +51,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 拥有某个特定的状态
+ Condition - Having a certain state
 ## include_dead
 
 ```lua
@@ -59,7 +59,7 @@ function Selector.create()
   -> Selector
 ```
 
- 选项 - 包含死亡的单位
+ Option - Contains dead units
 ## ipairs
 
 ```lua
@@ -69,7 +69,7 @@ function Selector.create()
   3. integer
 ```
 
- 进行遍历
+ traversal
 ## is_ally
 
 ```lua
@@ -77,7 +77,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 是某个玩家的同盟
+ Condition - Is an ally of a player
 ## is_enemy
 
 ```lua
@@ -85,7 +85,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 是某个玩家的敌人
+ Condition - Is an enemy of a player
 ## is_unit_key
 
 ```lua
@@ -93,7 +93,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 是某个特定的单位类型
+ Condition - Is a specific unit type
 ## is_unit_type
 
 ```lua
@@ -101,7 +101,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 是某个特定的单位类型
+ Condition - Is a specific unit type
 ## is_visible
 
 ```lua
@@ -109,7 +109,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 对某个玩家可见
+ Condition - Visible to a player
 ## not_in_group
 
 ```lua
@@ -117,7 +117,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 不在某个单位组中
+ Condition - Not in a unit group
 ## not_in_state
 
 ```lua
@@ -125,7 +125,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 不拥有某个特定的状态
+ Condition - Does not possess a particular state
 ## not_is
 
 ```lua
@@ -133,7 +133,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 不是某个特定的单位
+ Condition - Not a specific unit
 ## not_visible
 
 ```lua
@@ -141,7 +141,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 对某个玩家不可见
+ Condition - Not visible to a player
 ## of_player
 
 ```lua
@@ -149,7 +149,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 属于某个玩家或某个玩家组
+ Condition - Belongs to a player or a group of players
 ## pick
 
 ```lua
@@ -157,7 +157,7 @@ function Selector.create()
   -> Unit[]
 ```
 
- 进行选取
+ Make selection
 ## sort_type
 
 ```lua
@@ -165,7 +165,7 @@ function Selector.create()
   -> Selector
 ```
 
- 排序 - 按照某种方式排序
+ Sort - Sort in a certain way
 ## with_tag
 
 ```lua
@@ -173,7 +173,7 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 拥有特定标签
+ Condition - Have a specific label
 ## without_tag
 
 ```lua
@@ -181,12 +181,12 @@ function Selector.create()
   -> Selector
 ```
 
- 条件 - 不拥有特定标签
+ Condition - Do not own a specific label
 
 # Selector.SortType
 
 ```lua
-"由近到远" | "由远到近" | "随机"
+"From near to far "|" from far to near "|" random"
 ```
 
 

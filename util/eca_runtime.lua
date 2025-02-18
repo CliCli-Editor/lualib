@@ -1,5 +1,5 @@
----这个库仅用于ECA转Lua时用于支持ECA的写法，
----如果一开始就是用Lua开发的可以使用更好的写法。
+---This library is only used to support ECA writing when converting ECA to Lua.
+---If it was originally developed in Lua it would have been better written.
 ---@class ECARuntime
 local M = {}
 
@@ -11,7 +11,7 @@ function M.evaluate(code, ...)
             args = { ... }
         }, { __index = _G }))
         if not func then
-            log.error('evaluate 代码解析失败：', err, code)
+            log.error('evaluate code parsing fails:', err, code)
         end
         f = func or false
         evaluate_cache[code] = f
@@ -101,7 +101,7 @@ local new_mt = { __index = function (t, k)
         return nil
     end
     if type(v) == 'table' then
-        -- array
+        --array
         local mt = getmetatable(v)
         if mt then
             v = setmetatable({}, mt)

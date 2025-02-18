@@ -68,7 +68,7 @@ function M.create(unit, options)
         )
         return New 'Force' (handle)
     else
-        error('牵引目标不正确：' .. tostring(target))
+        error('Traction target is incorrect:' .. tostring(target))
     end
     ---@diagnostic enable: param-type-mismatch
 end

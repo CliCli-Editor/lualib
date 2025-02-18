@@ -123,7 +123,7 @@ local function handleBody(body)
             end
         else
             if id then
-                M.response(id, nil, '未找到方法：' .. tostring(data.method))
+                M.response(id, nil, 'Method not found:' .. tostring(data.method))
             end
         end
     else
@@ -142,7 +142,7 @@ end
 local onReadyCallbacks = {}
 
 ---@param port integer
----@return Network 
+---@return Network
 local function createClient(port)
     client = network.connect('127.0.0.1', port, {
         update_interval = 0.05,
@@ -168,14 +168,14 @@ local function createClient(port)
     end)
 
     client:on_error(function (self, error)
-        print('VSCode链接发生错误：', error)
+        print('The VSCode link has an error:', error)
         clicli.ctimer.wait(1, function ()
             createClient(port)
         end)
     end)
 
     client:on_disconnected(function (self)
-        print('VSCode链接断开!')
+        print('VSCode link down!')
         clicli.ctimer.wait(1, function ()
             createClient(port)
         end)
@@ -218,7 +218,7 @@ end
 
 ---@class Develop.Helper.RestartOptions
 ---@field debugger? boolean # Whether to start the debugger. If omitted, it determines whether a debugger is needed based on whether it is currently attached.
----@field id? integer  多开模式下自己的id
+---@field id? integer Specifies the id of the user in multiple open mode
 
 --Ready to restart the game
 function M.prepareForRestart()
@@ -273,7 +273,7 @@ function M.createTreeNode(name, optional)
     return treeNode
 end
 
----在《CliCli开发助手》上创建一个输入框
+---Create an input box on the CliCli Development Assistant
 ---@param optional? Develop.Helper.InputBox.Optional
 ---@return Develop.Helper.InputBox
 function M.createInputBox(optional)
@@ -281,7 +281,7 @@ function M.createInputBox(optional)
     return inputBox
 end
 
----在《CliCli开发助手》上创建一个属性监视器
+---Create a property monitor on the CliCli Development Assistant
 ---@param unit Unit # Units to be monitored
 ---@param attrType clicli.Const.UnitAttr # Attribute name
 ---@param condition? Develop.Attr.Accept # Breakpoint expressions, such as' >= 100 ', '<=' maximum life / 2 '
@@ -325,7 +325,7 @@ M.registerMethod('command', function (params)
     clicli.develop.console.input(params.data)
 end)
 
-clicli.game:event_on('$CliCli-初始化', function ()
+clicli.game:event_on('$CliCli- Initialize', function ()
     if not clicli.game.is_debug_mode() then
         return
     end
@@ -337,7 +337,7 @@ clicli.game:event_on('$CliCli-初始化', function ()
     M.init()
 end)
 
-clicli.game:event_on('$CliCli-即将切换关卡', function ()
+clicli.game:event_on('$CliCli- About to switch levels', function ()
     M.prepareForRestart()
 end)
 

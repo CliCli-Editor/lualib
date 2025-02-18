@@ -72,7 +72,7 @@ local TRGI = Class 'Develop.TriggerWatcherInstance'
 
 function TRGI:__init()
     local triggerModule = require 'clicli.util.trigger'
-    --开始时间（毫秒）
+    --Start time (milliseconds)
     self.startTime = clicli.ltimer.clock()
     self.originalExecute = triggerModule.execute
 
@@ -102,7 +102,7 @@ function TRGI:__init()
 end
 
 function TRGI:__del()
-    --结束时间（毫秒）
+    --End time (milliseconds)
     self.endTime = clicli.ltimer.clock()
     local triggerModule = require 'clicli.util.trigger'
     triggerModule.execute = self.originalExecute
@@ -110,7 +110,7 @@ end
 
 ---@param inTime? number # Only the last X seconds are counted
 ---@param topCount? integer # The positions of the first X functions that take the longest time are counted
----@return { count: integer, cost: number, time: number, average: number, tops?: string[] }
+---@return { count: integer, cost: number, time: number, average: number, tops? : string[] }
 function TRGI:makeReport(inTime, topCount)
     local report = {}
 

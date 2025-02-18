@@ -36,12 +36,12 @@ clicli.py_converter.register_lua_to_py('py.Sfx', function (lua_value)
 end)
 
 ---@class Particle.Param.Screen
----@field type py.SfxKey 特效id
----@field time number 持续时间
----@field target Player 玩家
----@field is_on_fog boolean 是否在迷雾上方
+---@field type py.SfxKey Special effect id
+---@field time number Duration
+---@field target Player
+---@field is_on_fog boolean Specifies whether it is above the fog
 
----创建屏幕特效
+---Create screen effects
 ---@param data Particle.Param.Screen
 ---@return Particle
 function M.create_screen(data)
@@ -52,17 +52,17 @@ function M.create_screen(data)
 end
 
 ---@class Particle.Param.Create
----@field type py.SfxKey 特效类型id
----@field target Point|Unit 点
----@field angle? number 方向
----@field scale? number 缩放
----@field time? number 持续时间
----@field height? number 高度，只有当 `target` 的类型为点时有效
----@field socket? string 特效挂节点，只有当 `target` 的类型为单位时有效
----@field follow_rotation? integer | clicli.Const.SfxRotateType 跟随单位旋转的模式，只有当 `target` 的类型为单位时有效
----@field follow_scale? boolean 是否跟随单位缩放，只有当 `target` 的类型为单位时有效
----@field immediate? boolean 销毁时，是否立刻移除显示效果
----@field detach? boolean 是否脱离单位，只有当 `target` 的类型为单位时有效
+---@field type py.SfxKey id of the special effect type
+---@field target Point|Unit
+---@field angle? number direction
+---@field scale? number scaling
+---@field time? number duration
+---@field height? number height, valid only if 'target' is of type a point
+---@field socket? string special effect hanging node, only valid if the type of 'target' is a unit
+---@field follow_rotation? Integer | clicli. Const. SfxRotateType following unit rotating mode, only when ` target ` type of units available at the time
+---@field follow_scale? boolean Whether to scale with units, valid only if the type of 'target' is units
+---@field immediate? boolean Whether to remove the display effect immediately upon destruction
+---@field detach? boolean Specifies whether to detach from units. Valid only if the type of 'target' is units
 
 --Create effects to units or points
 ---@param data Particle.Param.Create
@@ -98,7 +98,7 @@ function M.create(data)
         local height = data.height or 0.0
         local py_sfx = GameAPI.create_sfx_on_point(
             data.type,
-            -- TODO 见问题2
+            --TODO see question 2
             ---@diagnostic disable-next-line: param-type-mismatch
             target.handle,
             angle,
@@ -124,50 +124,50 @@ function M:remove()
 end
 
 --Set rotation Angle
----@param x number X轴角度
----@param y number Y轴角度
----@param z number Z轴角度
+---@param x number X axis Angle
+---@param y number Y-axis Angle
+---@param z number Z-axis Angle
 function M:set_rotate(x, y, z)
     GameAPI.set_sfx_rotate(self.handle, x, y, z)
 end
 
 --orientation
----@param direction number 方向
+---@param direction number Indicates the direction
 function M:set_facing(direction)
     GameAPI.set_sfx_angle(self.handle, direction)
 end
 
 
 --Set scale
----@param x number X轴缩放
----@param y number Y轴缩放
----@param z number Z轴缩放
+---@param x number X axis scaling
+---@param y number Scaling the Y-axis
+---@param z number Z-axis scaling
 function M:set_scale(x, y, z)
     GameAPI.set_sfx_scale(self.handle, x, y, z)
 end
 
 --Set height
----@param height number 高度
+---@param height number Height
 function M:set_height(height)
     GameAPI.set_sfx_height(self.handle, height)
 end
 
 --Set coordinates
----@param point Point 点
+---@param point Point
 function M:set_point(point)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     GameAPI.set_sfx_position(self.handle, point.handle)
 end
 
 --Set animation speed
----@param speed number 速度
+---@param speed number Speed
 function M:set_animation_speed(speed)
     GameAPI.set_sfx_animation_speed(self.handle, speed)
 end
 
 --Set duration
----@param duration number 持续时间
+---@param duration number Indicates the duration
 function M:set_time(duration)
     GameAPI.set_sfx_duration(self.handle, duration)
 end

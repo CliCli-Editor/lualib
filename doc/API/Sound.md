@@ -1,6 +1,6 @@
 # Sound
 
-声音
+Audio
 
 ## get_by_handle
 
@@ -15,7 +15,7 @@ function Sound.get_by_handle(py_sound: py.SoundEntity)
 py.SoundEntity
 ```
 
-声音对象
+Sound object
 ## play
 
 ```lua
@@ -23,13 +23,13 @@ function Sound.play(player: Player, sound: py.AudioKey, options?: Sound.PlayOpti
   -> Sound?
 ```
 
-播放声音
+Play sound
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `sound` — 声音
+@*param* `sound` — Audio
 
-@*param* `options` — 播放选项
+@*param* `options` — Play option
 ## play_3d
 
 ```lua
@@ -37,15 +37,15 @@ function Sound.play_3d(player: Player, sound: py.AudioKey, point: Point, options
   -> Sound?
 ```
 
-播放3D声音
+Play 3D sound
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `sound` — 声音
+@*param* `sound` — Audio
 
-@*param* `point` — 目标点
+@*param* `point` — Target point
 
-@*param* `options` — 播放选项
+@*param* `options` — Play option
 ## play_with_object
 
 ```lua
@@ -53,37 +53,37 @@ function Sound.play_with_object(player: Player, sound: py.AudioKey, unit: Unit, 
   -> Sound?
 ```
 
-跟随单位播放声音
+Follow the unit to play the sound
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `sound` — 声音
+@*param* `sound` — Audio
 
-@*param* `unit` — 跟随的单位
+@*param* `unit` — Following unit
 
-@*param* `options` — 播放选项
+@*param* `options` — Play option
 ## set_volume
 
 ```lua
 (method) Sound:set_volume(player: Player, volume: integer)
 ```
 
- 设置音量
+ Set volume
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `volume` — 音量(0-100)
+@*param* `volume` — volume(0-100)
 ## stop
 
 ```lua
 (method) Sound:stop(player: Player, is_immediately?: boolean)
 ```
 
-停止播放声音
+Stop playing sound
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `is_immediately` — 是否立即停止
+@*param* `is_immediately` — Whether to stop immediately
 
 # Sound.Play3DOptions
 
@@ -93,35 +93,35 @@ function Sound.play_with_object(player: Player, sound: py.AudioKey, unit: Unit, 
 boolean
 ```
 
-是否确保播放
+Ensure to play
 ## fade_in
 
 ```lua
 number
 ```
 
-渐入时间
+Involution time
 ## fade_out
 
 ```lua
 number
 ```
 
-渐出时间
+Fade out time
 ## height
 
 ```lua
 number
 ```
 
-高度
+Altitude
 ## loop
 
 ```lua
 boolean
 ```
 
-是否循环
+Cyclic or not
 
 # Sound.PlayOptions
 
@@ -131,21 +131,21 @@ boolean
 number
 ```
 
-渐入时间
+Involution time
 ## fade_out
 
 ```lua
 number
 ```
 
-渐出时间
+Fade out time
 ## loop
 
 ```lua
 boolean
 ```
 
-是否循环
+Cyclic or not
 
 # Sound.PlayUnitOptions
 
@@ -155,47 +155,47 @@ boolean
 boolean
 ```
 
-是否确保播放
+Ensure to play
 ## fade_in
 
 ```lua
 number
 ```
 
-渐入时间
+Involution time
 ## fade_out
 
 ```lua
 number
 ```
 
-渐出时间
+Fade out time
 ## loop
 
 ```lua
 boolean
 ```
 
-是否循环
+Cyclic or not
 ## offset_x
 
 ```lua
 number
 ```
 
-X轴偏移
+XAxis shift
 ## offset_y
 
 ```lua
 number
 ```
 
-Y轴偏移
+YAxis shift
 ## offset_z
 
 ```lua
 number
 ```
 
-Z轴偏移
+ZAxis shift
 

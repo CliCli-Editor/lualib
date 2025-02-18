@@ -7,7 +7,7 @@
   -> function
 ```
 
-函数绑定到对象
+Functions are bound to objects
 ## funcBindCache
 
 ```lua

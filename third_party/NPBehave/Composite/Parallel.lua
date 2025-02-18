@@ -1,5 +1,5 @@
 ---@class NPBehave.Composite.Parallel
----@overload fun(successPolicy: NPBehave.Enum.ParallelPolicy, failurePolicy: NPBehave.Enum.ParallelPolicy, ...: NPBehave.Node): self
+---@overload fun(successPolicy: NPBehave.Enum.ParallelPolicy, failurePolicy: NPBehave.Enum.ParallelPolicy, ... : NPBehave.Node): self
 local Parallel = Class(NPBehave.ClassName.Parallel)
 local superName = NPBehave.ClassName.Composite
 
@@ -125,6 +125,6 @@ function Parallel:StopLowerPriorityChildrenForChild(abortForChild, immediateRest
         self._runningCount = self._runningCount + 1
         abortForChild:Start()
     else
-        error("在并行节点上所有子节点都具有相同的优先级, 如果将 false 传递给`immediateRestart`, 该方法不会执行任何操作! ")
+        error("All the child nodes on a parallel node have the same priority, and if you pass false to 'immediateRestart', the method won't do anything!")
     end
 end

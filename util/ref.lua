@@ -1,13 +1,13 @@
 --[[
-维护引擎对象的生命状态
-目前策略如下：
+Maintains the life state of engine objects
+The current strategy is as follows：
 
-1. 引擎对象第一次进Lua时，生成对应的Lua对象并添加强引用
-2. 引擎对象被引擎回收后，将Lua对象从强引用改为弱引用
+1. The first time an engine object enters Lua, it generates the corresponding Lua object and adds a reinforced reference
+2. After the engine object is reclaimed by the engine, the Lua object is changed from a strong reference to a weak reference
 --]]
 
 ---@class Ref
----@overload fun(className: string, new: (fun(key: Ref.ValidKeyType, ...): any)): self
+---@overload fun(className: string, new: (fun(key: Ref.ValidKeyType, ...) : any)): self
 local M = Class 'Ref'
 
 ---@alias Ref.ValidKeyType any
@@ -17,25 +17,25 @@ M.all_managers = {}
 
 ---@generic T: string
 ---@param className `T`
----@param new fun(key: Ref.ValidKeyType, ...): T
+---@param new fun(key: Ref.ValidKeyType, ...) : T
 function M:__init(className, new)
-    -- 用于管理的对象类名
+    --The name of the object class used for management
     ---@private
     self.className = className
-    -- 创建新对象的方法
+    --A method to create a new object
     ---@private
     self.newMethod = new
-    -- 强引用
+    --Strong reference
     ---@private
     self.strongRefMap = {}
-    -- 弱引用
+    --Weak reference
     ---@private
     self.weakRefMap = setmetatable({}, clicli.util.MODE_K)
 
     M.all_managers[className] = self
 end
 
----获取指定key的对象，如果不存在，则使用所有的参数创建并返回
+---Gets the object for which the key is specified, if it does not exist, created with all the parameters and returned
 ---@param key Ref.ValidKeyType
 ---@param ... any
 ---@return any
@@ -56,7 +56,7 @@ function M:get(key, ...)
     return obj
 end
 
----获取指定key
+---Get specified key
 ---@param key Ref.ValidKeyType
 ---@return any
 function M:fetch(key)
@@ -67,7 +67,7 @@ function M:fetch(key)
     return nil
 end
 
----立即移除指定的key
+---Remove the specified key immediately
 function M:removeNow(key)
     local obj = self.strongRefMap[key]
     if not obj then
@@ -88,7 +88,7 @@ local logicEntityModuleMap = {
     [8] = 'Buff',
 }
 
----黑盒销毁逻辑实体时，使用该方法同步通知Lua层
+---This method is used to notify the Lua layer synchronously when the black box destroys a logical entity
 ---@param entity_module integer
 ---@param entity_uid integer
 _G['notify_entity_destroyed'] = function (entity_module, entity_uid)

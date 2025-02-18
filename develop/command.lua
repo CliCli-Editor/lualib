@@ -99,14 +99,14 @@ end
 M.register('RD', {
     needSync = true,
     priority = 100,
-    desc = '重载所有使用 `include` 加载的脚本文件，并清理他们的全局计时器和触发器。',
+    desc = 'Override all script files loaded with `include` and clean up their global timers and triggers.',
     onCommand = function ()
         clicli.reload.reload()
     end,
 })
 
 M.register('SS', {
-    desc = '生成内存快照',
+    desc = 'Generate a memory snapshot',
     onCommand = function (extraInfo)
         clicli.doctor.toString('onlylua', 'onlylua')
         local reports = clicli.doctor.report()
@@ -152,12 +152,12 @@ M.register('SS', {
         local content = table.concat(lines, '\n')
         ---@diagnostic disable-next-line: undefined-global
         clicli.fs.save('.log/snapshot.txt', content)
-        log.debug('快照已保存到 script/.log/snapshot.txt')
+        log.debug('The snapshot is saved to script/.log/snapshot.txt')
     end
 })
 
 M.register('CT', {
-    desc = '查询某个对象的引用',
+    desc = 'Query a reference to an object',
     onCommand = function (...)
         collectgarbage()
         collectgarbage()
@@ -171,12 +171,12 @@ M.register('CT', {
         local content = table.concat(lines, '\n')
         ---@diagnostic disable-next-line: undefined-global
         clicli.fs.save('.log/catch.txt', content)
-        log.debug('快照已保存到 script/.log/catch.txt')
+        log.debug('The snapshot is saved to script/.log/ cat.txt')
     end
 })
 
 M.register('RR', {
-    desc = '重启游戏',
+    desc = 'Restart the game',
     onCommand = function ()
         clicli.sync.send('$restart')
     end
@@ -199,7 +199,7 @@ clicli.reload.onBeforeReload(function (reload, willReload)
     remove_all_client_timers_in_include(reload)
 end)
 
-clicli.game:event('玩家-发送消息', function (trg, data)
+clicli.game:event('Player - Send message', function (trg, data)
     M.input('.', data.str1, data.player)
 end)
 
@@ -253,7 +253,7 @@ end
 function M.executeEX(param)
     local command = param.command:lower()
     local info = M.commands[command]
-    assert(info, '作弊指令不存在: ' .. param.command)
+    assert(info, 'Cheat instruction does not exist:' .. param.command)
     M.params = param
     if info.onCommand then
         info.onCommand(table.unpack(param.args))

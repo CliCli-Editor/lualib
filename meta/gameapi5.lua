@@ -447,17 +447,17 @@ function GameAPI.projectile_send_global_event_with_info(event_name, i, f, b, s, 
 ---@param u? py.Unit # Unit object
 function GameAPI.item_send_global_event_with_info(event_name, i, f, b, s, p, u) end
 
---Gets [player's] player nickname
+--Gets [player is] player nickname
 ---@param role py.Role # Player
 ---@return string # Player nickname
 function GameAPI.get_player_nick_name(role) end
 
---Gets [player's] full player nickname
+--Gets [player is] full player nickname
 ---@param role py.Role # Player
 ---@return string # Player full nickname
 function GameAPI.get_player_full_nick_name(role) end
 
---Gets [player's] player aid
+--Gets [player is] player aid
 ---@param role py.Role # Player
 ---@return string # Player aid
 function GameAPI.get_player_plat_aid(role) end
@@ -735,12 +735,12 @@ function GameAPI.get_player_camera_direction(role) end
 ---@return py.Point # Point of intersection
 function GameAPI.get_camera_center_raycast(role) end
 
---The percentage of Windows at the player's mouse screen position X
+--The percentage of Windows at the player is mouse screen position X
 ---@param role py.Role # Player
 ---@return py.Fixed # Account for
 function GameAPI.get_role_ui_x_per(role) end
 
---The percentage of Windows in the player's mouse screen position Y
+--The percentage of Windows in the player is mouse screen position Y
 ---@param role py.Role # Player
 ---@return py.Fixed # Account for
 function GameAPI.get_role_ui_y_per(role) end
@@ -1084,7 +1084,7 @@ function GameAPI.set_smart_cast_ability(player, is_open) end
 ---@param is_open boolean # Open or not
 function GameAPI.set_preview_common_atk_range(player, is_open) end
 
---Whether to let {player} 's smart casts use indicators
+--Whether to let {player}  is smart casts use indicators
 ---@param player py.Role # Player
 ---@param use_skill_pointer boolean # Whether to use indicators
 function GameAPI.set_smart_cast_with_pointer(player, use_skill_pointer) end
@@ -1119,7 +1119,7 @@ function GameAPI.get_simple_cast(role) end
 ---@return boolean # Whether to cast spells intelligently
 function GameAPI.get_client_simple_cast(role) end
 
---Save the editor's intra-office Settings
+--Save the editor is intra-office Settings
 ---@param role py.Role # Player
 function GameAPI.save_client_setting(role) end
 

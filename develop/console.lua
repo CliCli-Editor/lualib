@@ -7,7 +7,7 @@ local M = Class 'Develop.Console'
 function M.getHelpInfo()
     local info = {}
 
-    info[#info+1] = '指令列表:'
+    info[#info+1] = 'List of instructions:'
     local commands = clicli.develop.command.getAllCommands()
     for _, command in ipairs(commands) do
         local commandInfo = clicli.develop.command.getCommandInfo(command)
@@ -16,11 +16,11 @@ function M.getHelpInfo()
         end
     end
     info[#info+1] = ''
-    info[#info+1] = '可以直接输入代码运行，以 `!` 开头的代码会在同步后运行：'
-    info[#info+1] = '  1 + 2 --> 当前控制台打印3'
-    info[#info+1] = '  !clicli.player(1):get_name() --> 多开测试时所有控制台都会打印玩家1的名字'
+    info[#info+1] = 'You can directly enter the code to run to `! `The code at the beginning will run after synchronization:'
+    info[#info+1] = '1 + 2 --> Current console print 3'
+    info[#info+1] = '! clicli.player(1):get_name() --> All consoles will print Player 1`s name on multiple tests'
     info[#info+1] = ''
-    info[#info+1] = '输入 `?` 查看此帮助'
+    info[#info+1] = 'Enter `? `View this help'
 
     return table.concat(info, '\n')
 end
@@ -78,7 +78,7 @@ function M.input(input)
     M.show_result(ok, result)
 end
 
-clicli.game:event('控制台-输入', function (trg, data)
+clicli.game:event('Console - Input', function (trg, data)
     if not clicli.game.is_debug_mode() then
         return
     end
@@ -322,7 +322,7 @@ local function requestWords(inputed)
     return completes
 end
 
-clicli.game:event('控制台-请求补全', function (trg, data)
+clicli.game:event('Console - Request completion', function (trg, data)
     if not clicli.game.is_debug_mode() then
         return
     end
@@ -347,7 +347,7 @@ clicli.game:event('控制台-请求补全', function (trg, data)
     console_tips_match(table.concat(completes, '\x01'))
 end)
 
-clicli.game:event_on('$CliCli-初始化', function ()
+clicli.game:event_on('$CliCli- Initialize', function ()
     consoleprint(M.getHelpInfo())
 end)
 

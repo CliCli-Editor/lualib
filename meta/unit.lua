@@ -104,13 +104,13 @@ function Unit:api_switch_atk_assist_record(enable) end
 --Whether the unit/point is in the range
 ---@param unit py.Unit # unit
 ---@param radius number # Radius
----@return boolean? # Whether it's in range
+---@return boolean? # Whether it is in range
 function Unit:api_is_in_range(unit, radius) end
 
 --Whether the point is in range
 ---@param point py.Point # point
 ---@param radius number # Radius
----@return boolean? # Whether it's in range
+---@return boolean? # Whether it is in range
 function Unit:api_is_point_in_range(point, radius) end
 
 --Set the life cycle of a unit
@@ -342,7 +342,7 @@ function Unit:api_add_exp(exp) end
 ---@param exp py.Fixed # EXP
 function Unit:api_set_exp(exp) end
 
---Gets the unit's current experience and returns -1 if it reaches the top level
+--Gets the unit is current experience and returns -1 if it reaches the top level
 ---@return integer? # Current experience value of the unit
 function Unit:api_get_exp() end
 
@@ -432,12 +432,12 @@ function Unit:api_set_unit_reward_exp(res_value) end
 ---@param res_value py.Fixed # EXP
 function Unit:api_set_unit_reward_res(res_key, res_value) end
 
---Gets the unit's shield value
+--Gets the unit is shield value
 ---@param shield_type integer # Shield type
 ---@return integer? # Shield Value
 function Unit:api_get_unit_shield_value(shield_type) end
 
---Set the unit's avatar
+--Set the unit is avatar
 ---@param icon py.Texture # picture
 function Unit:api_set_unit_icon(icon) end
 
@@ -481,7 +481,7 @@ function Unit:api_set_face_angle_inner_usage(face_angle, turn_type) end
 ---@return boolean? # Whether the unit can transmit to the target point
 function Unit:api_can_teleport_to(pos) end
 
---Gets the unit's nearest passable point near the target point
+--Gets the unit is nearest passable point near the target point
 ---@return py.FVector3? # Nearest passable point
 function Unit:api_find_nearest_valid_position() end
 
@@ -974,15 +974,15 @@ function Unit:api_set_ability_level(modify, ability_type, ability_index, level) 
 ---@param ability_key py.AbilityKey # Skill type
 function Unit:api_unit_learn_ability(ability_key) end
 
---Gain the hero's skill points
+--Gain the hero is skill points
 ---@return integer? # Skill Points
 function Unit:api_get_ability_point() end
 
---Sets the hero's skill points
+--Sets the hero is skill points
 ---@param ability_point integer # Skill Points
 function Unit:api_set_ability_point(ability_point) end
 
---Increases the hero's skill points
+--Increases the hero is skill points
 ---@param value integer # Skill Points
 function Unit:api_add_ability_point(value) end
 

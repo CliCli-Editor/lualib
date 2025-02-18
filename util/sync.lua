@@ -22,7 +22,7 @@ function M.onSync(id, callback)
     M.syncMap[id] = callback
 end
 
-clicli.game:event('游戏-接收广播信息', function (trg, data)
+clicli.game:event('Games - Receive broadcast information', function (trg, data)
     local id = data.broadcast_lua_msg_id
     local callback = M.syncMap[id]
     if not callback then

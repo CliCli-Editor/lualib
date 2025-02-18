@@ -24,7 +24,7 @@ end
 
 M.map = {}
 
----通过py层的界面实例获取lua层的界面实例
+---Obtain the interface instance of the lua layer from the interface instance of the py layer
 ---@param py_scene_node py.SceneNode
 ---@return SceneUI
 function M.get_by_handle(py_scene_node)
@@ -38,14 +38,14 @@ clicli.py_converter.register_lua_to_py('py.SceneNode', function (lua_value)
     return lua_value.handle
 end)
 
----创建场景界面到场景点
----@param  sceneui string | clicli.Const.SceneUI 控件
----@param  point Point 点
----@param  range? number 可见距离
----@param  height? number 离地高度
----@return SceneUI scene_ui 场景ui
+---Create scene interface to scene attraction
+---@param sceneui string | clicli.Const.SceneUI control
+---@param point Point
+---@param  range? number visible distance
+---@param  height? number height off the ground
+---@return SceneUI scene_ui Scene ui
 function M.create_scene_ui_at_point(sceneui, point, range, height)
-    -- TODO 见问题2
+    --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     local py_scene_node = GameAPI.create_scene_node_on_point(clicli.const.SceneUI[sceneui] or sceneui, point.handle, range or 10000, height or 0)
     local scene_ui = M.get_by_handle(py_scene_node)
@@ -54,7 +54,7 @@ end
 
 --Gets controls in the ui of the specified player scene
 ---@param comp_path string # Control path
----@param player Player 玩家
+---@param player Player
 ---@return UI # UI control
 function M:get_ui_comp_in_scene_ui(player, comp_path)
     local temp_ui = GameAPI.get_ui_comp_in_scene_ui(self.handle, comp_path)
@@ -62,13 +62,13 @@ function M:get_ui_comp_in_scene_ui(player, comp_path)
 end
 
 --Create a scene interface to the player unit hanging point
----@param scene_ui_type string | clicli.Const.SceneUI 场景ui类型
----@param player Player 玩家
----@param unit Unit 单位
----@param socket_name string 挂接点名称
----@param distance? number 可见距离
----@param follow_scale? boolean 是否跟随缩放
----@return SceneUI scene_ui 场景ui
+---@param scene_ui_type string | clicli.Const.SceneUI Scene ui type
+---@param player Player
+---@param unit Unit Unit
+---@param socket_name string Name of the mount contact
+---@param distance? number visible distance
+---@param follow_scale? boolean Whether to follow scaling
+---@return SceneUI scene_ui Scene ui
 function M.create_scene_ui_at_player_unit_socket(scene_ui_type, player, unit, socket_name, distance, follow_scale)
     if follow_scale == nil then
         follow_scale = true
@@ -83,8 +83,8 @@ function M:remove_scene_ui()
 end
 
 --Set the visible distance of the scene interface to the player
----@param player Player 玩家
----@param dis number 可见距离
+---@param player Player
+---@param dis number Visible distance
 function M:set_scene_ui_visible_distance(player,dis)
     GameAPI.set_scene_node_visible_distance(self.handle,player.handle,dis)
 end

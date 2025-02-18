@@ -1,8 +1,8 @@
 # Math
 
-数学库
+Mathematical library
 
-均使用角度制
+All use Angle system
 
 ## acos
 
@@ -11,11 +11,11 @@ function Math.acos(value: number)
   -> float: number
 ```
 
-反余弦（角度制）
+Inverse cosine (Angle system）
 
-@*param* `value` — 实数
+@*param* `value` — Real number
 
-@*return* `float` — 实数
+@*return* `float` — Real number
 ## asin
 
 ```lua
@@ -23,11 +23,11 @@ function Math.asin(value: number)
   -> float: number
 ```
 
-反正弦（角度制）
+arcsine）
 
-@*param* `value` — 实数
+@*param* `value` — Real number
 
-@*return* `float` — 实数
+@*return* `float` — Real number
 ## atan
 
 ```lua
@@ -35,9 +35,9 @@ function Math.atan(y: number, x: number)
   -> float: number
 ```
 
-反正切（角度制）
+Inverse tangent）
 
-@*return* `float` — 实数
+@*return* `float` — Real number
 ## cos
 
 ```lua
@@ -45,11 +45,11 @@ function Math.cos(value: number)
   -> float: number
 ```
 
-余弦（角度制）
+Cosine (Angle system）
 
-@*param* `value` — 实数
+@*param* `value` — Real number
 
-@*return* `float` — 实数
+@*return* `float` — Real number
 ## get_random_angle
 
 ```lua
@@ -57,7 +57,7 @@ function Math.get_random_angle()
   -> number
 ```
 
-获取随机角度
+Get random Angle
 ## get_random_seed
 
 ```lua
@@ -65,9 +65,9 @@ function Math.get_random_seed()
   -> seed: integer
 ```
 
-获取随机种子
+Get random seeds
 
-@*return* `seed` — 随机种子
+@*return* `seed` — Random seed
 ## includedAngle
 
 ```lua
@@ -76,11 +76,11 @@ function Math.includedAngle(r1: number, r2: number)
   2. direction: number
 ```
 
-计算2个角度之间的夹角（角度制）
+Calculate the Angle between 2 angles (Angle system）
 
-@*return* `angle` — 夹角，取值范围[0, 180]
+@*return* `angle` — Included Angle, value range[0, 180]
 
-@*return* `direction` — 方向，1为顺时针，-1为逆时针
+@*return* `direction` — Direction: 1 is clockwise and -1 is counterclockwise
 ## isBetween
 
 ```lua
@@ -88,7 +88,7 @@ function Math.isBetween(number: number, min: number, max: number)
   -> boolean
 ```
 
- 检查数字是否在[min, max]范围内
+ Check whether the number is in the [min, max] range
 ## random_float
 
 ```lua
@@ -96,13 +96,13 @@ function Math.random_float(min: number, max: number)
   -> float: number
 ```
 
-范围内随机实数
+Random real numbers in the range
 
-@*param* `min` — 范围内最小实数
+@*param* `min` — The smallest real number in the range
 
-@*param* `max` — 范围内最大实数
+@*param* `max` — The largest real number in the range
 
-@*return* `float` — 随机实数
+@*return* `float` — Random real number
 ## sin
 
 ```lua
@@ -110,11 +110,11 @@ function Math.sin(value: number)
   -> float: number
 ```
 
-正弦（角度制）
+Sine (system of angles）
 
-@*param* `value` — 实数
+@*param* `value` — Real number
 
-@*return* `float` — 实数
+@*return* `float` — Real number
 ## tan
 
 ```lua
@@ -122,9 +122,9 @@ function Math.tan(value: number)
   -> float: number
 ```
 
-正切（角度制）
+Tangent (Angle system）
 
-@*param* `value` — 实数
+@*param* `value` — Real number
 
-@*return* `float` — 实数
+@*return* `float` — Real number
 

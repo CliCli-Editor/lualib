@@ -82,7 +82,7 @@ function Destructible:api_get_bool_attr(attr_name) end
 ---@return py.Fixed? # Floating-point type return value
 function Destructible:api_get_float_attr(attr_name) end
 
---Gets the destructible's camp id
+--Gets the destructible is camp id
 ---@return py.CampID? # Camp ID
 function Destructible:api_get_camp_id() end
 

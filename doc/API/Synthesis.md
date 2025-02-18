@@ -7,11 +7,11 @@
   -> { lost: any[], get: any }|nil
 ```
 
-传入当前物品栏物品，检查合成
+Pass in the current inventory item and check the composition
 
-@*param* `items` — 物品栏物品 {"material1", "material2", "material3"}
+@*param* `items` — Shelf item {"material1", "material2", "material3"}
 
-@*return* — 作为合成素材的物品，合成的结果 {lost:{"material1", "material2"}, get:"target1"}
+@*return* — The object used as the material of synthesis, the result of synthesis {lost:{"material1", "material2"}, get:"target1"}
 ## get_material_map
 
 ```lua
@@ -19,9 +19,9 @@
   -> table<any, table<any, boolean>>
 ```
 
-返回合成素材字典
+Returns the composite material dictionary
 
-@*return* — 合成素材字典
+@*return* — Composite material dictionary
 ## get_recipes
 
 ```lua
@@ -29,9 +29,9 @@
   -> table<any, table<any, integer>>
 ```
 
-返回配方表
+Back to recipe list
 
-@*return* — 配方表
+@*return* — recipe
 ## get_recipes_by_item
 
 ```lua
@@ -39,36 +39,36 @@
   -> { parents: any[], children: any[] }
 ```
 
-根据物品获取其配方
+Get its recipe according to the item
 
-@*param* `item` — 物品
+@*param* `item` — item
 
-@*return* — 该物品可合成的物品，该物品的合成素材 {parents:{"parent1"}, children:{"child1", "child2"}}
+@*return* — The article that can be synthesized, the synthetic material of the article {parents:{"parent1"}, children:{"child1", "child2"}}
 ## material_map
 
 ```lua
 table<any, table<any, boolean>>
 ```
 
-记录合成素材可以合成的目标物品 {'material1':{'target1':true, 'target2':true}}
+Record the object that the composite material can synthesize {'material1':{'target1':true, 'target2':true}}
 ## recipes
 
 ```lua
 table<any, table<any, integer>>
 ```
 
-记录合成目标和其对应合成素材的出现次数 {'target1':{'material1':2, 'material2':4}}
+Record the number of occurrences of the composite object and its corresponding composite material {'target1':{'material1':2, 'material2':4}}
 ## register
 
 ```lua
 (method) Synthesis:register(result: any, ingredients: any[])
 ```
 
-注册合成配方
+Registered synthetic formula
 
-@*param* `result` — 合成目标 "target"
+@*param* `result` — Synthetic target "target"
 
-@*param* `ingredients` — 合成素材 {"material1", "material2", "material3"}
+@*param* `ingredients` — Composite material {"material1", "material2", "material3"}
 ## target_check
 
 ```lua
@@ -76,11 +76,11 @@ table<any, table<any, integer>>
   -> { needs: any[], lost: any[] }|nil
 ```
 
-传入目标物品和已有物品，返回结果
+Pass in the target item and the existing item and return the result
 
-@*param* `target` — 目标物品 "target"
+@*param* `target` — Target item "target"
 
-@*param* `items` — 物品集合 {"material1", "material2"}
+@*param* `items` — Item collection {"material1", "material2"}
 
-@*return* — 合成还需的素材和会失去的已有合成素材 {needs:{"material3"}, lost:{"material1", "material2"}}
+@*return* — Synthesize the material that is still needed and the existing material that will be lost {needs:{"material3"}, lost:{"material1", "material2"}}
 

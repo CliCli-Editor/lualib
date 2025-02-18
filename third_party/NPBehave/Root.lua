@@ -44,7 +44,7 @@ end
 
 ---@param rootNode NPBehave.Root
 function Root:SetRoot(rootNode)
-    assert(self == rootNode, "Root节点只能设置为自己的根节点")
+    assert(self == rootNode, "The Root node can only be set as its own root node")
     Root.__super.SetRoot(self, rootNode)
 end
 
@@ -69,7 +69,7 @@ end
 ---@protected
 function Root:DoChildStopped(node, success)
     if not self.IsStopRequested then
-        -- 等待一`tick`, 防止无休止的递归
+        --Wait for a 'tick' to prevent endless recursion
         self._clock:AddTimer(0, 0, self.Decoratee:bind(self.Start))
     else
         self._blackboard:Disable()

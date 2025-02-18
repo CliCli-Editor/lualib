@@ -1,6 +1,6 @@
 # Destructible
 
-可破坏物
+destructible
 
 ## add_height
 
@@ -8,54 +8,54 @@
 (method) Destructible:add_height(height: number)
 ```
 
-增加高度
+Gain height
 
-@*param* `height` — 高度
+@*param* `height` — Altitude
 ## add_hp
 
 ```lua
 (method) Destructible:add_hp(value: number)
 ```
 
-@*param* `value` — 生命值
+@*param* `value` — Vitality
 
-增加当前生命值
+Increases current health
 ## add_max_hp
 
 ```lua
 (method) Destructible:add_max_hp(value: number)
 ```
 
-@*param* `value` — 生命值
+@*param* `value` — Vitality
 
-增加最大生命值
+Increases maximum health
 ## add_max_resource
 
 ```lua
 (method) Destructible:add_max_resource(value: number)
 ```
 
-@*param* `value` — 资源数
+@*param* `value` — Resource number
 
-增加最大资源数
+Increase the maximum number of resources
 ## add_resource
 
 ```lua
 (method) Destructible:add_resource(value: number)
 ```
 
-@*param* `value` — 资源数
+@*param* `value` — Resource number
 
-增加当前资源数
+Example Increase the number of current resources
 ## add_tag
 
 ```lua
 (method) Destructible:add_tag(tag: string)
 ```
 
-增加标签
+Add label
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## can_be_ability_target
 
 ```lua
@@ -63,9 +63,9 @@
   -> is_lockable: boolean
 ```
 
-可破坏物能否被技能指示器选中
+Whether destructible objects are selected by the skill indicator
 
-@*return* `is_lockable` — 能否被选中
+@*return* `is_lockable` — Be selected or not
 ## can_be_attacked
 
 ```lua
@@ -73,9 +73,9 @@
   -> is_attackable: boolean
 ```
 
-可破坏物能否被攻击
+Whether destructible objects can be attacked
 
-@*return* `is_attackable` — 能否被攻击
+@*return* `is_attackable` — Can be attacked
 ## can_be_collected
 
 ```lua
@@ -83,9 +83,9 @@
   -> is_collectable: boolean
 ```
 
-可破坏物能否被采集
+Whether the destructible material can be collected
 
-@*return* `is_collectable` — 能否被采集
+@*return* `is_collectable` — Can be collected
 ## can_be_selected
 
 ```lua
@@ -93,18 +93,18 @@
   -> is_selectable: boolean
 ```
 
-可破坏物能否被选中
+Whether destructible objects can be selected
 
-@*return* `is_selectable` — 能否被选中
+@*return* `is_selectable` — Be selected or not
 ## cancel_replace_model
 
 ```lua
 (method) Destructible:cancel_replace_model(model_id: py.ModelKey)
 ```
 
-取消替换模型
+Cancel replacement model
 
-@*param* `model_id` — 模型id
+@*param* `model_id` — modelid
 ## create_destructible
 
 ```lua
@@ -112,27 +112,27 @@ function Destructible.create_destructible(type_id: py.DestructibleKey, point: Po
   -> destructible: Destructible
 ```
 
-创建可破坏物
+Create destructible objects
 
-@*param* `type_id` — 可破坏物类型id
+@*param* `type_id` — Destructible typeid
 
-@*param* `point` — 创建到点
+@*param* `point` — Create to point
 
-@*param* `angle` — 面向角度
+@*param* `angle` — Angle oriented
 
-@*param* `scale_x` — 缩放x
+@*param* `scale_x` — Zoomx
 
-@*param* `scale_y` — 缩放y
+@*param* `scale_y` — Zoomy
 
-@*param* `scale_z` — 缩放z
+@*param* `scale_z` — Zoomz
 
-@*param* `height` — 高度
+@*param* `height` — Altitude
 
-@*return* `destructible` — 可破坏物
+@*return* `destructible` — destructible
 ## event
 
 ```lua
-fun(self: Destructible, event: "可破坏物-创建", callback: fun(trg: Trigger, data: EventParam.可破坏物-创建)):Trigger
+fun(self: Destructible, event: "Destruction-create, callback: fun(trg: Trigger, data: EventParam). Destructible - Create)):Trigger
 ```
 
 ## get_by_handle
@@ -142,7 +142,7 @@ function Destructible.get_by_handle(py_destructible: py.Destructible)
   -> Destructible?
 ```
 
-通过py层的可破坏物实例获取lua层的可破坏物对象
+Get the destructible object of the lua layer through the destructible instance of the py layer
 ## get_by_id
 
 ```lua
@@ -150,7 +150,7 @@ function Destructible.get_by_id(id: py.DestructibleID)
   -> Destructible?
 ```
 
- 通过可破坏物的唯一ID获取lua的可破坏物对象
+ Gets lua's destructible object by the destructible's unique ID
 ## get_description
 
 ```lua
@@ -158,9 +158,9 @@ function Destructible.get_by_id(id: py.DestructibleID)
   -> description: string
 ```
 
-获取可破坏物描述
+Get destructible description
 
-@*return* `description` — 描述
+@*return* `description` — Description
 ## get_description_by_key
 
 ```lua
@@ -168,11 +168,11 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> description: string
 ```
 
-获取可破坏物类型的描述
+Gets a description of the destructible type
 
-@*param* `key` — 类型id
+@*param* `key` — typeid
 
-@*return* `description` — 描述
+@*return* `description` — Description
 ## get_facing
 
 ```lua
@@ -180,9 +180,9 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> rotation: number
 ```
 
-获取可破坏物的面向角度
+Get the destructible oriented Angle
 
-@*return* `rotation` — 面向角度
+@*return* `rotation` — Angle oriented
 ## get_height
 
 ```lua
@@ -190,9 +190,9 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> height: number
 ```
 
-获取可破坏物的高度
+Get the height of destructible
 
-@*return* `height` — 高度
+@*return* `height` — Altitude
 ## get_hp
 
 ```lua
@@ -200,9 +200,9 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> cur_hp: number
 ```
 
-获取可破坏物的生命值
+Gain the health of destructible objects
 
-@*return* `cur_hp` — 生命值
+@*return* `cur_hp` — Vitality
 ## get_id
 
 ```lua
@@ -210,7 +210,7 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> integer
 ```
 
- 获取唯一ID
+ Get uniqueID
 ## get_item_type
 
 ```lua
@@ -218,9 +218,9 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> item_key: py.ItemKey
 ```
 
-获取可破坏物的物品类型ID
+Gets the item type of destructibleID
 
-@*return* `item_key` — 物品类型ID
+@*return* `item_key` — Item typeID
 ## get_key
 
 ```lua
@@ -228,9 +228,9 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> type: py.DestructibleKey
 ```
 
-获取可破坏物类型
+Gets the destructible type
 
-@*return* `type` — 可破坏物类型
+@*return* `type` — Destructible type
 ## get_max_hp
 
 ```lua
@@ -238,9 +238,9 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> hp: number
 ```
 
-获取可破坏物的生命值
+Gain the health of destructible objects
 
-@*return* `hp` — 可破坏物的生命值
+@*return* `hp` — The health of destructible objects
 ## get_max_resource
 
 ```lua
@@ -248,9 +248,9 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> max_number: number
 ```
 
-获取可破坏物的最大资源数
+Gets the maximum number of resources for destructible objects
 
-@*return* `max_number` — 最大资源数
+@*return* `max_number` — Maximum resource number
 ## get_model
 
 ```lua
@@ -258,9 +258,9 @@ function Destructible.get_description_by_key(key: py.DestructibleKey)
   -> model_key: py.ModelKey
 ```
 
-获取可破坏物的模型
+Get a destructible model
 
-@*return* `model_key` — 模型id
+@*return* `model_key` — modelid
 ## get_model_by_type
 
 ```lua
@@ -268,11 +268,11 @@ function Destructible.get_model_by_type(key: py.DestructibleKey)
   -> model: py.ModelKey
 ```
 
-获取可破坏物类型的模型
+Gets a model of the destructible type
 
-@*param* `key` — 类型id
+@*param* `key` — typeid
 
-@*return* `model` — 模型id
+@*return* `model` — modelid
 ## get_name
 
 ```lua
@@ -280,9 +280,9 @@ function Destructible.get_model_by_type(key: py.DestructibleKey)
   -> name: string
 ```
 
-获取可破坏物的名称
+Gets the name of the destructible
 
-@*return* `name` — 可破坏物的名称
+@*return* `name` — The name of a destructible object
 ## get_name_by_key
 
 ```lua
@@ -290,11 +290,11 @@ function Destructible.get_name_by_key(key: py.DestructibleKey)
   -> name: string
 ```
 
-获取可破坏物类型的名称
+Gets the name of the destructible type
 
-@*param* `key` — 类型id
+@*param* `key` — typeid
 
-@*return* `name` — 名称
+@*return* `name` — name
 ## get_position
 
 ```lua
@@ -302,9 +302,9 @@ function Destructible.get_name_by_key(key: py.DestructibleKey)
   -> point: Point
 ```
 
-获取可破坏物对象的位置
+Gets the location of the destructible object
 
-@*return* `point` — 可破坏物的位置
+@*return* `point` — Location of destructible objects
 ## get_resource
 
 ```lua
@@ -312,9 +312,9 @@ function Destructible.get_name_by_key(key: py.DestructibleKey)
   -> source_number: number
 ```
 
-获取可破坏物的当前资源数
+Gets the current number of resources for destructible
 
-@*return* `source_number` — 当前资源数
+@*return* `source_number` — Current resource number
 ## get_resource_name
 
 ```lua
@@ -322,9 +322,9 @@ function Destructible.get_name_by_key(key: py.DestructibleKey)
   -> source_name: string
 ```
 
-获取可破坏物的资源名称
+Gets the resource name of the destructible
 
-@*return* `source_name` — 资源名称
+@*return* `source_name` — Resource name
 ## get_resource_type
 
 ```lua
@@ -332,16 +332,16 @@ function Destructible.get_name_by_key(key: py.DestructibleKey)
   -> player_res_key: py.RoleResKey
 ```
 
-获取可破坏物的玩家属性名
+Gets the destructible player attribute name
 
-@*return* `player_res_key` — 玩家属性
+@*return* `player_res_key` — Player attributes
 ## handle
 
 ```lua
 py.Destructible
 ```
 
-可破坏物对象
+Destructible object
 ## id
 
 ```lua
@@ -355,9 +355,9 @@ integer
   -> is_alive: boolean
 ```
 
-可破坏物是否存活
+Whether the destructible is alive
 
-@*return* `is_alive` — 是否存活
+@*return* `is_alive` — Survive or not
 ## is_destroyed
 
 ```lua
@@ -372,9 +372,9 @@ integer
   -> is_exist: boolean
 ```
 
-是否存在
+Existence or not
 
-@*return* `is_exist` — 是否存在
+@*return* `is_exist` — Existence or not
 ## is_visible
 
 ```lua
@@ -382,9 +382,9 @@ integer
   -> is_visible: boolean
 ```
 
-可破坏物是否可见
+Whether the destructible is visible
 
-@*return* `is_visible` — 是否可见
+@*return* `is_visible` — Visible or not
 ## key
 
 ```lua
@@ -397,9 +397,9 @@ integer?
 (method) Destructible:kill(killer_unit: Unit)
 ```
 
-@*param* `killer_unit` — 凶手
+@*param* `killer_unit` — murderer
 
-杀死可破坏物
+Kill the destructible
 ## kv_has
 
 ```lua
@@ -407,7 +407,7 @@ integer?
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -441,7 +441,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## object_event_manager
 
 ```lua
@@ -454,7 +454,7 @@ EventManager?
 py.Destructible
 ```
 
-可破坏物对象
+Destructible object
 ## pick
 
 ```lua
@@ -462,9 +462,9 @@ function Destructible.pick(area: Area)
   -> Destructible[]
 ```
 
-遍历区域中的所有可破坏物
+Traverse all destructible objects in the area
 
-@*param* `area` — 区域对象
+@*param* `area` — Area object
 ## pick_in_shape
 
 ```lua
@@ -474,35 +474,35 @@ function Destructible.pick_in_shape(point: Point, shape: Shape)
 
 @*param* `point` — 点
 
-@*param* `shape` — 区域
+@*param* `shape` — region
 
-@*return* `destructible_list` — 可破坏物列表
+@*return* `destructible_list` — List of destructible objects
 
-获取不同形状范围内的可破坏物列表
+Gets a list of destructible objects in different shape ranges
 ## play_animation
 
 ```lua
 (method) Destructible:play_animation(anim_name: string, start_time?: number, end_time?: number, is_loop?: boolean, speed?: number)
 ```
 
-播放动画
+Play animation
 
-@*param* `anim_name` — 动画名字
+@*param* `anim_name` — Animation name
 
-@*param* `start_time` — 开始时间
+@*param* `start_time` — Start time
 
-@*param* `end_time` — 结束时间(默认-1表示播放到最后)
+@*param* `end_time` — End time (Default -1 means play to the end)
 
-@*param* `is_loop` — 是否循环
+@*param* `is_loop` — Cyclic or not
 
-@*param* `speed` — 速度
+@*param* `speed` — speed
 ## reborn
 
 ```lua
 (method) Destructible:reborn()
 ```
 
-复活可破坏物
+Resurrection destructible
 ## ref_manager
 
 ```lua
@@ -515,173 +515,173 @@ unknown
 (method) Destructible:remove()
 ```
 
-删除可破坏物
+Remove destructible objects
 ## remove_tag
 
 ```lua
 (method) Destructible:remove_tag(tag: string)
 ```
 
-移除标签
+Remove tag
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## replace_model
 
 ```lua
 (method) Destructible:replace_model(model_id: py.ModelKey)
 ```
 
-替换模型
+Replacement model
 
-@*param* `model_id` — 模型id
+@*param* `model_id` — modelid
 ## set_can_be_ability_target
 
 ```lua
 (method) Destructible:set_can_be_ability_target(can_be_ability_target: boolean)
 ```
 
-设置能否被技能指示器锁定
+Sets whether the skill indicator can be locked
 
-@*param* `can_be_ability_target` — 能否被技能指示器锁定
+@*param* `can_be_ability_target` — Can be locked by the skill indicator
 ## set_can_be_attacked
 
 ```lua
 (method) Destructible:set_can_be_attacked(is_attackable: boolean)
 ```
 
-设置能否被攻击
+Set whether to be attacked
 
-@*param* `is_attackable` — 能否被攻击
+@*param* `is_attackable` — Can be attacked
 ## set_can_be_collected
 
 ```lua
 (method) Destructible:set_can_be_collected(is_collectable: boolean)
 ```
 
-设置能否被采集
+Sets whether to be collected
 
-@*param* `is_collectable` — 能否被采集
+@*param* `is_collectable` — Can be collected
 ## set_can_be_selected
 
 ```lua
 (method) Destructible:set_can_be_selected(is_selectable: boolean)
 ```
 
-设置能否被选中
+Sets whether to be selected
 
-@*param* `is_selectable` — 能否被选中
+@*param* `is_selectable` — Be selected or not
 ## set_description
 
 ```lua
 (method) Destructible:set_description(description: string)
 ```
 
-@*param* `description` — 描述
+@*param* `description` — Description
 
-设置描述
+Set description
 ## set_facing
 
 ```lua
 (method) Destructible:set_facing(angle: number)
 ```
 
-设置朝向
+orientation
 
-@*param* `angle` — 朝向角度
+@*param* `angle` — Orientation Angle
 ## set_height
 
 ```lua
 (method) Destructible:set_height(height: number)
 ```
 
-设置高度
+Set height
 
-@*param* `height` — 高度
+@*param* `height` — Altitude
 ## set_hp
 
 ```lua
 (method) Destructible:set_hp(value: number)
 ```
 
-设置生命值
+Set health
 
-@*param* `value` — 生命值
+@*param* `value` — Vitality
 ## set_max_hp
 
 ```lua
 (method) Destructible:set_max_hp(value: number)
 ```
 
-@*param* `value` — 生命值
+@*param* `value` — Vitality
 
-设置最大生命值
+Set the maximum health
 ## set_max_resource
 
 ```lua
 (method) Destructible:set_max_resource(value: number)
 ```
 
-@*param* `value` — 资源数
+@*param* `value` — Resource number
 
-设置最大资源数
+Set the maximum number of resources
 ## set_name
 
 ```lua
 (method) Destructible:set_name(name: string)
 ```
 
-@*param* `name` — 名字
+@*param* `name` — Name
 
-设置名称
+Set name
 ## set_point
 
 ```lua
 (method) Destructible:set_point(point: Point)
 ```
 
-移动到点
+Move to point
 
-@*param* `point` — 目标点
+@*param* `point` — Target point
 ## set_resource
 
 ```lua
 (method) Destructible:set_resource(value: number)
 ```
 
-@*param* `value` — 资源数
+@*param* `value` — Resource number
 
-设置当前资源数
+Set the number of current resources
 ## set_scale
 
 ```lua
 (method) Destructible:set_scale(x: number, y: number, z: number)
 ```
 
-设置缩放
+Set scale
 
-@*param* `x` — x轴缩放
+@*param* `x` — xAxis scaling
 
-@*param* `y` — y轴缩放
+@*param* `y` — yAxis scaling
 
-@*param* `z` — z轴缩放
+@*param* `z` — zAxis scaling
 ## set_visible
 
 ```lua
 (method) Destructible:set_visible(is_visible: boolean)
 ```
 
-显示/隐藏
+Show/hide
 
-@*param* `is_visible` — 是否显示
+@*param* `is_visible` — Show or not
 ## stop_animation
 
 ```lua
 (method) Destructible:stop_animation(anim_name: string)
 ```
 
-停止动画
+Stop animation
 
-@*param* `anim_name` — 动画名字
+@*param* `anim_name` — Animation name
 ## subscribe_event
 
 ```lua

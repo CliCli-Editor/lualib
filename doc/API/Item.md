@@ -1,6 +1,6 @@
 # Item
 
-物品
+item
 
 ## add_attribute
 
@@ -8,60 +8,60 @@
 (method) Item:add_attribute(key: string, value: number)
 ```
 
-增加基础属性
+Add base attributes
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## add_bonus_attribute
 
 ```lua
 (method) Item:add_bonus_attribute(key: string, value: number)
 ```
 
-增加增益属性
+Increase gain attribute
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## add_charge
 
 ```lua
 (method) Item:add_charge(charge: integer)
 ```
 
-增加充能数
+Increase charge number
 
-@*param* `charge` — 充能数
+@*param* `charge` — Charge number
 ## add_passive_ability
 
 ```lua
 (method) Item:add_passive_ability(ability_id: py.AbilityKey, level: integer)
 ```
 
-给物品添加被动技能
+Adds passive abilities to items
 
-@*param* `ability_id` — 技能id
+@*param* `ability_id` — skillid
 
-@*param* `level` — 等级
+@*param* `level` — Lv.
 ## add_stack
 
 ```lua
 (method) Item:add_stack(stack: integer)
 ```
 
-增加堆叠数
+Increase stack count
 
-@*param* `stack` — 堆叠数
+@*param* `stack` — Stack number
 ## add_tag
 
 ```lua
 (method) Item:add_tag(tag: string)
 ```
 
-添加标签
+Add tag
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## attr_pick
 
 ```lua
@@ -69,9 +69,9 @@
   -> keys: string[]
 ```
 
-遍历物品的单位属性
+Traverse the unit properties of the item
 
-@*return* `keys` — 属性key
+@*return* `keys` — Statskey
 ## attr_pick_by_key
 
 ```lua
@@ -79,11 +79,11 @@ function Item.attr_pick_by_key(item_key: py.ItemKey)
   -> keys: string[]
 ```
 
-遍历物品类型的单位属性
+Iterate over the unit properties of the item type
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 
-@*return* `keys` — 属性key
+@*return* `keys` — Statskey
 ## check_precondition_by_key
 
 ```lua
@@ -91,11 +91,11 @@ function Item.check_precondition_by_key(player: Player, item_key: py.ItemKey)
   -> boolean
 ```
 
-检查物品类型前置条件
+Check item type preconditions
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `item_key` — 物品类型ID
+@*param* `item_key` — Item typeID
 ## create_item
 
 ```lua
@@ -103,13 +103,13 @@ function Item.create_item(point: Point, item_key: py.ItemKey, player?: Player)
   -> Item
 ```
 
-创建物品到点
+Create item to point
 
 @*param* `point` — 点
 
-@*param* `item_key` — 道具类型
+@*param* `item_key` — Item type
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## custom_event_manager
 
 ```lua
@@ -122,15 +122,15 @@ EventManager?
 (method) Item:drop(point: Point, count: integer)
 ```
 
-丢弃物品到点
+Discard items to point
 
-@*param* `point` — 目标点
+@*param* `point` — Target point
 
-@*param* `count` — 丢弃数量
+@*param* `count` — Discard quantity
 ## event
 
 ```lua
-fun(self: Item, event: "物品-获得", callback: fun(trg: Trigger, data: EventParam.物品-获得)):Trigger
+fun(self: Item, event: "Item - Get ", callback: fun(trg: Trigger, data: EventParam. Items - Get)):Trigger
 ```
 
 ## event_dispatch
@@ -143,30 +143,30 @@ fun(self: Item, event: "物品-获得", callback: fun(trg: Trigger, data: EventP
   4. any
 ```
 
-发起自定义事件（回执模式），与通知模式不同，允许插入结算。
-可以接受到事件的返回值，有多处注册事件时会按照注册顺序调用，
-当任何事件回调返回了非 `nil` 的值后，后续触发器将不再调用。
+Initiate custom events (receipt mode), which, unlike notification mode, allows for insert billing。
+The return value of the event can be accepted, and the event is called in the order of registration when there are multiple registrations，
+When any event callback returns a non-nil value, subsequent triggers are not called。
 
 ```lua
-Obj:event_on('获取', function (trigger,...)
-    print('获取1')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire1')
     return 1
 end)
-Obj:event_on('获取', function (trigger,...)
-    print('获取2')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire2')
     return 2
 end)
 
-local result = Obj:event_dispatch('获取')
+local result = Obj:event_dispatch('Acquire')
 
-print('结果为：', result)
+print('Turn out：', result)
 ```
 
-以上代码会打印：
+The above code will print：
 
 ```
-获取1
-结果为：    1
+Acquire1
+Turn out：    1
 ```
 
 ## event_dispatch_with_args
@@ -179,38 +179,38 @@ print('结果为：', result)
   4. any
 ```
 
- 发起带事件参数的自定义事件（回执模式）
+ Initiates custom events with event parameters (receipt mode）
 ## event_notify
 
 ```lua
 (method) CustomEvent:event_notify(event_name: string, ...any)
 ```
 
-发起自定义事件（通知模式），同一个对象身上只会有一个正在执行的事件，
-当发生插入结算时，后面的事件会进入队列
+When a custom event is initiated (notification mode), only one event is executed on the same object，
+When an insert settlement occurs, subsequent events are queued
 
 ```lua
-Obj:event_on('获得', function ()
-    print('触发获得')
-    print('发起移除前')
-    Obj:event_notify('移除') -- 实际业务中，可能你获得的buff把你自己杀死了，而死亡会清除buff
-    print('发起移除后')
+Obj:event_on('obtained', function ()
+    print('Trigger acquisition')
+    print('Before removal')
+    Obj:event_notify('Remove ') - In real business, maybe the buff you get kills yourself and the death clearsbuff
+    print('After removal')
 end)
 
-Obj:event_on('移除', function ()
-    print('触发移除')
+Obj:event_on('Remove', function ()
+    print('Trigger removal')
 end)
 
-Obj:event_notify('获得')
+Obj:event_notify('obtained')
 ```
 
-这段代码会打印：
+This code will print：
 
 ```
-触发获得
-发起移除前
-发起移除后
-触发移除
+Trigger acquisition
+Before removal
+After removal
+Trigger removal
 ```
 
 ## event_notify_with_args
@@ -219,7 +219,7 @@ Obj:event_notify('获得')
 (method) CustomEvent:event_notify_with_args(event_name: string, args: any[], ...any)
 ```
 
- 发起带事件参数的自定义事件（通知模式）
+ Initiates custom events with event parameters (notification mode）
 ## event_on
 
 ```lua
@@ -227,35 +227,35 @@ Obj:event_notify('获得')
   -> Trigger
 ```
 
-注册自定义事件，当触发时，会执行回调函数。
+Register a custom event and, when triggered, execute a callback function。
 
 ```lua
-Obj:event_on('输入', function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', '123', '456')
+Obj:event_notify('input', '123', '456')
 ```
 
-以上会打印：
+The above will print：
 
 ```
-触发了输入事件 123 456
+The input event was triggered 123 456
 ```
 
 ---
 
-注册时可以指定事件的参数：
+You can specify parameters for the event during registration：
 
 ```lua
-Obj:event_on('输入', {'123'}, function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', {'123'}, function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', 1) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123'}, 2) -- 可以触发事件
-Obj:event_notify_with_args('输入', {'456'}, 3) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
+Obj:event_notify('Enter ', 1) -- the event cannot be triggered
+Obj:event_notify_with_args('Enter ', {'123'}, 2) -- to trigger the event
+Obj:event_notify_with_args('Enter ', {'456'}, 3) -- cannot fire an event
+Obj:event_notify_with_args('Enter ', {'123', '666'}, 4) -- to trigger the event
 ```
 
 ## get_ability
@@ -265,9 +265,9 @@ Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
   -> ability: Ability?
 ```
 
-获取物品的主动技能
+The active skill of acquiring objects
 
-@*return* `ability` — 主动技能
+@*return* `ability` — Active skill
 ## get_attribute
 
 ```lua
@@ -275,9 +275,9 @@ Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
   -> number
 ```
 
-获取物品的基础属性
+Gets the basic properties of an item
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 ## get_attribute_by_key
 
 ```lua
@@ -285,11 +285,11 @@ function Item.get_attribute_by_key(item_key: py.ItemKey, key: string)
   -> number
 ```
 
-获取物品类型的基础属性
+Gets the base attributes of the item type
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 ## get_bonus_attribute
 
 ```lua
@@ -297,9 +297,9 @@ function Item.get_attribute_by_key(item_key: py.ItemKey, key: string)
   -> number
 ```
 
-获取物品的增益属性
+Gets the item's gain attribute
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 ## get_by_handle
 
 ```lua
@@ -307,11 +307,11 @@ function Item.get_by_handle(py_item: py.Item)
   -> Item?
 ```
 
-通过py层的技能实例获取lua层的道具实例
+Get an item instance in lua from a skill instance in py
 
-@*param* `py_item` — py层的道具实例
+@*param* `py_item` — pyLayer of prop instances
 
-@*return* — 返回在lua层初始化后的lua层道具实例
+@*return* — Returns the lua layer item instance after being initialized in the lua layer
 ## get_by_id
 
 ```lua
@@ -319,9 +319,9 @@ function Item.get_by_id(id: py.ItemID)
   -> Item
 ```
 
- 通过id获取lua层的道具实例
+ Get the item instance of the lua layer by id
 
-@*return* — 返回在lua层初始化后的lua层道具实例
+@*return* — Returns the lua layer item instance after being initialized in the lua layer
 ## get_charge
 
 ```lua
@@ -329,9 +329,9 @@ function Item.get_by_id(id: py.ItemID)
   -> charges: integer
 ```
 
-物品充能数
+Item charge number
 
-@*return* `charges` — 充能数
+@*return* `charges` — Charge number
 ## get_custom_event_manager
 
 ```lua
@@ -346,9 +346,9 @@ function Item.get_by_id(id: py.ItemID)
   -> description: string
 ```
 
-获取物品描述
+Get item description
 
-@*return* `description` — 物品描述
+@*return* `description` — Item description
 ## get_description_by_key
 
 ```lua
@@ -356,9 +356,9 @@ function Item.get_description_by_key(item_key: py.ItemKey)
   -> string
 ```
 
-获取物品类型的描述
+Get a description of the item type
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 ## get_facing
 
 ```lua
@@ -366,9 +366,9 @@ function Item.get_description_by_key(item_key: py.ItemKey)
   -> angel: number
 ```
 
-获取物品的朝向
+Gets the orientation of the item
 
-@*return* `angel` — 朝向
+@*return* `angel` — orientation
 ## get_hp
 
 ```lua
@@ -376,9 +376,9 @@ function Item.get_description_by_key(item_key: py.ItemKey)
   -> hp: number
 ```
 
-获取物品的生命值
+Gain item health
 
-@*return* `hp` — 物品的生命值
+@*return* `hp` — The item's health
 ## get_icon
 
 ```lua
@@ -386,7 +386,7 @@ function Item.get_description_by_key(item_key: py.ItemKey)
   -> py.Texture
 ```
 
-获取物品的图标
+Gets the icon of the item
 ## get_icon_id_by_key
 
 ```lua
@@ -394,9 +394,9 @@ function Item.get_icon_id_by_key(item_key: py.ItemKey)
   -> py.Texture
 ```
 
-获取物品类型的icon的图片id
+Gets a picture of the icon of the item typeid
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 ## get_id
 
 ```lua
@@ -404,7 +404,7 @@ function Item.get_icon_id_by_key(item_key: py.ItemKey)
   -> integer
 ```
 
- 获取唯一ID
+ Get uniqueID
 ## get_item_buy_price_by_key
 
 ```lua
@@ -412,13 +412,13 @@ function Item.get_item_buy_price_by_key(item_key: py.ItemKey, key: string|y3.Con
   -> price: number
 ```
 
-获取物品购买售价
+Get item purchase price
 
-@*param* `item_key` — 类型
+@*param* `item_key` — type
 
-@*param* `key` — 玩家属性
+@*param* `key` — Player attributes
 
-@*return* `price` — 价格
+@*return* `price` — Price
 ## get_item_group_in_area
 
 ```lua
@@ -426,9 +426,9 @@ function Item.get_item_group_in_area(area: Area)
   -> ItemGroup
 ```
 
-获得区域内所有物品
+Get all items in the area
 
-@*param* `area` — 区域
+@*param* `area` — region
 ## get_item_sell_price_by_key
 
 ```lua
@@ -436,13 +436,13 @@ function Item.get_item_sell_price_by_key(item_key: py.ItemKey, key: string|y3.Co
   -> price: number
 ```
 
-获取物品出售售价
+Get item selling price
 
-@*param* `item_key` — 类型
+@*param* `item_key` — type
 
-@*param* `key` — 玩家属性
+@*param* `key` — Player attributes
 
-@*return* `price` — 价格
+@*return* `price` — Price
 ## get_key
 
 ```lua
@@ -450,9 +450,9 @@ function Item.get_item_sell_price_by_key(item_key: py.ItemKey, key: string|y3.Co
   -> key: py.ItemKey
 ```
 
-获取物品类型id
+Get item typeid
 
-@*return* `key` — 类型
+@*return* `key` — type
 ## get_level
 
 ```lua
@@ -460,9 +460,9 @@ function Item.get_item_sell_price_by_key(item_key: py.ItemKey, key: string|y3.Co
   -> level: integer
 ```
 
-获取物品等级
+Get item level
 
-@*return* `level` — 物品等级
+@*return* `level` — Item level
 ## get_max_charge
 
 ```lua
@@ -470,9 +470,9 @@ function Item.get_item_sell_price_by_key(item_key: py.ItemKey, key: string|y3.Co
   -> max_charge: integer
 ```
 
-获取最大充能数
+Get the maximum charge number
 
-@*return* `max_charge` — 最大充能数
+@*return* `max_charge` — Maximum charge number
 ## get_model
 
 ```lua
@@ -480,9 +480,9 @@ function Item.get_item_sell_price_by_key(item_key: py.ItemKey, key: string|y3.Co
   -> model_key: py.ModelKey
 ```
 
-获取物品模型
+Get item model
 
-@*return* `model_key` — 模型类型
+@*return* `model_key` — Model type
 ## get_model_by_key
 
 ```lua
@@ -490,11 +490,11 @@ function Item.get_model_by_key(item_key: py.ItemKey)
   -> model_key: py.ModelKey
 ```
 
-获取物品类型的模型
+Gets a model of the item type
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 
-@*return* `model_key` — 模型类型
+@*return* `model_key` — Model type
 ## get_name
 
 ```lua
@@ -502,9 +502,9 @@ function Item.get_model_by_key(item_key: py.ItemKey)
   -> name: string
 ```
 
-获取物品名
+Get item name
 
-@*return* `name` — 物品名字
+@*return* `name` — Item name
 ## get_name_by_key
 
 ```lua
@@ -512,9 +512,9 @@ function Item.get_name_by_key(item_key: py.ItemKey)
   -> string
 ```
 
-获取物品类型名
+Gets the item type name
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 ## get_num_of_item_mat
 
 ```lua
@@ -522,7 +522,7 @@ function Item.get_num_of_item_mat(item_key: py.ItemKey, comp_item_key: py.ItemKe
   -> integer
 ```
 
-物品类型合成所需的物品类型数量
+Item Type The number of item types required for composition
 ## get_num_of_player_attr
 
 ```lua
@@ -530,7 +530,7 @@ function Item.get_num_of_player_attr(item_key: py.ItemKey, role_res_key: py.Role
   -> number
 ```
 
-物品类型合成所需的玩家属性数量
+The number of player attributes required for item type synthesis
 ## get_owner
 
 ```lua
@@ -538,9 +538,9 @@ function Item.get_num_of_player_attr(item_key: py.ItemKey, role_res_key: py.Role
   -> owner: Unit?
 ```
 
-物品持有者
+possessor
 
-@*return* `owner` — 持有者
+@*return* `owner` — holder
 ## get_owner_player
 
 ```lua
@@ -548,9 +548,9 @@ function Item.get_num_of_player_attr(item_key: py.ItemKey, role_res_key: py.Role
   -> player: Player?
 ```
 
-获取物品的拥有玩家
+The owning player who acquires the item
 
-@*return* `player` — 玩家
+@*return* `player` — Player
 ## get_passive_ability
 
 ```lua
@@ -558,9 +558,9 @@ function Item.get_num_of_player_attr(item_key: py.ItemKey, role_res_key: py.Role
   -> ability: Ability?
 ```
 
-获取物品的被动技能
+Passive ability to acquire items
 
-@*return* `ability` — 被动技能
+@*return* `ability` — Passive skill
 ## get_point
 
 ```lua
@@ -568,9 +568,9 @@ function Item.get_num_of_player_attr(item_key: py.ItemKey, role_res_key: py.Role
   -> position: Point
 ```
 
-物品所在点
+Item location
 
-@*return* `position` — 物品所在点
+@*return* `position` — Item location
 ## get_scale
 
 ```lua
@@ -578,9 +578,9 @@ function Item.get_num_of_player_attr(item_key: py.ItemKey, role_res_key: py.Role
   -> scale: number
 ```
 
-获取物品缩放
+Get item scaling
 
-@*return* `scale` — 物品缩放
+@*return* `scale` — Item scaling
 ## get_slot
 
 ```lua
@@ -588,17 +588,17 @@ function Item.get_num_of_player_attr(item_key: py.ItemKey, role_res_key: py.Role
   -> index: integer
 ```
 
-获取物品在单位身上的格子位置
+Gets the grid position of the item on the body of the unit
 
-@*return* `index` — 格子位置
+@*return* `index` — Lattice position
 ## get_slot_type
 
 ```lua
 (method) Item:get_slot_type()
-  -> 背包槽类型: py.SlotType
+  -> Knapsack slot type: py.SlotType
 ```
 
-获取物品在单位身上的背包槽类型
+Get items on the unit body in the backpack slot type
 ## get_stack
 
 ```lua
@@ -606,9 +606,9 @@ function Item.get_num_of_player_attr(item_key: py.ItemKey, role_res_key: py.Role
   -> stacks: integer
 ```
 
-物品堆叠数
+Item stack
 
-@*return* `stacks` — 堆叠数
+@*return* `stacks` — Stack number
 ## get_tags_by_key
 
 ```lua
@@ -616,14 +616,14 @@ function Item.get_tags_by_key(item_key: py.ItemKey)
   -> string[]
 ```
 
-获取物品的所有标签
+Get all labels for the item
 ## handle
 
 ```lua
 py.Item
 ```
 
-物品对象
+Item object
 ## has_tag
 
 ```lua
@@ -631,11 +631,11 @@ py.Item
   -> is_has_tag: boolean
 ```
 
-存在标签
+Presence tag
 
-@*param* `tag` — 删除标签
+@*param* `tag` — Remove label
 
-@*return* `is_has_tag` — 是否有标签
+@*return* `is_has_tag` — Label or not
 ## has_tag_by_key
 
 ```lua
@@ -643,20 +643,20 @@ function Item.has_tag_by_key(tag: string, item_key: py.ItemKey)
   -> is_has_tag: boolean
 ```
 
-物品类型是否存在标签
+Item type Whether a label exists
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 
-@*return* `is_has_tag` — 是否有标签
+@*return* `is_has_tag` — Label or not
 ## id
 
 ```lua
 py.ItemID
 ```
 
-物品ID
+itemID
 ## is_destroyed
 
 ```lua
@@ -671,9 +671,9 @@ py.ItemID
   -> is_exist: boolean
 ```
 
-是否存在
+Existence or not
 
-@*return* `is_exist` — 是否存在
+@*return* `is_exist` — Existence or not
 ## is_in_bag
 
 ```lua
@@ -681,9 +681,9 @@ py.ItemID
   -> is_in_bag: boolean
 ```
 
-物品在背包栏
+Items in the backpack bar
 
-@*return* `is_in_bag` — 是否在背包栏
+@*return* `is_in_bag` — Whether in the backpack bar
 ## is_in_bar
 
 ```lua
@@ -691,9 +691,9 @@ py.ItemID
   -> is_in_bar: boolean
 ```
 
-物品在物品栏
+Items are in the inventory
 
-@*return* `is_in_bar` — 是否在物品栏
+@*return* `is_in_bar` — Whether it's in the inventory
 ## is_in_scene
 
 ```lua
@@ -701,9 +701,9 @@ py.ItemID
   -> is_in_scene: boolean
 ```
 
-是否在场景中
+Whether it is in the scene
 
-@*return* `is_in_scene` — 是否在场景中
+@*return* `is_in_scene` — Whether it is in the scene
 ## key
 
 ```lua
@@ -717,7 +717,7 @@ integer?
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -751,7 +751,7 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## object_event_manager
 
 ```lua
@@ -764,7 +764,7 @@ EventManager?
 py.Item
 ```
 
-物品对象
+Item object
 ## ref_manager
 
 ```lua
@@ -777,146 +777,146 @@ unknown
 (method) Item:remove()
 ```
 
-删除物品
+Delete item
 ## remove_tag
 
 ```lua
 (method) Item:remove_tag(tag: string)
 ```
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## set_attr
 
 ```lua
 (method) Item:set_attr(attr_name: string, value: number, attr_type: string)
 ```
 
-设置属性
+Set attribute
 
-@*param* `attr_name` — 属性名
+@*param* `attr_name` — Attribute name
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 
-@*param* `attr_type` — 属性类型
+@*param* `attr_type` — Attribute type
 ## set_attribute
 
 ```lua
 (method) Item:set_attribute(key: string, value: number)
 ```
 
-设置基础属性
+Set base properties
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## set_bonus_attribute
 
 ```lua
 (method) Item:set_bonus_attribute(key: string, value: number)
 ```
 
-设置增益属性
+Set gain attribute
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## set_charge
 
 ```lua
 (method) Item:set_charge(charge: integer)
 ```
 
-设置充能数
+Set the charge amount
 
-@*param* `charge` — 充能数
+@*param* `charge` — Charge number
 ## set_description
 
 ```lua
 (method) Item:set_description(description: string)
 ```
 
-设置物品的描述
+Set the description of the item
 
-@*param* `description` — 描述
+@*param* `description` — Description
 ## set_droppable
 
 ```lua
 (method) Item:set_droppable(dropable: boolean)
 ```
 
-设置丢弃状态
+Set discard state
 
-@*param* `dropable` — 状态
+@*param* `dropable` — status
 ## set_facing
 
 ```lua
 (method) Item:set_facing(facing: number)
 ```
 
-设置物品朝向
+Orient items
 
-@*param* `facing` — 朝向
+@*param* `facing` — orientation
 ## set_hp
 
 ```lua
 (method) Item:set_hp(value: number)
 ```
 
-设置生命值
+Set health
 
-@*param* `value` — 生命值
+@*param* `value` — Vitality
 ## set_icon
 
 ```lua
 (method) Item:set_icon(picture_id: py.Texture)
 ```
 
-设置物品的图标
+Set the item's icon
 
-@*param* `picture_id` — 图片id
+@*param* `picture_id` — pictureid
 ## set_level
 
 ```lua
 (method) Item:set_level(level: integer)
 ```
 
-设置等级
+Set level
 
-@*param* `level` — 等级
+@*param* `level` — Lv.
 ## set_max_charge
 
 ```lua
 (method) Item:set_max_charge(charge: integer)
 ```
 
-设置最大充能数
+Set the maximum charge number
 
-@*param* `charge` — 最大充能数
+@*param* `charge` — Maximum charge number
 ## set_name
 
 ```lua
 (method) Item:set_name(name: string)
 ```
 
-设置物品的名称
+Set the name of the item
 
-@*param* `name` — 名字
+@*param* `name` — Name
 ## set_owner_player
 
 ```lua
 (method) Item:set_owner_player(player: Player)
 ```
 
-设置所属玩家
+Set owned players
 
-@*param* `player` — 所属玩家
+@*param* `player` — Owned player
 ## set_point
 
 ```lua
 (method) Item:set_point(point: Point)
 ```
 
-移动到点 
+Move to point 
 
 @*param* `point` — 点
 ## set_sale_state
@@ -925,49 +925,49 @@ unknown
 (method) Item:set_sale_state(state: boolean)
 ```
 
-设置物品可否出售
+Sets whether items can be sold
 
-@*param* `state` — 是否可出售
+@*param* `state` — Availability for sale
 ## set_scale
 
 ```lua
 (method) Item:set_scale(scale: number)
 ```
 
-设置物品缩放
+Set item scale
 
-@*param* `scale` — 缩放
+@*param* `scale` — Zoom
 ## set_shop_price
 
 ```lua
 function Item.set_shop_price(id: py.ItemKey, player_attr_name: py.RoleResKey, price: number)
 ```
 
-设置物品商品售价
+Set item prices
 
-@*param* `id` — 物品id
+@*param* `id` — itemid
 
-@*param* `player_attr_name` — 玩家属性
+@*param* `player_attr_name` — Player attributes
 
-@*param* `price` — 价格
+@*param* `price` — Price
 ## set_stack
 
 ```lua
 (method) Item:set_stack(stack: integer)
 ```
 
-设置堆叠数
+Set the number of stacks
 
-@*param* `stack` — 堆叠数
+@*param* `stack` — Stack number
 ## set_visible
 
 ```lua
 (method) Item:set_visible(is_visible: boolean)
 ```
 
-设置物品可见性
+Set item visibility
 
-@*param* `is_visible` — 是否可见
+@*param* `is_visible` — Visible or not
 ## storage_all
 
 ```lua
@@ -975,7 +975,7 @@ function Item.set_shop_price(id: py.ItemKey, player_attr_name: py.RoleResKey, pr
   -> table
 ```
 
- 获取存储数据的容器
+ Gets the container for storing data
 ## storage_get
 
 ```lua
@@ -983,14 +983,14 @@ function Item.set_shop_price(id: py.ItemKey, player_attr_name: py.RoleResKey, pr
   -> any
 ```
 
- 获取存储的值
+ Gets the stored value
 ## storage_set
 
 ```lua
 (method) Storage:storage_set(key: any, value: any)
 ```
 
- 存储任意值
+ Store arbitrary values
 ## storage_table
 
 ```lua
@@ -1016,14 +1016,14 @@ string
 # Item.DrapOperation
 
 ```lua
-"无" | "左键" | "右键"
+"No "|" left button and "|" right button"
 ```
 
 
 # Item.UseOperation
 
 ```lua
-"无" | "左键单击" | "右键单击" | "左键双击"
+"No |. Left-click |. Right-click |"
 ```
 
 

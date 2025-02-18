@@ -31,7 +31,7 @@ function M:hash(str)
         self.cache[str] = id
         return id
     else
-        log.warn(('哈希碰撞：[%s] -> [%s]: [%d]'):format(str, other, id))
+        log.warn(('Hash collision: [%s] -> [%s]: [%d]'):format(str, other, id))
         for i = 1, max do
             local newId = (id + i) % max
             if not self.cache[newId] then
@@ -40,7 +40,7 @@ function M:hash(str)
                 return newId
             end
         end
-        error(('哈希碰撞解决失败：[%s] -> [%s]: [%d]'):format(str, other, id))
+        error(('Hash collision resolution failure: [%s] -> [%s]: [%d]'):format(str, other, id))
     end
 end
 

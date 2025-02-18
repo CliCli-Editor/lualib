@@ -9,17 +9,17 @@ Extends(NPBehave.ClassName.TimeMax, superName, function(self, super, ...)
     super("TimeMax", decoratee)
 end)
 
----@param limit number 限制
----@param randomVariation? number 随机变化
----@param waitForChildButFailOnLimitReached boolean 等待子进程但达到限制失败
----@param decoratee NPBehave.Node 装饰节点
+---@param limit number Indicates the limit
+---@param randomVariation? number random variation
+---@ param waitForChildButFailOnLimitReached Boolean but wait for the child process to limit failure
+---@param decoratee NPBehave.Node decorates a node
 ---@return self
 function TimeMax:__init(limit, randomVariation, waitForChildButFailOnLimitReached, decoratee)
     self._limit = limit
     self._randomVariation = randomVariation or limit * 0.05
     self._waitForChildButFailOnLimitReached = waitForChildButFailOnLimitReached
     self._isLimitReached = false
-    assert(limit > 0, "limit 必须大于 0")
+    assert(limit > 0, "limit must be greater than 0")
     return self
 end
 

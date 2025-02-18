@@ -10,10 +10,10 @@ Extends('NPBehave.Decorator.Service', superName, function(self, super, ...)
     super("Service", decoratee)
 end)
 
----@param interval? number 间隔时间, 默认为 `-1.0` (每帧都执行)
----@param service fun() 服务函数
----@param decoratee NPBehave.Node 被装饰的节点
----@param randomVariation? number 随机方差, 默认为 `interval * 0.05`
+---@param interval? number interval, default is' -1.0 '(executes per frame)
+---@param service fun() service function
+---@param decoratee NPBehave.Node Decorates a node
+---@param randomVariation? number Random variance. The default is interval * 0.05
 ---@return self
 function Service:__init(interval, service, decoratee, randomVariation)
     self._serviceMethod = service
@@ -63,7 +63,7 @@ function Service:DoChildStopped(child, result)
     self:Stopped(result)
 end
 
----带随机变化的调用服务方法
+---Invoke service methods with random variation
 ---@private
 function Service:InvokeServiceMethodWithRandomVariation()
     self._serviceMethod()

@@ -1,8 +1,8 @@
 # Ground
 
-地面
+ground
 
-地面碰撞相关方法
+Ground collision correlation method
 
 ## get_collision
 
@@ -11,9 +11,9 @@ function Ground.get_collision(point: Point)
   -> integer
 ```
 
-获取地图在该点位置的碰撞类型
+Gets the collision type of the map at that point
 
-@*param* `point` — 碰撞点
+@*param* `point` — Impact point
 ## get_height_level
 
 ```lua
@@ -21,11 +21,11 @@ function Ground.get_height_level(point: Point)
   -> level: integer
 ```
 
-获取地图在该点位置的层级
+Gets the hierarchy of the map's position at that point
 
 @*param* `point` — 点
 
-@*return* `level` — 层级
+@*return* `level` — hierarchy
 ## get_view_block_type
 
 ```lua
@@ -33,20 +33,20 @@ function Ground.get_view_block_type(point: Point)
   -> integer
 ```
 
-获取地图在该点位置的视野类型
+Gets the view type of the map at that point
 ## set_collision
 
 ```lua
 function Ground.set_collision(point: Point, is_collision_effect: boolean, is_land_effect: boolean, is_air_effect: boolean)
 ```
 
-设置碰撞
+Set collision
 
-@*param* `point` — 碰撞点
+@*param* `point` — Impact point
 
-@*param* `is_collision_effect` — 碰撞是否生效
+@*param* `is_collision_effect` — Effect of collision
 
-@*param* `is_land_effect` — 地面碰撞开关
+@*param* `is_land_effect` — Ground collision switch
 
-@*param* `is_air_effect` — 空中碰撞开关
+@*param* `is_air_effect` — Air collision switch
 

@@ -1,6 +1,6 @@
 # SaveData
 
-存档
+On file
 
 ## load_boolean
 
@@ -9,7 +9,7 @@ function SaveData.load_boolean(player: Player, slot: integer)
   -> boolean
 ```
 
- 获取玩家的存档数据（布尔）
+ Get the player's saved data (Boolean）
 ## load_integer
 
 ```lua
@@ -17,7 +17,7 @@ function SaveData.load_integer(player: Player, slot: integer)
   -> integer
 ```
 
- 获取玩家的存档数据（整数）
+ Get the player's saved data (integers）
 ## load_real
 
 ```lua
@@ -25,7 +25,7 @@ function SaveData.load_real(player: Player, slot: integer)
   -> number
 ```
 
- 获取玩家的存档数据（实数）
+ Get the player's saved data (real numbers）
 ## load_string
 
 ```lua
@@ -33,7 +33,7 @@ function SaveData.load_string(player: Player, slot: integer)
   -> string
 ```
 
- 获取玩家的存档数据（字符串）
+ Get the player's archive data (string）
 ## load_table
 
 ```lua
@@ -41,9 +41,9 @@ function SaveData.load_table(player: Player, slot: integer, disable_cover: boole
   -> table
 ```
 
- 获取玩家的存档数据（表）
+ Get the player's saved data (table）
 
-@*param* `disable_cover` — 是否禁用覆盖，必须和存档设置中的一致
+@*param* `disable_cover` — Whether to disable overwrite must be the same as in the archive Settings
 ## load_table_with_cover_disable
 
 ```lua
@@ -64,35 +64,35 @@ function SaveData.load_table_with_cover_enable(player: Player, slot: integer)
 function SaveData.save_boolean(player: Player, slot: integer, value: boolean)
 ```
 
- 保存玩家的存档数据（布尔）
+ Save the player's saved data (Boolean）
 ## save_integer
 
 ```lua
 function SaveData.save_integer(player: Player, slot: integer, value: integer)
 ```
 
- 保存玩家的存档数据（整数）
+ Save the player's saved data (integers）
 ## save_real
 
 ```lua
 function SaveData.save_real(player: Player, slot: integer, value: number)
 ```
 
- 保存玩家的存档数据（实数）
+ Save the player's saved data (real numbers）
 ## save_string
 
 ```lua
 function SaveData.save_string(player: Player, slot: integer, value: string)
 ```
 
- 保存玩家的存档数据（字符串）
+ Save the player's saved data (string）
 ## save_table
 
 ```lua
 function SaveData.save_table(player: Player, slot: integer, t: table)
 ```
 
- 保存玩家的存档数据（表），存档设置中必须使用允许覆盖模式
+ Save the player's save data (table), the save Settings must use the allow overwrite mode
 ## table_cache
 
 ```lua

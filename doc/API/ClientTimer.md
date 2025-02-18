@@ -1,10 +1,10 @@
 # ClientTimer
 
-客户端计时器
+Client timer
 
-由你自己电脑的CPU驱动的计时器，完全是异步的（即使是同步执行）
-在游戏暂停时也会继续计时并回调
-> 如果你不知道什么是异步，请不要使用这个模块！
+A timer, powered by your own computer's CPU, is completely asynchronous (even when executed synchronously)）
+It also continues to time and call back when the game is paused
+> If you don't know what asynchrony is, please don't use this module！
 
 ## all_timers
 
@@ -24,7 +24,7 @@ integer
 (method) ClientTimer:execute(...any)
 ```
 
- 立即执行
+ Immediate execution
 ## get_elapsed_frame
 
 ```lua
@@ -32,7 +32,7 @@ integer
   -> integer
 ```
 
-获取经过的帧数
+Gets the number of frames passed
 ## get_elapsed_time
 
 ```lua
@@ -40,7 +40,7 @@ integer
   -> number
 ```
 
- 获取经过的时间
+ Get the elapsed time
 ## get_include_name
 
 ```lua
@@ -55,7 +55,7 @@ integer
   -> integer
 ```
 
- 获取初始计数
+ Get initial count
 ## get_remaining_count
 
 ```lua
@@ -63,7 +63,7 @@ integer
   -> integer
 ```
 
- 获取剩余计数
+ Get residual count
 ## get_remaining_frame
 
 ```lua
@@ -71,7 +71,7 @@ integer
   -> integer
 ```
 
-获取剩余帧数
+Gets the number of remaining frames
 ## get_remaining_time
 
 ```lua
@@ -79,7 +79,7 @@ integer
   -> number
 ```
 
- 获取剩余时间
+ Get remaining time
 ## get_time_out_time
 
 ```lua
@@ -87,7 +87,7 @@ integer
   -> number
 ```
 
- 获取计时器设置的时间
+ Gets the time set by the timer
 ## id
 
 ```lua
@@ -119,7 +119,7 @@ integer
   -> boolean
 ```
 
- 是否正在运行
+ Whether it is running
 ## loop
 
 ```lua
@@ -127,7 +127,7 @@ function ClientTimer.loop(timeout: number, on_timer: ClientTimer.OnTimer)
   -> ClientTimer
 ```
 
- 循环执行
+ Loop execution
 ## loop_count
 
 ```lua
@@ -135,7 +135,7 @@ function ClientTimer.loop_count(timeout: number, count: integer, on_timer: Clien
   -> ClientTimer
 ```
 
- 循环执行，可以指定最大次数
+ Loop execution, you can specify a maximum number of times
 ## loop_count_frame
 
 ```lua
@@ -143,7 +143,7 @@ function ClientTimer.loop_count_frame(frame: integer, count: integer, on_timer: 
   -> ClientTimer
 ```
 
- 每经过一定帧数后执行，可以指定最大次数
+ You can specify the maximum number of frames to be executed after a certain number of frames
 ## loop_frame
 
 ```lua
@@ -151,7 +151,7 @@ function ClientTimer.loop_frame(frame: integer, on_timer: ClientTimer.OnTimer)
   -> ClientTimer
 ```
 
- 每经过一定帧数后执行
+ Execute after a certain number of frames
 ## mode
 
 ```lua
@@ -171,14 +171,14 @@ function ClientTimer.pairs()
   -> fun():ClientTimer?
 ```
 
- 遍历所有的计时器，仅用于调试（可能会遍历到已经失效的）
+ Iterate over all timers for debugging purposes only (you may iterate over the ones that have expired)）
 ## pause
 
 ```lua
 (method) ClientTimer:pause()
 ```
 
- 暂停计时器
+ Pause timer
 ## paused_at_frame
 
 ```lua
@@ -233,7 +233,7 @@ integer?
 (method) ClientTimer:remove()
 ```
 
- 移除计时器
+ Remove timer
 ## removed
 
 ```lua
@@ -246,7 +246,7 @@ boolean?
 (method) ClientTimer:resume()
 ```
 
- 恢复计时器
+ Recovery timer
 ## runned_count
 
 ```lua
@@ -307,7 +307,7 @@ integer
 function ClientTimer.update_frame()
 ```
 
-立即更新到下一帧
+Update immediately to the next frame
 ## wait
 
 ```lua
@@ -315,7 +315,7 @@ function ClientTimer.wait(timeout: number, on_timer: ClientTimer.OnTimer)
   -> ClientTimer
 ```
 
- 等待时间后执行
+ Wait for the execution time
 ## wait_frame
 
 ```lua
@@ -323,7 +323,7 @@ function ClientTimer.wait_frame(frame: integer, on_timer: ClientTimer.OnTimer)
   -> ClientTimer
 ```
 
- 等待一定帧数后执行
+ Wait for a certain number of frames before executing
 ## wakeup
 
 ```lua

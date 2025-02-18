@@ -1,8 +1,8 @@
 # Light
 
-光照
+illumination
 
-用来修改光照、阴影等效果
+Used to modify lighting, shadows, and other effects
 
 ## create_lua_light_by_py
 
@@ -18,11 +18,11 @@ function Light.create_point_light_at_point(point: Point, deviation_height: numbe
   -> Light
 ```
 
-创建点光源到点
+Create point light source to point
 
-@*param* `point` — 目标点
+@*param* `point` — Target point
 
-@*param* `deviation_height` — 偏移高度
+@*param* `deviation_height` — Offset height
 ## create_point_light_at_unit_socket
 
 ```lua
@@ -30,13 +30,13 @@ function Light.create_point_light_at_unit_socket(unit: Unit, socket_name: string
   -> Light
 ```
 
-创建点光源到单位挂接点
+Create a point light source to the unit mount contact
 
-@*param* `unit` — 目标单位
+@*param* `unit` — Target unit
 
-@*param* `socket_name` — 挂接点
+@*param* `socket_name` — Hanging contact
 
-@*param* `deviation_height` — 偏移高度
+@*param* `deviation_height` — Offset height
 ## create_spot_light_at_unit_socket
 
 ```lua
@@ -44,17 +44,17 @@ function Light.create_spot_light_at_unit_socket(unit: Unit, socket_name: string,
   -> Light
 ```
 
-创建方向光源到单位挂接点
+Create a directional light source to the unit mount contact
 
-@*param* `unit` — 目标单位
+@*param* `unit` — Target unit
 
-@*param* `socket_name` — 挂接点
+@*param* `socket_name` — Hanging contact
 
-@*param* `pos_offset_y` — 偏移高度
+@*param* `pos_offset_y` — Offset height
 
-@*param* `target_unit` — 目标单位
+@*param* `target_unit` — Target unit
 
-@*param* `target_offset_y` — 目标点偏移高度
+@*param* `target_offset_y` — Target offset height
 ## create_spot_light_to_point
 
 ```lua
@@ -62,33 +62,33 @@ function Light.create_spot_light_to_point(point: Point, pos_offset_y?: number, u
   -> Light
 ```
 
-创建方向光源到点
+Create directional light source to point
 
-@*param* `point` — 目标点
+@*param* `point` — Target point
 
-@*param* `pos_offset_y` — 偏移高度
+@*param* `pos_offset_y` — Offset height
 
-@*param* `unit_point_projectile` — 目标
+@*param* `unit_point_projectile` — goal
 
-@*param* `target_offset_y` — 目标点偏移高度
+@*param* `target_offset_y` — Target offset height
 ## get_light_attribute
 
 ```lua
 (method) Light:get_light_attribute(key: string)
-  -> 属性值: number
+  -> Attribute value: number
 ```
 
-获取光源属性
+Get light source properties
 
-@*param* `key` — 属性名
+@*param* `key` — Attribute name
 ## get_light_cast_shadow_state
 
 ```lua
 (method) Light:get_light_cast_shadow_state()
-  -> 是否产生阴影: boolean
+  -> Whether shadow is generated: boolean
 ```
 
-获取光源是否产生阴影
+Gets whether the light source produces shadows
 ## get_point_light_by_res_id
 
 ```lua
@@ -96,9 +96,9 @@ function Light.get_point_light_by_res_id(res_id: py.LightID)
   -> Light
 ```
 
-根据场景id获得点光源
+Obtain a point light source based on the scene id
 
-@*param* `res_id` — 编辑场景中的id
+@*param* `res_id` — Edit sceneid
 ## get_spot_light_by_res_id
 
 ```lua
@@ -106,16 +106,16 @@ function Light.get_spot_light_by_res_id(res_id: py.LightID)
   -> Light
 ```
 
-根据场景id获得聚光灯
+Get the spotlight based on the scene id
 
-@*param* `res_id` — 编辑场景中的id
+@*param* `res_id` — Edit sceneid
 ## handle
 
 ```lua
 py.Light
 ```
 
-光源
+illuminant
 ## map
 
 ```lua
@@ -128,45 +128,45 @@ table
 (method) Light:remove_light()
 ```
 
-删除光源
+Remove light source
 ## res_id
 
 ```lua
 (py.LightID)?
 ```
 
-光源ID
+illuminantID
 ## set_directional_light_attribute
 
 ```lua
 (method) Light:set_directional_light_attribute(light_attr_type: string, value: number)
 ```
 
-设置方向光源属性
+Set the directional light source properties
 
-@*param* `light_attr_type` — 属性名
+@*param* `light_attr_type` — Attribute name
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## set_point_light_attribute
 
 ```lua
 (method) Light:set_point_light_attribute(light_attr_type: string, value: number)
 ```
 
-设置点光源属性
+Set the point light properties
 
-@*param* `light_attr_type` — 属性名
+@*param* `light_attr_type` — Attribute name
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## set_shadow_casting_status
 
 ```lua
 (method) Light:set_shadow_casting_status(value: boolean)
 ```
 
-设置光源是否产生阴影
+Sets whether the light source produces shadows
 
-@*param* `value` — 是否产生阴影
+@*param* `value` — Whether shadow is generated
 ## type
 
 ```lua

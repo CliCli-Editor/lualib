@@ -1,149 +1,149 @@
-# 游戏 -> Y3开发助手
+# Games -> Y3 Development Assistant
 
 ## print
 
-在“终端”窗口打印消息
+Print the message in the Terminal window
 
-* `message`: `string` 要打印的内容
+* `message`: `string` Content to print
 
 ## createTreeView
 
-创建树形视图
+Create a tree view
 
-* `id`: `integer` 视图的唯一ID
-* `name`: `string` 视图的名称
-* `root`: `integer` 主节点的唯一ID
+* `id`: `integer` Uniqueness of viewID
+* `name`: `string` Name of view
+* `root`: `integer` Unique to the primary nodeID
 
 ## removeTreeView
 
-删除树形视图
+Delete the tree view
 
-* `id`: `integer` 视图的唯一ID
+* `id`: `integer` Uniqueness of viewID
 
 ## refreshTreeNode
 
-通知一下节点发生了变化
+Let me know that the node has changed
 
-* `id`: `integer` 节点的唯一ID
-* `complete?`: `boolean` 是否是个完整推送。如果不是，之后助手可以用 `getTreeNode` 重新获取数据
-* `name?`: `string` 节点的名称
-* `desc?`: `string` 节点的描述
-* `tip?`: `string` 悬停提示
-* `icon?`: `string` 节点的图标
-* `check?`: `boolean` 当前的复选框状态
-* `hasChilds?`: `boolean` 是否可以展开
-* `canClick?`: `boolean` 是否可以点击
+* `id`: `integer` Uniqueness of nodeID
+* `complete?`: `boolean` Whether it is a full push. If not, the helper can then retrieve the data with getTreeNode
+* `name?`: `string` Node name
+* `desc?`: `string` Node description
+* `tip?`: `string` Hover prompt
+* `icon?`: `string` Node icon
+* `check?`: `boolean` Current check box status
+* `hasChilds?`: `boolean` Whether it can be expanded
+* `canClick?`: `boolean` Whether you can click
 
 ## command
 
-执行命令，内置命令参考 https://code.visualstudio.com/api/references/commands
+Execute commands, built-in command reference https://code.visualstudio.com/api/references/commands
 
-* `command`: `string` 命令
-* `args?`: `any[]` 参数
+* `command`: `string` command
+* `args?`: `any[]` argument
 
-返回 `any`
+Back `any`
 
 ## prepareForRestart
 
-通知开发助手游戏即将重启
+Notify the development assistant that the game is about to restart
 
-* `debugger?`: `boolean` 是否需要启动调试器。如果省略，会根据当前是否附加了调试器来决定是否需要调试器。
-* `id?`: `integer`  多开模式下自己的id
+* `debugger?`: `boolean` Whether to start the debugger. If omitted, it determines whether a debugger is needed based on whether it is currently attached。
+* `id?`: `integer`  Open your own in multiple modeid
 
 ## showInputBox
 
-创建一个输入框
+Create an input box
 
-* `id`: `integer` 唯一ID
-* `title?`: `string` 标题
-* `value?`: `string` 初始值
-* `valueSelection?`: `[integer, integer]` 初始选中的文本范围(光标位置，第一个字符前为0)
-* `prompt?`: `string` 提示
-* `placeHolder?`: `string` 占位符
-* `password?`: `boolean` 是否是密码框
-* `ignoreFocusOut?`: `boolean` 是否在失去焦点时关闭
-* `hasValidateInput?`: `boolean` 是否有 `validateInput` 回调
+* `id`: `integer` soleID
+* `title?`: `string` title
+* `value?`: `string` Initial value
+* `valueSelection?`: `[integer, integer]` Initially selected text range (cursor position, before the first character0)
+* `prompt?`: `string` Tips
+* `placeHolder?`: `string` placeholder
+* `password?`: `boolean` Password or not box
+* `ignoreFocusOut?`: `boolean` Whether to close when you lose focus
+* `hasValidateInput?`: `boolean` Whether there is a 'validateInput' callback
 
-返回输入结果
+Return input result
 
-* `input?`: `string` 输入的内容。
+* `input?`: `string` Input content。
 
 ## updatePlayer
 
-设置自己的玩家信息
+Set your own player profile
 
-* `name`: `string` 玩家名字
-* `id`: `integer` 玩家ID
-* `multiMode?`: `boolean` 是否是多开模式
+* `name`: `string` Player name
+* `id`: `integer` PlayerID
+* `multiMode?`: `boolean` Whether to open multiple mode
 
 ## createTracy
 
-启动tracy
+activatetracy
 
-# Y3开发助手 -> 游戏
+# Y3Development Assistant -> Games
 
 ## command
 
-执行命令，如 `.rd` ， `1 + 2`，无返回值
+Run the command, such as.rd, 1 + 2, and no value is returned
 
-* `data`: `string` 要执行的命令
+* `data`: `string` The command to execute
 
 ## getTreeNode
 
-获取树形视图节点
+Get the tree view node
 
-* `id`: `integer` 节点的唯一ID
+* `id`: `integer` Uniqueness of nodeID
 
-返回节点的数据
+Returns data for the node
 
-* `name`: `string` 节点的名称
-* `desc?`: `string` 节点的描述
-* `tip?`: `string` 悬停提示
-* `icon?`: `string` 节点的图标
-* `check?`: `boolean` 当前的复选框状态
-* `hasChilds?`: `boolean` 是否可以展开
-* `canClick?`: `boolean` 是否可以点击
+* `name`: `string` Node name
+* `desc?`: `string` Node description
+* `tip?`: `string` Hover prompt
+* `icon?`: `string` Node icon
+* `check?`: `boolean` Current check box status
+* `hasChilds?`: `boolean` Whether it can be expanded
+* `canClick?`: `boolean` Whether you can click
 
 ## getChildTreeNodes
 
-获取树形视图节点的子节点
+Gets the child nodes of the tree view node
 
-* `id`: `integer` 节点的唯一ID
+* `id`: `integer` Uniqueness of nodeID
 
-返回子节点的唯一ID数组
+Returns a unique array of ids for the child node
 
-* `childs`: `integer[]` 子节点的唯一ID数组
+* `childs`: `integer[]` An array of unique ids for the child node
 
 ## changeTreeNodeVisible
 
-树形视图节点的可见性变化
+Changes in the visibility of a tree view node
 
-* `ids`: `integer` 节点的唯一ID数组
-* `visible`: `boolean` 是否可见
+* `ids`: `integer` An array of unique ids for a node
+* `visible`: `boolean` Visible or not
 
 ## clickTreeNode
 
-点击了树形视图节点
+Click on the tree view node
 
-* `id`: `integer` 节点的唯一ID
+* `id`: `integer` Uniqueness of nodeID
 
 ## changeTreeNodeExpanded
 
-树形视图展开状态变化
+The expansion status of the tree view changes
 
-* `id`: `integer` 节点的唯一ID
-* `expanded`: `boolean` 是否展开
+* `id`: `integer` Uniqueness of nodeID
+* `expanded`: `boolean` Expand or not
 
 ## inputBoxValidate
 
-检查输入框的输入合法性
+Check the validity of the input box
 
-* `id`: `integer` 输入框的唯一id
-* `input`: `string` 输入的内容
+* `id`: `integer` The input box is uniqueid
+* `input`: `string` Input content
 
 ## changeTreeNodeCheckBox
 
-树形视图节点复选框变化
+The check box of a tree view node changes
 
-* `id`: `integer` 节点的唯一ID
-* `checked`: `boolean` 是否被勾选
+* `id`: `integer` Uniqueness of nodeID
+* `checked`: `boolean` Checked or not

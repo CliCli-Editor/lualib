@@ -49,7 +49,7 @@ function M:__decode(id)
     return obj
 end
 
----所有魔法效果实例
+---All magic effect instances
 ---@private
 ---@param id integer
 ---@param py_buff py.ModifierEntity
@@ -58,7 +58,7 @@ M.ref_manager = New 'Ref' ('Buff', function (id, py_buff)
     return New 'Buff' (id, py_buff)
 end)
 
----通过py层的魔法效果实例获取lua层的魔法效果实例
+---Get the magic effect instance of lua layer by using the magic effect instance of py layer
 ---@param  py_buff py.ModifierEntity # py layer magic effect example
 ---@return Buff? # Returns the lua Layer magic effect instance after the lua layer is initialized
 function M.get_by_handle(py_buff)
@@ -81,20 +81,20 @@ clicli.py_converter.register_lua_to_py('py.ModifierEntity', function (lua_value)
     return lua_value.handle
 end)
 
----是否具有标签
----@param tag string 标签
+---Tagged or not
+---@param tag string Tag
 ---@return boolean
 function M:has_tag(tag)
     return GlobalAPI.has_tag(self.handle, tag)
 end
 
----魔法效果的图标是否可见
----@return boolean is_visible 是否可见
+---Whether the magic effect icon is visible
+---@return boolean is_visible Whether it is visible
 function M:is_icon_visible()
     return self.handle:api_get_icon_is_visible() or false
 end
 
----移除
+---Remove
 function M:remove()
     if not self._removed then
         self._removed = true
@@ -104,98 +104,98 @@ function M:remove()
     end
 end
 
----是否存在
----@return boolean is_exist 是否存在
+---Existence or not
+---@return boolean is_exist Whether it exists
 function M:is_exist()
     return GameAPI.modifier_is_exist(self.handle)
 end
 
----设置魔法效果的名称
----@param name string 名字
+---Set the name of the magic effect
+---@param name string Name
 function M:set_name(name)
     self.handle:api_set_buff_str_attr("name_str", name)
 end
 
----设置魔法效果对象的描述
----@param description string 描述
+---Sets the description of the magic effect object
+---@param description string Description
 function M:set_description(description)
     self.handle:api_set_buff_str_attr("description", description)
 end
 
----设置剩余持续时间
----@param time number 剩余持续时间
+---Set the remaining duration
+---@param time number Remaining duration
 function M:set_time(time)
     self.handle:api_set_buff_residue_time(Fix32(time))
 end
 
----增加剩余持续时间
----@param time number 剩余持续时间
+---Increases the remaining duration
+---@param time number Remaining duration
 function M:add_time(time)
     self.handle:api_add_buff_residue_time(Fix32(time))
 end
 
----设置堆叠层数
----@param stack integer 层数
+---Set the number of stacking layers
+---@param stack integer Specifies the number of layers
 function M:set_stack(stack)
     self.handle:api_set_buff_layer(stack)
 end
 
----增加堆叠层数
----@param stack integer 层数
+---Increase the number of stacking layers
+---@param stack integer Specifies the number of layers
 function M:add_stack(stack)
     self.handle:api_add_buff_layer(stack)
 end
 
----设置护盾值
----@param value number 护盾值
+---Set the shield value
+---@param value number Shield value
 function M:set_shield(value)
     self.handle:api_set_float_shield('', Fix32(value))
 end
 
----增加护盾值
----@param value number 护盾值
+---Increased shield value
+---@param value number Shield value
 function M:add_shield(value)
     self.handle:api_add_float_shield('', Fix32(value))
 end
 
----获取魔法效果的堆叠层数
----@return integer stack 层数
+---Get the stack number of magic effects
+---@return integer Specifies the number of stack layers
 function M:get_stack()
     return self.handle:api_get_modifier_layer() or 0
 end
 
----获取魔法效果的剩余持续时间
----@return number time 剩余持续时间
+---Gets the remaining duration of the magic effect
+---@return number time Remaining duration
 function M:get_time()
     return clicli.helper.tonumber(self.handle:api_get_residue_time()) or 0.0
 end
 
----获取魔法效果类型
----@return clicli.Const.ModifierType type 魔法效果类型
+---Get the Magic effect type
+---@ return clicli. Const. ModifierType type magic effect type
 function M:get_buff_type()
     return self.handle:api_get_modifier_type("modifier_type") or 0
 end
 
----获取魔法效果影响类型
----@return clicli.Const.EffectType type 魔法效果影响类型
+---Gets the Magic effect effect type
+---@return clicli.Const.EffectType type of magic effect effect
 function M:get_buff_effect_type()
     return self.handle:api_get_modifier_effect_type("modifier_effect") or 0
 end
 
----获取魔法效果的最大堆叠层数
----@return integer stack 层数
+---The maximum number of stacks to get magic effects
+---@return integer Specifies the number of stack layers
 function M:get_max_stack()
     return self.handle:api_get_int_attr("layer_max") or 0
 end
 
----获取魔法效果的护盾
----@return number shield 护盾值
+---Obtain a shield for magic effects
+---@return number shield Shield value
 function M:get_shield()
     return clicli.helper.tonumber(self.handle:api_get_float_attr("cur_properties_shield")) or 0.0
 end
 
----获取所属光环
----@return Buff? aura 所属光环
+---Acquire a halo
+---@return Buff? aura belongs to
 function M:get_aura()
     local py_modifier = self.handle:api_get_halo_modifier_instance()
     if not py_modifier then
@@ -204,39 +204,39 @@ function M:get_aura()
     return M.get_by_handle(py_modifier)
 end
 
----获取魔法效果循环周期
----@return number time 循环周期
+---Get Magic effect cycle
+---@return number time Cycle period
 function M:get_cycle_time()
     return clicli.helper.tonumber(self.handle:api_get_cycle_time()) or 0.0
 end
 
----魔法效果的已持续时间
----@return number duration 持续时间
+---The duration of a magic effect
+---@return number duration Duration
 function M:get_passed_time()
     return clicli.helper.tonumber(self.handle:api_get_passed_time()) or 0.0
 end
 
----获取魔法效果的光环效果类型ID
----@return py.ModifierKey type 光环效果类型ID
+---Gets the Halo Effect type ID for magic effects
+---@return py.ModifierKey type ID of the halo effect type
 function M:get_buff_aura_effect_key()
     return self.handle:api_get_sub_halo_modifier_key() or 0
 end
 
----获取魔法效果的光环范围
----@return number range 光环范围
+---Get the aura range of magic effects
+---@return number range Range of the halo
 function M:get_buff_aura_range()
     return self.handle:api_get_halo_inf_rng() or 0.0
 end
 
----获取魔法效果类型的名称
----@param buff_key py.ModifierKey 类型
----@return string name 名字
+---Gets the name of the magic effect type
+---@param buff_key py.ModifierKey type
+---@return string name Specifies the name
 function M.get_name_by_key(buff_key)
     return GameAPI.get_modifier_name_by_type(buff_key)
 end
 
----获取魔法效果的施加者
----@return Unit? provider 施加者
+---The caster who gains magic effects
+---@return Unit? provider provider
 function M:get_source()
     local py_unit = self.handle:api_get_releaser()
     if not py_unit then
@@ -245,8 +245,8 @@ function M:get_source()
     return clicli.unit.get_by_handle(py_unit)
 end
 
----获取魔法效果的携带者
----@return Unit? owner 携带者
+---A carrier to obtain magical effects
+---@return Unit? owner carrier
 function M:get_owner()
     local py_unit = self.handle:api_get_owner()
     if not py_unit then
@@ -255,53 +255,53 @@ function M:get_owner()
     return clicli.unit.get_by_handle(py_unit)
 end
 
----获取魔法效果对象的名称
----@return string name 名字
+---Gets the name of the magic effect object
+---@return string name Specifies the name
 function M:get_name()
     return self.handle:api_get_str_attr("name_str") or ''
 end
 
----获取魔法效果对象的描述
----@return string description 描述
+---Gets a description of the magic effect object
+---@return string description Indicates the description
 function M:get_description()
     return self.handle:api_get_str_attr("description") or ''
 end
 
----获取等级
----@return integer level 等级
+---Acquisition level
+---@return integer level Indicates the level
 function M:get_level()
     return self.handle:api_get_modifier_level() or 0
 end
 
----魔法效果类型的图标是否可见
----@param buff_key py.ModifierKey 类型
----@return boolean is_visible 是否可见
+---Whether the icon of the magic effect type is visible
+---@param buff_key py.ModifierKey type
+---@return boolean is_visible Whether it is visible
 function M.is_icon_visible_by_key(buff_key)
     return GameAPI.is_show_on_ui_by_buff_type(buff_key)
 end
 
----获得魔法效果的类别
----@return py.ModifierKey buff_key 类别
+---Get the class of magic effects
+---@returnpy. ModifierKey buff_key class
 function M:get_key()
     return GameAPI.get_type_of_modifier_entity(self.handle)
 end
 
----获取魔法效果类型的描述
----@param buff_key py.ModifierKey 类型
----@return string description 描述
+---Get a description of the type of magic effect
+---@param buff_key py.ModifierKey type
+---@return string description Indicates the description
 function M.get_description_by_key(buff_key)
     return GameAPI.get_modifier_desc_by_type(buff_key)
 end
 
----获取魔法效果类型的icon图标的图片
----@param buff_key py.ModifierKey 类型
+---Get a picture of the icon icon of the Magic effect type
+---@param buff_key py.ModifierKey type
 ---@return py.Texture # Picture id
 function M.get_icon_by_key(buff_key)
     return GameAPI.get_icon_id_by_buff_type(buff_key) --[[@as py.Texture]]
 end
 
----获得关联技能
----@return Ability|nil ability 投射物或魔法效果的关联技能
+---Acquire relevant skills
+---@return Ability|nil ability The ability to associate projectiles or magic effects
 function M:get_ability()
     local py_ability = GlobalAPI.get_related_ability(self.handle)
     if py_ability then
@@ -310,26 +310,26 @@ function M:get_ability()
     return nil
 end
 
----增加魔法效果光环影响范围
----@param range number 影响范围
+---Increases the range of magic aura effects
+---@param range number Influence range
 function M:add_aura_range(range)
     self.handle:api_add_modifier_halo_influence_rng(Fix32(range))
 end
 
----设置魔法效果光环影响范围
----@param range number 影响范围
+---Set the halo influence range for magic effects
+---@param range number Influence range
 function M:set_aura_range(range)
     self.handle:api_set_modifier_halo_influence_rng(Fix32(range))
 end
 
----增加魔法效果循环周期
----@param time number 变化时间
+---Increased magic effect cycle
+---@param time number Change time
 function M:add_cycle_time(time)
     self.handle:api_add_cycle_time(Fix32(time))
 end
 
----设置魔法效果循环周期
----@param time number 循环周期
+---Set the magic effect cycle
+---@param time number Cycle period
 function M:set_cycle_time(time)
     self.handle:api_set_cycle_time(Fix32(time))
 end

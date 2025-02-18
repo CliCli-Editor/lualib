@@ -1,13 +1,13 @@
 # HealInstance
 
-治疗实例
+Treatment instance
 
-在治疗相关的事件中传递
+Transmission during treatment-related events
 
 ## data
 
 ```lua
-EventParam.单位-受到治疗后
+EventParam.Unit-AfterBeingTreated
 ```
 
 ## get_ability
@@ -17,7 +17,7 @@ EventParam.单位-受到治疗后
   -> Ability?
 ```
 
- 获取关联技能
+ Acquire relevant skills
 ## get_heal
 
 ```lua
@@ -25,11 +25,11 @@ EventParam.单位-受到治疗后
   -> number
 ```
 
- 获取当前治疗
+ Access to current treatment
 ## mode
 
 ```lua
-'治疗前'|'治疗后'|'治疗时'
+'Before treatment '|' after treatment '|' during treatment'
 ```
 
 ## set_heal
@@ -38,5 +38,5 @@ EventParam.单位-受到治疗后
 (method) HealInstance:set_heal(value: number)
 ```
 
- 修改当前治疗
+ Modify current treatment
 

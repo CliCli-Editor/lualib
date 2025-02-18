@@ -6,14 +6,14 @@ local function normalize(fileName)
     local paths = {}
     for path in fileName:gmatch('[^/\\]+') do
         if path == '.' then
-            -- do nothing
+            --do nothing
         elseif path == '..' then
             if #path == 0 then
-                return nil, '路径不能回到根节点之前'
+                return nil, 'The path cannot go back before the root node'
             end
             table.remove(paths)
         elseif path:match '^%a:$' then
-            return nil, '必须使用相对路径'
+            return nil, 'Relative paths must be used'
         else
             paths[#paths+1] = path
         end
@@ -35,8 +35,8 @@ local function init()
     end
 end
 
----加载 `script` 目录下的文件，文件名不区分大小写。
----路径中不能包含 `.` 开头的目录。只能使用相对路径。
+---Load the file in the 'script' directory with a case-insensitive file name.
+---The path cannot contain a directory that begins with. Only relative paths can be used.
 ---@param fileName string
 ---@return string? content
 ---@return string? errmsg
@@ -48,23 +48,23 @@ function M.load(fileName)
     end
     local content = files[fname:lower()]
     if not content then
-        return nil, '文件不存在'
+        return nil, 'File does not exist'
     end
     return content
 end
 
----保存文件。使用编辑器或助手启动时保存在 `script` 目录下，
----平台启动时保存在 `custom` 目录下。只能使用相对路径。
----写入时路径中可以包含 `.` 开头的目录，但是下次启动游戏会读不到。
----目录必须存在，否则会保存失败。
----文件名不区分大小写。
+---Save the file. Saved in 'script' directory when starting with editor or assistant,
+---It is saved in the 'custom' directory when the platform is started. Only relative paths can be used.
+---The path can contain a directory beginning with., but it will not be read the next time you start the game.
+---The directory must exist; otherwise, the save will fail.
+---File names are case insensitive.
 ---@param fileName string
 ---@param content string
 ---@return boolean success
 ---@return string? errmsg
 function M.save(fileName, content)
     if type(content) ~= 'string' then
-        return false, '文件内容必须是字符串'
+        return false, 'The file content must be a string'
     end
     init()
     local fname, err = normalize(fileName)

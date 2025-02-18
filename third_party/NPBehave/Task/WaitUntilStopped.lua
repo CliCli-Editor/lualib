@@ -1,5 +1,5 @@
 ---@class NPBehave.Task.WaitUntilStopped
----@overload fun(successWhenStopped?: boolean): self
+---@overload fun(successWhenStopped? : boolean): self
 local WaitUntilStopped = Class("NPBehave.Task.WaitUntilStopped")
 
 local superName = "NPBehave.Task.Task"

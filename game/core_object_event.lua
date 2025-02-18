@@ -46,13 +46,13 @@ function M:core_subscribe(event_name, ...)
     local self_type = clicli.class.type(self)
     ---@diagnostic disable-next-line: undefined-field
     if not self.handle then
-        error("注册对象事件缺少handle: " .. tostring(event_name))
+        error("Registered object event missing handle:" .. tostring(event_name))
     end
     if not config or not self_type then
-        error('此事件无法作为对象事件：' .. tostring(event_name))
+        error('This event cannot be treated as an object event:' .. tostring(event_name))
     end
     if not config or not is_valid_object(self_type, config) then
-        error('此事件无法作为对象事件：' .. tostring(event_name))
+        error('This event cannot be treated as an object event:' .. tostring(event_name))
     end
 
     local nargs = select('#', ...)
@@ -66,11 +66,11 @@ function M:core_subscribe(event_name, ...)
         callback = extra_args[nargs]
         extra_args[nargs] = nil
     else
-        error('缺少回调函数！')
+        error('Missing callback function!')
     end
 
     if self_type == config.object then
-        -- 检查将对象还原到事件参数中
+        --Check to restore the object to the event parameters
         for i, param in ipairs(config.params) do
             if param.type == config.object then
                 if not extra_args then

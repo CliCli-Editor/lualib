@@ -7,14 +7,14 @@
   -> fun():any, any
 ```
 
- 获取有序迭代器
+ Gets ordered iterators
 ## add
 
 ```lua
 (method) SortedDictionary:add(key: any, value: any)
 ```
 
- 添加或更新键值对
+ Add or update key-value pairs
 ## containsKey
 
 ```lua
@@ -22,7 +22,7 @@
   -> boolean
 ```
 
- 检查是否包含键
+ Check whether keys are included
 ## dictionary
 
 ```lua
@@ -36,7 +36,7 @@ table<any, any>
   -> any
 ```
 
- 获取值
+ Fetch value
 ## getSortedKeys
 
 ```lua
@@ -44,14 +44,14 @@ table<any, any>
   -> table
 ```
 
- 获取排序后的键列表
+ Gets the sorted list of keys
 ## remove
 
 ```lua
 (method) SortedDictionary:remove(key: any)
 ```
 
- 移除键值对
+ Remove a key-value pair
 
 # SortedDictionary.Clock
 
@@ -62,7 +62,7 @@ table<any, any>
   -> fun():any, any
 ```
 
- 获取有序迭代器
+ Gets ordered iterators
 ## add
 
 ```lua
@@ -76,7 +76,7 @@ fun(self: SortedDictionary.Clock, key: number, value: NPBehave.Clock.Timer)
   -> boolean
 ```
 
- 检查是否包含键
+ Check whether keys are included
 ## dictionary
 
 ```lua
@@ -96,12 +96,12 @@ fun(self: SortedDictionary.Clock, key: number):NPBehave.Clock.Timer
   -> table
 ```
 
- 获取排序后的键列表
+ Gets the sorted list of keys
 ## remove
 
 ```lua
 (method) SortedDictionary:remove(key: any)
 ```
 
- 移除键值对
+ Remove a key-value pair
 

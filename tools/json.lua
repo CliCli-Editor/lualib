@@ -73,7 +73,7 @@ function json.isObject(t)
 end
 
 if debug and debug.upvalueid then
-    -- Generate a lightuserdata
+    --Generate a lightuserdata
     json.null = debug.upvalueid(json.createEmptyObject, 1)
 else
     json.null = function() end
@@ -223,7 +223,7 @@ function encode_map.table(t)
             error("invalid table: sparse array is not supported")
         end
         if jit and t[0] ~= nil then
-            -- 0 is the first index in luajit
+            --0 is the first index in luajit
             error("invalid table: mixed or invalid key types: "..0)
         end
         statusBuilder[#statusBuilder+1] = "["

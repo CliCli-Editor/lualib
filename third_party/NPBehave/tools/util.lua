@@ -7,9 +7,9 @@ local tableSort = table.sort
 local MethodDecorator = Class 'NPBehave.Tool.MethodDecorator'
 
 ---@class NPBehave.Tool.BindCallback
----@overload fun(...):any
+---@overload fun(...) :any
 
----函数绑定到对象
+---Functions are bound to objects
 ---@param func fun(...)
 ---@return NPBehave.Tool.BindCallback
 function MethodDecorator:bind(func)
@@ -22,7 +22,7 @@ function MethodDecorator:bind(func)
     return self.funcBindCache[func]
 end
 
----@class SortedDictionary -- 排序字典, 支持通过索引设置键值对, 但不支持通过索引获取键值对.
+---@class SortedDictionary - Sort dictionary. You can set key-value pairs by index, but you cannot get key-value pairs by index.
 ---@field dictionary table<any, any>
 ---@overload fun():SortedDictionary
 SortedDictionary = Class("SortedDictionary")
@@ -86,7 +86,7 @@ function SortedDictionary:SortedPairs()
 end
 
 function SortedDictionary:__newindex(key, value)
-    --@ 将键值对存储到字典中
+    --@ Stores key-value pairs in a dictionary
     if rawget(self, "dictionary") then
         rawset(self.dictionary, key, value)
     elseif key == "dictionary" then

@@ -12,7 +12,7 @@ local counter = clicli.util.counter()
 ---@overload fun(event: Event, event_args: any[], callback: Trigger.CallBack): self
 local M = Class 'Trigger'
 
----@alias Trigger.CallBack fun(trg: Trigger, ...): any, any, any, any
+---@alias Trigger.CallBack fun(trg: Trigger, ...) : any, any, any, any
 
 
 M.all_triggers = setmetatable({}, clicli.util.MODE_V)
@@ -129,19 +129,19 @@ function M:is_match_args(fire_args, fire_mode, fire_target)
         return false
     end
 
-    -- 最后在假定是数组进行判断
+    --Finally, make a judgment on the assumption of an array
     local fire_args_n = fire_args and #fire_args or 0
     local event_args_n = event_args and #event_args or 0
-    -- 事件参数数量多余触发器参数数量，肯定不匹配，返回false
+    --The number of event parameters exceeds the number of trigger parameters. If the event parameter does not match, false is returned
     if fire_args_n < event_args_n then
         return false
     end
-    -- 说明任何参数都匹配，直接返回true
+    --If any parameter matches, return true directly
     if event_args_n <= 0 then
         return true
     end
-    -- 既然触发器参数大于0，且事件参数大于等于触发器参数，
-    -- 那么他们都不会是nil了
+    --Since the trigger parameter is greater than 0 and the event parameter is greater than or equal to the trigger parameter,
+    --Then none of them will be nil
     ---@cast event_args -nil
     ---@cast fire_args -nil
     for i = 2, event_args_n do

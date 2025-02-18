@@ -4,7 +4,7 @@ local superName = NPBehave.ClassName.Composite
 
 ---@class NPBehave.Composite.Selector: NPBehave.Composite.Composite
 ---@field package __super NPBehave.Composite.Composite
----@overload fun(...: NPBehave.Node): self
+---@overload fun(... : NPBehave.Node): self
 local Selector = Class(NPBehave.ClassName.Selector, superName, function(self, super, ...)
     super("Selector", ...)
 end)

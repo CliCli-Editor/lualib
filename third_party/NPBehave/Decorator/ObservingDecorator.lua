@@ -75,16 +75,16 @@ end
 
 ---protected
 function ObservingDecorator:Evaluate()
-    -- 自身活跃且值为监听的黑板值不满足条件, 则停止自身
+    --If the blackboard value that is active and has a listening value does not meet the conditions, it stops itself
     if self.IsActive and not self:IsConditionMet() then
         if self.StopsOnChange == NPBehave.Enum.Stops.Self or self.StopsOnChange == NPBehave.Enum.Stops.Both or self.StopsOnChange == NPBehave.Enum.Stops.ImmediateRestart then
-            -- Debug.Log( this.key + " stopped self ")
+            --Debug.Log( this.key + " stopped self ")
             self:CancelWithoutReturnResult()
         end
-        -- 自身不活跃且值为监听的黑板值满足条件, 则停止其他
+        --If the blackboard value that is inactive and has a listening value meets the conditions, the others are stopped
     elseif not self.IsActive and self:IsConditionMet() then
         if self.StopsOnChange == NPBehave.Enum.Stops.LowerPriority or self.StopsOnChange == NPBehave.Enum.Stops.Both or self.StopsOnChange == NPBehave.Enum.Stops.ImmediateRestart or self.StopsOnChange == NPBehave.Enum.Stops.LowerPriorityImmediateRestart then
-            -- Debug.Log( this.key + " stopped other ")
+            --Debug.Log( this.key + " stopped other ")
             local parentNode = self.ParentNode
             ---@type NPBehave.Node
             local childNode = self
@@ -93,11 +93,11 @@ function ObservingDecorator:Evaluate()
                 childNode = parentNode
                 parentNode = parentNode.ParentNode
             end
-            assert(parentNode ~= nil, "Stops 仅在附加到父组合时才有效.")
+            assert(parentNode ~= nil, "Stops are valid only when attached to the parent group.")
             assert(childNode ~= nil)
             if IsInstanceOf(parentNode, NPBehave.ClassName.Parallel) then
                 assert(self.StopsOnChange == NPBehave.Enum.Stops.ImmediateRestart,
-                    "在并行节点上，所有子节点具有相同的优先级，因此在这种情况下不支持 Stops.LowerPriority 或 Stops.Both!")
+                    "On parallel nodes, all child nodes have the same priority, so Stops.LowerPriority or Stops.Both! Are not supported in this case.")
             end
             if self.StopsOnChange == NPBehave.Enum.Stops.ImmediateRestart or self.StopsOnChange == NPBehave.Enum.Stops.LowerPriorityImmediateRestart then
                 if self._isObserving then

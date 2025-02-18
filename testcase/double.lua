@@ -3,7 +3,7 @@ local function eq(a, b)
         return
     end
     local info = debug.getinfo(2)
-    xpcall(error, print, string.format('未通过：[%s:%s]: %s != %s'
+    xpcall(error, print, string.format('Failed: [%s:%s]: %s! = %s'
         , info.short_src
         , info.currentline
         , a
@@ -16,7 +16,7 @@ local function isNaN(a)
         return
     end
     local info = debug.getinfo(2)
-    xpcall(error, print, string.format('未通过：[%s:%s]: %s != %s'
+    xpcall(error, print, string.format('Failed: [%s:%s]: %s! = %s'
         , info.short_src
         , info.currentline
         , a
@@ -182,4 +182,4 @@ eq(xdouble(0):tan(),  xdouble(0))
 eq(xdouble(1):tan(),  xdouble('1.55740772465490229237'))
 eq(xdouble(-1):tan(), xdouble('-1.55740772465490229237'))
 
-print('测试完成！')
+print('Test complete!')

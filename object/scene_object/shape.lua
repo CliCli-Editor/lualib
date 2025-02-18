@@ -19,27 +19,27 @@ function M.get_by_handle(py_shape)
     return New 'Shape' (py_shape)
 end
 
----创建环形区域
----@param in_radius number 内半径
----@param out_radius number 外半径
+---Create a ring
+---@param in_radius number Internal radius
+---@param out_radius number External radius
 ---@return Shape
 function M.create_annular_shape(in_radius, out_radius)
     local py_shape = GlobalAPI.create_annular_shape(Fix32(in_radius), Fix32(out_radius))
     return M.get_by_handle(py_shape)
 end
 
----创建圆形区域
----@param radius number 半径
+---Create a circle
+---@param radius number Radius
 ---@return Shape
 function M.create_circular_shape(radius)
     local py_shape = GlobalAPI.create_circular_shape(Fix32(radius))
     return M.get_by_handle(py_shape)
 end
 
----创建矩形区域
----@param width number 宽度
----@param length number 长度
----@param angle number 角度
+---Create a rectangular area
+---@param width number Width
+---@param length number Length
+---@param angle number Indicates the Angle
 ---@param offset_x_ratio? number # Offset x
 ---@param offset_y_ratio? number # Offset y
 ---@return Shape
@@ -49,10 +49,10 @@ function M.create_rectangle_shape(width, length, angle, offset_x_ratio, offset_y
     return M.get_by_handle(py_shape)
 end
 
----扇形
----@param radius number 半径
----@param angle number 角度
----@param direction number 方向
+---sector
+---@param radius number Radius
+---@param angle number Indicates the Angle
+---@param direction number Indicates the direction
 ---@return Shape
 function M.create_sector_shape(radius, angle, direction)
     local py_shape = GlobalAPI.create_sector_shape(Fix32(radius), Fix32(angle), direction)

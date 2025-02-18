@@ -1,6 +1,6 @@
 # Beam
 
-闪电特效（光束）
+Lightning effects (Beams）
 
 ## create
 
@@ -22,30 +22,30 @@ function Beam.create_lua_beam_by_py(py_beam: py.LinkSfx)
 py.LinkSfx
 ```
 
-链接特效
+Link effect
 ## remove
 
 ```lua
 (method) Beam:remove()
 ```
 
-链接特效 - 销毁
+Link effects - Destroy
 ## set
 
 ```lua
 (method) Beam:set(data: Beam.LinkData)
 ```
 
-链接特效 - 设置位置
+Link Effects - Set the location
 ## show
 
 ```lua
 (method) Beam:show(is_show: boolean)
 ```
 
-@*param* `is_show` — 是否显示
+@*param* `is_show` — Show or not
 
-链接特效 - 显示/隐藏
+Link effects - Show/Hide
 ## type
 
 ```lua
@@ -61,70 +61,70 @@ string
 boolean
 ```
 
-是否跟随缩放（只在起点是单位时生效）
+Whether to follow scaling (only if the starting point is a unit）
 ## immediate
 
 ```lua
 boolean
 ```
 
-销毁时，是否有过度
+When destroyed, whether there is excessive
 ## key
 
 ```lua
 py.SfxKey
 ```
 
-特效id
+VFXid
 ## source
 
 ```lua
 Point|Unit
 ```
 
-目标
+goal
 ## source_height
 
 ```lua
 number
 ```
 
-高度（只在目标是点时生效）
+Height (Only effective if the target is a point）
 ## source_socket
 
 ```lua
 string
 ```
 
-挂接点（只在目标是单位时生效）
+Hang contact (Only effective if the target is a unit）
 ## target
 
 ```lua
 Point|Unit
 ```
 
-目标
+goal
 ## target_height
 
 ```lua
 number
 ```
 
-高度（只在目标是点时生效）
+Height (Only effective if the target is a point）
 ## target_socket
 
 ```lua
 string
 ```
 
-挂接点（只在目标是单位时生效）
+Hang contact (Only effective if the target is a unit）
 ## time
 
 ```lua
 number
 ```
 
-存在时间
+Time of existence
 
 # Beam.LinkData
 
@@ -134,26 +134,26 @@ number
 number
 ```
 
-高度（只在目标是点时生效）
+Height (Only effective if the target is a point）
 ## point_type
 
 ```lua
 y3.Const.LinkSfxPointType
 ```
 
-起点or终点
+Start or end
 ## socket
 
 ```lua
 string
 ```
 
-挂接点（只在目标是单位时生效）
+Hang contact (Only effective if the target is a unit）
 ## target
 
 ```lua
 Point|Unit
 ```
 
-目标
+goal
 

@@ -1,9 +1,9 @@
----@class NPBehave.Node `abstract`, 不应该直接实例化, 请使用子类<br>
+---@class NPBehave.Node 'abstract', should not be instantiated directly, please use subclass <br>
 ---@field protected currentState NPBehave.Enum.NodeState
 ---@field CurrentState NPBehave.Enum.NodeState `__getter`
 ---@field RootNode NPBehave.Root
 ---@field ParentNode? NPBehave.Container
----@field Label string 显示标签
+---@field Label string Displays labels
 ---@field Name string
 ---@field Blackboard NPBehave.Blackboard `__getter`
 ---@field Clock NPBehave.Clock `__getter`
@@ -73,13 +73,13 @@ function Node:SetParent(parentNode)
 end
 
 function Node:Start()
-    assert(self.currentState == NPBehave.Enum.NodeState.Inactive, "只能启动非活动节点")
+    assert(self.currentState == NPBehave.Enum.NodeState.Inactive, "Only inactive nodes can be started")
     self.currentState = NPBehave.Enum.NodeState.Active
     self:DoStart()
 end
 
 function Node:CancelWithoutReturnResult()
-    assert(self.currentState == NPBehave.Enum.NodeState.Active, "只能停止活动节点，试图停止")
+    assert(self.currentState == NPBehave.Enum.NodeState.Active, "Can only stop the active node, try to stop")
     self.currentState = NPBehave.Enum.NodeState.StopRequested
     self:DoCancel()
 end
@@ -93,11 +93,11 @@ end
 function Node:DoCancel()
 end
 
----@protected 
+---@protected
 ---virtual<br>
----这绝对必须是函数中的最后一个调用, 调用停止后切勿修改任何状态!!! 
+---This must absolutely be the last call in the function, do not modify any state after the call stops!!
 function Node:Stopped(success)
-    assert(self.currentState ~= NPBehave.Enum.NodeState.Inactive, "在 `INACTIVE` 状态下调用了 `Stopped`, 说明出了问题")
+    assert(self.currentState ~= NPBehave.Enum.NodeState.Inactive, "When 'Stopped' is dropped in the 'INACTIVE' state, something is wrong")
     self.currentState = NPBehave.Enum.NodeState.Inactive
     if self.ParentNode ~= nil then
         self.ParentNode:ChildStopped(self, success)
@@ -116,7 +116,7 @@ end
 --Called when in an inactive state in order to have the decorator remove any waiting observers.
 ---@param composite NPBehave.Composite.Composite
 function Node:DoParentCompositeStopped(composite)
-    -- 小心调用
+    --Call with care
 end
 
 ---override<br>

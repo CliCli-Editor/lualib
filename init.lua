@@ -134,9 +134,9 @@ clicli.develop.helper  = require 'clicli.develop.helper'
 clicli.await.setErrorHandler(log.error)
 clicli.await.setSleepWaker(clicli.ltimer.wait)
 
-log.info('LuaLib版本：', clicli.version)
+log.info('LuaLib version:', clicli.version)
 
-clicli.game:event_dispatch('$CliCli-初始化')
+clicli.game:event_dispatch('$CliCli- Initialize')
 
 if LDBG then
     clicli.ltimer.loop_frame(1, function ()

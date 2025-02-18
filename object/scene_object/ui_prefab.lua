@@ -23,8 +23,8 @@ function M:__del()
     GameAPI.del_ui_prefab(self.handle)
 end
 
----通过py层的界面实例获取lua层的界面实例
----@param  player Player 玩家
+---Obtain the interface instance of the lua layer from the interface instance of the py layer
+---@param player Player
 ---@param  prefab_name string
 ---@return UIPrefab # Returns the lua layer skill instance after being initialized at the lua layer
 function M.get_by_handle(player, prefab_name)
@@ -33,9 +33,9 @@ function M.get_by_handle(player, prefab_name)
 end
 
 --Example Create an interface module instance
----@param  player Player 玩家
----@param  prefab_name string 界面模块id
----@param  parent_ui UI 父控件
+---@param player Player
+---@param prefab_name string Interface module id
+---@param parent_ui UI parent control
 ---@return UIPrefab
 function M.create(player, prefab_name, parent_ui)
     local py_ui_prefab = GameAPI.create_ui_prefab_instance(player.handle, clicli.ui.comp_id[prefab_name], parent_ui.handle)
@@ -50,7 +50,7 @@ end
 --Gets the UI instance of UIPrefab
 --> Use the 'get_child' method instead
 ---@deprecated
----@param  player Player 玩家
+---@param player Player
 ---@return UI
 function M:get_ui(player)
     ---@diagnostic disable-next-line: param-type-mismatch
@@ -59,7 +59,7 @@ end
 
 --Gets the UI instance of UIPrefab
 --> Attention! The path here is relative to the first layer of * nodes (that is, there is a node in the node list that cannot be deleted by default, that is the first layer).
----@param child_path? string 路径，默认为根节点。
+---@param child_path? string Path. The default path is the root node.
 ---@return UI?
 function M:get_child(child_path)
     ---@diagnostic disable-next-line: param-type-mismatch

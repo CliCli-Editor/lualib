@@ -1,6 +1,6 @@
 # Unit
 
-单位
+unit
 
 ## add_ability
 
@@ -9,22 +9,22 @@
   -> Ability?
 ```
 
-添加技能
+Add skills
 
-@*param* `type` — 技能类型
+@*param* `type` — Skill type
 
-@*param* `id` — 物编id
+@*param* `id` — knitwearid
 
-@*param* `slot` — 技能位
+@*param* `slot` — Skill Slot
 
-@*param* `level` — 等级
+@*param* `level` — Lv.
 
 ```lua
 type:
-    | '隐藏'
-    | '普通'
-    | '命令'
-    | '英雄'
+    | 'Hidden'
+    | 'Normal'
+    | 'command'
+    | 'Hero'
 ```
 ## add_ability_point
 
@@ -32,22 +32,22 @@ type:
 (method) Unit:add_ability_point(skill_point: integer)
 ```
 
-增加技能点
+Increase skill points
 
-@*param* `skill_point` — 技能点
+@*param* `skill_point` — Skill Points
 ## add_attr
 
 ```lua
 (method) Unit:add_attr(attr_name: string|y3.Const.UnitAttr, value: number, attr_type?: string|y3.Const.UnitAttrType)
 ```
 
-增加属性
+Add attribute
 
-@*param* `attr_name` — 属性名
+@*param* `attr_name` — Attribute name
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 
-@*param* `attr_type` — 属性类型，默认为“增益”
+@*param* `attr_type` — Property type. The default value is Gain”
 ## add_attr_gc
 
 ```lua
@@ -55,13 +55,13 @@ type:
   -> GCNode
 ```
 
-增加属性
+Add attribute
 
-@*param* `attr_name` — 属性名
+@*param* `attr_name` — Attribute name
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 
-@*param* `attr_type` — 属性类型
+@*param* `attr_type` — Attribute type
 ## add_buff
 
 ```lua
@@ -69,36 +69,36 @@ type:
   -> Buff?
 ```
 
-给单位添加魔法效果
+Adds magic effects to units
 ## add_exp
 
 ```lua
 (method) Unit:add_exp(exp: number)
 ```
 
-增加经验值
+Increase experience
 
-@*param* `exp` — 经验
+@*param* `exp` — EXP
 ## add_goods
 
 ```lua
 (method) Unit:add_goods(tag_name: py.TabName, item_key: py.ItemKey)
 ```
 
-添加可贩卖的商品
+Add merchantable items
 
-@*param* `tag_name` — 标签名
+@*param* `tag_name` — Tag name
 
-@*param* `item_key` — 物品id
+@*param* `item_key` — itemid
 ## add_hp
 
 ```lua
 (method) Unit:add_hp(hp: number)
 ```
 
-增加当前生命值
+Increases current health
 
-@*param* `hp` — 当前生命值
+@*param* `hp` — Current health
 ## add_item
 
 ```lua
@@ -106,16 +106,16 @@ type:
   -> Item?
 ```
 
-单位添加物品
+Unit addition
 
-@*param* `item_id` — 物品id
+@*param* `item_id` — itemid
 
-@*param* `slot_type` — 槽位类型
+@*param* `slot_type` — Slot type
 
 ```lua
 slot_type:
-    | '物品栏'
-    | '背包栏'
+    | 'Inventory Panel'
+    | 'Backpack rail'
 ```
 ## add_level
 
@@ -123,37 +123,37 @@ slot_type:
 (method) Unit:add_level(level: integer)
 ```
 
-增加等级
+Increase level
 
-@*param* `level` — 等级
+@*param* `level` — Lv.
 ## add_mp
 
 ```lua
 (method) Unit:add_mp(mp: number)
 ```
 
-增加当前魔法值
+Increases current mana
 
-@*param* `mp` — 当前魔法值
+@*param* `mp` — Current mana
 ## add_multi_state
 
 ```lua
 (method) Unit:add_multi_state(state_enum: integer)
 ```
 
-添加多个状态
-使用 `y3.const.UnitEnumState` 中的枚举值
+Add multiple states
+Use the enumeration value in 'y3.const.UnitEnumState'
 
-@*param* `state_enum` — 状态
+@*param* `state_enum` — status
 ## add_state
 
 ```lua
 (method) Unit:add_state(state_enum: integer|y3.Const.UnitEnumState)
 ```
 
-添加状态
+Add state
 
-@*param* `state_enum` — 状态名
+@*param* `state_enum` — Status name
 ## add_state_gc
 
 ```lua
@@ -161,27 +161,27 @@ slot_type:
   -> GCNode
 ```
 
-添加状态
+Add state
 
-@*param* `state_enum` — 状态名
+@*param* `state_enum` — Status name
 ## add_tag
 
 ```lua
 (method) Unit:add_tag(tag: string)
 ```
 
-添加标签
+Add tag
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## add_tech
 
 ```lua
 (method) Unit:add_tech(tech_id: py.TechKey)
 ```
 
-单位添加科技
+Unit addition technology
 
-@*param* `tech_id` — 科技id
+@*param* `tech_id` — Science and technologyid
 ## attack_move
 
 ```lua
@@ -189,13 +189,13 @@ slot_type:
   -> py.UnitCommand
 ```
 
- 命令攻击移动
+ Command attack move
 
 @*param* `point` — 点
 
-@*param* `range` — 范围
+@*param* `range` — Radius
 
-@*return* — 命令
+@*return* — command
 ## attack_target
 
 ```lua
@@ -203,30 +203,30 @@ slot_type:
   -> py.UnitCommand
 ```
 
- 命令攻击目标
+ Command attack target
 
-@*param* `target` — 目标
+@*param* `target` — goal
 
-@*param* `range` — 范围
+@*param* `range` — Radius
 
-@*return* — 命令
+@*return* — command
 ## attr_to_name
 
 ```lua
 function Unit.attr_to_name(key: string)
-  -> 属性名字: string
+  -> Attribute name: string
 ```
 
-单位属性转单位属性名字
+Unit attribute to unit attribute name
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 ## blink
 
 ```lua
 (method) Unit:blink(point: Point)
 ```
 
-传送到点
+Transfer to point
 
 @*param* `point` — 点
 ## break_mover
@@ -235,20 +235,20 @@ function Unit.attr_to_name(key: string)
 (method) Unit:break_mover()
 ```
 
-打断运动器
+interrupter
 ## buy
 
 ```lua
 (method) Unit:buy(unit: Unit, tag_num: py.TabIdx, item_key: py.ItemKey)
 ```
 
-从商店购买商品
+Buy goods from the store
 
-@*param* `unit` — 单位
+@*param* `unit` — unit
 
-@*param* `tag_num` — 页签id
+@*param* `tag_num` — TABid
 
-@*param* `item_key` — 物品id
+@*param* `item_key` — itemid
 ## can_blink_to
 
 ```lua
@@ -256,11 +256,11 @@ function Unit.attr_to_name(key: string)
   -> can_teleport: boolean
 ```
 
-能否传送到点
+Can transmit to the point
 
 @*param* `point` — 点
 
-@*return* `can_teleport` — 能否传送到点
+@*return* `can_teleport` — Can transmit to the point
 ## can_visible
 
 ```lua
@@ -268,11 +268,11 @@ function Unit.attr_to_name(key: string)
   -> visibility: boolean
 ```
 
-是否可见
+Visible or not
 
-@*param* `target_unit` — 目标单位
+@*param* `target_unit` — Target unit
 
-@*return* `visibility` — 目标是否可见
+@*return* `visibility` — Whether the target is visible
 ## can_walk_to
 
 ```lua
@@ -280,33 +280,33 @@ function Unit.attr_to_name(key: string)
   -> is_reach: boolean
 ```
 
-是否寻路可达
+Whether it is routable
 
-@*param* `start_point` — 起始点
+@*param* `start_point` — Initial point
 
-@*param* `end_point` — 终点
+@*param* `end_point` — End point
 
-@*return* `is_reach` — 是否寻路可达
+@*return* `is_reach` — Whether it is routable
 ## cancel_change_animation
 
 ```lua
 (method) Unit:cancel_change_animation(replace_anim_name: string, bereplace_anim_name: string)
 ```
 
-取消动画替换
+Unanimate replace
 
-@*param* `replace_anim_name` — 动画名
+@*param* `replace_anim_name` — Animation name
 
-@*param* `bereplace_anim_name` — 动画名
+@*param* `bereplace_anim_name` — Animation name
 ## cancel_replace_model
 
 ```lua
 (method) Unit:cancel_replace_model(model_id: py.ModelKey)
 ```
 
-取消模型替换
+Cancel model replacement
 
-@*param* `model_id` — 模型id
+@*param* `model_id` — modelid
 ## cast
 
 ```lua
@@ -314,33 +314,33 @@ function Unit.attr_to_name(key: string)
   -> py.UnitCommand
 ```
 
- 命令发动技能
+ Command activation skill
 
-@*param* `ability` — 技能
+@*param* `ability` — skill
 
-@*param* `target` — 目标
+@*param* `target` — goal
 
-@*param* `extra_target` — 额外目标
+@*param* `extra_target` — Extra target
 ## change_animation
 
 ```lua
 (method) Unit:change_animation(replace_anim_name: string, bereplace_anim_name: string)
 ```
 
-替换动画
+Replacement animation
 
-@*param* `replace_anim_name` — 动画名
+@*param* `replace_anim_name` — Animation name
 
-@*param* `bereplace_anim_name` — 动画名
+@*param* `bereplace_anim_name` — Animation name
 ## change_owner
 
 ```lua
 (method) Unit:change_owner(player: Player)
 ```
 
-改变所属玩家
+Change players
 
-@*param* `player` — 所属玩家
+@*param* `player` — Owned player
 ## check_precondition_by_key
 
 ```lua
@@ -348,31 +348,31 @@ function Unit.check_precondition_by_key(player: Player, unit_key: py.UnitKey)
   -> unit_precondition: boolean
 ```
 
-单位类型前置条件是否通过
+Unit Type Preconditions Whether it passes
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `unit_key` — 单位类型
+@*param* `unit_key` — Unit type
 
-@*return* `unit_precondition` — 单位类型前置条件是否通过
+@*return* `unit_precondition` — Unit Type Preconditions Whether it passes
 ## clear_change_animation
 
 ```lua
 (method) Unit:clear_change_animation(anim_name: string)
 ```
 
-重置动画替换
+Reset animation replacement
 
-@*param* `anim_name` — 动画名
+@*param* `anim_name` — Animation name
 ## command
 
 ```lua
 (method) Unit:command(command: py.UnitCommand)
 ```
 
-发布命令
+Issue an order
 
-@*param* `command` — 命令
+@*param* `command` — command
 ## create_illusion
 
 ```lua
@@ -380,19 +380,19 @@ function Unit.create_illusion(illusion_unit: Unit, call_unit: Unit, player: Play
   -> Unit?
 ```
 
-创建幻象
+Create illusion
 
-@*param* `illusion_unit` — 幻象复制的单位
+@*param* `illusion_unit` — Phantom copy unit
 
-@*param* `call_unit` — 召唤单位
+@*param* `call_unit` — Call unit
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
 @*param* `point` — 点
 
-@*param* `direction` — 方向
+@*param* `direction` — direction
 
-@*param* `clone_hp_mp` — 复制当前的生命值和魔法值
+@*param* `clone_hp_mp` — Copy the current health and mana
 ## create_unit
 
 ```lua
@@ -400,13 +400,13 @@ function Unit.create_unit(owner: Player|Unit, unit_id: py.UnitKey, point: Point,
   -> Unit
 ```
 
-创建单位
+Create unit
 
-@*param* `unit_id` — 单位类型
+@*param* `unit_id` — Unit type
 
 @*param* `point` — 点
 
-@*param* `direction` — 方向
+@*param* `direction` — direction
 ## custom_event_manager
 
 ```lua
@@ -426,11 +426,11 @@ EventManager?
   -> py.UnitCommand
 ```
 
- 命令丢弃物品
+ Order to discard items
 ## event
 
 ```lua
-fun(self: Unit, event: "单位-研发科技", callback: fun(trg: Trigger, data: EventParam.单位-研发科技)):Trigger
+fun(self: Unit, event: "Unit - Research and development technology ", callback: fun(trg: Trigger, data: EventParam). Unit - Research and development technology)):Trigger
 ```
 
 ## event_dispatch
@@ -443,30 +443,30 @@ fun(self: Unit, event: "单位-研发科技", callback: fun(trg: Trigger, data: 
   4. any
 ```
 
-发起自定义事件（回执模式），与通知模式不同，允许插入结算。
-可以接受到事件的返回值，有多处注册事件时会按照注册顺序调用，
-当任何事件回调返回了非 `nil` 的值后，后续触发器将不再调用。
+Initiate custom events (receipt mode), which, unlike notification mode, allows for insert billing。
+The return value of the event can be accepted, and the event is called in the order of registration when there are multiple registrations，
+When any event callback returns a non-nil value, subsequent triggers are not called。
 
 ```lua
-Obj:event_on('获取', function (trigger,...)
-    print('获取1')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire1')
     return 1
 end)
-Obj:event_on('获取', function (trigger,...)
-    print('获取2')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire2')
     return 2
 end)
 
-local result = Obj:event_dispatch('获取')
+local result = Obj:event_dispatch('Acquire')
 
-print('结果为：', result)
+print('Turn out：', result)
 ```
 
-以上代码会打印：
+The above code will print：
 
 ```
-获取1
-结果为：    1
+Acquire1
+Turn out：    1
 ```
 
 ## event_dispatch_with_args
@@ -479,38 +479,38 @@ print('结果为：', result)
   4. any
 ```
 
- 发起带事件参数的自定义事件（回执模式）
+ Initiates custom events with event parameters (receipt mode）
 ## event_notify
 
 ```lua
 (method) CustomEvent:event_notify(event_name: string, ...any)
 ```
 
-发起自定义事件（通知模式），同一个对象身上只会有一个正在执行的事件，
-当发生插入结算时，后面的事件会进入队列
+When a custom event is initiated (notification mode), only one event is executed on the same object，
+When an insert settlement occurs, subsequent events are queued
 
 ```lua
-Obj:event_on('获得', function ()
-    print('触发获得')
-    print('发起移除前')
-    Obj:event_notify('移除') -- 实际业务中，可能你获得的buff把你自己杀死了，而死亡会清除buff
-    print('发起移除后')
+Obj:event_on('obtained', function ()
+    print('Trigger acquisition')
+    print('Before removal')
+    Obj:event_notify('Remove ') - In real business, maybe the buff you get kills yourself and the death clearsbuff
+    print('After removal')
 end)
 
-Obj:event_on('移除', function ()
-    print('触发移除')
+Obj:event_on('Remove', function ()
+    print('Trigger removal')
 end)
 
-Obj:event_notify('获得')
+Obj:event_notify('obtained')
 ```
 
-这段代码会打印：
+This code will print：
 
 ```
-触发获得
-发起移除前
-发起移除后
-触发移除
+Trigger acquisition
+Before removal
+After removal
+Trigger removal
 ```
 
 ## event_notify_with_args
@@ -519,7 +519,7 @@ Obj:event_notify('获得')
 (method) CustomEvent:event_notify_with_args(event_name: string, args: any[], ...any)
 ```
 
- 发起带事件参数的自定义事件（通知模式）
+ Initiates custom events with event parameters (notification mode）
 ## event_on
 
 ```lua
@@ -527,35 +527,35 @@ Obj:event_notify('获得')
   -> Trigger
 ```
 
-注册自定义事件，当触发时，会执行回调函数。
+Register a custom event and, when triggered, execute a callback function。
 
 ```lua
-Obj:event_on('输入', function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', '123', '456')
+Obj:event_notify('input', '123', '456')
 ```
 
-以上会打印：
+The above will print：
 
 ```
-触发了输入事件 123 456
+The input event was triggered 123 456
 ```
 
 ---
 
-注册时可以指定事件的参数：
+You can specify parameters for the event during registration：
 
 ```lua
-Obj:event_on('输入', {'123'}, function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', {'123'}, function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', 1) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123'}, 2) -- 可以触发事件
-Obj:event_notify_with_args('输入', {'456'}, 3) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
+Obj:event_notify('Enter ', 1) -- the event cannot be triggered
+Obj:event_notify_with_args('Enter ', {'123'}, 2) -- to trigger the event
+Obj:event_notify_with_args('Enter ', {'456'}, 3) -- cannot fire an event
+Obj:event_notify_with_args('Enter ', {'123', '666'}, 4) -- to trigger the event
 ```
 
 ## exchange_item
@@ -564,17 +564,17 @@ Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
 (method) Unit:exchange_item(item: Item, type: y3.Const.ShiftSlotTypeAlias, index: integer)
 ```
 
- 交换物品
- 如果目标位置是空的，则相当于把物品移动了过去
+ barter
+ If the target location is empty, it is equivalent to moving the item
 
-@*param* `item` — 物品
+@*param* `item` — item
 
-@*param* `index` — 槽位
+@*param* `index` — slot
 
 ```lua
 type:
-    | '物品栏'
-    | '背包栏'
+    | 'Inventory Panel'
+    | 'Backpack rail'
 ```
 ## find_ability
 
@@ -583,20 +583,20 @@ type:
   -> ability: Ability?
 ```
 
-通过技能名寻找技能
+Find skills by skill name
 
-@*param* `type` — 技能类型
+@*param* `type` — Skill type
 
-@*param* `id` — 物编id
+@*param* `id` — knitwearid
 
-@*return* `ability` — 技能
+@*return* `ability` — skill
 
 ```lua
 type:
-    | '隐藏'
-    | '普通'
-    | '命令'
-    | '英雄'
+    | 'Hidden'
+    | 'Normal'
+    | 'command'
+    | 'Hero'
 ```
 ## find_buff
 
@@ -605,13 +605,13 @@ type:
   -> Buff?
 ```
 
-获取单位指定id的魔法效果
+Gets the magic effect for the unit specified id
 
-@*param* `buff_key` — 魔法效果id
+@*param* `buff_key` — Magic effectid
 
-@*param* `index` — 第几个
+@*param* `index` — How many
 
-@*return* — 单位指定类型的魔法效果
+@*return* — Unit specifies the type of magic effect
 ## follow
 
 ```lua
@@ -619,17 +619,17 @@ type:
   -> py.UnitCommand
 ```
 
- 命令跟随单位
+ Command follower unit
 
-@*param* `refresh_interval` — 刷新间隔
+@*param* `refresh_interval` — Refresh interval
 
-@*param* `near_offset` — 跟随距离
+@*param* `near_offset` — Following distance
 
-@*param* `far_offset` — 重新跟随距离
+@*param* `far_offset` — Refollowing distance
 
-@*param* `follow_angle` — 跟随角度
+@*param* `follow_angle` — Following Angle
 
-@*param* `follow_dead_target` — 是否跟随死亡单位
+@*param* `follow_dead_target` — Whether to follow the death unit
 ## get_abilities_by_type
 
 ```lua
@@ -637,7 +637,7 @@ type:
   -> Ability[]
 ```
 
-获取指定类型的所有技能
+Gets all skills for a specified type
 ## get_ability_by_seq
 
 ```lua
@@ -645,7 +645,7 @@ type:
   -> Ability?
 ```
 
-根据技能序号获取技能
+Get skills according to skill number
 ## get_ability_by_slot
 
 ```lua
@@ -653,20 +653,20 @@ type:
   -> ability: Ability?
 ```
 
-获得某个技能位的的技能
+Acquire the skill of a certain skill level
 
-@*param* `type` — 技能类型
+@*param* `type` — Skill type
 
-@*param* `slot` — 技能位
+@*param* `slot` — Skill Slot
 
-@*return* `ability` — 技能
+@*return* `ability` — skill
 
 ```lua
 type:
-    | '隐藏'
-    | '普通'
-    | '命令'
-    | '英雄'
+    | 'Hidden'
+    | 'Normal'
+    | 'command'
+    | 'Hero'
 ```
 ## get_ability_point
 
@@ -675,9 +675,9 @@ type:
   -> hero_ability_point_number: integer
 ```
 
-获取英雄的技能点数量
+Gain the number of skill points the hero has
 
-@*return* `hero_ability_point_number` — 英雄的技能点数量
+@*return* `hero_ability_point_number` — The number of skill points the hero has
 ## get_affect_techs
 
 ```lua
@@ -685,7 +685,7 @@ type:
   -> py.TechKey[]
 ```
 
-获取单位受到影响的所有科技
+Get all technologies affected by the unit
 ## get_alert_range
 
 ```lua
@@ -693,9 +693,9 @@ type:
   -> alert_range: number
 ```
 
-获取单位警戒范围
+Get a unit alert
 
-@*return* `alert_range` — 单位警戒范围
+@*return* `alert_range` — Unit warning range
 ## get_all_items
 
 ```lua
@@ -703,9 +703,9 @@ type:
   -> item_group: ItemGroup
 ```
 
-单位的所有物品
+All items of the unit
 
-@*return* `item_group` — 所有物品
+@*return* `item_group` — All items
 ## get_armor_type
 
 ```lua
@@ -713,9 +713,9 @@ type:
   -> DAMAGE_ARMOR_TYPE: integer
 ```
 
-获得护甲类型
+Get armor type
 
-@*return* `DAMAGE_ARMOR_TYPE` — 护甲类型
+@*return* `DAMAGE_ARMOR_TYPE` — Type of armor
 ## get_attack_type
 
 ```lua
@@ -723,22 +723,22 @@ type:
   -> DAMAGE_ATTACK_TYPE: integer
 ```
 
-获得攻击类型
+Get attack type
 
-@*return* `DAMAGE_ATTACK_TYPE` — 攻击类型
+@*return* `DAMAGE_ATTACK_TYPE` — Attack type
 ## get_attr
 
 ```lua
-(method) Unit:get_attr(attr_name: y3.Const.UnitAttr, attr_type?: '实际'|'额外'|y3.Const.UnitAttrType)
+(method) Unit:get_attr(attr_name: y3.Const.UnitAttr, attr_type?: 'Actual '|' extra'|y3.Const.UnitAttrType)
   -> number
 ```
 
-获取属性（默认为实际属性）
+Get the property (default is the actual property）
 
 ```lua
 attr_type:
-    | '实际'
-    | '额外'
+    | 'actual'
+    | 'Additional'
 ```
 ## get_attr_all_ratio
 
@@ -747,7 +747,7 @@ attr_type:
   -> number
 ```
 
-获取属性（最终加成）
+Get attributes (final bonus）
 ## get_attr_base
 
 ```lua
@@ -755,9 +755,9 @@ attr_type:
   -> attr_base: number
 ```
 
-获取单属性（基础）
+Gets a single attribute (base）
 
-@*return* `attr_base` — 单位基础属性类型的属性
+@*return* `attr_base` — Attributes of the unit base attribute type
 ## get_attr_base_ratio
 
 ```lua
@@ -765,7 +765,7 @@ attr_type:
   -> number
 ```
 
-获取属性（基础加成）
+Get properties (Base bonus）
 ## get_attr_bonus
 
 ```lua
@@ -773,7 +773,7 @@ attr_type:
   -> number
 ```
 
-获取属性（增益）
+Get properties (gain）
 ## get_attr_bonus_ratio
 
 ```lua
@@ -781,7 +781,7 @@ attr_type:
   -> number
 ```
 
-获取属性（增益加成）
+Get properties (Gain bonus）
 ## get_attr_growth_by_key
 
 ```lua
@@ -789,9 +789,9 @@ function Unit.get_attr_growth_by_key(unit_key: py.UnitKey, attr_name: string|y3.
   -> unit_attribute_growth: number
 ```
 
-获取单位属性成长
+Gets unit attribute growth
 
-@*return* `unit_attribute_growth` — 单位属性成长
+@*return* `unit_attribute_growth` — Unit attribute growth
 ## get_attr_other
 
 ```lua
@@ -799,9 +799,9 @@ function Unit.get_attr_growth_by_key(unit_key: py.UnitKey, attr_name: string|y3.
   -> number
 ```
 
-获取属性（额外）
+Get properties (extra）
 
-@*param* `attr_name` — 属性名
+@*param* `attr_name` — Attribute name
 ## get_bar_cnt
 
 ```lua
@@ -809,9 +809,9 @@ function Unit.get_attr_growth_by_key(unit_key: py.UnitKey, attr_name: string|y3.
   -> slot_number: integer
 ```
 
-获取单位物品栏的槽位数
+Gets the number of slots in the unit inventory
 
-@*return* `slot_number` — 单位物品栏的槽位数
+@*return* `slot_number` — Number of slots in the unit inventory
 ## get_buffs
 
 ```lua
@@ -819,9 +819,9 @@ function Unit.get_attr_growth_by_key(unit_key: py.UnitKey, attr_name: string|y3.
   -> Buff[]
 ```
 
-获取单位身上的魔法效果
+Gain magic effects on units
 
-@*return* — 魔法效果表
+@*return* — Magic effect table
 ## get_by_handle
 
 ```lua
@@ -829,7 +829,7 @@ function Unit.get_by_handle(py_unit: py.Unit)
   -> Unit?
 ```
 
-通过py层的单位实例获取lua层的单位实例
+Get the unit instance of the lua layer from the unit instance of the py layer
 ## get_by_id
 
 ```lua
@@ -837,7 +837,7 @@ function Unit.get_by_id(id: py.UnitID)
   -> Unit?
 ```
 
- 根据唯一ID获取单位。
+ Gets units based on unique ids。
 ## get_by_res_id
 
 ```lua
@@ -845,7 +845,7 @@ function Unit.get_by_res_id(res_id: integer)
   -> Unit
 ```
 
- 获取摆放在场景上的单位
+ Gets the units placed on the scene
 ## get_by_string
 
 ```lua
@@ -853,8 +853,8 @@ function Unit.get_by_string(str: string)
   -> Unit?
 ```
 
-根据字符串获取单位，字符串是通过 `tostring(Unit)`
-或是使用ECA中的“任意变量转化为字符串”获得的。
+According to the string gets the unit, the string is passed `tostring(Unit)`
+Or using the "Convert any variable to string" in ECA。
 ## get_camp_id
 
 ```lua
@@ -862,7 +862,7 @@ function Unit.get_by_string(str: string)
   -> py.CampID
 ```
 
-获取单位阵营ID
+Get unit campID
 ## get_cancel_alert_range
 
 ```lua
@@ -870,9 +870,9 @@ function Unit.get_by_string(str: string)
   -> cancel_alert_range: number
 ```
 
-获取单位取消警戒的范围
+Get the range of units to de-alert
 
-@*return* `cancel_alert_range` — 单位取消警戒的范围
+@*return* `cancel_alert_range` — The area where the unit called off the alert
 ## get_collision_radius
 
 ```lua
@@ -880,9 +880,9 @@ function Unit.get_by_string(str: string)
   -> collision_radius: number
 ```
 
-获取单位碰撞半径
+Gets the unit collision radius
 
-@*return* `collision_radius` — 单位碰撞半径
+@*return* `collision_radius` — Unit collision radius
 ## get_common_attack
 
 ```lua
@@ -890,7 +890,7 @@ function Unit.get_by_string(str: string)
   -> Ability?
 ```
 
-comment 获取普攻技能
+comment Gain general attack skills
 ## get_custom_event_manager
 
 ```lua
@@ -905,9 +905,9 @@ comment 获取普攻技能
   -> unit_description: string
 ```
 
-获取单位的描述
+Gets a description of the unit
 
-@*return* `unit_description` — 单位的描述
+@*return* `unit_description` — Description of units
 ## get_description_by_key
 
 ```lua
@@ -915,11 +915,11 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> des: string
 ```
 
-获取单位类型的描述
+Gets a description of the unit type
 
-@*param* `unit_key` — 单位类型
+@*param* `unit_key` — Unit type
 
-@*return* `des` — 单位类型的描述
+@*return* `des` — Description of the unit type
 ## get_exp
 
 ```lua
@@ -927,9 +927,9 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> exp: integer
 ```
 
-获取单位当前的经验值
+Gets the unit's current experience
 
-@*return* `exp` — 单位当前的经验值
+@*return* `exp` — Current experience value of the unit
 ## get_exp_reward
 
 ```lua
@@ -937,9 +937,9 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> exp: integer
 ```
 
-获取单位被击杀经验
+Gain unit kill experience
 
-@*return* `exp` — 单位被击杀经验
+@*return* `exp` — Unit kill experience
 ## get_facing
 
 ```lua
@@ -947,9 +947,9 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> angle: number
 ```
 
-获取单位的朝向
+Gets the orientation of the unit
 
-@*return* `angle` — 单位的朝向
+@*return* `angle` — Orientation of unit
 ## get_final_attr
 
 ```lua
@@ -957,9 +957,9 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> number
 ```
 
-获取最终属性
+Get final attribute
 
-@*param* `attr_name` — 属性名
+@*param* `attr_name` — Attribute name
 ## get_goods_cd
 
 ```lua
@@ -967,13 +967,13 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> cd: number
 ```
 
-获取商店商品的库存间隔
+Get inventory intervals for store items
 
-@*param* `page` — 页签id
+@*param* `page` — TABid
 
-@*param* `index` — 序号
+@*param* `index` — Serial number
 
-@*return* `cd` — 默认间隔时间
+@*return* `cd` — Default interval
 ## get_goods_key
 
 ```lua
@@ -981,13 +981,13 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> item: py.ItemKey
 ```
 
-获取商店的物品id
+Get items from the storeid
 
-@*param* `tag_index` — 页签
+@*param* `tag_index` — TAB
 
-@*param* `item_index` — 序号
+@*param* `item_index` — Serial number
 
-@*return* `item` — 物品类型
+@*return* `item` — Item type
 ## get_goods_remaining_cd
 
 ```lua
@@ -995,13 +995,13 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> recovery_time: number
 ```
 
-获取商店商品的剩余恢复时间
+Gets the remaining recovery time for store items
 
-@*param* `page` — 页签id
+@*param* `page` — TABid
 
-@*param* `index` — 序号
+@*param* `index` — Serial number
 
-@*return* `recovery_time` — 剩余恢复时间
+@*return* `recovery_time` — Residual recovery time
 ## get_goods_stack
 
 ```lua
@@ -1009,13 +1009,13 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> item_stock: integer
 ```
 
-获取商店的物品商品库存
+Get the store's inventory of items
 
-@*param* `tag_index` — 页签
+@*param* `tag_index` — TAB
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 
-@*return* `item_stock` — 商品库存
+@*return* `item_stock` — Commodity inventory
 ## get_height
 
 ```lua
@@ -1023,9 +1023,9 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> height: number
 ```
 
-获取单位飞行高度
+Gain unit altitude
 
-@*return* `height` — 单位飞行高度
+@*return* `height` — Unit flight altitude
 ## get_hp
 
 ```lua
@@ -1033,9 +1033,9 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> current_unit_hp: number
 ```
 
-获取当前生命值
+Gets the current health
 
-@*return* `current_unit_hp` — 当前生命值
+@*return* `current_unit_hp` — Current health
 ## get_icon
 
 ```lua
@@ -1043,9 +1043,9 @@ function Unit.get_description_by_key(unit_key: py.UnitKey)
   -> image: py.Texture
 ```
 
-获取单位的头像
+Get the unit's avatar
 
-@*return* `image` — 单位的头像
+@*return* `image` — Unit head
 ## get_icon_by_key
 
 ```lua
@@ -1053,11 +1053,11 @@ function Unit.get_icon_by_key(unit_key: py.UnitKey)
   -> image: py.Texture
 ```
 
-获取单位类型的头像
+Gets the avatar of the unit type
 
-@*param* `unit_key` — 单位类型
+@*param* `unit_key` — Unit type
 
-@*return* `image` — 单位类型的头像
+@*return* `image` — The avatar of the unit type
 ## get_id
 
 ```lua
@@ -1065,7 +1065,7 @@ function Unit.get_icon_by_key(unit_key: py.UnitKey)
   -> integer
 ```
 
- 获取唯一ID
+ Get uniqueID
 ## get_illusion_owner
 
 ```lua
@@ -1073,9 +1073,9 @@ function Unit.get_icon_by_key(unit_key: py.UnitKey)
   -> unit: Unit?
 ```
 
-获取幻象的召唤者
+The summoner of the vision
 
-@*return* `unit` — 幻象的召唤者
+@*return* `unit` — Summoner of the vision
 ## get_item_by_slot
 
 ```lua
@@ -1083,18 +1083,18 @@ function Unit.get_icon_by_key(unit_key: py.UnitKey)
   -> item: Item?
 ```
 
-获取单位背包槽位上的物品
+Get the items in the unit backpack slot
 
-@*param* `type` — 槽位类型
+@*param* `type` — Slot type
 
-@*param* `slot` — 位置
+@*param* `slot` — position
 
-@*return* `item` — 物品
+@*return* `item` — item
 
 ```lua
 type:
-    | '物品栏'
-    | '背包栏'
+    | 'Inventory Panel'
+    | 'Backpack rail'
 ```
 ## get_item_type_number_of_unit
 
@@ -1103,11 +1103,11 @@ type:
   -> item_type_number: integer
 ```
 
-获取单位拥有的物品类型数量
+Gets the number of item types owned by a unit
 
-@*param* `item_key` — 物品类型id
+@*param* `item_key` — Item typeid
 
-@*return* `item_type_number` — 物品类型数量
+@*return* `item_type_number` — Item type quantity
 ## get_key
 
 ```lua
@@ -1115,9 +1115,9 @@ type:
   -> type_id: py.UnitKey
 ```
 
-获取单位类型的ID
+Gets the unit typeID
 
-@*return* `type_id` — 单位类型的ID
+@*return* `type_id` — unit-typeID
 ## get_last_created_unit
 
 ```lua
@@ -1125,9 +1125,9 @@ function Unit.get_last_created_unit()
   -> unit: Unit?
 ```
 
-最后创建的单位
+Last created unit
 
-@*return* `unit` — 最后创建的单位
+@*return* `unit` — Last created unit
 ## get_level
 
 ```lua
@@ -1135,9 +1135,9 @@ function Unit.get_last_created_unit()
   -> unit_level: integer
 ```
 
-获取单位等级
+Get unit level
 
-@*return* `unit_level` — 单位等级
+@*return* `unit_level` — Unit level
 ## get_life_cycle
 
 ```lua
@@ -1145,7 +1145,7 @@ function Unit.get_last_created_unit()
   -> number
 ```
 
-获取单位剩余生命周期
+Gets the remaining life cycle of a unit
 ## get_main_attr
 
 ```lua
@@ -1153,7 +1153,7 @@ function Unit.get_last_created_unit()
   -> string
 ```
 
-获取单位主属性(需要开启复合属性)
+Gets the unit primary properties (requires composite properties to be enabled)
 ## get_model
 
 ```lua
@@ -1161,9 +1161,9 @@ function Unit.get_last_created_unit()
   -> model: py.ModelKey
 ```
 
-获取单位的当前模型
+Gets the current model of the unit
 
-@*return* `model` — 当前模型
+@*return* `model` — Current model
 ## get_model_by_key
 
 ```lua
@@ -1171,11 +1171,11 @@ function Unit.get_model_by_key(unit_key: py.UnitKey)
   -> model: py.ModelKey
 ```
 
-获取单位类型的模型
+Gets the model for the unit type
 
-@*param* `unit_key` — 单位id
+@*param* `unit_key` — unitid
 
-@*return* `model` — 模型
+@*return* `model` — model
 ## get_mp
 
 ```lua
@@ -1183,9 +1183,9 @@ function Unit.get_model_by_key(unit_key: py.UnitKey)
   -> current_mp: number
 ```
 
-获取当前魔法值
+Gets the current mana
 
-@*return* `current_mp` — 当前魔法值
+@*return* `current_mp` — Current mana
 ## get_name
 
 ```lua
@@ -1193,9 +1193,9 @@ function Unit.get_model_by_key(unit_key: py.UnitKey)
   -> unit_name: string
 ```
 
-获取单位名称
+Get unit name
 
-@*return* `unit_name` — 单位名称
+@*return* `unit_name` — Unit name
 ## get_name_by_key
 
 ```lua
@@ -1203,9 +1203,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> type_name: string
 ```
 
-获取单位类型名称
+Gets the name of the unit type
 
-@*return* `type_name` — 单位类型名称
+@*return* `type_name` — Unit type name
 ## get_nearest_valid_point
 
 ```lua
@@ -1213,9 +1213,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> point: Point
 ```
 
-获取单位最近的可通行点
+Gets the nearest passable point of the unit
 
-@*return* `point` — 单位最近的可通行点
+@*return* `point` — The nearest passable point of the unit
 ## get_owner
 
 ```lua
@@ -1223,9 +1223,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> player: Player
 ```
 
-获取单位所属玩家
+Gets the player the unit belongs to
 
-@*return* `player` — 单位所属玩家
+@*return* `player` — Unit player
 ## get_owner_player
 
 ```lua
@@ -1233,7 +1233,7 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> Player
 ```
 
- 获取所属玩家
+ Get a player
 ## get_parent_unit
 
 ```lua
@@ -1241,9 +1241,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> unit: Unit?
 ```
 
-获取单位的拥有者（单位）
+Gets the owner of the unit (unit）
 
-@*return* `unit` — 单位的拥有者
+@*return* `unit` — Owner of a unit
 ## get_pkg_cnt
 
 ```lua
@@ -1251,9 +1251,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> slot_number: integer
 ```
 
-获取单位背包栏的槽位数
+Gets the number of slots in the unit backpack field
 
-@*return* `slot_number` — 单位背包栏的槽位数
+@*return* `slot_number` — Number of slots in the unit backpack bar
 ## get_point
 
 ```lua
@@ -1261,9 +1261,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> unit_point: Point
 ```
 
-获取单位所在点
+Get the point where the unit resides
 
-@*return* `unit_point` — 单位所在点
+@*return* `unit_point` — Unit point
 ## get_reward_res
 
 ```lua
@@ -1271,11 +1271,11 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> player_attr: number
 ```
 
-获取击杀可获得的资源（玩家属性）
+Get the resources available to kill (player attributes）
 
-@*param* `player_attr_name` — 玩家属性名
+@*param* `player_attr_name` — Player attribute name
 
-@*return* `player_attr` — 单位被击杀玩家属性
+@*return* `player_attr` — Unit killed player attributes
 ## get_scale
 
 ```lua
@@ -1283,9 +1283,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> model_scale: number
 ```
 
-获取单位缩放
+Get unit scaling
 
-@*return* `model_scale` — 单位缩放
+@*return* `model_scale` — Unit scaling
 ## get_shield
 
 ```lua
@@ -1293,11 +1293,11 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> shield_value: integer
 ```
 
-获取单位指定护盾类型的护盾值
+Gets the shield value for the unit's specified shield type
 
-@*param* `shield_type` — 护盾类型
+@*param* `shield_type` — Shield type
 
-@*return* `shield_value` — 护盾类型的护盾值
+@*return* `shield_value` — Shield type Shield value
 ## get_shop_item_list
 
 ```lua
@@ -1305,9 +1305,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> py.ItemKey[]
 ```
 
-获取所有的商店物品
+Get all store items
 
-@*param* `page` — 页签
+@*param* `page` — TAB
 ## get_shop_range
 
 ```lua
@@ -1315,9 +1315,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> purchase_range: number
 ```
 
-获取商店的购买范围
+Get the store's purchase range
 
-@*return* `purchase_range` — 购买范围
+@*return* `purchase_range` — Purchase range
 ## get_shop_tab_name
 
 ```lua
@@ -1325,11 +1325,11 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> tab_name: string
 ```
 
-获取商店的页签名
+Get the page signature for the store
 
-@*param* `tag_index` — 页签
+@*param* `tag_index` — TAB
 
-@*return* `tab_name` — 页签名
+@*return* `tab_name` — Page signature
 ## get_shop_tab_number
 
 ```lua
@@ -1337,9 +1337,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> tab_number: number
 ```
 
-获取商店页签数量
+Gets the number of store tabs
 
-@*return* `tab_number` — 页签数量
+@*return* `tab_number` — Number of tabs
 ## get_source_model
 
 ```lua
@@ -1347,9 +1347,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> model: py.ModelKey
 ```
 
-获取单位的原本模型
+Gets the original model of the unit
 
-@*return* `model` — 原本模型
+@*return* `model` — Original model
 ## get_subtype
 
 ```lua
@@ -1357,9 +1357,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> unit_subtype: py.UnitType
 ```
 
-获取单位分类
+Acquisition unit classification
 
-@*return* `unit_subtype` — 单位分类
+@*return* `unit_subtype` — Unit classification
 ## get_team
 
 ```lua
@@ -1367,9 +1367,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> team: py.Camp
 ```
 
-获取单位的队伍
+Get units for the team
 
-@*return* `team` — 获取单位的队伍
+@*return* `team` — Get units for the team
 ## get_tech_list
 
 ```lua
@@ -1377,7 +1377,7 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> py.TechKey[]
 ```
 
-获取单位可研究的所有科技
+Access to all the technology that the unit can research
 ## get_turning_speed
 
 ```lua
@@ -1385,9 +1385,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> turning_speed: number
 ```
 
-获取单位转身速度
+Gets unit turn speed
 
-@*return* `turning_speed` — 单位转身速度
+@*return* `turning_speed` — Unit turn speed
 ## get_type
 
 ```lua
@@ -1395,9 +1395,9 @@ function Unit.get_name_by_key(unit_key: py.UnitKey)
   -> unit_type: py.UnitType
 ```
 
-获取单位的单位类型ID
+Gets the unit type of the unitID
 
-@*return* `unit_type` — 单位类型ID
+@*return* `unit_type` — Unit typeID
 ## get_type_by_id
 
 ```lua
@@ -1405,9 +1405,9 @@ function Unit.get_type_by_id(unit_key: py.UnitKey)
   -> integer
 ```
 
-获取单位类型的分类
+Gets the classification of the unit type
 
-@*param* `unit_key` — 单位id
+@*param* `unit_key` — unitid
 ## get_unit_resource_cost
 
 ```lua
@@ -1415,13 +1415,13 @@ function Unit.get_type_by_id(unit_key: py.UnitKey)
   -> player_attr: integer
 ```
 
-获取建造此单位消耗的资源（玩家属性）
+Gets the resources it takes to build this unit (player attributes）
 
-@*param* `unit_id` — 单位类型
+@*param* `unit_id` — Unit type
 
-@*param* `player_attr_name` — 玩家属性名
+@*param* `player_attr_name` — Player attribute name
 
-@*return* `player_attr` — 单位被击杀玩家属性
+@*return* `player_attr` — Unit killed player attributes
 ## get_unit_selection_range_scale
 
 ```lua
@@ -1429,9 +1429,9 @@ function Unit.get_type_by_id(unit_key: py.UnitKey)
   -> range_scale: number
 ```
 
-获取单位选择圈缩放
+Gets unit selection circle scaling
 
-@*return* `range_scale` — 选择圈缩放
+@*return* `range_scale` — Selection circle scaling
 ## get_upgrade_exp
 
 ```lua
@@ -1439,9 +1439,9 @@ function Unit.get_type_by_id(unit_key: py.UnitKey)
   -> exp: number
 ```
 
-获取单位当前升级所需经验
+Gain experience required for the current upgrade of your organization
 
-@*return* `exp` — 单位当前升级所需经验
+@*return* `exp` — Experience required for the current upgrade
 ## get_x_scale
 
 ```lua
@@ -1449,9 +1449,9 @@ function Unit.get_type_by_id(unit_key: py.UnitKey)
   -> xaxis: number
 ```
 
-获取单位的X轴缩放
+Gets the X-axis scaling of the unit
 
-@*return* `xaxis` — X轴缩放
+@*return* `xaxis` — XAxis scaling
 ## get_y_scale
 
 ```lua
@@ -1459,9 +1459,9 @@ function Unit.get_type_by_id(unit_key: py.UnitKey)
   -> yaxis: number
 ```
 
-获取单位的Y轴缩放
+Gets the Y-axis scaling of the unit
 
-@*return* `yaxis` — Y轴缩放
+@*return* `yaxis` — YAxis scaling
 ## get_z_scale
 
 ```lua
@@ -1469,9 +1469,9 @@ function Unit.get_type_by_id(unit_key: py.UnitKey)
   -> zaxis: number
 ```
 
-获取单位的Z轴缩放
+Gets the z-axis scaling of the unit
 
-@*return* `zaxis` — Z轴缩放
+@*return* `zaxis` — ZAxis scaling
 ## give_item
 
 ```lua
@@ -1479,14 +1479,14 @@ function Unit.get_type_by_id(unit_key: py.UnitKey)
   -> py.UnitCommand
 ```
 
- 命令给予物品
+ Order to give goods
 ## handle
 
 ```lua
 py.Unit
 ```
 
-py层的单位对象
+pyLayer unit object
 ## has_ability_by_key
 
 ```lua
@@ -1494,11 +1494,11 @@ py层的单位对象
   -> has_ability_type: boolean
 ```
 
-是否有指定id的技能
+Whether the skill with the specified id exists
 
-@*param* `ability_key` — 技能类型
+@*param* `ability_key` — Skill type
 
-@*return* `has_ability_type` — 有指定类型的技能
+@*return* `has_ability_type` — Have a specified type of skill
 ## has_buff_by_effect_type
 
 ```lua
@@ -1506,11 +1506,11 @@ py层的单位对象
   -> has_modifier_style: boolean
 ```
 
-是否有指定类型的魔法效果
+Whether there is a specified type of magic effect
 
-@*param* `effect_type` — 魔法效果类型
+@*param* `effect_type` — Magic effect type
 
-@*return* `has_modifier_style` — 有指定类型的魔法效果
+@*return* `has_modifier_style` — Has a specified type of magic effect
 ## has_buff_by_key
 
 ```lua
@@ -1518,11 +1518,11 @@ py层的单位对象
   -> has_modifier: boolean
 ```
 
-是否有指定id的魔法效果
+Whether there is a magic effect with a specified id
 
-@*param* `buff_key` — 魔法效果id
+@*param* `buff_key` — Magic effectid
 
-@*return* `has_modifier` — 有魔法效果
+@*return* `has_modifier` — Have magical effect
 ## has_buff_status
 
 ```lua
@@ -1530,12 +1530,12 @@ py层的单位对象
   -> has_buff_status: boolean
 ```
 
-是否有指定状态
-> 请改用 `has_state` 方法
+Whether the specified status exists
+> Use the 'has_state' method instead
 
-@*param* `state_name` — 状态
+@*param* `state_name` — status
 
-@*return* `has_buff_status` — 有指定状态
+@*return* `has_buff_status` — Assigned state
 ## has_item
 
 ```lua
@@ -1543,11 +1543,11 @@ py层的单位对象
   -> has_item: boolean
 ```
 
-是否有指定物品
+Whether there is a specified item
 
-@*param* `item` — 物品
+@*param* `item` — item
 
-@*return* `has_item` — 有物品
+@*return* `has_item` — Have item
 ## has_item_by_key
 
 ```lua
@@ -1555,11 +1555,11 @@ py层的单位对象
   -> has_item_name: boolean
 ```
 
-是否有指定类型的物品
+Whether there are items of the specified type
 
-@*param* `item_key` — 物品类型
+@*param* `item_key` — Item type
 
-@*return* `has_item_name` — 有指定类型的物品
+@*return* `has_item_name` — There are specified types of items
 ## has_move_collision
 
 ```lua
@@ -1567,11 +1567,11 @@ py层的单位对象
   -> boolean
 ```
 
-是否拥有指定碰撞类型
+Whether the specified collision type exists
 
-@*param* `collision_layer` — 碰撞类型
+@*param* `collision_layer` — Collision type
 
-@*return* — 是否拥有指定碰撞类型
+@*return* — Whether the specified collision type exists
 ## has_state
 
 ```lua
@@ -1579,9 +1579,9 @@ py层的单位对象
   -> boolean?
 ```
 
-是否有某个状态
+Whether there is a state
 
-@*param* `state_enum` — 状态名
+@*param* `state_enum` — Status name
 ## has_tag
 
 ```lua
@@ -1589,26 +1589,26 @@ py层的单位对象
   -> has_tag: boolean
 ```
 
-是否具有标签
+Tagged or not
 
-@*param* `tag_name` — 标签
+@*param* `tag_name` — tag
 
-@*return* `has_tag` — 具有标签
+@*return* `has_tag` — tagged
 ## heals
 
 ```lua
 (method) Unit:heals(value: number, skill?: Ability, source_unit?: Unit, text_type?: string)
 ```
 
-造成治疗
+Cause treatment
 
-@*param* `value` — 治疗值
+@*param* `value` — Healing value
 
-@*param* `skill` — 技能
+@*param* `skill` — skill
 
-@*param* `source_unit` — 单位
+@*param* `source_unit` — unit
 
-@*param* `text_type` — 跳字类型
+@*param* `text_type` — Hop type
 ## hold
 
 ```lua
@@ -1616,11 +1616,11 @@ py层的单位对象
   -> py.UnitCommand
 ```
 
- 命令驻守
+ Command garrison
 
 @*param* `point` — 点
 
-@*return* — 命令
+@*return* — command
 ## id
 
 ```lua
@@ -1634,9 +1634,9 @@ integer
   -> alive: boolean
 ```
 
-是否存活
+Survive or not
 
-@*return* `alive` — 是否存活
+@*return* `alive` — Survive or not
 ## is_ally
 
 ```lua
@@ -1644,11 +1644,11 @@ integer
   -> is_enemy: boolean
 ```
 
-是否是友方
+Friendly or not
 
-@*param* `target_unit` — 目标单位
+@*param* `target_unit` — Target unit
 
-@*return* `is_enemy` — 是敌对关系
+@*return* `is_enemy` — Is a hostile relationship
 ## is_building
 
 ```lua
@@ -1656,7 +1656,7 @@ integer
   -> boolean
 ```
 
-是否是建筑
+Building or not
 ## is_casting
 
 ```lua
@@ -1664,7 +1664,7 @@ integer
   -> boolean
 ```
 
-单位是否有正在释放的技能
+Whether the unit has a skill that is being released
 ## is_collided_with_point
 
 ```lua
@@ -1672,13 +1672,13 @@ integer
   -> can_collide: boolean
 ```
 
-是否与点碰撞
+Whether it collided with the point
 
 @*param* `point` — 点
 
-@*param* `range` — 范围
+@*param* `range` — Radius
 
-@*return* `can_collide` — 是否与点碰撞
+@*return* `can_collide` — Whether it collided with the point
 ## is_destroyed
 
 ```lua
@@ -1693,11 +1693,11 @@ integer
   -> is_enemy: boolean
 ```
 
-是否是敌人
+Enemy or not
 
-@*param* `target_unit` — 目标单位
+@*param* `target_unit` — Target unit
 
-@*return* `is_enemy` — 是敌对关系
+@*return* `is_enemy` — Is a hostile relationship
 ## is_exist
 
 ```lua
@@ -1705,9 +1705,9 @@ integer
   -> is_exist: boolean
 ```
 
-是否存在
+Existence or not
 
-@*return* `is_exist` — 是否存在
+@*return* `is_exist` — Existence or not
 ## is_hero
 
 ```lua
@@ -1715,7 +1715,7 @@ integer
   -> boolean
 ```
 
-是否是英雄
+Be a hero or not
 ## is_illusion
 
 ```lua
@@ -1723,9 +1723,9 @@ integer
   -> illusion: boolean
 ```
 
-是否是幻象单位
+Phantom unit or not
 
-@*return* `illusion` — 是幻象单位
+@*return* `illusion` — It's a phantom unit.
 ## is_in_battle
 
 ```lua
@@ -1733,9 +1733,9 @@ integer
   -> in_battle: boolean
 ```
 
-是否在战斗状态
+Whether in combat mode
 
-@*return* `in_battle` — 在战斗状态
+@*return* `in_battle` — In combat
 ## is_in_group
 
 ```lua
@@ -1743,11 +1743,11 @@ integer
   -> in_group: boolean
 ```
 
-是否在单位组中
+Whether it is in the unit group
 
-@*param* `group` — 单位组
+@*param* `group` — Unit group
 
-@*return* `in_group` — 在单位组中
+@*return* `in_group` — In the unit group
 ## is_in_radius
 
 ```lua
@@ -1755,13 +1755,13 @@ integer
   -> in_radius: boolean
 ```
 
-是否在另一个单位或点附近
+Whether it is near another unit or point
 
-@*param* `other` — 单位/点
+@*param* `other` — Unit/point
 
-@*param* `range` — 范围
+@*param* `range` — Radius
 
-@*return* `in_radius` — 在单位附近
+@*return* `in_radius` — Near the unit
 ## is_moving
 
 ```lua
@@ -1769,9 +1769,9 @@ integer
   -> is_moving: boolean
 ```
 
-是否正在移动
+Are you moving?
 
-@*return* `is_moving` — 正在移动
+@*return* `is_moving` — On the move
 ## is_shop
 
 ```lua
@@ -1779,9 +1779,9 @@ integer
   -> is_shop: boolean
 ```
 
-是否是商店
+Shop or not
 
-@*return* `is_shop` — 是商店
+@*return* `is_shop` — It's a store
 ## key
 
 ```lua
@@ -1794,9 +1794,9 @@ integer?
 (method) Unit:kill_by(killer: Unit)
 ```
 
-杀死单位
+Kill unit
 
-@*param* `killer` — 凶手单位
+@*param* `killer` — Killer unit
 ## kv_has
 
 ```lua
@@ -1804,7 +1804,7 @@ integer?
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -1838,16 +1838,16 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## learn
 
 ```lua
 (method) Unit:learn(ability_key: py.AbilityKey)
 ```
 
-学习技能
+Learning skill
 
-@*param* `ability_key` — 技能id
+@*param* `ability_key` — skillid
 ## move_along_road
 
 ```lua
@@ -1855,19 +1855,19 @@ lua_type:
   -> py.UnitCommand
 ```
 
- 命令沿路径移动
+ The command moves along the path
 
-@*param* `road` — 路径
+@*param* `road` — path
 
-@*param* `patrol_mode` — 移动模式
+@*param* `patrol_mode` — Mobile mode
 
-@*param* `can_attack` — 是否自动攻击
+@*param* `can_attack` — Automatic attack or not
 
-@*param* `start_from_nearest` — 就近选择起始点
+@*param* `start_from_nearest` — Select the nearest starting point
 
-@*param* `back_to_nearest` — 偏离后就近返回
+@*param* `back_to_nearest` — Deviation from the nearest return
 
-@*return* — 命令
+@*return* — command
 ## move_to_pos
 
 ```lua
@@ -1875,13 +1875,13 @@ lua_type:
   -> py.UnitCommand
 ```
 
- 命令移动
+ Command move
 
 @*param* `point` — 点
 
-@*param* `range` — 范围
+@*param* `range` — Radius
 
-@*return* — 命令
+@*return* — command
 ## mover_curve
 
 ```lua
@@ -1889,7 +1889,7 @@ lua_type:
   -> Mover
 ```
 
-创建曲线运动器
+Create a curve mover
 ## mover_line
 
 ```lua
@@ -1897,7 +1897,7 @@ lua_type:
   -> Mover
 ```
 
-创建直线运动器
+Create a linear motion device
 ## mover_round
 
 ```lua
@@ -1905,7 +1905,7 @@ lua_type:
   -> Mover
 ```
 
-创建环绕运动器
+Create a surround motion
 ## mover_target
 
 ```lua
@@ -1913,7 +1913,7 @@ lua_type:
   -> Mover
 ```
 
-创建追踪运动器
+Create a tracker
 ## object_event_manager
 
 ```lua
@@ -1926,16 +1926,16 @@ EventManager?
 (method) Unit:pause_life_cycle(is_stop: boolean)
 ```
 
-设置生命周期暂停状态
+The life cycle is suspended
 
-@*param* `is_stop` — 生命周期暂停状态
+@*param* `is_stop` — The life cycle is suspended
 ## phandle
 
 ```lua
 py.Unit
 ```
 
-代理的对象，用这个调用引擎的方法会快得多
+Proxy objects, using this to call the engine's methods will be much faster
 ## pick_item
 
 ```lua
@@ -1943,27 +1943,27 @@ py.Unit
   -> py.UnitCommand
 ```
 
- 命令拾取物品
+ Command to pick up items
 ## play_animation
 
 ```lua
 (method) Unit:play_animation(anim_name: string, speed?: number, start_time?: number, end_time?: number, is_loop?: boolean, is_back_normal?: boolean)
 ```
 
-*******************播放动画全局统一
-播放动画
+*******************Play animations globally unified
+Play animation
 
-@*param* `anim_name` — 动画名
+@*param* `anim_name` — Animation name
 
-@*param* `speed` — 速度
+@*param* `speed` — speed
 
-@*param* `start_time` — 开始时间
+@*param* `start_time` — Start time
 
-@*param* `end_time` — 结束时间(默认-1表示播到最后)
+@*param* `end_time` — End time (Default -1 indicates last playback)
 
-@*param* `is_loop` — 是否循环
+@*param* `is_loop` — Cyclic or not
 
-@*param* `is_back_normal` — 是否返回默认状态
+@*param* `is_back_normal` — Whether to return the default state
 ## player_shop_check
 
 ```lua
@@ -1971,14 +1971,14 @@ py.Unit
   -> boolean
 ```
 
-玩家是否可以购买商店的物品
+Whether the player can purchase items from the store
 ## reborn
 
 ```lua
 (method) Unit:reborn(point?: Point)
 ```
 
-复活单位
+Reactivation unit
 
 @*param* `point` — 点
 ## ref_manager
@@ -1993,26 +1993,26 @@ unknown
 (method) Unit:remove()
 ```
 
-删除单位
+Delete unit
 ## remove_abilitiy_by_key
 
 ```lua
 (method) Unit:remove_abilitiy_by_key(type: y3.Const.AbilityType|y3.Const.AbilityTypeAlias, ability_key: py.AbilityKey)
 ```
 
-移除技能(指定类型)
-> 拼错了，请改用 `Unit:remove_ability_by_key`
+Remove skill (specify type)
+> Spelled wrong, please change `Unit:remove_ability_by_key`
 
-@*param* `type` — 技能类型
+@*param* `type` — Skill type
 
-@*param* `ability_key` — 物编id
+@*param* `ability_key` — knitwearid
 
 ```lua
 type:
-    | '隐藏'
-    | '普通'
-    | '命令'
-    | '英雄'
+    | 'Hidden'
+    | 'Normal'
+    | 'command'
+    | 'Hero'
 ```
 ## remove_ability
 
@@ -2020,29 +2020,29 @@ type:
 (method) Unit:remove_ability(type: y3.Const.AbilityType, slot: y3.Const.AbilityIndex)
 ```
 
-移除技能
+Remove skill
 
-@*param* `type` — 技能类型
+@*param* `type` — Skill type
 
-@*param* `slot` — 技能位
+@*param* `slot` — Skill Slot
 ## remove_ability_by_key
 
 ```lua
 (method) Unit:remove_ability_by_key(type: y3.Const.AbilityType|y3.Const.AbilityTypeAlias, ability_key: py.AbilityKey)
 ```
 
-移除技能(指定类型)
+Remove skill (specify type)
 
-@*param* `type` — 技能类型
+@*param* `type` — Skill type
 
-@*param* `ability_key` — 物编id
+@*param* `ability_key` — knitwearid
 
 ```lua
 type:
-    | '隐藏'
-    | '普通'
-    | '命令'
-    | '英雄'
+    | 'Hidden'
+    | 'Normal'
+    | 'command'
+    | 'Hero'
 ```
 ## remove_buffs_by_effect_type
 
@@ -2050,196 +2050,196 @@ type:
 (method) Unit:remove_buffs_by_effect_type(effect_type: y3.Const.EffectType)
 ```
 
-单位移除所有指定类型的魔法效果
+Removes all magic effects of the specified type
 
-@*param* `effect_type` — 影响类型的魔法效果
+@*param* `effect_type` — Affect the type of magic effect
 ## remove_buffs_by_key
 
 ```lua
 (method) Unit:remove_buffs_by_key(buff_key: py.ModifierKey)
 ```
 
-单位移除所有指定id的魔法效果
+Removes all magic effects with the specified id
 
-@*param* `buff_key` — 影响类型的魔法效果
+@*param* `buff_key` — Affect the type of magic effect
 ## remove_goods
 
 ```lua
 (method) Unit:remove_goods(item_name: py.TabName, item_key: py.ItemKey)
 ```
 
-移除可贩卖的商品
+Remove merchantable goods
 
-@*param* `item_name` — 物品名
+@*param* `item_name` — Item Name
 
-@*param* `item_key` — 物品id
+@*param* `item_key` — itemid
 ## remove_item
 
 ```lua
 (method) Unit:remove_item(item_id: py.ItemKey, num?: integer)
 ```
 
-单位移除物品
+Unit removal items
 
-@*param* `item_id` — 物品id
+@*param* `item_id` — itemid
 
-@*param* `num` — 数量
+@*param* `num` — quantity
 ## remove_mover
 
 ```lua
 (method) Unit:remove_mover()
 ```
 
-移除运动器
+Removal motor
 ## remove_multi_state
 
 ```lua
 (method) Unit:remove_multi_state(state_enum: integer)
 ```
 
-移除多个状态
-使用 `y3.const.UnitEnumState` 中的枚举值
+Remove multiple states
+Use the enumeration value in 'y3.const.UnitEnumState'
 
-@*param* `state_enum` — 状态
+@*param* `state_enum` — status
 ## remove_state
 
 ```lua
 (method) Unit:remove_state(state_enum: integer|y3.Const.UnitEnumState)
 ```
 
-移除状态
- 只有移除次数等同添加次数时才能移除状态
+Removed state
+ The status can be removed only when the number of removals is the same as the number of additions
 
-@*param* `state_enum` — 状态名
+@*param* `state_enum` — Status name
 ## remove_tag
 
 ```lua
 (method) Unit:remove_tag(tag: string)
 ```
 
-移除标签
+Remove tag
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## remove_tech
 
 ```lua
 (method) Unit:remove_tech(tech_id: py.TechKey)
 ```
 
-单位删除科技
+Unit deletion technology
 
-@*param* `tech_id` — 科技id
+@*param* `tech_id` — Science and technologyid
 ## replace_model
 
 ```lua
 (method) Unit:replace_model(model_id: py.ModelKey)
 ```
 
-替换模型
+Replacement model
 
-@*param* `model_id` — 模型id
+@*param* `model_id` — modelid
 ## research_tech
 
 ```lua
 (method) Unit:research_tech(tech_id: py.TechKey)
 ```
 
-研究科技
+Research technology
 
-@*param* `tech_id` — 科技id
+@*param* `tech_id` — Science and technologyid
 ## sell
 
 ```lua
 (method) Unit:sell(unit: Unit, item: Item)
 ```
 
-单位向商店出售物品
+Units sell items to shops
 
-@*param* `unit` — 单位
+@*param* `unit` — unit
 
-@*param* `item` — 物品
+@*param* `item` — item
 ## set_Xray_is_open
 
 ```lua
 (method) Unit:set_Xray_is_open(is_open: boolean)
 ```
 
-设置透视状态
+Set perspective
 
-@*param* `is_open` — 是否透视
+@*param* `is_open` — Perspective or not
 ## set_ability_point
 
 ```lua
 (method) Unit:set_ability_point(skill_point: integer)
 ```
 
-设置技能点
+Set skill points
 
-@*param* `skill_point` — 技能点
+@*param* `skill_point` — Skill Points
 ## set_afterimage_time
 
 ```lua
 (method) Unit:set_afterimage_time(interval: number, duration: number, start_time: number, end_time: number)
 ```
 
-设置残影时间
+Set the shadow time
 
-@*param* `interval` — 间隔时间
+@*param* `interval` — Interval time
 
-@*param* `duration` — 显示时间
+@*param* `duration` — Display time
 
-@*param* `start_time` — 开始时间
+@*param* `start_time` — Start time
 
-@*param* `end_time` — 结束时间
+@*param* `end_time` — End time
 ## set_alert_range
 
 ```lua
 (method) Unit:set_alert_range(range: number)
 ```
 
-设置警戒范围
+Set an alert
 
-@*param* `range` — 范围
+@*param* `range` — Radius
 ## set_animation_speed
 
 ```lua
 (method) Unit:set_animation_speed(speed: number)
 ```
 
-设置动画播放速率
+Set the animation playback rate
 
-@*param* `speed` — 速度
+@*param* `speed` — speed
 ## set_armor_type
 
 ```lua
 (method) Unit:set_armor_type(armor_type: integer)
 ```
 
-设置护甲类型
+Set the armor type
 
-@*param* `armor_type` — 护甲类型
+@*param* `armor_type` — Type of armor
 ## set_attack_type
 
 ```lua
 (method) Unit:set_attack_type(attack_type: integer)
 ```
 
-设置攻击类型
+Setting attack type
 
-@*param* `attack_type` — 攻击类型
+@*param* `attack_type` — Attack type
 ## set_attr
 
 ```lua
 (method) Unit:set_attr(attr_name: string|y3.Const.UnitAttr, value: number, attr_type?: string|y3.Const.UnitAttrType)
 ```
 
-设置属性
+Set attribute
 
-@*param* `attr_name` — 属性名
+@*param* `attr_name` — Attribute name
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 
-@*param* `attr_type` — 属性类型，默认为“基础”
+@*param* `attr_type` — Attribute type. The default value is Base”
 ## set_attr_growth
 
 ```lua
@@ -2247,117 +2247,117 @@ function Unit.set_attr_growth(unit_key: py.UnitKey, attr_name: string, value: nu
 ```
 
 ******************************************
-设置属性成长
+Set attribute growth
 
-@*param* `unit_key` — 单位id
+@*param* `unit_key` — unitid
 
-@*param* `attr_name` — 属性名
+@*param* `attr_name` — Attribute name
 
-@*param* `value` — 属性成长
+@*param* `value` — Attribute growth
 ## set_bar_cnt
 
 ```lua
 (method) Unit:set_bar_cnt(number: integer)
 ```
 
-设置物品栏的槽位数
+Sets the number of slots in the inventory
 
-@*param* `number` — 槽位数
+@*param* `number` — Number of slots
 ## set_base_speed
 
 ```lua
 (method) Unit:set_base_speed(speed: number)
 ```
 
-设置走路动画基准速度
+Set the walking animation benchmark speed
 
-@*param* `speed` — 速度
+@*param* `speed` — speed
 ## set_behavior
 
 ```lua
 (method) Unit:set_behavior(behavior: py.UnitBehavior)
 ```
 
-设置默认单位行为
+Set the default unit behavior
 
-@*param* `behavior` — 单位行为
+@*param* `behavior` — Unit behavior
 ## set_blood_bar_type
 
 ```lua
 (method) Unit:set_blood_bar_type(bar_type: integer)
 ```
 
-设置血条样式
+Set the blood bar style
 
-@*param* `bar_type` — 血条样式
+@*param* `bar_type` — Blood stripe pattern
 ## set_cancel_alert_range
 
 ```lua
 (method) Unit:set_cancel_alert_range(range: number)
 ```
 
-设置取消警戒范围
+Set a de-alert zone
 
-@*param* `range` — 取消警戒范围
+@*param* `range` — de-alert
 ## set_collision_radius
 
 ```lua
 (method) Unit:set_collision_radius(radius: number)
 ```
 
-设置单位碰撞半径
+Set the unit collision radius
 ## set_day_vision
 
 ```lua
 (method) Unit:set_day_vision(value: number)
 ```
 
- 设置白天的视野范围
+ Set the daytime field of view
 ## set_description
 
 ```lua
 (method) Unit:set_description(description: string)
 ```
 
-设置描述
+Set description
 
-@*param* `description` — 描述
+@*param* `description` — Description
 ## set_enemy_minimap_icon
 
 ```lua
 (method) Unit:set_enemy_minimap_icon(img_id: py.Texture)
 ```
 
-设置敌方单位小地图头像
+Set enemy unit minimap avatars
 
-@*param* `img_id` — 敌方单位小地图头像
+@*param* `img_id` — Enemy unit minimap avatar
 ## set_exp
 
 ```lua
 (method) Unit:set_exp(exp: number)
 ```
 
-设置经验
+Setup experience
 
-@*param* `exp` — 经验
+@*param* `exp` — EXP
 ## set_facing
 
 ```lua
 (method) Unit:set_facing(direction: number, turn_time: number)
 ```
 
-设置朝向
+orientation
 
-@*param* `direction` — 朝向
+@*param* `direction` — orientation
 
-@*param* `turn_time` — 转向时间
+@*param* `turn_time` — Turning time
 ## set_ghost_color
 
 ```lua
 (method) Unit:set_ghost_color(red: number, green: number, blue: number, alpha: number)
 ```
 
-设置残影颜色
+Set the shadow color
 
 @*param* `red` — 绿
 
@@ -2365,160 +2365,160 @@ function Unit.set_attr_growth(unit_key: py.UnitKey, attr_name: string, value: nu
 
 @*param* `blue` — 蓝
 
-@*param* `alpha` — 透明度
+@*param* `alpha` — transparency
 ## set_goods_stack
 
 ```lua
 (method) Unit:set_goods_stack(tag_name: py.TabName, item_key: py.ItemKey, number: integer)
 ```
 
-设置商品库存
+Set inventory
 
-@*param* `tag_name` — 标签名
+@*param* `tag_name` — Tag name
 
-@*param* `item_key` — 物品id
+@*param* `item_key` — itemid
 
-@*param* `number` — 物品库存
+@*param* `number` — Inventory of goods
 ## set_health_bar_display
 
 ```lua
 (method) Unit:set_health_bar_display(bar_show_type: integer)
 ```
 
-设置血条显示方式
+Set the blood bar display mode
 
-@*param* `bar_show_type` — 血条显示方式
+@*param* `bar_show_type` — Blood strip display mode
 ## set_height
 
 ```lua
 (method) Unit:set_height(height: number, trans_time: number)
 ```
 
-设置飞行高度
+Set altitude
 
-@*param* `height` — 高度
+@*param* `height` — Altitude
 
-@*param* `trans_time` — 过渡时间
+@*param* `trans_time` — Transition time
 ## set_hp
 
 ```lua
 (method) Unit:set_hp(hp: number)
 ```
 
-设置当前生命值
+Set the current health
 
-@*param* `hp` — 当前生命值
+@*param* `hp` — Current health
 ## set_icon
 
 ```lua
 (method) Unit:set_icon(img_id: py.Texture)
 ```
 
-设置单位头像
+Set the unit profile picture
 
-@*param* `img_id` — 单位头像
+@*param* `img_id` — Unit head
 ## set_level
 
 ```lua
 (method) Unit:set_level(level: integer)
 ```
 
-设置等级
+Set level
 
-@*param* `level` — 等级
+@*param* `level` — Lv.
 ## set_life_cycle
 
 ```lua
 (method) Unit:set_life_cycle(time: number)
 ```
 
-设置生命周期
+Set life cycle
 
-@*param* `time` — 生命周期
+@*param* `time` — Life cycle
 ## set_minimap_icon
 
 ```lua
 (method) Unit:set_minimap_icon(img_id: py.Texture)
 ```
 
-***************敌我合并一条
-设置单位小地图头像
+***************Merge one with the other
+Set the unit minimap avatar
 
-@*param* `img_id` — 单位小地图头像
+@*param* `img_id` — Unit minimap avatar
 ## set_move_channel_air
 
 ```lua
 (method) Unit:set_move_channel_air(air_limitation?: boolean)
 ```
 
-设置单位的移动类型为空中
+Set the movement type of the unit to air
 
-@*param* `air_limitation` — 空中限制
+@*param* `air_limitation` — Air restriction
 ## set_move_channel_land
 
 ```lua
 (method) Unit:set_move_channel_land(land_limitation?: boolean, item_limitation?: boolean, water_limitation?: boolean)
 ```
 
-设置单位的移动类型为地面
+Set the movement type of the unit to ground
 
-@*param* `land_limitation` — 陆地限制
+@*param* `land_limitation` — Land restriction
 
-@*param* `item_limitation` — 物件限制
+@*param* `item_limitation` — Object restriction
 
-@*param* `water_limitation` — 海洋限制
+@*param* `water_limitation` — Marine limitation
 ## set_move_collision
 
 ```lua
 (method) Unit:set_move_collision(collision_layer: integer|y3.Const.CollisionLayers, enable: boolean)
 ```
 
-设置单位是否计算某种碰撞类型
+Sets whether the unit counts a collision type
 
-@*param* `collision_layer` — 碰撞mask
+@*param* `collision_layer` — collisionmask
 
-@*param* `enable` — 开启状态
+@*param* `enable` — On state
 ## set_mp
 
 ```lua
 (method) Unit:set_mp(mp: number)
 ```
 
-设置当前魔法值
+Sets the current mana value
 
-@*param* `mp` — 当前魔法值
+@*param* `mp` — Current mana
 ## set_name
 
 ```lua
 (method) Unit:set_name(name: string)
 ```
 
-设置名称
+Set name
 
-@*param* `name` — 名称
+@*param* `name` — name
 ## set_night_value
 
 ```lua
 (method) Unit:set_night_value(value: number)
 ```
 
- 设置夜晚的视野范围
+ Set your view at night
 ## set_outline_visible
 
 ```lua
 (method) Unit:set_outline_visible(bool: boolean)
 ```
 
-设置单位描边开启
+Set unit stroke on
 
-@*param* `bool` — 布尔值
+@*param* `bool` — Boolean value
 ## set_outlined_color
 
 ```lua
 (method) Unit:set_outlined_color(color_r: number, color_g: number, color_b: number)
 ```
 
-设置单位描边颜色
+Sets the unit stroke color
 
 @*param* `color_r` — R
 
@@ -2531,117 +2531,117 @@ function Unit.set_attr_growth(unit_key: py.UnitKey, attr_name: string, value: nu
 (method) Unit:set_pkg_cnt(number: integer)
 ```
 
-设置背包栏的槽位数
+Set the number of slots for the backpack bar
 
-@*param* `number` — 槽位数
+@*param* `number` — Number of slots
 ## set_point
 
 ```lua
 (method) Unit:set_point(point: Point, isSmooth: boolean)
 ```
 
-强制传送到点
+Force transfer to point
 
 @*param* `point` — 点
 
-@*param* `isSmooth` — 是否丝滑
+@*param* `isSmooth` — Silky or not
 ## set_recycle_on_remove
 
 ```lua
 (method) Unit:set_recycle_on_remove(is_recycle: boolean)
 ```
 
-设置尸体消失后是否回收
+Set whether to retrieve the body after it disappears
 
-@*param* `is_recycle` — 是否回收
+@*param* `is_recycle` — Recycle or not
 ## set_reward_exp
 
 ```lua
 (method) Unit:set_reward_exp(exp: number)
 ```
 
-设置被击杀的经验值奖励
+Set the XP bonus for being killed
 
-@*param* `exp` — 经验
+@*param* `exp` — EXP
 ## set_reward_res
 
 ```lua
 (method) Unit:set_reward_res(player_attr_name: py.RoleResKey, value: number)
 ```
 
-设置被击杀的玩家属性奖励
+Set the player stat bonus for being killed
 
-@*param* `player_attr_name` — 属性名
+@*param* `player_attr_name` — Attribute name
 
-@*param* `value` — 属性奖励
+@*param* `value` — Attribute reward
 ## set_scale
 
 ```lua
 (method) Unit:set_scale(scale: number)
 ```
 
-设置模型缩放
+Set model scaling
 
-@*param* `scale` — 模型缩放
+@*param* `scale` — Model scaling
 ## set_select_effect_visible
 
 ```lua
 (method) Unit:set_select_effect_visible(bool: boolean)
 ```
 
-设置单位选择框的可见性
+Sets the visibility of the unit selection box
 
-@*param* `bool` — 布尔值
+@*param* `bool` — Boolean value
 ## set_transparent_when_invisible
 
 ```lua
 (method) Unit:set_transparent_when_invisible(is_visible: boolean)
 ```
 
-**********************这是啥
-设置隐身可见时是否半透明
+**********************What is this
+Sets whether to be translucent when invisible
 
-@*param* `is_visible` — 是否半透明
+@*param* `is_visible` — Translucent or not
 ## set_turning_speed
 
 ```lua
 (method) Unit:set_turning_speed(speed: number)
 ```
 
-设置转身速度
+Set turn speed
 
-@*param* `speed` — 转身速度
+@*param* `speed` — Turn speed
 ## set_unit_scale
 
 ```lua
 (method) Unit:set_unit_scale(sx: number, sy: number, sz: number)
 ```
 
-设置单位三轴缩放
+Set unit triaxial scaling
 
-@*param* `sx` — X轴缩放
+@*param* `sx` — XAxis scaling
 
-@*param* `sy` — Y轴缩放
+@*param* `sy` — YAxis scaling
 
-@*param* `sz` — Z轴缩放
+@*param* `sz` — ZAxis scaling
 ## shift_item
 
 ```lua
 (method) Unit:shift_item(item: Item, type: y3.Const.ShiftSlotTypeAlias, index?: integer, force?: boolean)
 ```
 
-移动物品
+Moving items
 
-@*param* `item` — 物品
+@*param* `item` — item
 
-@*param* `index` — 槽位
+@*param* `index` — slot
 
-@*param* `force` — 是否强制移动，`true`: 如果目标有物品，则移动到另一个空格中；`false`: 如果目标有物品，则要移动的物品会掉落
+@*param* `force` — Whether to force a move, 'true' : If the target has an item, move to another space; 'false' : If the target has an item, the item to be moved will drop
 
 ```lua
 type:
-    | '物品栏'
-    | '背包栏'
+    | 'Inventory Panel'
+    | 'Backpack rail'
 ```
 ## start_ghost
 
@@ -2649,8 +2649,8 @@ type:
 (method) Unit:start_ghost(red: number, green: number, blue: number, alpha: number, interval: number, duration: number, start_time: number, end_time: number, is_origin_martial: boolean)
 ```
 
-************************残影优化
-开启残影
+************************Shadow optimization
+Open shadow
 
 @*param* `red` — 红
 
@@ -2658,17 +2658,17 @@ type:
 
 @*param* `blue` — 蓝
 
-@*param* `alpha` — 透明度
+@*param* `alpha` — transparency
 
-@*param* `interval` — 间隔时间
+@*param* `interval` — Interval time
 
-@*param* `duration` — 显示时间
+@*param* `duration` — Display time
 
-@*param* `start_time` — 开始时间
+@*param* `start_time` — Start time
 
-@*param* `end_time` — 结束时间
+@*param* `end_time` — End time
 
-@*param* `is_origin_martial` — 使用原生材质
+@*param* `is_origin_martial` — Use native materials
 ## stop
 
 ```lua
@@ -2676,39 +2676,39 @@ type:
   -> py.UnitCommand
 ```
 
- 命令停止
+ Stop order
 
-@*return* — 命令
+@*return* — command
 ## stop_all_abilities
 
 ```lua
 (method) Unit:stop_all_abilities()
 ```
 
-停止所有技能
+Stop all skills
 ## stop_animation
 
 ```lua
 (method) Unit:stop_animation(anim_name: string)
 ```
 
-停止动画
+Stop animation
 
-@*param* `anim_name` — 动画名
+@*param* `anim_name` — Animation name
 ## stop_cur_animation
 
 ```lua
 (method) Unit:stop_cur_animation()
 ```
 
-停止当前正在播放的动画
+Stop the animation that is currently playing
 ## stop_ghost
 
 ```lua
 (method) Unit:stop_ghost()
 ```
 
-关闭残影
+Close shadow
 ## storage_all
 
 ```lua
@@ -2716,7 +2716,7 @@ type:
   -> table
 ```
 
- 获取存储数据的容器
+ Gets the container for storing data
 ## storage_get
 
 ```lua
@@ -2724,14 +2724,14 @@ type:
   -> any
 ```
 
- 获取存储的值
+ Gets the stored value
 ## storage_set
 
 ```lua
 (method) Storage:storage_set(key: any, value: any)
 ```
 
- 存储任意值
+ Store arbitrary values
 ## storage_table
 
 ```lua
@@ -2753,26 +2753,26 @@ table
 (method) Unit:switch_ability(ability_1: Ability, ability_2: Ability)
 ```
 
-交换技能位置
+Swap skill positions
 
-@*param* `ability_1` — 第一个技能
+@*param* `ability_1` — First skill
 
-@*param* `ability_2` — 第二个技能
+@*param* `ability_2` — Second skill
 ## switch_ability_by_slot
 
 ```lua
 (method) Unit:switch_ability_by_slot(type_1: y3.Const.AbilityType, slot_1: y3.Const.AbilityIndex, type_2: y3.Const.AbilityType, slot_2: y3.Const.AbilityIndex)
 ```
 
-根据坑位交换技能
+Trade skills based on pit position
 
-@*param* `type_1` — 第一个技能类型
+@*param* `type_1` — The first skill type
 
-@*param* `slot_1` — 第一个技能坑位
+@*param* `slot_1` — The first skill pit bit
 
-@*param* `type_2` — 第二个技能类型
+@*param* `type_2` — Second skill type
 
-@*param* `slot_2` — 第二个技能坑位
+@*param* `slot_2` — The second skill pit bit
 ## type
 
 ```lua
@@ -2785,9 +2785,9 @@ string
 (method) Unit:unit_gains_tech(tech_key: py.TechKey)
 ```
 
-单位获得科技
+Unit acquisition of technology
 
-@*param* `tech_key` — 科技类型
+@*param* `tech_key` — Science and technology type
 ## unit_has_modifier_tag
 
 ```lua
@@ -2795,11 +2795,11 @@ string
   -> has_modifier_tag: boolean
 ```
 
-是否有指定标签的魔法效果
+Whether there is a magic effect for the specified label
 
-@*param* `tag_name` — 标签
+@*param* `tag_name` — tag
 
-@*return* `has_modifier_tag` — 有指定标签的魔法效果
+@*return* `has_modifier_tag` — Magic effects with specified labels
 ## use_item
 
 ```lua
@@ -2807,11 +2807,11 @@ string
   -> py.UnitCommand
 ```
 
- 命令使用物品
+ Command use item
 
 # Unit.DamageData
 
- 造成伤害
+ Cause injury
 
 ## ability
 
@@ -2819,21 +2819,21 @@ string
 Ability
 ```
 
-关联技能
+Relevance skill
 ## common_attack
 
 ```lua
 boolean
 ```
 
-视为普攻
+Regarded as a general attack
 ## critical
 
 ```lua
 boolean
 ```
 
-必定暴击
+Certain critical strike
 ## damage
 
 ```lua
@@ -2846,47 +2846,47 @@ number
 boolean
 ```
 
-必定命中
+Sure hit
 ## particle
 
 ```lua
 py.SfxKey
 ```
 
-特效
+VFX
 ## socket
 
 ```lua
 string
 ```
 
-特效挂点
+Special effect peg
 ## target
 
 ```lua
 Destructible|Item|Unit
 ```
 
-单位
+unit
 ## text_track
 
 ```lua
 integer
 ```
 
-跳字轨迹类型
+Skip trace type
 ## text_type
 
 ```lua
 y3.Const.DamageTextType
 ```
 
-跳字类型
+Hop type
 ## type
 
 ```lua
 integer|y3.Const.DamageType
 ```
 
-也可以传任意数字
+You can also pass any number
 

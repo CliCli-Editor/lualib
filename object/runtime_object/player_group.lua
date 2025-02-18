@@ -2,7 +2,7 @@
 ---@class PlayerGroup
 ---@field handle py.RoleGroup
 ---@field private _removed? boolean
----@overload fun(py_player_group?: py.RoleGroup): self
+---@overload fun(py_player_group? : py.RoleGroup): self
 local M = Class 'PlayerGroup'
 
 M.type = 'player_group'
@@ -64,16 +64,16 @@ function M:pick()
     return lua_table
 end
 
----遍历玩家组，请勿在遍历过程中修改玩家组。
+---Walk through the player group, do not modify the player group during the walk.
 ---```lua
 ---for player in PlayerGroup:pairs() do
----    print(player)
+---print(player)
 ---end
 ---```
----也可以直接用 `pairs` 遍历：
+---You can also iterate directly with 'pairs' :
 ---```lua
 ---for player in pairs(PlayerGroup) do
----    print(player)
+---print(player)
 ---end
 ---```
 ---@return fun(): Player?
@@ -92,13 +92,13 @@ function M:pairs()
 end
 
 --Add a player
----@param player Player 玩家
+---@param player Player
 function M:add_player(player)
     GameAPI.add_role_to_group(player.handle, self.handle)
 end
 
 --Remove the player
----@param player Player 玩家
+---@param player Player
 function M:remove_player(player)
     GameAPI.rem_role_from_group(player.handle, self.handle)
 end
@@ -111,52 +111,52 @@ end
 ---@private
 M.ALL_PLAYERS = M.get_by_handle(GameAPI.get_all_role_ids())
 
----获取所有玩家
----@return PlayerGroup player_group 单位组
+---Get all players
+---@return PlayerGroup player_group Indicates the unit group
 function M.get_all_players()
     return M.ALL_PLAYERS
 end
 
----阵营內所有玩家
----@param camp py.Camp 阵营
----@return PlayerGroup player_group 单位组
+---All players in the camp
+---@param camp py.Camp
+---@return PlayerGroup player_group Indicates the unit group
 function M.get_player_group_by_camp(camp)
     local py_player_group = GameAPI.get_role_ids_by_camp(camp)
     return M.get_by_handle(py_player_group)
 end
 
----玩家的所有敌对玩家
----@param player Player 玩家
----@return PlayerGroup player_group 单位组
+---All enemy players of the player
+---@param player Player
+---@return PlayerGroup player_group Indicates the unit group
 function M.get_enemy_player_group_by_player(player)
     local py_player_group = GameAPI.get_enemy_ids_by_role(player.handle)
     return M.get_by_handle(py_player_group)
 end
 
----玩家的所有同盟玩家
----@param player Player 玩家
----@return PlayerGroup player_group 单位组
+---All allied players of the player
+---@param player Player
+---@return PlayerGroup player_group Indicates the unit group
 function M.get_ally_player_group_by_player(player)
     local py_player_group = GameAPI.get_ally_ids_by_role(player.handle)
     return M.get_by_handle(py_player_group)
 end
 
----获取所有胜利的玩家
----@return PlayerGroup player_group 单位组
+---The player who gets all the wins
+---@return PlayerGroup player_group Indicates the unit group
 function M.get_victorious_player_group()
     local py_player_group = GameAPI.get_victorious_role_ids()
     return M.get_by_handle(py_player_group)
 end
 
----获取所有失败的玩家
----@return PlayerGroup player_group 单位组
+---Get all failed players
+---@return PlayerGroup player_group Indicates the unit group
 function M.get_defeated_player_group()
     local py_player_group = GameAPI.get_defeated_role_ids()
     return M.get_by_handle(py_player_group)
 end
 
----所有非中立玩家
----@return PlayerGroup player_group 单位组
+---All non-neutral players
+---@return PlayerGroup player_group Indicates the unit group
 function M.get_neutral_player_group()
     local py_player_group = GameAPI.get_role_ids_by_type(1)
     return M.get_by_handle(py_player_group)

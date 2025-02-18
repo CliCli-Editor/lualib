@@ -1,6 +1,6 @@
 # Ability
 
-技能
+skill
 
 ## add_cd
 
@@ -8,78 +8,78 @@
 (method) Ability:add_cd(value: number)
 ```
 
-增加冷却时间
+Increased cooldown
 
-@*param* `value` — 冷却
+@*param* `value` — cooling
 ## add_float_attr
 
 ```lua
 (method) Ability:add_float_attr(key: string, value: number)
 ```
 
-增加实数属性
+Added real attribute
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## add_int_attr
 
 ```lua
 (method) Ability:add_int_attr(key: string, value: integer)
 ```
 
-增加整数属性
+Increment integer attribute
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## add_level
 
 ```lua
 (method) Ability:add_level(value: integer)
 ```
 
-增加技能等级
+Increase skill level
 
-@*param* `value` — 等级
+@*param* `value` — Lv.
 ## add_player_attr_cost
 
 ```lua
 (method) Ability:add_player_attr_cost(key: string, value: number)
 ```
 
-增加技能玩家属性消耗
+Increased skill player stat cost
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## add_remaining_cd
 
 ```lua
 (method) Ability:add_remaining_cd(value: number)
 ```
 
-增加技能剩余冷却时间
+Increased the skill's remaining cooldown
 
-@*param* `value` — 剩余冷却时间
+@*param* `value` — Remaining cooling time
 ## add_stack
 
 ```lua
 (method) Ability:add_stack(value: integer)
 ```
 
-增加技能充能层数
+Increased the number of skill recharge levels
 
-@*param* `value` — 层数
+@*param* `value` — Number of floors
 ## add_tag
 
 ```lua
 (method) Ability:add_tag(tag: string)
 ```
 
-添加标签
+Add tag
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## can_cast_when_hp_insufficient
 
 ```lua
@@ -87,9 +87,9 @@
   -> can_cast: boolean
 ```
 
-生命不足是否可以释放
+Whether life deficiency can be released
 
-@*return* `can_cast` — 生命不足是否可以释放
+@*return* `can_cast` — Whether life deficiency can be released
 ## check_precondition_by_key
 
 ```lua
@@ -97,20 +97,20 @@ function Ability.check_precondition_by_key(player: Player, ability_key: py.Abili
   -> is_meet: boolean
 ```
 
-检查技能类型前置条件
+Check the preconditions for the skill type
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `ability_key` — 技能类型id (物编id)
+@*param* `ability_key` — Skill type id (object compilationid)
 
-@*return* `is_meet` — 技能类型前置条件是否满足
+@*return* `is_meet` — Whether the preconditions for the skill type are met
 ## complete_cd
 
 ```lua
 (method) Ability:complete_cd()
 ```
 
-完成冷却
+Complete cooling
 ## custom_event_manager
 
 ```lua
@@ -123,18 +123,18 @@ EventManager?
 (method) Ability:disable()
 ```
 
-禁用技能
+Forbidden skill
 ## enable
 
 ```lua
 (method) Ability:enable()
 ```
 
-启用技能
+Enabling skill
 ## event
 
 ```lua
-fun(self: Ability, event: "技能-建造完成", callback: fun(trg: Trigger, data: EventParam.技能-建造完成)):Trigger
+fun(self: Ability, event: "Skill - Build Complete ", callback: fun(trg: Trigger, data: EventParam). Skill - Built complete)):Trigger
 ```
 
 ## event_dispatch
@@ -147,30 +147,30 @@ fun(self: Ability, event: "技能-建造完成", callback: fun(trg: Trigger, dat
   4. any
 ```
 
-发起自定义事件（回执模式），与通知模式不同，允许插入结算。
-可以接受到事件的返回值，有多处注册事件时会按照注册顺序调用，
-当任何事件回调返回了非 `nil` 的值后，后续触发器将不再调用。
+Initiate custom events (receipt mode), which, unlike notification mode, allows for insert billing。
+The return value of the event can be accepted, and the event is called in the order of registration when there are multiple registrations，
+When any event callback returns a non-nil value, subsequent triggers are not called。
 
 ```lua
-Obj:event_on('获取', function (trigger,...)
-    print('获取1')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire1')
     return 1
 end)
-Obj:event_on('获取', function (trigger,...)
-    print('获取2')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire2')
     return 2
 end)
 
-local result = Obj:event_dispatch('获取')
+local result = Obj:event_dispatch('Acquire')
 
-print('结果为：', result)
+print('Turn out：', result)
 ```
 
-以上代码会打印：
+The above code will print：
 
 ```
-获取1
-结果为：    1
+Acquire1
+Turn out：    1
 ```
 
 ## event_dispatch_with_args
@@ -183,38 +183,38 @@ print('结果为：', result)
   4. any
 ```
 
- 发起带事件参数的自定义事件（回执模式）
+ Initiates custom events with event parameters (receipt mode）
 ## event_notify
 
 ```lua
 (method) CustomEvent:event_notify(event_name: string, ...any)
 ```
 
-发起自定义事件（通知模式），同一个对象身上只会有一个正在执行的事件，
-当发生插入结算时，后面的事件会进入队列
+When a custom event is initiated (notification mode), only one event is executed on the same object，
+When an insert settlement occurs, subsequent events are queued
 
 ```lua
-Obj:event_on('获得', function ()
-    print('触发获得')
-    print('发起移除前')
-    Obj:event_notify('移除') -- 实际业务中，可能你获得的buff把你自己杀死了，而死亡会清除buff
-    print('发起移除后')
+Obj:event_on('obtained', function ()
+    print('Trigger acquisition')
+    print('Before removal')
+    Obj:event_notify('Remove ') - In real business, maybe the buff you get kills yourself and the death clearsbuff
+    print('After removal')
 end)
 
-Obj:event_on('移除', function ()
-    print('触发移除')
+Obj:event_on('Remove', function ()
+    print('Trigger removal')
 end)
 
-Obj:event_notify('获得')
+Obj:event_notify('obtained')
 ```
 
-这段代码会打印：
+This code will print：
 
 ```
-触发获得
-发起移除前
-发起移除后
-触发移除
+Trigger acquisition
+Before removal
+After removal
+Trigger removal
 ```
 
 ## event_notify_with_args
@@ -223,7 +223,7 @@ Obj:event_notify('获得')
 (method) CustomEvent:event_notify_with_args(event_name: string, args: any[], ...any)
 ```
 
- 发起带事件参数的自定义事件（通知模式）
+ Initiates custom events with event parameters (notification mode）
 ## event_on
 
 ```lua
@@ -231,35 +231,35 @@ Obj:event_notify('获得')
   -> Trigger
 ```
 
-注册自定义事件，当触发时，会执行回调函数。
+Register a custom event and, when triggered, execute a callback function。
 
 ```lua
-Obj:event_on('输入', function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', '123', '456')
+Obj:event_notify('input', '123', '456')
 ```
 
-以上会打印：
+The above will print：
 
 ```
-触发了输入事件 123 456
+The input event was triggered 123 456
 ```
 
 ---
 
-注册时可以指定事件的参数：
+You can specify parameters for the event during registration：
 
 ```lua
-Obj:event_on('输入', {'123'}, function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', {'123'}, function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', 1) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123'}, 2) -- 可以触发事件
-Obj:event_notify_with_args('输入', {'456'}, 3) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
+Obj:event_notify('Enter ', 1) -- the event cannot be triggered
+Obj:event_notify_with_args('Enter ', {'123'}, 2) -- to trigger the event
+Obj:event_notify_with_args('Enter ', {'456'}, 3) -- cannot fire an event
+Obj:event_notify_with_args('Enter ', {'123', '666'}, 4) -- to trigger the event
 ```
 
 ## get_by_handle
@@ -269,11 +269,11 @@ function Ability.get_by_handle(py_ability: py.Ability)
   -> ability: Ability?
 ```
 
-通过py层的技能实例获取lua层的技能实例
+Obtain the lua layer skill instance from the py layer skill instance
 
-@*param* `py_ability` — py层的技能实例
+@*param* `py_ability` — pyLayer skill instance
 
-@*return* `ability` — 返回在lua层初始化后的lua层技能实例
+@*return* `ability` — Returns the lua layer skill instance after being initialized at the lua layer
 ## get_by_id
 
 ```lua
@@ -288,9 +288,9 @@ function Ability.get_by_id(id: integer)
   -> type: py.AbilityCastType
 ```
 
-获取技能释放类型 AbilityCastType
+Gets the skill release type AbilityCastType
 
-@*return* `type` — 技能释放类型
+@*return* `type` — Skill release type
 ## get_cd
 
 ```lua
@@ -298,9 +298,9 @@ function Ability.get_by_id(id: integer)
   -> time: number
 ```
 
-获取当前冷却时间
+Gets the current cooldown time
 
-@*return* `time` — 当前冷却时间
+@*return* `time` — Current cooling time
 ## get_charge_time
 
 ```lua
@@ -308,7 +308,7 @@ function Ability.get_by_id(id: integer)
   -> number
 ```
 
-获取技能当前剩余充能时间
+Gets the remaining charge time of the skill
 ## get_custom_event_manager
 
 ```lua
@@ -323,7 +323,7 @@ function Ability.get_by_id(id: integer)
   -> string
 ```
 
-获取技能描述
+Get skill description
 ## get_description_by_key
 
 ```lua
@@ -331,9 +331,9 @@ function Ability.get_description_by_key(ability_key: py.AbilityKey)
   -> des: string
 ```
 
-根据技能的key获取技能描述
+Obtain the skill description based on the skill key
 
-@*return* `des` — 描述
+@*return* `des` — Description
 ## get_float_attr
 
 ```lua
@@ -341,9 +341,9 @@ function Ability.get_description_by_key(ability_key: py.AbilityKey)
   -> value: number
 ```
 
-获取实数属性
+Gets the real number attribute
 
-@*param* `key` — 键值key
+@*param* `key` — Key valuekey
 
 @*return* `value` — 值
 ## get_float_attr_by_key
@@ -353,12 +353,12 @@ function Ability.get_float_attr_by_key(ability_key: py.AbilityKey, key: string)
   -> value: number
 ```
 
-获取技能类型实数属性
-> 请使用 `y3.object.ability[ability_key].data` 代替
+Gets the real attribute of the skill type
+> Use 'y3.object.ability[ability_key].data' instead
 
-@*param* `ability_key` — 技能类型id (物编id)
+@*param* `ability_key` — Skill type id (object compilationid)
 
-@*param* `key` — 键值key
+@*param* `key` — Key valuekey
 
 @*return* `value` — 值
 ## get_formula_attr_by_key
@@ -368,19 +368,19 @@ function Ability.get_formula_attr_by_key(ability_id: py.AbilityKey, attr_name: s
   -> value: number
 ```
 
-获取技能类型公式属性
+Gets the skill type formula properties
 
-@*param* `ability_id` — 技能类型id(物编id)
+@*param* `ability_id` — Skill type id(object compilationid)
 
-@*param* `attr_name` — 属性名称
+@*param* `attr_name` — Attribute name
 
-@*param* `level` — 技能等级
+@*param* `level` — Skill level
 
-@*param* `stack_count` — 技能层数
+@*param* `stack_count` — Skill level
 
-@*param* `unit_hp_max` — 单位最大生命
+@*param* `unit_hp_max` — Maximum life per unit
 
-@*param* `unit_hp_cur` — 单位当前生命
+@*param* `unit_hp_cur` — Unit current life
 
 @*return* `value` — 值
 ## get_formula_kv
@@ -390,9 +390,9 @@ function Ability.get_formula_attr_by_key(ability_id: py.AbilityKey, attr_name: s
   -> value: number
 ```
 
-获取技能公式类型的kv
+Gets skill formula typekv
 
-@*param* `key` — 键值key
+@*param* `key` — Key valuekey
 
 @*return* `value` — 值
 ## get_icon
@@ -402,9 +402,9 @@ function Ability.get_formula_attr_by_key(ability_id: py.AbilityKey, attr_name: s
   -> id: py.Texture
 ```
 
-获取技能图标
+Get skill icon
 
-@*return* `id` — 图片ID
+@*return* `id` — pictureID
 ## get_icon_by_key
 
 ```lua
@@ -412,11 +412,11 @@ function Ability.get_icon_by_key(ability_key: py.AbilityKey)
   -> id: py.Texture
 ```
 
-获取技能类型的icon图标的图片ID
+Gets a picture of the icon icon for the skill typeID
 
-@*param* `ability_key` — 技能类型id (物编id)
+@*param* `ability_key` — Skill type id (object compilationid)
 
-@*return* `id` — 图片ID
+@*return* `id` — pictureID
 ## get_int_attr
 
 ```lua
@@ -424,9 +424,9 @@ function Ability.get_icon_by_key(ability_key: py.AbilityKey)
   -> value: number
 ```
 
-获取整数属性
+Get integer properties
 
-@*param* `key` — 键值key
+@*param* `key` — Key valuekey
 
 @*return* `value` — 值
 ## get_int_attr_by_key
@@ -436,12 +436,12 @@ function Ability.get_int_attr_by_key(ability_key: py.AbilityKey, key: string)
   -> value: integer
 ```
 
-获取技能类型整数属性
-> 请使用 `y3.object.ability[ability_key].data` 代替
+Gets the integer attribute of the skill type
+> Use 'y3.object.ability[ability_key].data' instead
 
-@*param* `ability_key` — 技能类型id (物编id)
+@*param* `ability_key` — Skill type id (object compilationid)
 
-@*param* `key` — 键值key
+@*param* `key` — Key valuekey
 
 @*return* `value` — 值
 ## get_item
@@ -451,7 +451,7 @@ function Ability.get_int_attr_by_key(ability_key: py.AbilityKey, key: string)
   -> Item?
 ```
 
-获取技能绑定的物品（技能对象在哪个物品对象上）
+Gets the item that the skill is bound to (which item object the skill object is on）
 ## get_key
 
 ```lua
@@ -466,9 +466,9 @@ function Ability.get_int_attr_by_key(ability_key: py.AbilityKey, key: string)
   -> level: integer
 ```
 
- 获取技能等级
+ Gain skill level
 
-@*return* `level` — 等级
+@*return* `level` — Lv.
 ## get_max_cd
 
 ```lua
@@ -476,7 +476,7 @@ function Ability.get_int_attr_by_key(ability_key: py.AbilityKey, key: string)
   -> number
 ```
 
-获取技能最大CD
+Gain skills MaxCD
 ## get_name
 
 ```lua
@@ -491,9 +491,9 @@ function Ability.get_name_by_key(ability_key: py.AbilityKey)
   -> name: string
 ```
 
-根据技能的key获取技能名字
+Get the skill name based on the skill key
 
-@*return* `name` — 技能名字
+@*return* `name` — Skill name
 ## get_owner
 
 ```lua
@@ -501,9 +501,9 @@ function Ability.get_name_by_key(ability_key: py.AbilityKey)
   -> owner: Unit?
 ```
 
-获取技能的拥有者
+Acquire the owner of the skill
 
-@*return* `owner` — 技能拥有者
+@*return* `owner` — Skill holder
 ## get_player_attr_cost
 
 ```lua
@@ -511,11 +511,11 @@ function Ability.get_name_by_key(ability_key: py.AbilityKey)
   -> cost: number
 ```
 
-获取技能消耗的玩家属性值
+Gets the player attribute value for skill cost
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*return* `cost` — 玩家属性值
+@*return* `cost` — Player attribute value
 ## get_range
 
 ```lua
@@ -523,9 +523,9 @@ function Ability.get_name_by_key(ability_key: py.AbilityKey)
   -> number
 ```
 
-获取技能施法范围
+Gain skill casting scope
 
-@*return* — 施法范围
+@*return* — Scope of casting
 ## get_skill_pointer
 
 ```lua
@@ -533,7 +533,7 @@ function Ability.get_name_by_key(ability_key: py.AbilityKey)
   -> y3.Const.AbilityPointerType
 ```
 
-获取技能的指示器类型
+Gets the indicator type of the skill
 ## get_skill_type_pointer
 
 ```lua
@@ -541,7 +541,7 @@ function Ability.get_skill_type_pointer(name: py.AbilityKey)
   -> y3.Const.AbilityPointerType
 ```
 
-获取技能类型的指示器类型
+Gets the indicator type for the skill type
 ## get_slot
 
 ```lua
@@ -549,9 +549,9 @@ function Ability.get_skill_type_pointer(name: py.AbilityKey)
   -> index: y3.Const.AbilityIndex
 ```
 
-获取技能所在技能位
+Obtain the skill bit where the skill resides
 
-@*return* `index` — 技能所在技能位
+@*return* `index` — Skill Indicates the skill bit
 ## get_str_attr_by_key
 
 ```lua
@@ -559,12 +559,12 @@ function Ability.get_str_attr_by_key(ability_key: py.AbilityKey, key: py.Ability
   -> str: string
 ```
 
-获取技能类型字符串属性
-> 请改用 `y3.object.ability[ability_key].data` 代替
+Gets the skill type string property
+> Use 'y3.object.ability[ability_key].data' instead
 
-@*param* `ability_key` — 技能类型id (物编id)
+@*param* `ability_key` — Skill type id (object compilationid)
 
-@*param* `key` — 键值key
+@*param* `key` — Key valuekey
 
 @*return* `str` — 值
 ## get_string_attr
@@ -574,9 +574,9 @@ function Ability.get_str_attr_by_key(ability_key: py.AbilityKey, key: py.Ability
   -> value: string
 ```
 
-获取字符串属性
+Get string attribute
 
-@*param* `key` — 键值key
+@*param* `key` — Key valuekey
 
 @*return* `value` — 值
 ## get_target
@@ -586,9 +586,9 @@ function Ability.get_str_attr_by_key(ability_key: py.AbilityKey, key: py.Ability
   -> target: Destructible|Item|Point|Unit|nil
 ```
 
-@*param* `cast` — 施法ID
+@*param* `cast` — conjureID
 
-@*return* `target` — 目标
+@*return* `target` — goal
 ## get_type
 
 ```lua
@@ -596,16 +596,16 @@ function Ability.get_str_attr_by_key(ability_key: py.AbilityKey, key: py.Ability
   -> type: y3.Const.AbilityType
 ```
 
-获取技能种类
+Acquire skill types
 
-@*return* `type` — 技能种类
+@*return* `type` — Skill type
 ## handle
 
 ```lua
 py.Ability
 ```
 
-技能对象
+Skill object
 ## has_tag
 
 ```lua
@@ -613,18 +613,18 @@ py.Ability
   -> boolean
 ```
 
-是否具有标签
+Tagged or not
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## hide_pointer
 
 ```lua
 function Ability.hide_pointer(player: Player)
 ```
 
-关闭技能指示器
+Turn off skill indicator
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## id
 
 ```lua
@@ -638,9 +638,9 @@ integer
   -> is_enabled: boolean
 ```
 
-自动施法是否开启
+Whether automatic casting is enabled
 
-@*return* `is_enabled` — 是否开启
+@*return* `is_enabled` — Enable or not
 ## is_cd_reduce
 
 ```lua
@@ -648,9 +648,9 @@ integer
   -> is_influenced: boolean
 ```
 
-是否受冷却缩减影响
+Whether it is affected by cooling loss
 
-@*return* `is_influenced` — 是否受冷却缩减影响
+@*return* `is_influenced` — Whether it is affected by cooling loss
 ## is_cd_reduce_by_key
 
 ```lua
@@ -658,11 +658,11 @@ function Ability.is_cd_reduce_by_key(ability_key: py.AbilityKey)
   -> is_influenced: boolean
 ```
 
-技能类型是否受冷却缩减影响
+Whether the skill type is affected by cooldown reduction
 
-@*param* `ability_key` — 技能类型id (物编id)
+@*param* `ability_key` — Skill type id (object compilationid)
 
-@*return* `is_influenced` — 技能类型是否受冷却缩减影响
+@*return* `is_influenced` — Whether the skill type is affected by cooldown reduction
 ## is_cost_hp_can_die
 
 ```lua
@@ -670,9 +670,9 @@ function Ability.is_cd_reduce_by_key(ability_key: py.AbilityKey)
   -> is_cost: boolean
 ```
 
-消耗生命是否会死亡
+Consuming life will lead to death
 
-@*return* `is_cost` — 消耗生命是否会死亡
+@*return* `is_cost` — Consuming life will lead to death
 ## is_destroyed
 
 ```lua
@@ -687,9 +687,9 @@ function Ability.is_cd_reduce_by_key(ability_key: py.AbilityKey)
   -> is_exist: boolean
 ```
 
-是否存在
+Existence or not
 
-@*return* `is_exist` — 是否存在
+@*return* `is_exist` — Existence or not
 ## key
 
 ```lua
@@ -703,7 +703,7 @@ integer?
   -> boolean
 ```
 
- 是否拥有指定键值对。可以与ECA互通。
+ Whether the specified key - value pair is owned. Interwork with ECA。
 ## kv_key
 
 ```lua
@@ -737,14 +737,14 @@ lua_type:
 (method) KV:kv_save(key: string, value: KV.SupportType)
 ```
 
- 保存自定义键值对。可以与ECA互通。
+ Save custom key-value pairs. Interwork with ECA。
 ## learn
 
 ```lua
 (method) Ability:learn()
 ```
 
-学习技能
+Learning skill
 ## object_event_manager
 
 ```lua
@@ -757,16 +757,16 @@ EventManager?
 py.Ability
 ```
 
-技能对象
+Skill object
 ## pre_cast
 
 ```lua
 (method) Ability:pre_cast(player: Player)
 ```
 
-进入技能准备施法状态
+Enter skill ready to cast
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## ref_manager
 
 ```lua
@@ -779,265 +779,265 @@ unknown
 (method) Ability:remove()
 ```
 
-移除技能
+Remove skill
 ## remove_tag
 
 ```lua
 (method) Ability:remove_tag(tag: string)
 ```
 
-移除标签
+Remove tag
 
-@*param* `tag` — 标签
+@*param* `tag` — tag
 ## restart_cd
 
 ```lua
 (method) Ability:restart_cd()
 ```
 
-进入冷却
+Entry cooling
 ## set_arrow_length
 
 ```lua
 (method) Ability:set_arrow_length(value: number)
 ```
 
-设置箭头/多段指示器长度
+Sets the arrow/multi-segment indicator length
 
-@*param* `value` — 长度
+@*param* `value` — Length
 ## set_arrow_width
 
 ```lua
 (method) Ability:set_arrow_width(value: number)
 ```
 
-设置箭头/多段指示器宽度
+Set the arrow/multi-segment indicator width
 
-@*param* `value` — 宽度
+@*param* `value` — breadth
 ## set_autocast
 
 ```lua
 (method) Ability:set_autocast(enable: boolean)
 ```
 
-开关自动施法
+Switch automatically casts spells
 
-@*param* `enable` — 开关
+@*param* `enable` — Switch
 ## set_build_rotate
 
 ```lua
 (method) Ability:set_build_rotate(angle: number)
 ```
 
-设置技能的建造朝向
+Set the building orientation of the skill
 
-@*param* `angle` — 角度
+@*param* `angle` — Angle
 ## set_can_cast_when_hp_insufficient
 
 ```lua
 (method) Ability:set_can_cast_when_hp_insufficient(can_cast: boolean)
 ```
 
-设置生命不足时是否可以释放技能
+Sets whether skills can be released when life is low
 
-@*param* `can_cast` — 是否可以释放
+@*param* `can_cast` — Can be released
 ## set_cd
 
 ```lua
 (method) Ability:set_cd(value: number)
 ```
 
-设置剩余冷却时间
+Set the remaining cooldown time
 
-@*param* `value` — 剩余冷却时间
+@*param* `value` — Remaining cooling time
 ## set_cd_reduce
 
 ```lua
 (method) Ability:set_cd_reduce(is_influenced: boolean)
 ```
 
-设置技能是否受冷却缩减的影响
+Sets whether skills are affected by cooldown reduction
 
-@*param* `is_influenced` — 属性key
+@*param* `is_influenced` — Statskey
 ## set_charge_time
 
 ```lua
 (method) Ability:set_charge_time(value: number)
 ```
 
-设置技能剩余充能时间
+Set the remaining charge time of a skill
 
-@*param* `value` — 剩余充能时间
+@*param* `value` — Remaining charging time
 ## set_circle_radius
 
 ```lua
 (method) Ability:set_circle_radius(value: number)
 ```
 
-设置箭圆形指示器半径
+Set arrow circle indicator radius
 
-@*param* `value` — 半径
+@*param* `value` — radius
 ## set_description
 
 ```lua
 (method) Ability:set_description(des: string)
 ```
 
-设置技能描述
+Set skill description
 
-@*param* `des` — 描述
+@*param* `des` — Description
 ## set_float_attr
 
 ```lua
 (method) Ability:set_float_attr(key: string|y3.Const.AbilityFloatAttr, value: number)
 ```
 
-设置实数属性
+Sets the real number property
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## set_icon
 
 ```lua
 (method) Ability:set_icon(icon_id: integer)
 ```
 
-设置技能图标
+Set skill icon
 
-@*param* `icon_id` — 图片id
+@*param* `icon_id` — pictureid
 ## set_int_attr
 
 ```lua
 (method) Ability:set_int_attr(key: string|y3.Const.AbilityIntAttr, value: integer)
 ```
 
-设置整数属性
+Set integer properties
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## set_is_cost_hp_can_die
 
 ```lua
 (method) Ability:set_is_cost_hp_can_die(can_die: boolean)
 ```
 
-设置消耗生命是否会死亡
+Set whether consuming life will result in death
 
-@*param* `can_die` — 是否会死亡
+@*param* `can_die` — Will you die?
 ## set_level
 
 ```lua
 (method) Ability:set_level(level: integer)
 ```
 
-设置技能等级
+Set skill level
 
-@*param* `level` — 等级
+@*param* `level` — Lv.
 ## set_max_cd
 
 ```lua
 (method) Ability:set_max_cd(value: number)
 ```
 
-设置技能最大CD
+Set skill MaxCD
 ## set_name
 
 ```lua
 (method) Ability:set_name(name: string)
 ```
 
-设置技能名字
+Set skill name
 
-@*param* `name` — 技能名字
+@*param* `name` — Skill name
 ## set_normal_attack_preview_state
 
 ```lua
 function Ability.set_normal_attack_preview_state(player: Player, state: boolean)
 ```
 
-设置玩家的普攻预览状态
+Set the player's attack preview status
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `state` — 状态 开/关
+@*param* `state` — Status On/Off
 ## set_player_attr_cost
 
 ```lua
 (method) Ability:set_player_attr_cost(key: string, value: number)
 ```
 
-设置技能玩家属性消耗
+Set skill player stat cost
 
-@*param* `key` — 属性key
+@*param* `key` — Statskey
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## set_pointer_type
 
 ```lua
 (method) Ability:set_pointer_type(type: y3.Const.AbilityPointerType)
 ```
 
-设置技能指示器类型
+Set the skill indicator type
 
-@*param* `type` — 技能指示器类型
+@*param* `type` — Skill indicator type
 ## set_range
 
 ```lua
 (method) Ability:set_range(value: number)
 ```
 
-设置技能施法范围
+Set the scope of a skill cast
 
-@*param* `value` — 施法范围
+@*param* `value` — Scope of casting
 ## set_sector_angle
 
 ```lua
 (method) Ability:set_sector_angle(value: number)
 ```
 
-设置扇形指示器夹角
+Set the Angle of the sector indicator
 
-@*param* `value` — 角度
+@*param* `value` — Angle
 ## set_sector_radius
 
 ```lua
 (method) Ability:set_sector_radius(value: number)
 ```
 
-设置扇形指示器半径
+Set the fan indicator radius
 
-@*param* `value` — 半径
+@*param* `value` — radius
 ## set_smart_cast_with_pointer
 
 ```lua
 function Ability.set_smart_cast_with_pointer(player: Player, state: boolean)
 ```
 
-设置玩家的指示器在智能施法时是否显示
+Sets whether the player's indicator is displayed while smart casting
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `state` — 状态 开/关
+@*param* `state` — Status On/Off
 ## set_stack
 
 ```lua
 (method) Ability:set_stack(value: integer)
 ```
 
-设置充能层数
+Set the number of charging layers
 
-@*param* `value` — 层数
+@*param* `value` — Number of floors
 ## show_indicator
 
 ```lua
 (method) Ability:show_indicator(player: Player)
 ```
 
-显示技能指示器
+Display skill indicator
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## storage_all
 
 ```lua
@@ -1045,7 +1045,7 @@ function Ability.set_smart_cast_with_pointer(player: Player, state: boolean)
   -> table
 ```
 
- 获取存储数据的容器
+ Gets the container for storing data
 ## storage_get
 
 ```lua
@@ -1053,14 +1053,14 @@ function Ability.set_smart_cast_with_pointer(player: Player, state: boolean)
   -> any
 ```
 
- 获取存储的值
+ Gets the stored value
 ## storage_set
 
 ```lua
 (method) Storage:storage_set(key: any, value: any)
 ```
 
- 存储任意值
+ Store arbitrary values
 ## storage_table
 
 ```lua

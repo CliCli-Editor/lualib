@@ -1,6 +1,6 @@
 # Game
 
-游戏接口
+Game interface
 
 ## clear_table
 
@@ -8,27 +8,27 @@
 function Game.clear_table(table: any)
 ```
 
-清空表
+Clear list
 ## close_role_micro_unit
 
 ```lua
 function Game.close_role_micro_unit(player: Player)
 ```
 
-关闭玩家的附近语音聊天
+Turn off player's nearby voice chat
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 ## create_day_night_human_time
 
 ```lua
 function Game.create_day_night_human_time(time: number, dur: number)
 ```
 
-创建人造时间
+Create artificial time
 
-@*param* `time` — 时间
+@*param* `time` — time
 
-@*param* `dur` — 持续时间
+@*param* `dur` — duration
 ## current_game_run_time
 
 ```lua
@@ -36,9 +36,9 @@ function Game.current_game_run_time()
   -> time: number
 ```
 
-游戏已运行的时间
+The time the game has been running
 
-@*return* `time` — 时间
+@*return* `time` — time
 ## custom_event_manager
 
 ```lua
@@ -51,22 +51,22 @@ EventManager?
 function Game.download_platform_icon(url: string, icon: string, callback: fun(real_path: string))
 ```
 
-下载玩家平台头像，下载完毕后调用回调函数
+Download the player platform avatar, call the callback function after downloading
 
-@*param* `url` — 头像下载地址
+@*param* `url` — Avatar download address
 
-@*param* `icon` — 头像路径，如果本地已有头像则不会下载而是立即调用回调函数
+@*param* `icon` — Avatar path, if the local avatar is not downloaded, but immediately call the callback function
 
-@*param* `callback` — 下载完毕后的回调函数
+@*param* `callback` — After downloading the callback function
 ## enable_grass_by_pos
 
 ```lua
 function Game.enable_grass_by_pos(is_on: boolean, point: Point)
 ```
 
-开关目标点的草丛
+Switch the grass at the target point
 
-@*param* `is_on` — 开关
+@*param* `is_on` — Switch
 
 @*param* `point` — 点
 ## enable_soft_pause
@@ -75,14 +75,14 @@ function Game.enable_grass_by_pos(is_on: boolean, point: Point)
 function Game.enable_soft_pause()
 ```
 
-开启软暂停
+Enable soft pause
 ## encrypt_table
 
 ```lua
 function Game.encrypt_table(tab: table)
 ```
 
-加密表
+Encrypted list
 
 @*param* `tab` — 表
 ## end_player_game
@@ -91,17 +91,17 @@ function Game.encrypt_table(tab: table)
 function Game.end_player_game(player: Player, result: string, is_show: boolean)
 ```
 
-结束玩家游戏
+End player game
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `result` — 结果
+@*param* `result` — result
 
-@*param* `is_show` — 是否展示界面
+@*param* `is_show` — Display interface or not
 ## event
 
 ```lua
-fun(self: Game, event: "游戏-初始化", callback: fun(trg: Trigger, data: EventParam.游戏-初始化)):Trigger
+fun(self: Game, event: "Game - initialization, callback: fun(trg: Trigger, data: EventParam). Game - initialization)):Trigger
 ```
 
 ## event_dispatch
@@ -114,30 +114,30 @@ fun(self: Game, event: "游戏-初始化", callback: fun(trg: Trigger, data: Eve
   4. any
 ```
 
-发起自定义事件（回执模式），与通知模式不同，允许插入结算。
-可以接受到事件的返回值，有多处注册事件时会按照注册顺序调用，
-当任何事件回调返回了非 `nil` 的值后，后续触发器将不再调用。
+Initiate custom events (receipt mode), which, unlike notification mode, allows for insert billing。
+The return value of the event can be accepted, and the event is called in the order of registration when there are multiple registrations，
+When any event callback returns a non-nil value, subsequent triggers are not called。
 
 ```lua
-Obj:event_on('获取', function (trigger,...)
-    print('获取1')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire1')
     return 1
 end)
-Obj:event_on('获取', function (trigger,...)
-    print('获取2')
+Obj:event_on('Acquire', function (trigger,...)
+    print('Acquire2')
     return 2
 end)
 
-local result = Obj:event_dispatch('获取')
+local result = Obj:event_dispatch('Acquire')
 
-print('结果为：', result)
+print('Turn out：', result)
 ```
 
-以上代码会打印：
+The above code will print：
 
 ```
-获取1
-结果为：    1
+Acquire1
+Turn out：    1
 ```
 
 ## event_dispatch_with_args
@@ -150,7 +150,7 @@ print('结果为：', result)
   4. any
 ```
 
- 发起带事件参数的自定义事件（回执模式）
+ Initiates custom events with event parameters (receipt mode）
 ## event_manager
 
 ```lua
@@ -163,31 +163,31 @@ unknown
 (method) CustomEvent:event_notify(event_name: string, ...any)
 ```
 
-发起自定义事件（通知模式），同一个对象身上只会有一个正在执行的事件，
-当发生插入结算时，后面的事件会进入队列
+When a custom event is initiated (notification mode), only one event is executed on the same object，
+When an insert settlement occurs, subsequent events are queued
 
 ```lua
-Obj:event_on('获得', function ()
-    print('触发获得')
-    print('发起移除前')
-    Obj:event_notify('移除') -- 实际业务中，可能你获得的buff把你自己杀死了，而死亡会清除buff
-    print('发起移除后')
+Obj:event_on('obtained', function ()
+    print('Trigger acquisition')
+    print('Before removal')
+    Obj:event_notify('Remove ') - In real business, maybe the buff you get kills yourself and the death clearsbuff
+    print('After removal')
 end)
 
-Obj:event_on('移除', function ()
-    print('触发移除')
+Obj:event_on('Remove', function ()
+    print('Trigger removal')
 end)
 
-Obj:event_notify('获得')
+Obj:event_notify('obtained')
 ```
 
-这段代码会打印：
+This code will print：
 
 ```
-触发获得
-发起移除前
-发起移除后
-触发移除
+Trigger acquisition
+Before removal
+After removal
+Trigger removal
 ```
 
 ## event_notify_with_args
@@ -196,7 +196,7 @@ Obj:event_notify('获得')
 (method) CustomEvent:event_notify_with_args(event_name: string, args: any[], ...any)
 ```
 
- 发起带事件参数的自定义事件（通知模式）
+ Initiates custom events with event parameters (notification mode）
 ## event_on
 
 ```lua
@@ -204,35 +204,35 @@ Obj:event_notify('获得')
   -> Trigger
 ```
 
-注册自定义事件，当触发时，会执行回调函数。
+Register a custom event and, when triggered, execute a callback function。
 
 ```lua
-Obj:event_on('输入', function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', '123', '456')
+Obj:event_notify('input', '123', '456')
 ```
 
-以上会打印：
+The above will print：
 
 ```
-触发了输入事件 123 456
+The input event was triggered 123 456
 ```
 
 ---
 
-注册时可以指定事件的参数：
+You can specify parameters for the event during registration：
 
 ```lua
-Obj:event_on('输入', {'123'}, function (trigger, ...)
-    print('触发了输入事件', ...)
+Obj:event_on('input', {'123'}, function (trigger, ...)
+    print('The input event was triggered', ...)
 end)
 
-Obj:event_notify('输入', 1) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123'}, 2) -- 可以触发事件
-Obj:event_notify_with_args('输入', {'456'}, 3) -- 不能触发事件
-Obj:event_notify_with_args('输入', {'123', '666'}, 4) -- 可以触发事件
+Obj:event_notify('Enter ', 1) -- the event cannot be triggered
+Obj:event_notify_with_args('Enter ', {'123'}, 2) -- to trigger the event
+Obj:event_notify_with_args('Enter ', {'456'}, 3) -- cannot fire an event
+Obj:event_notify_with_args('Enter ', {'123', '666'}, 4) -- to trigger the event
 ```
 
 ## get_archive_rank_player_archive_value
@@ -242,13 +242,13 @@ function Game.get_archive_rank_player_archive_value(file: integer, index: intege
   -> value: integer
 ```
 
-获取整数存档排行榜玩家存档值
+Gets the integer save leaderboard player save value
 
-@*param* `file` — 存档
+@*param* `file` — On file
 
-@*param* `index` — 序号
+@*param* `index` — Serial number
 
-@*return* `value` — 存档值
+@*return* `value` — Archive value
 ## get_camp_by_id
 
 ```lua
@@ -256,9 +256,9 @@ function Game.get_camp_by_id(id: py.CampID)
   -> py.Camp
 ```
 
-获得阵营
+Acquisition camp
 
-@*param* `id` — 阵营id
+@*param* `id` — Factionsid
 ## get_compound_attributes
 
 ```lua
@@ -266,13 +266,13 @@ function Game.get_compound_attributes(primary_attribute: string, secondary_attr:
   -> coefficient: number
 ```
 
-获取三维属性的影响系数
+Get the influence coefficient of the three-dimensional attribute
 
-@*param* `primary_attribute` — 一级属性
+@*param* `primary_attribute` — First-level attribute
 
-@*param* `secondary_attr` — 二级属性
+@*param* `secondary_attr` — Secondary attribute
 
-@*return* `coefficient` — 系数
+@*return* `coefficient` — coefficient
 ## get_current_game_mode
 
 ```lua
@@ -280,9 +280,9 @@ function Game.get_current_game_mode()
   -> game_mode: py.GameMode
 ```
 
-获取当前游戏模式
+Gets the current game mode
 
-@*return* `game_mode` — 游戏模式
+@*return* `game_mode` — Game mode
 ## get_current_server_time
 
 ```lua
@@ -290,9 +290,9 @@ function Game.get_current_server_time(time_zone?: integer)
   -> ServerTime
 ```
 
-获取当前的服务器时间。为了保证结果的一致性需要你自己指定时区。
+Gets the current server time. In order to ensure the consistency of the results you need to specify your own time zone。
 
-@*param* `time_zone` — 时区，默认为0。获取中国的时间请传入8。
+@*param* `time_zone` — Time zone. The default value is 0. Get China time please pass in8。
 ## get_custom_event_manager
 
 ```lua
@@ -307,13 +307,13 @@ function Game.get_damage_ratio(attack_type: integer, area_type: integer)
   -> factor: number
 ```
 
-获取伤害系数
+Gain damage coefficient
 
-@*param* `attack_type` — 攻击类型
+@*param* `attack_type` — Attack type
 
-@*param* `area_type` — 护甲类型
+@*param* `area_type` — Type of armor
 
-@*return* `factor` — 伤害系数
+@*return* `factor` — Damage coefficient
 ## get_day_night_time
 
 ```lua
@@ -321,9 +321,9 @@ function Game.get_day_night_time()
   -> time: number
 ```
 
-获取游戏当前昼夜时间
+Gets the game's current day and night time
 
-@*return* `time` — 时间
+@*return* `time` — time
 ## get_event_manager
 
 ```lua
@@ -338,9 +338,9 @@ function Game.get_game_init_time_stamp()
   -> time_stamp: integer
 ```
 
-获取游戏开始时间戳
+Get the game start time stamp
 
-@*return* `time_stamp` — 时间戳
+@*return* `time_stamp` — timestamp
 ## get_game_x_resolution
 
 ```lua
@@ -348,9 +348,9 @@ function Game.get_game_x_resolution()
   -> x_resolution: integer
 ```
 
-获取初始化横向分辨率
+Gets the initial horizontal resolution
 
-@*return* `x_resolution` — 横向分辨率
+@*return* `x_resolution` — Lateral resolution
 ## get_game_y_resolution
 
 ```lua
@@ -358,9 +358,9 @@ function Game.get_game_y_resolution()
   -> y_resolution: integer
 ```
 
-获取初始化纵向分辨率
+Gets the initial vertical resolution
 
-@*return* `y_resolution` — 纵向分辨率
+@*return* `y_resolution` — Longitudinal resolution
 ## get_global_archive
 
 ```lua
@@ -368,11 +368,11 @@ function Game.get_global_archive(name: string)
   -> archive: integer
 ```
 
-获取全局存档
+Get global archive
 
-@*param* `name` — 存档名
+@*param* `name` — Archive name
 
-@*return* `archive` — 存档
+@*return* `archive` — On file
 ## get_global_weather
 
 ```lua
@@ -380,9 +380,9 @@ function Game.get_global_weather()
   -> weather: integer
 ```
 
-获取全局天气
+Get global weather
 
-@*return* `weather` — 天气
+@*return* `weather` — weather
 ## get_graphics_quality
 
 ```lua
@@ -390,9 +390,9 @@ function Game.get_graphics_quality()
   -> quality: 'high'|'low'|'medium'
 ```
 
-获取初始化游戏画质
+Get the initial game quality
 
-@*return* `quality` — 画质
+@*return* `quality` — Picture quality
 
 ```lua
 quality:
@@ -407,7 +407,7 @@ function Game.get_icon_id(id: integer)
   -> texture: py.Texture
 ```
 
-根据图片ID获取图片
+Get the picture based on the picture ID
 ## get_level
 
 ```lua
@@ -415,9 +415,9 @@ function Game.get_level()
   -> py.Map
 ```
 
-获取当前关卡
+Get current level
 
-@*return* — 当前关卡
+@*return* — Current level
 ## get_obj_icon
 
 ```lua
@@ -425,9 +425,9 @@ function Game.get_obj_icon(obj?: Ability|Buff|Item|Unit)
   -> texture: py.Texture
 ```
 
-获取任意对象图片
+Get any object picture
 
-@*param* `obj` — 单位|物品|技能|魔法效果
+@*param* `obj` — Units | items | skills | magic effects
 ## get_point_texture
 
 ```lua
@@ -435,7 +435,7 @@ function Game.get_point_texture(point: Point)
   -> integer
 ```
 
-获取地形纹理
+Get terrain texture
 
 @*param* `point` — 点
 ## get_start_mode
@@ -445,9 +445,9 @@ function Game.get_start_mode()
   -> game_mode: integer
 ```
 
-获取本局游戏环境
+Get the local game environment
 
-@*return* `game_mode` — 游戏环境，1是编辑器，2是平台
+@*return* `game_mode` — Game environment, 1 is the editor, 2 is the platform
 ## get_table
 
 ```lua
@@ -455,11 +455,11 @@ function Game.get_table(name: string, as_lua?: boolean)
   -> tb: table
 ```
 
-获取表
+Acquisition list
 
-@*param* `name` — 表名
+@*param* `name` — Table name
 
-@*param* `as_lua` — 是否将表中的数据转换为Lua的数据类型，例如Fix32转number
+@*param* `as_lua` — Whether to convert the data in the table to a Lua data type, such as Fix32number
 
 @*return* `tb` — 表
 ## get_tech_description
@@ -469,11 +469,11 @@ function Game.get_tech_description(tech_id: py.TechKey)
   -> description: string
 ```
 
-获取科技类型的描述
+Get a description of the technology type
 
-@*param* `tech_id` — 科技类型
+@*param* `tech_id` — Science and technology type
 
-@*return* `description` — 描述
+@*return* `description` — Description
 ## get_tech_icon
 
 ```lua
@@ -481,13 +481,13 @@ function Game.get_tech_icon(tech_id: py.TechKey, index: integer)
   -> texture: py.Texture
 ```
 
-获取科技图标
+Get Technology ICONS
 
-@*param* `tech_id` — 科技
+@*param* `tech_id` — Science and technology
 
-@*param* `index` — 等级
+@*param* `index` — Lv.
 
-@*return* `texture` — 图标id
+@*return* `texture` — iconid
 ## get_tech_max_level
 
 ```lua
@@ -495,11 +495,11 @@ function Game.get_tech_max_level(tech_id: py.TechKey)
   -> level: integer
 ```
 
-获取科技最大等级
+Get the maximum level of technology
 
-@*param* `tech_id` — 科技id
+@*param* `tech_id` — Science and technologyid
 
-@*return* `level` — 最大等级
+@*return* `level` — Maximum grade
 ## get_tech_name
 
 ```lua
@@ -507,11 +507,11 @@ function Game.get_tech_name(tech_id: py.TechKey)
   -> name: string
 ```
 
-获取科技类型的名称
+Get the name of the technology type
 
-@*param* `tech_id` — 科技类型
+@*param* `tech_id` — Science and technology type
 
-@*return* `name` — 名称
+@*return* `name` — name
 ## get_window_mode
 
 ```lua
@@ -519,15 +519,15 @@ function Game.get_window_mode()
   -> mode: Game.WindowMode
 ```
 
-获取窗口化类别
+Gets the windowed category
 
-@*return* `mode` — 窗口化类别
+@*return* `mode` — Windowing class
 
 ```lua
 mode:
-    | "full_screen" -- 全屏
-    | "window_mode" -- 窗口化
-    | "window_mode_full_screen" -- 窗口化全屏
+    | "full_screen" -- Full screen
+    | "window_mode" -- Windowed
+    | "window_mode_full_screen" -- Windowing full screen
 ```
 ## is_compound_attributes_enabled
 
@@ -536,9 +536,9 @@ function Game.is_compound_attributes_enabled()
   -> is_open: boolean
 ```
 
-是否开启三维属性
+Whether to enable 3D properties
 
-@*return* `is_open` — 是否开启
+@*return* `is_open` — Enable or not
 ## is_debug_mode
 
 ```lua
@@ -546,70 +546,70 @@ function Game.is_debug_mode(ignore_config?: boolean)
   -> boolean
 ```
 
- 是否是调试模式
+ Debug mode or not
 
-@*param* `ignore_config` — 是否忽略用户的设置
+@*param* `ignore_config` — Whether to ignore user Settings
 ## locale
 
 ```lua
 function Game.locale(key: string|integer)
-  -> 多语言内容: string
+  -> Multilingual content: string
 ```
 
-获取多语言内容
+Get multilingual content
 
-@*param* `key` — 多语言key
+@*param* `key` — multilingualkey
 ## modify_point_texture
 
 ```lua
 function Game.modify_point_texture(point: Point, terrain_type: integer, range: integer, area_type: integer)
 ```
 
-设置某点的地形纹理
+Set the terrain texture for a point
 
 @*param* `point` — 点
 
-@*param* `terrain_type` — 纹理类型
+@*param* `terrain_type` — Texture type
 
-@*param* `range` — 范围
+@*param* `range` — Radius
 
-@*param* `area_type` — 形状
+@*param* `area_type` — shape
 ## on_client_tick
 
 ```lua
 function Game.on_client_tick(callback: fun(local_player: Player))
 ```
 
-本地客户端每帧回调此函数  
-只能注册一个回调，后注册的会覆盖之前的，
-如有需要请自己在回调中分发
+The local client calls back this function every frame  
+Only one callback can be registered. The one registered later overwrites the one registered earlier，
+Distribute it in the callback if necessary
 
->警告：回调函数是在本地玩家的客户端上执行的，注意避免产生不同步的问题。
+>Warning: The callback function is executed on the local player's client, take care to avoid the problem of asynchronization。
 ## pause_game
 
 ```lua
 function Game.pause_game()
 ```
 
-暂停游戏
+Pause the game
 ## reg_sound_area
 
 ```lua
 function Game.reg_sound_area(area: Area)
 ```
 
-注册区域的附近语音频道
+Sign up area for nearby voice channels
 
-@*param* `area` — 区域
+@*param* `area` — region
 ## remove_ability_kv
 
 ```lua
 function Game.remove_ability_kv(ability_key: py.AbilityKey, key: string)
 ```
 
-清除技能类型键值
+Clear skill type key value
 
-@*param* `ability_key` — 技能id
+@*param* `ability_key` — skillid
 
 @*param* `key` — 键
 ## remove_item_kv
@@ -618,9 +618,9 @@ function Game.remove_ability_kv(ability_key: py.AbilityKey, key: string)
 function Game.remove_item_kv(item_key: py.ItemKey, key: string)
 ```
 
-清除物品类型键值
+Clear item type key value
 
-@*param* `item_key` — 物品id
+@*param* `item_key` — itemid
 
 @*param* `key` — 键
 ## remove_unit_kv
@@ -629,9 +629,9 @@ function Game.remove_item_kv(item_key: py.ItemKey, key: string)
 function Game.remove_unit_kv(unit_key: py.UnitKey, key: string)
 ```
 
-清除单位类型键值
+Clear the unit type key value
 
-@*param* `unit_key` — 单位id
+@*param* `unit_key` — unitid
 
 @*param* `key` — 键
 ## replace_area_texture
@@ -640,243 +640,243 @@ function Game.remove_unit_kv(unit_key: py.UnitKey, key: string)
 function Game.replace_area_texture(area: Area, old_texture: integer, new_texture: integer)
 ```
 
-替换地形纹理
+Alternate terrain texture
 
-@*param* `area` — 区域
+@*param* `area` — region
 
-@*param* `old_texture` — 纹理类型
+@*param* `old_texture` — Texture type
 
-@*param* `new_texture` — 纹理类型
+@*param* `new_texture` — Texture type
 ## request_url
 
 ```lua
 (method) Game:request_url(url: string, body?: string, callback?: fun(body?: string), options?: HttpRequestOptions)
 ```
 
-发送 http 请求，成功或失败都会触发回调，
-成功时回调的参数是 http 返回的 body，失败时回调的参数是 `nil`
+Sending an http request triggers a callback on success or failure，
+The parameter of the callback is the body returned by http on success, and the parameter of the callback on failure is `nil`
 ## restart_game
 
 ```lua
 function Game.restart_game(fast_restart: boolean)
 ```
 
-开始新一轮游戏
+Start a new game
 
-@*param* `fast_restart` — 快速重置
+@*param* `fast_restart` — Quick reset
 ## resume_soft_pause
 
 ```lua
 function Game.resume_soft_pause()
 ```
 
-恢复软暂停
+Resume soft pause
 ## send_custom_event
 
 ```lua
 function Game.send_custom_event(id: integer, table: table)
 ```
 
- 发送自定义事件给ECA
+ Send custom events toECA
 
-@*param* `id` — 事件id
+@*param* `id` — incidentid
 
-@*param* `table` — 事件数据
+@*param* `table` — Event data
 ## send_signal
 
 ```lua
 function Game.send_signal(player: Player, signal_enum: y3.Const.SignalType, point: Point, visible_enum: y3.Const.VisibleType)
 ```
 
-发送信号
+Send signal
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `signal_enum` — 信号枚举值
+@*param* `signal_enum` — Signal enumeration value
 
 @*param* `point` — 点
 
-@*param* `visible_enum` — 可见性枚举值
+@*param* `visible_enum` — Visibility enumeration value
 ## set_area_weather
 
 ```lua
 function Game.set_area_weather(area: Area, weather: integer)
 ```
 
-设置区域天气
+Set area weather
 
-@*param* `area` — 区域
+@*param* `area` — region
 
-@*param* `weather` — 天气
+@*param* `weather` — weather
 ## set_cascaded_shadow_distanc
 
 ```lua
 function Game.set_cascaded_shadow_distanc(distance: number)
 ```
 
-设置阴影距离
+Set shadow distance
 
-@*param* `distance` — 距离
+@*param* `distance` — distance
 ## set_cascaded_shadow_distance
 
 ```lua
 function Game.set_cascaded_shadow_distance(dis: number)
 ```
 
-设置阴影距离
+Set shadow distance
 
-@*param* `dis` — 距离
+@*param* `dis` — distance
 ## set_cascaded_shadow_enable
 
 ```lua
 function Game.set_cascaded_shadow_enable(is_enable: boolean)
 ```
 
-开关级联阴影
+Switch cascade shadow
 
-@*param* `is_enable` — 开关
+@*param* `is_enable` — Switch
 ## set_compound_attributes
 
 ```lua
 function Game.set_compound_attributes(primary_attribute: string, secondary_attr: string, value: number)
 ```
 
-设置复合属性
+Set compound properties
 
-@*param* `primary_attribute` — 一级属性
+@*param* `primary_attribute` — First-level attribute
 
-@*param* `secondary_attr` — 二级属性
+@*param* `secondary_attr` — Secondary attribute
 
-@*param* `value` — 属性值
+@*param* `value` — Attribute value
 ## set_damage_factor
 
 ```lua
 function Game.set_damage_factor(attack_type: integer, armor_type: integer, ratio: number)
 ```
 
-设置伤害系数
+Set damage coefficient
 
-@*param* `attack_type` — 攻击类型
+@*param* `attack_type` — Attack type
 
-@*param* `armor_type` — 护甲类型
+@*param* `armor_type` — Type of armor
 
-@*param* `ratio` — 系数
+@*param* `ratio` — coefficient
 ## set_day_night_speed
 
 ```lua
 function Game.set_day_night_speed(speed: number)
 ```
 
-设置游戏时间的流逝速度
+Set the speed at which the game time passes
 
-@*param* `speed` — 速度
+@*param* `speed` — speed
 ## set_day_night_time
 
 ```lua
 function Game.set_day_night_time(time: number)
 ```
 
-设置游戏时间
+Set play time
 
-@*param* `time` — 时间
+@*param* `time` — time
 ## set_fog_attr
 
 ```lua
 function Game.set_fog_attr(fog: table, attr: string, value: number)
 ```
 
-设置雾效属性(新)
+Set fog effect properties (new)
 
-@*param* `fog` — 局部雾
+@*param* `fog` — Local fog
 
-@*param* `attr` — 朝向
+@*param* `attr` — orientation
 
-@*param* `value` — 位置x
+@*param* `value` — positionx
 ## set_fog_attribute
 
 ```lua
 function Game.set_fog_attribute(fog: table, direction: number, pos_x: number, pos_y: number, pos_z: number, scale_x: number, scale_y: number, scale_z: number, red: number, green: number, blue: number, concentration: number, speed: number)
 ```
 
-设置雾效属性
+Set the fog effect property
 
-@*param* `fog` — 局部雾
+@*param* `fog` — Local fog
 
-@*param* `direction` — 朝向
+@*param* `direction` — orientation
 
-@*param* `pos_x` — 位置x
+@*param* `pos_x` — positionx
 
-@*param* `pos_y` — 位置y
+@*param* `pos_y` — positiony
 
-@*param* `pos_z` — 位置z
+@*param* `pos_z` — positionz
 
-@*param* `scale_x` — 缩放x
+@*param* `scale_x` — Zoomx
 
-@*param* `scale_y` — 缩放y
+@*param* `scale_y` — Zoomy
 
-@*param* `scale_z` — 缩放z
+@*param* `scale_z` — Zoomz
 
-@*param* `red` — 颜色r
+@*param* `red` — colourr
 
-@*param* `green` — 颜色g
+@*param* `green` — colourg
 
-@*param* `blue` — 颜色b
+@*param* `blue` — colourb
 
-@*param* `concentration` — 浓度
+@*param* `concentration` — concentration
 
-@*param* `speed` — 流速
+@*param* `speed` — Velocity of flow
 ## set_game_speed
 
 ```lua
 function Game.set_game_speed(speed: number)
 ```
 
-设置游戏运行速率
+Set the game speed
 
-@*param* `speed` — 速率
+@*param* `speed` — speed
 ## set_global_weather
 
 ```lua
 function Game.set_global_weather(weather: integer)
 ```
 
-设置全局天气
+Set global weather
 
-@*param* `weather` — 天气
+@*param* `weather` — weather
 ## set_globale_view
 
 ```lua
 function Game.set_globale_view(enable: boolean)
 ```
 
- 启用全图视野（总是可见的）
+ Enable Full view (always visible）
 ## set_jump_word
 
 ```lua
 function Game.set_jump_word(enable: boolean)
 ```
 
-关闭localplayer的表现层跳字
+Turn off localplayer's presentation layer hops
 
-@*param* `enable` — 是否关闭
+@*param* `enable` — Close or not
 ## set_logic_fps
 
 ```lua
 function Game.set_logic_fps(fps: integer)
 ```
 
-设置逻辑帧率
+Set the logical frame rate
 
-@*param* `fps` — 帧率
+@*param* `fps` — Frame rate
 ## set_material_param
 
 ```lua
 function Game.set_material_param(obj: Unit, mat: integer, r: number, g: number, b: number, intensity: number, alpha: number)
 ```
 
-设置物体的材质
+Sets the material of the object
 
-@*param* `mat` — 材质
+@*param* `mat` — material
 
 @*param* `r` — 红
 
@@ -884,64 +884,64 @@ function Game.set_material_param(obj: Unit, mat: integer, r: number, g: number, 
 
 @*param* `b` — 蓝
 
-@*param* `intensity` — 强度
+@*param* `intensity` — intensity
 
-@*param* `alpha` — 透明度
+@*param* `alpha` — transparency
 ## set_nearby_micro_switch
 
 ```lua
 function Game.set_nearby_micro_switch(player: Player, switch: boolean)
 ```
 
-设置玩家的附近语音聊天发言开关
+Set the player's nearby voice chat speech switch
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `switch` — 是否关闭
+@*param* `switch` — Close or not
 ## set_nearby_sound_switch
 
 ```lua
 function Game.set_nearby_sound_switch(player: Player, switch: boolean)
 ```
 
-设置玩家的附近语音聊天收听开关
+Set the player's nearby voice chat listening switch
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `switch` — 是否关闭
+@*param* `switch` — Close or not
 ## set_nearby_voice_mode
 
 ```lua
 function Game.set_nearby_voice_mode(switch: boolean)
 ```
 
-设置附近语音的区域模式开关
+Set the area mode switch for nearby voices
 
-@*param* `switch` — 是否关闭
+@*param* `switch` — Close or not
 ## set_object_color
 
 ```lua
 function Game.set_object_color(obj: Destructible|Item|Unit, r: integer, g: integer, b: integer, a?: integer, o?: number)
 ```
 
-设置对象基础材质颜色
+Sets the object base material color
 
-@*param* `r` — 红色（0~255）
+@*param* `r` — red（0~255）
 
-@*param* `g` — 绿色（0~255）
+@*param* `g` — green（0~255）
 
-@*param* `b` — 蓝色（0~255）
+@*param* `b` — blue（0~255）
 
-@*param* `a` — 强度（0~100）
+@*param* `a` — intensity（0~100）
 
-@*param* `o` — 不透明度（0~1）
+@*param* `o` — opacity（0~1）
 ## set_object_fresnel
 
 ```lua
 function Game.set_object_fresnel(obj: Destructible|Item|Unit, r?: integer, g?: integer, b?: integer, alpha?: number, exp?: number, strength?: number)
 ```
 
-设置对象的菲涅尔效果
+Sets the Fresnel effect of an object
 
 @*param* `r` — R
 
@@ -960,93 +960,93 @@ function Game.set_object_fresnel(obj: Destructible|Item|Unit, r?: integer, g?: i
 function Game.set_object_fresnel_visible(obj: Destructible|Item|Unit, b: boolean)
 ```
 
-设置对象的菲涅尔效果
+Sets the Fresnel effect of an object
 ## set_post_effect
 
 ```lua
 function Game.set_post_effect(player: Player, processing: py.PostEffect)
 ```
 
-为玩家切换画风
+Switch styles for the player
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `processing` — 画风
+@*param* `processing` — Painting style
 ## set_random_seed
 
 ```lua
 function Game.set_random_seed(seed: integer)
 ```
 
-设置随机数种子
+Set the random number seed
 
-@*param* `seed` — 随机种子
+@*param* `seed` — Random seed
 ## set_role_all_micro_switch
 
 ```lua
 function Game.set_role_all_micro_switch(player: Player, switch: boolean)
 ```
 
-设置玩家的所有人语音聊天发言开关
+Set the player's all voice chat speech switch
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `switch` — 是否关闭
+@*param* `switch` — Close or not
 ## set_role_all_sound_switch
 
 ```lua
 function Game.set_role_all_sound_switch(player: Player, switch: boolean)
 ```
 
-设置玩家的所有人语音聊天收听开关
+Set the player's everyone voice chat listening switch
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `switch` — 是否关闭
+@*param* `switch` — Close or not
 ## set_role_camp_micro_switch
 
 ```lua
 function Game.set_role_camp_micro_switch(player: Player, switch: boolean)
 ```
 
-设置玩家的同阵营语音聊天发言开关
+Set the player's peer group voice chat speech switch
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `switch` — 是否关闭
+@*param* `switch` — Close or not
 ## set_role_camp_sound_switch
 
 ```lua
 function Game.set_role_camp_sound_switch(player: Player, switch: boolean)
 ```
 
-设置玩家的同阵营语音聊天收听开关
+Set the player's peer voice chat listening switch
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `switch` — 是否关闭
+@*param* `switch` — Close or not
 ## set_role_micro_unit
 
 ```lua
 function Game.set_role_micro_unit(player: Player, unit: Unit)
 ```
 
-设置玩家的声音主单位
+Set up the player's sound master unit
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `unit` — 是否关闭
+@*param* `unit` — Close or not
 ## sfx_switch
 
 ```lua
 function Game.sfx_switch(player: Player, switch: boolean)
 ```
 
-特效播放开关
+Special effect switch
 
-@*param* `player` — 玩家
+@*param* `player` — Player
 
-@*param* `switch` — 是否关闭
+@*param* `switch` — Close or not
 ## str_to_ability_cast_type
 
 ```lua
@@ -1054,11 +1054,11 @@ function Game.str_to_ability_cast_type(str: string)
   -> py.AbilityCastType
 ```
 
-字符串转技能释放类型
+String to skill release type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 技能释放类型
+@*return* — Skill release type
 ## str_to_ability_key
 
 ```lua
@@ -1066,11 +1066,11 @@ function Game.str_to_ability_key(str: string)
   -> py.AbilityKey
 ```
 
-字符串转技能类型
+The string is converted to the skill type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 技能类型
+@*return* — Skill type
 ## str_to_ability_type
 
 ```lua
@@ -1078,11 +1078,11 @@ function Game.str_to_ability_type(str: string)
   -> py.AbilityType
 ```
 
-字符串转技能槽位类型
+The character string is converted to the slot type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 技能槽位类型
+@*return* — Skill Slot type
 ## str_to_audio_key
 
 ```lua
@@ -1090,11 +1090,11 @@ function Game.str_to_audio_key(str: string)
   -> py.AudioKey
 ```
 
-字符串转声音类型
+String to sound type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 声音类型
+@*return* — Sound type
 ## str_to_camp
 
 ```lua
@@ -1102,11 +1102,11 @@ function Game.str_to_camp(str: string)
   -> py.Camp
 ```
 
-字符串转阵营
+String to camp
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 阵营
+@*return* — Factions
 ## str_to_damage_type
 
 ```lua
@@ -1114,11 +1114,11 @@ function Game.str_to_damage_type(str: string)
   -> integer
 ```
 
-字符串转伤害类型
+Character string transfer damage type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 伤害类型
+@*return* — Injury type
 ## str_to_dest_key
 
 ```lua
@@ -1126,11 +1126,11 @@ function Game.str_to_dest_key(str: string)
   -> py.DestructibleKey
 ```
 
-字符串转可破坏物类型
+String to destructible type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 可破坏物类型
+@*return* — Destructible type
 ## str_to_item_key
 
 ```lua
@@ -1138,11 +1138,11 @@ function Game.str_to_item_key(str: string)
   -> py.ItemKey
 ```
 
-字符串转物品类型
+String to item type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 物品类型
+@*return* — Item type
 ## str_to_keyboard_key
 
 ```lua
@@ -1150,11 +1150,11 @@ function Game.str_to_keyboard_key(str: string)
   -> py.KeyboardKey
 ```
 
-字符串转键盘按键
+String to keyboard key
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 键盘按键
+@*return* — Keyboard key
 ## str_to_link_sfx_key
 
 ```lua
@@ -1162,11 +1162,11 @@ function Game.str_to_link_sfx_key(str: string)
   -> py.SfxKey
 ```
 
-字符串转链接特效
+String to link effect
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 链接特效
+@*return* — Link effect
 ## str_to_model_key
 
 ```lua
@@ -1174,11 +1174,11 @@ function Game.str_to_model_key(str: string)
   -> py.ModelKey
 ```
 
-字符串转模型类型
+String to model type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 模型类型
+@*return* — Model type
 ## str_to_modifier_effect_type
 
 ```lua
@@ -1186,11 +1186,11 @@ function Game.str_to_modifier_effect_type(str: string)
   -> py.ModifierEffectType
 ```
 
-字符串转魔法效果影响类型
+String to magic effect effect type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 魔法效果影响类型
+@*return* — Magic effects affect type
 ## str_to_modifier_key
 
 ```lua
@@ -1198,11 +1198,11 @@ function Game.str_to_modifier_key(str: string)
   -> py.ModifierKey
 ```
 
-字符串转魔法效果类型
+String to magic effect type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 魔法效果类型
+@*return* — Magic effect type
 ## str_to_modifier_type
 
 ```lua
@@ -1210,11 +1210,11 @@ function Game.str_to_modifier_type(str: string)
   -> py.ModifierType
 ```
 
-字符串转魔法效果类别
+String to magic effect category
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 魔法效果类别
+@*return* — Magic effect categories
 ## str_to_mouse_key
 
 ```lua
@@ -1222,11 +1222,11 @@ function Game.str_to_mouse_key(str: string)
   -> py.MouseKey
 ```
 
-字符串转鼠标按键
+String turn mouse button
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 鼠标按键
+@*return* — Mouse button
 ## str_to_mouse_wheel
 
 ```lua
@@ -1234,11 +1234,11 @@ function Game.str_to_mouse_wheel(str: string)
   -> py.MouseWheel
 ```
 
-字符串转鼠标滚轮
+String turn mouse wheel
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 鼠标滚轮
+@*return* — Mouse wheel
 ## str_to_particle_sfx_key
 
 ```lua
@@ -1246,11 +1246,11 @@ function Game.str_to_particle_sfx_key(str: string)
   -> py.SfxKey
 ```
 
-字符串转特效
+String conversion effect
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 特效
+@*return* — VFX
 ## str_to_project_key
 
 ```lua
@@ -1258,11 +1258,11 @@ function Game.str_to_project_key(str: string)
   -> py.ProjectileKey
 ```
 
-字符串转投射物类型
+String transprojectile type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 投射物类型
+@*return* — Projectile type
 ## str_to_role_relation
 
 ```lua
@@ -1270,11 +1270,11 @@ function Game.str_to_role_relation(str: string)
   -> py.RoleRelation
 ```
 
-字符串转玩家关系
+String to player relationship
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 玩家关系
+@*return* — Player relationship
 ## str_to_role_res
 
 ```lua
@@ -1282,11 +1282,11 @@ function Game.str_to_role_res(str: string)
   -> py.RoleResKey
 ```
 
-字符串转玩家属性
+String to player properties
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 3 玩家属性
+@*return* — 3 Player attributes
 ## str_to_role_status
 
 ```lua
@@ -1294,7 +1294,7 @@ function Game.str_to_role_status(status: py.RoleStatus)
   -> string
 ```
 
-字玩家状态转字符串
+Word player status to string
 ## str_to_role_type
 
 ```lua
@@ -1302,11 +1302,11 @@ function Game.str_to_role_type(str: string)
   -> py.RoleType
 ```
 
-字符串转玩家控制状态
+String to player control state
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 玩家控制状态
+@*return* — Player control state
 ## str_to_store_key
 
 ```lua
@@ -1314,11 +1314,11 @@ function Game.str_to_store_key(str: string)
   -> store_key: py.StoreKey
 ```
 
-字符串转平台道具类型
+String to platform item type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* `store_key` — 平台道具类型
+@*return* `store_key` — Platform item types
 ## str_to_tech_key
 
 ```lua
@@ -1326,11 +1326,11 @@ function Game.str_to_tech_key(str: string)
   -> py.TechKey
 ```
 
-字符串转科技类型
+String to technology type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 科技类型
+@*return* — Science and technology type
 ## str_to_ui_event
 
 ```lua
@@ -1338,9 +1338,9 @@ function Game.str_to_ui_event(str: string)
   -> string
 ```
 
-字符串转界面事件
+The string to interface event
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 ## str_to_unit_attr_type
 
 ```lua
@@ -1348,11 +1348,11 @@ function Game.str_to_unit_attr_type(str: string)
   -> string
 ```
 
-字符串转单位属性类型
+String to unit attribute type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 单位属性类型
+@*return* — Unit attribute type
 ## str_to_unit_command_type
 
 ```lua
@@ -1360,11 +1360,11 @@ function Game.str_to_unit_command_type(str: string)
   -> py.UnitCommandType
 ```
 
-字符串转单位命令类型
+Character string to unit command type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 单位命令类型
+@*return* — Unit command type
 ## str_to_unit_key
 
 ```lua
@@ -1372,11 +1372,11 @@ function Game.str_to_unit_key(str: string)
   -> py.UnitKey
 ```
 
-字符串转单位类型
+It is a string to a unit type
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 单位类型
+@*return* — Unit type
 ## str_to_unit_name
 
 ```lua
@@ -1384,11 +1384,11 @@ function Game.str_to_unit_name(str: string)
   -> string
 ```
 
-字符串转单位属性
+String to unit property
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 单位属性
+@*return* — Unit attribute
 ## str_to_unit_type
 
 ```lua
@@ -1396,11 +1396,11 @@ function Game.str_to_unit_type(str: string)
   -> py.UnitType
 ```
 
-字符串转单位分类
+String to unit classification
 
-@*param* `str` — 字符串
+@*param* `str` — Character string
 
-@*return* — 单位分类
+@*return* — Unit classification
 ## subscribe_event
 
 ```lua
@@ -1416,9 +1416,9 @@ function Game.str_to_unit_type(str: string)
 function Game.switch_level(level_id_str: py.Map)
 ```
 
-切换至关卡
+Switch to level
 
-@*param* `level_id_str` — 关卡ID
+@*param* `level_id_str` — checkpointID
 ## table_has_key
 
 ```lua
@@ -1426,25 +1426,25 @@ function Game.table_has_key(table: table, key: string)
   -> boolean
 ```
 
-表是否存在字段
+Whether the table has fields
 ## toggle_day_night_time
 
 ```lua
 function Game.toggle_day_night_time(is_on: boolean)
 ```
 
-开关时间流逝
+Switch time lapse
 
-@*param* `is_on` — 开关
+@*param* `is_on` — Switch
 ## unreg_sound_area
 
 ```lua
 function Game.unreg_sound_area(area: Area)
 ```
 
-注销区域的附近语音频道
+The nearby voice channel of the unregistered area
 
-@*param* `area` — 区域
+@*param* `area` — region
 ## world_pos_to_camera_pos
 
 ```lua
@@ -1453,11 +1453,11 @@ function Game.world_pos_to_camera_pos(world_pos: Point)
   2. y: number
 ```
 
-世界坐标转换屏幕坐标
+World coordinates Convert screen coordinates
 
-@*param* `world_pos` — 世界坐标
+@*param* `world_pos` — World coordinates
 
-@*return* `x,y` — 屏幕坐标
+@*return* `x,y` — Screen coordinate
 ## world_pos_to_screen_edge_pos
 
 ```lua
@@ -1466,15 +1466,15 @@ function Game.world_pos_to_screen_edge_pos(world_pos: Point, delta_dis: number)
   2. y: number
 ```
 
-世界坐标转换屏幕边缘坐标
+World coordinates convert screen edge coordinates
 
 # Game.WindowMode
 
 ```lua
 Game.WindowMode:
-    | "full_screen" -- 全屏
-    | "window_mode" -- 窗口化
-    | "window_mode_full_screen" -- 窗口化全屏
+    | "full_screen" -- Full screen
+    | "window_mode" -- Windowed
+    | "window_mode_full_screen" -- Windowing full screen
 ```
 
 

@@ -5,7 +5,7 @@ local M = {}
 ---@private
 M.table_cache = setmetatable({}, { __mode = 'k' })
 
---Get the player's saved data (Boolean)
+--Get the player is saved data (Boolean)
 ---@param player Player
 ---@param slot integer
 ---@return boolean
@@ -13,7 +13,7 @@ function M.load_boolean(player, slot)
     return player.handle:get_save_data_bool_value(slot) or false
 end
 
---Save the player's saved data (Boolean)
+--Save the player is saved data (Boolean)
 ---@param player Player
 ---@param slot integer
 ---@param value boolean
@@ -21,7 +21,7 @@ function M.save_boolean(player, slot, value)
     player.handle:set_save_data_bool_value(slot, value)
 end
 
---Get the player's saved data (integer)
+--Get the player is saved data (integer)
 ---@param player Player
 ---@param slot integer
 ---@return integer
@@ -29,7 +29,7 @@ function M.load_integer(player, slot)
     return player.handle:get_save_data_int_value(slot) or 0
 end
 
---Save the player's saved data (integer)
+--Save the player is saved data (integer)
 ---@param player Player
 ---@param slot integer
 ---@param value integer
@@ -37,7 +37,7 @@ function M.save_integer(player, slot, value)
     player.handle:set_save_data_int_value(slot, value)
 end
 
----增加玩家的存档数据（整数）
+---Add player save data (integer)
 ---@param player Player
 ---@param slot integer
 ---@param value integer
@@ -45,7 +45,7 @@ function M.add_integer(player, slot, value)
     player.handle:add_save_data_int_value(slot, value)
 end
 
---Get the player's saved data (real)
+--Get the player is saved data (real)
 ---@param player Player
 ---@param slot integer
 ---@return number
@@ -53,7 +53,7 @@ function M.load_real(player, slot)
     return clicli.helper.tonumber(player.handle:get_save_data_fixed_value(slot)) or 0.0
 end
 
---Save the player's saved data (real)
+--Save the player is saved data (real)
 ---@param player Player
 ---@param slot integer
 ---@param value number
@@ -61,7 +61,7 @@ function M.save_real(player, slot, value)
     player.handle:set_save_data_fixed_value(slot, Fix32(value))
 end
 
----增加玩家的存档数据（实数）
+---Increased player save data (real)
 ---@param player Player
 ---@param slot integer
 ---@param value number
@@ -69,7 +69,7 @@ function M.add_real(player, slot, value)
     player.handle:add_save_data_fixed_value(slot, Fix32(value))
 end
 
---Get the player's archive data (string)
+--Get the player is archive data (string)
 ---@param player Player
 ---@param slot integer
 ---@return string
@@ -77,7 +77,7 @@ function M.load_string(player, slot)
     return player.handle:get_save_data_str_value(slot) or ''
 end
 
---Save the player's saved data (string)
+--Save the player is saved data (string)
 ---@param player Player
 ---@param slot integer
 ---@param value string
@@ -88,8 +88,8 @@ end
 ---@type table<Player, table<integer, [table, boolean]>>
 M.player_tables = clicli.util.multiTable(2)
 
----获取玩家的存档数据（表）。修改这个表中的字段会自动更新到存档中。
----> 编辑器已经不再支持允许覆盖模式。
+---Get the player's saved data (table). Modifying fields in this table is automatically updated to the archive.
+---> The editor no longer supports allow override mode.
 ---@param player Player
 ---@param slot integer
 ---@param disable_cover? boolean # Whether to disable overwrite, must be the same as in the archive Settings (default is' true ')
@@ -100,7 +100,7 @@ function M.load_table(player, slot, disable_cover)
         if last_table[2] == disable_cover then
             return last_table[1]
         end
-        error('存档的覆盖类型设置与上次不一致！')
+        error('The overlay type setting for the archive is different from last time!')
     end
     last_table = {}
     M.player_tables[player][slot] = last_table
@@ -117,8 +117,8 @@ end
 ---@type table<Player, table<integer, { timer: LocalTimer, table: table }>>
 M.save_table_pool = {}
 
----保存玩家的存档数据（表），存档设置中必须使用允许覆盖模式。  
----> 编辑器已经不再支持允许覆盖模式，因此这个函数已经没有用了。
+---Save the player's save data (table), the save Settings must use the allow overwrite mode.
+---> The editor no longer supports allowing override mode, so this function is no longer useful.
 ---@deprecated
 ---@param player Player
 ---@param slot integer
@@ -128,7 +128,7 @@ function M.save_table(player, slot, t)
     if player ~= clicli.player.get_local() then
         return
     end
-    assert(type(t) == 'table', '数据类型必须是表！')
+    assert(type(t) == 'table', 'The data type must be a table!')
     M.want_to_save = t
     local pools = M.save_table_pool[player]
     if not pools then
@@ -164,11 +164,11 @@ function M.upload_save_data(player)
     M.upload_timer_map[player] = clicli.ltimer.wait(0.1, function ()
         M.upload_timer_map[player] = nil
         player.handle:upload_save_data()
-        log.info('自动保存存档：', player)
+        log.info('Auto save archive:', player)
     end)
 end
 
-clicli.game:event_on('$CliCli-即将切换关卡', function ()
+clicli.game:event_on('$CliCli- About to switch levels', function ()
     for _, timer in pairs(M.upload_timer_map) do
         timer:execute()
     end
@@ -191,11 +191,11 @@ function M.load_table_with_cover_enable(player, slot)
     local proxy_config = {
         anySetter = function (self, raw, key, value, config, custom)
             if custom >= 3 and type(value) == 'table' then
-                error('存档表最多只支持3层嵌套')
+                error('Archive tables only support a maximum of 3 layers of nesting')
             end
             if type(key) ~= 'string'
             and math.type(key) ~= 'integer' then
-                error('存档的key必须是字符串或者整数')
+                error('The key for the archive must be a string or integer')
             end
             value = clicli.helper.as_lua(value)
             local vtype = type(value)
@@ -204,7 +204,7 @@ function M.load_table_with_cover_enable(player, slot)
             and vtype ~= 'boolean'
             and vtype ~= 'number'
             and vtype ~= 'table' then
-                error('存档的值只能是基础类型或表')
+                error('Archived values can only be base types or tables')
             end
             if vtype == 'table' and clicli.proxy.raw(value) then
                 value = clicli.proxy.raw(value)
@@ -296,16 +296,16 @@ function M.load_table_with_cover_disable(player, slot)
         anySetter = function (self, raw, key, value, config, path)
             if type(key) ~= 'string'
             and math.type(key) ~= 'integer' then
-                error('表的key必须是字符串或者整数')
+                error('The key of the table must be a string or integer')
             end
             value = clicli.helper.as_lua(value)
             local vtype = type(value)
             if vtype == 'table' then
                 if next(value) ~= nil then
-                    error('禁止覆盖模式下非空表不能作为存档的值')
+                    error('A non-empty table cannot be used as an archive value in override mode')
                 end
                 if path and #path >= 3 then
-                    error('存档表最多只支持3层嵌套')
+                    error('Archive tables only support a maximum of 3 layers of nesting')
                 end
                 if clicli.proxy.raw(value) then
                     value = clicli.proxy.raw(value)
@@ -314,7 +314,7 @@ function M.load_table_with_cover_disable(player, slot)
             and    vtype ~= 'string'
             and    vtype ~= 'boolean'
             and    vtype ~= 'number' then
-                error('存档的值只能是基础类型')
+                error('Archived values can only be base types')
             end
             raw[key] = value
 

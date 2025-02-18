@@ -6,28 +6,28 @@
 (method) Pool:add(obj: any, w?: integer)
 ```
 
- 添加对象
+ Add object
 ## add_weight
 
 ```lua
 (method) Pool:add_weight(obj: any, w: integer)
 ```
 
- 增加对象的权重
+ Increases the weight of an object
 ## clear
 
 ```lua
 (method) Pool:clear()
 ```
 
- 清空池
+ Emptying tank
 ## del
 
 ```lua
 (method) Pool:del(obj: any)
 ```
 
- 移除对象，请勿在遍历的过程中移除对象
+ Remove objects. Do not remove objects during traversal
 ## dump
 
 ```lua
@@ -35,7 +35,7 @@
   -> string
 ```
 
- 显示池的内容，仅用于调试
+ Displays the contents of the pool for debugging purposes only
 ## get_weight
 
 ```lua
@@ -43,7 +43,7 @@
   -> integer
 ```
 
- 获取对象的权重
+ Gets the weight of the object
 ## has
 
 ```lua
@@ -51,7 +51,7 @@
   -> boolean
 ```
 
- 是否包含对象
+ Include object or not
 ## order
 
 ```lua
@@ -65,7 +65,7 @@ table
   -> fun():any, integer
 ```
 
- 遍历池的对象
+ Iterate over the pool object
 ## pool
 
 ```lua
@@ -79,7 +79,7 @@ table<any, integer>
   -> any
 ```
 
- 随机抽取一个对象
+ Pick an object at random
 ## random_n
 
 ```lua
@@ -87,12 +87,12 @@ table<any, integer>
   -> any[]
 ```
 
- 抽取多个随机对象，不重复
+ Multiple random objects are extracted without repetition
 ## set_weight
 
 ```lua
 (method) Pool:set_weight(obj: any, w: integer)
 ```
 
- 修改对象的权重
+ Modify the weight of an object
 

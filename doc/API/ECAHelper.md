@@ -6,7 +6,7 @@
 function ECAHelper.call(...any)
 ```
 
-调用ECA中定义的自定义事件
+Invoke custom events defined in the ECA
 ## def
 
 ```lua
@@ -14,9 +14,9 @@ function ECAHelper.def(name: string)
   -> ECAFunction
 ```
 
-注册ECA函数
+Register ECA functions
 
-可以使用该功能让lua函数在ECA中被调用。
+You can use this feature to have lua functions called in ECA。
 ## register_custom_event_impl
 
 ```lua

@@ -4,7 +4,7 @@ local superName = NPBehave.ClassName.Composite
 
 ---@class NPBehave.Composite.Sequence: NPBehave.Composite.Composite
 ---@field package __super NPBehave.Composite.Composite
----@overload fun(...: NPBehave.Node): self
+---@overload fun(... : NPBehave.Node): self
 local Sequence = Class(NPBehave.ClassName.Sequence, superName, function(self, super, ...)
     super("Sequence", ...)
 end)

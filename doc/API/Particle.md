@@ -1,6 +1,6 @@
 # Particle
 
-粒子特效
+Particle effect
 
 ## create
 
@@ -9,7 +9,7 @@ function Particle.create(data: Particle.Param.Create)
   -> Particle
 ```
 
-创建特效到单位或点
+Create effects to units or points
 ## create_screen
 
 ```lua
@@ -17,7 +17,7 @@ function Particle.create_screen(data: Particle.Param.Screen)
   -> Particle
 ```
 
-创建屏幕特效
+Create screen effects
 ## get_by_handle
 
 ```lua
@@ -38,30 +38,30 @@ function Particle.get_by_handle(py_sfx: py.Sfx)
 py.Sfx
 ```
 
-特效
+VFX
 ## remove
 
 ```lua
 (method) Particle:remove()
 ```
 
-删除粒子
+Deletion particle
 ## set_animation_speed
 
 ```lua
 (method) Particle:set_animation_speed(speed: number)
 ```
 
-设置动画速度
+Set animation speed
 
-@*param* `speed` — 速度
+@*param* `speed` — speed
 ## set_color
 
 ```lua
 (method) Particle:set_color(x: number, y: number, z: number, w: number)
 ```
 
-设置特效颜色
+Set effects color
 
 @*param* `x` — x
 
@@ -76,25 +76,25 @@ py.Sfx
 (method) Particle:set_facing(direction: number)
 ```
 
-设置朝向
+orientation
 
-@*param* `direction` — 方向
+@*param* `direction` — direction
 ## set_height
 
 ```lua
 (method) Particle:set_height(height: number)
 ```
 
-设置高度
+Set height
 
-@*param* `height` — 高度
+@*param* `height` — Altitude
 ## set_point
 
 ```lua
 (method) Particle:set_point(point: Point)
 ```
 
-设置坐标
+Set coordinates
 
 @*param* `point` — 点
 ## set_rotate
@@ -103,44 +103,44 @@ py.Sfx
 (method) Particle:set_rotate(x: number, y: number, z: number)
 ```
 
-设置旋转角度
+Set rotation Angle
 
-@*param* `x` — X轴角度
+@*param* `x` — XShaft Angle
 
-@*param* `y` — Y轴角度
+@*param* `y` — YShaft Angle
 
-@*param* `z` — Z轴角度
+@*param* `z` — ZShaft Angle
 ## set_scale
 
 ```lua
 (method) Particle:set_scale(x: number, y: number, z: number)
 ```
 
-设置缩放比例
+Set scale
 
-@*param* `x` — X轴缩放
+@*param* `x` — XAxis scaling
 
-@*param* `y` — Y轴缩放
+@*param* `y` — YAxis scaling
 
-@*param* `z` — Z轴缩放
+@*param* `z` — ZAxis scaling
 ## set_time
 
 ```lua
 (method) Particle:set_time(duration: number)
 ```
 
-设置持续时间
+Set duration
 
-@*param* `duration` — 持续时间
+@*param* `duration` — duration
 ## set_visible
 
 ```lua
 (method) Particle:set_visible(visible: boolean)
 ```
 
-设置特效显示
+Set effects display
 
-@*param* `visible` — 开关
+@*param* `visible` — Switch
 ## type
 
 ```lua
@@ -156,49 +156,49 @@ string
 number
 ```
 
-方向
+direction
 ## follow_rotation
 
 ```lua
 integer|y3.Const.SfxRotateType
 ```
 
-跟随单位旋转的模式，只有当 `target` 的类型为单位时有效
+Pattern that follows unit rotation, only valid if the type of 'target' is unit
 ## follow_scale
 
 ```lua
 boolean
 ```
 
-是否跟随单位缩放，只有当 `target` 的类型为单位时有效
+Whether to scale with units is valid only if the type of 'target' is units
 ## height
 
 ```lua
 number
 ```
 
-高度，只有当 `target` 的类型为点时有效
+Height, valid only if the type of 'target' is a point
 ## immediate
 
 ```lua
 boolean
 ```
 
-销毁时，是否立刻移除显示效果
+When destroyed, whether to remove the display effect immediately
 ## scale
 
 ```lua
 number
 ```
 
-缩放
+Zoom
 ## socket
 
 ```lua
 string
 ```
 
-特效挂节点，只有当 `target` 的类型为单位时有效
+The effect is only valid if the type of 'target' is in units
 ## target
 
 ```lua
@@ -212,14 +212,14 @@ Point|Unit
 number
 ```
 
-持续时间
+duration
 ## type
 
 ```lua
 py.SfxKey
 ```
 
-特效类型id
+Special effect typeid
 
 # Particle.Param.Screen
 
@@ -229,26 +229,26 @@ py.SfxKey
 boolean
 ```
 
-是否在迷雾上方
+Above the fog
 ## target
 
 ```lua
 Player
 ```
 
-玩家
+Player
 ## time
 
 ```lua
 number
 ```
 
-持续时间
+duration
 ## type
 
 ```lua
 py.SfxKey
 ```
 
-特效id
+VFXid
 

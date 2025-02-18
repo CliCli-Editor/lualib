@@ -22,11 +22,11 @@ local API = {}
 ---@param time number
 function API.sleep(time)
     if not waker then
-        error('需要先试用 setSleepWaker 设置唤醒器')
+        error('You need to try setSleepWaker to set up the wakeup device first')
     end
     if not coroutine.isyieldable() then
         if errorHandler then
-            errorHandler(debug.traceback('当前协程无法让出！'))
+            errorHandler(debug.traceback('Current coroutine cannot be relinquished!'))
         end
         return
     end

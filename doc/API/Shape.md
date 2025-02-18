@@ -1,6 +1,6 @@
 # Shape
 
-形状
+shape
 
 ## create_annular_shape
 
@@ -9,11 +9,11 @@ function Shape.create_annular_shape(in_radius: number, out_radius: number)
   -> Shape
 ```
 
-创建环形区域
+Create a ring
 
-@*param* `in_radius` — 内半径
+@*param* `in_radius` — Inner radius
 
-@*param* `out_radius` — 外半径
+@*param* `out_radius` — External radius
 ## create_circular_shape
 
 ```lua
@@ -21,9 +21,9 @@ function Shape.create_circular_shape(radius: number)
   -> Shape
 ```
 
-创建圆形区域
+Create a circle
 
-@*param* `radius` — 半径
+@*param* `radius` — radius
 ## create_rectangle_shape
 
 ```lua
@@ -31,13 +31,13 @@ function Shape.create_rectangle_shape(width: number, length: number, angle: numb
   -> Shape
 ```
 
-创建矩形区域
+Create a rectangular area
 
-@*param* `width` — 宽度
+@*param* `width` — breadth
 
-@*param* `length` — 长度
+@*param* `length` — Length
 
-@*param* `angle` — 角度
+@*param* `angle` — Angle
 ## create_sector_shape
 
 ```lua
@@ -45,13 +45,13 @@ function Shape.create_sector_shape(radius: number, angle: number, direction: num
   -> Shape
 ```
 
-扇形
+sector
 
-@*param* `radius` — 半径
+@*param* `radius` — radius
 
-@*param* `angle` — 角度
+@*param* `angle` — Angle
 
-@*param* `direction` — 方向
+@*param* `direction` — direction
 ## get_by_handle
 
 ```lua
@@ -65,7 +65,7 @@ function Shape.get_by_handle(py_shape: py.Shape)
 py.Shape
 ```
 
-形状
+shape
 ## type
 
 ```lua

@@ -10,31 +10,31 @@ local last_mem = collectgarbage 'count'
 
 local function change_to_generational()
     local c1 = python.debug_ns_timestamp()
-    state = '分代'
+    state = 'generation'
     collectgarbage('generational', 20, 500)
     collectgarbage('stop')
     local mem = collectgarbage 'count'
     limit = mem * 2
     local c2 = python.debug_ns_timestamp()
-    M.print(('切换为分代回收，耗时：% 7.3fms'):format((c2 - c1) / 1000000))
-    M.print(('当前内存限制：% 7.3fM'):format(limit / 1000))
+    M.print(('Switching to generational recycling, time: % 7.3fms'):format((c2 - c1) / 1000000))
+    M.print(('Current memory limit: % 7.3fM'):format(limit / 1000))
 end
 
 local function change_to_incremental()
-    -- collectgarbage()
+    --collectgarbage()
     local c1 = python.debug_ns_timestamp()
-    state = '增量'
+    state = 'increment'
     incre_count = 0
     collectgarbage('incremental', 100, 100, 13)
     collectgarbage('stop')
     last_mem = collectgarbage 'count'
     local c2 = python.debug_ns_timestamp()
-    M.print(('切换为增量回收，耗时：% 7.3fms'):format((c2 - c1) / 1000000))
+    M.print(('Switching to incremental reclamation takes % 7.3fms'):format((c2 - c1) / 1000000))
 end
 
 local function do_collect()
     local mem = collectgarbage 'count'
-    if state == '分代' then
+    if state == 'generation' then
         if mem > limit then
             change_to_incremental()
             return
@@ -43,38 +43,38 @@ local function do_collect()
         collectgarbage('step', math.floor(delta))
         mem = collectgarbage 'count'
         last_mem = mem
-    elseif state == '增量' then
+    elseif state == 'increment' then
         local full = collectgarbage('step')
         mem = collectgarbage 'count'
         last_mem = mem
 
         if full then
-            M.print('完成了一次增量周期')
-            state = '切换为分代'
+            M.print('An increment cycle is completed')
+            state = 'Switch to generational'
         else
             incre_count = incre_count + 1
             if incre_count > 300 then
-                M.print('增量周期超时，强制切换回分代')
-                state = '切换为分代'
+                M.print('The incremental period times out. The switchover is forced back to the generation')
+                state = 'Switch to generational'
             end
         end
-    elseif state == '切换为分代' then
+    elseif state == 'Switch to generational' then
         change_to_generational()
     end
 end
 
 local function full_collect()
-    M.print('开始全量回收')
+    M.print('Start full recovery')
     local c1 = python.debug_ns_timestamp()
-    if state == '分代' then
+    if state == 'generation' then
         collectgarbage()
-    elseif state == '增量' then
+    elseif state == 'increment' then
         collectgarbage()
         change_to_generational()
     end
     last_mem = collectgarbage 'count'
     local c2 = python.debug_ns_timestamp()
-    M.print(('全量回收完成，耗时：% 7.3fms'):format((c2 - c1) / 1000000))
+    M.print(('Full recovery complete, time: % 7.3fms'):format((c2 - c1) / 1000000))
 end
 
 local function step_collector()
@@ -120,7 +120,7 @@ function M.init()
     last_mem = collectgarbage 'count'
 end
 
----启用自动回收
+---Enable automatic recycling
 function M.start()
     M.init()
     ---@private
@@ -129,7 +129,7 @@ function M.start()
     end)
 end
 
----停用自动回收
+---Deactivate automatic recovery
 function M.stop()
     if M.timer then
         M.timer:remove()
@@ -137,13 +137,13 @@ function M.stop()
     end
 end
 
----立即进行一次回收
+---Do a recycling immediately
 function M.step()
     M.init()
     step_collector()
 end
 
----立即进行全量回收
+---Full recovery immediately
 function M.full()
     M.init()
     full_collect()

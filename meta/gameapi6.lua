@@ -4837,16 +4837,16 @@ function GameAPI.screenshot_func_for_lua(path, file_name, width, height) end
 function GameAPI.disable_all_eca_triggers() end
 
 --The motor lost track of the target
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 function GameAPI.mover_miss_target(mover_id) end
 
 --A motion device for obtaining projectiles
 ---@param projectile py.ProjectileEntity # Projectile object
----@return py.Mover # kinetoscope
+---@return py.Mover # Kinetoscope
 function GameAPI.get_projectile_mover(projectile) end
 
 --Gets the motor associated projectile
----@param mover_id py.Mover # kinetoscope
+---@param mover_id py.Mover # Kinetoscope
 ---@return py.ProjectileEntity # Associated projectile
 function GameAPI.get_mover_relate_projectile(mover_id) end
 
@@ -5157,7 +5157,7 @@ function GameAPI.api_set_enable_ui_snapshot(enable) end
 --Enable or disable ECA asynchronous detection logs. Disabled by default, high overhead. Some safe apis can be filtered by parameters to prevent false positives, such as creating special effects, UI operations, and so on
 ---@param enable boolean # Enable or not
 ---@param filter_mode? integer # Filter mode, default 1 excluded mode (no api specified in filter_set) or 0 included mode (only api specified in filter_set)
----@param filter_set? py.Table # Filter collections, default {'client_only', 'client_possible'}. You can pass in the API you want to exclude/include (depending on the previous parameter), For example, {'client_only', 'client_possible', 'GameAPI:print_to_dialog, 'GameAPI:get_function_return_value'}. client_only and client_possible are officially confirmed safe/secure API sets that will not affect the core logic of the game even if the number of calls is inconsistent, and can usually be added to the reject set to avoid false positives
+---@param filter_set? py.Table # Filter collections, default {"client_only", "client_possible"}. You can pass in the API you want to exclude/include (depending on the previous parameter), For example, {"client_only", "client_possible", "GameAPI:print_to_dialog, "GameAPI:get_function_return_value"}. client_only and client_possible are officially confirmed safe/secure API sets that will not affect the core logic of the game even if the number of calls is inconsistent, and can usually be added to the reject set to avoid false positives
 ---@return string # Open result
 function GameAPI.api_set_enable_eca_snapshot(enable, filter_mode, filter_set) end
 
@@ -5175,7 +5175,7 @@ function GameAPI.api_set_time_scale(scale) end
 ---@param unit py.Unit # Binding unit
 function GameAPI.set_joystick_target(role, comp_name, unit) end
 
---Set the player's priority for clicking units
+--Set the player is priority for clicking units
 ---@param role py.Role # Player
 ---@param unit_type integer # Unit type
 ---@param priority integer # priority
@@ -5348,11 +5348,11 @@ function GameAPI.steam_get_player_storm_items(role) end
 ---@param image_id py.Texture # picture
 function GameAPI.set_ui_comp_image_with_icon_steam(role, comp_name, image_id) end
 
---Get the player's steam country
+--Get the player is steam country
 ---@return py.COIN_CURRENCY # steam currency
 function GameAPI.get_steam_player_currency() end
 
---Get the price of the player's goods in the corresponding country
+--Get the price of the player is goods in the corresponding country
 ---@param goods_id string # Product ID
 ---@return number # Price
 function GameAPI.get_steam_goods_price(goods_id) end
@@ -5390,7 +5390,7 @@ function GameAPI.get_latest_game_version(http_data) end
 ---@return py.Role # Player
 function GameAPI.get_settle_ladder_role(v) end
 
---Get the player's new score for settling
+--Get the player is new score for settling
 ---@param v integer # Player new score
 ---@return integer # Player new score
 function GameAPI.get_settle_ladder_new_score(v) end
