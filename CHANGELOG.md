@@ -8,6 +8,11 @@
   * `y3.game.md5` Computed stringmd5
   * `y3.rsa` RSACorrelation interface
 
+`2024-2-18`
++ Add interface：
+  * `Unit:set_name_show_type` Set how names are displayed (display unit name or player name）
+  * `Item:set_name_show_type` Set how names are displayed (display unit name or player name）
+
 `2024-2-7`
 + Add interface：
   * `ItemGroup:pairs` Save the money and use 'pick' first

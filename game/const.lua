@@ -1071,4 +1071,11 @@ M.WeatherType = {
     ['WhiteFog'] = 15,
 }
 
+---@enum(key) clicli.Const.BarNameShowType
+M.BarNameShowType = {
+    ['None'] = 0,
+    ['PlayerName'] = 1,
+    ['UnitName'] = 2,
+}
+
 return M

@@ -182,6 +182,12 @@ function M:set_name(name)
     self.handle:set_name(name)
 end
 
+---Set the name display mode
+---@ param show_type clicli. Const. BarNameShowType name display mode
+function M:set_name_show_type(show_type)
+    self.handle:api_set_name_bar_type(clicli.const.BarNameShowType[show_type] or show_type)
+end
+
 ---Set the description of the item
 ---@param description string Description
 function M:set_description(description)
