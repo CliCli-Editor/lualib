@@ -8,6 +8,9 @@
   * `y3.game.md5` Computed stringmd5
   * `y3.rsa` RSACorrelation interface
 
+`2024-2-19`
++ append `y3.object.destructible`
+
 `2024-2-18`
 + Add interface：
   * `Unit:set_name_show_type` Set how names are displayed (display unit name or player name）

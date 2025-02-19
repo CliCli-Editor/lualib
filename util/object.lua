@@ -323,6 +323,46 @@ M.projectile = clicli.util.defaultTable(function (key)
     return New 'EditorObject.Projectile' (key)
 end)
 
+
+---@class EditorObject.Destructible: EditorObject.DataModule
+---@field key py.DestructibleKey
+---Destructible object compilation data from which you can read or modify any object compilation (some fields cannot be modified)
+--> Warning: Make sure the data type is correct, otherwise it may cause a crash
+--> Warning: If you create this destructible and then modify the data, the behavior is undefined
+---@field data Object.Destructible
+---Destructible object compilation data from which you can read or modify any object compilation (some fields cannot be modified)
+---Data read using this field is automatically converted to lua type and is automatically converted to python type when written.
+---@field lua_data Object.Destructible
+local Destructible = Class 'EditorObject.Destructible'
+
+Extends('EditorObject.Destructible', 'EditorObject.DataModule')
+---@class EditorObject.Projectile: EditorObject.Event
+Extends('EditorObject.Destructible', 'EditorObject.Event')
+---@class EditorObject.Projectile: KV
+Extends('EditorObject.Destructible', 'KV')
+Destructible.kv_key = 'destructible_key'
+
+---@private
+Destructible.data_key = 'editor_destructible'
+
+Destructible.type = 'destructible'
+
+function Destructible:__init(key)
+    self.key = key
+end
+
+--Create a new destructible from this projectile as a template
+---@return EditorObject.Destructible
+function Destructible:new()
+    local new_key = GameAPI.create_destructible_editor_data(self.key)
+    return M.destructible[new_key]
+end
+
+---@type table<integer, EditorObject.Destructible>
+M.destructible = clicli.util.defaultTable(function (key)
+    return New 'EditorObject.Destructible' (key)
+end)
+
 --abandoned
 do
     ---@package

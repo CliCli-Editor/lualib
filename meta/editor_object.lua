@@ -1040,6 +1040,368 @@
 ---UID of magic effect
 ---@field uid? string
 
+---@class Object.Decoration
+---List of hooks
+---@field attach_models any
+---Material color overlay type
+---@field base_color_mod any
+---Base material discoloration
+---@field base_tint_color any
+---Whether shadow is generated
+---
+---When checked, the ornament will calculate the light effect to form a shadow
+---@field cast_shadow boolean
+---Impact box
+---@field collision_box any
+---hypsogram
+---@field collision_height any
+---Collision lattice
+---@field collision_points any
+---Description
+---@field description string
+---Effect edit button
+---@field effect_button any
+---Get the list of effects
+---@field effect_list any
+---@field enable_camera_collision boolean
+---Occlusion perspective
+---@field enable_occlusion_perspective boolean
+---Fresnel color
+---@field fresnel_color any
+---Fresnel intensity
+---@field fresnel_emissive_color_strength number
+---Fresnel index
+---@field fresnel_exp number
+---55 is not configured
+---@field icon any
+---ID
+---
+---The ID of the ornament
+---@field key number
+---Player custom
+---@field kv any
+---opacity
+---@field material_alpha number
+---Material change
+---@field material_change any
+---Base material discoloration
+---@field material_color any
+---Color change intensity of material
+---@field material_color_intensity number
+---model
+---@field model any
+---Model opacity
+---@field model_opacity number
+---name
+---@field name string
+---Receiving decal
+---
+---Whether to allow applique effects to be displayed above the ornament
+---@field receive_decal boolean
+---Zoom
+---@field scale number
+---Editor suffix
+---@field suffix string
+---UID
+---
+---The UID of the ornament
+---@field uid string
+---Whether to enable base material discoloration
+---@field use_base_tint_color boolean
+---Enable the Fresnel effect
+---@field use_fresnel boolean
+---passable
+---
+---If the ornament is passable after being checked, the unit will be allowed to step on the ornament.
+---@field use_physics boolean
+---Enable the fill light effect
+---@field use_virtual_light boolean
+
+---@class Object.DecorationOptions
+---List of hooks
+---@field attach_models? any
+---Material color overlay type
+---@field base_color_mod? any
+---Base material discoloration
+---@field base_tint_color? any
+---Whether shadow is generated
+---
+---When checked, the ornament will calculate the light effect to form a shadow
+---@field cast_shadow? boolean
+---Impact box
+---@field collision_box? any
+---hypsogram
+---@field collision_height? any
+---Collision lattice
+---@field collision_points? any
+---Description
+---@field description? string
+---Effect edit button
+---@field effect_button? any
+---Get the list of effects
+---@field effect_list? any
+---@field enable_camera_collision? boolean
+---Occlusion perspective
+---@field enable_occlusion_perspective? boolean
+---Fresnel color
+---@field fresnel_color? any
+---Fresnel intensity
+---@field fresnel_emissive_color_strength? number
+---Fresnel index
+---@field fresnel_exp? number
+---55 is not configured
+---@field icon? any
+---ID
+---
+---The ID of the ornament
+---@field key? number
+---Player custom
+---@field kv? any
+---opacity
+---@field material_alpha? number
+---Material change
+---@field material_change? any
+---Base material discoloration
+---@field material_color? any
+---Color change intensity of material
+---@field material_color_intensity? number
+---model
+---@field model? any
+---Model opacity
+---@field model_opacity? number
+---name
+---@field name? string
+---Receiving decal
+---
+---Whether to allow applique effects to be displayed above the ornament
+---@field receive_decal? boolean
+---Zoom
+---@field scale? number
+---Editor suffix
+---@field suffix? string
+---UID
+---
+---The UID of the ornament
+---@field uid? string
+---Whether to enable base material discoloration
+---@field use_base_tint_color? boolean
+---Enable the Fresnel effect
+---@field use_fresnel? boolean
+---passable
+---
+---If the ornament is passable after being checked, the unit will be allowed to step on the ornament.
+---@field use_physics? boolean
+---Enable the fill light effect
+---@field use_virtual_light? boolean
+
+---@class Object.Destructible
+---@field alive_height_box_data string
+---Material color overlay type
+---@field base_color_mod any
+---Base material discoloration
+---@field base_tint_color any
+---Model scaling
+---@field body_size number
+---Default Angle
+---@field collision_box any
+---Default Angle
+---@field collision_points_alive any
+---Default Angle
+---@field collision_points_dead any
+---@field dead_height_box_data string
+---Description
+---@field description string
+---Death destruction delay
+---@field destroy_delay number
+---Destroy at death
+---@field destroy_on_die boolean
+---List of death effects
+---@field die_effect_list any
+---Die when resources run out
+---@field die_on_source_run_out boolean
+---List of persistent effects
+---@field effect_list any
+---Occlusion perspective
+---@field enable_occlusion_perspective boolean
+---Fresnel color
+---@field fresnel_color any
+---Fresnel intensity
+---@field fresnel_emissive_color_strength number
+---Fresnel index
+---@field fresnel_exp number
+---Vitality
+---@field hp_max number
+---icon
+---@field icon any
+---Can be used as a skill goal
+---@field is_ability_target boolean
+---hackable
+---@field is_attacked boolean
+---collectible
+---@field is_collected boolean
+---selectable
+---@field is_selected boolean
+---ID
+---@field key number
+---Player custom
+---@field kv any
+---opacity
+---@field material_alpha number
+---Material change
+---@field material_change any
+---Base material discoloration
+---@field material_color any
+---Color change intensity of material
+---@field material_color_intensity number
+---Small map - color
+---@field mini_map_color any
+---model
+---@field model any
+---Model opacity
+---@field model_opacity number
+---name
+---@field name string
+---accessibility
+---@field passable boolean
+---Receiving decal
+---@field receive_decal boolean
+---Mini map - Show
+---@field show_on_mini_map boolean
+---Sound event list
+---@field sound_event_list any[]
+---Resource name
+---@field source_desc string
+---Item type
+---@field source_item any
+---Initial resource quantity
+---@field source_nums_init number
+---Maximum quantity of resource
+---@field source_nums_max number
+---Player attribute resource
+---@field source_player_prop any
+---Resource recovery quantity
+---@field source_refresh_count number
+---Resource recovery interval
+---@field source_refresh_interval number
+---Resource type
+---@field source_type any
+---Editor suffix
+---@field suffix string
+---Item label
+---@field tags any[]
+---UID
+---@field uid string
+---Whether to enable base material discoloration
+---@field use_base_tint_color boolean
+---Enable the Fresnel effect
+---@field use_fresnel boolean
+---Enable the fill light effect
+---@field use_virtual_light boolean
+
+---@class Object.DestructibleOptions
+---@field alive_height_box_data? string
+---Material color overlay type
+---@field base_color_mod? any
+---Base material discoloration
+---@field base_tint_color? any
+---Model scaling
+---@field body_size? number
+---Default Angle
+---@field collision_box? any
+---Default Angle
+---@field collision_points_alive? any
+---Default Angle
+---@field collision_points_dead? any
+---@field dead_height_box_data? string
+---Description
+---@field description? string
+---Death destruction delay
+---@field destroy_delay? number
+---Destroy at death
+---@field destroy_on_die? boolean
+---List of death effects
+---@field die_effect_list? any
+---Die when resources run out
+---@field die_on_source_run_out? boolean
+---List of persistent effects
+---@field effect_list? any
+---Occlusion perspective
+---@field enable_occlusion_perspective? boolean
+---Fresnel color
+---@field fresnel_color? any
+---Fresnel intensity
+---@field fresnel_emissive_color_strength? number
+---Fresnel index
+---@field fresnel_exp? number
+---Vitality
+---@field hp_max? number
+---icon
+---@field icon? any
+---Can be used as a skill goal
+---@field is_ability_target? boolean
+---hackable
+---@field is_attacked? boolean
+---collectible
+---@field is_collected? boolean
+---selectable
+---@field is_selected? boolean
+---ID
+---@field key? number
+---Player custom
+---@field kv? any
+---opacity
+---@field material_alpha? number
+---Material change
+---@field material_change? any
+---Base material discoloration
+---@field material_color? any
+---Color change intensity of material
+---@field material_color_intensity? number
+---Small map - color
+---@field mini_map_color? any
+---model
+---@field model? any
+---Model opacity
+---@field model_opacity? number
+---name
+---@field name? string
+---accessibility
+---@field passable? boolean
+---Receiving decal
+---@field receive_decal? boolean
+---Mini map - Show
+---@field show_on_mini_map? boolean
+---Sound event list
+---@field sound_event_list? any[]
+---Resource name
+---@field source_desc? string
+---Item type
+---@field source_item? any
+---Initial resource quantity
+---@field source_nums_init? number
+---Maximum quantity of resource
+---@field source_nums_max? number
+---Player attribute resource
+---@field source_player_prop? any
+---Resource recovery quantity
+---@field source_refresh_count? number
+---Resource recovery interval
+---@field source_refresh_interval? number
+---Resource type
+---@field source_type? any
+---Editor suffix
+---@field suffix? string
+---Item label
+---@field tags? any[]
+---UID
+---@field uid? string
+---Whether to enable base material discoloration
+---@field use_base_tint_color? boolean
+---Enable the Fresnel effect
+---@field use_fresnel? boolean
+---Enable the fill light effect
+---@field use_virtual_light? boolean
+
 ---@class Object.Item
 ---Active skill
 ---
