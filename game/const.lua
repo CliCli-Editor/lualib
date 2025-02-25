@@ -1078,4 +1078,33 @@ M.BarNameShowType = {
     ['UnitName'] = 2,
 }
 
+---@enum(key) clicli.Const.PointLightAttribute
+M.PointLightAttribute = {
+    ['xCoordinate'] = 'position_x',
+    ['yCoordinate'] = 'position_y',
+    ['zCoordinates'] = 'position_z',
+    ['Color isR-value'] = 'light_color_r',
+    ['GValueOfColor'] = 'light_color_g',
+    ['ColorBValue'] = 'light_color_b',
+    ['LightSourceRange'] = 'light_range',
+    ['LightSourceIntensity'] = 'light_intensity',
+}
+
+---@enum(key) clicli.Const.DirectionalLightAttribute
+M.DirectionalLightAttribute = {
+    ['xCoordinate'] = 'position_x',
+    ['yCoordinate'] = 'position_y',
+    ['zCoordinates'] = 'position_z',
+    ['Color isR-value'] = 'light_color_r',
+    ['GValueOfColor'] = 'light_color_g',
+    ['ColorBValue'] = 'light_color_b',
+    ['LightSourceRange'] = 'light_range',
+    ['LightSourceIntensity'] = 'light_intensity',
+    ['LightSourceXAxisRotation'] = 'light_direction_x',
+    ['LightSourceYAxisRotation'] = 'light_direction_y',
+    ['LightSourceZ-axisRotation'] = 'light_direction_z',
+    ['LowerLimitOfScatteringAngle'] = 'light_inner_angle',
+    ['UpperScatteringAngle'] = 'light_out_angle',
+}
+
 return M

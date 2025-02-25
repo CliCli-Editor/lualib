@@ -151,17 +151,17 @@ function M:set_shadow_casting_status(value)
 end
 
 --Set the point light properties
----@param light_attr_type string Attribute name
+---@param light_attr_type string | clicli.Const.PointLightAttribute # Attribute name
 ---@param value number Attribute value
-function M:set_point_light_attribute(light_attr_type,value)
-    GameAPI.set_light_float_attr_value(self.handle, light_attr_type, Fix32(value))
+function M:set_point_light_attribute(light_attr_type, value)
+    GameAPI.set_light_float_attr_value(self.handle, clicli.const.PointLightAttribute[light_attr_type] or light_attr_type, Fix32(value))
 end
 
 --Set the directional light source properties
----@param light_attr_type string Attribute name
+---@param light_attr_type string | clicli.Const.DirectionalLightAttribute # Attribute name
 ---@param value number Attribute value
-function M:set_directional_light_attribute(light_attr_type,value)
-    GameAPI.set_light_float_attr_value(self.handle, light_attr_type, Fix32(value))
+function M:set_directional_light_attribute(light_attr_type, value)
+    GameAPI.set_light_float_attr_value(self.handle, clicli.const.DirectionalLightAttribute[light_attr_type] or light_attr_type, Fix32(value))
 end
 
 return M
