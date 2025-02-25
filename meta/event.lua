@@ -2312,7 +2312,7 @@ event.ET_UNIT_HURT_OTHER_BEFORE_APPLY = {
 }
 
 ---@class EventParam.ET_UNIT_HURT_OTHER_FINISH
----@field is_critical_hit number # Critical strike or not
+---@field is_critical_hit boolean # Critical strike or not
 ---@field is_normal_hit boolean # Is it a common attack?
 ---@field damage number # The amount of damage taken
 ---@field source_unit Unit # Units that inflict damage
@@ -2326,9 +2326,9 @@ event.ET_UNIT_HURT_OTHER_BEFORE_APPLY = {
 event.ET_UNIT_HURT_OTHER_FINISH = {
     [1] = {
         name = "__is_critical_hit",
-        type = "py.Fixed",
+        type = "boolean",
         lua_name = "is_critical_hit",
-        lua_type = "number",
+        lua_type = "boolean",
         desc = "Critical strike or not",
         lua_desc = "Critical strike or not",
     },
