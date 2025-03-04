@@ -1750,6 +1750,9 @@ end
 ---@return Point unit_point Indicates the point where the unit resides
 function M:get_point()
     local py_point = self.handle:api_get_position()
+    if not py_point then
+        return clicli.point(0, 0)
+    end
     --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     return clicli.point.get_by_handle(py_point)
