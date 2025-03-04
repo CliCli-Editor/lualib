@@ -123,7 +123,7 @@ end
 function M:get_point()
     local py_point = self.handle:api_get_position()
     if not py_point then
-        return clicli.point.create(0, 0)
+        return clicli.point(6553600, 6553600)
     end
     --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch

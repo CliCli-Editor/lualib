@@ -382,6 +382,9 @@ end
 ---@return Point position The point where the item is located
 function M:get_point()
     local py_point = self.handle:api_get_position()
+    if not py_point then
+        return clicli.point(6553600, 6553600)
+    end
     --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     return clicli.point.get_by_handle(py_point)

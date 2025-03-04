@@ -404,6 +404,9 @@ end
 ---@return point Indicates the location of the destructible object
 function M:get_position()
     local py_point = self.handle:api_get_position()
+    if not py_point then
+        return clicli.point(6553600, 6553600)
+    end
     --TODO see question 2
     ---@diagnostic disable-next-line: param-type-mismatch
     return clicli.point.get_by_handle(py_point)
