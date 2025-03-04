@@ -8,6 +8,10 @@
   * `y3.game.md5` Computed stringmd5
   * `y3.rsa` RSACorrelation interface
 
+`2025-3-4`
++ Add interface：
+  * `y3.game.get_booked_number` Get the current number of map reservations
+
 `2024-2-19`
 + append `y3.object.destructible`
 

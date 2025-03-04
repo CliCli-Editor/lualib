@@ -1039,6 +1039,12 @@ function M.md5(str)
     return GameAPI.api_get_string_md5(str)
 end
 
+---Get the current number of map reservations
+---@return integer
+function M.get_booked_number()
+    return math.tointeger(GlobalAPI.api_get_booked_number()) or 0
+end
+
 _G['OnTick'] = function ()
     if M._client_tick_callback then
         clicli.player.with_local(M._client_tick_callback)
