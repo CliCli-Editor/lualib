@@ -7,6 +7,10 @@
   * `Player:update_save_rank` Update archive leaderboard
   * `y3.game.md5` Computed stringmd5
   * `y3.rsa` RSACorrelation interface
++ Track movement Add the following parameters：
+  * `missing_distance` Target loss distance
+  * `miss_when_target_destroy` Lost target when target destroyed
+  * `on_miss` Call back when the target is lost
 
 `2025-3-4`
 + Add interface：
