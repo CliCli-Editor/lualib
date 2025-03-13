@@ -3488,6 +3488,15 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: EditorObject.Buff, event: "Effect - coming soon ", callback: fun(trg: Trigger, data: EventParam). Effect - Coming soon)): Trigger
 ---@field event fun(self: EditorObject.Buff, event: "effect - override ", callback: fun(trg: Trigger, data: EventParam). Effect - Overlay)): Trigger
 
+---@class EditorObject.Destructible
+---@ field event fun (self: EditorObject Destructible, event: "can be destroyed - create" objects, the callback: fun (TRG: the Trigger, data: EventParam. Destructible - create)): Trigger
+---@ field event fun (self: EditorObject Destructible, event: "can destroy objects - death", the callback: fun (TRG: the Trigger, data: EventParam. Destructible - death)): Trigger
+---@ field event fun (self: EditorObject Destructible, event: "can be destroyed - the resurrection" objects, the callback: fun (TRG: the Trigger, data: EventParam. Destructible - Resurrection)): Trigger
+---@ field event fun (self: EditorObject Destructible, event: "the material resources changes that can be damaged," callback: fun (TRG: the Trigger, data: EventParam. Destructible - Resource change)): Trigger
+---@ field event fun (self: EditorObject Destructible, event: "can destroy objects - acquisition", the callback: fun (TRG: the Trigger, data: EventParam. Destructible - collection)): Trigger
+---@ field event fun (self: EditorObject Destructible, event: "can damage - damage", the callback: fun (TRG: the Trigger, data: EventParam. Destructible - Takes damage)): Trigger
+---@ field event fun (self: EditorObject Destructible, event: "can be destroyed - remove" objects, the callback: fun (TRG: the Trigger, data: EventParam. Destructible - remove)): Trigger
+
 ---@class EditorObject.Item
 ---@field event fun(self: EditorObject.Item, event: "item-get ", callback: fun(trg: Trigger, data: EventParam). Item - Get)): Trigger
 ---@field event fun(self: EditorObject.Item, event: "Item - Enter item ", callback: fun(trg: Trigger, data: EventParam). Item - Enter Item bar)): Trigger
