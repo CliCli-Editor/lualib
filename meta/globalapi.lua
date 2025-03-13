@@ -8,9 +8,6 @@ GlobalAPI = {}
 ---@param actor py.Actor # Actor
 function GlobalAPI.api_clear_tag(actor) end
 
---Empty api
-function GlobalAPI.api_do_nothing() end
-
 --Clear the custom key values
 ---@param actor py.Actor # Actor
 function GlobalAPI.api_clear_kv(actor) end
@@ -145,13 +142,6 @@ function GlobalAPI.int_iterator(num) end
 ---@param step? integer # Step size
 ---@return py.Int32Iterator # Python iterator
 function GlobalAPI.int_iterator2(start, stop, step) end
-
---Integer iterator
----@param start integer # The count starts at start
----@param stop integer # Count until the end of stop
----@param step? integer # Step size
----@return py.Int32Iterator # Python iterator
-function GlobalAPI.int_iterator3(start, stop, step) end
 
 --List index iterator
 ---@param l py.List # list
@@ -605,31 +595,6 @@ function GlobalAPI.clear_group(list1) end
 ---@param index_forward? boolean # Index advance
 function GlobalAPI.remove_list_var_item(dict_var, index, index_forward) end
 
---Array - Deletes an array entry
----@param dict_var py.List # list var
----@param index integer # index
----@param index_forward? boolean # Index advance
-function GlobalAPI.remove_list_var_item_2(dict_var, index, index_forward) end
-
---Array - Whether it has an index
----@param dict_var py.List # list var
----@param key integer # key
----@return boolean # result
-function GlobalAPI.dict_has_key(dict_var, key) end
-
---Array - Whether an element exists
----@param dict_var py.List # list var
----@param key py.DynamicTypeMeta # value
----@return boolean # result
-function GlobalAPI.dict_has_value(dict_var, key) end
-
---Array - Whether an element exists
----@param dict_var py.List # list var
----@param key py.DynamicTypeMeta # value
----@param name string # name
----@return boolean # result
-function GlobalAPI.dict_has_value_special(dict_var, key, name) end
-
 --Assigning the value of the second list to the first list does not change the length of the first list
 ---@param list1 py.List # list
 ---@param list2 py.List # list
@@ -712,9 +677,6 @@ function GlobalAPI.pos_in_str(str1, sub_str) end
 ---@param integer integer # integer
 ---@return py.ProjectileKey # Projectile type
 function GlobalAPI.api_int_to_key(integer) end
-
---Stop control of lua gc
-function GlobalAPI.api_stop_luagc_control() end
 
 --Converts the projectile type to an integer
 ---@param key py.ProjectileKey # Projectile type
@@ -805,11 +767,6 @@ function GlobalAPI.item_group_to_str(obj) end
 ---@param obj_id py.Mover # Kinetoscope
 ---@return string # Character string
 function GlobalAPI.mover_entity_to_str(obj_id) end
-
---Level to string
----@param obj py.Map # checkpoint
----@return string # Character string
-function GlobalAPI.map_to_str(obj) end
 
 --Player to string
 ---@param obj py.Role # Player
@@ -1042,9 +999,15 @@ function GlobalAPI.get_iter_random_pool_archive_key(v) end
 ---@return integer # int
 function GlobalAPI.get_iter_random_pool_archive_increment(v) end
 
---lua also has an empty python table
----@return py.Dict # Dict
-function GlobalAPI.lua_get_python_empty_dict() end
+--Empty api
+function GlobalAPI.api_do_nothing() end
+
+--Integer iterator
+---@param start integer # The count starts at start
+---@param stop integer # Count until the end of stop
+---@param step? integer # Step size
+---@return py.Int32Iterator # Python iterator
+function GlobalAPI.int_iterator3(start, stop, step) end
 
 --Convert integers to strings
 ---@param i integer # integer
@@ -1063,6 +1026,39 @@ function GlobalAPI.int_to_model_key(key) end
 ---@param rule? integer # Retention rule
 function GlobalAPI.float_to_str_new(f, num, rule) end
 
+--Array - Deletes an array entry
+---@param dict_var py.List # list var
+---@param index integer # index
+---@param index_forward? boolean # Index advance
+function GlobalAPI.remove_list_var_item_2(dict_var, index, index_forward) end
+
+--Array - Whether it has an index
+---@param dict_var py.List # list var
+---@param key integer # key
+---@return boolean # result
+function GlobalAPI.dict_has_key(dict_var, key) end
+
+--Array - Whether an element exists
+---@param dict_var py.List # list var
+---@param key py.DynamicTypeMeta # value
+---@return boolean # result
+function GlobalAPI.dict_has_value(dict_var, key) end
+
+--Array - Whether an element exists
+---@param dict_var py.List # list var
+---@param key py.DynamicTypeMeta # value
+---@param name string # name
+---@return boolean # result
+function GlobalAPI.dict_has_value_special(dict_var, key, name) end
+
+--Stop control of lua gc
+function GlobalAPI.api_stop_luagc_control() end
+
+--Level to string
+---@param obj py.Map # checkpoint
+---@return string # Character string
+function GlobalAPI.map_to_str(obj) end
+
 --Get player offline save
 ---@param v string # str
 ---@return string # str
@@ -1072,6 +1068,10 @@ function GlobalAPI.get_role_open_archive(v) end
 ---@param v integer # int
 ---@return integer # int
 function GlobalAPI.get_random_number_err_code(v) end
+
+--lua also has an empty python table
+---@return py.Dict # Dict
+function GlobalAPI.lua_get_python_empty_dict() end
 
 --The timestamp is converted to a date
 ---@param v integer # int

@@ -121,42 +121,6 @@ function GameAPI.add_ui_btn_status_kv(kvbase, key, item) end
 ---@param item? integer # value
 function GameAPI.add_ui_scrollview_type_kv(kvbase, key, item) end
 
---Add UI_GRIDVIEW_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? integer # value
-function GameAPI.add_ui_gridview_type_kv(kvbase, key, item) end
-
---Add UI_GRIDVIEW_BAR_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? integer # value
-function GameAPI.add_ui_gridview_bar_type_kv(kvbase, key, item) end
-
---Add a UI_EQUIP_SLOT_USE_TYPE key and value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? integer # value
-function GameAPI.add_ui_equip_slot_use_type_kv(kvbase, key, item) end
-
---Add a UI_EQUIP_SLOT_DRAG_TYPE key value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? integer # value
-function GameAPI.add_ui_equip_slot_drag_type_kv(kvbase, key, item) end
-
---Add UI_LAYOUT_CLIPPING_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? integer # value
-function GameAPI.add_ui_layout_clipping_type_kv(kvbase, key, item) end
-
---Add UI_TEXT_OVER_LENGTH_HANDLING_TYPE key and value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? integer # value
-function GameAPI.add_ui_text_over_length_handling_type_kv(kvbase, key, item) end
-
 --Add UI_ANIM key-value pairs
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key-value name
@@ -168,12 +132,6 @@ function GameAPI.add_ui_anim_kv(kvbase, key, item) end
 ---@param key string # Key-value name
 ---@param item? integer # value
 function GameAPI.add_ui_anim_curve_kv(kvbase, key, item) end
-
---Add UI_ANIM_PLAY_MODE key-value pairs
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? integer # value
-function GameAPI.add_ui_anim_play_mode_kv(kvbase, key, item) end
 
 --Add an AUDIO_CHANNEL key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -241,12 +199,6 @@ function GameAPI.add_image_quality_kv(kvbase, key, item) end
 ---@param item? string # value
 function GameAPI.add_window_type_setting_kv(kvbase, key, item) end
 
---Add DAMAGE_ATTACK_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? integer # value
-function GameAPI.add_damage_attack_type_kv(kvbase, key, item) end
-
 --Add an ITEM_ENTITY key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key-value name
@@ -264,12 +216,6 @@ function GameAPI.add_item_group_kv(kvbase, key, item) end
 ---@param key string # Key-value name
 ---@param item? py.ItemKey # value
 function GameAPI.add_item_name_kv(kvbase, key, item) end
-
---Add the ITEM_STACK_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? py.ItemStackType # value
-function GameAPI.add_item_stack_type_kv(kvbase, key, item) end
 
 --Add ABILITY key-value pairs
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -499,12 +445,6 @@ function GameAPI.add_scene_sound_kv(kvbase, key, item) end
 ---@param item? py.ModelKey # value
 function GameAPI.add_model_kv(kvbase, key, item) end
 
---Add LIVE2D key-value pairs
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? py.Live2dKey # value
-function GameAPI.add_live2d_kv(kvbase, key, item) end
-
 --The SFX_ENTITY key pair was added
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key-value name
@@ -552,12 +492,6 @@ function GameAPI.add_texture_kv(kvbase, key, item) end
 ---@param key string # Key-value name
 ---@param item? py.Sequence # value
 function GameAPI.add_sequence_kv(kvbase, key, item) end
-
---Add a SPINE key pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? py.Spine # value
-function GameAPI.add_spine_kv(kvbase, key, item) end
 
 --Add PHYSICS_OBJECT as a key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -709,12 +643,6 @@ function GameAPI.add_mouse_key_kv(kvbase, key, item) end
 ---@param item? py.MouseWheel # value
 function GameAPI.add_mouse_wheel_kv(kvbase, key, item) end
 
---Add a MAP key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? py.Map # value
-function GameAPI.add_map_kv(kvbase, key, item) end
-
 --Add a POST_EFFECT key pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key-value name
@@ -732,12 +660,6 @@ function GameAPI.add_unit_type_kv(kvbase, key, item) end
 ---@param key string # Key-value name
 ---@param item? py.UnitCommandType # value
 function GameAPI.add_unit_command_type_kv(kvbase, key, item) end
-
---Add a UNIT_GROUP_COMMAND_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? py.UnitGroupCommandType # value
-function GameAPI.add_unit_group_command_type_kv(kvbase, key, item) end
 
 --Add MINI_MAP_COLOR_TYPE key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -762,24 +684,6 @@ function GameAPI.add_curved_path_kv(kvbase, key, item) end
 ---@param key string # Key-value name
 ---@param item? py.CurvedPath3D # value
 function GameAPI.add_curved_path_3d_kv(kvbase, key, item) end
-
---Add RESCUE_SEEKER_TYPE key and value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? py.ERescueSeekerType # value
-function GameAPI.add_rescue_seeker_type_kv(kvbase, key, item) end
-
---Add RESCUER_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? py.ERescuerType # value
-function GameAPI.add_rescuer_type_kv(kvbase, key, item) end
-
---Add STORE_ITEM_TYPE key-value pairs
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key-value name
----@param item? py.StoreItemType # value
-function GameAPI.add_store_item_type_kv(kvbase, key, item) end
 
 --Determine whether key-value pairs exist (type ignored)
 ---@param kvbase py.KVBase # Key-value pair container
@@ -1178,150 +1082,6 @@ function GameAPI.has_item_key_ui_scrollview_type_kv(prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_ui_scrollview_type_kv(prefab_key, key) end
 
---Determines whether UI_GRIDVIEW_TYPE key-value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_ui_gridview_type(kvbase, key) end
-
---Determines whether there is a UI_GRIDVIEW_TYPE key-value pair for the unit number
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_ui_gridview_type_kv(prefab_key, key) end
-
---Determines whether there is a UI_GRIDVIEW_TYPE key-value pair in the item number
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_ui_gridview_type_kv(prefab_key, key) end
-
---Determines whether the skill number has a UI_GRIDVIEW_TYPE key-value pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_ui_gridview_type_kv(prefab_key, key) end
-
---Determines whether UI_GRIDVIEW_BAR_TYPE key-value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_ui_gridview_bar_type(kvbase, key) end
-
---Determines whether there is a UI_GRIDVIEW_BAR_TYPE key-value pair in the unit number
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_ui_gridview_bar_type_kv(prefab_key, key) end
-
---Determines whether there is a UI_GRIDVIEW_BAR_TYPE key-value pair in the item number
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_ui_gridview_bar_type_kv(prefab_key, key) end
-
---Determines whether the skill number has a UI_GRIDVIEW_BAR_TYPE key-value pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_ui_gridview_bar_type_kv(prefab_key, key) end
-
---Check whether a UI_EQUIP_SLOT_USE_TYPE key and value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_ui_equip_slot_use_type(kvbase, key) end
-
---Check whether the unit number exists a UI_EQUIP_SLOT_USE_TYPE key and value pair
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_ui_equip_slot_use_type_kv(prefab_key, key) end
-
---Determine whether the item number has a UI_EQUIP_SLOT_USE_TYPE key and value pair
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_ui_equip_slot_use_type_kv(prefab_key, key) end
-
---Check whether the skill number has a UI_EQUIP_SLOT_USE_TYPE key and value pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_ui_equip_slot_use_type_kv(prefab_key, key) end
-
---Determine whether a UI_EQUIP_SLOT_DRAG_TYPE key value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_ui_equip_slot_drag_type(kvbase, key) end
-
---Check whether the unit number has a UI_EQUIP_SLOT_DRAG_TYPE key value pair
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_ui_equip_slot_drag_type_kv(prefab_key, key) end
-
---Determine whether the item number has a UI_EQUIP_SLOT_DRAG_TYPE key value pair
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_ui_equip_slot_drag_type_kv(prefab_key, key) end
-
---Check whether the skill number has a UI_EQUIP_SLOT_DRAG_TYPE key value pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_ui_equip_slot_drag_type_kv(prefab_key, key) end
-
---Determines whether UI_LAYOUT_CLIPPING_TYPE key-value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_ui_layout_clipping_type(kvbase, key) end
-
---Determine whether UI_LAYOUT_CLIPPING_TYPE key-value pair exists in the unit number
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_ui_layout_clipping_type_kv(prefab_key, key) end
-
---Determine whether there is a UI_LAYOUT_CLIPPING_TYPE key-value pair in the item number
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_ui_layout_clipping_type_kv(prefab_key, key) end
-
---Determines whether the skill number has a UI_LAYOUT_CLIPPING_TYPE key-value pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_ui_layout_clipping_type_kv(prefab_key, key) end
-
---Check whether a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_ui_text_over_length_handling_type(kvbase, key) end
-
---Check whether there is a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair in the unit number
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_ui_text_over_length_handling_type_kv(prefab_key, key) end
-
---Check whether there is a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair in the item number
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_ui_text_over_length_handling_type_kv(prefab_key, key) end
-
---Check whether a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair exists in the skill number
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_ui_text_over_length_handling_type_kv(prefab_key, key) end
-
 --Determines whether UI_ANIM key-value pairs exist
 ---@param kvbase py.KVBase # Key-value pair container
 ---@param key string # Key name
@@ -1369,30 +1129,6 @@ function GameAPI.has_item_key_ui_anim_curve_kv(prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_ui_anim_curve_kv(prefab_key, key) end
-
---Determines whether a UI_ANIM_PLAY_MODE key-value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_ui_anim_play_mode(kvbase, key) end
-
---Determine whether the unit number has a UI_ANIM_PLAY_MODE key-value pair
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_ui_anim_play_mode_kv(prefab_key, key) end
-
---Determine if the item number has a UI_ANIM_PLAY_MODE key-value pair
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_ui_anim_play_mode_kv(prefab_key, key) end
-
---Determine if the skill number has a UI_ANIM_PLAY_MODE key-value pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_ui_anim_play_mode_kv(prefab_key, key) end
 
 --Check whether the AUDIO_CHANNEL key pair exists
 ---@param kvbase py.KVBase # Key-value pair container
@@ -1658,30 +1394,6 @@ function GameAPI.has_item_key_window_type_setting_kv(prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_window_type_setting_kv(prefab_key, key) end
 
---Check whether the DAMAGE_ATTACK_TYPE key-value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_damage_attack_type(kvbase, key) end
-
---Check whether the DAMAGE_ATTACK_TYPE key-value pair exists in the unit number
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_damage_attack_type_kv(prefab_key, key) end
-
---Check whether the DAMAGE_ATTACK_TYPE key-value pair exists in the item number
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_damage_attack_type_kv(prefab_key, key) end
-
---Check whether the DAMAGE_ATTACK_TYPE key-value pair exists in the skill number
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_damage_attack_type_kv(prefab_key, key) end
-
 --Check whether an ITEM_ENTITY key-value pair exists
 ---@param kvbase py.KVBase # Key-value pair container
 ---@param key string # Key name
@@ -1753,30 +1465,6 @@ function GameAPI.has_item_key_item_name_kv(prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_item_name_kv(prefab_key, key) end
-
---Determines whether an ITEM_STACK_TYPE key-value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_item_stack_type(kvbase, key) end
-
---Determines whether the ITEM_STACK_TYPE key-value pair exists in the unit number
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_item_stack_type_kv(prefab_key, key) end
-
---Determines whether an ITEM_STACK_TYPE key-value pair exists in the item number
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_item_stack_type_kv(prefab_key, key) end
-
---Determines whether the skill number has an ITEM_STACK_TYPE key-value pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_item_stack_type_kv(prefab_key, key) end
 
 --Check whether the ABILITY key pair exists
 ---@param kvbase py.KVBase # Key-value pair container
@@ -2690,30 +2378,6 @@ function GameAPI.has_item_key_model_kv(prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_model_kv(prefab_key, key) end
 
---Check whether LIVE2D key pairs exist
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_live2d(kvbase, key) end
-
---Check whether the unit number has LIVE2D key pairs
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_live2d_kv(prefab_key, key) end
-
---Determine whether the item number has LIVE2D key-value pairs
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_live2d_kv(prefab_key, key) end
-
---Check whether the skill number has LIVE2D key-value pairs
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_live2d_kv(prefab_key, key) end
-
 --Check whether an SFX_ENTITY key pair exists
 ---@param kvbase py.KVBase # Key-value pair container
 ---@param key string # Key name
@@ -2905,30 +2569,6 @@ function GameAPI.has_item_key_sequence_kv(prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_sequence_kv(prefab_key, key) end
-
---Check whether the SPINE key pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_spine(kvbase, key) end
-
---Check whether the unit number has a SPINE key pair
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_spine_kv(prefab_key, key) end
-
---Determine whether the item number has a SPINE key pair
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_spine_kv(prefab_key, key) end
-
---Check whether the skill number has a SPINE key pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_spine_kv(prefab_key, key) end
 
 --Check whether a PHYSICS_OBJECT key pair exists
 ---@param kvbase py.KVBase # Key-value pair container
@@ -3530,30 +3170,6 @@ function GameAPI.has_item_key_mouse_wheel_kv(prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_mouse_wheel_kv(prefab_key, key) end
 
---Check whether MAP key pairs exist
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_map(kvbase, key) end
-
---Check whether MAP key pairs exist in the unit number
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_map_kv(prefab_key, key) end
-
---Determine whether the item number has MAP key-value pairs
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_map_kv(prefab_key, key) end
-
---Check whether the skill number has MAP key pairs
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_map_kv(prefab_key, key) end
-
 --Check whether the POST_EFFECT key pair exists
 ---@param kvbase py.KVBase # Key-value pair container
 ---@param key string # Key name
@@ -3625,30 +3241,6 @@ function GameAPI.has_item_key_unit_command_type_kv(prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_unit_command_type_kv(prefab_key, key) end
-
---Check whether the UNIT_GROUP_COMMAND_TYPE key pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_unit_group_command_type(kvbase, key) end
-
---Check whether the UNIT_GROUP_COMMAND_TYPE key pair exists
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_unit_group_command_type_kv(prefab_key, key) end
-
---Check whether the item number has a UNIT_GROUP_COMMAND_TYPE key pair
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_unit_group_command_type_kv(prefab_key, key) end
-
---Check whether the UNIT_GROUP_COMMAND_TYPE key pair exists in the skill number
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_unit_group_command_type_kv(prefab_key, key) end
 
 --Check whether a MINI_MAP_COLOR_TYPE key-value pair exists
 ---@param kvbase py.KVBase # Key-value pair container
@@ -3746,78 +3338,6 @@ function GameAPI.has_item_key_curved_path_3d_kv(prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_curved_path_3d_kv(prefab_key, key) end
 
---Check whether the RESCUE_SEEKER_TYPE key pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_rescue_seeker_type(kvbase, key) end
-
---Check whether the RESCUE_SEEKER_TYPE key pair exists in the unit number
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_rescue_seeker_type_kv(prefab_key, key) end
-
---Check whether the item number exists in RESCUE_SEEKER_TYPE key-value pair
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_rescue_seeker_type_kv(prefab_key, key) end
-
---Check whether the skill number has a RESCUE_SEEKER_TYPE key pair
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_rescue_seeker_type_kv(prefab_key, key) end
-
---Check whether RESCUER_TYPE key-value pair exists
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_rescuer_type(kvbase, key) end
-
---Check whether the unit number has a RESCUER_TYPE key-value pair
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_rescuer_type_kv(prefab_key, key) end
-
---Check whether the item number has a RESCUER_TYPE key-value pair
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_rescuer_type_kv(prefab_key, key) end
-
---Check whether a RESCUER_TYPE key pair exists in the skill number
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_rescuer_type_kv(prefab_key, key) end
-
---Check whether STORE_ITEM_TYPE key-value pairs exist
----@param kvbase py.KVBase # Key-value pair container
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_kv_pair_store_item_type(kvbase, key) end
-
---Check whether the unit number has STORE_ITEM_TYPE key-value pairs
----@param prefab_key py.UnitKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_unit_key_store_item_type_kv(prefab_key, key) end
-
---Determines whether the item number has a STORE_ITEM_TYPE key-value pair
----@param prefab_key py.ItemKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_item_key_store_item_type_kv(prefab_key, key) end
-
---Check whether the skill number has STORE_ITEM_TYPE key-value pairs
----@param prefab_key py.AbilityKey # Default number
----@param key string # Key name
----@return boolean # Existence or not
-function GameAPI.has_ability_key_store_item_type_kv(prefab_key, key) end
-
 --Gets a BOOLEAN key pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key name
@@ -3914,42 +3434,6 @@ function GameAPI.get_kv_pair_value_ui_btn_status(kvbase, key) end
 ---@return integer # Key value
 function GameAPI.get_kv_pair_value_ui_scrollview_type(kvbase, key) end
 
---Gets a UI_GRIDVIEW_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_gridview_type(kvbase, key) end
-
---Gets a UI_GRIDVIEW_BAR_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_gridview_bar_type(kvbase, key) end
-
---Get a UI_EQUIP_SLOT_USE_TYPE key and value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_equip_slot_use_type(kvbase, key) end
-
---Get a UI_EQUIP_SLOT_DRAG_TYPE key value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_equip_slot_drag_type(kvbase, key) end
-
---Gets a UI_LAYOUT_CLIPPING_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_layout_clipping_type(kvbase, key) end
-
---Get a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_text_over_length_handling_type(kvbase, key) end
-
 --Gets a UI_ANIM key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key name
@@ -3961,12 +3445,6 @@ function GameAPI.get_kv_pair_value_ui_anim(kvbase, key) end
 ---@param key string # Key name
 ---@return integer # Key value
 function GameAPI.get_kv_pair_value_ui_anim_curve(kvbase, key) end
-
---Gets a UI_ANIM_PLAY_MODE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_anim_play_mode(kvbase, key) end
 
 --Get the AUDIO_CHANNEL key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -4034,12 +3512,6 @@ function GameAPI.get_kv_pair_value_image_quality(kvbase, key) end
 ---@return string # Key value
 function GameAPI.get_kv_pair_value_window_type_setting(kvbase, key) end
 
---Gets the DAMAGE_ATTACK_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_damage_attack_type(kvbase, key) end
-
 --Gets an ITEM_ENTITY key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key name
@@ -4057,12 +3529,6 @@ function GameAPI.get_kv_pair_value_item_group(kvbase, key) end
 ---@param key string # Key name
 ---@return py.ItemKey # Key value
 function GameAPI.get_kv_pair_value_item_name(kvbase, key) end
-
---Gets the ITEM_STACK_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_kv_pair_value_item_stack_type(kvbase, key) end
 
 --Gets the ABILITY key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -4292,12 +3758,6 @@ function GameAPI.get_kv_pair_value_scene_sound(kvbase, key) end
 ---@return py.ModelKey # Key value
 function GameAPI.get_kv_pair_value_model(kvbase, key) end
 
---Get LIVE2D key-value pairs
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_kv_pair_value_live2d(kvbase, key) end
-
 --Obtain the SFX_ENTITY key pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key name
@@ -4345,12 +3805,6 @@ function GameAPI.get_kv_pair_value_texture(kvbase, key) end
 ---@param key string # Key name
 ---@return py.Sequence # Key value
 function GameAPI.get_kv_pair_value_sequence(kvbase, key) end
-
---Gets the SPINE key pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_kv_pair_value_spine(kvbase, key) end
 
 --Obtain the key pair of PHYSICS_OBJECT
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -4502,12 +3956,6 @@ function GameAPI.get_kv_pair_value_mouse_key(kvbase, key) end
 ---@return py.MouseWheel # Key value
 function GameAPI.get_kv_pair_value_mouse_wheel(kvbase, key) end
 
---Get MAP key-value pairs
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_kv_pair_value_map(kvbase, key) end
-
 --Gets the POST_EFFECT key pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key name
@@ -4525,12 +3973,6 @@ function GameAPI.get_kv_pair_value_unit_type(kvbase, key) end
 ---@param key string # Key name
 ---@return py.UnitCommandType # Key value
 function GameAPI.get_kv_pair_value_unit_command_type(kvbase, key) end
-
---Gets the UNIT_GROUP_COMMAND_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.UnitGroupCommandType # Key value
-function GameAPI.get_kv_pair_value_unit_group_command_type(kvbase, key) end
 
 --Gets the MINI_MAP_COLOR_TYPE key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -4555,24 +3997,6 @@ function GameAPI.get_kv_pair_value_curved_path(kvbase, key) end
 ---@param key string # Key name
 ---@return py.CurvedPath3D # Key value
 function GameAPI.get_kv_pair_value_curved_path_3d(kvbase, key) end
-
---Obtain the RESCUE_SEEKER_TYPE key and value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.ERescueSeekerType # Key value
-function GameAPI.get_kv_pair_value_rescue_seeker_type(kvbase, key) end
-
---Obtain RESCUER_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.ERescuerType # Key value
-function GameAPI.get_kv_pair_value_rescuer_type(kvbase, key) end
-
---Gets STORE_ITEM_TYPE key-value pairs
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.StoreItemType # Key value
-function GameAPI.get_kv_pair_value_store_item_type(kvbase, key) end
 
 --Gets a global trigger non-array variable (specified type)
 ---@param var_type string # Variable type
@@ -5112,216 +4536,6 @@ function GameAPI.get_trigger_list_variable_all_ui_scrollview_type(key) end
 ---@return py.List # Array type variable value
 function GameAPI.get_trigger_list_actor_variable_all_ui_scrollview_type(actor, key) end
 
---Gets the global trigger UI_GRIDVIEW_TYPE non-array variable
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_variable_ui_gridview_type(key) end
-
---Gets trigger UI_GRIDVIEW_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_actor_variable_ui_gridview_type(actor, key) end
-
---Gets the global trigger UI_GRIDVIEW_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_variable_ui_gridview_type(key, index) end
-
---Gets trigger UI_GRIDVIEW_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_actor_variable_ui_gridview_type(actor, key, index) end
-
---Gets the global trigger UI_GRIDVIEW_TYPE array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_ui_gridview_type(key) end
-
---Gets the trigger UI_GRIDVIEW_TYPE group variable array
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_ui_gridview_type(actor, key) end
-
---Gets the global trigger UI_GRIDVIEW_BAR_TYPE non-array variable
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_variable_ui_gridview_bar_type(key) end
-
---Gets trigger UI_GRIDVIEW_BAR_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_actor_variable_ui_gridview_bar_type(actor, key) end
-
---Gets a global trigger UI_GRIDVIEW_BAR_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_variable_ui_gridview_bar_type(key, index) end
-
---Gets the trigger UI_GRIDVIEW_BAR_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_actor_variable_ui_gridview_bar_type(actor, key, index) end
-
---Gets the global trigger UI_GRIDVIEW_BAR_TYPE array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_ui_gridview_bar_type(key) end
-
---Gets the trigger UI_GRIDVIEW_BAR_TYPE group variable array
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_ui_gridview_bar_type(actor, key) end
-
---Gets the global trigger UI_EQUIP_SLOT_USE_TYPE non-array variable
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_variable_ui_equip_slot_use_type(key) end
-
---Gets the trigger UI_EQUIP_SLOT_USE_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_actor_variable_ui_equip_slot_use_type(actor, key) end
-
---Gets the global trigger UI_EQUIP_SLOT_USE_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_variable_ui_equip_slot_use_type(key, index) end
-
---Gets the trigger UI_EQUIP_SLOT_USE_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_actor_variable_ui_equip_slot_use_type(actor, key, index) end
-
---Gets the global trigger UI_EQUIP_SLOT_USE_TYPE array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_ui_equip_slot_use_type(key) end
-
---Gets the trigger UI_EQUIP_SLOT_USE_TYPE group variable array
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_ui_equip_slot_use_type(actor, key) end
-
---Gets the global trigger UI_EQUIP_SLOT_DRAG_TYPE non-array variable
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_variable_ui_equip_slot_drag_type(key) end
-
---Gets the trigger UI_EQUIP_SLOT_DRAG_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_actor_variable_ui_equip_slot_drag_type(actor, key) end
-
---Gets the global trigger UI_EQUIP_SLOT_DRAG_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_variable_ui_equip_slot_drag_type(key, index) end
-
---Gets the trigger UI_EQUIP_SLOT_DRAG_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_actor_variable_ui_equip_slot_drag_type(actor, key, index) end
-
---Gets the global trigger UI_EQUIP_SLOT_DRAG_TYPE array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_ui_equip_slot_drag_type(key) end
-
---Gets the trigger UI_EQUIP_SLOT_DRAG_TYPE group variable array
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_ui_equip_slot_drag_type(actor, key) end
-
---Gets the global trigger UI_LAYOUT_CLIPPING_TYPE non-array variable
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_variable_ui_layout_clipping_type(key) end
-
---Gets trigger UI_LAYOUT_CLIPPING_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_actor_variable_ui_layout_clipping_type(actor, key) end
-
---Gets the UI_LAYOUT_CLIPPING_TYPE array variable subentry of the global trigger
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_variable_ui_layout_clipping_type(key, index) end
-
---Gets trigger UI_LAYOUT_CLIPPING_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_actor_variable_ui_layout_clipping_type(actor, key, index) end
-
---Gets the global trigger UI_LAYOUT_CLIPPING_TYPE array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_ui_layout_clipping_type(key) end
-
---Gets the trigger UI_LAYOUT_CLIPPING_TYPE group variable array
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_ui_layout_clipping_type(actor, key) end
-
---Gets the global trigger UI_TEXT_OVER_LENGTH_HANDLING_TYPE non-array variable
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_variable_ui_text_over_length_handling_type(key) end
-
---Gets the trigger UI_TEXT_OVER_LENGTH_HANDLING_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_actor_variable_ui_text_over_length_handling_type(actor, key) end
-
---Gets the UI_TEXT_OVER_LENGTH_HANDLING_TYPE array variable subentry of the global trigger
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_variable_ui_text_over_length_handling_type(key, index) end
-
---Gets the trigger UI_TEXT_OVER_LENGTH_HANDLING_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_actor_variable_ui_text_over_length_handling_type(actor, key, index) end
-
---Gets the UI_TEXT_OVER_LENGTH_HANDLING_TYPE array variable of the global trigger
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_ui_text_over_length_handling_type(key) end
-
---Gets the trigger UI_TEXT_OVER_LENGTH_HANDLING_TYPE group variable array
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_ui_text_over_length_handling_type(actor, key) end
-
 --Gets the global trigger UI_ANIM non-array variable
 ---@param key string # Variable name
 ---@return py.UIAnimKey # value
@@ -5391,41 +4605,6 @@ function GameAPI.get_trigger_list_variable_all_ui_anim_curve(key) end
 ---@param key string # Variable name
 ---@return py.List # Array type variable value
 function GameAPI.get_trigger_list_actor_variable_all_ui_anim_curve(actor, key) end
-
---Gets the global trigger UI_ANIM_PLAY_MODE non-array variable
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_variable_ui_anim_play_mode(key) end
-
---Gets the trigger UI_ANIM_PLAY_MODE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return integer # value
-function GameAPI.get_trigger_actor_variable_ui_anim_play_mode(actor, key) end
-
---Gets the global trigger UI_ANIM_PLAY_MODE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_variable_ui_anim_play_mode(key, index) end
-
---Gets the trigger UI_ANIM_PLAY_MODE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return integer # value
-function GameAPI.get_trigger_list_actor_variable_ui_anim_play_mode(actor, key, index) end
-
---Gets the global trigger UI_ANIM_PLAY_MODE array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_ui_anim_play_mode(key) end
-
---Gets the trigger UI_ANIM_PLAY_MODE group variable array
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_ui_anim_play_mode(actor, key) end
 
 --Gets the global trigger AUDIO_CHANNEL non-array variable
 ---@param key string # Variable name
@@ -5527,12 +4706,54 @@ function GameAPI.add_ability_xxx_kv(kvbase, key, value, etype, prefab_conf_key) 
 ---@param prefab_conf_key string # Attribute name
 function GameAPI.add_modifier_xxx_kv(kvbase, key, value, etype, prefab_conf_key) end
 
+--The default library adds UI_GRIDVIEW_TYPE key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_gridview_type_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds UI_GRIDVIEW_BAR_TYPE key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_gridview_bar_type_kv(prefab_conf_key, item_key, key, value) end
+
 --The default library adds a UI_EFFECT_CAMERA_MODE key pair
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
 ---@param key string # Key-value name
 ---@param value integer # value
 function GameAPI.set_prefab_key_ui_effect_camera_mode_kv(prefab_conf_key, item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_USE_TYPE key and value pair to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_equip_slot_use_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_DRAG_TYPE key and value pair to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_equip_slot_drag_type_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_layout_clipping_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Add UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pairs to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_text_over_length_handling_type_kv(prefab_conf_key, item_key, key, value) end
 
 --The default library adds UI_POS_ADAPT_MODE key-value pairs
 ---@param prefab_conf_key integer # prefab Library ID
@@ -5555,6 +4776,13 @@ function GameAPI.set_prefab_key_ui_chat_send_channel_kv(prefab_conf_key, item_ke
 ---@param value integer # value
 function GameAPI.set_prefab_key_ui_chat_recv_channel_kv(prefab_conf_key, item_key, key, value) end
 
+--The default library adds UI_ANIM_PLAY_MODE key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_anim_play_mode_kv(prefab_conf_key, item_key, key, value) end
+
 --The default library adds a UI_TEXT_FONT_NAME key-value pair
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
@@ -5576,12 +4804,26 @@ function GameAPI.set_prefab_key_ui_eca_anim_type_kv(prefab_conf_key, item_key, k
 ---@param value py.LocalUnitGroup # value
 function GameAPI.set_prefab_key_local_unit_group_kv(prefab_conf_key, item_key, key, value) end
 
+--Add DAMAGE_ATTACK_TYPE key-value pair to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_damage_attack_type_kv(prefab_conf_key, item_key, key, value) end
+
 --Add DAMAGE_ARMOR_TYPE key-value pairs to the default library
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
 ---@param key string # Key-value name
 ---@param value integer # value
 function GameAPI.set_prefab_key_damage_armor_type_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds an ITEM_STACK_TYPE key-value pair
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.ItemStackType # value
+function GameAPI.set_prefab_key_item_stack_type_kv(prefab_conf_key, item_key, key, value) end
 
 --The default library adds the ABILITY_RELEASE_ID key-value pair
 ---@param prefab_conf_key integer # prefab Library ID
@@ -5611,6 +4853,20 @@ function GameAPI.set_prefab_key_ui_point_kv(prefab_conf_key, item_key, key, valu
 ---@param value py.AttachModelEntity # value
 function GameAPI.set_prefab_key_attach_model_entity_kv(prefab_conf_key, item_key, key, value) end
 
+--Default libraries add LIVE2D key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.Live2dKey # value
+function GameAPI.set_prefab_key_live2d_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds a SPINE key-value pair
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.Spine # value
+function GameAPI.set_prefab_key_spine_kv(prefab_conf_key, item_key, key, value) end
+
 --The default library adds a FORCE_ENTITY key-value pair
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
@@ -5632,6 +4888,41 @@ function GameAPI.set_prefab_key_goods_key_kv(prefab_conf_key, item_key, key, val
 ---@param value py.MouseKeyWithoutMiddle # value
 function GameAPI.set_prefab_key_mouse_key_without_middle_kv(prefab_conf_key, item_key, key, value) end
 
+--The default library adds MAP key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.Map # value
+function GameAPI.set_prefab_key_map_kv(prefab_conf_key, item_key, key, value) end
+
+--Adds a UNIT_GROUP_COMMAND_TYPE key-value pair to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.UnitGroupCommandType # value
+function GameAPI.set_prefab_key_unit_group_command_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Add RESCUE_SEEKER_TYPE key-value pair to the preset library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.ERescueSeekerType # value
+function GameAPI.set_prefab_key_rescue_seeker_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Add RESCUER_TYPE key-value pair to preset library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.ERescuerType # value
+function GameAPI.set_prefab_key_rescuer_type_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds STORE_ITEM_TYPE key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.StoreItemType # value
+function GameAPI.set_prefab_key_store_item_type_kv(prefab_conf_key, item_key, key, value) end
+
 --Default libraries add SITE_STATE key-value pairs
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
@@ -5646,11 +4937,47 @@ function GameAPI.set_prefab_key_site_state_kv(prefab_conf_key, item_key, key, va
 ---@param value py.COIN_CURRENCY # value
 function GameAPI.set_prefab_key_coin_currency_kv(prefab_conf_key, item_key, key, value) end
 
+--Add UI_GRIDVIEW_TYPE key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? integer # value
+function GameAPI.add_ui_gridview_type_kv(kvbase, key, item) end
+
+--Add UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? integer # value
+function GameAPI.add_ui_gridview_bar_type_kv(kvbase, key, item) end
+
 --Add a UI_EFFECT_CAMERA_MODE key pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key-value name
 ---@param item? integer # value
 function GameAPI.add_ui_effect_camera_mode_kv(kvbase, key, item) end
+
+--Add a UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? integer # value
+function GameAPI.add_ui_equip_slot_use_type_kv(kvbase, key, item) end
+
+--Add a UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? integer # value
+function GameAPI.add_ui_equip_slot_drag_type_kv(kvbase, key, item) end
+
+--Add UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? integer # value
+function GameAPI.add_ui_layout_clipping_type_kv(kvbase, key, item) end
+
+--Add UI_TEXT_OVER_LENGTH_HANDLING_TYPE key and value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? integer # value
+function GameAPI.add_ui_text_over_length_handling_type_kv(kvbase, key, item) end
 
 --Add UI_POS_ADAPT_MODE key-value pairs
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -5670,6 +4997,12 @@ function GameAPI.add_ui_chat_send_channel_kv(kvbase, key, item) end
 ---@param item? integer # value
 function GameAPI.add_ui_chat_recv_channel_kv(kvbase, key, item) end
 
+--Add UI_ANIM_PLAY_MODE key-value pairs
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? integer # value
+function GameAPI.add_ui_anim_play_mode_kv(kvbase, key, item) end
+
 --Add a UI_TEXT_FONT_NAME key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key-value name
@@ -5688,11 +5021,23 @@ function GameAPI.add_ui_eca_anim_type_kv(kvbase, key, item) end
 ---@param item? py.LocalUnitGroup # value
 function GameAPI.add_local_unit_group_kv(kvbase, key, item) end
 
+--Add DAMAGE_ATTACK_TYPE key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? integer # value
+function GameAPI.add_damage_attack_type_kv(kvbase, key, item) end
+
 --Add DAMAGE_ARMOR_TYPE key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key-value name
 ---@param item? integer # value
 function GameAPI.add_damage_armor_type_kv(kvbase, key, item) end
+
+--Add the ITEM_STACK_TYPE key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? py.ItemStackType # value
+function GameAPI.add_item_stack_type_kv(kvbase, key, item) end
 
 --The ABILITY_RELEASE_ID key pair was added
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -5718,6 +5063,18 @@ function GameAPI.add_ui_point_kv(kvbase, key, item) end
 ---@param item? py.AttachModelEntity # value
 function GameAPI.add_attach_model_entity_kv(kvbase, key, item) end
 
+--Add LIVE2D key-value pairs
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? py.Live2dKey # value
+function GameAPI.add_live2d_kv(kvbase, key, item) end
+
+--Add a SPINE key pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? py.Spine # value
+function GameAPI.add_spine_kv(kvbase, key, item) end
+
 --The FORCE_ENTITY key-value pair was added
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key-value name
@@ -5735,6 +5092,36 @@ function GameAPI.add_goods_key_kv(kvbase, key, item) end
 ---@param key string # Key-value name
 ---@param item? py.MouseKeyWithoutMiddle # value
 function GameAPI.add_mouse_key_without_middle_kv(kvbase, key, item) end
+
+--Add a MAP key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? py.Map # value
+function GameAPI.add_map_kv(kvbase, key, item) end
+
+--Add a UNIT_GROUP_COMMAND_TYPE key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? py.UnitGroupCommandType # value
+function GameAPI.add_unit_group_command_type_kv(kvbase, key, item) end
+
+--Add RESCUE_SEEKER_TYPE key and value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? py.ERescueSeekerType # value
+function GameAPI.add_rescue_seeker_type_kv(kvbase, key, item) end
+
+--Add RESCUER_TYPE key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? py.ERescuerType # value
+function GameAPI.add_rescuer_type_kv(kvbase, key, item) end
+
+--Add STORE_ITEM_TYPE key-value pairs
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key-value name
+---@param item? py.StoreItemType # value
+function GameAPI.add_store_item_type_kv(kvbase, key, item) end
 
 --Add a SITE_STATE key-value pair
 ---@param kvbase py.KVBase # Custom key value carrier
@@ -5774,6 +5161,68 @@ function GameAPI.has_ability_ckv_pair_value_xxx(kvbase, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_modifier_ckv_pair_value_xxx(kvbase, key) end
 
+--Determines whether UI_GRIDVIEW_TYPE key-value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ui_gridview_type(kvbase, key) end
+
+--Determines whether a UI_GRIDVIEW_TYPE key-value pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_gridview_type_kv(prefab_type, prefab_key, key) end
+
+--Determines whether there is a UI_GRIDVIEW_TYPE key-value pair for the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ui_gridview_type_kv(prefab_key, key) end
+
+--Determines whether there is a UI_GRIDVIEW_TYPE key-value pair in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ui_gridview_type_kv(prefab_key, key) end
+
+--Determines whether the skill number has a UI_GRIDVIEW_TYPE key-value pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ui_gridview_type_kv(prefab_key, key) end
+
+--Determines whether UI_GRIDVIEW_BAR_TYPE key-value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ui_gridview_bar_type(kvbase, key) end
+
+--Determines whether a UI_GRIDVIEW_BAR_TYPE key-value pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_gridview_bar_type_kv(prefab_type, prefab_key, key) end
+
+--Determines whether there is a UI_GRIDVIEW_BAR_TYPE key-value pair in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ui_gridview_bar_type_kv(prefab_key, key) end
+
+--Determines whether there is a UI_GRIDVIEW_BAR_TYPE key-value pair in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ui_gridview_bar_type_kv(prefab_key, key) end
+
+--Determines whether the skill number has a UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ui_gridview_bar_type_kv(prefab_key, key) end
+
 --Check whether a UI_EFFECT_CAMERA_MODE key pair exists
 ---@param kvbase py.KVBase # Key-value pair container
 ---@param key string # Key name
@@ -5804,6 +5253,130 @@ function GameAPI.has_item_key_ui_effect_camera_mode_kv(prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_ui_effect_camera_mode_kv(prefab_key, key) end
+
+--Check whether a UI_EQUIP_SLOT_USE_TYPE key and value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ui_equip_slot_use_type(kvbase, key) end
+
+--Determine whether the default has a UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_equip_slot_use_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether the unit number exists a UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ui_equip_slot_use_type_kv(prefab_key, key) end
+
+--Determine whether the item number has a UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ui_equip_slot_use_type_kv(prefab_key, key) end
+
+--Check whether the skill number has a UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ui_equip_slot_use_type_kv(prefab_key, key) end
+
+--Determine whether a UI_EQUIP_SLOT_DRAG_TYPE key value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ui_equip_slot_drag_type(kvbase, key) end
+
+--Determine whether the default has a UI_EQUIP_SLOT_DRAG_TYPE key and value pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_equip_slot_drag_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether the unit number has a UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ui_equip_slot_drag_type_kv(prefab_key, key) end
+
+--Determine whether the item number has a UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ui_equip_slot_drag_type_kv(prefab_key, key) end
+
+--Check whether the skill number has a UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ui_equip_slot_drag_type_kv(prefab_key, key) end
+
+--Determines whether UI_LAYOUT_CLIPPING_TYPE key-value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ui_layout_clipping_type(kvbase, key) end
+
+--Determines whether a UI_LAYOUT_CLIPPING_TYPE key-value pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_layout_clipping_type_kv(prefab_type, prefab_key, key) end
+
+--Determine whether UI_LAYOUT_CLIPPING_TYPE key-value pair exists in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ui_layout_clipping_type_kv(prefab_key, key) end
+
+--Determine whether there is a UI_LAYOUT_CLIPPING_TYPE key-value pair in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ui_layout_clipping_type_kv(prefab_key, key) end
+
+--Determines whether the skill number has a UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ui_layout_clipping_type_kv(prefab_key, key) end
+
+--Check whether a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ui_text_over_length_handling_type(kvbase, key) end
+
+--Check whether a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_text_over_length_handling_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether there is a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ui_text_over_length_handling_type_kv(prefab_key, key) end
+
+--Check whether there is a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ui_text_over_length_handling_type_kv(prefab_key, key) end
+
+--Check whether a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ui_text_over_length_handling_type_kv(prefab_key, key) end
 
 --Determines whether UI_POS_ADAPT_MODE key-value pairs exist
 ---@param kvbase py.KVBase # Key-value pair container
@@ -5898,6 +5471,37 @@ function GameAPI.has_item_key_ui_chat_recv_channel_kv(prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_ui_chat_recv_channel_kv(prefab_key, key) end
 
+--Determines whether a UI_ANIM_PLAY_MODE key-value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ui_anim_play_mode(kvbase, key) end
+
+--Determines if the default has a UI_ANIM_PLAY_MODE key-value pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_anim_play_mode_kv(prefab_type, prefab_key, key) end
+
+--Determine whether the unit number has a UI_ANIM_PLAY_MODE key-value pair
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ui_anim_play_mode_kv(prefab_key, key) end
+
+--Determine if the item number has a UI_ANIM_PLAY_MODE key-value pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ui_anim_play_mode_kv(prefab_key, key) end
+
+--Determine if the skill number has a UI_ANIM_PLAY_MODE key-value pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ui_anim_play_mode_kv(prefab_key, key) end
+
 --Determines whether a UI_TEXT_FONT_NAME key-value pair exists
 ---@param kvbase py.KVBase # Key-value pair container
 ---@param key string # Key name
@@ -5991,6 +5595,37 @@ function GameAPI.has_item_key_local_unit_group_kv(prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_ability_key_local_unit_group_kv(prefab_key, key) end
 
+--Check whether the DAMAGE_ATTACK_TYPE key-value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_damage_attack_type(kvbase, key) end
+
+--Check whether the default DAMAGE_ATTACK_TYPE key-value pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_damage_attack_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether the DAMAGE_ATTACK_TYPE key-value pair exists in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_damage_attack_type_kv(prefab_key, key) end
+
+--Check whether the DAMAGE_ATTACK_TYPE key-value pair exists in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_damage_attack_type_kv(prefab_key, key) end
+
+--Check whether the DAMAGE_ATTACK_TYPE key-value pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_damage_attack_type_kv(prefab_key, key) end
+
 --Check whether DAMAGE_ARMOR_TYPE key-value pair exists
 ---@param kvbase py.KVBase # Key-value pair container
 ---@param key string # Key name
@@ -6009,3 +5644,412 @@ function GameAPI.has_prefab_damage_armor_type_kv(prefab_type, prefab_key, key) e
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_unit_key_damage_armor_type_kv(prefab_key, key) end
+
+--Check whether the DAMAGE_ARMOR_TYPE key-value pair exists in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_damage_armor_type_kv(prefab_key, key) end
+
+--Check whether the DAMAGE_ARMOR_TYPE key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_damage_armor_type_kv(prefab_key, key) end
+
+--Determines whether an ITEM_STACK_TYPE key-value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_item_stack_type(kvbase, key) end
+
+--Determines whether the default ITEM_STACK_TYPE key-value pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_item_stack_type_kv(prefab_type, prefab_key, key) end
+
+--Determines whether the ITEM_STACK_TYPE key-value pair exists in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_item_stack_type_kv(prefab_key, key) end
+
+--Determines whether an ITEM_STACK_TYPE key-value pair exists in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_item_stack_type_kv(prefab_key, key) end
+
+--Determines whether the skill number has an ITEM_STACK_TYPE key-value pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_item_stack_type_kv(prefab_key, key) end
+
+--Check whether an ABILITY_RELEASE_ID key pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ability_release_id(kvbase, key) end
+
+--Check whether the default has an ABILITY_RELEASE_ID key pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ability_release_id_kv(prefab_type, prefab_key, key) end
+
+--Check whether the unit number contains an ABILITY_RELEASE_ID key pair
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ability_release_id_kv(prefab_key, key) end
+
+--Determines whether the item number has an ABILITY_RELEASE_ID key pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ability_release_id_kv(prefab_key, key) end
+
+--Check whether a ABILITY_RELEASE_ID key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ability_release_id_kv(prefab_key, key) end
+
+--Check whether SLOT_TYPE key pairs exist
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_slot_type(kvbase, key) end
+
+--Check whether the default SLOT_TYPE key pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_slot_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether the SLOT_TYPE key pair exists in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_slot_type_kv(prefab_key, key) end
+
+--Determines whether the item number has a SLOT_TYPE key pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_slot_type_kv(prefab_key, key) end
+
+--Check whether a SLOT_TYPE key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_slot_type_kv(prefab_key, key) end
+
+--Determines whether a UI_POINT key-value pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_ui_point(kvbase, key) end
+
+--Determines if the default has a UI_POINT key-value pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_point_kv(prefab_type, prefab_key, key) end
+
+--Determines whether there is a UI_POINT key-value pair for the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_ui_point_kv(prefab_key, key) end
+
+--Determine whether the item number has a UI_POINT key-value pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_ui_point_kv(prefab_key, key) end
+
+--Determines whether the skill number has a UI_POINT key-value pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_ui_point_kv(prefab_key, key) end
+
+--Check whether ATTACH_MODEL_ENTITY key and value pairs exist
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_attach_model_entity(kvbase, key) end
+
+--Check whether preset ATTACH_MODEL_ENTITY key and value pairs exist
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_attach_model_entity_kv(prefab_type, prefab_key, key) end
+
+--Check whether the unit number has an ATTACH_MODEL_ENTITY key pair
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_attach_model_entity_kv(prefab_key, key) end
+
+--Check whether the item number has an ATTACH_MODEL_ENTITY key pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_attach_model_entity_kv(prefab_key, key) end
+
+--Check whether ATTACH_MODEL_ENTITY key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_attach_model_entity_kv(prefab_key, key) end
+
+--Check whether LIVE2D key pairs exist
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_live2d(kvbase, key) end
+
+--Determines whether the default has LIVE2D key-value pairs
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_live2d_kv(prefab_type, prefab_key, key) end
+
+--Check whether the unit number has LIVE2D key pairs
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_live2d_kv(prefab_key, key) end
+
+--Determine whether the item number has LIVE2D key-value pairs
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_live2d_kv(prefab_key, key) end
+
+--Check whether the skill number has LIVE2D key-value pairs
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_live2d_kv(prefab_key, key) end
+
+--Check whether the SPINE key pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_spine(kvbase, key) end
+
+--Determines whether a SPINE key pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_spine_kv(prefab_type, prefab_key, key) end
+
+--Check whether the unit number has a SPINE key pair
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_spine_kv(prefab_key, key) end
+
+--Determine whether the item number has a SPINE key pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_spine_kv(prefab_key, key) end
+
+--Check whether the skill number has a SPINE key pair
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_spine_kv(prefab_key, key) end
+
+--Check whether the FORCE_ENTITY key pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_force_entity(kvbase, key) end
+
+--Check whether the default FORCE_ENTITY key pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_force_entity_kv(prefab_type, prefab_key, key) end
+
+--Check whether a FORCE_ENTITY key pair exists in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_force_entity_kv(prefab_key, key) end
+
+--Determines whether a FORCE_ENTITY key pair exists in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_force_entity_kv(prefab_key, key) end
+
+--Check whether a FORCE_ENTITY key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_force_entity_kv(prefab_key, key) end
+
+--Check whether the GOODS_KEY key pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_goods_key(kvbase, key) end
+
+--Determines whether the default has a GOODS_KEY key-value pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_goods_key_kv(prefab_type, prefab_key, key) end
+
+--Check whether the GOODS_KEY key pair exists in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_goods_key_kv(prefab_key, key) end
+
+--Determine whether the GOODS_KEY key pair exists in the item number
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_goods_key_kv(prefab_key, key) end
+
+--Check whether the GOODS_KEY key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_goods_key_kv(prefab_key, key) end
+
+--Check whether the MOUSE_KEY_WITHOUT_MIDDLE key pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_mouse_key_without_middle(kvbase, key) end
+
+--Determines whether the default MOUSE_KEY_WITHOUT_MIDDLE key pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_mouse_key_without_middle_kv(prefab_type, prefab_key, key) end
+
+--Check whether the MOUSE_KEY_WITHOUT_MIDDLE key pair exists in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_mouse_key_without_middle_kv(prefab_key, key) end
+
+--Determines whether the item number has a MOUSE_KEY_WITHOUT_MIDDLE key pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_mouse_key_without_middle_kv(prefab_key, key) end
+
+--Check whether the MOUSE_KEY_WITHOUT_MIDDLE key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_mouse_key_without_middle_kv(prefab_key, key) end
+
+--Check whether MAP key pairs exist
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_map(kvbase, key) end
+
+--Check whether MAP key-value pairs exist in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_map_kv(prefab_type, prefab_key, key) end
+
+--Check whether MAP key pairs exist in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_map_kv(prefab_key, key) end
+
+--Determine whether the item number has MAP key-value pairs
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_map_kv(prefab_key, key) end
+
+--Check whether the skill number has MAP key pairs
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_map_kv(prefab_key, key) end
+
+--Check whether the UNIT_GROUP_COMMAND_TYPE key pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_unit_group_command_type(kvbase, key) end
+
+--Check whether the UNIT_GROUP_COMMAND_TYPE key pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_unit_group_command_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether the UNIT_GROUP_COMMAND_TYPE key pair exists
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_unit_group_command_type_kv(prefab_key, key) end
+
+--Check whether the item number has a UNIT_GROUP_COMMAND_TYPE key pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_unit_group_command_type_kv(prefab_key, key) end
+
+--Check whether the UNIT_GROUP_COMMAND_TYPE key pair exists in the skill number
+---@param prefab_key py.AbilityKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_ability_key_unit_group_command_type_kv(prefab_key, key) end
+
+--Check whether the RESCUE_SEEKER_TYPE key pair exists
+---@param kvbase py.KVBase # Key-value pair container
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_kv_pair_rescue_seeker_type(kvbase, key) end
+
+--Check whether the preset RESCUE_SEEKER_TYPE key-value pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_rescue_seeker_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether the RESCUE_SEEKER_TYPE key pair exists in the unit number
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_unit_key_rescue_seeker_type_kv(prefab_key, key) end
+
+--Check whether the item number exists in RESCUE_SEEKER_TYPE key-value pair
+---@param prefab_key py.ItemKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_item_key_rescue_seeker_type_kv(prefab_key, key) end

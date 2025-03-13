@@ -80,16 +80,6 @@ function Unit:api_delete() end
 ---@param source_unit? py.Unit # Killer unit
 function Unit:api_kill(source_unit) end
 
---Set the unit build schedule
----@param progress py.Fixed # Construction schedule
----@param is_percent? boolean # Percentage or not
-function Unit:api_set_construction_progress(progress, is_percent) end
-
---Set the upgrade progress of the unit
----@param progress py.Fixed # Upgrade progress
----@param is_percent? boolean # Percentage or not
-function Unit:api_set_upgrade_progress(progress, is_percent) end
-
 --Gets the path to the unit icon
 ---@return string? # Unit icon path
 function Unit:api_get_icon() end
@@ -185,24 +175,6 @@ function Unit:api_get_ai_battle_target_unit() end
 ---@return py.Unit? # Following unit
 function Unit:api_get_ai_follow_target_unit() end
 
---Set whether the unit sleeps
----@param is_sleeping boolean # dormancy
-function Unit:api_set_is_sleeping(is_sleeping) end
-
---Gets whether a unit sleeps
----@return boolean? # dormancy
-function Unit:api_get_is_sleeping() end
-
---Unit transformation
----@param entity_no py.UnitKey # New object ID
----@param inherit_composite_attr? boolean # Whether to inherit compound attributes
----@param inherit_unit_attr? boolean # Whether to inherit the unit attribute
----@param inherit_kv? boolean # Whether to inherit kv
----@param inherit_hero_ability? boolean # Whether to inherit hero skills
----@param inherit_common_ability? boolean # Whether to inherit common skills
----@param inherit_passive_ability? boolean # Whether to inherit hidden skills
-function Unit:api_unit_transformation(entity_no, inherit_composite_attr, inherit_unit_attr, inherit_kv, inherit_hero_ability, inherit_common_ability, inherit_passive_ability) end
-
 --Get attr_other
 ---@param key string # Attribute name
 ---@return py.Fixed? # Attribute value
@@ -236,10 +208,6 @@ function Unit:api_get_attr_all_ratio(key) end
 --Gets the unit master properties
 ---@return string? # Primary attribute
 function Unit:api_get_main_attr() end
-
---Toggle master attribute
----@param main_attr string # Attribute name
-function Unit:api_switch_main_attr(main_attr) end
 
 --Sets the value of the pure value type
 ---@param key string # Attribute name
@@ -302,9 +270,6 @@ function Unit:api_add_attr_all_ratio(key, delta) end
 ---@param key string # Attribute name
 ---@param val py.Fixed # Set value
 function Unit:api_set_attr_base_ratio(key, val) end
-
---Enable the unit attribute cheat check
-function Unit:api_open_attr_cheating_detected() end
 
 --Increased the percentage bonus to the base value of the unit attribute
 ---@param key string # Attribute name
@@ -480,21 +445,6 @@ function Unit:api_set_unit_icon(icon) end
 ---@return string? # Stats
 function Unit:api_get_unit_main_attr() end
 
---Gets the localization name of the unit property
----@param attr_key string # Attribute index
----@return string? # Attribute localization name
-function Unit:api_get_attr_name(attr_key) end
-
---Sets the experience value in the event
----@param val py.Fixed # EXP
-function Unit:api_set_changed_exp_in_event(val) end
-
---Gets the skill type of a skill bit of the unit type
----@param abilityType py.AbilityType # Skill type
----@param abilityIndex py.AbilityIndex # Skill slot
----@return py.AbilityKey? # Skill type
-function Unit:api_get_abilityKey_by_type_and_index(abilityType, abilityIndex) end
-
 --Unit stop
 function Unit:api_stop_move() end
 
@@ -555,14 +505,6 @@ function Unit:api_set_turn_speed(turn_speed) end
 ---@return py.Fixed? # Turn speed
 function Unit:api_get_turn_speed() end
 
---Set the animation move base speed. The base speed for running and walking is changed at the same time. If you want to distinguish between running and walking, you need to set the base speed for walking separately (api_set_anim_walk_speed).
----@param base_speed py.Fixed # Animation movement speed
-function Unit:api_set_base_speed(base_speed) end
-
---Set the animation moving base speed (Walk only)
----@param speed py.Fixed # Animation movement speed
-function Unit:api_set_anim_walk_speed(speed) end
-
 --Whether the unit is moving
 ---@return boolean? # Is it moving?
 function Unit:api_is_moving() end
@@ -571,15 +513,6 @@ function Unit:api_is_moving() end
 ---@param collision_layer integer # Collision mask
 ---@return boolean? # Enable or not
 function Unit:api_get_move_collision(collision_layer) end
-
---Determine the movement type of the unit
----@param move_type integer # Movement type
----@return boolean? # Indicates whether the movement type is this
-function Unit:api_is_move_type(move_type) end
-
---Sets whether to block other units
----@param is_on boolean # Block or not
-function Unit:api_set_block_others(is_on) end
 
 --Set the movement type of the unit to ground
 ---@param land_limitation? boolean # Land restriction
@@ -700,15 +633,6 @@ function Unit:api_replace_model(target_model) end
 --Cancel the unit replacement model
 ---@param target_model py.ModelKey # Target model name
 function Unit:api_cancel_replace_model(target_model) end
-
---Unit setting specifies the label model
----@param tag string # tag
----@param model_id py.ModelKey # Target model number
-function Unit:set_model_by_tag(tag, model_id) end
-
---Unit delete setting specifies the label model
----@param tag string # tag
-function Unit:remove_model_by_tag(tag) end
 
 --Display blood bar countdown
 ---@param left_time py.Fixed # Countdown time, in seconds
@@ -918,11 +842,6 @@ function Unit:api_stop_dissolve() end
 ---@param a py.Fixed # a
 function Unit:api_set_ghost_color(r, g, b, a) end
 
---Set the shadow color (HEX)
----@param color string # hex
----@param a py.Fixed # a
-function Unit:api_set_ghost_color_hex(color, a) end
-
 --Set the shadow time
 ---@param interval py.Fixed # interval
 ---@param duration py.Fixed # duration
@@ -968,20 +887,6 @@ function Unit:api_set_disk_shadow_open(is_open) end
 --Sets the shadow size of the unit disk
 ---@param shadow_size number # size
 function Unit:api_set_unit_disk_shadow_size(shadow_size) end
-
---Sets the stroke color of the unit
----@param color_r number # R
----@param color_g number # G
----@param color_b number # B
-function Unit:set_unit_outlined_color(color_r, color_g, color_b) end
-
---Set the stroke color of the unit (HEX)
----@param color string # R
-function Unit:set_unit_outlined_color_hex(color) end
-
---Switch unit stroke effect
----@param flag boolean # Switch
-function Unit:set_unit_outlined_enable(flag) end
 
 --Unit adds the effect of the specified number
 ---@param modifier_key py.ModifierKey # Effect number
@@ -1156,14 +1061,6 @@ function Unit:api_add_state(state_id) end
 ---@param state_id integer # Status ID
 function Unit:api_remove_state(state_id) end
 
---Apply state to the unit
----@param state_id integer # Status ID
-function Unit:api_add_multi_state(state_id) end
-
---Unstate the unit
----@param state_id integer # Status ID
-function Unit:api_remove_multi_state(state_id) end
-
 --Whether in combat mode
 ---@return boolean? # Whether in combat mode
 function Unit:api_is_in_battle_state() end
@@ -1194,18 +1091,6 @@ function Unit:api_create_building_on_point(build_key, point) end
 ---@param pos_x py.Fixed # Coordinate X
 ---@param pos_z py.Fixed # Coordinate Z
 function Unit:api_create_building_on_position(build_key, pos_x, pos_z) end
-
---Gets the unit attack interval
----@return py.Fixed? # Attack interval
-function Unit:api_get_unit_attack_interval() end
-
---Gets attacks per second
----@return py.Fixed? # Number of attacks
-function Unit:api_get_unit_attack_count_per_second() end
-
---Gain general attack skills
----@return py.Ability? # Normal Attack
-function Unit:api_get_common_atk_ability() end
 
 --Whether the unit owns the item
 ---@param item py.Item # item
@@ -1244,11 +1129,6 @@ function Unit:api_remove_item(stack_cnt, item) end
 ---@param slot_idx integer # Lattice subscript
 ---@return py.Item? # Item object
 function Unit:api_get_item_by_slot(slot_type, slot_idx) end
-
---Gets the remaining space in the unit field
----@param slot_type py.SlotType # Backpack slot
----@return integer? # integer
-function Unit:api_get_slot_capacity(slot_type) end
 
 --Moving items
 ---@param item py.Item # item
@@ -1447,6 +1327,267 @@ function Unit:api_release_command(command, enqueue, load_ai_directly) end
 ---@param behavior py.UnitBehavior # Default jump state
 function Unit:api_set_default_switch_behavior(behavior) end
 
+--Set the unit build schedule
+---@param progress py.Fixed # Construction schedule
+---@param is_percent? boolean # Percentage or not
+function Unit:api_set_construction_progress(progress, is_percent) end
+
+--Set the upgrade progress of the unit
+---@param progress py.Fixed # Upgrade progress
+---@param is_percent? boolean # Percentage or not
+function Unit:api_set_upgrade_progress(progress, is_percent) end
+
+--Set whether to exit the following unit
+---@param exit_follow_on_succ boolean # Whether to quit
+function Unit:api_set_ai_exit_follow_on_succ_once(exit_follow_on_succ) end
+
+--Set whether the unit sleeps
+---@param is_sleeping boolean # dormancy
+function Unit:api_set_is_sleeping(is_sleeping) end
+
+--Gets whether a unit sleeps
+---@return boolean? # dormancy
+function Unit:api_get_is_sleeping() end
+
+--Gets whether the unit is in the cache pool
+---@return boolean? # value
+function Unit:api_get_is_in_pool() end
+
+--Unit transformation
+---@param entity_no py.UnitKey # New object ID
+---@param inherit_composite_attr? boolean # Whether to inherit compound attributes
+---@param inherit_unit_attr? boolean # Whether to inherit the unit attribute
+---@param inherit_kv? boolean # Whether to inherit kv
+---@param inherit_hero_ability? boolean # Whether to inherit hero skills
+---@param inherit_common_ability? boolean # Whether to inherit common skills
+---@param inherit_passive_ability? boolean # Whether to inherit hidden skills
+function Unit:api_unit_transformation(entity_no, inherit_composite_attr, inherit_unit_attr, inherit_kv, inherit_hero_ability, inherit_common_ability, inherit_passive_ability) end
+
+--Unit - Queue reset
+function Unit:api_queue_reset() end
+
+--Toggle master attribute
+---@param main_attr string # Attribute name
+function Unit:api_switch_main_attr(main_attr) end
+
+--Enable the unit attribute cheat check
+function Unit:api_open_attr_cheating_detected() end
+
+--Gets the localization name of the unit property
+---@param attr_key string # Attribute index
+---@return string? # Attribute localization name
+function Unit:api_get_attr_name(attr_key) end
+
+--Sets the experience value in the event
+---@param val py.Fixed # EXP
+function Unit:api_set_changed_exp_in_event(val) end
+
+--Gets the skill type of a skill bit of the unit type
+---@param abilityType py.AbilityType # Skill type
+---@param abilityIndex py.AbilityIndex # Skill slot
+---@return py.AbilityKey? # Skill type
+function Unit:api_get_abilityKey_by_type_and_index(abilityType, abilityIndex) end
+
+--Gets unit health recovery per tick
+function Unit:api_get_hprec_pertick() end
+
+--Sets whether the unit is flying field of view
+---@param is_flying_vision boolean # Boolean value
+function Unit:api_set_unit_flying_vision(is_flying_vision) end
+
+--Set the animation move base speed. The base speed for running and walking is changed at the same time. If you want to distinguish between running and walking, you need to set the base speed for walking separately (api_set_anim_walk_speed).
+---@param base_speed py.Fixed # Animation movement speed
+function Unit:api_set_base_speed(base_speed) end
+
+--Set the animation moving base speed (Walk only)
+---@param speed py.Fixed # Animation movement speed
+function Unit:api_set_anim_walk_speed(speed) end
+
+--Determine the movement type of the unit
+---@param move_type integer # Movement type
+---@return boolean? # Indicates whether the movement type is this
+function Unit:api_is_move_type(move_type) end
+
+--Sets whether to block other units
+---@param is_on boolean # Block or not
+function Unit:api_set_block_others(is_on) end
+
+--Open lock move
+---@param angle_or_target number # Angle
+---@param turn_time_ms? number # Turn time
+function Unit:api_set_lock_yaw(angle_or_target, turn_time_ms) end
+
+--End lock move
+function Unit:api_set_unlock_yaw() end
+
+--Set the rocker base direction
+---@param facing number # Base direction
+function Unit:set_joystick_base_direction(facing) end
+
+--Set the joystick input
+---@param input_x number # InputX
+---@param input_y number # InputY
+function Unit:set_joystick_input(input_x, input_y) end
+
+--Straight movement
+---@param target_pos py.Point # Target point
+function Unit:directional_move_to_pos(target_pos) end
+
+--Set the upper limit of pathfinding cost
+---@param step_bound integer # Upper step limit
+function Unit:set_path_finding_step_bound(step_bound) end
+
+--Unit setting specifies the label model
+---@param tag string # tag
+---@param model_id py.ModelKey # Target model number
+function Unit:set_model_by_tag(tag, model_id) end
+
+--Unit delete setting specifies the label model
+---@param tag string # tag
+function Unit:remove_model_by_tag(tag) end
+
+--Alternate model map
+---@param model py.ModelKey # Target model number
+---@param material integer # Material id
+---@param layer integer # layer id
+---@param texture py.Texture # chartlet
+function Unit:change_model_texture(model, material, layer, texture) end
+
+--Units are prohibited from pasting the ground
+---@param is_forbid_aligned_terrain boolean # Whether the ground is prohibited
+function Unit:api_set_forbid_aligned_terrain(is_forbid_aligned_terrain) end
+
+--Open wind field
+function Unit:api_start_windforce() end
+
+--Set the shadow color
+---@param r py.Fixed # r
+---@param g py.Fixed # g
+---@param b py.Fixed # b
+---@param a py.Fixed # a
+function Unit:api_set_ghost_color_norm(r, g, b, a) end
+
+--Set the shadow color (HEX)
+---@param color string # hex
+---@param a py.Fixed # a
+function Unit:api_set_ghost_color_hex(color, a) end
+
+--Minimap - Sets unit minimap avatar visibility
+---@param value boolean # Visible or not
+function Unit:api_set_unit_is_mini_map_show(value) end
+
+--Sets the name of the unit animation state
+---@param anim_state_name string # Status name
+function Unit:api_set_unit_anim_state_name(anim_state_name) end
+
+--Sets the stroke color of the unit
+---@param color_r number # R
+---@param color_g number # G
+---@param color_b number # B
+function Unit:set_unit_outlined_color(color_r, color_g, color_b) end
+
+--Set the stroke color of the unit (HEX)
+---@param color string # R
+function Unit:set_unit_outlined_color_hex(color) end
+
+--Switch unit stroke effect
+---@param flag boolean # Switch
+function Unit:set_unit_outlined_enable(flag) end
+
+--Play the upper body animation
+---@param anim_name string # Animation name
+---@param speed? number # speed
+---@param repeat_? boolean # Cyclic or not
+---@param begin_t? number # Start time ratio (0-1)
+---@param end_t? number # End time ratio (0-1)
+---@param ratio? number # Fusion ratio (0-1)
+---@param transition_time? number # Transition time (s), where negative values are used as global defaults
+function Unit:play_upper_body_anim(anim_name, speed, repeat_, begin_t, end_t, ratio, transition_time) end
+
+--Custom bone layering
+---@param root_bone string # Radicular skeleton
+---@param upper_body_bone string # Upper body skeleton
+---@param head_bone string # Cephalic skeleton
+function Unit:set_bone_filter_config(root_bone, upper_body_bone, head_bone) end
+
+--Set the stroke thickness of the unit outer outline
+---@param width number # width
+---@param role? py.Role # Role
+function Unit:set_unit_outside_outline_width(width, role) end
+
+--Sets the stroke color for the outer outline of the unit
+---@param color_r number # R
+---@param color_g number # G
+---@param color_b number # B
+---@param role? py.Role # Role
+function Unit:set_unit_outside_outline_color(color_r, color_g, color_b, role) end
+
+--Sets whether the unit outer contour stroke is turned on
+---@param enabled boolean # Enable
+---@param role? py.Role # Role
+function Unit:set_unit_outside_outlined_enable(enabled, role) end
+
+--Apply state to the unit
+---@param state_id integer # Status ID
+function Unit:api_add_multi_state(state_id) end
+
+--Unstate the unit
+---@param state_id integer # Status ID
+function Unit:api_remove_multi_state(state_id) end
+
+--Gets the unit attack interval
+---@return py.Fixed? # Attack interval
+function Unit:api_get_unit_attack_interval() end
+
+--Gets attacks per second
+---@return py.Fixed? # Number of attacks
+function Unit:api_get_unit_attack_count_per_second() end
+
+--Gain general attack skills
+---@return py.Ability? # Normal Attack
+function Unit:api_get_common_atk_ability() end
+
+--Set the maximum value of the unit simple roll dice
+---@param dice_max_value integer # Maximum value
+function Unit:api_set_simple_atk_dice_max_value(dice_max_value) end
+
+--Get the maximum value of the unit easy roll dice
+---@return integer? # Dice maximum
+function Unit:api_get_simple_atk_dice_max_value() end
+
+--Set the maximum value of the unit simple roll dice
+---@param dice_count integer # Maximum value
+function Unit:api_set_simple_atk_dice_count(dice_count) end
+
+--Get the number of simple dice per unit
+---@return integer? # Dice maximum
+function Unit:api_get_simple_atk_dice_count() end
+
+--Gets the ability that the unit is releasing
+---@return py.Ability? # skill
+function Unit:api_get_cur_record_ability() end
+
+--Suspend the CD of all skills of the unit
+function Unit:api_pause_all_ability_cd() end
+
+--Restores all unit skills to CD
+function Unit:api_resume_all_ability_cd() end
+
+--Removes all abilities from units
+function Unit:api_clear_all_abilities() end
+
+--Gets the remaining space in the unit field
+---@param slot_type py.SlotType # Backpack slot
+---@return integer? # integer
+function Unit:api_get_slot_capacity(slot_type) end
+
+--Unit - Sets the default jump command
+---@param command py.UnitCommand # Default jump command
+function Unit:api_set_default_switch_command(command) end
+
+--Unit - Jumps to the default command or state
+function Unit:api_load_default_ai() end
+
 --Unit. - Unit calling for help
 ---@param source_unit py.Unit # Attack target
 ---@param seek_range number # Search area
@@ -1500,143 +1641,6 @@ function Unit:api_get_is_rescuing() end
 ---@return boolean? # value
 function Unit:api_get_is_rescue_returning() end
 
---Set whether to exit the following unit
----@param exit_follow_on_succ boolean # Whether to quit
-function Unit:api_set_ai_exit_follow_on_succ_once(exit_follow_on_succ) end
-
---Gets whether the unit is in the cache pool
----@return boolean? # value
-function Unit:api_get_is_in_pool() end
-
---Unit - Queue reset
-function Unit:api_queue_reset() end
-
---Gets unit health recovery per tick
-function Unit:api_get_hprec_pertick() end
-
---Sets whether the unit is flying field of view
----@param is_flying_vision boolean # Boolean value
-function Unit:api_set_unit_flying_vision(is_flying_vision) end
-
---Open lock move
----@param angle_or_target number # Angle
----@param turn_time_ms? number # Turn time
-function Unit:api_set_lock_yaw(angle_or_target, turn_time_ms) end
-
---End lock move
-function Unit:api_set_unlock_yaw() end
-
---Set the rocker base direction
----@param facing number # Base direction
-function Unit:set_joystick_base_direction(facing) end
-
---Set the joystick input
----@param input_x number # InputX
----@param input_y number # InputY
-function Unit:set_joystick_input(input_x, input_y) end
-
---Straight movement
----@param target_pos py.Point # Target point
-function Unit:directional_move_to_pos(target_pos) end
-
---Set the upper limit of pathfinding cost
----@param step_bound integer # Upper step limit
-function Unit:set_path_finding_step_bound(step_bound) end
-
---Alternate model map
----@param model py.ModelKey # Target model number
----@param material integer # Material id
----@param layer integer # layer id
----@param texture py.Texture # chartlet
-function Unit:change_model_texture(model, material, layer, texture) end
-
---Units are prohibited from pasting the ground
----@param is_forbid_aligned_terrain boolean # Whether the ground is prohibited
-function Unit:api_set_forbid_aligned_terrain(is_forbid_aligned_terrain) end
-
---Open wind field
-function Unit:api_start_windforce() end
-
---Set the shadow color
----@param r py.Fixed # r
----@param g py.Fixed # g
----@param b py.Fixed # b
----@param a py.Fixed # a
-function Unit:api_set_ghost_color_norm(r, g, b, a) end
-
---Sets the name of the unit animation state
----@param anim_state_name string # Status name
-function Unit:api_set_unit_anim_state_name(anim_state_name) end
-
---Play the upper body animation
----@param anim_name string # Animation name
----@param speed? number # speed
----@param repeat_? boolean # Cyclic or not
----@param begin_t? number # Start time ratio (0-1)
----@param end_t? number # End time ratio (0-1)
----@param ratio? number # Fusion ratio (0-1)
----@param transition_time? number # Transition time (s), where negative values are used as global defaults
-function Unit:play_upper_body_anim(anim_name, speed, repeat_, begin_t, end_t, ratio, transition_time) end
-
---Custom bone layering
----@param root_bone string # Radicular skeleton
----@param upper_body_bone string # Upper body skeleton
----@param head_bone string # Cephalic skeleton
-function Unit:set_bone_filter_config(root_bone, upper_body_bone, head_bone) end
-
---Set the stroke thickness of the unit outer outline
----@param width number # width
----@param role? py.Role # Role
-function Unit:set_unit_outside_outline_width(width, role) end
-
---Sets the stroke color for the outer outline of the unit
----@param color_r number # R
----@param color_g number # G
----@param color_b number # B
----@param role? py.Role # Role
-function Unit:set_unit_outside_outline_color(color_r, color_g, color_b, role) end
-
---Sets whether the unit outer contour stroke is turned on
----@param enabled boolean # Enable
----@param role? py.Role # Role
-function Unit:set_unit_outside_outlined_enable(enabled, role) end
-
---Set the maximum value of the unit simple roll dice
----@param dice_max_value integer # Maximum value
-function Unit:api_set_simple_atk_dice_max_value(dice_max_value) end
-
---Get the maximum value of the unit easy roll dice
----@return integer? # Dice maximum
-function Unit:api_get_simple_atk_dice_max_value() end
-
---Set the maximum value of the unit simple roll dice
----@param dice_count integer # Maximum value
-function Unit:api_set_simple_atk_dice_count(dice_count) end
-
---Get the number of simple dice per unit
----@return integer? # Dice maximum
-function Unit:api_get_simple_atk_dice_count() end
-
---Gets the ability that the unit is releasing
----@return py.Ability? # skill
-function Unit:api_get_cur_record_ability() end
-
---Suspend the CD of all skills of the unit
-function Unit:api_pause_all_ability_cd() end
-
---Restores all unit skills to CD
-function Unit:api_resume_all_ability_cd() end
-
---Removes all abilities from units
-function Unit:api_clear_all_abilities() end
-
---Unit - Sets the default jump command
----@param command py.UnitCommand # Default jump command
-function Unit:api_set_default_switch_command(command) end
-
---Unit - Jumps to the default command or state
-function Unit:api_load_default_ai() end
-
 --Unit - Attempt to trigger AI update
 function Unit:api_try_update_ai() end
 
@@ -1658,30 +1662,3 @@ function Unit:api_set_repair_ability(ability) end
 --Set unit scaling
 ---@param scale number # Zoom
 function Unit:api_set_scale_2(scale) end
-
---Minimap - Sets unit minimap avatar visibility
----@param value boolean # Visible or not
-function Unit:api_set_unit_is_mini_map_show(value) end
-
---The unit loads a custom graph
----@param graphaName string # Animation graph file name, do not need to include extension
-function Unit:unit_loadGraph(graphaName) end
-
---Customize the Graph setting variable
----@param VariableName string # Variable name
----@param VariableStr string # The variable value is a string
-function Unit:unit_Graph_SetVariable(VariableName, VariableStr) end
-
---Custom Graph send events
----@param EventName string # Event name
-function Unit:unit_Graph_FireEvent(EventName) end
-
---Customize the Graph setting speed
----@param speedValue string # Relative velocity value
-function Unit:unit_Graph_SetSpeed(speedValue) end
-
---Pause Graph
-function Unit:unit_Graph_Pause() end
-
---Pause to run a Graph
-function Unit:unit_Graph_RunOneFrame() end

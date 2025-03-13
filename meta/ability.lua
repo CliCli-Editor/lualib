@@ -114,14 +114,6 @@ function Ability:api_set_ability_cast_range(value) end
 ---@param value py.Fixed # Construction orientation
 function Ability:api_set_ability_build_rotate(value) end
 
---Set the skill is build target type (build_id)
----@param new_build_id py.UnitKey # Unit object ID
-function Ability:api_set_ability_build_id(new_build_id) end
-
---Set the limits of the skill is build area
----@param area py.Area # Area object
-function Ability:api_set_ability_build_area(area) end
-
 --Set the fan indicator radius
 ---@param value py.Fixed # Indicator radius
 ---@param is_target? boolean # Whether it is the target size
@@ -323,6 +315,23 @@ function Ability:api_set_autocast_enabled(b) end
 ---@return boolean? # Enable or not
 function Ability:api_is_autocast_enabled() end
 
+--Set the skill is build target type (build_id)
+---@param new_build_id py.UnitKey # Unit object ID
+function Ability:api_set_ability_build_id(new_build_id) end
+
+--Gain the ability to build target type
+function Ability:api_get_ability_build_id() end
+
+--Set the limits of the skill is build area
+---@param area py.Area # Area object
+function Ability:api_set_ability_build_area(area) end
+
+--Pause skill cooldown
+function Ability:api_pause_cd() end
+
+--Restore skill cooldown
+function Ability:api_resume_cd() end
+
 --Get items tied to the skill
 ---@return py.Item? # Object entity
 function Ability:api_get_item() end
@@ -341,15 +350,6 @@ function Ability:api_clear_tag() end
 --Set whether to be a permanent skill
 ---@param is_permanent_ability boolean # Whether it is a permanent skill
 function Ability:api_set_ability_is_permanent(is_permanent_ability) end
-
---Gain the ability to build target type
-function Ability:api_get_ability_build_id() end
-
---Pause skill cooldown
-function Ability:api_pause_cd() end
-
---Restore skill cooldown
-function Ability:api_resume_cd() end
 
 --Adds skill to filter unit tag
 ---@param tag string # tag
