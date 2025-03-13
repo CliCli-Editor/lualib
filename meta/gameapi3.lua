@@ -358,6 +358,30 @@ function GameAPI.set_trigger_variable_scene_ui(key, value) end
 ---@param value? py.SceneNode # value
 function GameAPI.set_trigger_actor_variable_scene_ui(actor, key, value) end
 
+--Sets the global trigger WATCHING_MODE_STATUS array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@param value? py.WatchingModeStatus # value
+function GameAPI.set_trigger_list_variable_watching_mode_status(key, index, value) end
+
+--Sets the global trigger WATCHING_MODE_STATUS array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@param value? py.WatchingModeStatus # value
+function GameAPI.set_trigger_list_actor_variable_watching_mode_status(actor, key, index, value) end
+
+--Sets the global trigger WATCHING_MODE_STATUS non-array variable
+---@param key string # Variable name
+---@param value? py.WatchingModeStatus # value
+function GameAPI.set_trigger_variable_watching_mode_status(key, value) end
+
+--Sets the global trigger WATCHING_MODE_STATUS non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param value? py.WatchingModeStatus # value
+function GameAPI.set_trigger_actor_variable_watching_mode_status(actor, key, value) end
+
 --Sets the global trigger DAMAGE_TYPE array variable subentry
 ---@param key string # Variable name
 ---@param index integer # subscript
@@ -478,6 +502,30 @@ function GameAPI.set_trigger_variable_keyboard_key(key, value) end
 ---@param value? py.KeyboardKey # value
 function GameAPI.set_trigger_actor_variable_keyboard_key(actor, key, value) end
 
+--Sets the global trigger MAP array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@param value? py.Map # value
+function GameAPI.set_trigger_list_variable_map(key, index, value) end
+
+--Sets the global trigger MAP array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@param value? py.Map # value
+function GameAPI.set_trigger_list_actor_variable_map(actor, key, index, value) end
+
+--Sets the global trigger MAP non-array variable
+---@param key string # Variable name
+---@param value? py.Map # value
+function GameAPI.set_trigger_variable_map(key, value) end
+
+--Sets the global trigger MAP non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param value? py.Map # value
+function GameAPI.set_trigger_actor_variable_map(actor, key, value) end
+
 --Sets the global trigger UNIT_TYPE array variable subentry
 ---@param key string # Variable name
 ---@param index integer # subscript
@@ -549,6 +597,30 @@ function GameAPI.set_trigger_variable_curved_path_3d(key, value) end
 ---@param key string # Variable name
 ---@param value? py.CurvedPath3D # value
 function GameAPI.set_trigger_actor_variable_curved_path_3d(actor, key, value) end
+
+--Sets the global trigger STORE_ITEM_TYPE array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@param value? py.StoreItemType # value
+function GameAPI.set_trigger_list_variable_store_item_type(key, index, value) end
+
+--Sets the global trigger STORE_ITEM_TYPE array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@param value? py.StoreItemType # value
+function GameAPI.set_trigger_list_actor_variable_store_item_type(actor, key, index, value) end
+
+--Sets the global trigger STORE_ITEM_TYPE non-array variable
+---@param key string # Variable name
+---@param value? py.StoreItemType # value
+function GameAPI.set_trigger_variable_store_item_type(key, value) end
+
+--Sets the global trigger STORE_ITEM_TYPE non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param value? py.StoreItemType # value
+function GameAPI.set_trigger_actor_variable_store_item_type(actor, key, value) end
 
 --Gets an item in an array (specified type)
 ---@param l py.List # list
@@ -2184,6 +2256,42 @@ function GameAPI.set_random_pool_drop_list_value(l, i, v) end
 ---@return py.List # list
 function GameAPI.get_random_pool_drop_n_list(n, v) end
 
+--Gets an item in the SPINE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return py.Spine # value
+function GameAPI.get_spine_list_value(l, i) end
+
+--Sets an item in the SPINE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v py.Spine # value
+function GameAPI.set_spine_list_value(l, i, v) end
+
+--Generates a SPINE array of n values v
+---@param n integer # Length
+---@param v? py.Spine # value
+---@return py.List # list
+function GameAPI.get_spine_n_list(n, v) end
+
+--Gets an item in the UI_ANIM_PLAY_MODE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return integer # value
+function GameAPI.get_ui_anim_play_mode_list_value(l, i) end
+
+--Sets an item in the UI_ANIM_PLAY_MODE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v integer # value
+function GameAPI.set_ui_anim_play_mode_list_value(l, i, v) end
+
+--Generates n UI_ANIM_PLAY_MODE arrays with value v
+---@param n integer # Length
+---@param v? integer # value
+---@return py.List # list
+function GameAPI.get_ui_anim_play_mode_n_list(n, v) end
+
 --Gets an item in the DAMAGE_ATTACK_TYPE array
 ---@param l py.List # list
 ---@param i integer # subscript
@@ -2274,6 +2382,60 @@ function GameAPI.set_window_type_setting_list_value(l, i, v) end
 ---@return py.List # list
 function GameAPI.get_window_type_setting_n_list(n, v) end
 
+--Gets an item in the STORE_ITEM_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return py.StoreItemType # value
+function GameAPI.get_store_item_type_list_value(l, i) end
+
+--Sets an item in the STORE_ITEM_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v py.StoreItemType # value
+function GameAPI.set_store_item_type_list_value(l, i, v) end
+
+--Generates an array of n STORE_ITEM_TYPE values of v
+---@param n integer # Length
+---@param v? py.StoreItemType # value
+---@return py.List # list
+function GameAPI.get_store_item_type_n_list(n, v) end
+
+--Gets an item in the WATCHING_MODE_STATUS array
+---@param l py.List # list
+---@param i integer # subscript
+---@return py.WatchingModeStatus # value
+function GameAPI.get_watching_mode_status_list_value(l, i) end
+
+--Sets an item in the WATCHING_MODE_STATUS array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v py.WatchingModeStatus # value
+function GameAPI.set_watching_mode_status_list_value(l, i, v) end
+
+--Generates n WATCHING_MODE_STATUS arrays of value v
+---@param n integer # Length
+---@param v? py.WatchingModeStatus # value
+---@return py.List # list
+function GameAPI.get_watching_mode_status_n_list(n, v) end
+
+--Gets an item in the ITEM_STACK_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return py.ItemStackType # value
+function GameAPI.get_item_stack_type_list_value(l, i) end
+
+--Sets an item in the ITEM_STACK_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v py.ItemStackType # value
+function GameAPI.set_item_stack_type_list_value(l, i, v) end
+
+--Generates n ITEM_STACK_TYPE arrays with the value v
+---@param n integer # Length
+---@param v? py.ItemStackType # value
+---@return py.List # list
+function GameAPI.get_item_stack_type_n_list(n, v) end
+
 --Gets an item in the KEYBOARD_KEY array
 ---@param l py.List # list
 ---@param i integer # subscript
@@ -2291,6 +2453,24 @@ function GameAPI.set_keyboard_key_list_value(l, i, v) end
 ---@param v? py.KeyboardKey # value
 ---@return py.List # list
 function GameAPI.get_keyboard_key_n_list(n, v) end
+
+--Gets an item in the MAP array
+---@param l py.List # list
+---@param i integer # subscript
+---@return py.Map # value
+function GameAPI.get_map_list_value(l, i) end
+
+--Sets an item in the MAP array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v py.Map # value
+function GameAPI.set_map_list_value(l, i, v) end
+
+--Generates an array of n maps with the value v
+---@param n integer # Length
+---@param v? py.Map # value
+---@return py.List # list
+function GameAPI.get_map_n_list(n, v) end
 
 --Gets an item in the POINT_LIGHT array
 ---@param l py.List # list
@@ -2472,6 +2652,132 @@ function GameAPI.set_ui_scrollview_type_list_value(l, i, v) end
 ---@return py.List # list
 function GameAPI.get_ui_scrollview_type_n_list(n, v) end
 
+--Gets an item in the UI_EQUIP_SLOT_USE_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return integer # value
+function GameAPI.get_ui_equip_slot_use_type_list_value(l, i) end
+
+--Set an item in the UI_EQUIP_SLOT_USE_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v integer # value
+function GameAPI.set_ui_equip_slot_use_type_list_value(l, i, v) end
+
+--Generates an array of n UI_EQUIP_SLOT_USE_TYPE values of v
+---@param n integer # Length
+---@param v? integer # value
+---@return py.List # list
+function GameAPI.get_ui_equip_slot_use_type_n_list(n, v) end
+
+--Gets an item in the UI_EQUIP_SLOT_DRAG_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return integer # value
+function GameAPI.get_ui_equip_slot_drag_type_list_value(l, i) end
+
+--Set an item in the UI_EQUIP_SLOT_DRAG_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v integer # value
+function GameAPI.set_ui_equip_slot_drag_type_list_value(l, i, v) end
+
+--Generates an array of n UI_EQUIP_SLOT_DRAG_TYPE values of v
+---@param n integer # Length
+---@param v? integer # value
+---@return py.List # list
+function GameAPI.get_ui_equip_slot_drag_type_n_list(n, v) end
+
+--Gets an item in the LIVE2D array
+---@param l py.List # list
+---@param i integer # subscript
+---@return py.Live2dKey # value
+function GameAPI.get_live2d_list_value(l, i) end
+
+--Sets an item in the LIVE2D array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v py.Live2dKey # value
+function GameAPI.set_live2d_list_value(l, i, v) end
+
+--Generates an array of n LIVE2D values of v
+---@param n integer # Length
+---@param v? py.Live2dKey # value
+---@return py.List # list
+function GameAPI.get_live2d_n_list(n, v) end
+
+--Gets an item in the UI_TEXT_OVER_LENGTH_HANDLING_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return integer # value
+function GameAPI.get_ui_text_over_length_handling_type_list_value(l, i) end
+
+--Set an item in the UI_TEXT_OVER_LENGTH_HANDLING_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v integer # value
+function GameAPI.set_ui_text_over_length_handling_type_list_value(l, i, v) end
+
+--Generates n UI_TEXT_OVER_LENGTH_HANDLING_TYPE arrays with values of v
+---@param n integer # Length
+---@param v? integer # value
+---@return py.List # list
+function GameAPI.get_ui_text_over_length_handling_type_n_list(n, v) end
+
+--Gets an item in the UI_LAYOUT_CLIPPING_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return integer # value
+function GameAPI.get_ui_layout_clipping_type_list_value(l, i) end
+
+--Sets an item in the UI_LAYOUT_CLIPPING_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v integer # value
+function GameAPI.set_ui_layout_clipping_type_list_value(l, i, v) end
+
+--Generates n UI_LAYOUT_CLIPPING_TYPE arrays of value v
+---@param n integer # Length
+---@param v? integer # value
+---@return py.List # list
+function GameAPI.get_ui_layout_clipping_type_n_list(n, v) end
+
+--Gets an item in the UI_GRIDVIEW_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return integer # value
+function GameAPI.get_ui_gridview_type_list_value(l, i) end
+
+--Sets an item in the UI_GRIDVIEW_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v integer # value
+function GameAPI.set_ui_gridview_type_list_value(l, i, v) end
+
+--Generates n UI_GRIDVIEW_TYPE arrays of value v
+---@param n integer # Length
+---@param v? integer # value
+---@return py.List # list
+function GameAPI.get_ui_gridview_type_n_list(n, v) end
+
+--Gets an item in the UI_GRIDVIEW_BAR_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@return integer # value
+function GameAPI.get_ui_gridview_bar_type_list_value(l, i) end
+
+--Sets an item in the UI_GRIDVIEW_BAR_TYPE array
+---@param l py.List # list
+---@param i integer # subscript
+---@param v integer # value
+function GameAPI.set_ui_gridview_bar_type_list_value(l, i, v) end
+
+--Generates n UI_GRIDVIEW_BAR_TYPE arrays of value v
+---@param n integer # Length
+---@param v? integer # value
+---@return py.List # list
+function GameAPI.get_ui_gridview_bar_type_n_list(n, v) end
+
 --Default library adds BOOLEAN key-value pairs
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -2568,6 +2874,42 @@ function GameAPI.set_unit_key_ui_btn_status_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_ui_scrollview_type_kv(item_key, key, value) end
 
+--The default library adds UI_GRIDVIEW_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_ui_gridview_type_kv(item_key, key, value) end
+
+--The default library adds UI_GRIDVIEW_BAR_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_ui_gridview_bar_type_kv(item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_USE_TYPE key and value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_ui_equip_slot_use_type_kv(item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_DRAG_TYPE key and value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_ui_equip_slot_drag_type_kv(item_key, key, value) end
+
+--The default library adds UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_ui_layout_clipping_type_kv(item_key, key, value) end
+
+--Add UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pairs to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_ui_text_over_length_handling_type_kv(item_key, key, value) end
+
 --The default library adds UI_ANIM key-value pairs
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -2579,6 +2921,12 @@ function GameAPI.set_unit_key_ui_anim_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_ui_anim_curve_kv(item_key, key, value) end
+
+--The default library adds UI_ANIM_PLAY_MODE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_ui_anim_play_mode_kv(item_key, key, value) end
 
 --The default library adds AUDIO_CHANNEL key-value pairs
 ---@param item_key integer # prefab Library ID
@@ -2646,6 +2994,12 @@ function GameAPI.set_unit_key_image_quality_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_window_type_setting_kv(item_key, key, value) end
 
+--Add DAMAGE_ATTACK_TYPE key-value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_damage_attack_type_kv(item_key, key, value) end
+
 --The default library adds ITEM_ENTITY key-value pairs
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -2663,6 +3017,12 @@ function GameAPI.set_unit_key_item_group_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_item_name_kv(item_key, key, value) end
+
+--The default library adds an ITEM_STACK_TYPE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_item_stack_type_kv(item_key, key, value) end
 
 --ABILITY key-value pair added to default library
 ---@param item_key integer # prefab Library ID
@@ -2892,6 +3252,12 @@ function GameAPI.set_unit_key_scene_sound_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_model_kv(item_key, key, value) end
 
+--Default libraries add LIVE2D key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_live2d_kv(item_key, key, value) end
+
 --Add SFX_ENTITY key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -2939,6 +3305,12 @@ function GameAPI.set_unit_key_texture_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_sequence_kv(item_key, key, value) end
+
+--The default library adds a SPINE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_spine_kv(item_key, key, value) end
 
 --Add PHYSICS_OBJECT key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
@@ -3090,6 +3462,12 @@ function GameAPI.set_unit_key_mouse_key_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_mouse_wheel_kv(item_key, key, value) end
 
+--The default library adds MAP key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_map_kv(item_key, key, value) end
+
 --The default library adds a POST_EFFECT key-value pair
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -3107,6 +3485,12 @@ function GameAPI.set_unit_key_unit_type_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_unit_command_type_kv(item_key, key, value) end
+
+--Adds a UNIT_GROUP_COMMAND_TYPE key-value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_unit_group_command_type_kv(item_key, key, value) end
 
 --Add MINI_MAP_COLOR_TYPE key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
@@ -3131,6 +3515,24 @@ function GameAPI.set_unit_key_curved_path_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_unit_key_curved_path_3d_kv(item_key, key, value) end
+
+--Add RESCUE_SEEKER_TYPE key-value pair to the preset library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_rescue_seeker_type_kv(item_key, key, value) end
+
+--Add RESCUER_TYPE key-value pair to preset library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_rescuer_type_kv(item_key, key, value) end
+
+--The default library adds STORE_ITEM_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_unit_key_store_item_type_kv(item_key, key, value) end
 
 --Default library adds BOOLEAN key-value pairs
 ---@param item_key integer # prefab Library ID
@@ -3228,6 +3630,42 @@ function GameAPI.set_item_key_ui_btn_status_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_item_key_ui_scrollview_type_kv(item_key, key, value) end
 
+--The default library adds UI_GRIDVIEW_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_ui_gridview_type_kv(item_key, key, value) end
+
+--The default library adds UI_GRIDVIEW_BAR_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_ui_gridview_bar_type_kv(item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_USE_TYPE key and value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_ui_equip_slot_use_type_kv(item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_DRAG_TYPE key and value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_ui_equip_slot_drag_type_kv(item_key, key, value) end
+
+--The default library adds UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_ui_layout_clipping_type_kv(item_key, key, value) end
+
+--Add UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pairs to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_ui_text_over_length_handling_type_kv(item_key, key, value) end
+
 --The default library adds UI_ANIM key-value pairs
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -3239,6 +3677,12 @@ function GameAPI.set_item_key_ui_anim_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_item_key_ui_anim_curve_kv(item_key, key, value) end
+
+--The default library adds UI_ANIM_PLAY_MODE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_ui_anim_play_mode_kv(item_key, key, value) end
 
 --The default library adds AUDIO_CHANNEL key-value pairs
 ---@param item_key integer # prefab Library ID
@@ -3306,6 +3750,12 @@ function GameAPI.set_item_key_image_quality_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_item_key_window_type_setting_kv(item_key, key, value) end
 
+--Add DAMAGE_ATTACK_TYPE key-value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_damage_attack_type_kv(item_key, key, value) end
+
 --The default library adds ITEM_ENTITY key-value pairs
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -3323,6 +3773,12 @@ function GameAPI.set_item_key_item_group_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_item_key_item_name_kv(item_key, key, value) end
+
+--The default library adds an ITEM_STACK_TYPE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_item_stack_type_kv(item_key, key, value) end
 
 --ABILITY key-value pair added to default library
 ---@param item_key integer # prefab Library ID
@@ -3552,6 +4008,12 @@ function GameAPI.set_item_key_scene_sound_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_item_key_model_kv(item_key, key, value) end
 
+--Default libraries add LIVE2D key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_live2d_kv(item_key, key, value) end
+
 --Add SFX_ENTITY key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -3599,6 +4061,12 @@ function GameAPI.set_item_key_texture_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_item_key_sequence_kv(item_key, key, value) end
+
+--The default library adds a SPINE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_spine_kv(item_key, key, value) end
 
 --Add PHYSICS_OBJECT key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
@@ -3750,6 +4218,12 @@ function GameAPI.set_item_key_mouse_key_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_item_key_mouse_wheel_kv(item_key, key, value) end
 
+--The default library adds MAP key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_map_kv(item_key, key, value) end
+
 --The default library adds a POST_EFFECT key-value pair
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -3767,6 +4241,12 @@ function GameAPI.set_item_key_unit_type_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_item_key_unit_command_type_kv(item_key, key, value) end
+
+--Adds a UNIT_GROUP_COMMAND_TYPE key-value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_unit_group_command_type_kv(item_key, key, value) end
 
 --Add MINI_MAP_COLOR_TYPE key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
@@ -3791,6 +4271,24 @@ function GameAPI.set_item_key_curved_path_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_item_key_curved_path_3d_kv(item_key, key, value) end
+
+--Add RESCUE_SEEKER_TYPE key-value pair to the preset library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_rescue_seeker_type_kv(item_key, key, value) end
+
+--Add RESCUER_TYPE key-value pair to preset library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_rescuer_type_kv(item_key, key, value) end
+
+--The default library adds STORE_ITEM_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_item_key_store_item_type_kv(item_key, key, value) end
 
 --Default library adds BOOLEAN key-value pairs
 ---@param item_key integer # prefab Library ID
@@ -3888,6 +4386,42 @@ function GameAPI.set_ability_key_ui_btn_status_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_ui_scrollview_type_kv(item_key, key, value) end
 
+--The default library adds UI_GRIDVIEW_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_ui_gridview_type_kv(item_key, key, value) end
+
+--The default library adds UI_GRIDVIEW_BAR_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_ui_gridview_bar_type_kv(item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_USE_TYPE key and value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_ui_equip_slot_use_type_kv(item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_DRAG_TYPE key and value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_ui_equip_slot_drag_type_kv(item_key, key, value) end
+
+--The default library adds UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_ui_layout_clipping_type_kv(item_key, key, value) end
+
+--Add UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pairs to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_ui_text_over_length_handling_type_kv(item_key, key, value) end
+
 --The default library adds UI_ANIM key-value pairs
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -3899,6 +4433,12 @@ function GameAPI.set_ability_key_ui_anim_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_ui_anim_curve_kv(item_key, key, value) end
+
+--The default library adds UI_ANIM_PLAY_MODE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_ui_anim_play_mode_kv(item_key, key, value) end
 
 --The default library adds AUDIO_CHANNEL key-value pairs
 ---@param item_key integer # prefab Library ID
@@ -3966,6 +4506,12 @@ function GameAPI.set_ability_key_image_quality_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_window_type_setting_kv(item_key, key, value) end
 
+--Add DAMAGE_ATTACK_TYPE key-value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_damage_attack_type_kv(item_key, key, value) end
+
 --The default library adds ITEM_ENTITY key-value pairs
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -3983,6 +4529,12 @@ function GameAPI.set_ability_key_item_group_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_item_name_kv(item_key, key, value) end
+
+--The default library adds an ITEM_STACK_TYPE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_item_stack_type_kv(item_key, key, value) end
 
 --ABILITY key-value pair added to default library
 ---@param item_key integer # prefab Library ID
@@ -4212,6 +4764,12 @@ function GameAPI.set_ability_key_scene_sound_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_model_kv(item_key, key, value) end
 
+--Default libraries add LIVE2D key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_live2d_kv(item_key, key, value) end
+
 --Add SFX_ENTITY key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -4259,6 +4817,12 @@ function GameAPI.set_ability_key_texture_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_sequence_kv(item_key, key, value) end
+
+--The default library adds a SPINE key-value pair
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_spine_kv(item_key, key, value) end
 
 --Add PHYSICS_OBJECT key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
@@ -4410,6 +4974,12 @@ function GameAPI.set_ability_key_mouse_key_kv(item_key, key, value) end
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_mouse_wheel_kv(item_key, key, value) end
 
+--The default library adds MAP key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_map_kv(item_key, key, value) end
+
 --The default library adds a POST_EFFECT key-value pair
 ---@param item_key integer # prefab Library ID
 ---@param key integer # ID
@@ -4427,6 +4997,12 @@ function GameAPI.set_ability_key_unit_type_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_unit_command_type_kv(item_key, key, value) end
+
+--Adds a UNIT_GROUP_COMMAND_TYPE key-value pair to the default library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_unit_group_command_type_kv(item_key, key, value) end
 
 --Add MINI_MAP_COLOR_TYPE key-value pairs to the default library
 ---@param item_key integer # prefab Library ID
@@ -4451,6 +5027,24 @@ function GameAPI.set_ability_key_curved_path_kv(item_key, key, value) end
 ---@param key integer # ID
 ---@param value string # Key-value name
 function GameAPI.set_ability_key_curved_path_3d_kv(item_key, key, value) end
+
+--Add RESCUE_SEEKER_TYPE key-value pair to the preset library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_rescue_seeker_type_kv(item_key, key, value) end
+
+--Add RESCUER_TYPE key-value pair to preset library
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_rescuer_type_kv(item_key, key, value) end
+
+--The default library adds STORE_ITEM_TYPE key-value pairs
+---@param item_key integer # prefab Library ID
+---@param key integer # ID
+---@param value string # Key-value name
+function GameAPI.set_ability_key_store_item_type_kv(item_key, key, value) end
 
 --Determines if the BUFF is an instance of the target BUFFID
 ---@param modifier1 py.ModifierEntity # BUFF instance
@@ -4596,6 +5190,16 @@ function GameAPI.api_judge_item_in_group(item, item_group) end
 ---@param item_group py.ItemGroup # Item group
 ---@return py.Item # item
 function GameAPI.api_get_random_item_in_item_group(item_group) end
+
+--Get the item type number
+---@param item_key py.ItemKey # Item number
+---@return py.ItemKey # Item number
+function GameAPI.api_get_item_type_id(item_key) end
+
+--Gets the stack type of the item type
+---@param item_key py.ItemKey # Item number
+---@return py.ItemStackType # Item number
+function GameAPI.api_get_item_stack_type_id(item_key) end
 
 --Recently purchased items
 ---@return py.Item # Object entity
@@ -4859,6 +5463,11 @@ function GameAPI.break_mover(mover_id) end
 ---@return py.Mover # Kinetoscope
 function GameAPI.get_unit_mover(unit) end
 
+--A motion device for obtaining projectiles
+---@param projectile py.ProjectileEntity # Projectile object
+---@return py.Mover # Kinetoscope
+function GameAPI.get_projectile_mover(projectile) end
+
 --Gets the priority of the exerciser
 ---@param mover_id py.Mover # Kinetoscope
 ---@return integer # priority
@@ -4927,6 +5536,12 @@ function GameAPI.get_mover_relate_ability(mover_id) end
 ---@return py.UnitCommand # Unit command
 function GameAPI.create_unit_command_move_to_pos(pos, nav_range) end
 
+--Move to three-dimensional coordinates
+---@param pos py.FVector3 # position
+---@param nav_range? py.Fixed # Pathfinding range
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_command_move_to_pos_3D(pos, nav_range) end
+
 --stop
 ---@return py.UnitCommand # Unit command
 function GameAPI.create_unit_command_stop() end
@@ -4939,6 +5554,11 @@ function GameAPI.create_unit_command_empty() end
 ---@param pos py.FVector3 # position
 ---@return py.UnitCommand # Unit command
 function GameAPI.create_unit_command_hold(pos) end
+
+--Hold to three dimensional coordinates
+---@param pos py.FVector3 # position
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_command_hold_3D(pos) end
 
 --Attack movement
 ---@param pos py.FVector3 # position
@@ -4970,6 +5590,11 @@ function GameAPI.create_unit_command_move_along_road(road, patrol_mode, can_atta
 ---@param tar_dest? py.Destructible # Target destructible
 ---@return py.UnitCommand # Unit command
 function GameAPI.create_unit_command_use_skill(ability, tar_point_1, tar_point_2, tar_unit, tar_item, tar_dest) end
+
+--Attack target point
+---@param point py.Point # Release point
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_command_attack_point(point) end
 
 --Use goods
 ---@param item py.Item # item
@@ -5008,47 +5633,318 @@ function GameAPI.create_unit_command_transfer_item(item, target) end
 ---@return py.UnitCommand # Unit command
 function GameAPI.create_unit_command_follow(target, refresh_interval, near_offset, far_offset, follow_angle, follow_dead_target) end
 
---Gets the Magic effect special effect number UI_ANIM_PLAY_MODE key-value pair
+--Go the rounds
+---@param pos py.Unit # Target point
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_command_patrol(pos) end
+
+--Issue an order
+---@param group py.UnitGroup # Unit group
+---@param command py.UnitCommand # command
+function GameAPI.api_release_group_command(group, command) end
+
+--Move
+---@param pos py.FVector3 # position
+---@param nav_range? py.Fixed # Pathfinding range
+---@param organization? boolean # Formation or not
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_move_to_pos(pos, nav_range, organization) end
+
+--stop
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_stop() end
+
+--Null status
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_empty() end
+
+--garrison
+---@param pos py.FVector3 # position
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_hold(pos) end
+
+--Attack movement
+---@param pos py.FVector3 # position
+---@param nav_range? py.Fixed # Pathfinding range
+---@param organization? boolean # Formation or not
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_attack_move(pos, nav_range, organization) end
+
+--Attack
+---@param target py.Actor # goal
+---@param nav_range? py.Fixed # Pathfinding range
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_attack_target(target, nav_range) end
+
+--Path movement
+---@param road py.Road # path
+---@param patrol_mode integer # Moving mode
+---@param can_attack boolean # Active attack or not
+---@param start_from_nearest? boolean # Whether to start nearby
+---@param back_to_nearest? boolean # Whether to return nearby
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_move_along_road(road, patrol_mode, can_attack, start_from_nearest, back_to_nearest) end
+
+--Follow
+---@param target py.Unit # goal
+---@param refresh_interval? py.Fixed # interval
+---@param near_offset? py.Fixed # Following distance
+---@param far_offset? py.Fixed # Refollowing distance
+---@param follow_angle? py.Fixed # Following Angle
+---@param follow_dead_target? boolean # Follow the death target
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_follow(target, refresh_interval, near_offset, far_offset, follow_angle, follow_dead_target) end
+
+--Move to a random location
+---@param area py.Area # region
+---@param r? py.Fixed # Pathfinding range
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_move_to_random_pos(area, r) end
+
+--The attack moves to a random location
+---@param area py.Area # region
+---@param r? py.Fixed # Pathfinding range
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_attack_move_random_pos(area, r) end
+
+--Attack target point
+---@param point py.Point # Release point
+---@return py.UnitCommand # Unit command
+function GameAPI.create_unit_group_command_attack_point(point) end
+
+--Get item number UI_EFFECT_CAMERA_MODE key pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_effect_camera_mode_kv(item_key, key) end
+
+--Get the skill number UI_EFFECT_CAMERA_MODE key pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_effect_camera_mode_kv(ability_key, key) end
+
+--Get the magic effect ID UI_EFFECT_CAMERA_MODE key pair
 ---@param modifier_key py.ModifierKey # Magic effect number
 ---@param key string # Key name
 ---@return integer # Key value
-function GameAPI.get_modifier_key_ui_anim_play_mode_kv(modifier_key, key) end
+function GameAPI.get_modifier_key_ui_effect_camera_mode_kv(modifier_key, key) end
 
---Gets the effect number UI_ANIM_PLAY_MODE key-value pair
+--Get the special effect ID UI_EFFECT_CAMERA_MODE key pair
 ---@param projectile_key py.ProjectileKey # Special effect number
 ---@param key string # Key name
 ---@return integer # Key value
-function GameAPI.get_projectile_key_ui_anim_play_mode_kv(projectile_key, key) end
+function GameAPI.get_projectile_key_ui_effect_camera_mode_kv(projectile_key, key) end
 
---Gets the destructible number UI_ANIM_PLAY_MODE key-value pair
+--Get destructible number UI_EFFECT_CAMERA_MODE key pair
 ---@param destructible_key py.DestructibleKey # Destructible number
 ---@param key string # Key name
 ---@return integer # Key value
-function GameAPI.get_destructible_key_ui_anim_play_mode_kv(destructible_key, key) end
+function GameAPI.get_destructible_key_ui_effect_camera_mode_kv(destructible_key, key) end
 
---Gets the technology number UI_ANIM_PLAY_MODE key-value pair
+--Get the technology ID UI_EFFECT_CAMERA_MODE key pair
 ---@param tech_key py.TechKey # Technology number
 ---@param key string # Key name
 ---@return integer # Key value
-function GameAPI.get_tech_key_ui_anim_play_mode_kv(tech_key, key) end
+function GameAPI.get_tech_key_ui_effect_camera_mode_kv(tech_key, key) end
 
---Gets the image UI_ANIM_PLAY_MODE key-value pair
+--Get the image UI_EFFECT_CAMERA_MODE key pair
 ---@param icon_id py.Texture # picture
 ---@param key string # Key name
 ---@return integer # Key value
-function GameAPI.get_icon_id_ui_anim_play_mode_kv(icon_id, key) end
+function GameAPI.get_icon_id_ui_effect_camera_mode_kv(icon_id, key) end
 
---Gets the logical physical component type UI_ANIM_PLAY_MODE key-value pair
+--Gets the key pair of the logical physical component type UI_EFFECT_CAMERA_MODE
 ---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
 ---@param key string # Key name
 ---@return integer # Key value
-function GameAPI.get_physics_entity_key_ui_anim_play_mode_kv(physics_entity_key, key) end
+function GameAPI.get_physics_entity_key_ui_effect_camera_mode_kv(physics_entity_key, key) end
 
---Gets a UI_ANIM_PLAY_MODE key-value pair
+--Get the UI_EFFECT_CAMERA_MODE key pair
 ---@param kvbase py.KVBase # Custom key value carrier
 ---@param key string # Key name
 ---@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_anim_play_mode(kvbase, key) end
+function GameAPI.get_kv_pair_value_ui_effect_camera_mode(kvbase, key) end
+
+--Gets the unit number UI_POS_ADAPT_MODE key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_pos_adapt_mode_kv(unit_key, key) end
+
+--Gets the item number UI_POS_ADAPT_MODE key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_pos_adapt_mode_kv(item_key, key) end
+
+--Gets the skill number UI_POS_ADAPT_MODE key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_pos_adapt_mode_kv(ability_key, key) end
+
+--Gets the Magic effect special effect number UI_POS_ADAPT_MODE key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_pos_adapt_mode_kv(modifier_key, key) end
+
+--Gets the special effect number UI_POS_ADAPT_MODE key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_pos_adapt_mode_kv(projectile_key, key) end
+
+--Gets the destructible number UI_POS_ADAPT_MODE key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_pos_adapt_mode_kv(destructible_key, key) end
+
+--Gets the technology number UI_POS_ADAPT_MODE key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_pos_adapt_mode_kv(tech_key, key) end
+
+--Gets the image UI_POS_ADAPT_MODE key-value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_pos_adapt_mode_kv(icon_id, key) end
+
+--Gets the logical physical component type UI_POS_ADAPT_MODE key-value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_pos_adapt_mode_kv(physics_entity_key, key) end
+
+--Gets a UI_POS_ADAPT_MODE key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_kv_pair_value_ui_pos_adapt_mode(kvbase, key) end
+
+--Gets the unit number UI_CHAT_SEND_CHANNEL key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_chat_send_channel_kv(unit_key, key) end
+
+--Gets the item number UI_CHAT_SEND_CHANNEL key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_chat_send_channel_kv(item_key, key) end
+
+--Gets the skill number UI_CHAT_SEND_CHANNEL key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_chat_send_channel_kv(ability_key, key) end
+
+--Gets the Magic effect special effect number UI_CHAT_SEND_CHANNEL key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_chat_send_channel_kv(modifier_key, key) end
+
+--Gets the special effect number UI_CHAT_SEND_CHANNEL key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_chat_send_channel_kv(projectile_key, key) end
+
+--Gets the destructible number UI_CHAT_SEND_CHANNEL key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_chat_send_channel_kv(destructible_key, key) end
+
+--Gets the technology number UI_CHAT_SEND_CHANNEL key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_chat_send_channel_kv(tech_key, key) end
+
+--Gets the image UI_CHAT_SEND_CHANNEL key-value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_chat_send_channel_kv(icon_id, key) end
+
+--Gets the logical physical component type UI_CHAT_SEND_CHANNEL key-value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_chat_send_channel_kv(physics_entity_key, key) end
+
+--Gets a UI_CHAT_SEND_CHANNEL key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_kv_pair_value_ui_chat_send_channel(kvbase, key) end
+
+--Gets the unit number UI_CHAT_RECV_CHANNEL key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_chat_recv_channel_kv(unit_key, key) end
+
+--Gets the item number UI_CHAT_RECV_CHANNEL key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_chat_recv_channel_kv(item_key, key) end
+
+--Gets the skill number UI_CHAT_RECV_CHANNEL key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_chat_recv_channel_kv(ability_key, key) end
+
+--Gets the Magic effect special effect number UI_CHAT_RECV_CHANNEL key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_chat_recv_channel_kv(modifier_key, key) end
+
+--Gets the special effect number UI_CHAT_RECV_CHANNEL key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_chat_recv_channel_kv(projectile_key, key) end
+
+--Gets the destructible number UI_CHAT_RECV_CHANNEL key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_chat_recv_channel_kv(destructible_key, key) end
+
+--Gets the technology number UI_CHAT_RECV_CHANNEL key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_chat_recv_channel_kv(tech_key, key) end
+
+--Gets the image UI_CHAT_RECV_CHANNEL key-value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_chat_recv_channel_kv(icon_id, key) end
+
+--Gets the logical physical component type UI_CHAT_RECV_CHANNEL key-value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_chat_recv_channel_kv(physics_entity_key, key) end
+
+--Gets a UI_CHAT_RECV_CHANNEL key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_kv_pair_value_ui_chat_recv_channel(kvbase, key) end
 
 --Gets the unit number UI_TEXT_FONT_NAME key-value pair
 ---@param unit_key py.UnitKey # Unit number
@@ -5115,903 +6011,3 @@ function GameAPI.get_kv_pair_value_ui_text_font_name(kvbase, key) end
 ---@param key string # Key name
 ---@return integer # Key value
 function GameAPI.get_unit_key_ui_eca_anim_type_kv(unit_key, key) end
-
---Gets the item number UI_ECA_ANIM_TYPE key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_item_key_ui_eca_anim_type_kv(item_key, key) end
-
---Gets the skill number UI_ECA_ANIM_TYPE key-value pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_ability_key_ui_eca_anim_type_kv(ability_key, key) end
-
---Gets the Magic effect special effect number UI_ECA_ANIM_TYPE key-value pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_modifier_key_ui_eca_anim_type_kv(modifier_key, key) end
-
---Gets the special effect number UI_ECA_ANIM_TYPE key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_projectile_key_ui_eca_anim_type_kv(projectile_key, key) end
-
---Gets the destructible number UI_ECA_ANIM_TYPE key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_destructible_key_ui_eca_anim_type_kv(destructible_key, key) end
-
---Gets the technology number UI_ECA_ANIM_TYPE key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_tech_key_ui_eca_anim_type_kv(tech_key, key) end
-
---Gets the image UI_ECA_ANIM_TYPE key-value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_icon_id_ui_eca_anim_type_kv(icon_id, key) end
-
---Gets the logical physical component type UI_ECA_ANIM_TYPE key-value pair
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_physics_entity_key_ui_eca_anim_type_kv(physics_entity_key, key) end
-
---Gets a UI_ECA_ANIM_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_ui_eca_anim_type(kvbase, key) end
-
---Gets the LOCAL_UNIT_GROUP key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_unit_key_local_unit_group_kv(unit_key, key) end
-
---Gets the item number LOCAL_UNIT_GROUP key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_item_key_local_unit_group_kv(item_key, key) end
-
---Obtain the skill number LOCAL_UNIT_GROUP key and value pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_ability_key_local_unit_group_kv(ability_key, key) end
-
---Gets Magic effect number LOCAL_UNIT_GROUP key pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_modifier_key_local_unit_group_kv(modifier_key, key) end
-
---Gets the special effect number LOCAL_UNIT_GROUP key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_projectile_key_local_unit_group_kv(projectile_key, key) end
-
---Gets the destructible number LOCAL_UNIT_GROUP key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_destructible_key_local_unit_group_kv(destructible_key, key) end
-
---Gets the technology number LOCAL_UNIT_GROUP key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_tech_key_local_unit_group_kv(tech_key, key) end
-
---Gets the LOCAL_UNIT_GROUP key-value pair for the picture
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_icon_id_local_unit_group_kv(icon_id, key) end
-
---Obtain the LOCAL_UNIT_GROUP key pair of the logical physical component type
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_physics_entity_key_local_unit_group_kv(physics_entity_key, key) end
-
---Gets the LOCAL_UNIT_GROUP key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.LocalUnitGroup # Key value
-function GameAPI.get_kv_pair_value_local_unit_group(kvbase, key) end
-
---Get the unit number DAMAGE_ATTACK_TYPE key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_unit_key_damage_attack_type_kv(unit_key, key) end
-
---Gets the item number DAMAGE_ATTACK_TYPE key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_item_key_damage_attack_type_kv(item_key, key) end
-
---Obtain the skill number DAMAGE_ATTACK_TYPE key-value pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_ability_key_damage_attack_type_kv(ability_key, key) end
-
---Gets the Magic effect number DAMAGE_ATTACK_TYPE key-value pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_modifier_key_damage_attack_type_kv(modifier_key, key) end
-
---Get the special effect number DAMAGE_ATTACK_TYPE key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_projectile_key_damage_attack_type_kv(projectile_key, key) end
-
---Gets the destructible number DAMAGE_ATTACK_TYPE key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_destructible_key_damage_attack_type_kv(destructible_key, key) end
-
---Get the technology number DAMAGE_ATTACK_TYPE key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_tech_key_damage_attack_type_kv(tech_key, key) end
-
---Obtain the image DAMAGE_ATTACK_TYPE key-value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_icon_id_damage_attack_type_kv(icon_id, key) end
-
---Obtain the logical physical component type DAMAGE_ATTACK_TYPE key and value pair
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_physics_entity_key_damage_attack_type_kv(physics_entity_key, key) end
-
---Gets the DAMAGE_ATTACK_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_damage_attack_type(kvbase, key) end
-
---Gets the unit number DAMAGE_ARMOR_TYPE key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_unit_key_damage_armor_type_kv(unit_key, key) end
-
---Gets the item number DAMAGE_ARMOR_TYPE key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_item_key_damage_armor_type_kv(item_key, key) end
-
---Gets the skill number DAMAGE_ARMOR_TYPE key-value pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_ability_key_damage_armor_type_kv(ability_key, key) end
-
---Get Magic effect number DAMAGE_ARMOR_TYPE key-value pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_modifier_key_damage_armor_type_kv(modifier_key, key) end
-
---Gets the special effect number DAMAGE_ARMOR_TYPE key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_projectile_key_damage_armor_type_kv(projectile_key, key) end
-
---Gets the destructible number DAMAGE_ARMOR_TYPE key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_destructible_key_damage_armor_type_kv(destructible_key, key) end
-
---Gets the technology number DAMAGE_ARMOR_TYPE key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_tech_key_damage_armor_type_kv(tech_key, key) end
-
---Get the image DAMAGE_ARMOR_TYPE key-value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_icon_id_damage_armor_type_kv(icon_id, key) end
-
---Obtain the logical physical component type DAMAGE_ARMOR_TYPE key-value pair
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_physics_entity_key_damage_armor_type_kv(physics_entity_key, key) end
-
---Gets the DAMAGE_ARMOR_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return integer # Key value
-function GameAPI.get_kv_pair_value_damage_armor_type(kvbase, key) end
-
---Gets the ITEM_STACK_TYPE key-value pair with the unit number
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_unit_key_item_stack_type_kv(unit_key, key) end
-
---Gets the item number ITEM_STACK_TYPE key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_item_key_item_stack_type_kv(item_key, key) end
-
---Gets the skill number ITEM_STACK_TYPE key-value pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_ability_key_item_stack_type_kv(ability_key, key) end
-
---Gets the magic effect number ITEM_STACK_TYPE key-value pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_modifier_key_item_stack_type_kv(modifier_key, key) end
-
---Gets the special effect number ITEM_STACK_TYPE key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_projectile_key_item_stack_type_kv(projectile_key, key) end
-
---Gets the destructible number ITEM_STACK_TYPE key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_destructible_key_item_stack_type_kv(destructible_key, key) end
-
---Gets the technology number ITEM_STACK_TYPE key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_tech_key_item_stack_type_kv(tech_key, key) end
-
---Gets the ITEM_STACK_TYPE key-value pair for the picture
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_icon_id_item_stack_type_kv(icon_id, key) end
-
---Gets a key-value pair of the logical physical component type ITEM_STACK_TYPE
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_physics_entity_key_item_stack_type_kv(physics_entity_key, key) end
-
---Gets the ITEM_STACK_TYPE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.ItemStackType # Key value
-function GameAPI.get_kv_pair_value_item_stack_type(kvbase, key) end
-
---Obtain a key pair with the unit number ABILITY_RELEASE_ID
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_unit_key_ability_release_id_kv(unit_key, key) end
-
---Gets the item number ABILITY_RELEASE_ID key value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_item_key_ability_release_id_kv(item_key, key) end
-
---Obtain the skill key pair ABILITY_RELEASE_ID
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_ability_key_ability_release_id_kv(ability_key, key) end
-
---Gets the Magic effect number ABILITY_RELEASE_ID key pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_modifier_key_ability_release_id_kv(modifier_key, key) end
-
---Get the special effect number ABILITY_RELEASE_ID key pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_projectile_key_ability_release_id_kv(projectile_key, key) end
-
---Gets the destructible number ABILITY_RELEASE_ID key value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_destructible_key_ability_release_id_kv(destructible_key, key) end
-
---Obtain the technology number ABILITY_RELEASE_ID key pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_tech_key_ability_release_id_kv(tech_key, key) end
-
---Gets the image ABILITY_RELEASE_ID key pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_icon_id_ability_release_id_kv(icon_id, key) end
-
---Obtain a key pair of the logical physical component type ABILITY_RELEASE_ID
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_physics_entity_key_ability_release_id_kv(physics_entity_key, key) end
-
---Obtain the ABILITY_RELEASE_ID key pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.AbilityReleaseId # Key value
-function GameAPI.get_kv_pair_value_ability_release_id(kvbase, key) end
-
---Obtain the SLOT_TYPE key pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_unit_key_slot_type_kv(unit_key, key) end
-
---Gets item number SLOT_TYPE key pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_item_key_slot_type_kv(item_key, key) end
-
---Obtain the skill number SLOT_TYPE key pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_ability_key_slot_type_kv(ability_key, key) end
-
---Gets the Magic effect number SLOT_TYPE key pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_modifier_key_slot_type_kv(modifier_key, key) end
-
---Gets the special effect number SLOT_TYPE key pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_projectile_key_slot_type_kv(projectile_key, key) end
-
---Gets the destructible number SLOT_TYPE key pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_destructible_key_slot_type_kv(destructible_key, key) end
-
---Obtain the technology SLOT_TYPE key pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_tech_key_slot_type_kv(tech_key, key) end
-
---Gets the image SLOT_TYPE key pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_icon_id_slot_type_kv(icon_id, key) end
-
---Obtain the SLOT_TYPE key pair of the logical physical component type
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_physics_entity_key_slot_type_kv(physics_entity_key, key) end
-
---Gets the SLOT_TYPE key pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.SlotType # Key value
-function GameAPI.get_kv_pair_value_slot_type(kvbase, key) end
-
---Gets the unit number UI_POINT key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_unit_key_ui_point_kv(unit_key, key) end
-
---Gets the item number UI_POINT key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_item_key_ui_point_kv(item_key, key) end
-
---Gets the skill number UI_POINT key-value pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_ability_key_ui_point_kv(ability_key, key) end
-
---Gets the Magic effect special effect number UI_POINT key-value pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_modifier_key_ui_point_kv(modifier_key, key) end
-
---Gets the effect number UI_POINT key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_projectile_key_ui_point_kv(projectile_key, key) end
-
---Gets destructible number UI_POINT key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_destructible_key_ui_point_kv(destructible_key, key) end
-
---Gets the technology number UI_POINT key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_tech_key_ui_point_kv(tech_key, key) end
-
---Gets the image UI_POINT key-value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_icon_id_ui_point_kv(icon_id, key) end
-
---Gets a logical physical component type UI_POINT key-value pair
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_physics_entity_key_ui_point_kv(physics_entity_key, key) end
-
---Gets a UI_POINT key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.FUIPoint # Key value
-function GameAPI.get_kv_pair_value_ui_point(kvbase, key) end
-
---Get the unit number ATTACH_MODEL_ENTITY key and value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_unit_key_attach_model_entity_kv(unit_key, key) end
-
---Gets the item number ATTACH_MODEL_ENTITY key value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_item_key_attach_model_entity_kv(item_key, key) end
-
---Get the skill number ATTACH_MODEL_ENTITY key value pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_ability_key_attach_model_entity_kv(ability_key, key) end
-
---Gets magic effects special effect number ATTACH_MODEL_ENTITY key value pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_modifier_key_attach_model_entity_kv(modifier_key, key) end
-
---Gets the special effect number ATTACH_MODEL_ENTITY key value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_projectile_key_attach_model_entity_kv(projectile_key, key) end
-
---Gets the destructible number ATTACH_MODEL_ENTITY key value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_destructible_key_attach_model_entity_kv(destructible_key, key) end
-
---Get the technology number ATTACH_MODEL_ENTITY key and value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_tech_key_attach_model_entity_kv(tech_key, key) end
-
---Get the image ATTACH_MODEL_ENTITY key and value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_icon_id_attach_model_entity_kv(icon_id, key) end
-
---Gets the logical physical component type ATTACH_MODEL_ENTITY key value pair
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_physics_entity_key_attach_model_entity_kv(physics_entity_key, key) end
-
---Get the ATTACH_MODEL_ENTITY key and value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.AttachModelEntity # Key value
-function GameAPI.get_kv_pair_value_attach_model_entity(kvbase, key) end
-
---Gets the unit number LIVE2D key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_unit_key_live2d_kv(unit_key, key) end
-
---Get item number LIVE2D key value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_item_key_live2d_kv(item_key, key) end
-
---Get skill number LIVE2D key value pairs
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_ability_key_live2d_kv(ability_key, key) end
-
---Get Magic Effects number LIVE2D key pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_modifier_key_live2d_kv(modifier_key, key) end
-
---Get the LIVE2D key-value pair with the effect number
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_projectile_key_live2d_kv(projectile_key, key) end
-
---Gets the destructible number LIVE2D key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_destructible_key_live2d_kv(destructible_key, key) end
-
---Get Tech number LIVE2D key value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_tech_key_live2d_kv(tech_key, key) end
-
---Get the image LIVE2D key-value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_icon_id_live2d_kv(icon_id, key) end
-
---Gets the logical physical component type LIVE2D key-value pair
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_physics_entity_key_live2d_kv(physics_entity_key, key) end
-
---Get LIVE2D key-value pairs
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.Live2dKey # Key value
-function GameAPI.get_kv_pair_value_live2d(kvbase, key) end
-
---Gets the unit number SPINE key pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_unit_key_spine_kv(unit_key, key) end
-
---Gets the item number SPINE key value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_item_key_spine_kv(item_key, key) end
-
---Gets the skill number SPINE key pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_ability_key_spine_kv(ability_key, key) end
-
---Gets the SPINE key pair for the Magic effects number
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_modifier_key_spine_kv(modifier_key, key) end
-
---Gets the special effect number SPINE key pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_projectile_key_spine_kv(projectile_key, key) end
-
---Gets the destructible number SPINE key pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_destructible_key_spine_kv(destructible_key, key) end
-
---Gets the technology number SPINE key pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_tech_key_spine_kv(tech_key, key) end
-
---Gets the image SPINE key pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_icon_id_spine_kv(icon_id, key) end
-
---Gets the SPINE key pair of the logical physical component type
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_physics_entity_key_spine_kv(physics_entity_key, key) end
-
---Gets the SPINE key pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.Spine # Key value
-function GameAPI.get_kv_pair_value_spine(kvbase, key) end
-
---Obtain the unit number FORCE_ENTITY key pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_unit_key_force_entity_kv(unit_key, key) end
-
---Gets the item number FORCE_ENTITY key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_item_key_force_entity_kv(item_key, key) end
-
---Obtain the skill number FORCE_ENTITY key pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_ability_key_force_entity_kv(ability_key, key) end
-
---Gets a magic effect number FORCE_ENTITY key pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_modifier_key_force_entity_kv(modifier_key, key) end
-
---Gets the special effect number FORCE_ENTITY key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_projectile_key_force_entity_kv(projectile_key, key) end
-
---Gets the destructible number FORCE_ENTITY key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_destructible_key_force_entity_kv(destructible_key, key) end
-
---Obtain the technology number FORCE_ENTITY key pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_tech_key_force_entity_kv(tech_key, key) end
-
---Get an image FORCE_ENTITY key pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_icon_id_force_entity_kv(icon_id, key) end
-
---Gets the FORCE_ENTITY key value pair of the logical physical component type
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_physics_entity_key_force_entity_kv(physics_entity_key, key) end
-
---Get the FORCE_ENTITY key pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.Force # Key value
-function GameAPI.get_kv_pair_value_force_entity(kvbase, key) end
-
---Gets the unit number GOODS_KEY key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_unit_key_goods_key_kv(unit_key, key) end
-
---Gets the item number GOODS_KEY key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_item_key_goods_key_kv(item_key, key) end
-
---Get the skill number GOODS_KEY key pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_ability_key_goods_key_kv(ability_key, key) end
-
---Get the Magic effect number GOODS_KEY key pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_modifier_key_goods_key_kv(modifier_key, key) end
-
---Get the special effect number GOODS_KEY key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_projectile_key_goods_key_kv(projectile_key, key) end
-
---Gets the destructible number GOODS_KEY key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_destructible_key_goods_key_kv(destructible_key, key) end
-
---Gets the technology number GOODS_KEY key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_tech_key_goods_key_kv(tech_key, key) end
-
---Get the image GOODS_KEY key-value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_icon_id_goods_key_kv(icon_id, key) end
-
---Gets the logical physical component type GOODS_KEY key-value pair
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_physics_entity_key_goods_key_kv(physics_entity_key, key) end
-
---Gets the GOODS_KEY key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.GoodsKey # Key value
-function GameAPI.get_kv_pair_value_goods_key(kvbase, key) end
-
---Gets the MOUSE_KEY_WITHOUT_MIDDLE key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_unit_key_mouse_key_without_middle_kv(unit_key, key) end
-
---Gets the item number MOUSE_KEY_WITHOUT_MIDDLE key-value pair
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_item_key_mouse_key_without_middle_kv(item_key, key) end
-
---Gets the skill number MOUSE_KEY_WITHOUT_MIDDLE key-value pair
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_ability_key_mouse_key_without_middle_kv(ability_key, key) end
-
---Gets the Magic effect number MOUSE_KEY_WITHOUT_MIDDLE key-value pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_modifier_key_mouse_key_without_middle_kv(modifier_key, key) end
-
---Gets the MOUSE_KEY_WITHOUT_MIDDLE key-value pair for the special effect number
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_projectile_key_mouse_key_without_middle_kv(projectile_key, key) end
-
---Gets the destructible number MOUSE_KEY_WITHOUT_MIDDLE key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_destructible_key_mouse_key_without_middle_kv(destructible_key, key) end
-
---Gets the technology number MOUSE_KEY_WITHOUT_MIDDLE key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_tech_key_mouse_key_without_middle_kv(tech_key, key) end
-
---Gets the image MOUSE_KEY_WITHOUT_MIDDLE key-value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_icon_id_mouse_key_without_middle_kv(icon_id, key) end
-
---Gets the MOUSE_KEY_WITHOUT_MIDDLE key and value pair of the logical physical component type
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_physics_entity_key_mouse_key_without_middle_kv(physics_entity_key, key) end
-
---Gets the MOUSE_KEY_WITHOUT_MIDDLE key-value pair
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.MouseKeyWithoutMiddle # Key value
-function GameAPI.get_kv_pair_value_mouse_key_without_middle(kvbase, key) end
-
---Gets the unit number MAP key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_unit_key_map_kv(unit_key, key) end
-
---Gets item number MAP key-value pairs
----@param item_key py.ItemKey # Item number
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_item_key_map_kv(item_key, key) end
-
---Get skill number MAP key-value pairs
----@param ability_key py.AbilityKey # Skill number
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_ability_key_map_kv(ability_key, key) end
-
---Get the Magic effect number MAP key pair
----@param modifier_key py.ModifierKey # Magic effect number
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_modifier_key_map_kv(modifier_key, key) end
-
---Gets the special effect number MAP key-value pair
----@param projectile_key py.ProjectileKey # Special effect number
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_projectile_key_map_kv(projectile_key, key) end
-
---Gets the destructible number MAP key-value pair
----@param destructible_key py.DestructibleKey # Destructible number
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_destructible_key_map_kv(destructible_key, key) end
-
---Gets the technology number MAP key-value pair
----@param tech_key py.TechKey # Technology number
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_tech_key_map_kv(tech_key, key) end
-
---Gets the image MAP key-value pair
----@param icon_id py.Texture # picture
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_icon_id_map_kv(icon_id, key) end
-
---Obtain the MAP key pair of the logical physical component type
----@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_physics_entity_key_map_kv(physics_entity_key, key) end
-
---Get MAP key-value pairs
----@param kvbase py.KVBase # Custom key value carrier
----@param key string # Key name
----@return py.Map # Key value
-function GameAPI.get_kv_pair_value_map(kvbase, key) end
-
---Gets the UNIT_GROUP_COMMAND_TYPE key-value pair
----@param unit_key py.UnitKey # Unit number
----@param key string # Key name
----@return py.UnitGroupCommandType # Key value
-function GameAPI.get_unit_key_unit_group_command_type_kv(unit_key, key) end

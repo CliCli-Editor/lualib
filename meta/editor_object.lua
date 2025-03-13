@@ -1,3315 +1,2349 @@
 ---@class Object.Ability
----Cast spells to break range
----
----At the beginning of a skill cast or at the end of the cast shot phase, if the distance from the target of the cast exceeds this value, the skill release is interrupted.
----@field ability_break_cast_range string[]
----Mode of construction
----@field ability_build_subtype any
----Cast complete
----
----Spell completion time (also known as skill roll)
+--Skills Special Attributes (not yet in effect)
+---@field ability_attribute number
+--At the beginning of a skill cast or at the end of the cast shot phase, if the distance from the target of the cast exceeds this value, the skill release is interrupted.
+---@field ability_break_cast_range any[]
+--Roll back time
+--Spell completion time
 ---@field ability_bw_point number
----Cast begins
----
----Spell start time (also known as skill roll)
+--Front roll time
+--Spell start time
 ---@field ability_cast_point number
----Release range
----
----A circular area with the character as the center and the value as the radius. Is the furthest distance a character can release a skill without moving.
----@field ability_cast_range string[]
----Skill release type
----
----Skill release type.
----@field ability_cast_type any
----Spell shot
----
----Spell duration
+--Release range
+--A circular area with the character as the center and the value as the radius. Is the furthest distance a character can release a skill without moving.
+---@field ability_cast_range any[]
+--Skill release type.
+---@field ability_cast_type number
+--Spell duration
+--Time to cast a spell
 ---@field ability_channel_time number
----Skill consumption
----
----Release the MP cost of a skill (which varies according to the unit is own skill resources)
----@field ability_cost string[]
----Skill damage
----
----The damage caused by a skill can be edited using a formula and must be referenced within the trigger to take effect
----@field ability_damage string[]
----Skill sphere of influence
----
----The sphere of influence of current skills,
----@field ability_damage_range string[]
----Health cost
----
----The amount of health consumed when using this skill
----@field ability_hp_cost string[]
----icon
----
----ICONS of skills are displayed in the editor and on the game ui
----@field ability_icon any
----Rocker indicator line range
----@field ability_joystick_check_range number
----Maximum skill level
----
----The level limit for skills
+--Skill resource consumption value
+--Release the MP cost of a skill (which varies according to the unit is own skill resources)
+---@field ability_cost any[]
+--Skill damage
+--The damage caused by a skill can be edited using a formula and must be referenced within the trigger to take effect
+---@field ability_damage any[]
+--The sphere of influence of current skills,
+---@field ability_damage_range any[]
+--The amount of health consumed when using this skill
+---@field ability_hp_cost any[]
+--icon
+--ICONS of skills are displayed in the editor and on the game ui
+---@field ability_icon number
+--Maximum skill level
+--The level limit for skills
 ---@field ability_max_level number
----Maximum charge number
----
----The maximum charge of the skill must be greater than 0 and not in a cooling state to cast the skill
----@field ability_max_stack_count string[]
----Spell guide
----
----Spell lead time
+--Maximum number of charging layers
+--The maximum charge of the skill must be greater than 0 and not in a cooling state to cast the skill
+---@field ability_max_stack_count any[]
+--Spell lead time
 ---@field ability_prepare_time number
----Charging time
----
----Time required for each additional layer of charge (in seconds)
----@field ability_stack_cd string[]
----Skill stage allocation
----@field ability_stage_config any
----Skill binding animation track
----@field ability_timeline_resource any
----Length
----
----Length of arrow indicator
----@field arrow_length string[]
----breadth
----
----Width of the arrow indicator
----@field arrow_width string[]
----Editing skill effect
+--Charge cd
+--Time required for each additional layer of charge (in seconds)
+---@field ability_stack_cd any[]
+--Whether to allow untargeted attacks
+---@field allow_none_target boolean
+--ANIMATIONS
+---@field animation string
+--Animation rate
+---@field animation_speed number
+--Arrow length
+--Length of arrow indicator
+---@field arrow_length any[]
+--Arrow width
+--Width of the arrow indicator
+---@field arrow_width any[]
 ---@field art_resource_btn any
----Automatic picking
----
----When the collected resource is an item, whether the item is automatically picked up. If not automatically picked up then the item will be created on the ground.
+--When the collected resource is an item, whether the item is automatically picked up. If not automatically picked up then the item will be created on the ground.
 ---@field auto_pick boolean
----Backshake effect
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+--Backshake effect
 ---@field bs_sfx_list any[]
----backshake
+--backshake
 ---@field bs_sound_effect any[]
----Construction unit
----
----Build Skill Type of unit built
+--Build Skill Type of unit built
 ---@field build_list any[]
----Construction Angle
----@field build_rotate number
----Attack range preview effect
----
----Attack range preview of the effects, size reference ID 101492 effects resource
----@field building_attack_range_sfx any
----Enemy
----
----The smaller the camp value, the higher the priority. If the camp value is the same, the proximity takes precedence.
----@field camp_priority_enemy number
----teammate
----
----The smaller the camp value, the higher the priority. If the camp value is the same, the proximity takes precedence.
----@field camp_priority_friend number
----neutrality
----
----The smaller the camp value, the higher the priority. If the camp value is the same, the proximity takes precedence.
----@field camp_priority_neutral number
----Own side
----
----The smaller the camp value, the higher the priority. If the camp value is the same, the proximity takes precedence.
----@field camp_priority_self number
----Attack command triggers automatic casting
----
----Select the attack command to trigger automatic spellcasting.
----@field can_autocast_when_attack_target boolean
----Completion of a spell can be interrupted
----
----Can the completion phase of a skill spell be interrupted by another skill or move
+--Can the completion phase of a skill spell be interrupted by another skill or move
 ---@field can_bs_interrupt boolean
----cacheable
----
----When it is turned on, when it is controlled, it can continue to release when the control is over (for example, the casting command is issued when the cast is prohibited, and the cast will be automatically released after the forbidden cast is lifted).
+--Whether it can be cached
+--When it is turned on, when it is controlled, it can continue to release when the control is over (for example, the casting command is issued when the cast is prohibited, and the cast will be automatically released after the forbidden cast is lifted).
 ---@field can_cache boolean
----Spells can be interrupted
----
----Ability to be interrupted by other skills or moves
+--Ability to be interrupted by other skills or moves
 ---@field can_cast_interrupt boolean
----Lack of life can be cast
----
----Ability to cast abilities if the unit is current health does not meet the cost
+--Ability to cast abilities if the unit is current health does not meet the cost
 ---@field can_cast_when_hp_insufficient boolean
----Cost health to cast
----
----After this function is enabled, you can configure skill parameters related to health consumption. Do not enable this configuration if you do not need to. This will increase system consumption.
+--After this function is enabled, you can configure skill parameters related to health consumption. Do not enable this configuration if you do not need to. This will increase system consumption.
 ---@field can_cost_hp boolean
----Skills can interrupt other skills
----
----Releasing the skill attempts to interrupt the skill that is currently being released
+--Releasing the skill attempts to interrupt the skill that is currently being released
 ---@field can_interrupt_others boolean
----Casting leads can be interrupted
----
----Can the spell lead phase be interrupted by other skills or moves
+--Can the spell lead phase be interrupted by other skills or moves
 ---@field can_prepare_interrupt boolean
----The start of a spell can be interrupted
----
----Ability to be interrupted by other abilities or moves at the start of a spell
+--Ability to be interrupted by other abilities or moves at the start of a spell
 ---@field can_ps_interrupt boolean
----Radius of circle
----
----The radius of the circular indicator
----@field circle_radius string[]
----Cooling time
----
----The cooldown time of a skill, which is the amount of time to wait after a skill is released before it can be released again (in seconds).
----@field cold_down_time string[]
----Capture animation
----
----The animation that plays when using the Capture skill. Plays when a skill cast begins and stops when it stops.
+--Radius of circle
+--The radius of the circular indicator
+---@field circle_radius any[]
+--Cooling time
+--The cooldown time of a skill, which is the amount of time to wait after a skill is released before it can be released again (in seconds).
+---@field cold_down_time any[]
+--The animation that plays when using the Capture skill. Plays when a skill cast begins and stops when it stops.
 ---@field collection_animation string
----Loop animation
----
----Whether the capture animation played while collecting skills will loop.
+--Whether the capture animation played while collecting skills will loop.
 ---@field collection_animation_loop boolean
----Continuous casting
----
----Whether to continue collecting after collecting is complete (only if skill cooldown is 0)
+--Whether to continue collecting after collecting is complete (only if skill cooldown is 0)
 ---@field collection_continuously boolean
----Destructible object labeling requirements
----
----The ability will only search for destructible objects with the specified label when seeking enemies
----@field collection_destructible_tags any
----Consume life whether death
----
----If the unit is current health is not enough to cast at cost, the unit dies if true and retains 1 health if false
+--The ability will only search for destructible objects with the specified label when seeking enemies
+---@field collection_destructible_tags any[]
+--If the unit is current health is not enough to cast at cost, the unit dies if true and retains 1 health if false
 ---@field cost_hp_can_die boolean
----Magic effect
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+--Magic effect
 ---@field cst_sfx_list any[]
----Casting sound
----
----When the skill is executed at this stage, the sound content played on itself will stop immediately after the skill is interrupted
+--Casting sound
 ---@field cst_sound_effect any[]
----Custom effects selection
----@field customized_pointer_sfx any
----Description
----
----An introduction to skills, used in the editor and in-game Tips display
----@field description string
----Custom indicator effects
----@field enable_customized_pointer_sfx boolean
----End effect
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+--Description
+--Description
+---@field description number
+--End effect
 ---@field end_sfx_list any[]
----End sound
----
----When the skill is executed at this stage, the sound content played on itself will stop immediately after the skill is interrupted
+--End sound
 ---@field end_sound_effect any[]
----Factions
----
----Select the target by camp.
----@field filter_condition_camp any
----Unit movement type
----
----Only units of the specified movement type are searched when a skill is engaged
----@field filter_condition_move_channel_type any
----type
----
----Select the target by category.
----@field filter_condition_type any
----Article labeling requirements
----
----The ability will only search for items with the specified tag when seeking enemies
----@field filter_item_tags any
----Unit label requirements
----
----Only units with the specified tag will be searched when a skill is seeking an enemy
----@field filter_unit_tags any
----Unit exclusion tag
----
----The ability does not search for units with the specified label when seeking enemies
----@field forbid_unit_tags any
----Hit effect
----
----When a skill hits, the effect is displayed at the hit target
+--Condition of the enemy - Camp
+--Select the target by camp.
+---@field filter_condition_camp number
+--Condition - Type
+--Select the target by category.
+---@field filter_condition_type number
+--The ability will only search for items with the specified tag when seeking enemies
+---@field filter_item_tags any[]
+--Filter effect unit
+---@field filter_modifier_unit number
+--Only units with the specified tag will be searched when a skill is seeking an enemy
+---@field filter_unit_tags any[]
+--Hit effect
 ---@field hit_sfx_list any[]
----Hit sound
----
----The sound content that plays on the hit player when the skill is hit
+--Hit sound
 ---@field hit_sound_effect any[]
----Skills are affected by cooldown
----
----Skills are affected by shortening of cooldown in unit attributes
+--Skills are affected by shortening of cooldown in unit attributes
 ---@field influenced_by_cd_reduce boolean
----Movement has an impact on skills
----
----Moving after checking will attempt to interrupt the current skill, while unchecking will enable moving casting
+--Moving after checking will attempt to interrupt the current skill, while unchecking will enable moving casting
 ---@field influenced_by_move boolean
----autocast
----
----Select the target first by camp, then by category, if they are the same, then close priority.
----@field is_autocast boolean
----Whether it is a accumulating skill
----
----If true is true, the boot time is used as the boot time of the first stage of the power storage skill. 【 Need to be set to 0 at the beginning of the spell 】
+--Flow - Whether spells are cast continuously
+---@field is_channel boolean
+--If true is true, the boot time is used as the boot time of the first stage of the power storage skill. 【 Need to be set to 0 at the beginning of the spell 】
 ---@field is_charge_ability boolean
----Instant spell
----
----Whether casting is required to release this ability, the ability can be activated at any time while the unit is alive, and can be released normally even if casting is prohibited.
----@field is_immediate any
----Close combat
----
----When turned on, mark the damage dealt by this ability as melee damage
+--Process - Whether to cast the spell immediately
+--Whether casting is required to release this ability, the ability can be activated at any time while the unit is alive, and can be released normally even if casting is prohibited.
+---@field is_immediate boolean
+--Whether it is a melee attack
+--When turned on, mark the damage dealt by this ability as melee damage
 ---@field is_meele boolean
----ID
----
----Skill ID
+--Whether to switch skills (not currently effective)
+---@field is_toggle boolean
+--zh_value
+--ID
 ---@field key number
----Player custom
----@field kv any
----Grimoire skill
----
----list of skills stored in the Grimoire
+---@field kv Object.Ability.Kv
+--list of skills stored in the Grimoire
 ---@field magicbook_list any[]
----name
----
----The name of the current skill
----@field name string
----Turn or not
----
----When turned on, the unit will automatically turn to the direction of the skill release after the skill is released (turn speed is the turn speed in units).
+--name
+--name
+---@field name string|integer
+--When turned on, the unit will automatically turn to the direction of the skill release after the skill is released (turn speed is the turn speed in units).
 ---@field need_turn_to_target boolean
----Acquisition yield
----
----The amount of resources obtained each time the collection skill is used. If the collection is a player attribute, the corresponding player attribute value is obtained, and if the collection is an item, the corresponding number of items is obtained.
+--The amount of resources obtained each time the collection skill is used. If the collection is a player attribute, the corresponding player attribute value is obtained, and if the collection is an item, the corresponding number of items is obtained.
 ---@field pick_count number
----Player attribute cost
----
----The player stat that costs a skill to cast, and the player who owns the skill cannot cast a skill when the player is low on this stat
+--The player stat that costs a skill to cast, and the player who owns the skill cannot cast a skill when the player is low on this stat
 ---@field player_props_cost any[]
----Indicator can be blocked
----@field pointer_can_block boolean
----Indicator type
----@field pointer_channel any
----Blocked type
----@field pointer_limitation any
----precondition
----
----Preconditions for releasing skills
+--Preconditions for releasing skills
 ---@field precondition_list any[]
----Front roll effect
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+--Front roll effect
 ---@field ps_sfx_list any[]
----Forward sound
----
----When the skill is executed at this stage, the sound content played on itself will stop immediately after the skill is interrupted
+--Forward sound
 ---@field ps_sound_effect any[]
----You can cast spells out of range
----
----If the target point of the skill is out of cast range, it is cast at the point closest to the target within cast range
+--If the target point of the skill is out of cast range, it is cast at the point closest to the target within cast range
 ---@field release_immediately_out_of_range boolean
----Allowable learning level
----
----The level of the unit required to learn the skill
----@field required_level any
----Angle
----
----Angle of the sector indicator
----@field sector_angle string[]
----Sector radius
----
----The length of the side of the sector indicator
----@field sector_radius string[]
----Attack range preview
----
----When turned on, the build-time model comes with an attack range preview
----@field show_building_attack_range boolean
----Indicator type
----
----The style of the mouse indicator when releasing the skill
----@field sight_type any
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+--Allowable learning level
+--The level of the unit required to learn the skill
+---@field required_level Object.Ability.RequiredLevel
+--Angle of the sector indicator
+---@field sector_angle any[]
+--Sector radius
+--The length of the side of the sector indicator
+---@field sector_radius any[]
+--Indicator type
+--The style of the mouse indicator when releasing the skill
+---@field sight_type number
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list any[]
----Display ready countdown
----
----When turned on, a progress bar is displayed based on the spell time of the skill
+--When turned on, a progress bar is displayed based on the spell time of the skill
 ---@field sp_count_down boolean
----Prepare special effects
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+---@field sp_countdown boolean
+--Prepare special effects
 ---@field sp_sfx_list any[]
----Prepare sound effects
----
----When the skill is executed at this stage, the sound content played on itself will stop immediately after the skill is interrupted
+--Prepare sound effects
 ---@field sp_sound_effect any[]
----Editor suffix
----
----Used only in the editor to distinguish items with the same name. It does not affect the in-game display
+--Editor suffix
 ---@field suffix string
----tag
----
----Used to categorize skills. Labeling skills makes it easier to relate to them, such as writing game logic: All skills with XX labels are level +1
+--tag
+--Used to categorize skills. Labeling skills makes it easier to relate to them, such as writing game logic: All skills with XX labels are level +1
 ---@field tags any[]
----Target length
----@field target_arrow_length string[]
----Target width
----@field target_arrow_width string[]
----Special screening
----
----Configure special filtering rules for skills seeking enemies (e.g., exclude yourself, allow invincibility, etc.)
----@field target_attribute any
----Target circle radius
----@field target_circle_radius string[]
----Target Angle
----@field target_sector_angle string[]
----Target sector radius
----@field target_sector_radius string[]
----Transition time
----@field transition_duration number
----Transition start time
----@field transition_start_time number
----unit
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_building number
----biont
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_creature number
----destructible
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_destructible number
----Hero
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_hero number
----item
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_item number
----UID
----
----The unique id of the skill
+--Special screening (Cadaver only)
+--Configure special filtering rules for skills seeking enemies (e.g., exclude yourself, allow invincibility, etc.)
+---@field target_attribute number
+--theme
+---@field theme number
+--UID
 ---@field uid string
+
+---@class Object.Ability.Kv
+---@field AttackTimes Object.Ability.Kv.AttackTimes
+
+---@class Object.Ability.Kv.AttackTimes
+---@field annotation string
+---@field desc string
+---@field etype number
+--zh_value
+--ID
+---@field key string
+---@field prop_cls string
+---@field remark string
+--Master type
+---@field type number
+---@field value number
+
+---@class Object.Ability.RequiredLevel
+---@field formula string
+---@field required_levels any[]
 
 ---@class Object.AbilityOptions
----Cast spells to break range
----
----At the beginning of a skill cast or at the end of the cast shot phase, if the distance from the target of the cast exceeds this value, the skill release is interrupted.
----@field ability_break_cast_range? string[]
----Mode of construction
----@field ability_build_subtype? any
----Cast complete
----
----Spell completion time (also known as skill roll)
+--Skills Special Attributes (not yet in effect)
+---@field ability_attribute? number
+--At the beginning of a skill cast or at the end of the cast shot phase, if the distance from the target of the cast exceeds this value, the skill release is interrupted.
+---@field ability_break_cast_range? any[]
+--Roll back time
+--Spell completion time
 ---@field ability_bw_point? number
----Cast begins
----
----Spell start time (also known as skill roll)
+--Front roll time
+--Spell start time
 ---@field ability_cast_point? number
----Release range
----
----A circular area with the character as the center and the value as the radius. Is the furthest distance a character can release a skill without moving.
----@field ability_cast_range? string[]
----Skill release type
----
----Skill release type.
----@field ability_cast_type? any
----Spell shot
----
----Spell duration
+--Release range
+--A circular area with the character as the center and the value as the radius. Is the furthest distance a character can release a skill without moving.
+---@field ability_cast_range? any[]
+--Skill release type.
+---@field ability_cast_type? number
+--Spell duration
+--Time to cast a spell
 ---@field ability_channel_time? number
----Skill consumption
----
----Release the MP cost of a skill (which varies according to the unit is own skill resources)
----@field ability_cost? string[]
----Skill damage
----
----The damage caused by a skill can be edited using a formula and must be referenced within the trigger to take effect
----@field ability_damage? string[]
----Skill sphere of influence
----
----The sphere of influence of current skills,
----@field ability_damage_range? string[]
----Health cost
----
----The amount of health consumed when using this skill
----@field ability_hp_cost? string[]
----icon
----
----ICONS of skills are displayed in the editor and on the game ui
----@field ability_icon? any
----Rocker indicator line range
----@field ability_joystick_check_range? number
----Maximum skill level
----
----The level limit for skills
+--Skill resource consumption value
+--Release the MP cost of a skill (which varies according to the unit is own skill resources)
+---@field ability_cost? any[]
+--Skill damage
+--The damage caused by a skill can be edited using a formula and must be referenced within the trigger to take effect
+---@field ability_damage? any[]
+--The sphere of influence of current skills,
+---@field ability_damage_range? any[]
+--The amount of health consumed when using this skill
+---@field ability_hp_cost? any[]
+--icon
+--ICONS of skills are displayed in the editor and on the game ui
+---@field ability_icon? number
+--Maximum skill level
+--The level limit for skills
 ---@field ability_max_level? number
----Maximum charge number
----
----The maximum charge of the skill must be greater than 0 and not in a cooling state to cast the skill
----@field ability_max_stack_count? string[]
----Spell guide
----
----Spell lead time
+--Maximum number of charging layers
+--The maximum charge of the skill must be greater than 0 and not in a cooling state to cast the skill
+---@field ability_max_stack_count? any[]
+--Spell lead time
 ---@field ability_prepare_time? number
----Charging time
----
----Time required for each additional layer of charge (in seconds)
----@field ability_stack_cd? string[]
----Skill stage allocation
----@field ability_stage_config? any
----Skill binding animation track
----@field ability_timeline_resource? any
----Length
----
----Length of arrow indicator
----@field arrow_length? string[]
----breadth
----
----Width of the arrow indicator
----@field arrow_width? string[]
----Editing skill effect
+--Charge cd
+--Time required for each additional layer of charge (in seconds)
+---@field ability_stack_cd? any[]
+--Whether to allow untargeted attacks
+---@field allow_none_target? boolean
+--ANIMATIONS
+---@field animation? string
+--Animation rate
+---@field animation_speed? number
+--Arrow length
+--Length of arrow indicator
+---@field arrow_length? any[]
+--Arrow width
+--Width of the arrow indicator
+---@field arrow_width? any[]
 ---@field art_resource_btn? any
----Automatic picking
----
----When the collected resource is an item, whether the item is automatically picked up. If not automatically picked up then the item will be created on the ground.
+--When the collected resource is an item, whether the item is automatically picked up. If not automatically picked up then the item will be created on the ground.
 ---@field auto_pick? boolean
----Backshake effect
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+--Backshake effect
 ---@field bs_sfx_list? any[]
----backshake
+--backshake
 ---@field bs_sound_effect? any[]
----Construction unit
----
----Build Skill Type of unit built
+--Build Skill Type of unit built
 ---@field build_list? any[]
----Construction Angle
----@field build_rotate? number
----Attack range preview effect
----
----Attack range preview of the effects, size reference ID 101492 effects resource
----@field building_attack_range_sfx? any
----Enemy
----
----The smaller the camp value, the higher the priority. If the camp value is the same, the proximity takes precedence.
----@field camp_priority_enemy? number
----teammate
----
----The smaller the camp value, the higher the priority. If the camp value is the same, the proximity takes precedence.
----@field camp_priority_friend? number
----neutrality
----
----The smaller the camp value, the higher the priority. If the camp value is the same, the proximity takes precedence.
----@field camp_priority_neutral? number
----Own side
----
----The smaller the camp value, the higher the priority. If the camp value is the same, the proximity takes precedence.
----@field camp_priority_self? number
----Attack command triggers automatic casting
----
----Select the attack command to trigger automatic spellcasting.
----@field can_autocast_when_attack_target? boolean
----Completion of a spell can be interrupted
----
----Can the completion phase of a skill spell be interrupted by another skill or move
+--Can the completion phase of a skill spell be interrupted by another skill or move
 ---@field can_bs_interrupt? boolean
----cacheable
----
----When it is turned on, when it is controlled, it can continue to release when the control is over (for example, the casting command is issued when the cast is prohibited, and the cast will be automatically released after the forbidden cast is lifted).
+--Whether it can be cached
+--When it is turned on, when it is controlled, it can continue to release when the control is over (for example, the casting command is issued when the cast is prohibited, and the cast will be automatically released after the forbidden cast is lifted).
 ---@field can_cache? boolean
----Spells can be interrupted
----
----Ability to be interrupted by other skills or moves
+--Ability to be interrupted by other skills or moves
 ---@field can_cast_interrupt? boolean
----Lack of life can be cast
----
----Ability to cast abilities if the unit is current health does not meet the cost
+--Ability to cast abilities if the unit is current health does not meet the cost
 ---@field can_cast_when_hp_insufficient? boolean
----Cost health to cast
----
----After this function is enabled, you can configure skill parameters related to health consumption. Do not enable this configuration if you do not need to. This will increase system consumption.
+--After this function is enabled, you can configure skill parameters related to health consumption. Do not enable this configuration if you do not need to. This will increase system consumption.
 ---@field can_cost_hp? boolean
----Skills can interrupt other skills
----
----Releasing the skill attempts to interrupt the skill that is currently being released
+--Releasing the skill attempts to interrupt the skill that is currently being released
 ---@field can_interrupt_others? boolean
----Casting leads can be interrupted
----
----Can the spell lead phase be interrupted by other skills or moves
+--Can the spell lead phase be interrupted by other skills or moves
 ---@field can_prepare_interrupt? boolean
----The start of a spell can be interrupted
----
----Ability to be interrupted by other abilities or moves at the start of a spell
+--Ability to be interrupted by other abilities or moves at the start of a spell
 ---@field can_ps_interrupt? boolean
----Radius of circle
----
----The radius of the circular indicator
----@field circle_radius? string[]
----Cooling time
----
----The cooldown time of a skill, which is the amount of time to wait after a skill is released before it can be released again (in seconds).
----@field cold_down_time? string[]
----Capture animation
----
----The animation that plays when using the Capture skill. Plays when a skill cast begins and stops when it stops.
+--Radius of circle
+--The radius of the circular indicator
+---@field circle_radius? any[]
+--Cooling time
+--The cooldown time of a skill, which is the amount of time to wait after a skill is released before it can be released again (in seconds).
+---@field cold_down_time? any[]
+--The animation that plays when using the Capture skill. Plays when a skill cast begins and stops when it stops.
 ---@field collection_animation? string
----Loop animation
----
----Whether the capture animation played while collecting skills will loop.
+--Whether the capture animation played while collecting skills will loop.
 ---@field collection_animation_loop? boolean
----Continuous casting
----
----Whether to continue collecting after collecting is complete (only if skill cooldown is 0)
+--Whether to continue collecting after collecting is complete (only if skill cooldown is 0)
 ---@field collection_continuously? boolean
----Destructible object labeling requirements
----
----The ability will only search for destructible objects with the specified label when seeking enemies
----@field collection_destructible_tags? any
----Consume life whether death
----
----If the unit is current health is not enough to cast at cost, the unit dies if true and retains 1 health if false
+--The ability will only search for destructible objects with the specified label when seeking enemies
+---@field collection_destructible_tags? any[]
+--If the unit is current health is not enough to cast at cost, the unit dies if true and retains 1 health if false
 ---@field cost_hp_can_die? boolean
----Magic effect
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+--Magic effect
 ---@field cst_sfx_list? any[]
----Casting sound
----
----When the skill is executed at this stage, the sound content played on itself will stop immediately after the skill is interrupted
+--Casting sound
 ---@field cst_sound_effect? any[]
----Custom effects selection
----@field customized_pointer_sfx? any
----Description
----
----An introduction to skills, used in the editor and in-game Tips display
----@field description? string
----Custom indicator effects
----@field enable_customized_pointer_sfx? boolean
----End effect
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+--Description
+--Description
+---@field description? number
+--End effect
 ---@field end_sfx_list? any[]
----End sound
----
----When the skill is executed at this stage, the sound content played on itself will stop immediately after the skill is interrupted
+--End sound
 ---@field end_sound_effect? any[]
----Factions
----
----Select the target by camp.
----@field filter_condition_camp? any
----Unit movement type
----
----Only units of the specified movement type are searched when a skill is engaged
----@field filter_condition_move_channel_type? any
----type
----
----Select the target by category.
----@field filter_condition_type? any
----Article labeling requirements
----
----The ability will only search for items with the specified tag when seeking enemies
----@field filter_item_tags? any
----Unit label requirements
----
----Only units with the specified tag will be searched when a skill is seeking an enemy
----@field filter_unit_tags? any
----Unit exclusion tag
----
----The ability does not search for units with the specified label when seeking enemies
----@field forbid_unit_tags? any
----Hit effect
----
----When a skill hits, the effect is displayed at the hit target
+--Condition of the enemy - Camp
+--Select the target by camp.
+---@field filter_condition_camp? number
+--Condition - Type
+--Select the target by category.
+---@field filter_condition_type? number
+--The ability will only search for items with the specified tag when seeking enemies
+---@field filter_item_tags? any[]
+--Filter effect unit
+---@field filter_modifier_unit? number
+--Only units with the specified tag will be searched when a skill is seeking an enemy
+---@field filter_unit_tags? any[]
+--Hit effect
 ---@field hit_sfx_list? any[]
----Hit sound
----
----The sound content that plays on the hit player when the skill is hit
+--Hit sound
 ---@field hit_sound_effect? any[]
----Skills are affected by cooldown
----
----Skills are affected by shortening of cooldown in unit attributes
+--Skills are affected by shortening of cooldown in unit attributes
 ---@field influenced_by_cd_reduce? boolean
----Movement has an impact on skills
----
----Moving after checking will attempt to interrupt the current skill, while unchecking will enable moving casting
+--Moving after checking will attempt to interrupt the current skill, while unchecking will enable moving casting
 ---@field influenced_by_move? boolean
----autocast
----
----Select the target first by camp, then by category, if they are the same, then close priority.
----@field is_autocast? boolean
----Whether it is a accumulating skill
----
----If true is true, the boot time is used as the boot time of the first stage of the power storage skill. 【 Need to be set to 0 at the beginning of the spell 】
+--Flow - Whether spells are cast continuously
+---@field is_channel? boolean
+--If true is true, the boot time is used as the boot time of the first stage of the power storage skill. 【 Need to be set to 0 at the beginning of the spell 】
 ---@field is_charge_ability? boolean
----Instant spell
----
----Whether casting is required to release this ability, the ability can be activated at any time while the unit is alive, and can be released normally even if casting is prohibited.
----@field is_immediate? any
----Close combat
----
----When turned on, mark the damage dealt by this ability as melee damage
+--Process - Whether to cast the spell immediately
+--Whether casting is required to release this ability, the ability can be activated at any time while the unit is alive, and can be released normally even if casting is prohibited.
+---@field is_immediate? boolean
+--Whether it is a melee attack
+--When turned on, mark the damage dealt by this ability as melee damage
 ---@field is_meele? boolean
----ID
----
----Skill ID
+--Whether to switch skills (not currently effective)
+---@field is_toggle? boolean
+--zh_value
+--ID
 ---@field key? number
----Player custom
----@field kv? any
----Grimoire skill
----
----list of skills stored in the Grimoire
+---@field kv? Object.Ability.Kv
+--list of skills stored in the Grimoire
 ---@field magicbook_list? any[]
----name
----
----The name of the current skill
----@field name? string
----Turn or not
----
----When turned on, the unit will automatically turn to the direction of the skill release after the skill is released (turn speed is the turn speed in units).
+--name
+--name
+---@field name? string|integer
+--When turned on, the unit will automatically turn to the direction of the skill release after the skill is released (turn speed is the turn speed in units).
 ---@field need_turn_to_target? boolean
----Acquisition yield
----
----The amount of resources obtained each time the collection skill is used. If the collection is a player attribute, the corresponding player attribute value is obtained, and if the collection is an item, the corresponding number of items is obtained.
+--The amount of resources obtained each time the collection skill is used. If the collection is a player attribute, the corresponding player attribute value is obtained, and if the collection is an item, the corresponding number of items is obtained.
 ---@field pick_count? number
----Player attribute cost
----
----The player stat that costs a skill to cast, and the player who owns the skill cannot cast a skill when the player is low on this stat
+--The player stat that costs a skill to cast, and the player who owns the skill cannot cast a skill when the player is low on this stat
 ---@field player_props_cost? any[]
----Indicator can be blocked
----@field pointer_can_block? boolean
----Indicator type
----@field pointer_channel? any
----Blocked type
----@field pointer_limitation? any
----precondition
----
----Preconditions for releasing skills
+--Preconditions for releasing skills
 ---@field precondition_list? any[]
----Front roll effect
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+--Front roll effect
 ---@field ps_sfx_list? any[]
----Forward sound
----
----When the skill is executed at this stage, the sound content played on itself will stop immediately after the skill is interrupted
+--Forward sound
 ---@field ps_sound_effect? any[]
----You can cast spells out of range
----
----If the target point of the skill is out of cast range, it is cast at the point closest to the target within cast range
+--If the target point of the skill is out of cast range, it is cast at the point closest to the target within cast range
 ---@field release_immediately_out_of_range? boolean
----Allowable learning level
----
----The level of the unit required to learn the skill
----@field required_level? any
----Angle
----
----Angle of the sector indicator
----@field sector_angle? string[]
----Sector radius
----
----The length of the side of the sector indicator
----@field sector_radius? string[]
----Attack range preview
----
----When turned on, the build-time model comes with an attack range preview
----@field show_building_attack_range? boolean
----Indicator type
----
----The style of the mouse indicator when releasing the skill
----@field sight_type? any
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+--Allowable learning level
+--The level of the unit required to learn the skill
+---@field required_level? Object.Ability.RequiredLevel
+--Angle of the sector indicator
+---@field sector_angle? any[]
+--Sector radius
+--The length of the side of the sector indicator
+---@field sector_radius? any[]
+--Indicator type
+--The style of the mouse indicator when releasing the skill
+---@field sight_type? number
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list? any[]
----Display ready countdown
----
----When turned on, a progress bar is displayed based on the spell time of the skill
+--When turned on, a progress bar is displayed based on the spell time of the skill
 ---@field sp_count_down? boolean
----Prepare special effects
----
----When the skill is executed at this stage, the effect displayed on itself will stop immediately after the skill is interrupted
+---@field sp_countdown? boolean
+--Prepare special effects
 ---@field sp_sfx_list? any[]
----Prepare sound effects
----
----When the skill is executed at this stage, the sound content played on itself will stop immediately after the skill is interrupted
+--Prepare sound effects
 ---@field sp_sound_effect? any[]
----Editor suffix
----
----Used only in the editor to distinguish items with the same name. It does not affect the in-game display
+--Editor suffix
 ---@field suffix? string
----tag
----
----Used to categorize skills. Labeling skills makes it easier to relate to them, such as writing game logic: All skills with XX labels are level +1
+--tag
+--Used to categorize skills. Labeling skills makes it easier to relate to them, such as writing game logic: All skills with XX labels are level +1
 ---@field tags? any[]
----Target length
----@field target_arrow_length? string[]
----Target width
----@field target_arrow_width? string[]
----Special screening
----
----Configure special filtering rules for skills seeking enemies (e.g., exclude yourself, allow invincibility, etc.)
----@field target_attribute? any
----Target circle radius
----@field target_circle_radius? string[]
----Target Angle
----@field target_sector_angle? string[]
----Target sector radius
----@field target_sector_radius? string[]
----Transition time
----@field transition_duration? number
----Transition start time
----@field transition_start_time? number
----unit
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_building? number
----biont
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_creature? number
----destructible
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_destructible? number
----Hero
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_hero? number
----item
----
----The smaller the class value, the higher the priority. If the class value is the same, the proximity takes precedence.
----@field type_priority_item? number
----UID
----
----The unique id of the skill
+--Special screening (Cadaver only)
+--Configure special filtering rules for skills seeking enemies (e.g., exclude yourself, allow invincibility, etc.)
+---@field target_attribute? number
+--theme
+---@field theme? number
+--UID
 ---@field uid? string
+
 
 ---@class Object.Buff
----Maximum duration
----@field attach_model_list any
----Cycle period
----
----How often is a cycle expiration event triggered
+--List of attached models
+---@field attach_model_list string
+--How often is a cycle expiration event triggered
 ---@field cycle_time number
----Description
----@field description string
----Whether it disappears when it dies
----
----Whether to destroy this magic effect upon death. Permanent Magic effects Do not check this option.
+--Description
+--Description
+---@field description number
+--Whether to destroy this magic effect upon death. Permanent Magic effects Do not check this option.
 ---@field disappear_when_dead boolean
----Maximum duration
----@field get_effect_list any
----Halo effect
----
----The halo will apply this halo effect to nearby eligible units
----@field halo_effect any
----The unit label is not affected
----
----A halo effect is not applied to units with the specified label.
----The halo effect is achieved only when all criteria are met.
+---@field effect_button any
+--Get the list of effects
+---@field gain_list any[]
+---@field get_effect_list any[]
+--The halo will apply this halo effect to nearby eligible units
+---@field halo_effect number
+--A halo effect is not applied to units with the specified label.
+--The halo effect is achieved only when all criteria are met.
 ---@field ign_inf_unit_tag any[]
----The unit type is not affected
----
----A halo effect is not applied to units of the specified type.
----The halo effect is achieved only when all criteria are met.
----@field ign_inf_unit_type any
----Influence unit label
----
----Applies a halo effect to units that have the specified label.
----The halo effect is achieved only when all criteria are met.
----@field inf_unit_tag any[]
----Sphere of influence
----
----What range of units to add a halo effect to
+--A halo effect is not applied to units of the specified type.
+--The halo effect is achieved only when all criteria are met.
+---@field ign_inf_unit_type number
+--What range of units to add a halo effect to
 ---@field influence_rng number
----Do you affect yourself?
----
----Whether to add a halo effect to the halo owner
+--Whether to add a halo effect to the halo owner
 ---@field is_influence_self boolean
----ID
----
----The ID of the magic effect
+--zh_value
+--ID
 ---@field key number
----Player custom
----@field kv any
----The number of covering layers changes
----
----Immutable retains the old magic effect object (acquired during the event), and overwriting retains the new object.
----@field layer_change_of_cover any
----Upper level
----
----The maximum number of layers for a magic effect. If the maximum number of layers is 1, the number of layers for a magic effect is not displayed in the internal properties panel
+---@field kv Object.Buff.Kv
+--Immutable retains the old magic effect object (acquired during the event), and overwriting retains the new object.
+---@field layer_change_of_cover number
+--The maximum number of layers for a magic effect. If the maximum number of layers is 1, the number of layers for a magic effect is not displayed in the internal properties panel
 ---@field layer_max number
----Maximum duration
----@field lose_effect_list any
----opacity
+---@field lose_effect_list any[]
+--Lost effects list
+---@field lose_list any[]
 ---@field material_alpha number
----Material change
----
----Material that affects the bearer of magic effects
----@field material_change any
----Base material discoloration
----@field material_color any
----Color change intensity of material
+--Material that affects the bearer of magic effects
+---@field material_change number
+---@field material_color any[]
 ---@field material_color_intensity number
----Overlay type
----
----Used to determine whether and how to override units when they have the same magic effect.
----@field modifier_cover_type any
----Effect influence
----
----It is used only for marking and for effect classification. In ECA, magic effects of the same class can be treated uniformly on units
----@field modifier_effect any
----icon
----@field modifier_icon any
----Effect class
----
----Different categories of magic effects will be available
----@field modifier_type any
----name
----@field name string
----Homologous covering
----
----"Homology" refers to the same ability type and source unit for both magic effects when overwriting occurs
----
----When the same origin override requirement is Yes, magic effects from 2 different sources will not be overwritten, so the no override rule applies
+--model
+--model
+---@field model number
+--Used to determine whether and how to override units when they have the same magic effect.
+---@field modifier_cover_type number
+--It is used only for marking and for effect classification. In ECA, magic effects of the same class can be treated uniformly on units
+---@field modifier_effect number
+--Effect icon
+---@field modifier_icon number
+--Different categories of magic effects will be available
+---@field modifier_type number
+--name
+--name
+---@field name string|integer
+--"Homology" refers to the same ability type and source unit for both magic effects when overwriting occurs
+--  
+--When the same origin override requirement is Yes, magic effects from 2 different sources will not be overwritten, so the no override rule applies
 ---@field same_origin_cover boolean
----Cover shield changes
----
----How the shield value is handled when the shield is overwritten
----@field shield_change_of_cover any
----Shield type
----
----The universal class can defend against physical or spell damage, while the physical and spell shields can only defend against the corresponding damage
----@field shield_type any
----Shield Value
----
----The amount of damage that shields can withstand
+--How the shield value is handled when the shield is overwritten
+---@field shield_change_of_cover number
+--The universal class can defend against physical or spell damage, while the physical and spell shields can only defend against the corresponding damage
+---@field shield_type number
+--The amount of damage that shields can withstand
 ---@field shield_value number
----Display icon
----
----When selected, the magic effect will be displayed in the Magic effect bar of the intra-office unit
+--When selected, the magic effect will be displayed in the Magic effect bar of the intra-office unit
 ---@field show_on_ui boolean
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list any[]
----Editor suffix
+--Editor suffix
 ---@field suffix string
----tag
+--tag
 ---@field tags any[]
----Target permit
----
----Decide whether to apply halo effects to units based on the relationship between friend and foe
----@field target_allow any
----Coverage time variation
----
----If the overlay type is overlay, the old duration is retained and the new duration is retained. If the overlay type is overlay, the rule is reversed.
----@field time_change_of_cover any
----UID
----
----UID of magic effect
+--Decide whether to apply halo effects to units based on the relationship between friend and foe
+---@field target_allow number
+--If the overlay type is overlay, the old duration is retained and the new duration is retained. If the overlay type is overlay, the rule is reversed.
+---@field time_change_of_cover number
+--UID
 ---@field uid string
+
+---@class Object.Buff.Kv
 
 ---@class Object.BuffOptions
----Maximum duration
----@field attach_model_list? any
----Cycle period
----
----How often is a cycle expiration event triggered
+--List of attached models
+---@field attach_model_list? string
+--How often is a cycle expiration event triggered
 ---@field cycle_time? number
----Description
----@field description? string
----Whether it disappears when it dies
----
----Whether to destroy this magic effect upon death. Permanent Magic effects Do not check this option.
+--Description
+--Description
+---@field description? number
+--Whether to destroy this magic effect upon death. Permanent Magic effects Do not check this option.
 ---@field disappear_when_dead? boolean
----Maximum duration
----@field get_effect_list? any
----Halo effect
----
----The halo will apply this halo effect to nearby eligible units
----@field halo_effect? any
----The unit label is not affected
----
----A halo effect is not applied to units with the specified label.
----The halo effect is achieved only when all criteria are met.
----@field ign_inf_unit_tag? any[]
----The unit type is not affected
----
----A halo effect is not applied to units of the specified type.
----The halo effect is achieved only when all criteria are met.
----@field ign_inf_unit_type? any
----Influence unit label
----
----Applies a halo effect to units that have the specified label.
----The halo effect is achieved only when all criteria are met.
----@field inf_unit_tag? any[]
----Sphere of influence
----
----What range of units to add a halo effect to
----@field influence_rng? number
----Do you affect yourself?
----
----Whether to add a halo effect to the halo owner
----@field is_influence_self? boolean
----ID
----
----The ID of the magic effect
----@field key? number
----Player custom
----@field kv? any
----The number of covering layers changes
----
----Immutable retains the old magic effect object (acquired during the event), and overwriting retains the new object.
----@field layer_change_of_cover? any
----Upper level
----
----The maximum number of layers for a magic effect. If the maximum number of layers is 1, the number of layers for a magic effect is not displayed in the internal properties panel
----@field layer_max? number
----Maximum duration
----@field lose_effect_list? any
----opacity
----@field material_alpha? number
----Material change
----
----Material that affects the bearer of magic effects
----@field material_change? any
----Base material discoloration
----@field material_color? any
----Color change intensity of material
----@field material_color_intensity? number
----Overlay type
----
----Used to determine whether and how to override units when they have the same magic effect.
----@field modifier_cover_type? any
----Effect influence
----
----It is used only for marking and for effect classification. In ECA, magic effects of the same class can be treated uniformly on units
----@field modifier_effect? any
----icon
----@field modifier_icon? any
----Effect class
----
----Different categories of magic effects will be available
----@field modifier_type? any
----name
----@field name? string
----Homologous covering
----
----"Homology" refers to the same ability type and source unit for both magic effects when overwriting occurs
----
----When the same origin override requirement is Yes, magic effects from 2 different sources will not be overwritten, so the no override rule applies
----@field same_origin_cover? boolean
----Cover shield changes
----
----How the shield value is handled when the shield is overwritten
----@field shield_change_of_cover? any
----Shield type
----
----The universal class can defend against physical or spell damage, while the physical and spell shields can only defend against the corresponding damage
----@field shield_type? any
----Shield Value
----
----The amount of damage that shields can withstand
----@field shield_value? number
----Display icon
----
----When selected, the magic effect will be displayed in the Magic effect bar of the intra-office unit
----@field show_on_ui? boolean
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
----@field sound_event_list? any[]
----Editor suffix
----@field suffix? string
----tag
----@field tags? any[]
----Target permit
----
----Decide whether to apply halo effects to units based on the relationship between friend and foe
----@field target_allow? any
----Coverage time variation
----
----If the overlay type is overlay, the old duration is retained and the new duration is retained. If the overlay type is overlay, the rule is reversed.
----@field time_change_of_cover? any
----UID
----
----UID of magic effect
----@field uid? string
-
----@class Object.Decoration
----List of hooks
----@field attach_models any
----Material color overlay type
----@field base_color_mod any
----Base material discoloration
----@field base_tint_color any
----Whether shadow is generated
----
----When checked, the ornament will calculate the light effect to form a shadow
----@field cast_shadow boolean
----Impact box
----@field collision_box any
----hypsogram
----@field collision_height any
----Collision lattice
----@field collision_points any
----Description
----@field description string
----Effect edit button
----@field effect_button any
----Get the list of effects
----@field effect_list any
----@field enable_camera_collision boolean
----Occlusion perspective
----@field enable_occlusion_perspective boolean
----Fresnel color
----@field fresnel_color any
----Fresnel intensity
----@field fresnel_emissive_color_strength number
----Fresnel index
----@field fresnel_exp number
----55 is not configured
----@field icon any
----ID
----
----The ID of the ornament
----@field key number
----Player custom
----@field kv any
----opacity
----@field material_alpha number
----Material change
----@field material_change any
----Base material discoloration
----@field material_color any
----Color change intensity of material
----@field material_color_intensity number
----model
----@field model any
----Model opacity
----@field model_opacity number
----name
----@field name string
----Receiving decal
----
----Whether to allow applique effects to be displayed above the ornament
----@field receive_decal boolean
----Zoom
----@field scale number
----Editor suffix
----@field suffix string
----UID
----
----The UID of the ornament
----@field uid string
----Whether to enable base material discoloration
----@field use_base_tint_color boolean
----Enable the Fresnel effect
----@field use_fresnel boolean
----passable
----
----If the ornament is passable after being checked, the unit will be allowed to step on the ornament.
----@field use_physics boolean
----Enable the fill light effect
----@field use_virtual_light boolean
-
----@class Object.DecorationOptions
----List of hooks
----@field attach_models? any
----Material color overlay type
----@field base_color_mod? any
----Base material discoloration
----@field base_tint_color? any
----Whether shadow is generated
----
----When checked, the ornament will calculate the light effect to form a shadow
----@field cast_shadow? boolean
----Impact box
----@field collision_box? any
----hypsogram
----@field collision_height? any
----Collision lattice
----@field collision_points? any
----Description
----@field description? string
----Effect edit button
 ---@field effect_button? any
----Get the list of effects
----@field effect_list? any
----@field enable_camera_collision? boolean
----Occlusion perspective
----@field enable_occlusion_perspective? boolean
----Fresnel color
----@field fresnel_color? any
----Fresnel intensity
----@field fresnel_emissive_color_strength? number
----Fresnel index
----@field fresnel_exp? number
----55 is not configured
----@field icon? any
----ID
----
----The ID of the ornament
+--Get the list of effects
+---@field gain_list? any[]
+---@field get_effect_list? any[]
+--The halo will apply this halo effect to nearby eligible units
+---@field halo_effect? number
+--A halo effect is not applied to units with the specified label.
+--The halo effect is achieved only when all criteria are met.
+---@field ign_inf_unit_tag? any[]
+--A halo effect is not applied to units of the specified type.
+--The halo effect is achieved only when all criteria are met.
+---@field ign_inf_unit_type? number
+--What range of units to add a halo effect to
+---@field influence_rng? number
+--Whether to add a halo effect to the halo owner
+---@field is_influence_self? boolean
+--zh_value
+--ID
 ---@field key? number
----Player custom
----@field kv? any
----opacity
+---@field kv? Object.Buff.Kv
+--Immutable retains the old magic effect object (acquired during the event), and overwriting retains the new object.
+---@field layer_change_of_cover? number
+--The maximum number of layers for a magic effect. If the maximum number of layers is 1, the number of layers for a magic effect is not displayed in the internal properties panel
+---@field layer_max? number
+---@field lose_effect_list? any[]
+--Lost effects list
+---@field lose_list? any[]
 ---@field material_alpha? number
----Material change
----@field material_change? any
----Base material discoloration
----@field material_color? any
----Color change intensity of material
+--Material that affects the bearer of magic effects
+---@field material_change? number
+---@field material_color? any[]
 ---@field material_color_intensity? number
----model
----@field model? any
----Model opacity
----@field model_opacity? number
----name
----@field name? string
----Receiving decal
----
----Whether to allow applique effects to be displayed above the ornament
----@field receive_decal? boolean
----Zoom
----@field scale? number
----Editor suffix
----@field suffix? string
----UID
----
----The UID of the ornament
----@field uid? string
----Whether to enable base material discoloration
----@field use_base_tint_color? boolean
----Enable the Fresnel effect
----@field use_fresnel? boolean
----passable
----
----If the ornament is passable after being checked, the unit will be allowed to step on the ornament.
----@field use_physics? boolean
----Enable the fill light effect
----@field use_virtual_light? boolean
-
----@class Object.Destructible
----@field alive_height_box_data string
----Material color overlay type
----@field base_color_mod any
----Base material discoloration
----@field base_tint_color any
----Model scaling
----@field body_size number
----Default Angle
----@field collision_box any
----Default Angle
----@field collision_points_alive any
----Default Angle
----@field collision_points_dead any
----@field dead_height_box_data string
----Description
----@field description string
----Death destruction delay
----@field destroy_delay number
----Destroy at death
----@field destroy_on_die boolean
----List of death effects
----@field die_effect_list any
----Die when resources run out
----@field die_on_source_run_out boolean
----List of persistent effects
----@field effect_list any
----Occlusion perspective
----@field enable_occlusion_perspective boolean
----Fresnel color
----@field fresnel_color any
----Fresnel intensity
----@field fresnel_emissive_color_strength number
----Fresnel index
----@field fresnel_exp number
----Vitality
----@field hp_max number
----icon
----@field icon any
----Can be used as a skill goal
----@field is_ability_target boolean
----hackable
----@field is_attacked boolean
----collectible
----@field is_collected boolean
----selectable
----@field is_selected boolean
----ID
----@field key number
----Player custom
----@field kv any
----opacity
----@field material_alpha number
----Material change
----@field material_change any
----Base material discoloration
----@field material_color any
----Color change intensity of material
----@field material_color_intensity number
----Small map - color
----@field mini_map_color any
----model
----@field model any
----Model opacity
----@field model_opacity number
----name
----@field name string
----accessibility
----@field passable boolean
----Receiving decal
----@field receive_decal boolean
----Mini map - Show
----@field show_on_mini_map boolean
----Sound event list
----@field sound_event_list any[]
----Resource name
----@field source_desc string
----Item type
----@field source_item any
----Initial resource quantity
----@field source_nums_init number
----Maximum quantity of resource
----@field source_nums_max number
----Player attribute resource
----@field source_player_prop any
----Resource recovery quantity
----@field source_refresh_count number
----Resource recovery interval
----@field source_refresh_interval number
----Resource type
----@field source_type any
----Editor suffix
----@field suffix string
----Item label
----@field tags any[]
----UID
----@field uid string
----Whether to enable base material discoloration
----@field use_base_tint_color boolean
----Enable the Fresnel effect
----@field use_fresnel boolean
----Enable the fill light effect
----@field use_virtual_light boolean
-
----@class Object.DestructibleOptions
----@field alive_height_box_data? string
----Material color overlay type
----@field base_color_mod? any
----Base material discoloration
----@field base_tint_color? any
----Model scaling
----@field body_size? number
----Default Angle
----@field collision_box? any
----Default Angle
----@field collision_points_alive? any
----Default Angle
----@field collision_points_dead? any
----@field dead_height_box_data? string
----Description
----@field description? string
----Death destruction delay
----@field destroy_delay? number
----Destroy at death
----@field destroy_on_die? boolean
----List of death effects
----@field die_effect_list? any
----Die when resources run out
----@field die_on_source_run_out? boolean
----List of persistent effects
----@field effect_list? any
----Occlusion perspective
----@field enable_occlusion_perspective? boolean
----Fresnel color
----@field fresnel_color? any
----Fresnel intensity
----@field fresnel_emissive_color_strength? number
----Fresnel index
----@field fresnel_exp? number
----Vitality
----@field hp_max? number
----icon
----@field icon? any
----Can be used as a skill goal
----@field is_ability_target? boolean
----hackable
----@field is_attacked? boolean
----collectible
----@field is_collected? boolean
----selectable
----@field is_selected? boolean
----ID
----@field key? number
----Player custom
----@field kv? any
----opacity
----@field material_alpha? number
----Material change
----@field material_change? any
----Base material discoloration
----@field material_color? any
----Color change intensity of material
----@field material_color_intensity? number
----Small map - color
----@field mini_map_color? any
----model
----@field model? any
----Model opacity
----@field model_opacity? number
----name
----@field name? string
----accessibility
----@field passable? boolean
----Receiving decal
----@field receive_decal? boolean
----Mini map - Show
----@field show_on_mini_map? boolean
----Sound event list
+--model
+--model
+---@field model? number
+--Used to determine whether and how to override units when they have the same magic effect.
+---@field modifier_cover_type? number
+--It is used only for marking and for effect classification. In ECA, magic effects of the same class can be treated uniformly on units
+---@field modifier_effect? number
+--Effect icon
+---@field modifier_icon? number
+--Different categories of magic effects will be available
+---@field modifier_type? number
+--name
+--name
+---@field name? string|integer
+--"Homology" refers to the same ability type and source unit for both magic effects when overwriting occurs
+--  
+--When the same origin override requirement is Yes, magic effects from 2 different sources will not be overwritten, so the no override rule applies
+---@field same_origin_cover? boolean
+--How the shield value is handled when the shield is overwritten
+---@field shield_change_of_cover? number
+--The universal class can defend against physical or spell damage, while the physical and spell shields can only defend against the corresponding damage
+---@field shield_type? number
+--The amount of damage that shields can withstand
+---@field shield_value? number
+--When selected, the magic effect will be displayed in the Magic effect bar of the intra-office unit
+---@field show_on_ui? boolean
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list? any[]
----Resource name
----@field source_desc? string
----Item type
----@field source_item? any
----Initial resource quantity
----@field source_nums_init? number
----Maximum quantity of resource
----@field source_nums_max? number
----Player attribute resource
----@field source_player_prop? any
----Resource recovery quantity
----@field source_refresh_count? number
----Resource recovery interval
----@field source_refresh_interval? number
----Resource type
----@field source_type? any
----Editor suffix
+--Editor suffix
 ---@field suffix? string
----Item label
+--tag
 ---@field tags? any[]
----UID
+--Decide whether to apply halo effects to units based on the relationship between friend and foe
+---@field target_allow? number
+--If the overlay type is overlay, the old duration is retained and the new duration is retained. If the overlay type is overlay, the rule is reversed.
+---@field time_change_of_cover? number
+--UID
 ---@field uid? string
----Whether to enable base material discoloration
----@field use_base_tint_color? boolean
----Enable the Fresnel effect
----@field use_fresnel? boolean
----Enable the fill light effect
----@field use_virtual_light? boolean
+
 
 ---@class Object.Item
----Active skill
----
----The active skill that is released when using the item
----@field attached_ability any
----Passive skill
----
----Passive skill gained while carrying the item
+--Agility
+--Extra agility for item carriers
+---@field agility number
+--Active skill
+--The active skill that is released when using the item
+---@field attached_ability number
+--Agility
+--Extra agility for item carriers
+---@field attached_agility any[]
+--Spell damage
+--The amount of extra magic attack power provided to item carriers
+---@field attached_attack_mag any[]
+--Physical attack
+--The amount of extra physical attack power provided to item carriers
+---@field attached_attack_phy any[]
+--Attack speed (%)
+--The number of times the additional attack speed provided to item carriers
+---@field attached_attack_speed any[]
+---@field attached_buffs any[]
+--Cooling reduction (%)
+--The percentage of additional cooling reduction provided to the item carrier
+---@field attached_cd_reduce any[]
+--Critical hit rate (%)
+--Additional critical hit rate for item carriers
+---@field attached_critical_chance any[]
+--Critical strike damage (%)
+--The multiplier of additional critical damage that is provided to item carriers. The amount of critical damage dealt when a critical strike occurs
+---@field attached_critical_dmg any[]
+---@field attached_custom_1 number
+--Spell defense
+--The amount of extra spell defense provided to item carriers
+---@field attached_defense_mag any[]
+--Physical defense
+--The number of additional physical defenses provided to the item carrier
+---@field attached_defense_phy any[]
+--Damage reduction (%)
+--Additional damage relief for item carriers
+---@field attached_dmg_reduction any[]
+--Avoidance rate (%)
+--Additional evasion rates for item carriers
+---@field attached_dodge_rate any[]
+--All damage bonus (%)
+--Additional damage bonus for item carriers
+---@field attached_extra_dmg any[]
+--Ability Damage Bonus (%)
+--This field has no actual effect
+---@field attached_gainvalue any[]
+--Improved by treatment (%)
+--The extra for item carriers is given a healing bonus
+---@field attached_heal_effect any[]
+--Hit rate (%)
+--Additional hit rate for item carriers
+---@field attached_hit_rate any[]
+--Max health
+--Additional maximum health for item carriers
+---@field attached_hp_max any[]
+--Life recovery
+--Extra health per second for item carriers
+---@field attached_hp_rec any[]
+--intelligence
+--Extra intelligence for the object carrier
+---@field attached_intelligence any[]
+--Maximum skill resource
+--Additional maximum mana for item carriers
+---@field attached_mp_max any[]
+--Skill resource recovery
+--Additional mana regeneration per second for item carriers
+---@field attached_mp_rec any[]
+--Moving speed
+--Additional movement speed for item carriers
+---@field attached_ori_speed any[]
+--Passive skill gained while carrying the item
 ---@field attached_passive_abilities any[]
----Automatic use
----
----The item is automatically used when it is selected and cannot be picked up if the item is active skill cost condition is not met
+--Normal penetration value
+--Additional spell penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field attached_pene_mag any[]
+--Spell penetration (%)
+--Additional percentage of spell penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field attached_pene_mag_ratio any[]
+--Object penetration number
+--Additional physical penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field attached_pene_phy any[]
+--Physical penetration (%)
+--Additional percentage of physical penetration provided to item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field attached_pene_phy_ratio any[]
+--This field has no actual effect
+---@field attached_resilience any[]
+--strength
+--Extra power for item carriers
+---@field attached_strength any[]
+--Spell Vampire (%)
+--Additional spell sucking for item carriers
+---@field attached_vampire_mag any[]
+--Physical blood feeding (%)
+--Additional physical bloodsucking for item carriers
+---@field attached_vampire_phy any[]
+--Extra realistic vision for item carriers
+---@field attached_vision_true any[]
+--Normal attack value
+--The amount of extra magic attack power provided to item carriers
+---@field attack_mag number
+--Physical attack value
+--The amount of extra physical attack power provided to item carriers
+---@field attack_phy number
+--Attack rate value
+--The number of times the additional attack speed provided to item carriers
+---@field attack_speed number
+--Automatic use
+--The item is automatically used when it is selected and cannot be picked up if the item is active skill cost condition is not met
 ---@field auto_use boolean
----Material color overlay type
----@field base_color_mod any
----Base material discoloration
----@field base_tint_color any
----dimension
----
----Scale of the item model
+---@field base_color_mod number
+---@field base_tint_color any[]
+--dimension
+--Scale of the item model
 ---@field body_size number
----Purchase required resources
----
----The resources needed to purchase this item from the store
+--Purchase required resources
+--The resources needed to purchase this item from the store
 ---@field buy_res_list any[]
----CD set
----
----When the item is used in the CD group, the active ability of using the item cools down all items in the same CD group held by the unit
+---@field can_sell boolean
+--Cooling reduction
+--The percentage of additional cooling reduction provided to the item carrier
+---@field cd_reduce number
+--CD set
+--When the item is used in the CD group, the active ability of using the item cools down all items in the same CD group held by the unit
 ---@field cd_type string
----Click Name panel to pick it up
----
----When opened, the item is name panel can respond to a click, which triggers the item pick-up logic.
----@field click_name_pick_up boolean
----Composite material
----
----The materials needed to synthesize this item will be automatically synthesized when all the synthetic materials are available
+--Composite material
+--The materials needed to synthesize this item will be automatically synthesized when all the synthetic materials are available
 ---@field compose_list any[]
----Default charge number
----
----The initial charge level of the item after creation
+---@field compose_sfx number
+--Critical Hit Chance
+--Additional critical hit rate for item carriers
+---@field critical_chance number
+--Critical impact value
+--The multiplier of additional critical damage that is provided to item carriers. The amount of critical damage dealt when a critical strike occurs
+---@field critical_dmg number
+--The initial charge level of the item after creation
 ---@field cur_charge number
----Default stack number
----
----The initial number of stacked layers after the item was created
+--The initial number of stacked layers after the item was created
 ---@field cur_stack number
----The unpicked time expires and disappears
----
----Whether items will self-destruct on the ground
+---@field custom_1 number
+--Normal defense value
+--The amount of extra spell defense provided to item carriers
+---@field defense_mag number
+--Physical defense value
+--The number of additional physical defenses provided to the item carrier
+---@field defense_phy number
+--Whether items will self-destruct on the ground
 ---@field delete_on_discard boolean
----Description
----
----Description and introduction of the item
----@field description string
----Opening collision
----
----After opening, there will be a collision between items, which can prevent items from stacking together. The collision range is set in the game Rules - Universal - Item collision range.
+--Description
+--Description
+---@field description number
+--After opening, there will be a collision between items, which can prevent items from stacking together. The collision range is set in the game Rules - Universal - Item collision range.
 ---@field disable_overlapping boolean
----desertability
----
----Whether the player can drop items to the ground
+--desertability
+--Whether the player can drop items to the ground
 ---@field discard_enable boolean
----Drops when the holder dies
----
----Whether items fall to the ground when the carrier dies
+--Drops when the holder dies
+--Whether items fall to the ground when the carrier dies
 ---@field discard_when_dead boolean
----Vanishing time
----
----Lost time on the ground
+--Percentage of injury relief
+--Additional damage relief for item carriers
+---@field dmg_reduction number
+--Dodge rate
+--Additional evasion rates for item carriers
+---@field dodge_rate number
+--Vanishing time
+--Lost time on the ground
 ---@field drop_stay_time number
----List of special effects
----@field effect_list any
----Fresnel color
----@field fresnel_color any
----Fresnel intensity
----@field fresnel_emissive_color_strength number
----Fresnel index
+--Composite effect edit button
+---@field effect_button any
+--Get the list of effects
+---@field effect_list any[]
+--All damage bonus (%)
+--Additional damage bonus for item carriers
+---@field extra_dmg number
 ---@field fresnel_exp number
----Vitality
----
----The health of an item is destroyed when it hits zero
+---@field gold_cost number
+--Improved by treatment (%)
+--The extra for item carriers is given a healing bonus
+---@field heal_effect number
+--Hit rate
+--Additional hit rate for item carriers
+---@field hit_rate number
+--Max health
+--Vitality
 ---@field hp_max number
----icon
----
----Item avatar
----@field icon any
----Initial inventory
----
----The initial number of purchases an item can make in a store as a commodity
+--Life recovery
+--Extra health per second for item carriers
+---@field hp_rec number
+--icon
+--Item avatar
+---@field icon number
+--Initial inventory
+--The initial number of purchases an item can make in a store as a commodity
 ---@field init_stock number
----Name display mode
----
----The name style that appears when the mouse hovers over the item
----@field item_billboard_type any
----ID
----
----Item ID
+--intelligence
+--Extra intelligence for the object carrier
+---@field intelligence number
+--The name style that appears when the mouse hovers over the item
+---@field item_billboard_type number
+--zh_value
+--ID
 ---@field key number
----Player custom
----@field kv any
----Lv.
----
----Level of item
+--Player custom
+---@field kv Object.Item.Kv
+--Lv.
+--Level of item
 ---@field level number
----opacity
----@field material_alpha number
----Material change
----@field material_change any
----Material change color
----@field material_color any
----Color change intensity of material
+---@field material_color any[]
 ---@field material_color_intensity number
----Maximum inventory
----
----The maximum number of purchases an item can make in a store as a commodity
+--Maximum inventory
+--The maximum number of purchases an item can make in a store as a commodity
 ---@field max_stock number
----Maximum charge number
----
----The maximum number of charge layers an item can be set to
+--Maximum charge number
+--The maximum number of charge layers an item can be set to
 ---@field maximum_charging number
----Maximum stack
----
----The maximum number of stacks an item can stack. When items are obtained repeatedly, items will automatically stack if they are not greater than this value.
+--Maximum stack
+--The maximum number of stacks an item can stack. When items are obtained repeatedly, items will automatically stack if they are not greater than this value.
 ---@field maximum_stacking number
----model
----
----A model of items falling to the ground
----@field model any
----Model opacity
+--model
+--model
+---@field model number
 ---@field model_opacity number
----name
----@field name string
----Name panel margin
----
----Calculates the maximum range for all images in the name panel and expands the specified value outward
----@field name_margin any
----The name panel is not obscured
----
----When turned on, the item is name panel will not overlap with the name panel of other items with the property turned on.
----@field name_not_occlusion boolean
----@field name_offset_based_on_root any
----skew
----@field offset any
----precondition
----
----Items will only be available for purchase in the store if the conditions are met.
+--Maximum skill resource
+--Additional maximum mana for item carriers
+---@field mp_max number
+--Skill resource recovery
+--Additional mana regeneration per second for item carriers
+---@field mp_rec number
+--name
+--name
+---@field name string|integer
+---@field non_zero_stacking boolean
+--Normal penetration value
+--Additional spell penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field pene_mag number
+--Spell penetration (%)
+--Additional percentage of spell penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field pene_mag_ratio number
+--Object penetration number
+--Additional physical penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field pene_phy number
+--Ignore target reactance percentage
+--Additional percentage of physical penetration provided to item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field pene_phy_ratio number
+--precondition
+--Items will only be available for purchase in the store if the conditions are met.
 ---@field precondition_list any[]
----Preview the panel decision area
----
----When checked, you can preview the area size of the panel when clicking to judge and stack
----@field preview_name_click_range boolean
----Preview stack effect
----
----Check it to preview the effect of the panel when it is stacked
----@field preview_name_stack boolean
----Inventory recovery interval
----
----The interval at which the store is inventory increases while the current item is a commodity
+--Inventory recovery interval
+--The interval at which the store is inventory increases while the current item is a commodity
 ---@field refresh_interval number
----@field rotation any
----mortgageable
----
----Whether the item can be sold to the store
+--mortgageable
+--Whether the item can be sold to the store
 ---@field sale_enable boolean
----Sale for resources
----
----Resources obtained when sold to the store
+---@field sell_gold number
+--Sale for resources
+--Resources obtained when sold to the store
 ---@field sell_res_list any[]
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list any[]
----Stack type
----
----Stacking or charging logic for items.
----@field stack_type any
----Purchase start time
----
----How long after the game starts to buy this item
+---@field source_player_prop string
+--Stack type
+--Stacking or charging logic for items.
+---@field stack_type number
+--Purchase start time
+--How long after the game starts to buy this item
 ---@field start_rft number
----Editor suffix
----
----The suffix that appears after the name in the editor is not displayed in the game
+--strength
+--strength
+---@field strength number
+--Editor suffix
+--Editor suffix
 ---@field suffix string
----Item label
----
----It is used to classify objects. Labeling units allows for more convenient relationships, such as writing game logic: Kill all units with XX labels
+--tag
+--It is used to classify objects. Labeling units allows for more convenient relationships, such as writing game logic: Kill all units with XX labels
 ---@field tags any[]
----UID
+--UID
+--UID
 ---@field uid string
----Whether to enable base material discoloration
----@field use_base_tint_color boolean
----Number of service consumption
----
----When an item is a stack type, the number of stacks consumed per use of the item
+--Number of service consumption
+--When an item is a stack type, the number of stacks consumed per use of the item
 ---@field use_consume number
----Enable the Fresnel effect
----@field use_fresnel boolean
----Enable the fill light effect
----@field use_virtual_light boolean
+
+---@class Object.Item.Kv
 
 ---@class Object.ItemOptions
----Active skill
----
----The active skill that is released when using the item
----@field attached_ability? any
----Passive skill
----
----Passive skill gained while carrying the item
+--Agility
+--Extra agility for item carriers
+---@field agility? number
+--Active skill
+--The active skill that is released when using the item
+---@field attached_ability? number
+--Agility
+--Extra agility for item carriers
+---@field attached_agility? any[]
+--Spell damage
+--The amount of extra magic attack power provided to item carriers
+---@field attached_attack_mag? any[]
+--Physical attack
+--The amount of extra physical attack power provided to item carriers
+---@field attached_attack_phy? any[]
+--Attack speed (%)
+--The number of times the additional attack speed provided to item carriers
+---@field attached_attack_speed? any[]
+---@field attached_buffs? any[]
+--Cooling reduction (%)
+--The percentage of additional cooling reduction provided to the item carrier
+---@field attached_cd_reduce? any[]
+--Critical hit rate (%)
+--Additional critical hit rate for item carriers
+---@field attached_critical_chance? any[]
+--Critical strike damage (%)
+--The multiplier of additional critical damage that is provided to item carriers. The amount of critical damage dealt when a critical strike occurs
+---@field attached_critical_dmg? any[]
+---@field attached_custom_1? number
+--Spell defense
+--The amount of extra spell defense provided to item carriers
+---@field attached_defense_mag? any[]
+--Physical defense
+--The number of additional physical defenses provided to the item carrier
+---@field attached_defense_phy? any[]
+--Damage reduction (%)
+--Additional damage relief for item carriers
+---@field attached_dmg_reduction? any[]
+--Avoidance rate (%)
+--Additional evasion rates for item carriers
+---@field attached_dodge_rate? any[]
+--All damage bonus (%)
+--Additional damage bonus for item carriers
+---@field attached_extra_dmg? any[]
+--Ability Damage Bonus (%)
+--This field has no actual effect
+---@field attached_gainvalue? any[]
+--Improved by treatment (%)
+--The extra for item carriers is given a healing bonus
+---@field attached_heal_effect? any[]
+--Hit rate (%)
+--Additional hit rate for item carriers
+---@field attached_hit_rate? any[]
+--Max health
+--Additional maximum health for item carriers
+---@field attached_hp_max? any[]
+--Life recovery
+--Extra health per second for item carriers
+---@field attached_hp_rec? any[]
+--intelligence
+--Extra intelligence for the object carrier
+---@field attached_intelligence? any[]
+--Maximum skill resource
+--Additional maximum mana for item carriers
+---@field attached_mp_max? any[]
+--Skill resource recovery
+--Additional mana regeneration per second for item carriers
+---@field attached_mp_rec? any[]
+--Moving speed
+--Additional movement speed for item carriers
+---@field attached_ori_speed? any[]
+--Passive skill gained while carrying the item
 ---@field attached_passive_abilities? any[]
----Automatic use
----
----The item is automatically used when it is selected and cannot be picked up if the item is active skill cost condition is not met
+--Normal penetration value
+--Additional spell penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field attached_pene_mag? any[]
+--Spell penetration (%)
+--Additional percentage of spell penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field attached_pene_mag_ratio? any[]
+--Object penetration number
+--Additional physical penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field attached_pene_phy? any[]
+--Physical penetration (%)
+--Additional percentage of physical penetration provided to item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field attached_pene_phy_ratio? any[]
+--This field has no actual effect
+---@field attached_resilience? any[]
+--strength
+--Extra power for item carriers
+---@field attached_strength? any[]
+--Spell Vampire (%)
+--Additional spell sucking for item carriers
+---@field attached_vampire_mag? any[]
+--Physical blood feeding (%)
+--Additional physical bloodsucking for item carriers
+---@field attached_vampire_phy? any[]
+--Extra realistic vision for item carriers
+---@field attached_vision_true? any[]
+--Normal attack value
+--The amount of extra magic attack power provided to item carriers
+---@field attack_mag? number
+--Physical attack value
+--The amount of extra physical attack power provided to item carriers
+---@field attack_phy? number
+--Attack rate value
+--The number of times the additional attack speed provided to item carriers
+---@field attack_speed? number
+--Automatic use
+--The item is automatically used when it is selected and cannot be picked up if the item is active skill cost condition is not met
 ---@field auto_use? boolean
----Material color overlay type
----@field base_color_mod? any
----Base material discoloration
----@field base_tint_color? any
----dimension
----
----Scale of the item model
+---@field base_color_mod? number
+---@field base_tint_color? any[]
+--dimension
+--Scale of the item model
 ---@field body_size? number
----Purchase required resources
----
----The resources needed to purchase this item from the store
+--Purchase required resources
+--The resources needed to purchase this item from the store
 ---@field buy_res_list? any[]
----CD set
----
----When the item is used in the CD group, the active ability of using the item cools down all items in the same CD group held by the unit
+---@field can_sell? boolean
+--Cooling reduction
+--The percentage of additional cooling reduction provided to the item carrier
+---@field cd_reduce? number
+--CD set
+--When the item is used in the CD group, the active ability of using the item cools down all items in the same CD group held by the unit
 ---@field cd_type? string
----Click Name panel to pick it up
----
----When opened, the item is name panel can respond to a click, which triggers the item pick-up logic.
----@field click_name_pick_up? boolean
----Composite material
----
----The materials needed to synthesize this item will be automatically synthesized when all the synthetic materials are available
+--Composite material
+--The materials needed to synthesize this item will be automatically synthesized when all the synthetic materials are available
 ---@field compose_list? any[]
----Default charge number
----
----The initial charge level of the item after creation
+---@field compose_sfx? number
+--Critical Hit Chance
+--Additional critical hit rate for item carriers
+---@field critical_chance? number
+--Critical impact value
+--The multiplier of additional critical damage that is provided to item carriers. The amount of critical damage dealt when a critical strike occurs
+---@field critical_dmg? number
+--The initial charge level of the item after creation
 ---@field cur_charge? number
----Default stack number
----
----The initial number of stacked layers after the item was created
+--The initial number of stacked layers after the item was created
 ---@field cur_stack? number
----The unpicked time expires and disappears
----
----Whether items will self-destruct on the ground
+---@field custom_1? number
+--Normal defense value
+--The amount of extra spell defense provided to item carriers
+---@field defense_mag? number
+--Physical defense value
+--The number of additional physical defenses provided to the item carrier
+---@field defense_phy? number
+--Whether items will self-destruct on the ground
 ---@field delete_on_discard? boolean
----Description
----
----Description and introduction of the item
----@field description? string
----Opening collision
----
----After opening, there will be a collision between items, which can prevent items from stacking together. The collision range is set in the game Rules - Universal - Item collision range.
+--Description
+--Description
+---@field description? number
+--After opening, there will be a collision between items, which can prevent items from stacking together. The collision range is set in the game Rules - Universal - Item collision range.
 ---@field disable_overlapping? boolean
----desertability
----
----Whether the player can drop items to the ground
+--desertability
+--Whether the player can drop items to the ground
 ---@field discard_enable? boolean
----Drops when the holder dies
----
----Whether items fall to the ground when the carrier dies
+--Drops when the holder dies
+--Whether items fall to the ground when the carrier dies
 ---@field discard_when_dead? boolean
----Vanishing time
----
----Lost time on the ground
+--Percentage of injury relief
+--Additional damage relief for item carriers
+---@field dmg_reduction? number
+--Dodge rate
+--Additional evasion rates for item carriers
+---@field dodge_rate? number
+--Vanishing time
+--Lost time on the ground
 ---@field drop_stay_time? number
----List of special effects
----@field effect_list? any
----Fresnel color
----@field fresnel_color? any
----Fresnel intensity
----@field fresnel_emissive_color_strength? number
----Fresnel index
+--Composite effect edit button
+---@field effect_button? any
+--Get the list of effects
+---@field effect_list? any[]
+--All damage bonus (%)
+--Additional damage bonus for item carriers
+---@field extra_dmg? number
 ---@field fresnel_exp? number
----Vitality
----
----The health of an item is destroyed when it hits zero
+---@field gold_cost? number
+--Improved by treatment (%)
+--The extra for item carriers is given a healing bonus
+---@field heal_effect? number
+--Hit rate
+--Additional hit rate for item carriers
+---@field hit_rate? number
+--Max health
+--Vitality
 ---@field hp_max? number
----icon
----
----Item avatar
----@field icon? any
----Initial inventory
----
----The initial number of purchases an item can make in a store as a commodity
+--Life recovery
+--Extra health per second for item carriers
+---@field hp_rec? number
+--icon
+--Item avatar
+---@field icon? number
+--Initial inventory
+--The initial number of purchases an item can make in a store as a commodity
 ---@field init_stock? number
----Name display mode
----
----The name style that appears when the mouse hovers over the item
----@field item_billboard_type? any
----ID
----
----Item ID
+--intelligence
+--Extra intelligence for the object carrier
+---@field intelligence? number
+--The name style that appears when the mouse hovers over the item
+---@field item_billboard_type? number
+--zh_value
+--ID
 ---@field key? number
----Player custom
----@field kv? any
----Lv.
----
----Level of item
+--Player custom
+---@field kv? Object.Item.Kv
+--Lv.
+--Level of item
 ---@field level? number
----opacity
----@field material_alpha? number
----Material change
----@field material_change? any
----Material change color
----@field material_color? any
----Color change intensity of material
+---@field material_color? any[]
 ---@field material_color_intensity? number
----Maximum inventory
----
----The maximum number of purchases an item can make in a store as a commodity
+--Maximum inventory
+--The maximum number of purchases an item can make in a store as a commodity
 ---@field max_stock? number
----Maximum charge number
----
----The maximum number of charge layers an item can be set to
+--Maximum charge number
+--The maximum number of charge layers an item can be set to
 ---@field maximum_charging? number
----Maximum stack
----
----The maximum number of stacks an item can stack. When items are obtained repeatedly, items will automatically stack if they are not greater than this value.
+--Maximum stack
+--The maximum number of stacks an item can stack. When items are obtained repeatedly, items will automatically stack if they are not greater than this value.
 ---@field maximum_stacking? number
----model
----
----A model of items falling to the ground
----@field model? any
----Model opacity
+--model
+--model
+---@field model? number
 ---@field model_opacity? number
----name
----@field name? string
----Name panel margin
----
----Calculates the maximum range for all images in the name panel and expands the specified value outward
----@field name_margin? any
----The name panel is not obscured
----
----When turned on, the item is name panel will not overlap with the name panel of other items with the property turned on.
----@field name_not_occlusion? boolean
----@field name_offset_based_on_root? any
----skew
----@field offset? any
----precondition
----
----Items will only be available for purchase in the store if the conditions are met.
+--Maximum skill resource
+--Additional maximum mana for item carriers
+---@field mp_max? number
+--Skill resource recovery
+--Additional mana regeneration per second for item carriers
+---@field mp_rec? number
+--name
+--name
+---@field name? string|integer
+---@field non_zero_stacking? boolean
+--Normal penetration value
+--Additional spell penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field pene_mag? number
+--Spell penetration (%)
+--Additional percentage of spell penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field pene_mag_ratio? number
+--Object penetration number
+--Additional physical penetration for item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field pene_phy? number
+--Ignore target reactance percentage
+--Additional percentage of physical penetration provided to item carriers. Calculate the fixed penetration first, then the percentage penetration
+---@field pene_phy_ratio? number
+--precondition
+--Items will only be available for purchase in the store if the conditions are met.
 ---@field precondition_list? any[]
----Preview the panel decision area
----
----When checked, you can preview the area size of the panel when clicking to judge and stack
----@field preview_name_click_range? boolean
----Preview stack effect
----
----Check it to preview the effect of the panel when it is stacked
----@field preview_name_stack? boolean
----Inventory recovery interval
----
----The interval at which the store is inventory increases while the current item is a commodity
+--Inventory recovery interval
+--The interval at which the store is inventory increases while the current item is a commodity
 ---@field refresh_interval? number
----@field rotation? any
----mortgageable
----
----Whether the item can be sold to the store
+--mortgageable
+--Whether the item can be sold to the store
 ---@field sale_enable? boolean
----Sale for resources
----
----Resources obtained when sold to the store
+---@field sell_gold? number
+--Sale for resources
+--Resources obtained when sold to the store
 ---@field sell_res_list? any[]
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list? any[]
----Stack type
----
----Stacking or charging logic for items.
----@field stack_type? any
----Purchase start time
----
----How long after the game starts to buy this item
+---@field source_player_prop? string
+--Stack type
+--Stacking or charging logic for items.
+---@field stack_type? number
+--Purchase start time
+--How long after the game starts to buy this item
 ---@field start_rft? number
----Editor suffix
----
----The suffix that appears after the name in the editor is not displayed in the game
+--strength
+--strength
+---@field strength? number
+--Editor suffix
+--Editor suffix
 ---@field suffix? string
----Item label
----
----It is used to classify objects. Labeling units allows for more convenient relationships, such as writing game logic: Kill all units with XX labels
+--tag
+--It is used to classify objects. Labeling units allows for more convenient relationships, such as writing game logic: Kill all units with XX labels
 ---@field tags? any[]
----UID
+--UID
+--UID
 ---@field uid? string
----Whether to enable base material discoloration
----@field use_base_tint_color? boolean
----Number of service consumption
----
----When an item is a stack type, the number of stacks consumed per use of the item
+--Number of service consumption
+--When an item is a stack type, the number of stacks consumed per use of the item
 ---@field use_consume? number
----Enable the Fresnel effect
----@field use_fresnel? boolean
----Enable the fill light effect
----@field use_virtual_light? boolean
+
 
 ---@class Object.Projectile
----Distinguish between friend and foe special effects display
----
----When enabled, you can configure the performance of the special effect in the eyes of the unit is enemies. It is usually used to handle different colored warning circles or to not display special effects to enemies.
+--Distinguish between friend and foe special effects display
+--When enabled, you can configure the performance of the special effect in the eyes of the unit is enemies. It is usually used to handle different colored warning circles or to not display special effects to enemies.
 ---@field async_effect boolean
----Description
----@field description string
----Whether to remove the performance immediately
----
----When turned on, all representations are removed immediately when the projectile is destroyed (for special effects resources that do not have a destruction transition)
+--Description
+--Description
+---@field description number
+--When turned on, displays are removed immediately when the projectile is destroyed
 ---@field effect_destroy_way_is_immediately boolean
----Enemy effects
----@field effect_foes any
----Special effect configuration
----@field effect_friend any
----icon
----@field icon any
----ID
----
----ID of the projectile
+--Enemy effects
+---@field effect_foes any[]
+--Special effect configuration
+---@field effect_friend any[]
+---@field icon number
+--zh_value
+--ID
 ---@field key number
----Player custom
----@field kv any
----Maximum duration
----
----Projectiles are forced to delete after reaching their maximum duration. Projectiles placed on the scene are not restricted.
+---@field kv Object.Projectile.Kv
+--Projectiles are forced to delete after reaching their maximum duration. Projectiles placed on the scene are not restricted.
 ---@field max_duration number
----Movement type
----
----Affects the removable channels available.
----@field move_channel any
----Movable channel
----
----When the projectile is the moving object of the motor and the terrain block is turned on, as the condition of whether the collision static collision event will be triggered.
----@field move_limitation any
----name
----@field name string
----Whether to enable the object pool
----
----After the object pool is enabled, the projectiles are removed immediately by default, and the projectiles are not destroyed. They enter the object pool in the sleep state to optimize the performance. When these objects are used again, the custom properties are not cleared.
----@field poolable boolean
----Loop or not
----
----When checked, the projectile will play again after the playback is complete
+--Affects the removable channels available.
+---@field move_channel number
+--When the projectile is the moving object of the motor and the terrain block is turned on, as the condition of whether the collision static collision event will be triggered.
+---@field move_limitation number
+--name
+--name
+---@field name string|integer
+--When checked, the projectile will play again after the playback is complete
 ---@field sfx_loop boolean
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list any[]
----Editor suffix
+--Editor suffix
 ---@field suffix string
----tag
+--tag
 ---@field tags any[]
----String ID
----
----UID of the projectile
+--UID
 ---@field uid string
+
+---@class Object.Projectile.Kv
 
 ---@class Object.ProjectileOptions
----Distinguish between friend and foe special effects display
----
----When enabled, you can configure the performance of the special effect in the eyes of the unit is enemies. It is usually used to handle different colored warning circles or to not display special effects to enemies.
+--Distinguish between friend and foe special effects display
+--When enabled, you can configure the performance of the special effect in the eyes of the unit is enemies. It is usually used to handle different colored warning circles or to not display special effects to enemies.
 ---@field async_effect? boolean
----Description
----@field description? string
----Whether to remove the performance immediately
----
----When turned on, all representations are removed immediately when the projectile is destroyed (for special effects resources that do not have a destruction transition)
+--Description
+--Description
+---@field description? number
+--When turned on, displays are removed immediately when the projectile is destroyed
 ---@field effect_destroy_way_is_immediately? boolean
----Enemy effects
----@field effect_foes? any
----Special effect configuration
----@field effect_friend? any
----icon
----@field icon? any
----ID
----
----ID of the projectile
+--Enemy effects
+---@field effect_foes? any[]
+--Special effect configuration
+---@field effect_friend? any[]
+---@field icon? number
+--zh_value
+--ID
 ---@field key? number
----Player custom
----@field kv? any
----Maximum duration
----
----Projectiles are forced to delete after reaching their maximum duration. Projectiles placed on the scene are not restricted.
+---@field kv? Object.Projectile.Kv
+--Projectiles are forced to delete after reaching their maximum duration. Projectiles placed on the scene are not restricted.
 ---@field max_duration? number
----Movement type
----
----Affects the removable channels available.
----@field move_channel? any
----Movable channel
----
----When the projectile is the moving object of the motor and the terrain block is turned on, as the condition of whether the collision static collision event will be triggered.
----@field move_limitation? any
----name
----@field name? string
----Whether to enable the object pool
----
----After the object pool is enabled, the projectiles are removed immediately by default, and the projectiles are not destroyed. They enter the object pool in the sleep state to optimize the performance. When these objects are used again, the custom properties are not cleared.
----@field poolable? boolean
----Loop or not
----
----When checked, the projectile will play again after the playback is complete
+--Affects the removable channels available.
+---@field move_channel? number
+--When the projectile is the moving object of the motor and the terrain block is turned on, as the condition of whether the collision static collision event will be triggered.
+---@field move_limitation? number
+--name
+--name
+---@field name? string|integer
+--When checked, the projectile will play again after the playback is complete
 ---@field sfx_loop? boolean
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list? any[]
----Editor suffix
+--Editor suffix
 ---@field suffix? string
----tag
+--tag
 ---@field tags? any[]
----String ID
----
----UID of the projectile
+--UID
 ---@field uid? string
+
 
 ---@class Object.Unit
----Applied technology
----
----The available technology of the unit (will be affected by the technology)
+--Applied technology
+--The available technology of the unit (will be affected by the technology)
 ---@field affect_techs any[]
----Agility
+--Agility
+--Agility
 ---@field agility number
----Agility
+--Agility
+--Agility
 ---@field agility_grow number
----Area of Alert (AI)
----
----Unit Warning Area (AI)
+--Locked range
+--Unit Warning Area (AI)
 ---@field alarm_range number
----The Angle difference allowed to move
----
----When the unit turns, if the turning Angle is less than this value, it will move directly towards the target direction; Instead, it turns and moves.
+--The Angle difference allowed to move
+--When the unit turns, if the turning Angle is less than this value, it will move directly towards the target direction; Instead, it turns and moves.
 ---@field angle_tolerance number
----Animation status name
----@field anim_state_name string
----Defense type
----
----The armor type of the unit, the specific effect can be viewed in the game rules
----@field armor_type any
----Attack interval
----
----The number of seconds between two normal attacks on a unit. The cooldown of a skill is used when the skill is replaced with a custom type
+--Defense type
+--The armor type of the unit, the specific effect can be viewed in the game rules
+---@field armor_type number
+--Attack interval
+--The number of seconds between two normal attacks on a unit. The cooldown of a skill is used when the skill is replaced with a custom type
 ---@field attack_interval number
----Attack interval
----
----The interval between two normal attacks
+--The interval between two normal attacks
 ---@field attack_interval_grow number
----Spell damage
----
----Unit spell damage
+--Normal attack value
+--Unit spell damage
 ---@field attack_mag number
----Spell damage
----
----Unit spell damage
+--Spell damage
+--Unit spell damage
 ---@field attack_mag_grow number
----Physical attack
----
----The unit is physical attack power
+--Physical attack value
+--The unit is physical attack power
 ---@field attack_phy number
----Physical attack
----
----The unit is physical attack power
+--Physical attack
+--The unit is physical attack power
 ---@field attack_phy_grow number
----Attack range
----
----Units can attack visible units within the attack range, and when a general attack skill is replaced with a custom type, the skill is release range is used
+--Attack range
+--Units can attack visible units within the attack range, and when a general attack skill is replaced with a custom type, the skill is release range is used
 ---@field attack_range number
----Attack range
----
----The attack range of a common attack
+--The attack range of a common attack
 ---@field attack_range_grow number
----Attack speed (%)
----
----The actual attack speed displayed in the office is :1/ Unit is current cooldown time of common attack skills * Attack speed
+--Attack rate value
+--The actual attack speed displayed in the office is :1/ Unit is current cooldown time of common attack skills * Attack speed
 ---@field attack_speed number
----Attack speed (%)
----
----Attack speed (multiples)
+--Attack speed (%)
+--Attack speed (multiples)
 ---@field attack_speed_grow number
----Attack type
----
----The attack type of the unit, the specific effect can be viewed in the game rules
----@field attack_type any
----Overhead name display mode
----
----Affects the text display above in-game objects.
----@field bar_show_name any
----Whether the blood bar scale is displayed
----
----Whether a scale line will appear on the unit blood bar
+--Attack type
+--The attack type of the unit, the specific effect can be viewed in the game rules
+---@field attack_type number
+---@field back_range number
+--Overhead name display mode
+--Affects the text display above in-game objects.
+---@field bar_show_name string|integer
+--Whether the blood bar scale is displayed
+--Whether a scale line will appear on the unit blood bar
 ---@field bar_show_scale boolean
----Inventory Panel
----
----The number of inventory boxes in a unit
+---@field bar_show_title boolean
+--Inventory Panel
+--The number of inventory boxes in a unit
 ---@field bar_slot_size number
----Material color overlay type
----@field base_color_mod any
----Base material discoloration
----@field base_tint_color any
----Overhead name font
----
----The text font displayed above the unit
----@field billboard_name_font any
----@field billboard_offset any
----X-axis scaling
+---@field bar_title_style number
+---@field base_tint_color any[]
+--Unit blood stripe height deviation
+---@field billboard_height_offset number
+--Overhead name font
+--The text font displayed above the unit
+---@field billboard_name_font string
+--X-axis scaling
 ---@field billboard_scale_x number
----Y-axis scaling
+--Y-axis scaling
 ---@field billboard_scale_y number
----Blood stripe pattern
----
----The unit in the game blood bar style
----@field blood_bar any
----Blood bar display mode
----
----The unit in the game blood bar display time
----@field blood_show_type any
----Model scaling
----
----The scaling factor of the current object model, used to resize the model.
+--Blood stripe pattern
+--The unit in the game blood bar style
+---@field blood_bar number
+--Blood bar display mode
+--The unit in the game blood bar display time
+---@field blood_show_type number
+--Model scaling
+--The scaling factor of the current object model, used to resize the model.
 ---@field body_size number
----Ignore dynamic collisions when building
----
----Whether to ignore dynamic collisions of other units when building this unit with Build skills.
----If you want to build under the feet of other units (such as trap class), you can check this switch.
----@field build_ignore_dyn_collision boolean
----Resource consumption
----
----Resources that are consumed when units are constructed as buildings
+--Included Angle
+---@field box_angle number
+--Box length
+---@field box_length1 number
+--Box width
+---@field box_length2 number
+--radius
+---@field box_r number
+--Box type
+---@field box_type number
+---@field build_precondition_list any[]
+--Resource consumption
+--Resources that are consumed when units are constructed as buildings
 ---@field build_res_cost_list any[]
----Construction time (seconds)
----@field build_time number
----Upgrade list
----@field build_upgrade_list any[]
----Purchase required resources
----
----Unit of resources required for the purchase of goods
+---@field building_rotatable boolean
+--Purchase required resources
+--Unit of resources required for the purchase of goods
 ---@field buy_res_list any[]
----Run when you ca not fight back
----
----When a unit takes damage and is unable to fight back, it moves a certain distance in the opposite direction of the source of the damage, effective only when on alert
+--Run when you ca not fight back
+--When a unit takes damage and is unable to fight back, it moves a certain distance in the opposite direction of the source of the damage, effective only when on alert
 ---@field can_flee boolean
----Cancellation of Alert Area (AI)
----
----The unit is de-warning area (AI), when the enemy leaves the de-warning area, it will no longer actively attack the enemy
+--Unlocking range
+--The unit is de-warning area (AI), when the enemy leaves the de-warning area, it will no longer actively attack the enemy
 ---@field cancel_alarm_range number
----Physical control jump height
----@field cc_jump_height number
----Physical control acceleration
----@field cc_move_acc number
----Physical control of the acceleration rate
----@field cc_move_acc_rate number
----Physics controls running speed
----@field cc_run_speed number
----Physical control of walking speed
----@field cc_walk_speed number
----Cooling reduction (%)
----
----Reduces part of cooldown when unit skills enter cd
+--Cooling reduction
+--Reduces part of cooldown when unit skills enter cd
 ---@field cd_reduce number
----Cooling reduction (%)
----
----Reduces part of cooldown when unit skills enter cd
+--Cooling reduction (%)
+--Reduces part of cooldown when unit skills enter cd
 ---@field cd_reduce_grow number
----Static collision follow orientation
----
----Valid for building type units only. When checked, static collisions follow rotation when units change orientation.
+--collision
+---@field collision number
+--Static collision follow orientation
+--Valid for building type units only. When checked, static collisions follow rotation when units change orientation.
 ---@field collision_box_turning_enable boolean
----Collision lattice
----@field collision_points any
----Dynamic collision radius
----@field collision_radius_2 number
----Universal skill
----
----Unit of common skills. In the default UI interface, it will be displayed in the first 6 skill bars, and the other skills will not be displayed but still take effect.
+---@field collision_points any[]
+---@field combat_range number
+--Universal skill
+--Unit of common skills. In the default UI interface, it will be displayed in the first 6 skill bars, and the other skills will not be displayed but still take effect.
 ---@field common_ability_list any[]
----Ordinary attack
----
----Unit is Normal Attack, unique, the ability released when a unit is normal attack on a target
----@field common_atk any
----General attack type
----
----Unit Common attack type. Select Custom to bind skills
----@field common_atk_type any
----Allowable counterattack range
----@field counterattack_range number
----Critical hit rate (%)
----
----Unit Normal attacks have a chance to deal extra damage
+--Normal Attack
+--Unit is Normal Attack, unique, the ability released when a unit is normal attack on a target
+---@field common_atk any[]
+--Unit Common attack type. Select Custom to bind skills
+---@field common_atk_type number
+---@field copper_coin number
+--Critical Hit Chance
+--Unit Normal attacks have a chance to deal extra damage
 ---@field critical_chance number
----Critical hit rate (%)
----
----Unit Normal attacks have a chance to deal extra damage
+--Critical hit rate (%)
+--Unit Normal attacks have a chance to deal extra damage
 ---@field critical_chance_grow number
----Critical strike damage (%)
----
----The amount of critical damage dealt when a critical strike occurs
+--Critical impact value
+--The amount of critical damage dealt when a critical strike occurs
 ---@field critical_dmg number
----Critical strike damage (%)
----
----The amount of critical damage dealt when a critical strike occurs
+--Critical strike damage (%)
+--The amount of critical damage dealt when a critical strike occurs
 ---@field critical_dmg_grow number
----Default behavior
----
----The default behavior of the unit
----@field default_behaviour_type any
----Spell defense
----
----Unit spell defense
+---@field custom_1 number
+---@field custom_1_grow number
+---@field custom_2 number
+---@field custom_2_grow number
+---@field custom_5 number
+---@field custom_5_grow number
+---@field custom_6 number
+---@field custom_6_grow number
+---@field custom_7 number
+---@field custom_7_grow number
+--Default behavior
+--The default behavior of the unit
+---@field default_behaviour_type string
+--Normal defense value
+--Unit spell defense
 ---@field defense_mag number
----Spell defense
----
----Unit spell defense
+--Spell defense
+--Unit spell defense
 ---@field defense_mag_grow number
----Physical defense
----
----The physical defense of the unit
+--Physical defense value
+--The physical defense of the unit
 ---@field defense_phy number
----Physical defense
----
----The physical defense of the unit
+--Physical defense
+--The physical defense of the unit
 ---@field defense_phy_grow number
----Description
----
----An introductory description of the unit, used in the editor and in-game Tips display
----@field description string
----Whether to destroy the unit after death
----
----Whether the unit will be completely destroyed after death. (The body will be destroyed after the end of the disappearance time, after the destruction will no longer be able to obtain the relevant information of the unit)
+--Description
+--An introductory description of the unit, used in the editor and in-game Tips display
+---@field description number
+--Whether to destroy the unit after death
+--Whether the unit will be completely destroyed after death. (The body will be destroyed after the end of the disappearance time, after the destruction will no longer be able to obtain the relevant information of the unit)
 ---@field destroy_after_die boolean
----Death
----
----An animation that plays when you are dead
+--Death
+--An animation that plays when you are dead
 ---@field die_anim string
----Disk shadow size
 ---@field disk_shadow_size number
----Damage reduction (%)
----
----% reduced damage taken
+--Percentage of injury relief
+--% reduced damage taken
 ---@field dmg_reduction number
----Damage reduction (%)
----
----% reduced damage taken
+--Damage reduction (%)
+--% reduced damage taken
 ---@field dmg_reduction_grow number
----Avoidance rate (%)
----
----The probability of a unit evading ordinary attacks from other units
+--Dodge rate
+--The probability of a unit evading ordinary attacks from other units
 ---@field dodge_rate number
----Avoidance rate (%)
----
----The probability of a unit evading ordinary attacks from other units
+--Avoidance rate (%)
+--The probability of a unit evading ordinary attacks from other units
 ---@field dodge_rate_grow number
----Dropped item
----
----Items that drop when a unit dies
+--Drop items after death
+---@field drop_item any[]
+--Dropped item
+--Items that drop when a unit dies
 ---@field drop_items_tuple any[]
----The side length of the pathfinding collision grid
----
----The dynamic radius of the collision is 1 standard lattice every 50.
+--Alternate color
+---@field dye_color string
+--Color change mode
+---@field dye_color_plan number
+--Collision dynamic radius
+--The dynamic radius of the collision is 1 standard lattice every 50.
 ---@field dynamic_collision_r number
----Open the backpack bar
----
----After closing, units will not activate the inventory and backpack bars.
----(For units that do not require a backpack, turning this attribute off can help improve map performance.)
----@field enable_item_slots boolean
----Enable mobile-oriented mode
----@field enable_strict_facing_mode boolean
----Enemy minimap avatar
----@field enemy_mini_map_icon any
----All damage bonus (%)
----
----Percentage increase in damage caused
+--Dynamic collision type
+---@field dynamic_collision_type number
+--Collision width
+---@field dynamic_collision_x number
+--Collision length
+---@field dynamic_collision_z number
+--Enemy minimap avatar
+---@field enemy_mini_map_icon number
+--All damage bonus (%)
+--Percentage increase in damage caused
 ---@field extra_dmg number
----All damage bonus (%)
----
----Percentage increase in damage caused
+--All damage bonus (%)
+--Percentage increase in damage caused
 ---@field extra_dmg_grow number
----Force display in minimap
----
----When checked, units will be forcibly displayed on the minimap, ignoring the war shadow
+--Force display in minimap
+--When checked, units will be forcibly displayed on the minimap, ignoring the war shadow
 ---@field force_show_on_mini_map boolean
----Fresnel color
----@field fresnel_color any
----Fresnel intensity
----@field fresnel_emissive_color_strength number
----Fresnel index
 ---@field fresnel_exp number
----Whether there is a skill resource bar
----
----Whether the unit has energy that can be used to release skills
+--Ability Damage Bonus (%)
+--This field has no actual effect
+---@field gainvalue number
+--Ability Damage Bonus (%)
+--This field has no actual effect
+---@field gainvalue_grow number
+---@field gold_coin number
+--Whether there is a skill resource bar
+--Whether the unit has energy that can be used to release skills
 ---@field has_mp boolean
----Bonus by healing effect (%)
----
----Improve the effectiveness of treatment when receiving treatment
+--Whether to display the white shield value
+---@field has_shield boolean
+--Bonus by healing effect (%)
+--Improve the effectiveness of treatment when receiving treatment
 ---@field heal_effect number
----Improved by treatment (%)
----
----Improve the effectiveness of treatment when receiving treatment
+--Improved by treatment (%)
+--Improve the effectiveness of treatment when receiving treatment
 ---@field heal_effect_grow number
----Bonus by healing effect (%)
----
----Increase the amount of healing when the unit takes effect
+--Increase the amount of healing when the unit takes effect
 ---@field healing_effect number
----Improved by treatment (%)
 ---@field healing_effect_grow number
----@field height_offset number
----Hero skill
----
----The unit is hero skills can be upgraded through learning, and each learning costs one skill point (earned when leveling up). In the default UI interface, it will be displayed in the last 6 skill bars, and the other skills will not be displayed but still take effect.
+--Hero skill
+--The unit is hero skills can be upgraded through learning, and each learning costs one skill point (earned when leveling up). In the default UI interface, it will be displayed in the last 6 skill bars, and the other skills will not be displayed but still take effect.
 ---@field hero_ability_list any[]
----Hit rate (%)
----
----The probability that a unit hits another unit in a normal attack
+--Hit rate
+--The probability that a unit hits another unit in a normal attack
 ---@field hit_rate number
----Hit rate (%)
----
----The probability that a unit hits another unit in a normal attack
+--Hit rate (%)
+--The probability that a unit hits another unit in a normal attack
 ---@field hit_rate_grow number
----Max health
----
----Maximum health of a unit
+--Max health
+--Maximum health of a unit
 ---@field hp_max number
----Max health
----
----Maximum health of a unit
+--Max health
+--Maximum health of a unit
 ---@field hp_max_grow number
----Life recovery
----
----Health regeneration per second
+--Life recovery
+--Health regeneration per second
 ---@field hp_rec number
----Life recovery
----
----Health regeneration per second
+--Life recovery
+--Health regeneration per second
 ---@field hp_rec_grow number
----Percent health recovery
----
----Percentage of health regeneration per second
----@field hp_rec_percent number
----Percent health recovery
----
----Percentage of health regeneration per second
----@field hp_rec_percent_grow number
----avatar
----
----Avatar of the unit displayed in the game
----@field icon any
----Default state
----
----Animations that play by default
+--avatar
+--Avatar of the unit displayed in the game
+---@field icon number
+--Default state
+--Animations that play by default
 ---@field idle_anim string
----Initial inventory
----
----Initial inventory of units as goods
+--Initial inventory
+--Initial inventory of units as goods
 ---@field init_stock number
----intelligence
+--intelligence
+--intelligence
 ---@field intelligence number
----intelligence
+--intelligence
+--intelligence
 ---@field intelligence_grow number
----Whether to apply the player color aperture
+--Whether to apply the player color aperture
 ---@field is_apply_role_color boolean
----Whether to show in the minimap
----
----Whether units will be displayed on the minimap
+--Whether to show in the minimap
+--Whether units will be displayed on the minimap
 ---@field is_mini_map_show boolean
----Whether to enable perspective
----
----When checked, if the unit is obscured, you will see the stroke of the unit
+--When checked, if the unit is obscured, you will see the stroke of the unit
 ---@field is_open_Xray boolean
----Enable disk shadow
----@field is_open_disk_shadow boolean
----Whether to turn on stroke
+--Whether to turn on stroke
 ---@field is_open_outline_pass boolean
----Whether to shop
----
----After opening the unit can be sold as a shop edit item
+--Whether to shop
+--After opening the unit can be sold as a shop edit item
 ---@field is_shop boolean
----@field is_x_offset boolean
----@field is_z_offset boolean
----Edit easy general attack
----
----Go to the presentation page to edit the detailed simple tap effect
----@field jump_to_display any
----Body disappearance time
+--Body disappearance time
+--Body disappearance time
 ---@field keep_dead_body_time number
----Stay on target when you ca not move
----
----If this field is not checked, after the target moves out of its warning range and cannot move itself, it will immediately start to find a new attack target. Mostly used for spot guards.
+--Stay on target when you ca not move
+--If this field is not checked, after the target moves out of its warning range and cannot move itself, it will immediately start to find a new attack target. Mostly used for spot guards.
 ---@field keep_target boolean
----ID
----
----A unique representation of a unit
+--zh_value
+--A unique representation of a unit
 ---@field key number
----Player custom
----@field kv any
----Lv.
----
----The default level of the unit
+--Player custom
+---@field kv Object.Unit.Kv
+--Lv.
+--The default level of the unit
 ---@field level number
----Primary attribute
----
----The main attribute of the hero unit, the general main attribute upgrade will have an extra bonus for the hero
----@field main_attr any
----Maximum equilibrium Angle
----@field max_balance_angle number
----Maximum inventory
----
----Unit as the maximum inventory of goods
+---@field logic_rotate_speed_valid boolean
+---@field logic_upper_rotate_speed_valid boolean
+--Primary attribute
+--The main attribute of the hero unit, the general main attribute upgrade will have an extra bonus for the hero
+---@field main_attr string
+--Maximum inventory
+--Unit as the maximum inventory of goods
 ---@field max_stock number
----Minimap avatar
----
----The unit is avatar on the minimap
----@field mini_map_icon any
----Small map avatar zoom
----
----Zoom the avatar of the unit on the minimap
+--Minimap avatar
+--The unit is avatar on the minimap
+---@field mini_map_icon number
+--Small map avatar zoom
+--Zoom the avatar of the unit on the minimap
 ---@field mini_map_icon_scale number
----model
----
----The model used by the current unit
----@field model any
----Ground lift
----
----The height of the unit above the ground
+--model
+--The model used by the current unit
+---@field model number
+--Ground lift
+--The height of the unit above the ground
 ---@field model_height number
----Model opacity
 ---@field model_opacity number
----Movement type
----
----The type of movement of the unit determines whether the unit is moving on the ground or in the air.
----@field move_channel any
----Movable channel
----
----Complements the type of unit movement by determining which channels the unit is moving in. The unit cannot pass through any channel blocked by collision.
----@field move_limitation any
----Movement type
----
----Affects the removable channels available.
----@field move_type any
----Skill resource bar color
----
----The color of the unit used to release the energy of the skill
----@field mp_color any
----Skill resource name
----
----The name of the unit used to release the energy of the skill
+--Movement type
+--The type of movement of the unit determines whether the unit is moving on the ground or in the air.
+---@field move_channel number
+--Movable channel
+--Complements the type of unit movement by determining which channels the unit is moving in. The unit cannot pass through any channel blocked by collision.
+---@field move_limitation number
+--Movement type
+--Affects the removable channels available.
+---@field move_type number
+--Skill resource bar color
+--The color of the unit used to release the energy of the skill
+---@field mp_color string
+--Identifier of the skill resource type
+--The name of the unit used to release the energy of the skill
 ---@field mp_key string
----Maximum skill resource
----
----The unit is maximum skill resource
+--Maximum skill resource
+--The unit is maximum skill resource
 ---@field mp_max number
----Maximum skill resource
----
----The unit is maximum skill resource
+--Maximum skill resource
+--The unit is maximum skill resource
 ---@field mp_max_grow number
----Skill resource recovery
----
----Skill resource recovery per second
+--Skill resource recovery
+--Skill resource recovery per second
 ---@field mp_rec number
----Skill resource recovery
----
----Skill resource recovery per second
+--Skill resource recovery
+--Skill resource recovery per second
 ---@field mp_rec_grow number
----name
----
----Name of the current unit
----@field name string
----Whether to preview blood strips
+--name
+--Name of the current unit
+---@field name string|integer
 ---@field need_preview_billboard boolean
----Unit state
----
----The initial state attached to the unit when entering the game
----The status records the number of layers, starting with one layer. Each add/remove state adds/subsides one layer.
----@field ori_bits any
----Moving speed
----
----The distance traveled per second.
+--Unit state
+--The initial state attached to the unit when entering the game
+--The status records the number of layers, starting with one layer. Each add/remove state adds/subsides one layer.
+---@field ori_bits number
+--Velocity value
+--The distance traveled per second.
 ---@field ori_speed number
----Moving speed
----
----The distance traveled per second.
+--Moving speed
+--The distance traveled per second.
 ---@field ori_speed_grow number
----Stroke Color value (RGB)
----@field outline_pass_color any
----Stroke thickness
----@field outline_pass_width number
----Hidden skill
----
----Hidden skills, skills placed in this skill position will not be displayed in the game.
+--Passive skill list
+--Hidden skills, skills placed in this skill position will not be displayed in the game.
 ---@field passive_ability_list any[]
----Wayfinding collision extra range
----@field path_finding_external_size number
----Spell penetration
----
----Penetrate enemy spell defenses. Calculate the fixed penetration first, then the percentage penetration
+--Normal penetration value
+--Penetrate enemy spell defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_mag number
----Spell penetration
----
----Penetrate enemy spell defenses. Calculate the fixed penetration first, then the percentage penetration
+--Spell penetration
+--Penetrate enemy spell defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_mag_grow number
----Spell penetration (%)
----
----Percentage penetration of enemy spell defense. Calculate the fixed penetration first, then the percentage penetration
+--Spell penetration (%)
+--Percentage penetration of enemy spell defense. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_mag_ratio number
----Spell penetration (%)
----
----Percentage penetration of enemy spell defense. Calculate the fixed penetration first, then the percentage penetration
+--Spell penetration (%)
+--Percentage penetration of enemy spell defense. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_mag_ratio_grow number
----Physical penetration
----
----Penetrate enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
+--Object penetration number
+--Penetrate enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_phy number
----Physical penetration
----
----Penetrate enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
+--Physical penetration
+--Penetrate enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_phy_grow number
----Physical penetration (%)
----
----Percentage penetration of enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
+--Ignore target reactance percentage
+--Percentage penetration of enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_phy_ratio number
----Physical penetration (%)
----
----Percentage penetration of enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
+--Physical penetration (%)
+--Percentage penetration of enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_phy_ratio_grow number
----physics
----@field physics_composite any
----Backpack rail
----
----Number of backpack bars per unit
+--Backpack rail
+--Number of backpack bars per unit
 ---@field pkg_slot_size number
----Whether to enable the object pool
----
----After the object pool is enabled, objects are not destroyed and enter the pool in hibernation state to optimize performance. User-defined properties of these objects are not cleared when they are used again. You need to manually initialize them.
----@field poolable boolean
----precondition
----
----Pre-conditions for training, purchasing, and building the unit
+--precondition
+--Pre-conditions for training, purchasing, and building the unit
 ---@field precondition_list any[]
----Preview blood volume
 ---@field preview_billboard_health_value number
----Inventory recovery interval
----
----Unit as commodity inventory recovery interval
+--Inventory recovery interval
+--Unit as commodity inventory recovery interval
 ---@field refresh_interval number
----Return after rescue
----@field rescue_finish_return boolean
----Distress distance
----@field rescue_seeker_distance number
----Distress interval
----@field rescue_seeker_interval number
----Distress type
----@field rescue_seeker_type any
----Rescue type
----@field rescuer_type any
----Developable technology
----
----These technologies can be developed and upgraded on the unit.
+--Developable technology
+--These technologies can be developed and upgraded on the unit.
 ---@field research_techs any[]
----EXP
----
----An experience bonus given to the unit after it is killed
+--Toughness (%)
+--This field has no actual effect
+---@field resilience number
+--Toughness (%)
+--This field has no actual effect
+---@field resilience_grow number
+---@field reward_custom_res_1 number
+---@field reward_custom_res_2 number
+---@field reward_custom_res_3 number
+---@field reward_custom_res_4 number
+---@field reward_custom_res_5 number
+---@field reward_custom_res_6 number
+--An experience bonus given to the unit after it is killed
 ---@field reward_exp number
----Player color scaling
+---@field reward_official_res_1 number
+---@field reward_official_res_2 number
+--Player color scaling
 ---@field role_color_scale number
----Turn speed
----
----Unit of turn speed
+--Turn speed (radian)
+--Unit of turn speed
 ---@field rotate_speed number
----List for sale
----
----A list of units for sale when they are stores
----@field sell_list any
----Sale for resources
----
----Units are sold as commodities to obtain resources
+---@field scale number
+--List for sale
+--A list of units for sale when they are stores
+---@field sell_list any[]
+--Sale for resources
+--Units are sold as commodities to obtain resources
 ---@field sell_res_list any[]
----Whether friends and foes display different avatars
+--Whether friends and foes display different avatars
 ---@field separate_enemy_icon boolean
----Selling camp parameter
----@field shop_camp_args any
----Shop
----
----You can edit what units and items can be sold in the store, as well as who is allowed to sell and what is sold
----@field shop_edit any
----Shop area
+--Selling camp parameter
+---@field shop_camp_args number
+--Shop component
+---@field shop_key any[]
+--Range of sale
 ---@field shop_range number
----Selling camp type
----@field shop_sell_type any
----Levitation information display
----
----When turned on, the mouse hover over the unit displays a text box with the unit name and level
+--Open and select
+---@field shop_select boolean
+--Selling camp type
+---@field shop_sell_type number
+--Levitation information display
+--When turned on, the mouse hover over the unit displays a text box with the unit name and level
 ---@field show_y3_extra_info boolean
----Simple general attack
----@field simple_common_atk any
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+---@field silver_coin number
+---@field simple_common_atk Object.Unit.SimpleCommonAtk
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list any[]
----Special state
----
----An animation that plays in a special state
+--Special state
+--An animation that plays in a special state
 ---@field special_idle_anim string
----Coefficient of moving speed when turning
----
----When the unit turns, the movement speed will be affected.
+--Coefficient of moving speed when turning
+--When the unit turns, the movement speed will be affected.
 ---@field speed_ratio_in_turn number
----Moving animation playback rate coefficient
----
----The speed at which the animation plays when the unit moves
+--Moving animation playback rate coefficient
+--The speed at which the animation plays when the unit moves
 ---@field standard_walk_rate number
----Purchase start time
----
----How long units are available for purchase as goods (how long after the game starts)
+--Purchase start time
+--How long units are available for purchase as goods (how long after the game starts)
 ---@field start_rft number
----Unit initial state
----@field state_init any
----Unit status list
----@field state_list any[]
----strength
+--strength
+--strength
 ---@field strength number
----strength
+--strength
+--strength
 ---@field strength_grow number
----Editor suffix
----
----Note for users using the editor, no practical effect
+--Editor suffix
+--Note for users using the editor, no practical effect
 ---@field suffix string
----tag
----
----It is used to classify objects. Labeling units allows for more convenient relationships, such as writing game logic: Kill all units with XX labels
+---@field support_range number
+--tag
+--It is used to classify objects. Labeling units allows for more convenient relationships, such as writing game logic: Kill all units with XX labels
 ---@field tags any[]
----Defense Tower hate duration
----@field tower_hatred_duration number
----Unit classification
----
----The unit type determines some of the characteristics of the unit, including its editable properties and the default values of some properties.
----@field type any
----UID
+--theme
+---@field theme number
+---@field title_bg_opacity number
+---@field title_bg_scale number
+---@field title_font_type string
+---@field title_scale number
+---@field title_text_size number
+---@field turn_speed number
+--Master type
+--The unit type determines some of the characteristics of the unit, including its editable properties and the default values of some properties.
+---@field type number
+--UID
 ---@field uid string
----Whether to enable base material discoloration
+---@field unit_hold_angle_speed number
+---@field unit_title string
 ---@field use_base_tint_color boolean
----Enable the Fresnel effect
----@field use_fresnel boolean
----Use simple mini map avatar
----
----Simple mini map avatar is represented as a small dot. The drawing performance consumption of simple minimap avatar is smaller than that of ordinary minimap avatar. If a large number of units of this type appear on the map, it is recommended to use a simple minimap avatar.
+--Use simple mini map avatar
+--Simple mini map avatar is represented as a small dot. The drawing performance consumption of simple minimap avatar is smaller than that of ordinary minimap avatar. If a large number of units of this type appear on the map, it is recommended to use a simple minimap avatar.
 ---@field use_simple_mini_map_icon boolean
----Enable the fill light effect
----@field use_virtual_light boolean
----Spell Vampire (%)
----
----Restores health after dealing spell damage
+--Spell blood count
+--Restores health after dealing spell damage
 ---@field vampire_mag number
----Spell Vampire (%)
----
----Restores health after dealing spell damage
+--Spell Vampire (%)
+--Restores health after dealing spell damage
 ---@field vampire_mag_grow number
----Physical blood feeding (%)
----
----Restores health after dealing physical damage
+--Physical bloodsucking number
+--Restores health after dealing physical damage
 ---@field vampire_phy number
----Physical blood feeding (%)
----
----Restores health after dealing physical damage
+--Physical blood feeding (%)
+--Restores health after dealing physical damage
 ---@field vampire_phy_grow number
----Visual field type
----
----Some attributes of units related to the Fog of War
----@field view_type any
----Night vision
----
----The range of units that can be seen at night (dispel the fog of war)
+--portrait
+---@field vect_drawing number
+--Visual field type
+--Some attributes of units related to the Fog of War
+---@field view_type number
+--Night vision
+--The range of units that can be seen at night (dispel the fog of war)
 ---@field vision_night number
----Night vision
 ---@field vision_night_grow number
----Daytime visual field
----
----The range of units that can be seen during the day (dispel the fog of war)
+--Daytime visual field
+--The range of units that can be seen during the day (dispel the fog of war)
 ---@field vision_rng number
----Daytime visual field
 ---@field vision_rng_grow number
----Fan field of view daytime Angle
----
----The Angle of the fan-shaped field of view that the unit has during the day.
+--Fan field of view daytime Angle
+--The Angle of the fan-shaped field of view that the unit has during the day.
 ---@field vision_sector_angle_day number
 ---@field vision_sector_angle_day_grow number
----Fan view Angle at night
----
----The Angle at which the unit has a fan field of view at night.
+--Fan view Angle at night
+--The Angle at which the unit has a fan field of view at night.
 ---@field vision_sector_angle_night number
 ---@field vision_sector_angle_night_grow number
----Fan view night radius
----
----The radius of the fan field of view that the unit has at night.
+--Fan view night radius
+--The radius of the fan field of view that the unit has at night.
 ---@field vision_sector_night number
 ---@field vision_sector_night_grow number
----Fan-field daytime radius
----
----The radius of the fan-shaped field of view the unit has during the day.
+--Fan-field daytime radius
+--The radius of the fan-shaped field of view the unit has during the day.
 ---@field vision_sector_rng number
 ---@field vision_sector_rng_grow number
----True field of view
----
----The range of stealth units that a unit can detect
+--True field of view
+--The range of stealth units that a unit can detect
 ---@field vision_true number
----True field of view
----
----The range of stealth units that a unit can detect
+--The range of stealth units that a unit can detect
 ---@field vision_true_grow number
----walk
----
----Actions that are played while walking
+--walk
+--Actions that are played while walking
 ---@field walk_anim string
----@field width_offset number
----Suspended information display content
----@field y3_extra_info_show_type any
+
+---@class Object.Unit.Kv
+
+---@class Object.Unit.SimpleCommonAtk
+---@field ability_animations any[]
+--Roll back time
+---@field ability_bw_point number
+--Front roll time
+---@field ability_cast_point number
+---@field attack_trajectory Object.Unit.SimpleCommonAtk.AttackTrajectory
+---@field cast_effect_list any[]
+---@field cast_sound number
+---@field critical_anim string
+---@field damage any[]
+---@field damage_type number
+--Condition of the enemy - Camp
+---@field filter_condition_camp number
+--Condition - Type
+---@field filter_condition_type number
+---@field hit_effect Object.Unit.SimpleCommonAtk.HitEffect
+---@field hit_sound number
+---@field order_play_anim boolean
+---@field order_play_reset_time number
+---@field trajectory_radian number
+---@field trajectory_speed number
+
+---@class Object.Unit.SimpleCommonAtk.AttackTrajectory
+---@field effect number
+---@field follow_scale boolean
+---@field scale number
+---@field socket string
+
+---@class Object.Unit.SimpleCommonAtk.HitEffect
+---@field effect number
+---@field follow_scale boolean
+---@field scale number
+---@field socket string
 
 ---@class Object.UnitOptions
----Applied technology
----
----The available technology of the unit (will be affected by the technology)
+--Applied technology
+--The available technology of the unit (will be affected by the technology)
 ---@field affect_techs? any[]
----Agility
+--Agility
+--Agility
 ---@field agility? number
----Agility
+--Agility
+--Agility
 ---@field agility_grow? number
----Area of Alert (AI)
----
----Unit Warning Area (AI)
+--Locked range
+--Unit Warning Area (AI)
 ---@field alarm_range? number
----The Angle difference allowed to move
----
----When the unit turns, if the turning Angle is less than this value, it will move directly towards the target direction; Instead, it turns and moves.
+--The Angle difference allowed to move
+--When the unit turns, if the turning Angle is less than this value, it will move directly towards the target direction; Instead, it turns and moves.
 ---@field angle_tolerance? number
----Animation status name
----@field anim_state_name? string
----Defense type
----
----The armor type of the unit, the specific effect can be viewed in the game rules
----@field armor_type? any
----Attack interval
----
----The number of seconds between two normal attacks on a unit. The cooldown of a skill is used when the skill is replaced with a custom type
+--Defense type
+--The armor type of the unit, the specific effect can be viewed in the game rules
+---@field armor_type? number
+--Attack interval
+--The number of seconds between two normal attacks on a unit. The cooldown of a skill is used when the skill is replaced with a custom type
 ---@field attack_interval? number
----Attack interval
----
----The interval between two normal attacks
+--The interval between two normal attacks
 ---@field attack_interval_grow? number
----Spell damage
----
----Unit spell damage
+--Normal attack value
+--Unit spell damage
 ---@field attack_mag? number
----Spell damage
----
----Unit spell damage
+--Spell damage
+--Unit spell damage
 ---@field attack_mag_grow? number
----Physical attack
----
----The unit is physical attack power
+--Physical attack value
+--The unit is physical attack power
 ---@field attack_phy? number
----Physical attack
----
----The unit is physical attack power
+--Physical attack
+--The unit is physical attack power
 ---@field attack_phy_grow? number
----Attack range
----
----Units can attack visible units within the attack range, and when a general attack skill is replaced with a custom type, the skill is release range is used
+--Attack range
+--Units can attack visible units within the attack range, and when a general attack skill is replaced with a custom type, the skill is release range is used
 ---@field attack_range? number
----Attack range
----
----The attack range of a common attack
+--The attack range of a common attack
 ---@field attack_range_grow? number
----Attack speed (%)
----
----The actual attack speed displayed in the office is :1/ Unit is current cooldown time of common attack skills * Attack speed
+--Attack rate value
+--The actual attack speed displayed in the office is :1/ Unit is current cooldown time of common attack skills * Attack speed
 ---@field attack_speed? number
----Attack speed (%)
----
----Attack speed (multiples)
+--Attack speed (%)
+--Attack speed (multiples)
 ---@field attack_speed_grow? number
----Attack type
----
----The attack type of the unit, the specific effect can be viewed in the game rules
----@field attack_type? any
----Overhead name display mode
----
----Affects the text display above in-game objects.
----@field bar_show_name? any
----Whether the blood bar scale is displayed
----
----Whether a scale line will appear on the unit blood bar
+--Attack type
+--The attack type of the unit, the specific effect can be viewed in the game rules
+---@field attack_type? number
+---@field back_range? number
+--Overhead name display mode
+--Affects the text display above in-game objects.
+---@field bar_show_name? string|integer
+--Whether the blood bar scale is displayed
+--Whether a scale line will appear on the unit blood bar
 ---@field bar_show_scale? boolean
----Inventory Panel
----
----The number of inventory boxes in a unit
+---@field bar_show_title? boolean
+--Inventory Panel
+--The number of inventory boxes in a unit
 ---@field bar_slot_size? number
----Material color overlay type
----@field base_color_mod? any
----Base material discoloration
----@field base_tint_color? any
----Overhead name font
----
----The text font displayed above the unit
----@field billboard_name_font? any
----@field billboard_offset? any
----X-axis scaling
+---@field bar_title_style? number
+---@field base_tint_color? any[]
+--Unit blood stripe height deviation
+---@field billboard_height_offset? number
+--Overhead name font
+--The text font displayed above the unit
+---@field billboard_name_font? string
+--X-axis scaling
 ---@field billboard_scale_x? number
----Y-axis scaling
+--Y-axis scaling
 ---@field billboard_scale_y? number
----Blood stripe pattern
----
----The unit in the game blood bar style
----@field blood_bar? any
----Blood bar display mode
----
----The unit in the game blood bar display time
----@field blood_show_type? any
----Model scaling
----
----The scaling factor of the current object model, used to resize the model.
+--Blood stripe pattern
+--The unit in the game blood bar style
+---@field blood_bar? number
+--Blood bar display mode
+--The unit in the game blood bar display time
+---@field blood_show_type? number
+--Model scaling
+--The scaling factor of the current object model, used to resize the model.
 ---@field body_size? number
----Ignore dynamic collisions when building
----
----Whether to ignore dynamic collisions of other units when building this unit with Build skills.
----If you want to build under the feet of other units (such as trap class), you can check this switch.
----@field build_ignore_dyn_collision? boolean
----Resource consumption
----
----Resources that are consumed when units are constructed as buildings
+--Included Angle
+---@field box_angle? number
+--Box length
+---@field box_length1? number
+--Box width
+---@field box_length2? number
+--radius
+---@field box_r? number
+--Box type
+---@field box_type? number
+---@field build_precondition_list? any[]
+--Resource consumption
+--Resources that are consumed when units are constructed as buildings
 ---@field build_res_cost_list? any[]
----Construction time (seconds)
----@field build_time? number
----Upgrade list
----@field build_upgrade_list? any[]
----Purchase required resources
----
----Unit of resources required for the purchase of goods
+---@field building_rotatable? boolean
+--Purchase required resources
+--Unit of resources required for the purchase of goods
 ---@field buy_res_list? any[]
----Run when you ca not fight back
----
----When a unit takes damage and is unable to fight back, it moves a certain distance in the opposite direction of the source of the damage, effective only when on alert
+--Run when you ca not fight back
+--When a unit takes damage and is unable to fight back, it moves a certain distance in the opposite direction of the source of the damage, effective only when on alert
 ---@field can_flee? boolean
----Cancellation of Alert Area (AI)
----
----The unit is de-warning area (AI), when the enemy leaves the de-warning area, it will no longer actively attack the enemy
+--Unlocking range
+--The unit is de-warning area (AI), when the enemy leaves the de-warning area, it will no longer actively attack the enemy
 ---@field cancel_alarm_range? number
----Physical control jump height
----@field cc_jump_height? number
----Physical control acceleration
----@field cc_move_acc? number
----Physical control of the acceleration rate
----@field cc_move_acc_rate? number
----Physics controls running speed
----@field cc_run_speed? number
----Physical control of walking speed
----@field cc_walk_speed? number
----Cooling reduction (%)
----
----Reduces part of cooldown when unit skills enter cd
+--Cooling reduction
+--Reduces part of cooldown when unit skills enter cd
 ---@field cd_reduce? number
----Cooling reduction (%)
----
----Reduces part of cooldown when unit skills enter cd
+--Cooling reduction (%)
+--Reduces part of cooldown when unit skills enter cd
 ---@field cd_reduce_grow? number
----Static collision follow orientation
----
----Valid for building type units only. When checked, static collisions follow rotation when units change orientation.
+--collision
+---@field collision? number
+--Static collision follow orientation
+--Valid for building type units only. When checked, static collisions follow rotation when units change orientation.
 ---@field collision_box_turning_enable? boolean
----Collision lattice
----@field collision_points? any
----Dynamic collision radius
----@field collision_radius_2? number
----Universal skill
----
----Unit of common skills. In the default UI interface, it will be displayed in the first 6 skill bars, and the other skills will not be displayed but still take effect.
+---@field collision_points? any[]
+---@field combat_range? number
+--Universal skill
+--Unit of common skills. In the default UI interface, it will be displayed in the first 6 skill bars, and the other skills will not be displayed but still take effect.
 ---@field common_ability_list? any[]
----Ordinary attack
----
----Unit is Normal Attack, unique, the ability released when a unit is normal attack on a target
----@field common_atk? any
----General attack type
----
----Unit Common attack type. Select Custom to bind skills
----@field common_atk_type? any
----Allowable counterattack range
----@field counterattack_range? number
----Critical hit rate (%)
----
----Unit Normal attacks have a chance to deal extra damage
+--Normal Attack
+--Unit is Normal Attack, unique, the ability released when a unit is normal attack on a target
+---@field common_atk? any[]
+--Unit Common attack type. Select Custom to bind skills
+---@field common_atk_type? number
+---@field copper_coin? number
+--Critical Hit Chance
+--Unit Normal attacks have a chance to deal extra damage
 ---@field critical_chance? number
----Critical hit rate (%)
----
----Unit Normal attacks have a chance to deal extra damage
+--Critical hit rate (%)
+--Unit Normal attacks have a chance to deal extra damage
 ---@field critical_chance_grow? number
----Critical strike damage (%)
----
----The amount of critical damage dealt when a critical strike occurs
+--Critical impact value
+--The amount of critical damage dealt when a critical strike occurs
 ---@field critical_dmg? number
----Critical strike damage (%)
----
----The amount of critical damage dealt when a critical strike occurs
+--Critical strike damage (%)
+--The amount of critical damage dealt when a critical strike occurs
 ---@field critical_dmg_grow? number
----Default behavior
----
----The default behavior of the unit
----@field default_behaviour_type? any
----Spell defense
----
----Unit spell defense
+---@field custom_1? number
+---@field custom_1_grow? number
+---@field custom_2? number
+---@field custom_2_grow? number
+---@field custom_5? number
+---@field custom_5_grow? number
+---@field custom_6? number
+---@field custom_6_grow? number
+---@field custom_7? number
+---@field custom_7_grow? number
+--Default behavior
+--The default behavior of the unit
+---@field default_behaviour_type? string
+--Normal defense value
+--Unit spell defense
 ---@field defense_mag? number
----Spell defense
----
----Unit spell defense
+--Spell defense
+--Unit spell defense
 ---@field defense_mag_grow? number
----Physical defense
----
----The physical defense of the unit
+--Physical defense value
+--The physical defense of the unit
 ---@field defense_phy? number
----Physical defense
----
----The physical defense of the unit
+--Physical defense
+--The physical defense of the unit
 ---@field defense_phy_grow? number
----Description
----
----An introductory description of the unit, used in the editor and in-game Tips display
----@field description? string
----Whether to destroy the unit after death
----
----Whether the unit will be completely destroyed after death. (The body will be destroyed after the end of the disappearance time, after the destruction will no longer be able to obtain the relevant information of the unit)
+--Description
+--An introductory description of the unit, used in the editor and in-game Tips display
+---@field description? number
+--Whether to destroy the unit after death
+--Whether the unit will be completely destroyed after death. (The body will be destroyed after the end of the disappearance time, after the destruction will no longer be able to obtain the relevant information of the unit)
 ---@field destroy_after_die? boolean
----Death
----
----An animation that plays when you are dead
+--Death
+--An animation that plays when you are dead
 ---@field die_anim? string
----Disk shadow size
 ---@field disk_shadow_size? number
----Damage reduction (%)
----
----% reduced damage taken
+--Percentage of injury relief
+--% reduced damage taken
 ---@field dmg_reduction? number
----Damage reduction (%)
----
----% reduced damage taken
+--Damage reduction (%)
+--% reduced damage taken
 ---@field dmg_reduction_grow? number
----Avoidance rate (%)
----
----The probability of a unit evading ordinary attacks from other units
+--Dodge rate
+--The probability of a unit evading ordinary attacks from other units
 ---@field dodge_rate? number
----Avoidance rate (%)
----
----The probability of a unit evading ordinary attacks from other units
+--Avoidance rate (%)
+--The probability of a unit evading ordinary attacks from other units
 ---@field dodge_rate_grow? number
----Dropped item
----
----Items that drop when a unit dies
+--Drop items after death
+---@field drop_item? any[]
+--Dropped item
+--Items that drop when a unit dies
 ---@field drop_items_tuple? any[]
----The side length of the pathfinding collision grid
----
----The dynamic radius of the collision is 1 standard lattice every 50.
+--Alternate color
+---@field dye_color? string
+--Color change mode
+---@field dye_color_plan? number
+--Collision dynamic radius
+--The dynamic radius of the collision is 1 standard lattice every 50.
 ---@field dynamic_collision_r? number
----Open the backpack bar
----
----After closing, units will not activate the inventory and backpack bars.
----(For units that do not require a backpack, turning this attribute off can help improve map performance.)
----@field enable_item_slots? boolean
----Enable mobile-oriented mode
----@field enable_strict_facing_mode? boolean
----Enemy minimap avatar
----@field enemy_mini_map_icon? any
----All damage bonus (%)
----
----Percentage increase in damage caused
+--Dynamic collision type
+---@field dynamic_collision_type? number
+--Collision width
+---@field dynamic_collision_x? number
+--Collision length
+---@field dynamic_collision_z? number
+--Enemy minimap avatar
+---@field enemy_mini_map_icon? number
+--All damage bonus (%)
+--Percentage increase in damage caused
 ---@field extra_dmg? number
----All damage bonus (%)
----
----Percentage increase in damage caused
+--All damage bonus (%)
+--Percentage increase in damage caused
 ---@field extra_dmg_grow? number
----Force display in minimap
----
----When checked, units will be forcibly displayed on the minimap, ignoring the war shadow
+--Force display in minimap
+--When checked, units will be forcibly displayed on the minimap, ignoring the war shadow
 ---@field force_show_on_mini_map? boolean
----Fresnel color
----@field fresnel_color? any
----Fresnel intensity
----@field fresnel_emissive_color_strength? number
----Fresnel index
 ---@field fresnel_exp? number
----Whether there is a skill resource bar
----
----Whether the unit has energy that can be used to release skills
+--Ability Damage Bonus (%)
+--This field has no actual effect
+---@field gainvalue? number
+--Ability Damage Bonus (%)
+--This field has no actual effect
+---@field gainvalue_grow? number
+---@field gold_coin? number
+--Whether there is a skill resource bar
+--Whether the unit has energy that can be used to release skills
 ---@field has_mp? boolean
----Bonus by healing effect (%)
----
----Improve the effectiveness of treatment when receiving treatment
+--Whether to display the white shield value
+---@field has_shield? boolean
+--Bonus by healing effect (%)
+--Improve the effectiveness of treatment when receiving treatment
 ---@field heal_effect? number
----Improved by treatment (%)
----
----Improve the effectiveness of treatment when receiving treatment
+--Improved by treatment (%)
+--Improve the effectiveness of treatment when receiving treatment
 ---@field heal_effect_grow? number
----Bonus by healing effect (%)
----
----Increase the amount of healing when the unit takes effect
+--Increase the amount of healing when the unit takes effect
 ---@field healing_effect? number
----Improved by treatment (%)
 ---@field healing_effect_grow? number
----@field height_offset? number
----Hero skill
----
----The unit is hero skills can be upgraded through learning, and each learning costs one skill point (earned when leveling up). In the default UI interface, it will be displayed in the last 6 skill bars, and the other skills will not be displayed but still take effect.
+--Hero skill
+--The unit is hero skills can be upgraded through learning, and each learning costs one skill point (earned when leveling up). In the default UI interface, it will be displayed in the last 6 skill bars, and the other skills will not be displayed but still take effect.
 ---@field hero_ability_list? any[]
----Hit rate (%)
----
----The probability that a unit hits another unit in a normal attack
+--Hit rate
+--The probability that a unit hits another unit in a normal attack
 ---@field hit_rate? number
----Hit rate (%)
----
----The probability that a unit hits another unit in a normal attack
+--Hit rate (%)
+--The probability that a unit hits another unit in a normal attack
 ---@field hit_rate_grow? number
----Max health
----
----Maximum health of a unit
+--Max health
+--Maximum health of a unit
 ---@field hp_max? number
----Max health
----
----Maximum health of a unit
+--Max health
+--Maximum health of a unit
 ---@field hp_max_grow? number
----Life recovery
----
----Health regeneration per second
+--Life recovery
+--Health regeneration per second
 ---@field hp_rec? number
----Life recovery
----
----Health regeneration per second
+--Life recovery
+--Health regeneration per second
 ---@field hp_rec_grow? number
----Percent health recovery
----
----Percentage of health regeneration per second
----@field hp_rec_percent? number
----Percent health recovery
----
----Percentage of health regeneration per second
----@field hp_rec_percent_grow? number
----avatar
----
----Avatar of the unit displayed in the game
----@field icon? any
----Default state
----
----Animations that play by default
+--avatar
+--Avatar of the unit displayed in the game
+---@field icon? number
+--Default state
+--Animations that play by default
 ---@field idle_anim? string
----Initial inventory
----
----Initial inventory of units as goods
+--Initial inventory
+--Initial inventory of units as goods
 ---@field init_stock? number
----intelligence
+--intelligence
+--intelligence
 ---@field intelligence? number
----intelligence
+--intelligence
+--intelligence
 ---@field intelligence_grow? number
----Whether to apply the player color aperture
+--Whether to apply the player color aperture
 ---@field is_apply_role_color? boolean
----Whether to show in the minimap
----
----Whether units will be displayed on the minimap
+--Whether to show in the minimap
+--Whether units will be displayed on the minimap
 ---@field is_mini_map_show? boolean
----Whether to enable perspective
----
----When checked, if the unit is obscured, you will see the stroke of the unit
+--When checked, if the unit is obscured, you will see the stroke of the unit
 ---@field is_open_Xray? boolean
----Enable disk shadow
----@field is_open_disk_shadow? boolean
----Whether to turn on stroke
+--Whether to turn on stroke
 ---@field is_open_outline_pass? boolean
----Whether to shop
----
----After opening the unit can be sold as a shop edit item
+--Whether to shop
+--After opening the unit can be sold as a shop edit item
 ---@field is_shop? boolean
----@field is_x_offset? boolean
----@field is_z_offset? boolean
----Edit easy general attack
----
----Go to the presentation page to edit the detailed simple tap effect
----@field jump_to_display? any
----Body disappearance time
+--Body disappearance time
+--Body disappearance time
 ---@field keep_dead_body_time? number
----Stay on target when you ca not move
----
----If this field is not checked, after the target moves out of its warning range and cannot move itself, it will immediately start to find a new attack target. Mostly used for spot guards.
+--Stay on target when you ca not move
+--If this field is not checked, after the target moves out of its warning range and cannot move itself, it will immediately start to find a new attack target. Mostly used for spot guards.
 ---@field keep_target? boolean
----ID
----
----A unique representation of a unit
+--zh_value
+--A unique representation of a unit
 ---@field key? number
----Player custom
----@field kv? any
----Lv.
----
----The default level of the unit
+--Player custom
+---@field kv? Object.Unit.Kv
+--Lv.
+--The default level of the unit
 ---@field level? number
----Primary attribute
----
----The main attribute of the hero unit, the general main attribute upgrade will have an extra bonus for the hero
----@field main_attr? any
----Maximum equilibrium Angle
----@field max_balance_angle? number
----Maximum inventory
----
----Unit as the maximum inventory of goods
+---@field logic_rotate_speed_valid? boolean
+---@field logic_upper_rotate_speed_valid? boolean
+--Primary attribute
+--The main attribute of the hero unit, the general main attribute upgrade will have an extra bonus for the hero
+---@field main_attr? string
+--Maximum inventory
+--Unit as the maximum inventory of goods
 ---@field max_stock? number
----Minimap avatar
----
----The unit is avatar on the minimap
----@field mini_map_icon? any
----Small map avatar zoom
----
----Zoom the avatar of the unit on the minimap
+--Minimap avatar
+--The unit is avatar on the minimap
+---@field mini_map_icon? number
+--Small map avatar zoom
+--Zoom the avatar of the unit on the minimap
 ---@field mini_map_icon_scale? number
----model
----
----The model used by the current unit
----@field model? any
----Ground lift
----
----The height of the unit above the ground
+--model
+--The model used by the current unit
+---@field model? number
+--Ground lift
+--The height of the unit above the ground
 ---@field model_height? number
----Model opacity
 ---@field model_opacity? number
----Movement type
----
----The type of movement of the unit determines whether the unit is moving on the ground or in the air.
----@field move_channel? any
----Movable channel
----
----Complements the type of unit movement by determining which channels the unit is moving in. The unit cannot pass through any channel blocked by collision.
----@field move_limitation? any
----Movement type
----
----Affects the removable channels available.
----@field move_type? any
----Skill resource bar color
----
----The color of the unit used to release the energy of the skill
----@field mp_color? any
----Skill resource name
----
----The name of the unit used to release the energy of the skill
+--Movement type
+--The type of movement of the unit determines whether the unit is moving on the ground or in the air.
+---@field move_channel? number
+--Movable channel
+--Complements the type of unit movement by determining which channels the unit is moving in. The unit cannot pass through any channel blocked by collision.
+---@field move_limitation? number
+--Movement type
+--Affects the removable channels available.
+---@field move_type? number
+--Skill resource bar color
+--The color of the unit used to release the energy of the skill
+---@field mp_color? string
+--Identifier of the skill resource type
+--The name of the unit used to release the energy of the skill
 ---@field mp_key? string
----Maximum skill resource
----
----The unit is maximum skill resource
+--Maximum skill resource
+--The unit is maximum skill resource
 ---@field mp_max? number
----Maximum skill resource
----
----The unit is maximum skill resource
+--Maximum skill resource
+--The unit is maximum skill resource
 ---@field mp_max_grow? number
----Skill resource recovery
----
----Skill resource recovery per second
+--Skill resource recovery
+--Skill resource recovery per second
 ---@field mp_rec? number
----Skill resource recovery
----
----Skill resource recovery per second
+--Skill resource recovery
+--Skill resource recovery per second
 ---@field mp_rec_grow? number
----name
----
----Name of the current unit
----@field name? string
----Whether to preview blood strips
+--name
+--Name of the current unit
+---@field name? string|integer
 ---@field need_preview_billboard? boolean
----Unit state
----
----The initial state attached to the unit when entering the game
----The status records the number of layers, starting with one layer. Each add/remove state adds/subsides one layer.
----@field ori_bits? any
----Moving speed
----
----The distance traveled per second.
+--Unit state
+--The initial state attached to the unit when entering the game
+--The status records the number of layers, starting with one layer. Each add/remove state adds/subsides one layer.
+---@field ori_bits? number
+--Velocity value
+--The distance traveled per second.
 ---@field ori_speed? number
----Moving speed
----
----The distance traveled per second.
+--Moving speed
+--The distance traveled per second.
 ---@field ori_speed_grow? number
----Stroke Color value (RGB)
----@field outline_pass_color? any
----Stroke thickness
----@field outline_pass_width? number
----Hidden skill
----
----Hidden skills, skills placed in this skill position will not be displayed in the game.
+--Passive skill list
+--Hidden skills, skills placed in this skill position will not be displayed in the game.
 ---@field passive_ability_list? any[]
----Wayfinding collision extra range
----@field path_finding_external_size? number
----Spell penetration
----
----Penetrate enemy spell defenses. Calculate the fixed penetration first, then the percentage penetration
+--Normal penetration value
+--Penetrate enemy spell defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_mag? number
----Spell penetration
----
----Penetrate enemy spell defenses. Calculate the fixed penetration first, then the percentage penetration
+--Spell penetration
+--Penetrate enemy spell defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_mag_grow? number
----Spell penetration (%)
----
----Percentage penetration of enemy spell defense. Calculate the fixed penetration first, then the percentage penetration
+--Spell penetration (%)
+--Percentage penetration of enemy spell defense. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_mag_ratio? number
----Spell penetration (%)
----
----Percentage penetration of enemy spell defense. Calculate the fixed penetration first, then the percentage penetration
+--Spell penetration (%)
+--Percentage penetration of enemy spell defense. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_mag_ratio_grow? number
----Physical penetration
----
----Penetrate enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
+--Object penetration number
+--Penetrate enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_phy? number
----Physical penetration
----
----Penetrate enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
+--Physical penetration
+--Penetrate enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_phy_grow? number
----Physical penetration (%)
----
----Percentage penetration of enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
+--Ignore target reactance percentage
+--Percentage penetration of enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_phy_ratio? number
----Physical penetration (%)
----
----Percentage penetration of enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
+--Physical penetration (%)
+--Percentage penetration of enemy physical defenses. Calculate the fixed penetration first, then the percentage penetration
 ---@field pene_phy_ratio_grow? number
----physics
----@field physics_composite? any
----Backpack rail
----
----Number of backpack bars per unit
+--Backpack rail
+--Number of backpack bars per unit
 ---@field pkg_slot_size? number
----Whether to enable the object pool
----
----After the object pool is enabled, objects are not destroyed and enter the pool in hibernation state to optimize performance. User-defined properties of these objects are not cleared when they are used again. You need to manually initialize them.
----@field poolable? boolean
----precondition
----
----Pre-conditions for training, purchasing, and building the unit
+--precondition
+--Pre-conditions for training, purchasing, and building the unit
 ---@field precondition_list? any[]
----Preview blood volume
 ---@field preview_billboard_health_value? number
----Inventory recovery interval
----
----Unit as commodity inventory recovery interval
+--Inventory recovery interval
+--Unit as commodity inventory recovery interval
 ---@field refresh_interval? number
----Return after rescue
----@field rescue_finish_return? boolean
----Distress distance
----@field rescue_seeker_distance? number
----Distress interval
----@field rescue_seeker_interval? number
----Distress type
----@field rescue_seeker_type? any
----Rescue type
----@field rescuer_type? any
----Developable technology
----
----These technologies can be developed and upgraded on the unit.
+--Developable technology
+--These technologies can be developed and upgraded on the unit.
 ---@field research_techs? any[]
----EXP
----
----An experience bonus given to the unit after it is killed
+--Toughness (%)
+--This field has no actual effect
+---@field resilience? number
+--Toughness (%)
+--This field has no actual effect
+---@field resilience_grow? number
+---@field reward_custom_res_1? number
+---@field reward_custom_res_2? number
+---@field reward_custom_res_3? number
+---@field reward_custom_res_4? number
+---@field reward_custom_res_5? number
+---@field reward_custom_res_6? number
+--An experience bonus given to the unit after it is killed
 ---@field reward_exp? number
----Player color scaling
+---@field reward_official_res_1? number
+---@field reward_official_res_2? number
+--Player color scaling
 ---@field role_color_scale? number
----Turn speed
----
----Unit of turn speed
+--Turn speed (radian)
+--Unit of turn speed
 ---@field rotate_speed? number
----List for sale
----
----A list of units for sale when they are stores
----@field sell_list? any
----Sale for resources
----
----Units are sold as commodities to obtain resources
+---@field scale? number
+--List for sale
+--A list of units for sale when they are stores
+---@field sell_list? any[]
+--Sale for resources
+--Units are sold as commodities to obtain resources
 ---@field sell_res_list? any[]
----Whether friends and foes display different avatars
+--Whether friends and foes display different avatars
 ---@field separate_enemy_icon? boolean
----Selling camp parameter
----@field shop_camp_args? any
----Shop
----
----You can edit what units and items can be sold in the store, as well as who is allowed to sell and what is sold
----@field shop_edit? any
----Shop area
+--Selling camp parameter
+---@field shop_camp_args? number
+--Shop component
+---@field shop_key? any[]
+--Range of sale
 ---@field shop_range? number
----Selling camp type
----@field shop_sell_type? any
----Levitation information display
----
----When turned on, the mouse hover over the unit displays a text box with the unit name and level
+--Open and select
+---@field shop_select? boolean
+--Selling camp type
+---@field shop_sell_type? number
+--Levitation information display
+--When turned on, the mouse hover over the unit displays a text box with the unit name and level
 ---@field show_y3_extra_info? boolean
----Simple general attack
----@field simple_common_atk? any
----Sound event list
----
----You can set the sound that plays when a specified event is triggered
+---@field silver_coin? number
+---@field simple_common_atk? Object.Unit.SimpleCommonAtk
+--You can set the sound that plays when a specified event is triggered
 ---@field sound_event_list? any[]
----Special state
----
----An animation that plays in a special state
+--Special state
+--An animation that plays in a special state
 ---@field special_idle_anim? string
----Coefficient of moving speed when turning
----
----When the unit turns, the movement speed will be affected.
+--Coefficient of moving speed when turning
+--When the unit turns, the movement speed will be affected.
 ---@field speed_ratio_in_turn? number
----Moving animation playback rate coefficient
----
----The speed at which the animation plays when the unit moves
+--Moving animation playback rate coefficient
+--The speed at which the animation plays when the unit moves
 ---@field standard_walk_rate? number
----Purchase start time
----
----How long units are available for purchase as goods (how long after the game starts)
+--Purchase start time
+--How long units are available for purchase as goods (how long after the game starts)
 ---@field start_rft? number
----Unit initial state
----@field state_init? any
----Unit status list
----@field state_list? any[]
----strength
+--strength
+--strength
 ---@field strength? number
----strength
+--strength
+--strength
 ---@field strength_grow? number
----Editor suffix
----
----Note for users using the editor, no practical effect
+--Editor suffix
+--Note for users using the editor, no practical effect
 ---@field suffix? string
----tag
----
----It is used to classify objects. Labeling units allows for more convenient relationships, such as writing game logic: Kill all units with XX labels
+---@field support_range? number
+--tag
+--It is used to classify objects. Labeling units allows for more convenient relationships, such as writing game logic: Kill all units with XX labels
 ---@field tags? any[]
----Defense Tower hate duration
----@field tower_hatred_duration? number
----Unit classification
----
----The unit type determines some of the characteristics of the unit, including its editable properties and the default values of some properties.
----@field type? any
----UID
+--theme
+---@field theme? number
+---@field title_bg_opacity? number
+---@field title_bg_scale? number
+---@field title_font_type? string
+---@field title_scale? number
+---@field title_text_size? number
+---@field turn_speed? number
+--Master type
+--The unit type determines some of the characteristics of the unit, including its editable properties and the default values of some properties.
+---@field type? number
+--UID
 ---@field uid? string
----Whether to enable base material discoloration
+---@field unit_hold_angle_speed? number
+---@field unit_title? string
 ---@field use_base_tint_color? boolean
----Enable the Fresnel effect
----@field use_fresnel? boolean
----Use simple mini map avatar
----
----Simple mini map avatar is represented as a small dot. The drawing performance consumption of simple minimap avatar is smaller than that of ordinary minimap avatar. If a large number of units of this type appear on the map, it is recommended to use a simple minimap avatar.
+--Use simple mini map avatar
+--Simple mini map avatar is represented as a small dot. The drawing performance consumption of simple minimap avatar is smaller than that of ordinary minimap avatar. If a large number of units of this type appear on the map, it is recommended to use a simple minimap avatar.
 ---@field use_simple_mini_map_icon? boolean
----Enable the fill light effect
----@field use_virtual_light? boolean
----Spell Vampire (%)
----
----Restores health after dealing spell damage
+--Spell blood count
+--Restores health after dealing spell damage
 ---@field vampire_mag? number
----Spell Vampire (%)
----
----Restores health after dealing spell damage
+--Spell Vampire (%)
+--Restores health after dealing spell damage
 ---@field vampire_mag_grow? number
----Physical blood feeding (%)
----
----Restores health after dealing physical damage
+--Physical bloodsucking number
+--Restores health after dealing physical damage
 ---@field vampire_phy? number
----Physical blood feeding (%)
----
----Restores health after dealing physical damage
+--Physical blood feeding (%)
+--Restores health after dealing physical damage
 ---@field vampire_phy_grow? number
----Visual field type
----
----Some attributes of units related to the Fog of War
----@field view_type? any
----Night vision
----
----The range of units that can be seen at night (dispel the fog of war)
+--portrait
+---@field vect_drawing? number
+--Visual field type
+--Some attributes of units related to the Fog of War
+---@field view_type? number
+--Night vision
+--The range of units that can be seen at night (dispel the fog of war)
 ---@field vision_night? number
----Night vision
 ---@field vision_night_grow? number
----Daytime visual field
----
----The range of units that can be seen during the day (dispel the fog of war)
+--Daytime visual field
+--The range of units that can be seen during the day (dispel the fog of war)
 ---@field vision_rng? number
----Daytime visual field
 ---@field vision_rng_grow? number
----Fan field of view daytime Angle
----
----The Angle of the fan-shaped field of view that the unit has during the day.
+--Fan field of view daytime Angle
+--The Angle of the fan-shaped field of view that the unit has during the day.
 ---@field vision_sector_angle_day? number
 ---@field vision_sector_angle_day_grow? number
----Fan view Angle at night
----
----The Angle at which the unit has a fan field of view at night.
+--Fan view Angle at night
+--The Angle at which the unit has a fan field of view at night.
 ---@field vision_sector_angle_night? number
 ---@field vision_sector_angle_night_grow? number
----Fan view night radius
----
----The radius of the fan field of view that the unit has at night.
+--Fan view night radius
+--The radius of the fan field of view that the unit has at night.
 ---@field vision_sector_night? number
 ---@field vision_sector_night_grow? number
----Fan-field daytime radius
----
----The radius of the fan-shaped field of view the unit has during the day.
+--Fan-field daytime radius
+--The radius of the fan-shaped field of view the unit has during the day.
 ---@field vision_sector_rng? number
 ---@field vision_sector_rng_grow? number
----True field of view
----
----The range of stealth units that a unit can detect
+--True field of view
+--The range of stealth units that a unit can detect
 ---@field vision_true? number
----True field of view
----
----The range of stealth units that a unit can detect
+--The range of stealth units that a unit can detect
 ---@field vision_true_grow? number
----walk
----
----Actions that are played while walking
+--walk
+--Actions that are played while walking
 ---@field walk_anim? string
----@field width_offset? number
----Suspended information display content
----@field y3_extra_info_show_type? any
+

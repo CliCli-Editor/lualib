@@ -125,6 +125,12 @@ function GameAPI.get_random_point_in_rec_area(area) end
 ---@return py.FVector3 # Random point
 function GameAPI.get_random_point_in_circular_area(area) end
 
+--Returns a random point in a circle
+---@param point py.FVector3 # Center of a circle
+---@param radius py.Fixed # radius
+---@return py.FVector3 # Random point
+function GameAPI.get_random_point_in_circular(point, radius) end
+
 --Returns a random point in the polygon
 ---@param area py.PolyArea # Irregular region
 ---@return py.FVector3 # Random point
@@ -247,6 +253,10 @@ function GameAPI.get_all_items_in_shapes(point, shape, sort_type, filter_ability
 ---@param s string # Event name
 ---@param args py.Dict # argument
 function GameAPI.send_ui_global_event_with_info_dict(s, args) end
+
+--Example Create an empty unit group
+---@return py.UnitGroup # Unit group
+function GameAPI.create_unit_group() end
 
 --Add a unit to a unit group
 ---@param unit py.Unit # unit
@@ -375,6 +385,21 @@ function GameAPI.rect_area_is_exist(rect_area) end
 ---@param camera py.Camera # Lens
 ---@return boolean # Existence or not
 function GameAPI.camera_is_exist(camera) end
+
+--Whether a trigger exists
+---@param trigger_id py.DynamicTriggerInstance # Dynamic trigger instance
+---@return boolean # Existence or not
+function GameAPI.trigger_is_exist(trigger_id) end
+
+--Whether the motor exists
+---@param mover_id py.Mover # Motor instance
+---@return boolean # Existence or not
+function GameAPI.mover_is_exist(mover_id) end
+
+--Object existence
+---@param obj py.DynamicTypeMeta # object
+---@return boolean # Existence or not
+function GameAPI.common_is_exist(obj) end
 
 --Gain maximum skill level
 ---@param ability py.Ability # skill
@@ -704,6 +729,14 @@ function GameAPI.is_show_on_ui_by_buff_type(key) end
 ---@param jump_word_track? integer # Skip trace
 function GameAPI.create_harm_text(point, text_type, value, player_group, jump_word_track) end
 
+--Generate floating text
+---@param point py.Point # point
+---@param text_type string # Hop enumeration
+---@param value string # Skip content
+---@param player_group py.RoleGroup # Player group
+---@param jump_word_track? integer # Skip trace
+function GameAPI.create_harm_text_ex(point, text_type, value, player_group, jump_word_track) end
+
 --Whether the player presses a button
 ---@param role py.Role # Player
 ---@param key py.KeyboardKey # Keyboard key
@@ -913,6 +946,16 @@ function GameAPI.create_scene_node_on_point(comp_name, point, visible_dis, heigh
 ---@param visible_dis? number # Visible distance
 ---@return py.SceneNode # Site attraction
 function GameAPI.create_scene_node_on_unit(comp_name, player, unit, socket_name, visible_dis) end
+
+--Create a field attraction and bind the UI to the unit
+---@param comp_name string # Control name
+---@param player py.Role # Player
+---@param unit py.Unit # unit
+---@param socket_name string # Hanging contact
+---@param socket_offset_follow_model_scale boolean # Mount contact offset follows model scaling
+---@param visible_dis? number # Visible distance
+---@return py.SceneNode # Site attraction
+function GameAPI.create_scene_node_on_unit_ex(comp_name, player, unit, socket_name, socket_offset_follow_model_scale, visible_dis) end
 
 --Create a field attraction and bind the UI to 3D coordinates
 ---@param comp_name string # Control name
@@ -1291,9 +1334,77 @@ function GameAPI.set_billboard_visible(unit, node_name, visible, role) end
 ---@param transition_time? number # Transition time
 function GameAPI.set_billboard_progress(unit, node_name, progress, role, transition_time) end
 
+--Set the overall visibility of blood strips
+---@param unit py.Unit # unit
+---@param visibility boolean # visibility
+---@param role? py.Role # Player
+function GameAPI.set_billboard_overall_visibility(unit, visibility, role) end
+
+--Set the progress bar picture of the progress bar control in the blood bar
+---@param unit py.Unit # unit
+---@param node_name string # Blood stripe naming
+---@param icon_id py.Texture # picture
+---@param role? py.Role # Player
+function GameAPI.set_billboard_picture_group(unit, node_name, icon_id, role) end
+
 --Players completely quit the game (lobby completely quit the game)
 ---@param role py.Role # Player
 function GameAPI.lobby_exit_game(role) end
+
+--Get local player lens focus
+---@return py.FVector3 # Lens focus
+function GameAPI.get_local_player_camera_focus() end
+
+--Request to purchase platform items
+---@param role py.Role # Player
+---@param store_key py.StoreKey # Platform item types
+function GameAPI.open_platform_shop(role, store_key) end
+
+--Whether platform items are equal
+---@param store_key1 py.StoreKey # Platform item
+---@param store_key2 py.StoreKey # Platform item
+---@return boolean # Whether it is equal or not
+function GameAPI.api_compare_store_key(store_key1, store_key2) end
+
+--World coordinates Convert screen coordinates
+---@param world_pos py.Point # World coordinates
+---@return py.Point # Screen coordinate
+function GameAPI.api_world_pos_to_camera_pos_2d(world_pos) end
+
+--World coordinates convert screen edge coordinates
+---@param world_pos py.Point # World coordinates
+---@param delta_dis py.Fixed # Fixed point number
+---@return py.Point # Screen coordinate
+function GameAPI.api_world_pos_to_screen_edge_pos_2d(world_pos, delta_dis) end
+
+--Upload anti-cheating statistics
+---@param role py.Role # Player
+---@param args py.List # Custom parameter
+---@return string # Player full nickname
+function GameAPI.save_anticheat_data(role, args) end
+
+--Removes rich text information from strings
+---@param rich_text string # Rich text
+---@return string # Plain text
+function GameAPI.get_plain_text_from_rich_text(rich_text) end
+
+--Whether the point is in range
+---@param check_point py.Point # Point to be checked
+---@param center_point py.Point # Central point
+---@param shape py.Shape # Radius
+---@return boolean # Boolean value
+function GameAPI.api_is_point_in_shape(check_point, center_point, shape) end
+
+--Minimum pseudo random number Roll point
+---@param event_name string # Event name
+---@param event_odds number # Expected probability (percent)
+---@return boolean # Boolean value
+function GameAPI.api_get_pseudo_random(event_name, event_odds) end
+
+--Broadcast local message
+---@param msg_id string # msg_id
+---@param msg_content string # msg_content
+function GameAPI.api_broadcast_msg(msg_id, msg_content) end
 
 --Default library adds BOOLEAN key-value pairs
 ---@param prefab_conf_key integer # prefab Library ID
@@ -1407,6 +1518,48 @@ function GameAPI.set_prefab_key_ui_btn_status_kv(prefab_conf_key, item_key, key,
 ---@param value integer # value
 function GameAPI.set_prefab_key_ui_scrollview_type_kv(prefab_conf_key, item_key, key, value) end
 
+--The default library adds UI_GRIDVIEW_TYPE key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_gridview_type_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds UI_GRIDVIEW_BAR_TYPE key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_gridview_bar_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_USE_TYPE key and value pair to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_equip_slot_use_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Add a UI_EQUIP_SLOT_DRAG_TYPE key and value pair to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_equip_slot_drag_type_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_layout_clipping_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Add UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pairs to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_text_over_length_handling_type_kv(prefab_conf_key, item_key, key, value) end
+
 --The default library adds UI_ANIM key-value pairs
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
@@ -1420,6 +1573,13 @@ function GameAPI.set_prefab_key_ui_anim_kv(prefab_conf_key, item_key, key, value
 ---@param key string # Key-value name
 ---@param value integer # value
 function GameAPI.set_prefab_key_ui_anim_curve_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds UI_ANIM_PLAY_MODE key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_ui_anim_play_mode_kv(prefab_conf_key, item_key, key, value) end
 
 --The default library adds AUDIO_CHANNEL key-value pairs
 ---@param prefab_conf_key integer # prefab Library ID
@@ -1498,6 +1658,13 @@ function GameAPI.set_prefab_key_image_quality_kv(prefab_conf_key, item_key, key,
 ---@param value string # value
 function GameAPI.set_prefab_key_window_type_setting_kv(prefab_conf_key, item_key, key, value) end
 
+--Add DAMAGE_ATTACK_TYPE key-value pair to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value integer # value
+function GameAPI.set_prefab_key_damage_attack_type_kv(prefab_conf_key, item_key, key, value) end
+
 --The default library adds ITEM_ENTITY key-value pairs
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
@@ -1518,6 +1685,13 @@ function GameAPI.set_prefab_key_item_group_kv(prefab_conf_key, item_key, key, va
 ---@param key string # Key-value name
 ---@param value py.ItemKey # value
 function GameAPI.set_prefab_key_item_name_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds an ITEM_STACK_TYPE key-value pair
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.ItemStackType # value
+function GameAPI.set_prefab_key_item_stack_type_kv(prefab_conf_key, item_key, key, value) end
 
 --ABILITY key-value pair added to default library
 ---@param prefab_conf_key integer # prefab Library ID
@@ -1785,6 +1959,13 @@ function GameAPI.set_prefab_key_scene_sound_kv(prefab_conf_key, item_key, key, v
 ---@param value py.ModelKey # value
 function GameAPI.set_prefab_key_model_kv(prefab_conf_key, item_key, key, value) end
 
+--Default libraries add LIVE2D key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.Live2dKey # value
+function GameAPI.set_prefab_key_live2d_kv(prefab_conf_key, item_key, key, value) end
+
 --Add SFX_ENTITY key-value pairs to the default library
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
@@ -1840,6 +2021,13 @@ function GameAPI.set_prefab_key_texture_kv(prefab_conf_key, item_key, key, value
 ---@param key string # Key-value name
 ---@param value py.Sequence # value
 function GameAPI.set_prefab_key_sequence_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds a SPINE key-value pair
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.Spine # value
+function GameAPI.set_prefab_key_spine_kv(prefab_conf_key, item_key, key, value) end
 
 --Add PHYSICS_OBJECT key-value pairs to the default library
 ---@param prefab_conf_key integer # prefab Library ID
@@ -2016,6 +2204,13 @@ function GameAPI.set_prefab_key_mouse_key_kv(prefab_conf_key, item_key, key, val
 ---@param value py.MouseWheel # value
 function GameAPI.set_prefab_key_mouse_wheel_kv(prefab_conf_key, item_key, key, value) end
 
+--The default library adds MAP key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.Map # value
+function GameAPI.set_prefab_key_map_kv(prefab_conf_key, item_key, key, value) end
+
 --The default library adds a POST_EFFECT key-value pair
 ---@param prefab_conf_key integer # prefab Library ID
 ---@param item_key integer # ID
@@ -2036,6 +2231,13 @@ function GameAPI.set_prefab_key_unit_type_kv(prefab_conf_key, item_key, key, val
 ---@param key string # Key-value name
 ---@param value py.UnitCommandType # value
 function GameAPI.set_prefab_key_unit_command_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Adds a UNIT_GROUP_COMMAND_TYPE key-value pair to the default library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.UnitGroupCommandType # value
+function GameAPI.set_prefab_key_unit_group_command_type_kv(prefab_conf_key, item_key, key, value) end
 
 --Add MINI_MAP_COLOR_TYPE key-value pairs to the default library
 ---@param prefab_conf_key integer # prefab Library ID
@@ -2064,6 +2266,27 @@ function GameAPI.set_prefab_key_curved_path_kv(prefab_conf_key, item_key, key, v
 ---@param key string # Key-value name
 ---@param value py.CurvedPath3D # value
 function GameAPI.set_prefab_key_curved_path_3d_kv(prefab_conf_key, item_key, key, value) end
+
+--Add RESCUE_SEEKER_TYPE key-value pair to the preset library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.ERescueSeekerType # value
+function GameAPI.set_prefab_key_rescue_seeker_type_kv(prefab_conf_key, item_key, key, value) end
+
+--Add RESCUER_TYPE key-value pair to preset library
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.ERescuerType # value
+function GameAPI.set_prefab_key_rescuer_type_kv(prefab_conf_key, item_key, key, value) end
+
+--The default library adds STORE_ITEM_TYPE key-value pairs
+---@param prefab_conf_key integer # prefab Library ID
+---@param item_key integer # ID
+---@param key string # Key-value name
+---@param value py.StoreItemType # value
+function GameAPI.set_prefab_key_store_item_type_kv(prefab_conf_key, item_key, key, value) end
 
 --Determines whether the default has a BOOLEAN key-value pair
 ---@param prefab_type string # Default type
@@ -2177,6 +2400,48 @@ function GameAPI.has_prefab_ui_btn_status_kv(prefab_type, prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_ui_scrollview_type_kv(prefab_type, prefab_key, key) end
 
+--Determines whether a UI_GRIDVIEW_TYPE key-value pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_gridview_type_kv(prefab_type, prefab_key, key) end
+
+--Determines whether a UI_GRIDVIEW_BAR_TYPE key-value pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_gridview_bar_type_kv(prefab_type, prefab_key, key) end
+
+--Determine whether the default has a UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_equip_slot_use_type_kv(prefab_type, prefab_key, key) end
+
+--Determine whether the default has a UI_EQUIP_SLOT_DRAG_TYPE key and value pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_equip_slot_drag_type_kv(prefab_type, prefab_key, key) end
+
+--Determines whether a UI_LAYOUT_CLIPPING_TYPE key-value pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_layout_clipping_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether a UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_text_over_length_handling_type_kv(prefab_type, prefab_key, key) end
+
 --Determines whether a UI_ANIM key-value pair exists in the default
 ---@param prefab_type string # Default type
 ---@param prefab_key py.UnitKey # Default number
@@ -2190,6 +2455,13 @@ function GameAPI.has_prefab_ui_anim_kv(prefab_type, prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_ui_anim_curve_kv(prefab_type, prefab_key, key) end
+
+--Determines if the default has a UI_ANIM_PLAY_MODE key-value pair
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_ui_anim_play_mode_kv(prefab_type, prefab_key, key) end
 
 --Determines whether the default has an AUDIO_CHANNEL key-value pair
 ---@param prefab_type string # Default type
@@ -2268,6 +2540,13 @@ function GameAPI.has_prefab_image_quality_kv(prefab_type, prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_window_type_setting_kv(prefab_type, prefab_key, key) end
 
+--Check whether the default DAMAGE_ATTACK_TYPE key-value pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_damage_attack_type_kv(prefab_type, prefab_key, key) end
+
 --Determines whether an ITEM_ENTITY key-value pair exists in the default
 ---@param prefab_type string # Default type
 ---@param prefab_key py.UnitKey # Default number
@@ -2288,6 +2567,13 @@ function GameAPI.has_prefab_item_group_kv(prefab_type, prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_item_name_kv(prefab_type, prefab_key, key) end
+
+--Determines whether the default ITEM_STACK_TYPE key-value pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_item_stack_type_kv(prefab_type, prefab_key, key) end
 
 --Determine whether the default ABILITY key-value pair exists
 ---@param prefab_type string # Default type
@@ -2555,6 +2841,13 @@ function GameAPI.has_prefab_scene_sound_kv(prefab_type, prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_model_kv(prefab_type, prefab_key, key) end
 
+--Determines whether the default has LIVE2D key-value pairs
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_live2d_kv(prefab_type, prefab_key, key) end
+
 --Check whether the default SFX_ENTITY key pair exists
 ---@param prefab_type string # Default type
 ---@param prefab_key py.UnitKey # Default number
@@ -2610,6 +2903,13 @@ function GameAPI.has_prefab_texture_kv(prefab_type, prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_sequence_kv(prefab_type, prefab_key, key) end
+
+--Determines whether a SPINE key pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_spine_kv(prefab_type, prefab_key, key) end
 
 --Check whether the default PHYSICS_OBJECT key pair exists
 ---@param prefab_type string # Default type
@@ -2786,6 +3086,13 @@ function GameAPI.has_prefab_mouse_key_kv(prefab_type, prefab_key, key) end
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_mouse_wheel_kv(prefab_type, prefab_key, key) end
 
+--Check whether MAP key-value pairs exist in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_map_kv(prefab_type, prefab_key, key) end
+
 --Check whether the default has a POST_EFFECT key-value pair
 ---@param prefab_type string # Default type
 ---@param prefab_key py.UnitKey # Default number
@@ -2806,6 +3113,13 @@ function GameAPI.has_prefab_unit_type_kv(prefab_type, prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_unit_command_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether the UNIT_GROUP_COMMAND_TYPE key pair exists in the default
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_unit_group_command_type_kv(prefab_type, prefab_key, key) end
 
 --Determines whether the default has a MINI_MAP_COLOR_TYPE key-value pair
 ---@param prefab_type string # Default type
@@ -2834,6 +3148,27 @@ function GameAPI.has_prefab_curved_path_kv(prefab_type, prefab_key, key) end
 ---@param key string # Key name
 ---@return boolean # Existence or not
 function GameAPI.has_prefab_curved_path_3d_kv(prefab_type, prefab_key, key) end
+
+--Check whether the preset RESCUE_SEEKER_TYPE key-value pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_rescue_seeker_type_kv(prefab_type, prefab_key, key) end
+
+--Check whether the preset RESCUER_TYPE key-value pair exists
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_rescuer_type_kv(prefab_type, prefab_key, key) end
+
+--Determines whether the default has STORE_ITEM_TYPE key-value pairs
+---@param prefab_type string # Default type
+---@param prefab_key py.UnitKey # Default number
+---@param key string # Key name
+---@return boolean # Existence or not
+function GameAPI.has_prefab_store_item_type_kv(prefab_type, prefab_key, key) end
 
 --Gets the unit number BOOLEAN key pair
 ---@param unit_key py.UnitKey # Unit number
@@ -3699,6 +4034,330 @@ function GameAPI.get_icon_id_ui_scrollview_type_kv(icon_id, key) end
 ---@return integer # Key value
 function GameAPI.get_physics_entity_key_ui_scrollview_type_kv(physics_entity_key, key) end
 
+--Gets the unit number UI_GRIDVIEW_TYPE key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_gridview_type_kv(unit_key, key) end
+
+--Gets the item number UI_GRIDVIEW_TYPE key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_gridview_type_kv(item_key, key) end
+
+--Gets the skill number UI_GRIDVIEW_TYPE key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_gridview_type_kv(ability_key, key) end
+
+--Gets the Magic effect special effect number UI_GRIDVIEW_TYPE key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_gridview_type_kv(modifier_key, key) end
+
+--Gets the special effect number UI_GRIDVIEW_TYPE key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_gridview_type_kv(projectile_key, key) end
+
+--Gets destructible number UI_GRIDVIEW_TYPE key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_gridview_type_kv(destructible_key, key) end
+
+--Gets the technology number UI_GRIDVIEW_TYPE key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_gridview_type_kv(tech_key, key) end
+
+--Gets the image UI_GRIDVIEW_TYPE key-value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_gridview_type_kv(icon_id, key) end
+
+--Gets a logic-physical component type UI_GRIDVIEW_TYPE key-value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_gridview_type_kv(physics_entity_key, key) end
+
+--Gets the unit number UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_gridview_bar_type_kv(unit_key, key) end
+
+--Gets the item number UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_gridview_bar_type_kv(item_key, key) end
+
+--Gets the skill number UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_gridview_bar_type_kv(ability_key, key) end
+
+--Gets the Magic effect special effect number UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_gridview_bar_type_kv(modifier_key, key) end
+
+--Gets the special effect number UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_gridview_bar_type_kv(projectile_key, key) end
+
+--Gets destructible number UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_gridview_bar_type_kv(destructible_key, key) end
+
+--Gets the technology number UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_gridview_bar_type_kv(tech_key, key) end
+
+--Gets the image UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_gridview_bar_type_kv(icon_id, key) end
+
+--Gets a logic-physical component type UI_GRIDVIEW_BAR_TYPE key-value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_gridview_bar_type_kv(physics_entity_key, key) end
+
+--Obtain a key and value pair with unit number UI_EQUIP_SLOT_USE_TYPE
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_equip_slot_use_type_kv(unit_key, key) end
+
+--Get the item number UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_equip_slot_use_type_kv(item_key, key) end
+
+--Obtain the skill number UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_equip_slot_use_type_kv(ability_key, key) end
+
+--Get a key pair of the Magic Effects Effects ID UI_EQUIP_SLOT_USE_TYPE
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_equip_slot_use_type_kv(modifier_key, key) end
+
+--Get the special effect number UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_equip_slot_use_type_kv(projectile_key, key) end
+
+--Get the destructible number UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_equip_slot_use_type_kv(destructible_key, key) end
+
+--Obtain the technology number UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_equip_slot_use_type_kv(tech_key, key) end
+
+--Get the picture UI_EQUIP_SLOT_USE_TYPE key and value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_equip_slot_use_type_kv(icon_id, key) end
+
+--Obtain a key and value pair of the logical physical component type UI_EQUIP_SLOT_USE_TYPE
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_equip_slot_use_type_kv(physics_entity_key, key) end
+
+--Obtain the key value pair of the unit number UI_EQUIP_SLOT_DRAG_TYPE
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_equip_slot_drag_type_kv(unit_key, key) end
+
+--Get the item number UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_equip_slot_drag_type_kv(item_key, key) end
+
+--Obtain the skill number UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_equip_slot_drag_type_kv(ability_key, key) end
+
+--Get the Magic Effects Special effect ID UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_equip_slot_drag_type_kv(modifier_key, key) end
+
+--Get the special effect number UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_equip_slot_drag_type_kv(projectile_key, key) end
+
+--Get the destructible number UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_equip_slot_drag_type_kv(destructible_key, key) end
+
+--Obtain the technology number UI_EQUIP_SLOT_DRAG_TYPE key value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_equip_slot_drag_type_kv(tech_key, key) end
+
+--Get the picture UI_EQUIP_SLOT_DRAG_TYPE key and value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_equip_slot_drag_type_kv(icon_id, key) end
+
+--Obtain a key value pair of the logical physical component type UI_EQUIP_SLOT_DRAG_TYPE
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_equip_slot_drag_type_kv(physics_entity_key, key) end
+
+--Gets the unit number UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_layout_clipping_type_kv(unit_key, key) end
+
+--Gets item number UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_layout_clipping_type_kv(item_key, key) end
+
+--Gets the skill number UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_layout_clipping_type_kv(ability_key, key) end
+
+--Gets magic effect special effect number UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_layout_clipping_type_kv(modifier_key, key) end
+
+--Gets the special effect number UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_layout_clipping_type_kv(projectile_key, key) end
+
+--Gets destructible number UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_layout_clipping_type_kv(destructible_key, key) end
+
+--Gets the technology number UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_layout_clipping_type_kv(tech_key, key) end
+
+--Gets the image UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_layout_clipping_type_kv(icon_id, key) end
+
+--Gets the logical physical component type UI_LAYOUT_CLIPPING_TYPE key-value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_layout_clipping_type_kv(physics_entity_key, key) end
+
+--Gets the unit number UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_text_over_length_handling_type_kv(unit_key, key) end
+
+--Get the item number UI_TEXT_OVER_LENGTH_HANDLING_TYPE key value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_text_over_length_handling_type_kv(item_key, key) end
+
+--Get skill number UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_text_over_length_handling_type_kv(ability_key, key) end
+
+--Get the magic effect number UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_text_over_length_handling_type_kv(modifier_key, key) end
+
+--Get the special effect number UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_text_over_length_handling_type_kv(projectile_key, key) end
+
+--Gets the destructible number UI_TEXT_OVER_LENGTH_HANDLING_TYPE key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_text_over_length_handling_type_kv(destructible_key, key) end
+
+--Get the technology number UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_text_over_length_handling_type_kv(tech_key, key) end
+
+--Get the image UI_TEXT_OVER_LENGTH_HANDLING_TYPE key pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_text_over_length_handling_type_kv(icon_id, key) end
+
+--Gets a key-value pair of the logical physical component type UI_TEXT_OVER_LENGTH_HANDLING_TYPE
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_text_over_length_handling_type_kv(physics_entity_key, key) end
+
 --Gets the unit number UI_ANIM key-value pair
 ---@param unit_key py.UnitKey # Unit number
 ---@param key string # Key name
@@ -3806,6 +4465,60 @@ function GameAPI.get_icon_id_ui_anim_curve_kv(icon_id, key) end
 ---@param key string # Key name
 ---@return integer # Key value
 function GameAPI.get_physics_entity_key_ui_anim_curve_kv(physics_entity_key, key) end
+
+--Gets the unit number UI_ANIM_PLAY_MODE key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_ui_anim_play_mode_kv(unit_key, key) end
+
+--Gets the item number UI_ANIM_PLAY_MODE key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_ui_anim_play_mode_kv(item_key, key) end
+
+--Gets the skill number UI_ANIM_PLAY_MODE key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_ui_anim_play_mode_kv(ability_key, key) end
+
+--Gets the Magic effect special effect number UI_ANIM_PLAY_MODE key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_ui_anim_play_mode_kv(modifier_key, key) end
+
+--Gets the effect number UI_ANIM_PLAY_MODE key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_ui_anim_play_mode_kv(projectile_key, key) end
+
+--Gets the destructible number UI_ANIM_PLAY_MODE key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_ui_anim_play_mode_kv(destructible_key, key) end
+
+--Gets the technology number UI_ANIM_PLAY_MODE key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_ui_anim_play_mode_kv(tech_key, key) end
+
+--Gets the image UI_ANIM_PLAY_MODE key-value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_ui_anim_play_mode_kv(icon_id, key) end
+
+--Gets the logical physical component type UI_ANIM_PLAY_MODE key-value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_ui_anim_play_mode_kv(physics_entity_key, key) end
 
 --Gets the unit number AUDIO_CHANNEL key pair
 ---@param unit_key py.UnitKey # Unit number
@@ -4401,6 +5114,60 @@ function GameAPI.get_icon_id_window_type_setting_kv(icon_id, key) end
 ---@return string # Key value
 function GameAPI.get_physics_entity_key_window_type_setting_kv(physics_entity_key, key) end
 
+--Get the unit number DAMAGE_ATTACK_TYPE key-value pair
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_unit_key_damage_attack_type_kv(unit_key, key) end
+
+--Gets the item number DAMAGE_ATTACK_TYPE key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_item_key_damage_attack_type_kv(item_key, key) end
+
+--Obtain the skill number DAMAGE_ATTACK_TYPE key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_ability_key_damage_attack_type_kv(ability_key, key) end
+
+--Gets the Magic effect number DAMAGE_ATTACK_TYPE key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_modifier_key_damage_attack_type_kv(modifier_key, key) end
+
+--Get the special effect number DAMAGE_ATTACK_TYPE key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_projectile_key_damage_attack_type_kv(projectile_key, key) end
+
+--Gets the destructible number DAMAGE_ATTACK_TYPE key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_destructible_key_damage_attack_type_kv(destructible_key, key) end
+
+--Get the technology number DAMAGE_ATTACK_TYPE key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_tech_key_damage_attack_type_kv(tech_key, key) end
+
+--Obtain the image DAMAGE_ATTACK_TYPE key-value pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_icon_id_damage_attack_type_kv(icon_id, key) end
+
+--Obtain the logical physical component type DAMAGE_ATTACK_TYPE key and value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return integer # Key value
+function GameAPI.get_physics_entity_key_damage_attack_type_kv(physics_entity_key, key) end
+
 --Gets the ITEM_ENTITY key-value pair with the unit number
 ---@param unit_key py.UnitKey # Unit number
 ---@param key string # Key name
@@ -4562,6 +5329,60 @@ function GameAPI.get_icon_id_item_name_kv(icon_id, key) end
 ---@param key string # Key name
 ---@return py.ItemKey # Key value
 function GameAPI.get_physics_entity_key_item_name_kv(physics_entity_key, key) end
+
+--Gets the ITEM_STACK_TYPE key-value pair with the unit number
+---@param unit_key py.UnitKey # Unit number
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_unit_key_item_stack_type_kv(unit_key, key) end
+
+--Gets the item number ITEM_STACK_TYPE key-value pair
+---@param item_key py.ItemKey # Item number
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_item_key_item_stack_type_kv(item_key, key) end
+
+--Gets the skill number ITEM_STACK_TYPE key-value pair
+---@param ability_key py.AbilityKey # Skill number
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_ability_key_item_stack_type_kv(ability_key, key) end
+
+--Gets the magic effect number ITEM_STACK_TYPE key-value pair
+---@param modifier_key py.ModifierKey # Magic effect number
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_modifier_key_item_stack_type_kv(modifier_key, key) end
+
+--Gets the special effect number ITEM_STACK_TYPE key-value pair
+---@param projectile_key py.ProjectileKey # Special effect number
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_projectile_key_item_stack_type_kv(projectile_key, key) end
+
+--Gets the destructible number ITEM_STACK_TYPE key-value pair
+---@param destructible_key py.DestructibleKey # Destructible number
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_destructible_key_item_stack_type_kv(destructible_key, key) end
+
+--Gets the technology number ITEM_STACK_TYPE key-value pair
+---@param tech_key py.TechKey # Technology number
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_tech_key_item_stack_type_kv(tech_key, key) end
+
+--Gets the ITEM_STACK_TYPE key-value pair for the picture
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_icon_id_item_stack_type_kv(icon_id, key) end
+
+--Gets a key-value pair of the logical physical component type ITEM_STACK_TYPE
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return py.ItemStackType # Key value
+function GameAPI.get_physics_entity_key_item_stack_type_kv(physics_entity_key, key) end
 
 --Gets the ABILITY key pair with the unit number
 ---@param unit_key py.UnitKey # Unit number
@@ -4863,1228 +5684,429 @@ function GameAPI.get_modifier_key_modifier_entity_kv(modifier_key, key) end
 ---@return py.ModifierEntity # Key value
 function GameAPI.get_projectile_key_modifier_entity_kv(projectile_key, key) end
 
---Gets an array of trigger GOODS_KEY group variables
----@param actor py.Actor # Unit entity
+--Get the picture COIN_CURRENCY key pair
+---@param icon_id py.Texture # picture
+---@param key string # Key name
+---@return py.COIN_CURRENCY # Key value
+function GameAPI.get_icon_id_coin_currency_kv(icon_id, key) end
+
+--Gets a logical physical component type COIN_CURRENCY key-value pair
+---@param physics_entity_key py.PhysicsEntityKey # Logical physical component type
+---@param key string # Key name
+---@return py.COIN_CURRENCY # Key value
+function GameAPI.get_physics_entity_key_coin_currency_kv(physics_entity_key, key) end
+
+--Gets the COIN_CURRENCY key-value pair
+---@param kvbase py.KVBase # Custom key value carrier
+---@param key string # Key name
+---@return py.COIN_CURRENCY # Key value
+function GameAPI.get_kv_pair_value_coin_currency(kvbase, key) end
+
+--Gets the global trigger UI_EFFECT_CAMERA_MODE non-array variable
 ---@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_goods_key(actor, key) end
-
---Gets the global trigger MAP non-array variable
----@param key string # Variable name
----@return py.Map # value
-function GameAPI.get_trigger_variable_map(key) end
-
---Gets trigger MAP non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.Map # value
-function GameAPI.get_trigger_actor_variable_map(actor, key) end
-
---Gets the global trigger MAP array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return py.Map # value
-function GameAPI.get_trigger_list_variable_map(key, index) end
-
---Gets trigger MAP array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return py.Map # value
-function GameAPI.get_trigger_list_actor_variable_map(actor, key, index) end
-
---Gets the global trigger MAP array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_map(key) end
-
---Gets an array of trigger MAP group variables
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_map(actor, key) end
-
---Gets the global trigger STORE_ITEM_TYPE non-array variable
----@param key string # Variable name
----@return py.StoreItemType # value
-function GameAPI.get_trigger_variable_store_item_type(key) end
-
---Gets the trigger STORE_ITEM_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.StoreItemType # value
-function GameAPI.get_trigger_actor_variable_store_item_type(actor, key) end
-
---Gets the global trigger STORE_ITEM_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return py.StoreItemType # value
-function GameAPI.get_trigger_list_variable_store_item_type(key, index) end
-
---Gets the trigger STORE_ITEM_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return py.StoreItemType # value
-function GameAPI.get_trigger_list_actor_variable_store_item_type(actor, key, index) end
-
---Gets the global trigger STORE_ITEM_TYPE array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_store_item_type(key) end
-
---Gets an array of trigger STORE_ITEM_TYPE group variables
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_store_item_type(actor, key) end
-
---Gets the global trigger SITE_STATE non-array variable
----@param key string # Variable name
----@return py.SITE_STATE # value
-function GameAPI.get_trigger_variable_site_state(key) end
-
---Gets trigger SITE_STATE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.SITE_STATE # value
-function GameAPI.get_trigger_actor_variable_site_state(actor, key) end
-
---Gets the global trigger SITE_STATE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return py.SITE_STATE # value
-function GameAPI.get_trigger_list_variable_site_state(key, index) end
-
---Gets the trigger SITE_STATE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return py.SITE_STATE # value
-function GameAPI.get_trigger_list_actor_variable_site_state(actor, key, index) end
-
---Gets the global trigger SITE_STATE array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_site_state(key) end
-
---Gets an array of trigger SITE_STATE group variables
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_site_state(actor, key) end
-
---Gets the global trigger COIN_CURRENCY non-array variable
----@param key string # Variable name
----@return py.COIN_CURRENCY # value
-function GameAPI.get_trigger_variable_coin_currency(key) end
-
---Gets the trigger COIN_CURRENCY non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.COIN_CURRENCY # value
-function GameAPI.get_trigger_actor_variable_coin_currency(actor, key) end
-
---Gets the global trigger COIN_CURRENCY array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@return py.COIN_CURRENCY # value
-function GameAPI.get_trigger_list_variable_coin_currency(key, index) end
-
---Gets the trigger COIN_CURRENCY array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@return py.COIN_CURRENCY # value
-function GameAPI.get_trigger_list_actor_variable_coin_currency(actor, key, index) end
-
---Gets the global trigger COIN_CURRENCY array variable
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_variable_all_coin_currency(key) end
-
---Gets an array of trigger COIN_CURRENCY group variables
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@return py.List # Array type variable value
-function GameAPI.get_trigger_list_actor_variable_all_coin_currency(actor, key) end
-
---Sets the global trigger UI_GRIDVIEW_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_gridview_type(key, index, value) end
-
---Sets the global trigger UI_GRIDVIEW_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_gridview_type(actor, key, index, value) end
-
---Sets the global trigger UI_GRIDVIEW_TYPE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_gridview_type(key, value) end
-
---Sets the global trigger UI_GRIDVIEW_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_gridview_type(actor, key, value) end
-
---Sets the global trigger UI_GRIDVIEW_BAR_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_gridview_bar_type(key, index, value) end
-
---Sets the global trigger UI_GRIDVIEW_BAR_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_gridview_bar_type(actor, key, index, value) end
-
---Sets the global trigger UI_GRIDVIEW_BAR_TYPE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_gridview_bar_type(key, value) end
-
---Sets the global trigger UI_GRIDVIEW_BAR_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_gridview_bar_type(actor, key, value) end
-
---Set the global trigger UI_EFFECT_CAMERA_MODE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_effect_camera_mode(key, index, value) end
-
---Set the global trigger UI_EFFECT_CAMERA_MODE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_effect_camera_mode(actor, key, index, value) end
-
---Set the global trigger UI_EFFECT_CAMERA_MODE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_effect_camera_mode(key, value) end
-
---Set the global trigger UI_EFFECT_CAMERA_MODE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_effect_camera_mode(actor, key, value) end
-
---Sets the global trigger UI_EQUIP_SLOT_USE_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_equip_slot_use_type(key, index, value) end
-
---Sets the global trigger UI_EQUIP_SLOT_USE_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_equip_slot_use_type(actor, key, index, value) end
-
---Sets the global trigger UI_EQUIP_SLOT_USE_TYPE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_equip_slot_use_type(key, value) end
-
---Set the global trigger UI_EQUIP_SLOT_USE_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_equip_slot_use_type(actor, key, value) end
-
---Sets the global trigger UI_EQUIP_SLOT_DRAG_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_equip_slot_drag_type(key, index, value) end
-
---Sets the global trigger UI_EQUIP_SLOT_DRAG_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_equip_slot_drag_type(actor, key, index, value) end
-
---Sets the global trigger UI_EQUIP_SLOT_DRAG_TYPE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_equip_slot_drag_type(key, value) end
-
---Set the global trigger UI_EQUIP_SLOT_DRAG_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_equip_slot_drag_type(actor, key, value) end
-
---Sets the global trigger UI_LAYOUT_CLIPPING_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_layout_clipping_type(key, index, value) end
-
---Sets the global trigger UI_LAYOUT_CLIPPING_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_layout_clipping_type(actor, key, index, value) end
-
---Sets the global trigger UI_LAYOUT_CLIPPING_TYPE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_layout_clipping_type(key, value) end
-
---Sets the global trigger UI_LAYOUT_CLIPPING_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_layout_clipping_type(actor, key, value) end
-
---Set the global trigger UI_TEXT_OVER_LENGTH_HANDLING_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_text_over_length_handling_type(key, index, value) end
-
---Set the global trigger UI_TEXT_OVER_LENGTH_HANDLING_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_text_over_length_handling_type(actor, key, index, value) end
-
---Sets the global trigger UI_TEXT_OVER_LENGTH_HANDLING_TYPE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_text_over_length_handling_type(key, value) end
-
---Set the global trigger UI_TEXT_OVER_LENGTH_HANDLING_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_text_over_length_handling_type(actor, key, value) end
-
---Sets the global trigger UI_POS_ADAPT_MODE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_pos_adapt_mode(key, index, value) end
-
---Sets the global trigger UI_POS_ADAPT_MODE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_pos_adapt_mode(actor, key, index, value) end
-
---Sets the global trigger UI_POS_ADAPT_MODE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_pos_adapt_mode(key, value) end
-
---Sets the global trigger UI_POS_ADAPT_MODE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_pos_adapt_mode(actor, key, value) end
-
---Sets the global trigger UI_CHAT_SEND_CHANNEL array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_chat_send_channel(key, index, value) end
-
---Sets the global trigger UI_CHAT_SEND_CHANNEL array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_chat_send_channel(actor, key, index, value) end
-
---Sets the global trigger UI_CHAT_SEND_CHANNEL non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_chat_send_channel(key, value) end
-
---Sets the global trigger UI_CHAT_SEND_CHANNEL non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_chat_send_channel(actor, key, value) end
-
---Sets the global trigger UI_CHAT_RECV_CHANNEL array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_chat_recv_channel(key, index, value) end
-
---Sets the global trigger UI_CHAT_RECV_CHANNEL array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_chat_recv_channel(actor, key, index, value) end
-
---Sets the global trigger UI_CHAT_RECV_CHANNEL non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_chat_recv_channel(key, value) end
-
---Sets the global trigger UI_CHAT_RECV_CHANNEL non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_chat_recv_channel(actor, key, value) end
-
---Sets the global trigger UI_ANIM_PLAY_MODE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_anim_play_mode(key, index, value) end
-
---Sets the global trigger UI_ANIM_PLAY_MODE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_anim_play_mode(actor, key, index, value) end
-
---Sets the global trigger UI_ANIM_PLAY_MODE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_anim_play_mode(key, value) end
-
---Sets the global trigger UI_ANIM_PLAY_MODE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_anim_play_mode(actor, key, value) end
-
---Sets the global trigger UI_TEXT_FONT_NAME array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? string # value
-function GameAPI.set_trigger_list_variable_ui_text_font_name(key, index, value) end
-
---Sets the global trigger UI_TEXT_FONT_NAME array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? string # value
-function GameAPI.set_trigger_list_actor_variable_ui_text_font_name(actor, key, index, value) end
-
---Sets the global trigger UI_TEXT_FONT_NAME non-array variable
----@param key string # Variable name
----@param value? string # value
-function GameAPI.set_trigger_variable_ui_text_font_name(key, value) end
-
---Sets the global trigger UI_TEXT_FONT_NAME non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? string # value
-function GameAPI.set_trigger_actor_variable_ui_text_font_name(actor, key, value) end
-
---Sets the global trigger UI_ECA_ANIM_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_ui_eca_anim_type(key, index, value) end
-
---Sets the global trigger UI_ECA_ANIM_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_ui_eca_anim_type(actor, key, index, value) end
-
---Sets the global trigger UI_ECA_ANIM_TYPE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_ui_eca_anim_type(key, value) end
-
---Sets the global trigger UI_ECA_ANIM_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_ui_eca_anim_type(actor, key, value) end
-
---Set the LOCAL_UNIT_ENTITY array variable subentry of the global trigger
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.LocalUnit # value
-function GameAPI.set_trigger_list_variable_local_unit_entity(key, index, value) end
-
---Set the LOCAL_UNIT_ENTITY array group variable subitem of the global trigger
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.LocalUnit # value
-function GameAPI.set_trigger_list_actor_variable_local_unit_entity(actor, key, index, value) end
-
---Set the global trigger LOCAL_UNIT_ENTITY non-array variable
----@param key string # Variable name
----@param value? py.LocalUnit # value
-function GameAPI.set_trigger_variable_local_unit_entity(key, value) end
-
---Set the global trigger LOCAL_UNIT_ENTITY non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.LocalUnit # value
-function GameAPI.set_trigger_actor_variable_local_unit_entity(actor, key, value) end
-
---Sets the global trigger LOCAL_UNIT_GROUP array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.LocalUnitGroup # value
-function GameAPI.set_trigger_list_variable_local_unit_group(key, index, value) end
-
---Sets the global trigger LOCAL_UNIT_GROUP array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.LocalUnitGroup # value
-function GameAPI.set_trigger_list_actor_variable_local_unit_group(actor, key, index, value) end
-
---Sets the global trigger LOCAL_UNIT_GROUP non-array variable
----@param key string # Variable name
----@param value? py.LocalUnitGroup # value
-function GameAPI.set_trigger_variable_local_unit_group(key, value) end
-
---Sets the global trigger LOCAL_UNIT_GROUP non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.LocalUnitGroup # value
-function GameAPI.set_trigger_actor_variable_local_unit_group(actor, key, value) end
-
---Sets the global trigger DECO_ENTITY array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.DecoID # value
-function GameAPI.set_trigger_list_variable_deco_entity(key, index, value) end
-
---Sets the global trigger DECO_ENTITY array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.DecoID # value
-function GameAPI.set_trigger_list_actor_variable_deco_entity(actor, key, index, value) end
-
---Set the global trigger DECO_ENTITY non-array variable
----@param key string # Variable name
----@param value? py.DecoID # value
-function GameAPI.set_trigger_variable_deco_entity(key, value) end
-
---Sets the global trigger DECO_ENTITY non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.DecoID # value
-function GameAPI.set_trigger_actor_variable_deco_entity(actor, key, value) end
-
---Sets the global trigger SCENE_PRESET array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.ScenePreset # value
-function GameAPI.set_trigger_list_variable_scene_preset(key, index, value) end
-
---Sets the global trigger SCENE_PRESET array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.ScenePreset # value
-function GameAPI.set_trigger_list_actor_variable_scene_preset(actor, key, index, value) end
-
---Sets the global trigger SCENE_PRESET non-array variable
----@param key string # Variable name
----@param value? py.ScenePreset # value
-function GameAPI.set_trigger_variable_scene_preset(key, value) end
-
---Sets the global trigger SCENE_PRESET non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.ScenePreset # value
-function GameAPI.set_trigger_actor_variable_scene_preset(actor, key, value) end
-
---Sets the global trigger ITEM_STACK_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.ItemStackType # value
-function GameAPI.set_trigger_list_variable_item_stack_type(key, index, value) end
-
---Sets the global trigger ITEM_STACK_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.ItemStackType # value
-function GameAPI.set_trigger_list_actor_variable_item_stack_type(actor, key, index, value) end
-
---Sets the global trigger ITEM_STACK_TYPE non-array variable
----@param key string # Variable name
----@param value? py.ItemStackType # value
-function GameAPI.set_trigger_variable_item_stack_type(key, value) end
-
---Sets the global trigger ITEM_STACK_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.ItemStackType # value
-function GameAPI.set_trigger_actor_variable_item_stack_type(actor, key, value) end
-
---Sets the global trigger ABILITY_RELEASE_ID array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.AbilityReleaseId # value
-function GameAPI.set_trigger_list_variable_ability_release_id(key, index, value) end
-
---Sets the global trigger ABILITY_RELEASE_ID array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.AbilityReleaseId # value
-function GameAPI.set_trigger_list_actor_variable_ability_release_id(actor, key, index, value) end
-
---Sets the global trigger ABILITY_RELEASE_ID non-array variable
----@param key string # Variable name
----@param value? py.AbilityReleaseId # value
-function GameAPI.set_trigger_variable_ability_release_id(key, value) end
-
---Sets the global trigger ABILITY_RELEASE_ID non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.AbilityReleaseId # value
-function GameAPI.set_trigger_actor_variable_ability_release_id(actor, key, value) end
-
---Sets the global trigger DECO_NAME array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.DecoKey # value
-function GameAPI.set_trigger_list_variable_deco_name(key, index, value) end
-
---Sets the global trigger DECO_NAME array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.DecoKey # value
-function GameAPI.set_trigger_list_actor_variable_deco_name(actor, key, index, value) end
-
---Set the global trigger DECO_NAME to be a non-array variable
----@param key string # Variable name
----@param value? py.DecoKey # value
-function GameAPI.set_trigger_variable_deco_name(key, value) end
-
---Sets the global trigger DECO_NAME to be a non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.DecoKey # value
-function GameAPI.set_trigger_actor_variable_deco_name(actor, key, value) end
-
---Sets the global trigger UI_POINT array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.FUIPoint # value
-function GameAPI.set_trigger_list_variable_ui_point(key, index, value) end
-
---Sets the global trigger UI_POINT array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.FUIPoint # value
-function GameAPI.set_trigger_list_actor_variable_ui_point(actor, key, index, value) end
-
---Sets the global trigger UI_POINT non-array variable
----@param key string # Variable name
----@param value? py.FUIPoint # value
-function GameAPI.set_trigger_variable_ui_point(key, value) end
-
---Sets the global trigger UI_POINT non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.FUIPoint # value
-function GameAPI.set_trigger_actor_variable_ui_point(actor, key, value) end
-
---Sets the global trigger ATTACH_MODEL_ENTITY array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.AttachModelEntity # value
-function GameAPI.set_trigger_list_variable_attach_model_entity(key, index, value) end
-
---Sets the global trigger ATTACH_MODEL_ENTITY Array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.AttachModelEntity # value
-function GameAPI.set_trigger_list_actor_variable_attach_model_entity(actor, key, index, value) end
-
---Sets global trigger ATTACH_MODEL_ENTITY non-array variable
----@param key string # Variable name
----@param value? py.AttachModelEntity # value
-function GameAPI.set_trigger_variable_attach_model_entity(key, value) end
-
---Sets global trigger ATTACH_MODEL_ENTITY non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.AttachModelEntity # value
-function GameAPI.set_trigger_actor_variable_attach_model_entity(actor, key, value) end
-
---Sets the global trigger LIVE2D array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.Live2dKey # value
-function GameAPI.set_trigger_list_variable_live2d(key, index, value) end
-
---Sets the global trigger LIVE2D array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.Live2dKey # value
-function GameAPI.set_trigger_list_actor_variable_live2d(actor, key, index, value) end
-
---Sets the global trigger LIVE2D non-array variable
----@param key string # Variable name
----@param value? py.Live2dKey # value
-function GameAPI.set_trigger_variable_live2d(key, value) end
-
---Sets the global trigger LIVE2D non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.Live2dKey # value
-function GameAPI.set_trigger_actor_variable_live2d(actor, key, value) end
-
---Sets the global trigger SPINE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.Spine # value
-function GameAPI.set_trigger_list_variable_spine(key, index, value) end
-
---Sets the global trigger SPINE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.Spine # value
-function GameAPI.set_trigger_list_actor_variable_spine(actor, key, index, value) end
-
---Sets the global trigger SPINE non-array variable
----@param key string # Variable name
----@param value? py.Spine # value
-function GameAPI.set_trigger_variable_spine(key, value) end
-
---Sets the global trigger SPINE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.Spine # value
-function GameAPI.set_trigger_actor_variable_spine(actor, key, value) end
-
---Sets the global trigger DEBUG_SHAPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_variable_debug_shape(key, index, value) end
-
---Sets the global trigger DEBUG_SHAPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? integer # value
-function GameAPI.set_trigger_list_actor_variable_debug_shape(actor, key, index, value) end
-
---Sets the global trigger DEBUG_SHAPE non-array variable
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_variable_debug_shape(key, value) end
-
---Sets the global trigger DEBUG_SHAPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? integer # value
-function GameAPI.set_trigger_actor_variable_debug_shape(actor, key, value) end
-
---Sets the global trigger WATCHING_MODE_STATUS array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.WatchingModeStatus # value
-function GameAPI.set_trigger_list_variable_watching_mode_status(key, index, value) end
-
---Sets the global trigger WATCHING_MODE_STATUS array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.WatchingModeStatus # value
-function GameAPI.set_trigger_list_actor_variable_watching_mode_status(actor, key, index, value) end
-
---Sets the global trigger WATCHING_MODE_STATUS non-array variable
----@param key string # Variable name
----@param value? py.WatchingModeStatus # value
-function GameAPI.set_trigger_variable_watching_mode_status(key, value) end
-
---Sets the global trigger WATCHING_MODE_STATUS non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.WatchingModeStatus # value
-function GameAPI.set_trigger_actor_variable_watching_mode_status(actor, key, value) end
-
---Set the global trigger FORCE_ENTITY array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.Force # value
-function GameAPI.set_trigger_list_variable_force_entity(key, index, value) end
-
---Set the global trigger FORCE_ENTITY Array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.Force # value
-function GameAPI.set_trigger_list_actor_variable_force_entity(actor, key, index, value) end
-
---Set the global trigger FORCE_ENTITY non-array variable
----@param key string # Variable name
----@param value? py.Force # value
-function GameAPI.set_trigger_variable_force_entity(key, value) end
-
---Set the global trigger FORCE_ENTITY non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.Force # value
-function GameAPI.set_trigger_actor_variable_force_entity(actor, key, value) end
-
---Sets the global trigger GOODS_KEY array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.GoodsKey # value
-function GameAPI.set_trigger_list_variable_goods_key(key, index, value) end
-
---Sets the global trigger GOODS_KEY array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.GoodsKey # value
-function GameAPI.set_trigger_list_actor_variable_goods_key(actor, key, index, value) end
-
---Sets the global trigger GOODS_KEY non-array variable
----@param key string # Variable name
----@param value? py.GoodsKey # value
-function GameAPI.set_trigger_variable_goods_key(key, value) end
-
---Sets the global trigger GOODS_KEY non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.GoodsKey # value
-function GameAPI.set_trigger_actor_variable_goods_key(actor, key, value) end
-
---Sets the global trigger MAP array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.Map # value
-function GameAPI.set_trigger_list_variable_map(key, index, value) end
-
---Sets the global trigger MAP array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.Map # value
-function GameAPI.set_trigger_list_actor_variable_map(actor, key, index, value) end
-
---Sets the global trigger MAP non-array variable
----@param key string # Variable name
----@param value? py.Map # value
-function GameAPI.set_trigger_variable_map(key, value) end
-
---Sets the global trigger MAP non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.Map # value
-function GameAPI.set_trigger_actor_variable_map(actor, key, value) end
-
---Sets the global trigger STORE_ITEM_TYPE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.StoreItemType # value
-function GameAPI.set_trigger_list_variable_store_item_type(key, index, value) end
-
---Sets the global trigger STORE_ITEM_TYPE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.StoreItemType # value
-function GameAPI.set_trigger_list_actor_variable_store_item_type(actor, key, index, value) end
-
---Sets the global trigger STORE_ITEM_TYPE non-array variable
----@param key string # Variable name
----@param value? py.StoreItemType # value
-function GameAPI.set_trigger_variable_store_item_type(key, value) end
-
---Sets the global trigger STORE_ITEM_TYPE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.StoreItemType # value
-function GameAPI.set_trigger_actor_variable_store_item_type(actor, key, value) end
-
---Sets the global trigger SITE_STATE array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.SITE_STATE # value
-function GameAPI.set_trigger_list_variable_site_state(key, index, value) end
-
---Sets the global trigger SITE_STATE array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.SITE_STATE # value
-function GameAPI.set_trigger_list_actor_variable_site_state(actor, key, index, value) end
-
---Sets the global trigger SITE_STATE non-array variable
----@param key string # Variable name
----@param value? py.SITE_STATE # value
-function GameAPI.set_trigger_variable_site_state(key, value) end
-
---Sets the global trigger SITE_STATE non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.SITE_STATE # value
-function GameAPI.set_trigger_actor_variable_site_state(actor, key, value) end
-
---Sets the global trigger COIN_CURRENCY array variable subentry
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.COIN_CURRENCY # value
-function GameAPI.set_trigger_list_variable_coin_currency(key, index, value) end
-
---Sets the global trigger COIN_CURRENCY array group variable subentry
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param index integer # subscript
----@param value? py.COIN_CURRENCY # value
-function GameAPI.set_trigger_list_actor_variable_coin_currency(actor, key, index, value) end
-
---Sets the global trigger COIN_CURRENCY non-array variable
----@param key string # Variable name
----@param value? py.COIN_CURRENCY # value
-function GameAPI.set_trigger_variable_coin_currency(key, value) end
-
---Sets the global trigger COIN_CURRENCY non-array group variable
----@param actor py.Actor # Unit entity
----@param key string # Variable name
----@param value? py.COIN_CURRENCY # value
-function GameAPI.set_trigger_actor_variable_coin_currency(actor, key, value) end
-
---Gets an item in the DECO_ENTITY array
----@param l py.List # list
----@param i integer # subscript
----@return py.DecoID # value
-function GameAPI.get_deco_entity_list_value(l, i) end
-
---Sets an item in the DECO_ENTITY array
----@param l py.List # list
----@param i integer # subscript
----@param v py.DecoID # value
-function GameAPI.set_deco_entity_list_value(l, i, v) end
-
---Generate n DECO_ENTITY arrays of values v
----@param n integer # Length
----@param v? py.DecoID # value
----@return py.List # list
-function GameAPI.get_deco_entity_n_list(n, v) end
-
---Gets an item in the SCENE_PRESET array
----@param l py.List # list
----@param i integer # subscript
----@return py.ScenePreset # value
-function GameAPI.get_scene_preset_list_value(l, i) end
-
---Sets an item in the SCENE_PRESET array
----@param l py.List # list
----@param i integer # subscript
----@param v py.ScenePreset # value
-function GameAPI.set_scene_preset_list_value(l, i, v) end
-
---Generates n SCENE_PRESET arrays with values of v
----@param n integer # Length
----@param v? py.ScenePreset # value
----@return py.List # list
-function GameAPI.get_scene_preset_n_list(n, v) end
-
---Gets an item in the SPINE array
----@param l py.List # list
----@param i integer # subscript
----@return py.Spine # value
-function GameAPI.get_spine_list_value(l, i) end
-
---Sets an item in the SPINE array
----@param l py.List # list
----@param i integer # subscript
----@param v py.Spine # value
-function GameAPI.set_spine_list_value(l, i, v) end
-
---Generates a SPINE array of n values v
----@param n integer # Length
----@param v? py.Spine # value
----@return py.List # list
-function GameAPI.get_spine_n_list(n, v) end
-
---Gets an item in the UI_ANIM_PLAY_MODE array
----@param l py.List # list
----@param i integer # subscript
 ---@return integer # value
-function GameAPI.get_ui_anim_play_mode_list_value(l, i) end
+function GameAPI.get_trigger_variable_ui_effect_camera_mode(key) end
 
---Sets an item in the UI_ANIM_PLAY_MODE array
----@param l py.List # list
----@param i integer # subscript
----@param v integer # value
-function GameAPI.set_ui_anim_play_mode_list_value(l, i, v) end
-
---Generates n UI_ANIM_PLAY_MODE arrays with value v
----@param n integer # Length
----@param v? integer # value
----@return py.List # list
-function GameAPI.get_ui_anim_play_mode_n_list(n, v) end
-
---Gets an item in the DEBUG_SHAPE array
----@param l py.List # list
----@param i integer # subscript
+--Gets trigger UI_EFFECT_CAMERA_MODE non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
 ---@return integer # value
-function GameAPI.get_debug_shape_list_value(l, i) end
+function GameAPI.get_trigger_actor_variable_ui_effect_camera_mode(actor, key) end
 
---Set an item in the DEBUG_SHAPE array
----@param l py.List # list
----@param i integer # subscript
----@param v integer # value
-function GameAPI.set_debug_shape_list_value(l, i, v) end
+--Gets the global trigger UI_EFFECT_CAMERA_MODE array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_variable_ui_effect_camera_mode(key, index) end
 
---Generates n DEBUG_SHAPE arrays with value v
----@param n integer # Length
----@param v? integer # value
----@return py.List # list
-function GameAPI.get_debug_shape_n_list(n, v) end
+--Gets trigger UI_EFFECT_CAMERA_MODE array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_actor_variable_ui_effect_camera_mode(actor, key, index) end
 
---Gets an item in the UI_TEXT_FONT_NAME array
----@param l py.List # list
----@param i integer # subscript
+--Gets the global trigger UI_EFFECT_CAMERA_MODE array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_ui_effect_camera_mode(key) end
+
+--Gets the trigger UI_EFFECT_CAMERA_MODE group variable array
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_ui_effect_camera_mode(actor, key) end
+
+--Gets the global trigger UI_POS_ADAPT_MODE non-array variable
+---@param key string # Variable name
+---@return integer # value
+function GameAPI.get_trigger_variable_ui_pos_adapt_mode(key) end
+
+--Gets the trigger UI_POS_ADAPT_MODE non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return integer # value
+function GameAPI.get_trigger_actor_variable_ui_pos_adapt_mode(actor, key) end
+
+--Gets the global trigger UI_POS_ADAPT_MODE array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_variable_ui_pos_adapt_mode(key, index) end
+
+--Gets the trigger UI_POS_ADAPT_MODE array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_actor_variable_ui_pos_adapt_mode(actor, key, index) end
+
+--Gets the global trigger UI_POS_ADAPT_MODE array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_ui_pos_adapt_mode(key) end
+
+--Gets the trigger UI_POS_ADAPT_MODE group variable array
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_ui_pos_adapt_mode(actor, key) end
+
+--Gets the global trigger UI_CHAT_SEND_CHANNEL non-array variable
+---@param key string # Variable name
+---@return integer # value
+function GameAPI.get_trigger_variable_ui_chat_send_channel(key) end
+
+--Gets the trigger UI_CHAT_SEND_CHANNEL non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return integer # value
+function GameAPI.get_trigger_actor_variable_ui_chat_send_channel(actor, key) end
+
+--Gets the global trigger UI_CHAT_SEND_CHANNEL array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_variable_ui_chat_send_channel(key, index) end
+
+--Gets the trigger UI_CHAT_SEND_CHANNEL array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_actor_variable_ui_chat_send_channel(actor, key, index) end
+
+--Gets the global trigger UI_CHAT_SEND_CHANNEL array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_ui_chat_send_channel(key) end
+
+--Gets the trigger UI_CHAT_SEND_CHANNEL group variable array
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_ui_chat_send_channel(actor, key) end
+
+--Gets the global trigger UI_CHAT_RECV_CHANNEL non-array variable
+---@param key string # Variable name
+---@return integer # value
+function GameAPI.get_trigger_variable_ui_chat_recv_channel(key) end
+
+--Gets the trigger UI_CHAT_RECV_CHANNEL non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return integer # value
+function GameAPI.get_trigger_actor_variable_ui_chat_recv_channel(actor, key) end
+
+--Gets the global trigger UI_CHAT_RECV_CHANNEL array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_variable_ui_chat_recv_channel(key, index) end
+
+--Gets the trigger UI_CHAT_RECV_CHANNEL array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_actor_variable_ui_chat_recv_channel(actor, key, index) end
+
+--Gets the global trigger UI_CHAT_RECV_CHANNEL array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_ui_chat_recv_channel(key) end
+
+--Gets the trigger UI_CHAT_RECV_CHANNEL group variable array
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_ui_chat_recv_channel(actor, key) end
+
+--Gets the global trigger UI_TEXT_FONT_NAME non-array variable
+---@param key string # Variable name
 ---@return string # value
-function GameAPI.get_ui_text_font_name_list_value(l, i) end
+function GameAPI.get_trigger_variable_ui_text_font_name(key) end
 
---Sets an item in the UI_TEXT_FONT_NAME array
----@param l py.List # list
----@param i integer # subscript
----@param v string # value
-function GameAPI.set_ui_text_font_name_list_value(l, i, v) end
+--Gets the trigger UI_TEXT_FONT_NAME non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return string # value
+function GameAPI.get_trigger_actor_variable_ui_text_font_name(actor, key) end
 
---Generates a UI_TEXT_FONT_NAME array of n values v
----@param n integer # Length
----@param v? string # value
----@return py.List # list
-function GameAPI.get_ui_text_font_name_n_list(n, v) end
+--Gets the global trigger UI_TEXT_FONT_NAME array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return string # value
+function GameAPI.get_trigger_list_variable_ui_text_font_name(key, index) end
 
---Gets an item in the UI_ECA_ANIM_TYPE array
----@param l py.List # list
----@param i integer # subscript
+--Gets the trigger UI_TEXT_FONT_NAME array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return string # value
+function GameAPI.get_trigger_list_actor_variable_ui_text_font_name(actor, key, index) end
+
+--Gets the UI_TEXT_FONT_NAME array variable of the global trigger
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_ui_text_font_name(key) end
+
+--Gets the trigger UI_TEXT_FONT_NAME group variable array
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_ui_text_font_name(actor, key) end
+
+--Gets the global trigger UI_ECA_ANIM_TYPE non-array variable
+---@param key string # Variable name
 ---@return integer # value
-function GameAPI.get_ui_eca_anim_type_list_value(l, i) end
+function GameAPI.get_trigger_variable_ui_eca_anim_type(key) end
 
---Sets an item in the UI_ECA_ANIM_TYPE array
----@param l py.List # list
----@param i integer # subscript
----@param v integer # value
-function GameAPI.set_ui_eca_anim_type_list_value(l, i, v) end
+--Gets the trigger UI_ECA_ANIM_TYPE non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return integer # value
+function GameAPI.get_trigger_actor_variable_ui_eca_anim_type(actor, key) end
 
---Generates n UI_ECA_ANIM_TYPE arrays of value v
----@param n integer # Length
----@param v? integer # value
----@return py.List # list
-function GameAPI.get_ui_eca_anim_type_n_list(n, v) end
+--Gets the global trigger UI_ECA_ANIM_TYPE array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_variable_ui_eca_anim_type(key, index) end
 
---Gets an item in the LOCAL_UNIT_ENTITY array
----@param l py.List # list
----@param i integer # subscript
+--Gets the trigger UI_ECA_ANIM_TYPE array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return integer # value
+function GameAPI.get_trigger_list_actor_variable_ui_eca_anim_type(actor, key, index) end
+
+--Gets the global trigger UI_ECA_ANIM_TYPE array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_ui_eca_anim_type(key) end
+
+--Gets the trigger UI_ECA_ANIM_TYPE group variable array
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_ui_eca_anim_type(actor, key) end
+
+--Gets the global trigger LOCAL_UNIT_ENTITY non-array variable
+---@param key string # Variable name
 ---@return py.LocalUnit # value
-function GameAPI.get_local_unit_entity_list_value(l, i) end
+function GameAPI.get_trigger_variable_local_unit_entity(key) end
 
---Set an item in the LOCAL_UNIT_ENTITY array
----@param l py.List # list
----@param i integer # subscript
----@param v py.LocalUnit # value
-function GameAPI.set_local_unit_entity_list_value(l, i, v) end
+--Gets trigger LOCAL_UNIT_ENTITY non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.LocalUnit # value
+function GameAPI.get_trigger_actor_variable_local_unit_entity(actor, key) end
 
---Generate n LOCAL_UNIT_ENTITY arrays with the value v
----@param n integer # Length
----@param v? py.LocalUnit # value
----@return py.List # list
-function GameAPI.get_local_unit_entity_n_list(n, v) end
+--Gets the LOCAL_UNIT_ENTITY array variable subentry of the global trigger
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.LocalUnit # value
+function GameAPI.get_trigger_list_variable_local_unit_entity(key, index) end
 
---Gets an item in the LOCAL_UNIT_GROUP array
----@param l py.List # list
----@param i integer # subscript
+--Gets the trigger LOCAL_UNIT_ENTITY array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.LocalUnit # value
+function GameAPI.get_trigger_list_actor_variable_local_unit_entity(actor, key, index) end
+
+--Gets the LOCAL_UNIT_ENTITY array variable of the global trigger
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_local_unit_entity(key) end
+
+--Gets the LOCAL_UNIT_ENTITY group variable array of the trigger
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_local_unit_entity(actor, key) end
+
+--Gets the LOCAL_UNIT_GROUP non-array variable of the global trigger
+---@param key string # Variable name
 ---@return py.LocalUnitGroup # value
-function GameAPI.get_local_unit_group_list_value(l, i) end
+function GameAPI.get_trigger_variable_local_unit_group(key) end
 
---Sets an item in the LOCAL_UNIT_GROUP array
----@param l py.List # list
----@param i integer # subscript
----@param v py.LocalUnitGroup # value
-function GameAPI.set_local_unit_group_list_value(l, i, v) end
+--Gets the trigger LOCAL_UNIT_GROUP non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.LocalUnitGroup # value
+function GameAPI.get_trigger_actor_variable_local_unit_group(actor, key) end
 
---Generates n LOCAL_UNIT_GROUP arrays with the value v
----@param n integer # Length
----@param v? py.LocalUnitGroup # value
----@return py.List # list
-function GameAPI.get_local_unit_group_n_list(n, v) end
+--Gets the global trigger LOCAL_UNIT_GROUP array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.LocalUnitGroup # value
+function GameAPI.get_trigger_list_variable_local_unit_group(key, index) end
 
---Gets an item in the STORE_ITEM_TYPE array
----@param l py.List # list
----@param i integer # subscript
----@return py.StoreItemType # value
-function GameAPI.get_store_item_type_list_value(l, i) end
+--Gets the trigger LOCAL_UNIT_GROUP array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.LocalUnitGroup # value
+function GameAPI.get_trigger_list_actor_variable_local_unit_group(actor, key, index) end
 
---Sets an item in the STORE_ITEM_TYPE array
----@param l py.List # list
----@param i integer # subscript
----@param v py.StoreItemType # value
-function GameAPI.set_store_item_type_list_value(l, i, v) end
+--Gets the global trigger LOCAL_UNIT_GROUP array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_local_unit_group(key) end
 
---Generates an array of n STORE_ITEM_TYPE values of v
----@param n integer # Length
----@param v? py.StoreItemType # value
----@return py.List # list
-function GameAPI.get_store_item_type_n_list(n, v) end
+--Gets the trigger LOCAL_UNIT_GROUP array of group variables
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_local_unit_group(actor, key) end
 
---Gets an item in the WATCHING_MODE_STATUS array
----@param l py.List # list
----@param i integer # subscript
----@return py.WatchingModeStatus # value
-function GameAPI.get_watching_mode_status_list_value(l, i) end
+--Gets the global trigger DECO_ENTITY non-array variable
+---@param key string # Variable name
+---@return py.DecoID # value
+function GameAPI.get_trigger_variable_deco_entity(key) end
 
---Sets an item in the WATCHING_MODE_STATUS array
----@param l py.List # list
----@param i integer # subscript
----@param v py.WatchingModeStatus # value
-function GameAPI.set_watching_mode_status_list_value(l, i, v) end
+--Gets trigger DECO_ENTITY non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.DecoID # value
+function GameAPI.get_trigger_actor_variable_deco_entity(actor, key) end
 
---Generates n WATCHING_MODE_STATUS arrays of value v
----@param n integer # Length
----@param v? py.WatchingModeStatus # value
----@return py.List # list
-function GameAPI.get_watching_mode_status_n_list(n, v) end
+--Gets the global trigger DECO_ENTITY array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.DecoID # value
+function GameAPI.get_trigger_list_variable_deco_entity(key, index) end
 
---Gets an item in the ITEM_STACK_TYPE array
----@param l py.List # list
----@param i integer # subscript
----@return py.ItemStackType # value
-function GameAPI.get_item_stack_type_list_value(l, i) end
+--Gets the trigger DECO_ENTITY array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.DecoID # value
+function GameAPI.get_trigger_list_actor_variable_deco_entity(actor, key, index) end
 
---Sets an item in the ITEM_STACK_TYPE array
----@param l py.List # list
----@param i integer # subscript
----@param v py.ItemStackType # value
-function GameAPI.set_item_stack_type_list_value(l, i, v) end
+--Gets the global trigger DECO_ENTITY array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_deco_entity(key) end
 
---Generates n ITEM_STACK_TYPE arrays with the value v
----@param n integer # Length
----@param v? py.ItemStackType # value
----@return py.List # list
-function GameAPI.get_item_stack_type_n_list(n, v) end
+--Gets the trigger DECO_ENTITY group variable array
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_deco_entity(actor, key) end
 
---Gets an item in the DECO_NAME array
----@param l py.List # list
----@param i integer # subscript
----@return py.DecoKey # value
-function GameAPI.get_deco_name_list_value(l, i) end
+--Gets the global trigger SCENE_PRESET non-array variable
+---@param key string # Variable name
+---@return py.ScenePreset # value
+function GameAPI.get_trigger_variable_scene_preset(key) end
 
---Sets an item in the DECO_NAME array
----@param l py.List # list
----@param i integer # subscript
----@param v py.DecoKey # value
-function GameAPI.set_deco_name_list_value(l, i, v) end
+--Gets the trigger SCENE_PRESET non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.ScenePreset # value
+function GameAPI.get_trigger_actor_variable_scene_preset(actor, key) end
 
---Generate n DECO_NAME arrays of values v
----@param n integer # Length
----@param v? py.DecoKey # value
----@return py.List # list
-function GameAPI.get_deco_name_n_list(n, v) end
+--Gets the global trigger SCENE_PRESET array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.ScenePreset # value
+function GameAPI.get_trigger_list_variable_scene_preset(key, index) end
 
---Gets an item in the ABILITY_RELEASE_ID array
----@param l py.List # list
----@param i integer # subscript
+--Gets the trigger SCENE_PRESET array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.ScenePreset # value
+function GameAPI.get_trigger_list_actor_variable_scene_preset(actor, key, index) end
+
+--Gets the global trigger SCENE_PRESET array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_scene_preset(key) end
+
+--Gets the trigger SCENE_PRESET group variable array
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_scene_preset(actor, key) end
+
+--Gets the global trigger ABILITY_RELEASE_ID non-array variable
+---@param key string # Variable name
 ---@return py.AbilityReleaseId # value
-function GameAPI.get_ability_release_id_list_value(l, i) end
+function GameAPI.get_trigger_variable_ability_release_id(key) end
 
---Set an item in the ABILITY_RELEASE_ID array
----@param l py.List # list
----@param i integer # subscript
----@param v py.AbilityReleaseId # value
-function GameAPI.set_ability_release_id_list_value(l, i, v) end
+--Gets the trigger ABILITY_RELEASE_ID non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.AbilityReleaseId # value
+function GameAPI.get_trigger_actor_variable_ability_release_id(actor, key) end
 
---Generates an array of n ABILITY_RELEASE_ID values of v
----@param n integer # Length
----@param v? py.AbilityReleaseId # value
----@return py.List # list
-function GameAPI.get_ability_release_id_n_list(n, v) end
+--Gets the global trigger ABILITY_RELEASE_ID array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.AbilityReleaseId # value
+function GameAPI.get_trigger_list_variable_ability_release_id(key, index) end
 
---Gets an item in the UI_POINT array
----@param l py.List # list
----@param i integer # subscript
----@return py.FUIPoint # value
-function GameAPI.get_ui_point_list_value(l, i) end
+--Gets the trigger ABILITY_RELEASE_ID array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.AbilityReleaseId # value
+function GameAPI.get_trigger_list_actor_variable_ability_release_id(actor, key, index) end
 
---Sets an item in the UI_POINT array
----@param l py.List # list
----@param i integer # subscript
----@param v py.FUIPoint # value
-function GameAPI.set_ui_point_list_value(l, i, v) end
+--Gets the global trigger ABILITY_RELEASE_ID array variable
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_variable_all_ability_release_id(key) end
 
---Generates n UI_POINT arrays of value v
----@param n integer # Length
----@param v? py.FUIPoint # value
----@return py.List # list
-function GameAPI.get_ui_point_n_list(n, v) end
+--Gets an array of trigger ABILITY_RELEASE_ID group variables
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.List # Array type variable value
+function GameAPI.get_trigger_list_actor_variable_all_ability_release_id(actor, key) end
 
---Gets an item in the FORCE_ENTITY array
----@param l py.List # list
----@param i integer # subscript
----@return py.Force # value
-function GameAPI.get_force_entity_list_value(l, i) end
+--Gets the global trigger DECO_NAME non-array variable
+---@param key string # Variable name
+---@return py.DecoKey # value
+function GameAPI.get_trigger_variable_deco_name(key) end
 
---Set an item in the FORCE_ENTITY array
----@param l py.List # list
----@param i integer # subscript
----@param v py.Force # value
-function GameAPI.set_force_entity_list_value(l, i, v) end
+--Gets trigger DECO_NAME non-array group variable
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@return py.DecoKey # value
+function GameAPI.get_trigger_actor_variable_deco_name(actor, key) end
 
---Generate n FORCE_ENTITY arrays with the value v
----@param n integer # Length
----@param v? py.Force # value
----@return py.List # list
-function GameAPI.get_force_entity_n_list(n, v) end
+--Gets the global trigger DECO_NAME array variable subentry
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.DecoKey # value
+function GameAPI.get_trigger_list_variable_deco_name(key, index) end
 
---Gets an item in the SITE_STATE array
----@param l py.List # list
----@param i integer # subscript
----@return py.SITE_STATE # value
-function GameAPI.get_site_state_list_value(l, i) end
-
---Sets an item in the SITE_STATE array
----@param l py.List # list
----@param i integer # subscript
----@param v py.SITE_STATE # value
-function GameAPI.set_site_state_list_value(l, i, v) end
-
---Generates an array of n SITE_STATE values of v
----@param n integer # Length
----@param v? py.SITE_STATE # value
----@return py.List # list
-function GameAPI.get_site_state_n_list(n, v) end
-
---Gets an item in the COIN_CURRENCY array
----@param l py.List # list
----@param i integer # subscript
----@return py.COIN_CURRENCY # value
-function GameAPI.get_coin_currency_list_value(l, i) end
+--Gets trigger DECO_NAME array group variable subentry
+---@param actor py.Actor # Unit entity
+---@param key string # Variable name
+---@param index integer # subscript
+---@return py.DecoKey # value
+function GameAPI.get_trigger_list_actor_variable_deco_name(actor, key, index) end

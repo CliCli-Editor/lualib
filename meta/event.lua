@@ -2414,7 +2414,7 @@ event.ET_UNIT_HURT_OTHER_FINISH = {
 event.ET_UNIT_BE_HURT_COMPLETE = {
     [1] = {
         name = "__is_critical_hit",
-        type = "py.Fixed",
+        type = "boolean",
         lua_name = "is_critical_hit",
         lua_type = "boolean",
         desc = "Critical strike or not",
@@ -5024,6 +5024,7 @@ event.ET_OBTAIN_MODIFIER = {
 ---@field buff Buff # Trigger magic effects
 ---@field owner_unit Unit # Effect carrier
 ---@field from_unit Unit # effector
+---@field lua_table py.Table # User-defined configuration table
 
 --Lose effect
 event.ET_LOSS_MODIFIER = {
@@ -5051,12 +5052,21 @@ event.ET_LOSS_MODIFIER = {
         desc = "effector",
         lua_desc = "effector",
     },
+    [4] = {
+        name = "__lua_table",
+        type = "py.Table",
+        lua_name = "lua_table",
+        lua_type = "py.Table",
+        desc = "User-defined configuration table",
+        lua_desc = "User-defined configuration table",
+    },
 }
 
 ---@class EventParam.ET_MODIFIER_CYCLE_TRIGGER
 ---@field buff Buff # Trigger magic effects
 ---@field owner_unit Unit # Effect carrier
 ---@field from_unit Unit # effector
+---@field lua_table py.Table # User-defined configuration table
 
 --Loop trigger event
 event.ET_MODIFIER_CYCLE_TRIGGER = {
@@ -5084,6 +5094,14 @@ event.ET_MODIFIER_CYCLE_TRIGGER = {
         desc = "effector",
         lua_desc = "effector",
     },
+    [4] = {
+        name = "__lua_table",
+        type = "py.Table",
+        lua_name = "lua_table",
+        lua_type = "py.Table",
+        desc = "User-defined configuration table",
+        lua_desc = "User-defined configuration table",
+    },
 }
 
 ---@class EventParam.ET_MODIFIER_UPDATE_TIMER
@@ -5095,6 +5113,7 @@ event.ET_MODIFIER_UPDATE_TIMER = {}
 ---@field buff Buff # Trigger magic effects
 ---@field owner_unit Unit # Effect carrier
 ---@field from_unit Unit # effector
+---@field lua_table py.Table # User-defined configuration table
 
 --BUFF stack event
 event.ET_MODIFIER_ADDTION = {
@@ -5122,6 +5141,14 @@ event.ET_MODIFIER_ADDTION = {
         desc = "effector",
         lua_desc = "effector",
     },
+    [4] = {
+        name = "__lua_table",
+        type = "py.Table",
+        lua_name = "lua_table",
+        lua_type = "py.Table",
+        desc = "User-defined configuration table",
+        lua_desc = "User-defined configuration table",
+    },
 }
 
 ---@class EventParam.ET_MODIFIER_LAYER_CHANGE
@@ -5129,6 +5156,7 @@ event.ET_MODIFIER_ADDTION = {
 ---@field owner_unit Unit # Effect carrier
 ---@field layer_change_values integer # Change value of the number of layers
 ---@field from_unit Unit # effector
+---@field lua_table py.Table # User-defined configuration table
 
 --Effect level change event
 event.ET_MODIFIER_LAYER_CHANGE = {
@@ -5164,12 +5192,21 @@ event.ET_MODIFIER_LAYER_CHANGE = {
         desc = "effector",
         lua_desc = "effector",
     },
+    [5] = {
+        name = "__lua_table",
+        type = "py.Table",
+        lua_name = "lua_table",
+        lua_type = "py.Table",
+        desc = "User-defined configuration table",
+        lua_desc = "User-defined configuration table",
+    },
 }
 
 ---@class EventParam.ET_MODIFIER_GET_BEFORE_CREATE
 ---@field buff Buff # Trigger magic effects
 ---@field owner_unit Unit # Effect carrier
 ---@field from_unit Unit # effector
+---@field lua_table py.Table # User-defined configuration table
 
 --Magical effects are about to be obtained in the event
 event.ET_MODIFIER_GET_BEFORE_CREATE = {
@@ -5197,12 +5234,21 @@ event.ET_MODIFIER_GET_BEFORE_CREATE = {
         desc = "effector",
         lua_desc = "effector",
     },
+    [4] = {
+        name = "__lua_table",
+        type = "py.Table",
+        lua_name = "lua_table",
+        lua_type = "py.Table",
+        desc = "User-defined configuration table",
+        lua_desc = "User-defined configuration table",
+    },
 }
 
 ---@class EventParam.ET_MODIFIER_BE_COVERED
 ---@field owner_unit Unit # Effect carrier
 ---@field old_buff Buff # Existing magic effects
 ---@field new_buff Buff # Added magic effects
+---@field lua_table py.Table # User-defined configuration table
 
 --Magical effects are covered by events
 event.ET_MODIFIER_BE_COVERED = {
@@ -5230,10 +5276,19 @@ event.ET_MODIFIER_BE_COVERED = {
         desc = "Added magic effects",
         lua_desc = "Added magic effects",
     },
+    [4] = {
+        name = "__lua_table",
+        type = "py.Table",
+        lua_name = "lua_table",
+        lua_type = "py.Table",
+        desc = "User-defined configuration table",
+        lua_desc = "User-defined configuration table",
+    },
 }
 
 ---@class EventParam.ET_MODIFIER_ATTR_CHANGE
 ---@field buff Buff # Magic effect
+---@field lua_table py.Table # User-defined configuration table
 
 --Magic effect attribute change event
 event.ET_MODIFIER_ATTR_CHANGE = {
@@ -5244,6 +5299,14 @@ event.ET_MODIFIER_ATTR_CHANGE = {
         lua_type = "Buff",
         desc = "Magic effect",
         lua_desc = "Magic effect",
+    },
+    [2] = {
+        name = "__lua_table",
+        type = "py.Table",
+        lua_name = "lua_table",
+        lua_type = "py.Table",
+        desc = "User-defined configuration table",
+        lua_desc = "User-defined configuration table",
     },
 }
 

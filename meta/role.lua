@@ -460,61 +460,6 @@ function Role:api_get_role_total_consume() end
 ---@return boolean? # Whether to reward the map
 function Role:api_get_role_is_donated() end
 
---Copy the phenotype save to the Player Save field
----@param src_index integer # Source player save field
----@param dst_index integer # Target player save field
-function Role:copy_save_data_table_value(src_index, dst_index) end
-
---Force player to upload a non-real-time save
----@param use_proxy? boolean # Do proxy upload
-function Role:force_upload_save_data(use_proxy) end
-
---Get the platform item expiration timestamp
----@param no py.StoreKey # Charge item key
----@return integer? # Charge item quantity
-function Role:get_store_item_expired_time(no) end
-
---Set player Dark corner color (HEX)
----@param color string # hex
----@param interval? number # Interval
-function Role:set_role_vignetting_color_hex(color, interval) end
-
---Report player rankings
----@param rank integer # Game rankings of the game
-function Role:upload_player_game_rank(rank) end
-
---Gets the player is currently selected unit group
----@return py.UnitGroup? # Unit group
-function Role:api_get_role_select_units() end
-
---Update player save leaderboards
----@param save_index integer # Player save field
-function Role:update_player_save_rank(save_index) end
-
---Gets the player is current season ladder number
----@param ladder_key string # Ladder key
----@return integer? # Season number
-function Role:api_get_current_season_id(ladder_key) end
-
---Get the player is current season ladder rank
----@param ladder_key string # Ladder key
----@return integer? # Current season standings
-function Role:api_get_current_season_standing(ladder_key) end
-
---Gets the player is current ladder ranking
----@param ladder_key string # Ladder key
----@param rank_number integer # Which rank
----@return integer? # Ranking times
-function Role:api_get_current_season_standing_number(ladder_key, rank_number) end
-
---Gets the player is current map expeditions
----@return integer? # expeditions
-function Role:api_get_number_of_expeditions() end
-
---Get the player is current map adventure duration
----@return integer? # Duration of expedition
-function Role:api_get_time_of_expeditions() end
-
 --Get a token for player mall login
 ---@return string? # Mall token
 function Role:api_get_role_store_params() end
@@ -546,6 +491,61 @@ function Role:request_create_private_dungeon(level_id, game_mode, max_player, cu
 --Request to join a private copy
 ---@param token string # Room password
 function Role:request_join_private_dungeon(token) end
+
+--Force player to upload a non-real-time save
+---@param use_proxy? boolean # Do proxy upload
+function Role:force_upload_save_data(use_proxy) end
+
+--Get the platform item expiration timestamp
+---@param no py.StoreKey # Charge item key
+---@return integer? # Charge item quantity
+function Role:get_store_item_expired_time(no) end
+
+--Set player Dark corner color (HEX)
+---@param color string # hex
+---@param interval? number # Interval
+function Role:set_role_vignetting_color_hex(color, interval) end
+
+--Report player rankings
+---@param rank integer # Game rankings of the game
+function Role:upload_player_game_rank(rank) end
+
+--Gets the player is currently selected unit group
+---@return py.UnitGroup? # Unit group
+function Role:api_get_role_select_units() end
+
+--Gets the player is current season ladder number
+---@param ladder_key string # Ladder key
+---@return integer? # Season number
+function Role:api_get_current_season_id(ladder_key) end
+
+--Get the player is current season ladder rank
+---@param ladder_key string # Ladder key
+---@return integer? # Current season standings
+function Role:api_get_current_season_standing(ladder_key) end
+
+--Gets the player is current ladder ranking
+---@param ladder_key string # Ladder key
+---@param rank_number integer # Which rank
+---@return integer? # Ranking times
+function Role:api_get_current_season_standing_number(ladder_key, rank_number) end
+
+--Copy the phenotype save to the Player Save field
+---@param src_index integer # Source player save field
+---@param dst_index integer # Target player save field
+function Role:copy_save_data_table_value(src_index, dst_index) end
+
+--Update player save leaderboards
+---@param save_index integer # Player save field
+function Role:update_player_save_rank(save_index) end
+
+--Gets the player is current map expeditions
+---@return integer? # expeditions
+function Role:api_get_number_of_expeditions() end
+
+--Get the player is current map adventure duration
+---@return integer? # Duration of expedition
+function Role:api_get_time_of_expeditions() end
 
 --Request to join a public copy
 ---@param level_id py.Map # Level id

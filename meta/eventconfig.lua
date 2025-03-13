@@ -960,16 +960,6 @@ M.config["Unit - About to pick up items"] = {
     },
 }
 
----@alias EventParam.Unit-TogglesDefaultBehavior EventParam.ET_UNIT_LOAD_DEFAULT_AI
-M.config["Unit-TogglesDefaultBehavior"] = {
-    desc = "",
-    key = "ET_UNIT_LOAD_DEFAULT_AI",
-    name = "Unit-TogglesDefaultBehavior",
-    object = "Unit",
-    params = {
-    },
-}
-
 ---@alias EventParam.Unit - Approaching enemy EventParam.ET_UNIT_TRY_ACQUIRE_TARGET
 M.config["Unit - Approaching enemy"] = {
     desc = "",
@@ -1601,27 +1591,6 @@ M.config["Skill - Cooldown ends"] = {
     name = "Skill - Cooldown ends",
     object = "Ability",
     params = {
-    },
-}
-
----@alias EventParam.Skills-CustomAnimationAxis EventParam.ET_ABILITY_SEND_CUE_EVENT
-M.config["Skills-CustomAnimationAxis"] = {
-    desc = "",
-    extraObjs = {
-        [1] = {
-            getter = function (self) return self:get_owner() end,
-            luaType = "Unit",
-        },
-    },
-    key = "ET_ABILITY_SEND_CUE_EVENT",
-    name = "Skills-CustomAnimationAxis",
-    object = "Ability",
-    params = {
-        [1] = {
-            desc = "CUE event name",
-            name = "string",
-            type = "string",
-        },
     },
 }
 
@@ -3075,7 +3044,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: self, event: "Unit - enter battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
 ---@field event fun(self: self, event: "Unit - out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
 ---@field event fun(self: self, event: "Unit - item to be picked up ", callback: fun(trg: Trigger, data: EventParam). Unit - About to pick up item)): Trigger
----@field event fun(self: self, event: "unit - switch default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
 ---@field event fun(self: self, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam). Unit - Imminent enemy)): Trigger
 ---@field event fun(self: self, event: "unit - discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
 ---@field event fun(self: self, event: "local-bone collision ", callback: fun(trg: Trigger, data: EventParam). Local - Bone collision)): Trigger
@@ -3118,7 +3086,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: self, event: "Skill - disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: self, event: "Skill - enabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: self, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: self, event: "Skill - Custom action axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: self, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
 ---@field event fun(self: self, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
 ---@field event fun(self: self, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
@@ -3247,7 +3214,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: Ability, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: Ability, event: "Skills-enabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: Ability, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: Ability, event: "Skill - Custom animation axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: Ability, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
 ---@field event fun(self: Ability, event: "Skill - Build skill before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
 ---@field event fun(self: Ability, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
@@ -3399,7 +3365,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: Unit, event: "Unit - into battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
 ---@field event fun(self: Unit, event: "Unit - out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
 ---@field event fun(self: Unit, event: "Unit - about to pick up item ", callback: fun(trg: Trigger, data: EventParam). Unit - About to pick up item)): Trigger
----@field event fun(self: Unit, event: "unit-switch default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
 ---@field event fun(self: Unit, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam. Unit - Imminent enemy)): Trigger
 ---@field event fun(self: Unit, event: "unit-discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
 ---@field event fun(self: Unit, event: "unit - purchase item ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item)): Trigger
@@ -3433,7 +3398,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: Unit, event: "Skill - disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: Unit, event: "Skill - enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: Unit, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: Unit, event: "Skill - Custom action axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: Unit, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
 ---@field event fun(self: Unit, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
 ---@field event fun(self: Unit, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
@@ -3474,7 +3438,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: EditorObject.Ability, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skills-enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skill - custom action axis ", callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - Build skill before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
@@ -3528,7 +3491,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: EditorObject.Unit, event: "unit-remove ", callback: fun(trg: Trigger, data: EventParam). Unit - remove)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "unit-after removal ", callback: fun(trg: Trigger, data: EventParam. Unit - after removal)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "unit-end of transfer ", callback: fun(trg: Trigger, data: EventParam). Unit - End of transfer)): Trigger
----@field event fun(self: EditorObject.Unit, event: "unit-attribute change ", callback: fun(trg: Trigger, data: EventParam). Unit - Attribute change)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - dying ", callback: fun(trg: Trigger, data: EventParam. Unit - About to die)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "unit-death ", callback: fun(trg: Trigger, data: EventParam). Unit - death)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - before damage ", callback: fun(trg: Trigger, data: EventParam). Unit - Before taking damage)): Trigger
@@ -3549,7 +3511,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: EditorObject.Unit, event: "units-enter battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "units-out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - about to pick up item ", callback: fun(trg: Trigger, data: EventParam. Unit - About to pick up item)): Trigger
----@field event fun(self: EditorObject.Unit, event: "unit-toggle default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam. Unit - Imminent enemy)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "unit-discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - purchase item ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item)): Trigger
@@ -3583,7 +3544,6 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: EditorObject.Unit, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Skill - enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skill - Custom action axis ", callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger

@@ -181,3 +181,24 @@ function ModifierEntity:api_add_modifier_tag(tag) end
 --Magic effect removes labels
 ---@param tag string # tag
 function ModifierEntity:api_remove_modifier_tag(tag) end
+
+--Adds unit attributes to magic effects
+---@param key string # Attribute name
+---@param attr_element string # Attribute classification
+---@param value py.Fixed # value
+function ModifierEntity:api_add_modifier_owner_attr_by_attr_element(key, attr_element, value) end
+
+--Gets the unit attribute of a magic effect
+---@param key string # Attribute name
+---@param attr_element string # Attribute classification
+---@return py.Fixed? # Attribute value
+function ModifierEntity:api_get_modifier_owner_attr_by_attr_element(key, attr_element) end
+
+--Sets unit properties for magic effects
+---@param key string # Attribute name
+---@param attr_element string # Attribute classification
+---@param value py.Fixed # value
+function ModifierEntity:api_set_modifier_owner_attr_by_attr_element(key, attr_element, value) end
+
+--Clears unit attributes of magic effects
+function ModifierEntity:api_clear_modifier_owner_attr() end
