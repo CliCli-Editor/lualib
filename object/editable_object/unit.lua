@@ -1142,7 +1142,8 @@ end
 ---@param is_loop? boolean loop or not
 ---@param is_back_normal? boolean Whether to return the default state
 ---@param transition_time? number transition time
-function M:play_animation(anim_name, speed, start_time, end_time, is_loop, is_back_normal, transition_time)
+---@param force_play? boolean # Even in death
+function M:play_animation(anim_name, speed, start_time, end_time, is_loop, is_back_normal, transition_time, force_play)
     self.handle:api_play_animation(
         anim_name,
         speed or 1,
@@ -1150,7 +1151,8 @@ function M:play_animation(anim_name, speed, start_time, end_time, is_loop, is_ba
         end_time or -1,
         is_loop or false,
         is_back_normal or false,
-        transition_time or -1
+        transition_time or -1,
+        force_play or false
     )
 end
 
