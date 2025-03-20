@@ -896,9 +896,21 @@ end
 ---@param has_decoration? boolean # Whether to carry decorations
 ---@param has_fog? boolean # Whether to carry fog effect
 ---@param has_collision? boolean # Carry or not collision
-function M.load_sub_scene(point, level_id, rotate, has_light, has_decoration, has_fog, has_collision)
+---@param has_projectile? boolean # Whether to carry projectiles
+---@param has_item? boolean # Whether to bring goods
+---@param has_destructible? boolean # Whether to carry destructible material
+function M.load_sub_scene(point, level_id, rotate, has_light, has_decoration, has_fog, has_collision, has_projectile, has_item, has_destructible)
     ---@diagnostic disable-next-line: param-type-mismatch
-    GameAPI.load_sub_scene(point.handle, level_id, has_light or false, has_decoration or false, has_fog or false, has_collision or false, rotate or 0)
+    GameAPI.load_sub_scene(point.handle, level_id
+        , has_light or false
+        , has_decoration or false
+        , has_fog or false
+        , has_projectile or false
+        , has_item or false
+        , has_destructible or false
+        , has_collision or false
+        , rotate or 0
+    )
 end
 
 --The local client calls back this function every frame
