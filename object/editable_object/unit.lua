@@ -959,9 +959,9 @@ function M:set_icon(img_id)
 end
 
 ---Set the blood bar style
----@param bar_type integer Specifies the blood bar style
+---@ param bar_type integer | clicli. Const. Blood of the BloodBarType style
 function M:set_blood_bar_type(bar_type)
-    self.handle:api_set_blood_bar_type(bar_type)
+    self.handle:api_set_blood_bar_type(clicli.const.BloodBarType[bar_type] or bar_type)
 end
 
 ---Set the blood bar text

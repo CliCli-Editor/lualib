@@ -1107,4 +1107,27 @@ M.DirectionalLightAttribute = {
     ['UpperScatteringAngle'] = 'light_out_angle',
 }
 
+---@enum(key) clicli.Const.BloodBarType
+M.BloodBarType = {
+    ['None'] = 0x0000000,
+    ['Medium'] = 0x0010001,
+    ['Large'] = 0x0040004,
+    ['Trumpet'] = 0x0080004,
+    ['Easy'] = 0x0100004,
+    ['TowerDefense'] = 0x0040002,
+    ['Classic'] = 0x0040003,
+    ['ClassicLarge'] = 0x0040004,
+    ['Hero'] = 0x0050001,
+    ['LittleSoldier'] = 0x0050002,
+    ['Building'] = 0x0050003,
+    ['Yellow'] = 0x0060001,
+    ['Blue'] = 0x0060002,
+    ['Green'] = 0x0060003,
+    ['Orange'] = 0x0060004,
+    ['Purple'] = 0x0060005,
+    ['Cyan'] = 0x0060006,
+    ['Red'] = 0x0060007,
+    ['Silver'] = 0x0060008,
+}
+
 return M
