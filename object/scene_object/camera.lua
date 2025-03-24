@@ -284,4 +284,25 @@ function M.get_camera_center_raycast(player)
     return clicli.point.get_by_handle(py_point)
 end
 
+---Get (local player) shot attributes (real)
+---@param attr 'pitch' | 'yaw' | 'roll' | 'fov'
+---@return number
+function M.get_attr_real(attr)
+    return clicli.helper.tonumber(GameAPI.get_camera_attr_real_num(attr)) or 0.0
+end
+
+---Get (local player) shot properties (integer)
+---@param attr
+---| 'focus_x'
+---| 'focus_y'
+---| 'focus_z'
+---| 'focus_distance'
+---| 'far'
+---| 'min_focus_dist'
+---| 'max_focus_dist'
+---@return integer
+function M.get_attr_integer(attr)
+    return GameAPI.get_camera_attr_integer(attr) or 0
+end
+
 return M

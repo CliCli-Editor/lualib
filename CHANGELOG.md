@@ -12,6 +12,11 @@
   * `miss_when_target_destroy` Lost target when target destroyed
   * `on_miss` Call back when the target is lost
 
+`2025-3-24`
++ Add interface：
+  * `y3.camera.get_attr_real` Gets (local player) shot attributes (real number）
+  * `y3.camera.get_attr_integer` Gets (local player) shot properties (integer）
+
 `2025-3-4`
 + Add interface：
   * `y3.game.get_booked_number` Get the current number of map reservations
