@@ -43,10 +43,13 @@ M.ref_manager = New 'Ref' ('Area', function (id, shape)
             shape = M.SHAPE.POLYGON
             goto FOUND
         end
-        error('Not found region')
+        error('Not found area:' .. tostring(id))
         ::FOUND::
     else
         error('The region type is not supported')
+    end
+    if not py_area then
+        error(string.format('Area not found: %s, shape: %s', id, shape))
     end
     local area = New 'Area' (py_area, shape)
     return area
