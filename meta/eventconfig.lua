@@ -950,10 +950,10 @@ M.config["Unknown-et_unit_create_slave"] = {
     },
 }
 
----@alias EventParam.Unit - About to pick up items EventParam.ET_UNIT_TRY_PICK_ITEM
+---@alias EventParam.Unit - About to pick up items EventParam.ET_UNIT_TRY_PICK_ITEM_NEW
 M.config["Unit - About to pick up items"] = {
     desc = "",
-    key = "ET_UNIT_TRY_PICK_ITEM",
+    key = "ET_UNIT_TRY_PICK_ITEM_NEW",
     name = "Unit - About to pick up items",
     object = "Unit",
     params = {
