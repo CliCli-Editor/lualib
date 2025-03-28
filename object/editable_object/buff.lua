@@ -113,7 +113,7 @@ end
 ---Set the name of the magic effect
 ---@param name string Name
 function M:set_name(name)
-    self.handle:api_set_buff_str_attr("name_str", name)
+    self.handle:api_set_buff_str_attr("name", name)
 end
 
 ---Sets the description of the magic effect object
@@ -258,7 +258,7 @@ end
 ---Gets the name of the magic effect object
 ---@return string name Specifies the name
 function M:get_name()
-    return self.handle:api_get_str_attr("name_str") or ''
+    return self.handle:api_get_str_attr("name") or ''
 end
 
 ---Gets a description of the magic effect object
