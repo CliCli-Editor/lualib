@@ -1,4 +1,4 @@
-`Coming soon`
+`2025-3-26`
 + Add interface：
   * `Unit:create_force` Add traction
   * `(Unit|Item|Buff...):kv_serialize` Serialize custom key values
