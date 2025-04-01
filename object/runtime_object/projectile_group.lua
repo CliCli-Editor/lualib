@@ -50,6 +50,22 @@ function M.get_all_projectiles_with_tag(tag)
     return M.create_lua_projectile_group_from_py(py_projectile_group)
 end
 
+---Take the intersection of two projectile groups
+---@param projectile_group ProjectileGroup Another projectile group
+---@return ProjectileGroup Intersection projectiles group
+function M:intersection(projectile_group)
+    local py_projectile_group = GameAPI.get_projectile_group_intersection(self.handle, projectile_group.handle)
+    return M.create_lua_projectile_group_from_py(py_projectile_group)
+end
+
+---Take the difference set of two groups of projectiles (projectiles belonging to one group but not the other)
+---@param projectile_group ProjectileGroup Another projectile group
+---@return ProjectileGroup Difference projectileGroup
+function M:difference(projectile_group)
+    local py_projectile_group = GameAPI.get_projectile_group_diff(self.handle, projectile_group.handle)
+    return M.create_lua_projectile_group_from_py(py_projectile_group)
+end
+
 ---Move through projectiles in the projectiles group
 ---@return Projectile[]
 function M:pick()
