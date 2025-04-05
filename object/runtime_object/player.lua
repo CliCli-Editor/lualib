@@ -374,6 +374,13 @@ function M:get_controller()
     return self._cotroller
 end
 
+---Is it a living player (a real player in the game)?
+---@return boolean
+function M:is_alive()
+    return  self:get_state() == clicli.const.RoleStatus['PLAYING']
+        and self:get_controller() == clicli.const.RoleType.USER
+end
+
 ---Get player name
 ---@return string role_name Player name
 function M:get_name()

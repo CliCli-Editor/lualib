@@ -1,3 +1,8 @@
+`2025-4-5`
++ Add interface：
+  * `Player:is_alive` Determine if a player is alive (a real player who is playing the game)）
+  * `y3.await.waitAll` The coroutine waits for multiple asynchronous functions to finish executing
+
 `2025-3-26`
 + Add interface：
   * `Unit:create_force` Add traction

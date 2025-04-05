@@ -78,6 +78,46 @@ function API.call(callback)
     return co
 end
 
+---The current coroutine waits for multiple asynchronous functions to complete execution
+---@async
+---@param callbacks async fun()[]
+---@return [boolean, ...] []
+function API.waitAll(callbacks)
+    if not waker then
+        error('You need to try setSleepWaker to set up the wakeup device first')
+    end
+    local cos = {}
+    local results = {}
+    ---@type LocalTimer?
+    local awakeTimer = nil
+    local hasFastward = false
+    for i = 1, #callbacks do
+        local callback = callbacks[i]
+        local co = coroutine.create(function ()
+            results[i] = xpcall(callback, log.error)
+            cos[i] = nil
+            if awakeTimer and not hasFastward then
+                hasFastward = true
+                awakeTimer:set_remaining_time(0)
+            end
+        end)
+        cos[i] = co
+        coroutine.resume(co)
+    end
+    local co = coroutine.running()
+    while next(cos) do
+        if awakeTimer then
+            awakeTimer:remove()
+        end
+        awakeTimer = waker(1, function ()
+            coroutine.resume(co)
+        end)
+        hasFastward = false
+        coroutine.yield()
+    end
+    return results
+end
+
 --Set error handler
 ---@param handler fun(traceback: string) # When an error occurs, this function is called with the error stack as an argument
 function API.setErrorHandler(handler)
