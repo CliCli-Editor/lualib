@@ -601,7 +601,7 @@ end
 
 ---@class ServerTime: osdate
 ---@field timestamp integer # timestamp
----@field time_zone_stamp integer # Calculate the timestamp after the obsolescence zone
+---@field time_zone_stamp integer # Calculate the timestamp after the obsolescence zone. You should not use this field under any circumstances, just keep it for compatibility.
 ---@field msec integer # ms
 ---@field time_zone integer # Time zone
 
