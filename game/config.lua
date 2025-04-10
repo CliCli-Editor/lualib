@@ -99,4 +99,11 @@ M.mover = {
     enable_internal_regist = false
 }
 
+M.ref = {
+    --Controls whether references to skills and magic effects in lua are cleared when a unit returns to the object pool
+    --The default behavior is not cleared. Objects that obtain skills and magic effects from the creation of event units using the object pool have data such as event triggers and storage
+    --Note: Units reused from the object pool no longer trigger skill - Gain - and effect-gain events
+    clear_ref_when_unit_return_to_pool = false
+}
+
 return M
