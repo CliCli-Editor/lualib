@@ -127,6 +127,11 @@ function M:remove()
     Delete(self)
 end
 
+---Set playback speed
+---@param speed number Playback speed
+function M:set_speed(speed)
+    GameAPI.set_link_sfx_animation_speed(self.handle, speed)
+end
 
 ---@param is_show boolean Specifies whether to display
 ---Link effects - Show/Hide
