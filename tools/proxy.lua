@@ -8,8 +8,8 @@ local PATH      = {'<PARENT>'}
 
 local rawMap = setmetatable({}, { __mode = 'k' })
 
----@alias Proxy.Setter fun(self: table, raw: any, key: any, value: any, config: Proxy.Config, custom: any): any
----@alias Proxy.Getter fun(self: table, raw: any, key: any, config: Proxy.Config, custom: any): any
+---@alias Proxy.Setter fun(parent: table, raw: any, key: any, value: any, config: Proxy.Config, custom: any): any
+---@alias Proxy.Getter fun(parent: table, raw: any, key: any, config: Proxy.Config, custom: any): any
 
 ---@class Proxy.Config
 ---@field cache? boolean # The result of the read/write is cached, and the next read/write will not trigger the setter, getter (unless the last result was nil)
