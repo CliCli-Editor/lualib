@@ -398,6 +398,12 @@ function M.debug_fastward(frame_count)
     end
 end
 
+---Obtain the current logical frame number
+---@return integer
+function M.current_frame()
+    return cur_frame
+end
+
 ---@diagnostic disable-next-line: deprecated
 clicli.timer.loop_frame(1, update_frame)
 
