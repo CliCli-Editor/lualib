@@ -484,7 +484,7 @@ end
 --Get the player's platform level for this map
 ---@return integer
 function M:get_map_level()
-    return self.handle:get_role_plat_map_level() or 0
+    return self.handle:api_get_map_level() or 0
 end
 
 --Get the player's platform rank in the local chart
