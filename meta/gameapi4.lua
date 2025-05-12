@@ -2000,7 +2000,8 @@ function GameAPI.set_skill_btn_func_smart_cast_key(role, comp_name, btn) end
 ---@param role py.Role # Player
 ---@param comp_name string # Control name
 ---@param model_id py.Model # Model id
-function GameAPI.set_ui_model_id(role, comp_name, model_id) end
+---@param idle_anim string # Normal animation
+function GameAPI.set_ui_model_id(role, comp_name, model_id, idle_anim) end
 
 --Set the target store unit of the player is store control
 ---@param role py.Role # Player

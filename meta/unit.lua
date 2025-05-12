@@ -1403,6 +1403,10 @@ function Unit:api_set_base_speed(base_speed) end
 ---@param speed py.Fixed # Animation movement speed
 function Unit:api_set_anim_walk_speed(speed) end
 
+--Whether the unit is carrying out the order to pick up items
+---@return boolean? # Whether the command is being executed
+function Unit:api_is_picking_item() end
+
 --Determine the movement type of the unit
 ---@param move_type integer # Movement type
 ---@return boolean? # Indicates whether the movement type is this
@@ -1457,6 +1461,10 @@ function Unit:change_model_texture(model, material, layer, texture) end
 ---@param is_forbid_aligned_terrain boolean # Whether the ground is prohibited
 function Unit:api_set_forbid_aligned_terrain(is_forbid_aligned_terrain) end
 
+--Set unit scaling
+---@param scale number # Zoom
+function Unit:api_set_scale_2(scale) end
+
 --Open wind field
 function Unit:api_start_windforce() end
 
@@ -1510,6 +1518,15 @@ function Unit:play_upper_body_anim(anim_name, speed, repeat_, begin_t, end_t, ra
 ---@param head_bone string # Cephalic skeleton
 function Unit:set_bone_filter_config(root_bone, upper_body_bone, head_bone) end
 
+--Play the overlay animation
+---@param anim string # Animation name
+---@param speed number # speed
+---@param loop boolean # Cyclic or not
+---@param begin number # Start time ratio (0-1)
+---@param end_ number # End time ratio (0-1)
+---@param weight number # Superimposed weight (greater than 0)
+function Unit:play_additive_anim(anim, speed, loop, begin, end_, weight) end
+
 --Set the stroke thickness of the unit outer outline
 ---@param width number # width
 ---@param role? py.Role # Role
@@ -1526,6 +1543,29 @@ function Unit:set_unit_outside_outline_color(color_r, color_g, color_b, role) en
 ---@param enabled boolean # Enable
 ---@param role? py.Role # Role
 function Unit:set_unit_outside_outlined_enable(enabled, role) end
+
+--The unit loads a custom graph
+---@param graphaName string # Animation graph file name, do not need to include extension
+function Unit:unit_loadGraph(graphaName) end
+
+--Customize the Graph setting variable
+---@param VariableName string # Variable name
+---@param VariableStr string # The variable value is a string
+function Unit:unit_Graph_SetVariable(VariableName, VariableStr) end
+
+--Custom Graph send events
+---@param EventName string # Event name
+function Unit:unit_Graph_FireEvent(EventName) end
+
+--Customize the Graph setting speed
+---@param speedValue string # Relative velocity value
+function Unit:unit_Graph_SetSpeed(speedValue) end
+
+--Pause Graph
+function Unit:unit_Graph_Pause() end
+
+--Pause to run a Graph
+function Unit:unit_Graph_RunOneFrame() end
 
 --Apply state to the unit
 ---@param state_id integer # Status ID
@@ -1658,7 +1698,3 @@ function Unit:api_set_repair_target_unit(repair_target) end
 --Unit - Set maintenance skills
 ---@param ability py.Ability # Maintenance skill
 function Unit:api_set_repair_ability(ability) end
-
---Set unit scaling
----@param scale number # Zoom
-function Unit:api_set_scale_2(scale) end

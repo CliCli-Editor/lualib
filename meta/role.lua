@@ -460,6 +460,16 @@ function Role:api_get_role_total_consume() end
 ---@return boolean? # Whether to reward the map
 function Role:api_get_role_is_donated() end
 
+--Set the archive group data
+---@param key string # Player save group key
+---@param value string # String value
+function Role:set_archive_group_value(key, value) end
+
+--Read the data of the string-type player save group
+---@param key string # Player save group key
+---@return string? # Character string
+function Role:get_archive_group_value(key) end
+
 --Copy the phenotype save to the Player Save field
 ---@param src_index integer # Source player save field
 ---@param dst_index integer # Target player save field
@@ -527,6 +537,31 @@ function Role:api_get_role_achieve_point() end
 ---@param achieve_id string # Achievement ID
 ---@return boolean? # Unlock or not
 function Role:api_get_role_achieve_unlock(achieve_id) end
+
+--Obtain the number of times the player can draw the specified treasure chest on the current map
+---@param lottery_number integer # Map treasure chest number
+---@return integer? # The number of times a treasure chest can be drawn
+function Role:api_get_number_of_lottery(lottery_number) end
+
+--Obtain the total number of times the player has drawn the treasure chest on the current map
+---@return integer? # The total number of treasure chests
+function Role:api_get_number_of_all_lottery() end
+
+--Obtain the name of the guild where the player is located
+---@return string? # Guild name
+function Role:api_get_guild_name() end
+
+--Obtain the announcement of the guild where the player belongs
+---@return string? # Council Announcement
+function Role:api_get_guild_announcement() end
+
+--Obtain the number of people in the guild where the player belongs
+---@return integer? # Number of guild members
+function Role:api_get_guild_member_count() end
+
+--Obtain the level of the player is guild
+---@return integer? # Guild level
+function Role:api_get_guild_level() end
 
 --Pet http request call
 ---@param api string # The api method name of the request

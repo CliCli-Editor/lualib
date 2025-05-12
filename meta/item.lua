@@ -274,7 +274,7 @@ function Item:api_cancel_replace_model(target_model) end
 
 --Get the resources you need to purchase items
 ---@param role_res_key py.RoleResKey # Player attribute key
----@return py.Fixed? # Resource requirements
+---@return integer? # Resource requirements
 function Item:api_get_item_res_cnt(role_res_key) end
 
 --Gets the real properties of an item

@@ -4826,6 +4826,15 @@ function GameAPI.api_switch_item_slot(item1, item2) end
 ---@param permanent_show boolean # Display resident or not
 function GameAPI.set_item_name_permanent_show_config(permanent_show) end
 
+--Set the operation mode for clicking and picking up the item name board
+---@param pickup_touch_type integer # Operate type
+function GameAPI.set_touch_type_of_picking_up_item_by_item_name(pickup_touch_type) end
+
+--Obtain the platform item category
+---@param store_key py.StoreKey # Platform item number
+---@return py.StoreItemType # Platform item types
+function GameAPI.api_get_store_item_type(store_key) end
+
 --Call the screenshot function in Lua
 ---@param path string # Relative path under LocalData
 ---@param file_name string # filename
@@ -4963,6 +4972,82 @@ function GameAPI.create_unit_group_command_patrol(point) end
 ---@param switch boolean # Switch
 function GameAPI.set_player_sfx_switch_by_tag(role, tag, switch) end
 
+--Create a unit-to-point lightning effect
+---@param sfx_res_id py.SfxKey # Special effect number
+---@param source_unit py.Unit # Starting unit
+---@param source_socket string # Start Unit Name of the mount point
+---@param target_point py.FVector3 # End point
+---@param target_height py.Fixed # Terminal height
+---@param duration? number # duration
+---@param immediately? boolean # Whether to delete now
+---@param use_sys_d_destroy_way? boolean # Effects delete the way to read table or not
+---@param show_in_fog? boolean # Show in the mist
+---@param blend_with_fog? boolean # Fog mixing
+---@param follow_change_position? boolean # Change position with model scaling
+---@param follow_change_size? boolean # Follow the model scale to change the size
+---@param speed? number # Playback speed
+---@param x_scale? number # X-axis scaling
+---@param y_scale? number # Y-axis scaling
+---@param z_scale? number # Z-axis scaling
+---@return py.LinkSfx # VFX
+function GameAPI.create_link_sfx_from_unit_to_point1(sfx_res_id, source_unit, source_socket, target_point, target_height, duration, immediately, use_sys_d_destroy_way, show_in_fog, blend_with_fog, follow_change_position, follow_change_size, speed, x_scale, y_scale, z_scale) end
+
+--Create unit to unit lightning effects
+---@param sfx_res_id py.SfxKey # Special effect number
+---@param source_unit py.Unit # Starting unit
+---@param source_socket string # Start Unit Name of the mount point
+---@param target_unit py.Unit # Terminal unit
+---@param target_socket string # Start Unit Name of the mount point
+---@param duration? number # duration
+---@param immediately? boolean # Whether to delete now
+---@param use_sys_d_destroy_way? boolean # Effects delete the way to read table or not
+---@param show_in_fog? boolean # Show in the mist
+---@param blend_with_fog? boolean # Fog mixing
+---@param follow_change_position? boolean # Change position with model scaling
+---@param follow_change_size? boolean # Follow the model scale to change the size
+---@param speed? number # Playback speed
+---@param x_scale? number # X-axis scaling
+---@param y_scale? number # Y-axis scaling
+---@param z_scale? number # Z-axis scaling
+---@return py.LinkSfx # VFX
+function GameAPI.create_link_sfx_from_unit_to_unit1(sfx_res_id, source_unit, source_socket, target_unit, target_socket, duration, immediately, use_sys_d_destroy_way, show_in_fog, blend_with_fog, follow_change_position, follow_change_size, speed, x_scale, y_scale, z_scale) end
+
+--Create point-to-unit lightning effects
+---@param sfx_res_id py.SfxKey # Special effect number
+---@param source_point py.FVector3 # Starting point
+---@param source_height py.Fixed # Starting height
+---@param source_unit py.Unit # Terminal unit
+---@param source_socket string # Start Unit Name of the mount point
+---@param duration? number # duration
+---@param immediately? boolean # Whether to delete now
+---@param use_sys_d_destroy_way? boolean # Effects delete the way to read table or not
+---@param show_in_fog? boolean # Show in the mist
+---@param blend_with_fog? boolean # Fog mixing
+---@param speed? number # Playback speed
+---@param x_scale? number # X-axis scaling
+---@param y_scale? number # Y-axis scaling
+---@param z_scale? number # Z-axis scaling
+---@return py.LinkSfx # VFX
+function GameAPI.create_link_sfx_from_point_to_unit1(sfx_res_id, source_point, source_height, source_unit, source_socket, duration, immediately, use_sys_d_destroy_way, show_in_fog, blend_with_fog, speed, x_scale, y_scale, z_scale) end
+
+--Create point-to-point lightning effects
+---@param sfx_res_id py.SfxKey # Special effect number
+---@param source_point py.FVector3 # Starting point
+---@param source_height py.Fixed # Starting height
+---@param target_point py.FVector3 # End point
+---@param target_height py.Fixed # Terminal height
+---@param duration? number # duration
+---@param immediately? boolean # Whether to delete now
+---@param use_sys_d_destroy_way? boolean # Effects delete the way to read table or not
+---@param show_in_fog? boolean # Show in the mist
+---@param blend_with_fog? boolean # Fog mixing
+---@param speed? number # Playback speed
+---@param x_scale? number # X-axis scaling
+---@param y_scale? number # Y-axis scaling
+---@param z_scale? number # Z-axis scaling
+---@return py.LinkSfx # VFX
+function GameAPI.create_link_sfx_from_point_to_point1(sfx_res_id, source_point, source_height, target_point, target_height, duration, immediately, use_sys_d_destroy_way, show_in_fog, blend_with_fog, speed, x_scale, y_scale, z_scale) end
+
 --Create effects to the point
 ---@param sfx_id py.SfxKey # Special effect number
 ---@param point py.Point # point
@@ -5000,6 +5085,27 @@ function GameAPI.create_sfx_on_point_new(sfx_id, point, face_angle, speed, heigh
 ---@return py.Sfx # VFX
 function GameAPI.create_sfx_on_unit_new_new(sfx_id, unit, socket, rotate_type, b_follow_scale, speed, duration, angle, immediately, use_sys_d_destroy_way, detach, show_in_fog, blend_with_fog, scale_x, scale_y, scale_z) end
 
+--Create effects to unit attachment points (follow rotation using enumerations)
+---@param sfx_id py.SfxKey # Special effect number
+---@param unit py.Unit # unit
+---@param socket string # Unit mounting contact
+---@param rotate_type integer # Follow rotation mode
+---@param speed? number # Playback speed
+---@param duration? number # duration
+---@param angle? number # Angle
+---@param immediately? boolean # Whether to delete now
+---@param use_sys_d_destroy_way? boolean # Effects delete the way to read table or not
+---@param detach? boolean # Whether to leave the unit
+---@param show_in_fog? boolean # Show in the mist
+---@param blend_with_fog? boolean # Fog mixing
+---@param scale_x? number # X-axis scaling
+---@param scale_y? number # Y-axis scaling
+---@param scale_z? number # Z-axis scaling
+---@param follow_change_position? boolean # Change position with model scaling
+---@param follow_change_scale? boolean # Follow the model scale to change the size
+---@return py.Sfx # VFX
+function GameAPI.create_sfx_on_unit_3(sfx_id, unit, socket, rotate_type, speed, duration, angle, immediately, use_sys_d_destroy_way, detach, show_in_fog, blend_with_fog, scale_x, scale_y, scale_z, follow_change_position, follow_change_scale) end
+
 --Create effects to Magic effects hook model (follow rotation using enumeration)
 ---@param sfx_id py.SfxKey # Special effect number
 ---@param unit py.ModifierEntity # Magic effect
@@ -5026,6 +5132,19 @@ function GameAPI.create_sfx_on_modifier_attach_model(sfx_id, unit, editor_model_
 ---@param color string # hex
 ---@param w number # w
 function GameAPI.set_sfx_color_hex(sfx_entity, color, w) end
+
+--Set the lightning zoom
+---@param sfx_entity py.LinkSfx # VFX
+---@param scale_x number # X-axis scaling
+---@param scale_y number # Y-axis scaling
+---@param scale_z number # Z-axis scaling
+---@param duration? number # Transition time
+function GameAPI.set_link_sfx_scale(sfx_entity, scale_x, scale_y, scale_z, duration) end
+
+--Set the lightning animation speed
+---@param sfx_entity py.LinkSfx # VFX
+---@param speed number # Animation speed
+function GameAPI.set_link_sfx_animation_speed(sfx_entity, speed) end
 
 --tag the points
 ---@param fixvec3 py.Point # point
@@ -5074,6 +5193,10 @@ function GameAPI.api_collect_garbage() end
 --Get current level
 ---@return py.Map # Current level
 function GameAPI.get_current_level() end
+
+--Get the current running environment
+---@return string # Current operating environment
+function GameAPI.get_client_mode() end
 
 --Create terrain presets
 ---@param point py.Point # point
@@ -5184,6 +5307,16 @@ function GameAPI.api_set_player_select_unit_priority(role, unit_type, priority) 
 --Set the local camera focus position
 ---@param position py.Vector3 # position
 function GameAPI.set_local_camera_focus_position(position) end
+
+--In-game rule modification switch (Boolean value)
+---@param key integer # Rule enumeration value
+---@param value boolean # Enable or not
+function GameAPI.api_set_rule_mgr_value(key, value) end
+
+--Modify the game key function switch (Boolean value) within the game.
+---@param key integer # The key rule enumerates values
+---@param value boolean # Enable or not
+function GameAPI.api_set_shortcut_enable(key, value) end
 
 --Sets the blinking effect of an object
 ---@param log_obj py.Actor # object
@@ -5963,94 +6096,3 @@ function GameAPI.set_ui_gridview_scroll(role, comp_uid, enable) end
 ---@param comp_uid string # Control uid
 ---@param enable boolean # Enable or not
 function GameAPI.set_ui_gridview_size_adaptive(role, comp_uid, enable) end
-
---Clear the UI control picture
----@param role py.Role # Player
----@param comp_name string # Control name
-function GameAPI.clear_ui_comp_image(role, comp_name) end
-
---Set the grid list to enable/disable scroll bars
----@param role py.Role # Player
----@param comp_uid string # Control uid
----@param enable boolean # Enable or not
-function GameAPI.set_ui_gridview_bar_enable(role, comp_uid, enable) end
-
---Set the percentage of horizontal/vertical jumps in the grid list
----@param role py.Role # Player
----@param comp_uid string # Control uid
----@param direction integer # Horizontal/vertical
----@param ratio number # percent
-function GameAPI.set_ui_gridview_bar_percent(role, comp_uid, direction, ratio) end
-
---Set the mesh list horizontal/vertical scroll bar thickness
----@param role py.Role # Player
----@param comp_uid string # Control uid
----@param direction integer # Horizontal/vertical
----@param thick number # Degree of thickness
-function GameAPI.set_ui_gridview_bar_thick(role, comp_uid, direction, thick) end
-
---Set the grid list horizontal/vertical scroll bar margins
----@param role py.Role # Player
----@param comp_uid string # Control name
----@param direction integer # Horizontal/vertical
----@param top number # Up.
----@param bottom number # Under the
----@param left number # The left
----@param right number # right
-function GameAPI.set_ui_gridview_bar_margin(role, comp_uid, direction, top, bottom, left, right) end
-
---Set the grid list landscape/portrait scroll bar image
----@param role py.Role # Player
----@param comp_uid string # Control name
----@param direction integer # Horizontal/vertical
----@param image integer # picture
-function GameAPI.set_ui_gridview_bar_image(role, comp_uid, direction, image) end
-
---Set the grid list landscape/portrait scroll bar image color
----@param role py.Role # Player
----@param comp_uid string # Control name
----@param direction integer # Horizontal/vertical
----@param r number # R
----@param g number # G
----@param b number # B
----@param a number # A
-function GameAPI.set_ui_gridview_bar_color(role, comp_uid, direction, r, g, b, a) end
-
---Set the grid list landscape/portrait scroll bar image color
----@param role py.Role # Player
----@param comp_uid string # Control name
----@param direction integer # Horizontal/vertical
----@param r number # R
----@param g number # G
----@param b number # B
----@param a number # A
-function GameAPI.set_ui_gridview_bar_color_norm(role, comp_uid, direction, r, g, b, a) end
-
---Set the grid list horizontal/vertical scroll bar nine palace switch
----@param role py.Role # Player
----@param comp_uid string # Control name
----@param direction integer # Horizontal/vertical
----@param enable boolean # Enable or not
-function GameAPI.set_ui_gridview_bar_scale_9_enable(role, comp_uid, direction, enable) end
-
---Set the grid list horizontal/vertical scroll bar nine house values
----@param role py.Role # Player
----@param comp_name string # Control uid
----@param direction integer # Horizontal/vertical
----@param x_left integer # x
----@param x_right integer # y
----@param y_top integer # width
----@param y_bottom integer # height
-function GameAPI.set_ui_gridview_bar_cap_insets(role, comp_name, direction, x_left, x_right, y_top, y_bottom) end
-
---Set the grid list to enable or disable reverse layout
----@param role py.Role # Player
----@param comp_uid string # Control name
----@param enable boolean # Enable or not
-function GameAPI.set_ui_gridview_horizontal_reverse_enable(role, comp_uid, enable) end
-
---Set the grid list to enable or disable the up-down reverse arrangement
----@param role py.Role # Player
----@param comp_uid string # Control name
----@param enable boolean # Enable or not
-function GameAPI.set_ui_gridview_vertical_reverse_enable(role, comp_uid, enable) end
