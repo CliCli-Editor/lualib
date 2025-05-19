@@ -34,7 +34,11 @@ end
 ---@param slot integer
 ---@param value integer
 function M.save_integer(player, slot, value)
-    player.handle:set_save_data_int_value(slot, value)
+    local int = math.tointeger(value)
+    if not int then
+        error('The archived data must be integers')
+    end
+    player.handle:set_save_data_int_value(slot, int)
 end
 
 ---Add player save data (integer)
@@ -42,7 +46,11 @@ end
 ---@param slot integer
 ---@param value integer
 function M.add_integer(player, slot, value)
-    player.handle:add_save_data_int_value(slot, value)
+    local int = math.tointeger(value)
+    if not int then
+        error('The archived data must be integers')
+    end
+    player.handle:add_save_data_int_value(slot, int)
 end
 
 --Get the player is saved data (real)

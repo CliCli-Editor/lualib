@@ -1,3 +1,6 @@
+`2025-5-19`
++ `y3.save_data.save_integer` 'y3.save_data.add_integer' will verify whether the value is an integer
+
 `2025-4-5`
 + Add interface：
   * `Player:is_alive` Determine if a player is alive (a real player who is playing the game)）
