@@ -75,6 +75,7 @@ end)
 ---@field missing_distance? number # Target lost distance
 ---@field miss_when_target_destroy? boolean # Lost target when target is destroyed
 ---@field on_miss? fun(self: Mover) # Callback when target is lost
+---@field init_max_rotate_angle? number # Initial Angular Velocity
 
 ---@class Mover.CreateData.Curve: Mover.CreateData.Base
 ---@field angle number # Direction of motion
@@ -309,6 +310,7 @@ function M.wrap_target_args(args)
     builder.dict["target_miss_distance"] = (Fix32(args.missing_distance or 99999999))
     builder.dict["target_miss_when_target_destroy"] =  clicli.util.default(args.miss_when_target_destroy, false)
     builder.dict["target_miss_event"] = args.on_miss
+    builder.dict["init_max_rotate_angle"] = (Fix32(args.init_max_rotate_angle or 180.0))
     return builder
 end
 
