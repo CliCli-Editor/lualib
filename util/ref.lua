@@ -93,11 +93,12 @@ end
 local logicEntityModuleMap = {
     [2] = 'Unit',
     [3] = 'Projectile',
-    [4] = 'Item',
+    [4] = 'LogicItem',
     [5] = 'Destructible',
     [7] = 'Ability',
     [8] = 'Buff',
     [9] = 'Area',
+    [10] = 'Item'
 }
 
 ---This method is used to notify the Lua layer synchronously when the black box destroys a logical entity
