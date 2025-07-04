@@ -1130,4 +1130,10 @@ M.BloodBarType = {
     ['Silver'] = 0x0060008,
 }
 
+---@enum(key) clicli.Const.ClickMiniMapKey
+M.ClickMiniMapKey = {
+    "leftMouseButton" = 0,
+    "right-clickTheMouse" = 1,
+}
+
 return M

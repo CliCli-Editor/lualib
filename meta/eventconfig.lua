@@ -1865,6 +1865,26 @@ M.config["Interface - Message"] = {
     },
 }
 
+---@alias EventParam.Player-ClickOnTheMini-map EventParam.ET_ON_CLICK_MINI_MAP_PANEL
+M.config["Player-ClickOnTheMini-map"] = {
+    desc = "Triggered when clicking on the mini-map",
+    from_global = true,
+    key = "ET_ON_CLICK_MINI_MAP_PANEL",
+    name = "Player-ClickOnTheMini-map",
+    object = "Player",
+    params = {
+        [1] = {
+            call = false,
+            desc = "Press the key",
+            name = "key",
+            resolve = function (key)
+                return clicli.const.ClickMiniMapKey[key] or key
+            end,
+            type = "clicli.Const.ClickMiniMapKey|integer",
+        },
+    },
+}
+
 ---@alias EventParam.Interface - Slider changes EventParam.ET_TRIGGER_UI_SLIDER_CHANGE_EVENT
 M.config["Interface - Slider changes"] = {
     desc = "Triggered when the slider changes",
@@ -3138,6 +3158,7 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: self, event: "project-create ", callback: fun(trg: Trigger, data: EventParam). Projectiles - Create)): Trigger
 ---@field event fun(self: self, event: "project-death ", callback: fun(trg: Trigger, data: EventParam). Projectiles - death)): Trigger
 ---@field event fun(self: self, event: "interface-message ", event_name: string, callback: fun(trg: Trigger, data: EventParam). Interface - Message)): Trigger
+---@ field event fun (self, self, event: "players - click on the small map", the key: clicli. Const. ClickMiniMapKey | integer, the callback: fun (TRG: Trigger, data: EventParam. Player - Click on the mini-map)): Trigger
 ---@field event fun(self: self, event: "interface-slider change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Slider change)): Trigger
 ---@field event fun(self: self, event: "ui - chat box visibility change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Chat box visibility changes)): Trigger
 ---@field event fun(self: self, event: "interface - device drag ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Equipment Drag)): Trigger
@@ -3306,6 +3327,7 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: Player, event: "Select-Destructible ", callback: fun(trg: Trigger, data: EventParam). Check - Destructible)): Trigger
 ---@field event fun(self: Player, event: "local-select-destructible ", callback: fun(trg: Trigger, data: EventParam). Local - checked - Destructible)): Trigger
 ---@field event fun(self: Player, event: "interface-message ", event_name: string, callback: fun(trg: Trigger, data: EventParam). Interface - Message)): Trigger
+---@ field event fun (self: Player, event: "players - click on the small map", the key: clicli. Const. ClickMiniMapKey | integer, the callback: fun (TRG: Trigger, data: EventParam. Player - Click on the mini-map)): Trigger
 ---@field event fun(self: Player, event: "interface-slider change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Slider change)): Trigger
 ---@field event fun(self: Player, event: "ui - chat box visibility change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Chat box visibility changes)): Trigger
 ---@field event fun(self: Player, event: "interface-device drag ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Equipment Drag)): Trigger
