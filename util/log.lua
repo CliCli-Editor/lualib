@@ -133,6 +133,6 @@ function print(...)
     consoleprint(message)
     clicli.develop.helper.print(message)
     enable_print = false
-    log.debug(...)
+    log.print(...)
     enable_print = true
 end
