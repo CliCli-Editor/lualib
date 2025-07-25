@@ -1459,14 +1459,6 @@ function M:get_collision_radius()
     return clicli.helper.tonumber(self.handle:api_get_unit_collision_radius()) or 0.0
 end
 
----Set the unit collision radius
----@deprecated
----@param radius number
-function M:set_collision_radius(radius)
-    ---@diagnostic disable-next-line: undefined-field
-    self.handle:api_set_unit_collision_radius(radius)
-end
-
 ---Gets the player the unit belongs to
 ---@return Player player The player to which the unit belongs
 function M:get_owner()
@@ -2093,6 +2085,18 @@ function M:transformation(unit_key, options)
         , options and options.inherit_common_ability or false
         , options and options.inherit_passive_ability or false
     )
+end
+
+---Set the radius of the unit inscribed circle (for use in enemy search, range search, etc.)
+---@param radius number Radius
+function M:set_shadow_radius(radius)
+    self.handle:api_set_shadow_radius(radius)
+end
+
+---Set the unit to occupy the side length of the grid (affecting pathfinding)
+---@param radius number Radius
+function M:set_collision_radius(radius)
+    self.handle:api_set_collision_radius(radius)
 end
 
 function M:is_destroyed()
