@@ -7,7 +7,7 @@ require 'clicli.debugger'
 ---@class CliCli
 clicli = {}
 
-clicli.version = 250328
+clicli.version = 250804
 
 clicli.proxy   = require 'clicli.tools.proxy'
 clicli.class   = require 'clicli.tools.class'

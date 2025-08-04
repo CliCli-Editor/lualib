@@ -2090,12 +2090,14 @@ end
 ---Set the radius of the unit inscribed circle (for use in enemy search, range search, etc.)
 ---@param radius number Radius
 function M:set_shadow_radius(radius)
+    ---@diagnostic disable-next-line: undefined-field
     self.handle:api_set_shadow_radius(radius)
 end
 
 ---Set the unit to occupy the side length of the grid (affecting pathfinding)
 ---@param radius number Radius
 function M:set_collision_radius(radius)
+    ---@diagnostic disable-next-line: undefined-field
     self.handle:api_set_collision_radius(radius)
 end
 

@@ -1,3 +1,6 @@
+`2025-8-4`
++ Fixed the issue where some data might be lost when the data synchronized by 'y3.sync.send' contains sparse arrays
+
 `2025-5-19`
 + `y3.save_data.save_integer` 'y3.save_data.add_integer' will verify whether the value is an integer
 
