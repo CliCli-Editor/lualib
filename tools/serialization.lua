@@ -106,7 +106,7 @@ local encodeMethods;encodeMethods = {
             if newValue ~= nil then
                 buf[#buf+1] = Custom
                 encode(newValue, buf, ex, true)
-                encode(tag or false, buf)
+                encode(tag or false, buf, ex, true)
                 return
             end
         end
@@ -121,11 +121,11 @@ local encodeMethods;encodeMethods = {
                 --Array part
                 i = i + 1
                 buf[#buf+1] = Array
-                encode(v, buf, ex, disableHook)
+                encode(v, buf, ex)
             else
                 --Mixed table section
-                encode(k, buf, ex, disableHook)
-                encode(v, buf, ex, disableHook)
+                encode(k, buf, ex)
+                encode(v, buf, ex)
             end
         end
 
