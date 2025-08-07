@@ -1259,7 +1259,14 @@ function M:add_buff(data)
     if not py_buff then
         return nil
     end
-    return clicli.buff.get_by_handle(py_buff)
+    local buff = clicli.buff.get_by_handle(py_buff)
+    if not buff then
+        return nil
+    end
+    if data.data then
+        buff:set_data(data.data)
+    end
+    return buff
 end
 
 ---Removes all magic effects with the specified id

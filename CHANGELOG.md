@@ -1,4 +1,5 @@
 `2025-8-7`
++ The 'data' field passed in when using 'Unit:add_buff' can be accessed using 'Buff.data'
 + Add interface：
   * `Buff:set_icon` Set the icon of the magic effect
 

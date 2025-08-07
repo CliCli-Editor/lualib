@@ -2,6 +2,7 @@
 ---@class Buff
 ---@field handle py.ModifierEntity # py layer magic effect object
 ---@field id     integer
+---@field data   any # The 'data' field passed in when adding magic effects
 ---@field private _removed_by_py boolean
 ---@overload fun(id: integer, py_modifier: py.ModifierEntity): Buff
 local M = Class 'Buff'
@@ -338,6 +339,12 @@ end
 ---@param icon integer icon
 function M:set_icon(icon)
     self.handle:api_set_modifier_icon(icon)
+end
+
+---Custom data can be set and accessed using 'Buff.data'
+---@param data any
+function M:set_data(data)
+    self.data = data
 end
 
 function M:is_destroyed()
