@@ -1,3 +1,7 @@
+`2025-8-7`
++ Add interface：
+  * `Buff:set_icon` Set the icon of the magic effect
+
 `2025-8-4`
 + Fixed the issue where some data might be lost when the data synchronized by 'y3.sync.send' contains sparse arrays
 

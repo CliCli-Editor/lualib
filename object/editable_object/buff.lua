@@ -334,6 +334,12 @@ function M:set_cycle_time(time)
     self.handle:api_set_cycle_time(Fix32(time))
 end
 
+---Set the icon of the magic effect
+---@param icon integer icon
+function M:set_icon(icon)
+    self.handle:api_set_modifier_icon(icon)
+end
+
 function M:is_destroyed()
     ---@diagnostic disable-next-line: undefined-field
     local yes = self.handle:api_is_destroyed()
