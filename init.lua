@@ -44,7 +44,7 @@ Alias('LinkedTable', clicli.linkedTable.create)
 include  = clicli.reload.include
 
 clicli.pool = require 'clicli.tools.pool'
-require 'clicli.tools.gc'
+clicli.gc   = require 'clicli.tools.gc'
 require 'clicli.tools.synthesis'
 
 require 'clicli.util.patch'
