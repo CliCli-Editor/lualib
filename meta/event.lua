@@ -2488,6 +2488,8 @@ event.ET_UNIT_BE_HURT_COMPLETE = {
 }
 
 ---@class EventParam.ET_UNIT_GET_CURE_BEFORE_APPLY
+---@field source_unit Unit # Source of treatment unit
+---@field target_unit Unit # The unit being treated
 ---@field cured_value number # The value of treatment received
 ---@field ability Ability # Current healing skills
 ---@field heal_instance HealInstance # Treatment instance
@@ -2495,6 +2497,22 @@ event.ET_UNIT_BE_HURT_COMPLETE = {
 --The unit is about to be treated
 event.ET_UNIT_GET_CURE_BEFORE_APPLY = {
     [1] = {
+        name = "__source_unit",
+        type = "py.Unit",
+        lua_name = "source_unit",
+        lua_type = "Unit",
+        desc = "Source of treatment unit",
+        lua_desc = "Source of treatment unit",
+    },
+    [2] = {
+        name = "__target_unit",
+        type = "py.Unit",
+        lua_name = "target_unit",
+        lua_type = "Unit",
+        desc = "The unit being treated",
+        lua_desc = "The unit being treated",
+    },
+    [3] = {
         name = "__cured_value",
         type = "py.Fixed",
         lua_name = "cured_value",
@@ -2502,7 +2520,7 @@ event.ET_UNIT_GET_CURE_BEFORE_APPLY = {
         desc = "The value of treatment received",
         lua_desc = "The value of treatment received",
     },
-    [2] = {
+    [4] = {
         name = "__ability",
         type = "py.Ability",
         lua_name = "ability",
@@ -2510,7 +2528,7 @@ event.ET_UNIT_GET_CURE_BEFORE_APPLY = {
         desc = "Current healing skills",
         lua_desc = "Current healing skills",
     },
-    [3] = {
+    [5] = {
         name = nil,
         type = nil,
         lua_name = "heal_instance",
@@ -2524,12 +2542,30 @@ event.ET_UNIT_GET_CURE_BEFORE_APPLY = {
 }
 
 ---@class EventParam.ET_UNIT_GET_CURE_FINISH
+---@field source_unit Unit # Source of treatment unit
+---@field target_unit Unit # The unit being treated
 ---@field cured_value number # The value of treatment received
 ---@field ability Ability # Current healing skills
 
 --Unit receives treatment end
 event.ET_UNIT_GET_CURE_FINISH = {
     [1] = {
+        name = "__source_unit",
+        type = "py.Unit",
+        lua_name = "source_unit",
+        lua_type = "Unit",
+        desc = "Source of treatment unit",
+        lua_desc = "Source of treatment unit",
+    },
+    [2] = {
+        name = "__target_unit",
+        type = "py.Unit",
+        lua_name = "target_unit",
+        lua_type = "Unit",
+        desc = "The unit being treated",
+        lua_desc = "The unit being treated",
+    },
+    [3] = {
         name = "__cured_value",
         type = "py.Fixed",
         lua_name = "cured_value",
@@ -2537,7 +2573,7 @@ event.ET_UNIT_GET_CURE_FINISH = {
         desc = "The value of treatment received",
         lua_desc = "The value of treatment received",
     },
-    [2] = {
+    [4] = {
         name = "__ability",
         type = "py.Ability",
         lua_name = "ability",
@@ -2548,6 +2584,8 @@ event.ET_UNIT_GET_CURE_FINISH = {
 }
 
 ---@class EventParam.ET_UNIT_GET_CURE
+---@field source_unit Unit # Source of treatment unit
+---@field target_unit Unit # The unit being treated
 ---@field cured_value number # The value of treatment received
 ---@field ability Ability # Current healing skills
 ---@field heal_instance HealInstance # Treatment instance
@@ -2555,6 +2593,22 @@ event.ET_UNIT_GET_CURE_FINISH = {
 --Unit under treatment
 event.ET_UNIT_GET_CURE = {
     [1] = {
+        name = "__source_unit",
+        type = "py.Unit",
+        lua_name = "source_unit",
+        lua_type = "Unit",
+        desc = "Source of treatment unit",
+        lua_desc = "Source of treatment unit",
+    },
+    [2] = {
+        name = "__target_unit",
+        type = "py.Unit",
+        lua_name = "target_unit",
+        lua_type = "Unit",
+        desc = "The unit being treated",
+        lua_desc = "The unit being treated",
+    },
+    [3] = {
         name = "__cured_value",
         type = "py.Fixed",
         lua_name = "cured_value",
@@ -2562,7 +2616,7 @@ event.ET_UNIT_GET_CURE = {
         desc = "The value of treatment received",
         lua_desc = "The value of treatment received",
     },
-    [2] = {
+    [4] = {
         name = "__ability",
         type = "py.Ability",
         lua_name = "ability",
@@ -2570,7 +2624,7 @@ event.ET_UNIT_GET_CURE = {
         desc = "Current healing skills",
         lua_desc = "Current healing skills",
     },
-    [3] = {
+    [5] = {
         name = nil,
         type = nil,
         lua_name = "heal_instance",
