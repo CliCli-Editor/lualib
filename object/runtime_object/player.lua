@@ -381,6 +381,24 @@ function M:is_alive()
         and self:get_controller() == clicli.const.RoleType.USER
 end
 
+---Are you a player who needs to synchronize data (online, offline (reconnected), or a player and viewer who is watching)?
+---@return boolean
+function M:need_sync()
+    local state = self:get_state()
+    if state == clicli.const.RoleStatus['LEFT']
+    or state == clicli.const.RoleStatus['NONE'] then
+        return false
+    end
+
+    local controller = self:get_controller()
+    if controller == clicli.const.RoleType.OBSERVER
+    or controller == clicli.const.RoleType.USER then
+        return true
+    end
+
+    return false
+end
+
 ---Get player name
 ---@return string role_name Player name
 function M:get_name()
