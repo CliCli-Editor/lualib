@@ -80,8 +80,13 @@ clicli.py_converter.register_lua_to_py('py.Ability', function (lua_value)
     return lua_value.handle
 end)
 
+---@package
+M._cache_key = nil
 function M:get_key()
-    return self.handle:api_get_ability_id()
+    if not self._cache_key then
+        self._cache_key = self.handle:api_get_ability_id()
+    end
+    return self._cache_key
 end
 
 ---Whether it is affected by cooling loss
@@ -204,8 +209,14 @@ function M:set_stack(value)
     self.handle:api_set_ability_stack_count(value)
 end
 
+---@package
+M._cache_name = nil
+
 function M:get_name()
-    return self.handle:api_get_name()
+    if not self._cache_name then
+        self._cache_name = self.handle:api_get_name()
+    end
+    return self._cache_name
 end
 
 ---Sets the real number property
