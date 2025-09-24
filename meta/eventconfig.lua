@@ -1482,12 +1482,19 @@ M.config["CastASpell.-BreakTheShot"] = {
     },
 }
 
----@alias EventParam.Unknown-et_ability_bs_interrupt EventParam.ET_ABILITY_BS_INTERRUPT
-M.config["Unknown-et_ability_bs_interrupt"] = {
+---@alias EventParam.Casting-InterruptionCompleted EventParam.ET_ABILITY_BS_INTERRUPT
+M.config["Casting-InterruptionCompleted"] = {
+    extraObjs = {
+        [1] = {
+            getter = function (self) return self:get_owner() end,
+            luaType = "Unit",
+        },
+    },
     _deprecated = true,
     desc = "ET_ABILITY_BS_INTERRUPT",
     key = "ET_ABILITY_BS_INTERRUPT",
-    name = "Unknown-et_ability_bs_interrupt",
+    object = "Ability",
+    name = "Casting-InterruptionCompleted",
     params = {
     },
 }
@@ -3131,6 +3138,7 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: self, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: self, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: self, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: self, event: "Cast - Interrupt completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: self, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: self, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: self, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -3261,6 +3269,7 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: Ability, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: Ability, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: Ability, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: Ability, event: "Cast - Interrupt Completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: Ability, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: Ability, event: "Skill - acquire ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: Ability, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -3448,6 +3457,7 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: Unit, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: Unit, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: Unit, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: Unit, event: "Cast - Interrupt completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: Unit, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: Unit, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: Unit, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -3489,6 +3499,7 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: EditorObject.Ability, event: "Spell-interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: EditorObject.Ability, event: "Cast - Interrupt completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "skills-acquired ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -3598,6 +3609,7 @@ M.config["Steam-CreatedRoomSuccessfully"] = {
 ---@field event fun(self: EditorObject.Unit, event: "Spell-interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Cast - interrupt boot ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
+---@field event fun(self: EditorObject.Unit, event: "Cast - Interrupt completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
