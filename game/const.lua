@@ -980,6 +980,7 @@ M.AbilityFloatAttr = {
     ['CastGuide'] = 'ability_prepare_time',
     ['SkillSphere'] = 'ability_damage_range',
     ['ChargeTime'] = 'ability_stack_cd',
+    "interruptRange" = 'ability_break_cast_range',
 }
 
 ---@enum(key) clicli.Const.CollisionLayers

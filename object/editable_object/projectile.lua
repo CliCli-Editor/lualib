@@ -89,6 +89,12 @@ function M:is_exist()
     return  GameAPI.projectile_is_exist(self.handle)
 end
 
+--Get a unique ID
+---@return integer
+function M:get_id()
+    return self.id
+end
+
 ---Gets projectile height
 ---@return number height Height
 function M:get_height()

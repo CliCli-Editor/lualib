@@ -882,9 +882,11 @@ end
 --Bind skill cooldowns to attributes of player interface controls
 ---@param uiAttr string Interface control property
 ---@param skill Ability
+---@param isSmooth? Whether boolean is smooth
+---@param digits? integer Decimal places
 ---@return self
-function M:bind_ability_cd(uiAttr, skill)
-    GameAPI.set_ui_comp_bind_ability_cd(self.player.handle, self.handle, uiAttr, skill.handle)
+function M:bind_ability_cd(uiAttr, skill, isSmooth, digits)
+    GameAPI.set_ui_comp_bind_ability_cd(self.player.handle, self.handle, uiAttr, skill.handle, isSmooth, digits)
     return self
 end
 
@@ -1081,7 +1083,7 @@ end
 
 --Gets the child control with the specified name
 ---@param name string
----@return UI? ui_comp ui control
+---@return UI ui_comp ui control
 function M:get_child(name)
     local py_ui
     if not clicli.config.cache.ui then
@@ -1100,6 +1102,7 @@ function M:get_child(name)
         py_ui = self._get_child_py_ui_cache[name]
     end
     if not py_ui or py_ui == '' then
+        ---@diagnostic disable-next-line: return-type-mismatch
         return nil
     end
     return clicli.ui.get_by_handle(self.player, py_ui)

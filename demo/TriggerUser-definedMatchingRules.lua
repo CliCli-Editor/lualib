@@ -1,3 +1,4 @@
+---@diagnostic disable: param-type-mismatch, redundant-parameter
 clicli.game:event_on('#417 Modified', 1, function(trg, ...)
     print('It`s the only one that got it. Integer parameters')
 end)
