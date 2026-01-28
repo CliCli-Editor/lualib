@@ -28,6 +28,8 @@ local error        = error
 local assert       = assert
 local clock        = os.clock
 
+_ENV = nil
+
 local function isInteger(n)
     if mathType then
         return mathType(n) == 'integer'
@@ -1448,8 +1450,94 @@ function m.mergeLayers(layers)
 
     return result
 end
-Total = 0
-Miss = 0
+
+---fillRanges({{1, 10}, {20, 30}}, 5, 40) -> {{1, 40}}, {{11, 19}, {31, 40}}
+---@param ranges [integer, integer][]
+---@param start integer
+---@param finish integer
+---@return [integer, integer][] # The list of filled ranges
+---@return [integer, integer][] # The list of the actual filled range this time
+function m.fillRanges(ranges, start, finish)
+    local merged = {}
+    local filled = {}
+
+    --Identify the ranges that overlap or are adjacent to [start, finish], and calculate the merged boundaries
+    local minStart = start
+    local maxFinish = finish
+
+    for i = 1, #ranges do
+        local s, e = ranges[i][1], ranges[i][2]
+        --Check for any overlap or adjacency (e + 1 == start or s - 1 == finish)
+        if e >= start - 1 and s <= finish + 1 then
+            minStart = s < minStart and s or minStart
+            maxFinish = e > maxFinish and e or maxFinish
+        end
+    end
+
+    --Build the merged range list
+    for i = 1, #ranges do
+        local s, e = ranges[i][1], ranges[i][2]
+        --Retain those scopes that are completely outside the scope of the merge
+        if e < minStart or s > maxFinish then
+            merged[#merged+1] = ranges[i]
+        end
+    end
+    --Add the merged wide range
+    merged[#merged+1] = { minStart, maxFinish }
+
+    --The sorted and merged range
+    tableSort(merged, function (a, b)
+        return a[1] < b[1]
+    end)
+
+    --Merge consecutive ranges
+    local i = 1
+    while i < #merged do
+        local current = merged[i]
+        local next = merged[i + 1]
+        --If the end position of the current range + 1 >= the start position of the next range, merge
+        if current[2] + 1 >= next[1] then
+            current[2] = next[2] > current[2] and next[2] or current[2]
+            tableRemove(merged, i + 1)
+        else
+            i = i + 1
+        end
+    end
+
+    --Calculate the actual filled part (i.e., the originally blank area in [start, finish])
+    local cursor = start
+    for i = 1, #ranges do
+        local s, e = ranges[i][1], ranges[i][2]
+        if e < start then
+            goto continue
+        end
+        if s > finish then
+            break
+        end
+        --This range intersects with [start, finish]
+        if s > cursor then
+            --There are blanks to fill
+            filled[#filled+1] = { cursor, s - 1 }
+        end
+        --Update the cursor to the end position of the existing range
+        if e >= cursor then
+            cursor = e + 1
+        end
+        ::continue::
+    end
+
+    --Check if there are any blanks left at the end
+    if cursor <= finish then
+        filled[#filled+1] = { cursor, finish }
+    end
+
+    tableSort(filled, function (a, b)
+        return a[1] < b[1]
+    end)
+
+    return merged, filled
+end
+
 ---@generic T: function
 ---@param f T
 ---@param aliveTime number
@@ -1459,12 +1547,10 @@ function m.methodCacher(f, aliveTime, getClock)
     getClock = getClock or clock
     local cache = m.weakKTable()
     return function (self, ...)
-        Total = Total + 1
         if not cache[self] then
             cache[self] = { time = 0, result = nil }
         end
         if getClock() > cache[self].time then
-            Miss = Miss + 1
             cache[self].result = f(self, ...)
             cache[self].time = getClock() + aliveTime
         end
