@@ -12,10 +12,12 @@ local M = Class 'Config'
 ---@field mouse boolean # Sync the player's mouse position
 ---@field key boolean # Sync the player's keyboard and mouse keys
 ---@field camera boolean # Sync the player's shots
+---@field send_in_single_mode boolean # When sending messages using 'clicli.sync.send' in single-player mode, whether it is still broadcast to all players is set to 'true' by default. If set to 'false', it can save performance in single-player mode, but it will also cause incorrect recording (disconnection and reconnection).
 M.sync = clicli.proxy.new({
     mouse  = false,
     key    = false,
     camera = false,
+    send_in_single_mode = true,
 }, {
     updateRaw = true,
     setter = {

@@ -8,13 +8,57 @@ M.syncMap = {}
 M.syncLocalCount = 0
 M.syncLocalCallbackMap = {}
 
+---@package
+---@type boolean?
+M.singleMode = nil
+
+---@package
+---@return boolean
+function M.isSingleMode()
+    if M.singleMode ~= nil then
+        return M.singleMode
+    end
+    local count = 0
+    for player in clicli.player_group.get_all_players():pairs() do
+        if player:need_sync() then
+            count = count + 1
+            if count > 1 then
+                clicli.ltimer.wait(60, function ()
+                    M.singleMode = nil
+                end)
+                M.singleMode = false
+                return false
+            end
+        end
+    end
+    M.singleMode = true
+    return true
+end
+
 --Send local messages and use 'onSync' to synchronize receiving data
 --Use this function in your local environment
 ---@generic T: Serialization.SupportTypes
 ---@param id string # Ids beginning with '$' are reserved for internal use
----@param data T # If an object is included, the '__encode' and '__decode' methods need to be implemented on the class
+---@param data? T # If an object is included, the '__encode' and '__decode' methods need to be implemented on the class
 ---@param done? async fun(data: T)
 function M.send(id, data, done)
+    if not clicli.config.sync.send_in_single_mode and M.isSingleMode() then
+        ---@async
+        clicli.await.call(function ()
+            clicli.await.sleep(0.01)
+            ---@async
+            clicli.player.with_local(function (local_player)
+                local callback = M.syncMap[id]
+                if callback then
+                    xpcall(callback, log.error, data, local_player)
+                end
+                if done then
+                    done(data)
+                end
+            end)
+        end)
+        return
+    end
     if done then
         M.syncLocalCount = M.syncLocalCount + 1
         M.syncLocalCallbackMap[M.syncLocalCount] = done
