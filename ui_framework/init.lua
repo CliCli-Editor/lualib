@@ -20,7 +20,7 @@
 ----------------------------
 --Load the UI framework class definitions
 ----------------------------
-include 'clicli.ui_framework.base.init'
+include 'clicli.ui_framework.base'
 include 'clicli.ui_framework.UIManager'
 
 ----------------------------

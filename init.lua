@@ -31,7 +31,9 @@ Type    = clicli.class.type
 Alias   = clicli.class.alias
 IsInstanceOf = clicli.class.isInstanceOf
 
-require 'clicli.util.log'
+if not GameAPI.api_is_client or GameAPI.api_is_client() then
+    require 'clicli.util.log'
+end
 clicli.reload  = require 'clicli.tools.reload'
 clicli.sandbox = require 'clicli.tools.sandbox'
 clicli.hash    = require 'clicli.tools.SDBMHash'
@@ -131,7 +133,7 @@ clicli.develop.console = include 'clicli.develop.console'
 clicli.develop.helper  = require 'clicli.develop.helper'
 
 --UI framework
-include 'clicli.ui_framework.init'
+include 'clicli.ui_framework'
 
 --Do some configuration on await
 clicli.await.setErrorHandler(log.error)
