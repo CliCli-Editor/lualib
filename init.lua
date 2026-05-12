@@ -7,7 +7,7 @@ require 'clicli.debugger'
 ---@class CliCli
 clicli = {}
 
-clicli.version = 250804
+clicli.version = 260416
 
 clicli.proxy   = require 'clicli.tools.proxy'
 clicli.class   = require 'clicli.tools.class'
@@ -129,6 +129,9 @@ clicli.develop.command = include 'clicli.develop.command'
 clicli.develop.code    = require 'clicli.develop.code'
 clicli.develop.console = include 'clicli.develop.console'
 clicli.develop.helper  = require 'clicli.develop.helper'
+
+--UI framework
+include 'clicli.ui_framework.init'
 
 --Do some configuration on await
 clicli.await.setErrorHandler(log.error)

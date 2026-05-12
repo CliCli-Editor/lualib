@@ -1057,6 +1057,13 @@ function M.get_booked_number()
     return math.tointeger(GlobalAPI.api_get_booked_number()) or 0
 end
 
+--Send a custom message to the cloud script
+---@param ename string # Event name
+---@param data table # Message content
+function M.send_mlscript_msg(ename, data)
+    GameAPI.send_mlscript_msg(ename, data)
+end
+
 _G['OnTick'] = function ()
     if M._client_tick_callback then
         clicli.player.with_local(M._client_tick_callback)

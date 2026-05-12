@@ -1,5 +1,4 @@
-local event_datas   = require 'clicli.meta.event'
-local event_configs = require 'clicli.meta.eventconfig'
+local event_module   = require 'clicli.meta.event'
 local game_event    = require 'clicli.game.game_event'
 --local object_event  = require 'clicli.game.object_event'
 require 'clicli.game.core_object_event'
@@ -17,7 +16,8 @@ M.trigger_id_counter = clicli.util.counter()
 ---@param extra_args? any[]
 ---@return table
 function M.convert_py_params(event_key, event_params, extra_args)
-    local event_data = event_datas[event_key]
+    --Search for the corresponding event configuration through the engine event key
+    local event_data = event_module.get_event_params_by_key(event_key)
     if not event_data then
         return event_params
         --error(string.format('event %s not found', event_key))
@@ -119,7 +119,7 @@ end
 ---@param event_name string
 ---@return string
 local function get_py_event_name(event_name)
-    local config = event_configs.config[event_name]
+    local config = event_module.config[event_name]
     if not config then
         return event_name
     end
@@ -133,7 +133,7 @@ end
 ---@return function?
 ---@return any[]?
 local function extract_addition(event_name, extra_args)
-    local config = event_configs.config[event_name]
+    local config = event_module.config[event_name]
     if not config then
         return nil, nil
     end
@@ -176,7 +176,7 @@ end
 
 ---@private
 ---@type table<string, PYEventRef[]>
-M.ref_map = clicli.util.multiTable(2)
+M.ref_map = clicli.util.multiTable(3)
 
 local function args_eq(a, b)
     if a == b then
@@ -193,13 +193,18 @@ local function args_eq(a, b)
     return true
 end
 
+local NO_ARG = { '<NO_ARG>' }
+
 --Adds a reference count to the parameter, returning a reference
 ---@private
 ---@param name  string
 ---@param args? any[]
 ---@return PYEventRef
 function M.ref_args(name, args)
-    local refs = M.ref_map[name]
+    local key = args and args[1] or NO_ARG
+    local refs = M.ref_map[name][key]
+
+    --Group according to the first parameter
 
     for _, ref in ipairs(refs) do
         if args_eq(ref.args, args) then
@@ -223,13 +228,17 @@ end
 ---@param args? any[]
 ---@return PYEventRef
 function M.unref_args(name, args)
-    local refs = M.ref_map[name]
+    local key = args and args[1] or NO_ARG
+    local refs = M.ref_map[name][key]
 
     for i, ref in ipairs(refs) do
         if args_eq(ref.args, args) then
             ref.count = ref.count - 1
             if ref.count == 0 then
                 table.remove(refs, i)
+                if #refs == 0 then
+                    M.ref_map[name][key] = nil
+                end
             end
             return ref
         end

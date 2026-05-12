@@ -1500,3 +1500,8 @@ function GameAPI.get_object_multilingual_key(data_key, entity_id, name_or_desc) 
 ---@param role py.Role # Player
 ---@param is_on boolean # Enable or not
 function GameAPI.set_common_atk_quick_cast(role, is_on) end
+
+--Send a custom message to the cloud script
+---@param ename string # Event name
+---@param data table # Message content
+function GameAPI.send_mlscript_msg(ename, data) end

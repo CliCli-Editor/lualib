@@ -1,4 +1,4 @@
-local event_configs = require 'clicli.meta.eventconfig'
+local event_configs = require 'clicli.meta.event'
 local get_master    = require 'clicli.util.get_master'
 
 --Object editor

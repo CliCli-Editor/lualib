@@ -331,7 +331,7 @@ end
 ---@param tbl? table
 ---@return T | fun(...) :T
 function M.new(name, tbl)
-    local class = M._classes[name]
+    local class = M._classes[name] or name
     if not class then
         local aliasCreator = M._alias[name]
         if aliasCreator then
@@ -587,8 +587,9 @@ function Config:extends(extendsName, init)
         if not extends.__init then
             return
         end
-        local info = debug.getinfo(extends.__init, 'u')
-        if info.nparams <= 1 then
+        local classParams = class.__init and debug.getinfo(class.__init, 'u').nparams or 0
+        local extendsParams = debug.getinfo(extends.__init, 'u').nparams
+        if extendsParams > classParams then
             return
         end
         M._errorHandler(('must call super for extends "%s"'):format(extendsName))

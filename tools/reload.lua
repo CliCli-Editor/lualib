@@ -11,7 +11,6 @@ local M = Class 'Reload'
 ---@type table<string, boolean>
 M.includedNameMap = {}
 
----@private
 ---@type string[]
 M.includedNames = {}
 
@@ -116,6 +115,8 @@ function M:fire()
     end
     log.info('=========== reload finish ===========')
     M._reloading = false
+
+    return needReload
 end
 
 ---@private
@@ -196,10 +197,11 @@ end
 
 --overload
 ---@param optional? Reload.Optional
+---@return string[] # List of overloaded modules
 function M.reload(optional)
     optional = optional or M.defaultReloadOptional
     local reload = New 'Reload' (optional)
-    reload:fire()
+    return reload:fire()
 end
 
 ---Is loading

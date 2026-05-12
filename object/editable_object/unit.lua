@@ -1386,7 +1386,7 @@ function M:get_attr_bonus_ratio(attr_name)
 end
 
 ---Get the property (default is the actual property)
----@param attr_name clicli.Const.UnitAttr
+---@param attr_name clicli.Const.UnitAttr | string
 ---@param attr_type? 'real' | 'extra' | clicli. Const. UnitAttrType
 ---@return number
 function M:get_attr(attr_name, attr_type)

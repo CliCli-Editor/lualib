@@ -8,7 +8,7 @@ M.type = 'ui'
 
 ---@param player Player
 ---@param handle string
----@return self
+---@return UI
 function M:__init(player, handle)
     self.player = player
     self.handle = handle
@@ -129,7 +129,7 @@ M._added_fast_events = {}
 
 --Create quick interface events
 ---@param event clicli.Const.UIEvent Indicates the interface event type
----@param callback fun(trg: Trigger)
+---@param callback fun(trg: Trigger, data: EventParam. Interface - Messages
 ---@return Trigger
 function M:add_fast_event(event, callback)
     local id = string.format('$fast_event:%s@%s'
@@ -175,7 +175,7 @@ end
 
 --Set UI control visibility
 ---@param visible boolean Show/hide
----@return self
+---@return UI
 function M:set_visible(visible)
     GameAPI.set_ui_comp_visible(self.player.handle, visible, self.handle)
     return self
@@ -186,7 +186,7 @@ M._image_version = 0
 
 ---Set picture
 ---@param img py.Texture | string Image id
----@return self
+---@return UI
 function M:set_image(img)
     self._image_version = self._image_version + 1
     ---@diagnostic disable-next-line: param-type-mismatch
@@ -197,7 +197,7 @@ end
 ---Set images from the network
 ---@param url string Image url
 ---@param aid? string The unique id of the image, which is extracted from the url if not specified. If the aid image already exists locally, the local image is directly used. The file name must be available to the operating system.
----@return self
+---@return UI
 function M:set_image_url(url, aid)
     local version = self._image_version + 1
     self._image_version = version
@@ -225,7 +225,7 @@ end
 ---@param g number Green
 ---@param b number Blue
 ---@param a number of transparency
----@return self
+---@return UI
 function M:set_image_color(r, g, b, a)
     GameAPI.set_ui_image_color(self.player.handle, self.handle, r, g, b, a)
     return self
@@ -234,7 +234,7 @@ end
 --Set image Color (hex)
 ---@param color string hex
 ---@param a number of transparency
----@return self
+---@return UI
 function M:set_image_color_hex(color, a)
     GameAPI.set_ui_image_color_hex(self.player.handle, self.handle, color, a)
     return self
@@ -242,7 +242,7 @@ end
 
 --Set text
 ---@param str string text
----@return self
+---@return UI
 function M:set_text(str)
     GameAPI.set_ui_comp_text(self.player.handle, self.handle, str)
     return self
@@ -251,7 +251,7 @@ end
 
 --Set control transparency
 ---@param value number Transparency
----@return self
+---@return UI
 function M:set_alpha(value)
     GameAPI.set_ui_comp_opacity(self.player.handle, self.handle, value)
     return self
@@ -262,7 +262,7 @@ end
 ---@param end_alpha number # End alpha
 ---@param duration number # duration
 ---@param ease_type? clicli.Const.EaseType # Curve type
----@return self
+---@return UI
 function M:set_anim_opacity(start_alpha, end_alpha, duration, ease_type)
     GameAPI.set_ui_comp_anim_opacity(self.player.handle, self.handle, start_alpha, end_alpha, duration, ease_type)
     return self
@@ -270,7 +270,7 @@ end
 
 --Sets whether the control can be dragged
 ---@param isdrag boolean Specifies whether to drag
----@return self
+---@return UI
 function M:set_is_draggable(isdrag)
     GameAPI.set_ui_comp_drag(self.player.handle, self.handle, isdrag)
     return self
@@ -279,7 +279,7 @@ end
 
 --Sets whether the control blocks operations
 ---@param intercepts boolean Specifies whether to intercept an operation
----@return self
+---@return UI
 function M:set_intercepts_operations(intercepts)
     GameAPI.set_ui_comp_swallow(self.player.handle, self.handle, intercepts)
     return self
@@ -288,7 +288,7 @@ end
 
 --Set control depth
 ---@param deep integer Indicates the depth
----@return self
+---@return UI
 function M:set_z_order(deep)
     GameAPI.set_ui_comp_z_order(self.player.handle, self.handle, deep)
     return self
@@ -297,7 +297,7 @@ end
 
 --The maximum value of the progress bar is set
 ---@param progress number Indicates the maximum number of progress bars
----@return self
+---@return UI
 function M:set_max_progress_bar_value(progress)
     GameAPI.set_progress_bar_max_value(self.player.handle, self.handle, progress)
     return self
@@ -307,7 +307,7 @@ end
 --Set the current value of the progress bar
 ---@param progress number Current value of the progress bar
 ---@param time number? Gradient time
----@return self
+---@return UI
 function M:set_current_progress_bar_value(progress, time)
     GameAPI.set_progress_bar_current_value(self.player.handle, self.handle, progress, time or 0)
     return self
@@ -316,7 +316,7 @@ end
 
 --Enable/disable button
 ---@param enable boolean Enable/Disable button
----@return self
+---@return UI
 function M:set_button_enable(enable)
     GameAPI.set_ui_comp_enable(self.player.handle, self.handle, enable)
     return self
@@ -326,7 +326,7 @@ end
 --Set control size
 ---@param width number Width
 ---@param height number Height
----@return self
+---@return UI
 function M:set_ui_size(width, height)
     GameAPI.set_ui_comp_size(self.player.handle, self.handle, width, height)
     return self
@@ -337,7 +337,7 @@ end
 ---@param x_right integer # y
 ---@param y_top integer # width
 ---@param y_bottom integer # height
----@return self
+---@return UI
 function M:set_ui_9(x_left, x_right, y_top, y_bottom)
     GameAPI.set_ui_comp_cap_insets(self.player.handle, self.handle, x_left, x_right, y_top, y_bottom)
     return self
@@ -345,7 +345,7 @@ end
 
 --Set controls. 9 Grid enabled
 ---@param switch boolean # Enable/disable
----@return self
+---@return UI
 function M:set_ui_9_enable(switch)
     GameAPI.set_ui_comp_scale_9_enable(self.player.handle, self.handle, switch)
     return self
@@ -353,21 +353,21 @@ end
 
 --Set the text font size
 ---@param size integer Specifies the font size
----@return self
+---@return UI
 function M:set_font_size(size)
     GameAPI.set_ui_comp_font_size(self.player.handle, self.handle, size)
     return self
 end
 
 --Let the input field get focus
----@return self
+---@return UI
 function M:set_input_field_focus()
     GameAPI.set_input_field_focus(self.player.handle, self.handle)
     return self
 end
 
 --Make the input field lose focus
----@return self
+---@return UI
 function M:set_input_field_not_focus()
     GameAPI.set_input_field_not_focus(self.player.handle, self.handle)
     return self
@@ -381,7 +381,7 @@ end
 
 --Bind a skill object to a control
 ---@param skill? Ability skill object
----@return self
+---@return UI
 function M:set_skill_on_ui_comp(skill)
     local handle = skill and skill.handle or nil
     ---@diagnostic disable-next-line: param-type-mismatch
@@ -391,14 +391,14 @@ end
 
 --Binding skill
 ---@param ability? Ability skill object
----@return self
+---@return UI
 function M:bind_ability(ability)
     return self:set_skill_on_ui_comp(ability)
 end
 
 --Bind units to the Magic Effects Display bar component
 ---@param unit Unit Unit
----@return self
+---@return UI
 function M:set_buff_on_ui(unit)
     GameAPI.set_buff_on_ui_comp(self.player.handle, unit.handle, self.handle)
     return self
@@ -407,7 +407,7 @@ end
 
 --Bind item objects to item components
 ---@param item Item Object
----@return self
+---@return UI
 function M:set_item_on_ui(item)
     GameAPI.set_item_on_ui_comp(self.player.handle, item.handle, self.handle)
     return self
@@ -423,7 +423,7 @@ end
 
 --Sets the model of the model control
 ---@param modelid py.ModelKey Model id
----@return self
+---@return UI
 function M:set_ui_model_id(modelid)
     ---@diagnostic disable-next-line: missing-parameter
     GameAPI.set_ui_model_id(self.player.handle, self.handle, modelid)
@@ -457,7 +457,7 @@ end
 ---@param unit Unit
 ---@param field clicli.Const.SlotType Indicates the slot type of a backpack
 ---@param index integer Specifies the lattice position
----@return self
+---@return UI
 function M:set_ui_unit_slot(unit, field, index)
     GameAPI.set_ui_comp_unit_slot(self.player.handle, self.handle, unit.handle, field, index)
     return self
@@ -465,7 +465,7 @@ end
 
 --Set button shortcut keys
 ---@param key integer Specifies the shortcut key
----@return self
+---@return UI
 function M:set_button_shortcut(key)
     GameAPI.set_btn_short_cut(self.player.handle, self.handle, key)
     return self
@@ -473,7 +473,7 @@ end
 
 --Set button combination shortcut keys
 ---@param key integer Specifies the secondary key
----@return self
+---@return UI
 function M:set_btn_meta_key(key)
     GameAPI.set_btn_func_short_cut(self.player.handle, self.handle, key)
     return self
@@ -482,7 +482,7 @@ end
 --Set the text of the button in different states
 ---@ param status clicli. Const. UIButtonStatus state
 ---@param text string Indicates the text
----@return self
+---@return UI
 function M:set_btn_status_string(status, text)
     GameAPI.set_ui_btn_status_string(self.player.handle, self.handle, status, text)
     return self
@@ -491,7 +491,7 @@ end
 --Set buttons in different states of the picture
 ---@ param status clicli. Const. UIButtonStatus state
 ---@param img integer Image id
----@return self
+---@return UI
 function M:set_btn_status_image(status, img)
     GameAPI.set_ui_btn_status_image(self.player.handle, self.handle, status, img)
     return self
@@ -499,7 +499,7 @@ end
 
 --Set the smart casting shortcut key
 ---@param key integer Specifies the shortcut key
----@return self
+---@return UI
 function M:set_skill_btn_smart_cast_key(key)
     GameAPI.set_skill_btn_smart_cast_key(self.player.handle, self.handle, key)
     return self
@@ -508,7 +508,7 @@ end
 
 --Set smart spell combination shortcut keys
 ---@param key integer Specifies the secondary key
----@return self
+---@return UI
 function M:set_skill_btn_func_meta_key(key)
     GameAPI.set_skill_btn_func_smart_cast_key(self.player.handle, self.handle, key)
     return self
@@ -517,7 +517,7 @@ end
 
 --Play/Stop Skill button activation effect
 ---@param isopen boolean Play/Stop skill button activation effect
----@return self
+---@return UI
 function M:set_skill_btn_action_effect(isopen)
     GameAPI.set_skill_btn_action_effect(self.player.handle, self.handle, isopen)
     return self
@@ -529,7 +529,7 @@ end
 ---@param g number # Green (0-255)
 ---@param b number # Blue (0-255)
 ---@param a? number # Opacity (0-255)
----@return self
+---@return UI
 function M:set_text_color(r, g, b, a)
     GameAPI.set_ui_comp_font_color(self.player.handle, self.handle, r, g, b, a or 255)
     return self
@@ -538,7 +538,7 @@ end
 ---Set text color (HEX)
 ---@param color string # For example, ffcc00
 ---@param a? number # Opacity: 0 is completely transparent and 100 is completely opaque
----@return self
+---@return UI
 function M:set_text_color_hex(color, a)
     GameAPI.set_ui_comp_font_color_hex(self.player.handle, self.handle, color, a or 100)
     return self
@@ -547,7 +547,7 @@ end
 
 --Sets the lens view of the model control
 ---@param fov number Field of view
----@return self
+---@return UI
 function M:change_showroom_fov(fov)
     GameAPI.change_showroom_fov(self.player.handle, self.handle, fov)
     return self
@@ -558,7 +558,7 @@ end
 ---@param x number x axis
 ---@param y number y axis
 ---@param z number z axis
----@return self
+---@return UI
 function M:change_showroom_cposition(x,y,z)
     GameAPI.change_showroom_cposition(self.player.handle, self.handle, x, y, z)
     return self
@@ -569,7 +569,7 @@ end
 ---@param x number x axis
 ---@param y number y axis
 ---@param z number z axis
----@return self
+---@return UI
 function M:change_showroom_crotation(x,y,z)
     GameAPI.change_showroom_crotation(self.player.handle, self.handle, x, y, z)
     return self
@@ -590,7 +590,7 @@ end
 ---@param g number Green
 ---@param b number Blue
 ---@param a number of transparency
----@return self
+---@return UI
 function M:set_show_room_background_color(r, g, b, a)
     GameAPI.set_show_room_background_color(self.player.handle, self.handle, r, g, b, a)
     return self
@@ -598,7 +598,7 @@ end
 
 --Set the control to rotate relative to each other
 ---@param rot number Angle
----@return self
+---@return UI
 function M:set_widget_relative_rotation(rot)
     GameAPI.set_ui_comp_rotation(self.player.handle,self.handle, rot)
     return self
@@ -609,7 +609,7 @@ end
 --> Same as UI:set_absolute_pos
 ---@param x number x axis
 ---@param y number y axis
----@return self
+---@return UI
 function M:set_widget_absolute_coordinates(x,y)
     GameAPI.set_ui_comp_world_pos(self.player.handle,self.handle, x, y)
     return self
@@ -618,7 +618,7 @@ end
 
 --Sets the absolute rotation of the control
 ---@param rot number Angle
----@return self
+---@return UI
 function M:set_widget_absolute_rotation(rot)
     GameAPI.set_ui_comp_world_rotation(self.player.handle,self.handle, rot)
     return self
@@ -628,7 +628,7 @@ end
 --Sets the absolute scaling of the control
 ---@param x number x axis
 ---@param y number y axis
----@return self
+---@return UI
 function M:set_widget_absolute_scale(x, y)
     GameAPI.set_ui_comp_world_scale(self.player.handle,self.handle, x, y)
     return self
@@ -638,7 +638,7 @@ end
 --Set the relative scaling of controls
 ---@param x number x axis
 ---@param y number y axis
----@return self
+---@return UI
 function M:set_widget_relative_scale(x, y)
     GameAPI.set_ui_comp_scale(self.player.handle,self.handle, x, y)
     return self
@@ -655,14 +655,14 @@ end
 
 --Set the progress of the slider
 ---@param percent number The progress of the slider
----@return self
+---@return UI
 function M:set_slider_value(percent)
     GameAPI.set_slider_cur_percent(self.player.handle,self.handle, percent)
     return self
 end
 
 --Unbind control
----@return self
+---@return UI
 function M:unbind_widget()
     GameAPI.unbind_ui_comp(self.player.handle,self.handle)
     return self
@@ -736,7 +736,7 @@ end
 ---@param end_y number # End y
 ---@param duration number # duration
 ---@param ease_type? integer # Curve type
----@return self
+---@return UI
 function M:set_anim_scale(start_x, start_y, end_x, end_y, duration, ease_type)
     GameAPI.set_ui_comp_anim_scale(self.player.handle, self.handle, start_x, start_y, end_x, end_y, duration, ease_type)
     return self
@@ -746,7 +746,7 @@ end
 ---@param x number x axis
 ---@param y number y axis
 ---@param z number z axis
----@return self
+---@return UI
 function M:set_ui_model_focus_pos(x, y, z)
     GameAPI.set_ui_model_focus_pos(self.player.handle, self.handle, x, y, z)
     return self
@@ -758,7 +758,7 @@ end
 ---@param uiAttr string Interface control property
 ---@param attr string Unit attribute
 ---@param accuracy integer Decimal accuracy
----@return self
+---@return UI
 function M:bind_player_attribute(uiAttr, attr, accuracy)
     GameAPI.set_ui_comp_bind_attr(self.player.handle, self.handle, uiAttr, attr, accuracy)
     return self
@@ -768,7 +768,7 @@ end
 ---@param uiAttr clicli.Const.UIAttr interface control properties
 ---@param attr_name clicli.Const.UnitAttr Unit attribute
 ---@param accuracy? integer Specifies the decimal precision. The default value is 0
----@return self
+---@return UI
 function M:bind_unit_attr(uiAttr, attr_name, accuracy)
     GameAPI.set_ui_comp_bind_attr(self.player.handle, self.handle, clicli.const.UIAttr[uiAttr], clicli.const.UnitAttr[attr_name] or attr_name, accuracy or 0)
     return self
@@ -779,7 +779,7 @@ end
 ---@param player Player # Player
 ---@param attr_or_var clicli.Const.PlayerAttr # Player attribute key
 ---@param accuracy? integer Specifies the decimal precision. The default value is 0
----@return self
+---@return UI
 function M:bind_player_prop(uiAttr, player, attr_or_var, accuracy)
     GameAPI.set_ui_comp_bind_player_prop(self.player.handle, self.handle, clicli.const.UIAttr[uiAttr] or uiAttr, player.handle, clicli.const.PlayerAttr[attr_or_var] or attr_or_var, accuracy or 0)
     return self
@@ -789,7 +789,7 @@ end
 ---@param uiAttr clicli.Const.UIAttr | string Interface control property
 ---@param globalVar string Global attribute
 ---@param accuracy? integer decimal precision
----@return self
+---@return UI
 function M:bind_global_variable(uiAttr, globalVar, accuracy)
     GameAPI.set_ui_comp_bind_var(self.player.handle, self.handle, clicli.const.UIAttr[uiAttr] or uiAttr, globalVar, accuracy or 0)
     return self
@@ -803,7 +803,7 @@ end
 
 --Unbind interface control properties
 ---@param uiAttr string Interface control property
----@return self
+---@return UI
 function M:unbind(uiAttr)
     GameAPI.ui_comp_unbind(self.player.handle, self.handle, uiAttr)
     return self
@@ -811,7 +811,7 @@ end
 
 --Interface control properties bind to specified units
 ---@param unit Unit Unit
----@return self
+---@return UI
 function M:bind_unit(unit)
     GameAPI.ui_comp_bind_unit(self.player.handle, self.handle, unit.handle)
     return self
@@ -819,7 +819,7 @@ end
 
 --Set Disable images (image type)
 ---@param img integer Image id
----@return self
+---@return UI
 function M:set_disable_image_type(img)
     GameAPI.set_ui_comp_disabled_image(self.player.handle, self.handle, img)
     return self
@@ -827,7 +827,7 @@ end
 
 --Set floating image (image type)
 ---@param img integer Image id
----@return self
+---@return UI
 function M:set_hover_image_type(img)
     GameAPI.set_ui_comp_suspend_image(self.player.handle, self.handle, img)
     return self
@@ -835,7 +835,7 @@ end
 
 --Settings Press Picture (Picture type)
 ---@param img integer Image id
----@return self
+---@return UI
 function M:set_press_image_type(img)
     GameAPI.set_ui_comp_press_image(self.player.handle, self.handle, img)
     return self
@@ -844,7 +844,7 @@ end
 --Sets the alignment of the text
 ---@param h? clicli.Const.UIHAlignmentType # Horizontal alignment
 ---@param v? clicli.Const.UIVAlignmentType # Vertical alignment
----@return self
+---@return UI
 function M:set_text_alignment(h, v)
     if h then
         GameAPI.set_ui_comp_align(self.player.handle, self.handle, clicli.const.UIHAlignmentType[h])
@@ -884,7 +884,7 @@ end
 ---@param skill Ability
 ---@param isSmooth? Whether boolean is smooth
 ---@param digits? integer Decimal places
----@return self
+---@return UI
 function M:bind_ability_cd(uiAttr, skill, isSmooth, digits)
     GameAPI.set_ui_comp_bind_ability_cd(self.player.handle, self.handle, uiAttr, skill.handle, isSmooth, digits)
     return self
@@ -893,7 +893,7 @@ end
 --Bind the remaining time of the magic effect to the properties of the player interface control
 ---@param uiAttr string Interface control property
 ---@param buff Buff Magic effect
----@return self
+---@return UI
 function M:bind_buff_time(uiAttr, buff)
     GameAPI.set_ui_comp_bind_modifier_cd(self.player.handle, self.handle, uiAttr, buff.handle)
     return self
@@ -901,7 +901,7 @@ end
 
 --Enable or disable the send chat function
 ---@param enable boolean Enables or disables the send chat function
----@return self
+---@return UI
 function M:enable_chat(enable)
     GameAPI.set_chat_send_enabled(self.player.handle, self.handle, enable)
     return self
@@ -910,14 +910,14 @@ end
 --Show/hide the chat box
 ---@param enable boolean Shows/hides chat boxes
 ---@param player Player Target player
----@return self
+---@return UI
 function M:show_chat(player, enable)
     GameAPI.set_player_chat_show(self.player.handle, self.handle, player.handle,enable)
     return self
 end
 
 --Clear chat messages
----@return self
+---@return UI
 function M:clear_chat()
     GameAPI.clear_player_chat_panel(self.player.handle, self.handle)
     return self
@@ -926,7 +926,7 @@ end
 --Send private chat messages
 ---@param player Player
 ---@param msg string Information
----@return self
+---@return UI
 function M:send_chat(player, msg)
     GameAPI.send_chat_to_role(self.player.handle, self.handle, player.handle, msg)
     return self
@@ -1195,7 +1195,7 @@ end
 ---Sets the relative coordinates of the control
 ---@param x number x axis
 ---@param y number y axis
----@return self
+---@return UI
 function M:set_pos(x, y)
     GameAPI.set_ui_comp_pos_no_trans(self.player.handle, self.handle, x, y)
     return self
@@ -1204,7 +1204,7 @@ end
 ---Sets the absolute coordinates of the control
 ---@param x number x axis
 ---@param y number y axis
----@return self
+---@return UI
 function M:set_absolute_pos(x, y)
     GameAPI.set_ui_comp_world_pos(self.player.handle, self.handle, x, y)
     return self
@@ -1213,7 +1213,7 @@ end
 ---Set the anchor point of the interface control
 ---@param x number x axis
 ---@param y number y axis
----@return self
+---@return UI
 function M:set_anchor(x, y)
     GameAPI.set_ui_comp_anchor(self.player.handle, self.handle, x, y)
     return self
@@ -1221,7 +1221,7 @@ end
 
 ---Set up a chat channel
 ---@param switch boolean switch
----@return self
+---@return UI
 function M:set_nearby_micro_switch(switch)
     GameAPI.set_ui_comp_chat_channel(self.player.handle, self.handle, switch)
     return self
@@ -1255,7 +1255,7 @@ end
 ---@param follow_mouse boolean
 ---@param offset_x? number # Offset X-axis
 ---@param offset_y? number # Offset Y-axis
----@return self
+---@return UI
 function M:set_follow_mouse(follow_mouse, offset_x, offset_y)
     GameAPI.set_ui_comp_follow_mouse(self.player.handle, self.handle, follow_mouse, offset_x or 0, offset_y or 0)
     return self
@@ -1265,7 +1265,7 @@ end
 ---@param player Player
 ---@param state clicli.Const.CursorState
 ---@param key py.CursorKey
----@return self
+---@return UI
 function M:set_cursor(player, state, key)
     player.handle:api_set_role_cursor(
         clicli.const.CursorState[state],
@@ -1285,7 +1285,7 @@ end
 ---@param space? number # Interval frame number
 ---@param start_frame? integer # Start frame
 ---@param end_frame? integer # End frame
----@return self
+---@return UI
 function M:play_ui_sequence(loop, space, start_frame, end_frame)
     ---@diagnostic disable-next-line: param-type-mismatch
     GameAPI.play_ui_comp_sequence(self.player.handle, self.handle, loop or false, space or 0.1, start_frame or 0, end_frame or -1)
