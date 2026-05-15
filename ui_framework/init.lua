@@ -20,8 +20,8 @@
 ----------------------------
 --Load the UI framework class definitions
 ----------------------------
-include 'clicli.ui_framework.base'
-include 'clicli.ui_framework.UIManager'
+require 'clicli.ui_framework.base'
+require 'clicli.ui_framework.UIManager'
 
 ----------------------------
 --Initialize the shared state

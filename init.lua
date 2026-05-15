@@ -134,7 +134,7 @@ clicli.develop.console = include 'clicli.develop.console'
 clicli.develop.helper  = require 'clicli.develop.helper'
 
 --UI framework
-include 'clicli.ui_framework'
+require 'clicli.ui_framework'
 
 --Do some configuration on await
 clicli.await.setErrorHandler(log.error)

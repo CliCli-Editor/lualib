@@ -8,10 +8,10 @@
     4. BaseTips   → Hint base class (Special explicit and implicit logic）
 ]]
 
-include 'clicli.ui_framework.base.EventBus'
-include 'clicli.ui_framework.base.BasePanel'
-include 'clicli.ui_framework.base.BaseView'
-include 'clicli.ui_framework.base.BaseTips'
+require 'clicli.ui_framework.base.EventBus'
+require 'clicli.ui_framework.base.BasePanel'
+require 'clicli.ui_framework.base.BaseView'
+require 'clicli.ui_framework.base.BaseTips'
 
 --Definition of loading constants
-include 'clicli.ui_framework.UIConst'
+require 'clicli.ui_framework.UIConst'
