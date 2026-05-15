@@ -31,6 +31,7 @@ Type    = clicli.class.type
 Alias   = clicli.class.alias
 IsInstanceOf = clicli.class.isInstanceOf
 
+---@diagnostic disable-next-line: undefined-field
 if not GameAPI.api_is_client or GameAPI.api_is_client() then
     require 'clicli.util.log'
 end
