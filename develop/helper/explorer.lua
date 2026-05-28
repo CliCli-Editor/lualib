@@ -53,8 +53,25 @@ end
 function M.createGamePause()
     return clicli.develop.helper.createTreeNode('Pause', {
         icon = 'debug-pause',
+        description = 'It will be asynchronous in multiplayer mode',
         onClick = function (node)
-            clicli.sync.send('$game_pause', not M.gamePaused)
+            M.gamePaused = not M.gamePaused
+            if M.gamePaused then
+                print('Suspend the game')
+                clicli.game.enable_soft_pause()
+            else
+                print('Continued the game')
+                clicli.game.resume_soft_pause()
+            end
+            if M.gamePauseButton then
+                if M.gamePaused then
+                    M.gamePauseButton.name = 'continue'
+                    M.gamePauseButton.icon = 'debug-start'
+                else
+                    M.gamePauseButton.name = 'Pause'
+                    M.gamePauseButton.icon = 'debug-pause'
+                end
+            end
         end,
     })
 end
@@ -110,26 +127,6 @@ clicli.sync.onSync('$game_speed_apply', function (apply, source)
         M.gameSpeedButton.check = apply
     end
     updateGameSpeed(source)
-end)
-
-clicli.sync.onSync('$game_pause', function (pause, source)
-    M.gamePaused = pause
-    if pause then
-        print(string.format('%s pauses the game', source))
-        clicli.game.enable_soft_pause()
-    else
-        print(string.format('%s continued the game', source))
-        clicli.game.resume_soft_pause()
-    end
-    if M.gamePauseButton then
-        if pause then
-            M.gamePauseButton.name = 'continue'
-            M.gamePauseButton.icon = 'debug-start'
-        else
-            M.gamePauseButton.name = 'Pause'
-            M.gamePauseButton.icon = 'debug-pause'
-        end
-    end
 end)
 
 ---@return Develop.Helper.TreeNode
