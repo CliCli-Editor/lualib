@@ -79,7 +79,7 @@ clicli.py_converter.register_py_to_lua('py.DestructibleID', M.get_by_id)
 ---Existence or not
 ---@return boolean is_exist Whether it exists
 function M:is_exist()
-    return  GameAPI.destructible_is_exist(self.handle)
+    return IsValid(self) and GameAPI.destructible_is_exist(self.handle)
 end
 
 --Get a unique ID

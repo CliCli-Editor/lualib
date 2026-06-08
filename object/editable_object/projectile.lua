@@ -86,7 +86,7 @@ end
 ---Existence or not
 ---@return boolean is_exist Whether it exists
 function M:is_exist()
-    return  GameAPI.projectile_is_exist(self.handle)
+    return IsValid(self) and GameAPI.projectile_is_exist(self.handle)
 end
 
 --Get a unique ID

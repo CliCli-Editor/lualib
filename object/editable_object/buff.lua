@@ -108,7 +108,7 @@ end
 ---Existence or not
 ---@return boolean is_exist Whether it exists
 function M:is_exist()
-    return GameAPI.modifier_is_exist(self.handle)
+    return IsValid(self) and GameAPI.modifier_is_exist(self.handle)
 end
 
 ---Set the name of the magic effect

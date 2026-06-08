@@ -876,7 +876,7 @@ end
 
 --Whether to be deleted
 function M:is_removed()
-    return not GameAPI.ui_comp_is_exist(self.handle)
+    return not IsValid(self) or not GameAPI.ui_comp_is_exist(self.handle)
 end
 
 --Bind skill cooldowns to attributes of player interface controls
