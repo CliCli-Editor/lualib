@@ -88,7 +88,8 @@ clicli.py_converter.register_py_to_lua('py.ItemID', M.get_by_id)
 ---Existence or not
 ---@return boolean is_exist Whether it exists
 function M:is_exist()
-    return  GameAPI.item_is_exist(self.handle)
+    --return GameAPI.item_is_exist(self.handle)
+    return not self:is_destroyed()
 end
 
 --Get a unique ID
