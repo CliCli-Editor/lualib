@@ -886,12 +886,11 @@ function M:request_random_number(group_id, key, callback)
     end, {})
 end
 
----Request the player is offline save data
----@param aid string|integer # The platform of the target player is AID
+---Request the player's open save data
 ---@param callback fun(archive: any) # Callback function after execution
-function M.request_open_archive(aid, callback)
+function M:request_open_archive(callback)
     ---@diagnostic disable-next-line: undefined-field
-    GameAPI.lua_request_role_open_archive(tostring(aid), function (context)
+    GameAPI.lua_request_role_open_archive(self.handle, function (context)
         xpcall(callback, log.error, context['__role_open_archive'])
     end, {})
 end
