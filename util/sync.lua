@@ -185,7 +185,7 @@ end
 --The data is received synchronously, and the callback function is executed after synchronization
 --Only one callback function can be registered with the same id, and the later ones will overwrite the earlier ones
 ---@param id string
----@param callback async fun(data: Serialization.SupportTypes, source: Player)
+---@param callback async fun(data: any, source: Player)
 function M.onSync(id, callback)
     M.syncMap[id] = callback
 end
