@@ -212,7 +212,7 @@ end
 ---@param message string
 function M.print(message)
     M.notify('print', {
-        message = message:sub(1, 10000)
+        message = tostring(message):sub(1, 10000)
     })
 end
 
