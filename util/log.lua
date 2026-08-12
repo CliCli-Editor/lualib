@@ -22,7 +22,40 @@ local function io_open(path, mode)
 end
 
 local log_cache = {}
-local log_name = ('lua_player%02d.log'):format(GameAPI.get_client_role():get_role_id_num())
+local function sanitize_log_file_part(value)
+    value = tostring(value or '')
+    value = value:gsub('[\\/:*?"<>|%c]', '_')
+    value = value:gsub('%s+', '_')
+    value = value:gsub('^_+', ''):gsub('_+$', '')
+    return value
+end
+
+local function get_client_role_log_name()
+    local role = GameAPI.get_client_role()
+    if not role then
+        return 'unknown', 0
+    end
+
+    local role_id = role:get_role_id_num() or 0
+    local ok, role_name = pcall(function()
+        return role:get_role__unique_name()
+    end)
+    if not ok or not role_name or tostring(role_name) == '' then
+        ok, role_name = pcall(function()
+            return role:get_role_name()
+        end)
+    end
+    if not ok or not role_name or tostring(role_name) == '' then
+        role_name = 'unknown'
+    end
+    return sanitize_log_file_part(role_name), role_id
+end
+
+local role_log_name, role_id = get_client_role_log_name()
+if role_log_name == '' then
+    role_log_name = 'unknown'
+end
+local log_name = ('lua_player%02d_%s.log'):format(role_id, role_log_name)
 local log_file = io_open(script_path:match('^(.-)%?') .. '/.log/' .. log_name, 'w+b')
             or   io_open(log_name, 'w+b')
 if log_file then

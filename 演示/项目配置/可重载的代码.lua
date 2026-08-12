@@ -1,0 +1,8 @@
+clicli.game:event('Keyboard. - Press it', 'R', function ()
+    print('You hit the R button! Try modifying this sentence and run reload!')
+    print('You have multiple ways to overload')
+    print('1. Enter.rd in the game')
+    print('2. If you use CliCli Developer Assistant to launch the game, you can click the "Reload" button in VSCode')
+    print('3. Run the code `clicli.reload.reload()`')
+    --clicli.reload.reload()
+end)
