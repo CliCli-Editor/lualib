@@ -44,7 +44,8 @@ local function do_collect()
         mem = collectgarbage 'count'
         last_mem = mem
     elseif state == 'increment' then
-        local full = collectgarbage('step')
+        local delta = mem - last_mem
+        local full = collectgarbage('step', math.floor(delta))
         mem = collectgarbage 'count'
         last_mem = mem
 
