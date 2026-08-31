@@ -48,6 +48,7 @@ local CHANNEL_OP_JOIN = 2
 local WORLD_CHANNEL_TYPE = 5
 local WORLD_CHANNEL_ID = 10000
 local EXIT_CLEANUP_STEP_TIMEOUT = 2
+local VERSION_INJECTION_MAX_WAIT_FRAMES = 150
 
 Extends('LobbyBob', 'CustomEvent')
 Extends('LobbyBob', 'GCHost')
@@ -314,6 +315,7 @@ function M:request_with_token(id, sender, receiver, token, token_getter)
     sender()
 end
 
+_G['_SVN_VERSION'] = nil
 _G['_SVN_VERSION_INJECTION_STATUS'] = 'pending'
 log.info('[LobbyVersionDiag] lua injection submitted',
     'lua_globals=', tostring(_G),
@@ -361,11 +363,24 @@ end
 ---@param callback fun(need_update: boolean)
 function M:check_update(callback)
     local completed = false
+    local injection_wait_timer
+    local function cancel_injection_wait()
+        if injection_wait_timer then
+            injection_wait_timer:remove()
+            injection_wait_timer = nil
+        end
+    end
     local function finish(need_update)
         if completed then
             return false
         end
+        if not IsValid(self) then
+            completed = true
+            cancel_injection_wait()
+            return false
+        end
         completed = true
+        cancel_injection_wait()
         callback(need_update)
         return true
     end
@@ -398,8 +413,82 @@ function M:check_update(callback)
         'local=', tostring(local_version),
         'local_type=', type(local_version),
         'injection=', tostring(injection_status))
+
+    local remote_version
+    local injection_waited_frames = 0
+    local compare_versions
+    compare_versions = function()
+        if completed then
+            return
+        end
+        if not IsValid(self) then
+            finish(false)
+            return
+        end
+        local_version = _G['_SVN_VERSION']
+        injection_status = _G['_SVN_VERSION_INJECTION_STATUS'] or 'unknown'
+        if injection_status == 'pending' then
+            if injection_waited_frames < VERSION_INJECTION_MAX_WAIT_FRAMES
+                and clicli.ctimer
+                and clicli.ctimer.wait_frame then
+                injection_waited_frames = injection_waited_frames + 1
+                injection_wait_timer = clicli.ctimer.wait_frame(1, function()
+                    injection_wait_timer = nil
+                    compare_versions()
+                end)
+                return
+            end
+            Log.warn('【bob】【VersionCheck】result=local-version-injection-timeout',
+                'policy=allow',
+                'waited_frames=', tostring(injection_waited_frames))
+            finish(false)
+            return
+        end
+        if local_version == nil or tostring(local_version) == '' then
+            Log.warn('【bob】【VersionCheck】result=local-version-unavailable',
+                'policy=allow',
+                'waited_frames=', tostring(injection_waited_frames),
+                'injection=', tostring(injection_status))
+            finish(false)
+            return
+        end
+        if remote_version == nil or tostring(remote_version) == '' then
+            Log.warn('【bob】【VersionCheck】result=remote-version-missing',
+                'policy=allow',
+                'local=', tostring(local_version),
+                'injection=', tostring(injection_status))
+            finish(false)
+            return
+        end
+
+        local need_update = local_version ~= remote_version
+        local result
+        if need_update and tostring(local_version) == tostring(remote_version) then
+            result = 'version-type-mismatch'
+        elseif need_update then
+            result = 'client-version-mismatch'
+        else
+            result = 'version-match'
+        end
+
+        local version_log = need_update and log.warn or log.info
+        Version_log('【bob】【VersionCheck】result=' .. result,
+            'need_update=', tostring(need_update),
+            'local=', tostring(local_version),
+            'local_type=', type(local_version),
+            'remote=', tostring(remote_version),
+            'remote_type=', type(remote_version),
+            'injection=', tostring(injection_status),
+            'waited_frames=', tostring(injection_waited_frames))
+        finish(need_update)
+    end
+
     clicli.game:request_url('https://up5.update.netease.com/pl/patchmd5_windows64_produp5_release.txt', nil, function(body)
         if completed then
+            return
+        end
+        if not IsValid(self) then
+            finish(false)
             return
         end
         local_version = _G['_SVN_VERSION']
@@ -423,51 +512,19 @@ function M:check_update(callback)
             finish(false)
             return
         end
-        local read_ok, remote_version = pcall(function()
+        local read_ok, decoded_remote_version = pcall(function()
             return data['2.0']['@metadata@']['@displayversion@']
         end)
         if not read_ok then
             Log.error('【bob】【VersionCheck】result=remote-version-read-failed',
-                'error=', tostring(remote_version),
+                'error=', tostring(decoded_remote_version),
                 'local=', tostring(local_version),
                 'injection=', tostring(injection_status))
             finish(false)
             return
         end
-
-        local need_update = local_version ~= remote_version
-        local result
-        if local_version == nil or tostring(local_version) == '' then
-            result = 'local-version-missing'
-        elseif remote_version == nil or tostring(remote_version) == '' then
-            result = 'remote-version-missing'
-        elseif need_update and tostring(local_version) == tostring(remote_version) then
-            result = 'version-type-mismatch'
-        elseif need_update then
-            result = 'client-version-mismatch'
-        else
-            result = 'version-match'
-        end
-
-        local version_log = need_update and log.warn or log.info
-        Version_log('【bob】【VersionCheck】result=' .. result,
-            'need_update=', tostring(need_update),
-            'local=', tostring(local_version),
-            'local_type=', type(local_version),
-            'remote=', tostring(remote_version),
-            'remote_type=', type(remote_version),
-            'injection=', tostring(injection_status))
-        if result == 'local-version-missing' and clicli.ltimer and clicli.ltimer.wait then
-            clicli.ltimer.wait(1, function()
-                log_version_observation(
-                    'post-missing-1s',
-                    self,
-                    _G['_SVN_VERSION'],
-                    _G['_SVN_VERSION_INJECTION_STATUS'] or 'unknown'
-                )
-            end)
-        end
-        finish(need_update)
+        remote_version = decoded_remote_version
+        compare_versions()
     end, { timeout = 5 })
 end
 

@@ -330,6 +330,22 @@ _G.clicli = {
             return { remove = function() end }
         end,
     },
+    ctimer = {
+        wait_frame = function(_, callback)
+            local timer = {
+                removed = false,
+                remove = function(self)
+                    self.removed = true
+                end,
+            }
+            frame_callbacks[#frame_callbacks + 1] = function()
+                if not timer.removed then
+                    callback(timer, 1)
+                end
+            end
+            return timer
+        end,
+    },
     player = {
         get_local = function()
             return {
@@ -1318,6 +1334,94 @@ bob:get_player_info(99009, function(_, err)
     propagated_player_error = err
 end)
 assert_equal(propagated_player_error, 300123, 'get_player_info passes the get_team_info remote error')
+
+do
+    local original_is_valid = IsValid
+    local bob_valid = true
+    IsValid = function(value)
+        if value == bob then
+            return bob_valid
+        end
+        return original_is_valid(value)
+    end
+    GameAPI.get_dungeon_info = function()
+        return { env = 'prod' }
+    end
+    clicli.json.decode = function()
+        return {
+            ['2.0'] = {
+                ['@metadata@'] = {
+                    ['@displayversion@'] = '2.5.24.762647',
+                },
+            },
+        }
+    end
+
+    local function begin_version_check(local_version, injection_status)
+        local scenario = {
+            completion_count = 0,
+            need_update = nil,
+            first_frame_index = #frame_callbacks + 1,
+        }
+        local remote_callback
+        clicli.game = {
+            is_debug_mode = function()
+                return false
+            end,
+            request_url = function(_, _, _, callback)
+                remote_callback = callback
+            end,
+        }
+        _G['_SVN_VERSION'] = local_version
+        _G['_SVN_VERSION_INJECTION_STATUS'] = injection_status
+        bob_valid = true
+        bob:check_update(function(need_update)
+            scenario.completion_count = scenario.completion_count + 1
+            scenario.need_update = need_update
+        end)
+        assert_equal(type(remote_callback), 'function', 'Version checking initiates remote requests')
+        remote_callback('{}')
+        return scenario
+    end
+
+    local pending = begin_version_check(nil, 'pending')
+    assert_equal(pending.completion_count, 0, 'Version checks should not be completed when injecting a local version pending')
+    assert_equal(type(frame_callbacks[pending.first_frame_index]), 'function', 'When injecting the local version in the pending state, wait for the next client frame')
+    _G['_SVN_VERSION'] = '2.5.24.762647'
+    _G['_SVN_VERSION_INJECTION_STATUS'] = 'ok'
+    frame_callbacks[pending.first_frame_index]()
+    assert_equal(pending.completion_count, 1, 'Only one version check is completed after the local version injection is finished')
+    assert_equal(pending.need_update, false, 'No update is required when the local and remote versions are consistent')
+    frame_callbacks[pending.first_frame_index]()
+    assert_equal(pending.completion_count, 1, 'Repeated client frame callbacks cannot repeatedly complete version checks')
+
+    local stale = begin_version_check('stale-version', 'pending')
+    assert_equal(stale.completion_count, 0, 'When injecting pending, the remaining old version cannot be used')
+    _G['_SVN_VERSION'] = '2.5.24.762647'
+    _G['_SVN_VERSION_INJECTION_STATUS'] = 'ok'
+    frame_callbacks[stale.first_frame_index]()
+    assert_equal(stale.completion_count, 1, 'The inspection is completed after the residual version is overwritten by a new injection')
+    assert_equal(stale.need_update, false, 'No update is required when the newly injected version is consistent')
+
+    local destroyed = begin_version_check(nil, 'pending')
+    local callbacks_before_destroy = #frame_callbacks
+    bob_valid = false
+    frame_callbacks[destroyed.first_frame_index]()
+    assert_equal(destroyed.completion_count, 0, 'BOB will no longer complete the version check after destruction')
+    assert_equal(#frame_callbacks, callbacks_before_destroy, 'BOB will no longer wait for version injection after destruction')
+
+    local exhausted = begin_version_check(nil, 'pending')
+    for index = exhausted.first_frame_index, exhausted.first_frame_index + 149 do
+        frame_callbacks[index]()
+    end
+    assert_equal(exhausted.completion_count, 1, 'Version injection waits until it is exhausted to complete the check')
+    assert_equal(exhausted.need_update, false, 'After the version injection is exhausted, press "fail-open" to continue')
+
+    local failed = begin_version_check(nil, 'failed: test')
+    assert_equal(failed.completion_count, 1, 'Complete the check immediately when version injection fails')
+    assert_equal(failed.need_update, false, 'When version injection fails, press "fail-open" to continue')
+    IsValid = original_is_valid
+end
 
 local client_api = require 'clicli.game.lobby.service.client'
 local raw_client = client_api.new_client('127.0.0.1', 8092, 10086, 'client-runtime-token-secret', TEST_GAME_PLAY_ID)
