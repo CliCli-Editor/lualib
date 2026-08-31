@@ -141,7 +141,7 @@ function message_handler:start_hearbeat()
         return
     end
 
-    self.heartbeat_timer = clicli.ctimer.loop(self.heartbeat_interval, function()
+    self.heartbeat_timer = clicli.ltimer.loop(self.heartbeat_interval, function()
         if self.connection then
             self.connection:send(self.coder.pack_ping(self.ping_handle))
         end

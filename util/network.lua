@@ -34,10 +34,10 @@ function M:__init(ip, port, options)
     log.debug('Network initialization:', self)
 
     ---@private
-    self.update_timer = clicli.ctimer.loop(self.options.update_interval, function ()
+    self.update_timer = clicli.ltimer.loop(self.options.update_interval, function ()
         self:update()
     end)
-    clicli.ctimer.wait(0, function ()
+    clicli.ltimer.wait_frame(1, function ()
         self:update()
     end)
     self.retry_timer = clicli.ltimer.loop(self.options.retry_interval, function (t)

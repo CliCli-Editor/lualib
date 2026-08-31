@@ -268,8 +268,8 @@ function M.connect(game_play_id, finish, in_game, endpoint_env)
         return done(true, 'ok', reason or 'connection is ready', state.snapshot())
     end
 
-    if clicli.ctimer and clicli.ctimer.wait then
-        local ok, timer = pcall(clicli.ctimer.wait, 10, function()
+    if clicli.ltimer and clicli.ltimer.wait then
+        local ok, timer = pcall(clicli.ltimer.wait, 10, function()
             done(false, 'timeout', 'connection timeout')
         end)
         if ok then

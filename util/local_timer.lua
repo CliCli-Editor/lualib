@@ -1,7 +1,7 @@
---Local timer
+--Logical frame timer
 --
---Support asynchronous creation or callbacks (as long as you promise not to cause other out-of-sync issues)
---If it is executed synchronously, then synchronous callbacks are ensured
+--Driven by the synchronous timer clicli.timer per logical frame, it uses the same logical time as clicli.timer.
+--All creations and callbacks that affect the synchronization of game status must be consistent among all players.
 ---@class LocalTimer
 ---@field private include_name? string
 ---@field package id integer

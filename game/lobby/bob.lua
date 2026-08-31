@@ -360,6 +360,16 @@ end
 ---Check whether the client needs to be updated
 ---@param callback fun(need_update: boolean)
 function M:check_update(callback)
+    local completed = false
+    local function finish(need_update)
+        if completed then
+            return false
+        end
+        completed = true
+        callback(need_update)
+        return true
+    end
+
     local local_version = _G['_SVN_VERSION']
     local injection_status = _G['_SVN_VERSION_INJECTION_STATUS'] or 'unknown'
     log_version_observation('check-start', self, local_version, injection_status)
@@ -368,7 +378,7 @@ function M:check_update(callback)
             'local=', tostring(local_version),
             'local_type=', type(local_version),
             'injection=', tostring(injection_status))
-        callback(false)
+        finish(false)
         return
     end
     local dungeon_info = GameAPI.get_dungeon_info()
@@ -379,7 +389,7 @@ function M:check_update(callback)
             'local=', tostring(local_version),
             'local_type=', type(local_version),
             'injection=', tostring(injection_status))
-        callback(false)
+        finish(false)
         return
     end
 
@@ -388,16 +398,10 @@ function M:check_update(callback)
         'local=', tostring(local_version),
         'local_type=', type(local_version),
         'injection=', tostring(injection_status))
-    local timeout = clicli.ctimer.wait(5, function(timer, count)
-        Log.error('【bob】【VersionCheck】result=remote-timeout',
-            'local=', tostring(local_version),
-            'local_type=', type(local_version),
-            'injection=', tostring(injection_status))
-        error('【BOB】 The request for the remote version number has timed out!')
-    end)
-
     clicli.game:request_url('https://up5.update.netease.com/pl/patchmd5_windows64_produp5_release.txt', nil, function(body)
-        timeout:remove()
+        if completed then
+            return
+        end
         local_version = _G['_SVN_VERSION']
         injection_status = _G['_SVN_VERSION_INJECTION_STATUS'] or 'unknown'
         log_version_observation('remote-response', self, local_version, injection_status)
@@ -407,7 +411,7 @@ function M:check_update(callback)
                 'local=', tostring(local_version),
                 'local_type=', type(local_version),
                 'injection=', tostring(injection_status))
-            callback(false)
+            finish(false)
             return
         end
         local decode_ok, data = pcall(clicli.json.decode, body)
@@ -416,7 +420,8 @@ function M:check_update(callback)
                 'error=', tostring(data),
                 'local=', tostring(local_version),
                 'injection=', tostring(injection_status))
-            error(data)
+            finish(false)
+            return
         end
         local read_ok, remote_version = pcall(function()
             return data['2.0']['@metadata@']['@displayversion@']
@@ -426,7 +431,8 @@ function M:check_update(callback)
                 'error=', tostring(remote_version),
                 'local=', tostring(local_version),
                 'injection=', tostring(injection_status))
-            error(remote_version)
+            finish(false)
+            return
         end
 
         local need_update = local_version ~= remote_version
@@ -451,8 +457,8 @@ function M:check_update(callback)
             'remote=', tostring(remote_version),
             'remote_type=', type(remote_version),
             'injection=', tostring(injection_status))
-        if result == 'local-version-missing' and clicli.ctimer and clicli.ctimer.wait then
-            clicli.ctimer.wait(1, function()
+        if result == 'local-version-missing' and clicli.ltimer and clicli.ltimer.wait then
+            clicli.ltimer.wait(1, function()
                 log_version_observation(
                     'post-missing-1s',
                     self,
@@ -461,8 +467,8 @@ function M:check_update(callback)
                 )
             end)
         end
-        callback(need_update)
-    end)
+        finish(need_update)
+    end, { timeout = 5 })
 end
 
 ---@private
@@ -565,7 +571,7 @@ function M:refresh_player_info(done)
             xpcall(callback, log.error, result, err)
         end
     end
-    timeout = clicli.ctimer.wait(3, function()
+    timeout = clicli.ltimer.wait(3, function()
         --Keep the placeholder receiver to prevent late return packets from being mistakenly consumed by the next refresh request.
         finish(nil, 'timeout')
         if self.client and not self._exiting then
@@ -645,7 +651,7 @@ function M:cleanup_before_exit(done, step_timeout)
 
     local function arm_timeout(stage, callback)
         cancel_timer()
-        cleanup.timer = clicli.ctimer.wait(step_timeout, function()
+        cleanup.timer = clicli.ltimer.wait(step_timeout, function()
             cleanup.timer = nil
             record_error(stage .. '-timeout')
             callback()
@@ -1532,7 +1538,7 @@ function M:notify_player_info(data)
         log.debug('BOB is starting the game')
         self._is_launching = true
         self:event_notify('Startup status change', self._is_launching)
-        clicli.ctimer.wait(10, function()
+        clicli.ltimer.wait(10, function()
             log.warn('【BOB】 Failed to start the game within 10 seconds!')
             self._is_launching = false
             self:event_notify('Startup status change', self._is_launching)

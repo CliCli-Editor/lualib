@@ -266,8 +266,8 @@ local function new_request(action, lock)
     if state.runtime.current_call_origin == 'eca' then
         state.runtime.eca_request_ids[request.id] = true
     end
-    if clicli.ctimer and clicli.ctimer.wait then
-        local ok, timer = pcall(clicli.ctimer.wait, REQUEST_TIMEOUT, function()
+    if clicli.ltimer and clicli.ltimer.wait then
+        local ok, timer = pcall(clicli.ltimer.wait, REQUEST_TIMEOUT, function()
             finish_request(request, false, 'timeout', 'Request timeout')
         end)
         if ok then
@@ -355,8 +355,8 @@ local function run_async(action, lock, starter, options)
     starter_returned = true
     if deferred_done then
         local args = deferred_done
-        if clicli.ctimer and clicli.ctimer.wait_frame then
-            clicli.ctimer.wait_frame(1, function()
+        if clicli.ltimer and clicli.ltimer.wait_frame then
+            clicli.ltimer.wait_frame(1, function()
                 finish_request(request, table.unpack(args, 1, args.n))
             end)
         else
@@ -427,8 +427,8 @@ local function run_terminal_async(action, starter)
         return result.rejected(action, code, reason)
     end
     local ready_client = client_api.is_ready() and client_api.get() or nil
-    if clicli.ctimer and clicli.ctimer.wait then
-        local ok, timer = pcall(clicli.ctimer.wait, REQUEST_TIMEOUT, function()
+    if clicli.ltimer and clicli.ltimer.wait then
+        local ok, timer = pcall(clicli.ltimer.wait, REQUEST_TIMEOUT, function()
             client_api.release_for_terminal()
             finish_terminal_request(request, false, 'timeout', 'Request timeout', state.snapshot(), 'idle')
         end)
@@ -470,8 +470,8 @@ local function run_terminal_async(action, starter)
     starter_returned = true
     if deferred_done then
         local args = deferred_done
-        if clicli.ctimer and clicli.ctimer.wait_frame then
-            clicli.ctimer.wait_frame(1, function()
+        if clicli.ltimer and clicli.ltimer.wait_frame then
+            clicli.ltimer.wait_frame(1, function()
                 finish_terminal_request(request, table.unpack(args, 1, args.n))
             end)
         else
@@ -1083,7 +1083,7 @@ function M.join_by_token(token)
     if token == '' then
         return result.rejected(action, 'invalid_argument', 'Please enter the password.')
     end
-    pcall(log.info, '[Lobby][PrivateDungeonDiag] Add password request: token=' .. token)
+    pcall(log.info, '[Lobby][PrivateDungeonDiag] Add password request: token=<redacted>')
     local request_data = {
         token = token,
         platform_requested = false,
@@ -1125,8 +1125,8 @@ local function run_exit_cleanup_before(client, after_cleanup, defer_sync_cleanup
 
     local cleanup_call_returned = false
     local function run_after_cleanup(cleanup)
-        if defer_sync_cleanup and not cleanup_call_returned and clicli.ctimer and clicli.ctimer.wait_frame then
-            clicli.ctimer.wait_frame(1, function()
+        if defer_sync_cleanup and not cleanup_call_returned and clicli.ltimer and clicli.ltimer.wait_frame then
+            clicli.ltimer.wait_frame(1, function()
                 after_cleanup(cleanup)
             end)
             return
@@ -1152,8 +1152,8 @@ local function run_exit_cleanup_before(client, after_cleanup, defer_sync_cleanup
         return true
     end
 
-    if clicli.ctimer and clicli.ctimer.wait then
-        local timer_ok, timer = pcall(clicli.ctimer.wait, EXIT_CLEANUP_WATCHDOG_TIMEOUT, function()
+    if clicli.ltimer and clicli.ltimer.wait then
+        local timer_ok, timer = pcall(clicli.ltimer.wait, EXIT_CLEANUP_WATCHDOG_TIMEOUT, function()
             finish(cleanup_diagnostic('cleanup_watchdog', false, true, 'cleanup_before_exit watchdog timeout'))
         end)
         if timer_ok then
@@ -1391,16 +1391,16 @@ function M.exit_game()
                 done(false, 'local_player_missing', 'local player not found', data, 'idle')
                 return
             end
-            if not client and clicli.ctimer and clicli.ctimer.wait_frame then
-                clicli.ctimer.wait_frame(1, function()
+            if not client and clicli.ltimer and clicli.ltimer.wait_frame then
+                clicli.ltimer.wait_frame(1, function()
                     done(true, 'ok', 'exit game requested', data)
-                    clicli.ctimer.wait_frame(1, exit_once)
+                    clicli.ltimer.wait_frame(1, exit_once)
                 end)
                 return
             end
             done(true, 'ok', 'exit game requested', data)
-            if clicli.ctimer and clicli.ctimer.wait_frame then
-                clicli.ctimer.wait_frame(1, function()
+            if clicli.ltimer and clicli.ltimer.wait_frame then
+                clicli.ltimer.wait_frame(1, function()
                     exit_once()
                 end)
             else

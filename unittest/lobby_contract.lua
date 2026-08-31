@@ -312,7 +312,7 @@ _G.clicli = {
     const = {
         CustomEventName = {},
     },
-    ctimer = {
+    ltimer = {
         wait = function(delay, callback)
             timeout_callbacks[#timeout_callbacks + 1] = callback
             local timer = {
@@ -333,6 +333,9 @@ _G.clicli = {
     player = {
         get_local = function()
             return {
+                get_id = function()
+                    return 1
+                end,
                 get_platform_id = function()
                     return 10086
                 end,
@@ -794,7 +797,7 @@ local private_dungeon_log_output = table.concat(captured_logs, '\n')
 assert_contains(private_dungeon_log_output, 'Current level password', 'Record the password of the current level after the game level is ready')
 assert_contains(private_dungeon_log_output, 'token=current-dungeon-token', 'The current level password log retains the complete password')
 assert_contains(private_dungeon_log_output, 'Add password request', 'Record the diagnostic log when submitting the join password')
-assert_contains(private_dungeon_log_output, 'token=' .. join_log_token, 'Add a password log to retain the complete input password')
+assert_contains(private_dungeon_log_output, 'token=<redacted>', 'Add the password log to desensitize and enter the password')
 setmetatable(_G, global_metatable)
 rawset(_G, 'GameAPI', raw_game_api)
 client._reset_for_test()

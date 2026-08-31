@@ -197,7 +197,7 @@ function M:do_disconnect()
     if self._closing then
         return true
     end
-    clicli.ctimer.wait(0, function()
+    clicli.ltimer.wait_frame(1, function()
         if IsValid(self) then
             self:start()
         end
