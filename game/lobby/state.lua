@@ -1,6 +1,8 @@
 ---@class clicli.Lobby.State
 local M = {}
 
+---@class clicli.Lobby.Runtime
+---@field client? LobbyBob
 local runtime = rawget(_G, '__Y3_LOBBY_RUNTIME') or {}
 runtime.status = runtime.status or 'idle'
 runtime.sequence = runtime.sequence or 0

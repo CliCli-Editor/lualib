@@ -175,7 +175,7 @@ function M.is_ready()
         and is_valid_client(state.runtime.client)
 end
 
----@param game_play_id integer
+---@param game_play_id integer? # Missing or invalid gameplay ids will return a rejection result
 ---@param finish fun(request: table, success: boolean, code: string, reason: string? , data: table?)
 ---@param in_game boolean?
 ---@param endpoint_env string?

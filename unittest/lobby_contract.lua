@@ -144,6 +144,7 @@ local captured_logs = {}
 local completion_payloads = {}
 local latest_client
 local next_client_options = {}
+---@type false|string
 local platform_return_error = false
 local expected_eca = {
     { name = 'Hall Service - Establishing connections', params = { { 'Gameplay ID', 'integer' }, { 'Is it in a game level', 'boolean?' } } },
@@ -174,6 +175,8 @@ local expected_eca = {
     { name = 'Hall Service - Refresh player information', params = {} },
 }
 
+---@class LobbyContract.GameAPI
+---@field get_dungeon_info fun(): table
 _G.GameAPI = {
     lua_get_start_args = function()
         return {}
@@ -203,6 +206,7 @@ local function capture_log(level, ...)
     captured_logs[#captured_logs + 1] = table.concat(values, ' ')
 end
 
+---@class LobbyContract.Log
 _G.log = {
     info = function(...)
         capture_log('info', ...)
@@ -252,12 +256,12 @@ _G.IsValid = function(obj)
     return obj ~= nil
 end
 
-_G.Extends = function()
+_G.Extends = function(_class_name, _parent_name, _init)
 end
 
 _G.clicli = {
     json = {
-        decode = function()
+        decode = function(_text)
             return {
                 sign = 'bob-runtime-sign-secret',
             }
@@ -362,7 +366,7 @@ _G.clicli = {
                     return 'lobby-contract-icon'
                 end,
                 handle = {
-                    api_get_role_store_params = function()
+                    api_get_role_store_params = function(_self)
                         return '{"sign":"bob-runtime-sign-secret"}'
                     end,
                 },
@@ -405,11 +409,12 @@ local original_get_dungeon_info = GameAPI.get_dungeon_info
 local original_game = clicli.game
 local endpoint_platform_env = 'prod'
 local endpoint_debug_mode = false
-GameAPI.get_dungeon_info = function()
+local function get_endpoint_dungeon_info()
     return { env = endpoint_platform_env }
 end
+GameAPI.get_dungeon_info = get_endpoint_dungeon_info
 clicli.game = {
-    is_debug_mode = function()
+    is_debug_mode = function(_ignore_config)
         return endpoint_debug_mode
     end,
 }
@@ -1338,16 +1343,19 @@ assert_equal(propagated_player_error, 300123, 'get_player_info passes the get_te
 do
     local original_is_valid = IsValid
     local bob_valid = true
+    ---@param value any
+    ---@return boolean
     IsValid = function(value)
         if value == bob then
             return bob_valid
         end
         return original_is_valid(value)
     end
-    GameAPI.get_dungeon_info = function()
+    local function get_version_check_dungeon_info()
         return { env = 'prod' }
     end
-    clicli.json.decode = function()
+    GameAPI.get_dungeon_info = get_version_check_dungeon_info
+    clicli.json.decode = function(_text)
         return {
             ['2.0'] = {
                 ['@metadata@'] = {
@@ -1365,10 +1373,10 @@ do
         }
         local remote_callback
         clicli.game = {
-            is_debug_mode = function()
+            is_debug_mode = function(_ignore_config)
                 return false
             end,
-            request_url = function(_, _, _, callback)
+            request_url = function(_, _, _, callback, _options)
                 remote_callback = callback
             end,
         }

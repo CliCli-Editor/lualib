@@ -30,18 +30,19 @@ local leave_reason = {
 ---| 'login'
 
 ---@class LobbyBob: CustomEvent, GCHost
----@field event_on fun(self: Bob, event: 'ready ', callback: fun(trg: Trigger)): Trigger
----@field event_on fun(self: Bob, event: 'online state change ', callback: fun(trg: Trigger, State: bob.state)): Trigger
----@field event_on fun(self: Bob, event: 'Match state change ', callback: fun(trg: Trigger, state: boolean)): Trigger
----@field event_on fun(self: Bob, event:  istartup state change ', callback: fun(trg: Trigger, state: boolean)): Trigger
----@field event_on fun(self: Bob, event: 'Received message ', callback: fun(trg: Trigger, data: bob.chatinfo)): Trigger
----@field event_on fun(self: Bob, event: 'team change ', callback: fun(trg: Trigger, data: bob.teaminfo)): Trigger
----@field event_on fun(self: Bob, event: 'Join the team ', callback: fun(trg: Trigger)): Trigger
----@field event_on fun(self: Bob, event: 'Leave the team ', callback: fun(trg: Trigger, reason: bob.leavereason, last_team_info: Bob.TeamInfo)): Trigger
----@field event_on fun(self: Bob, event: 'Someone joins the team ', callback: fun(trg: Trigger, data: bob.playerinfo)): Trigger
----@field event_on fun(self: Bob, event: 'Someone left the team ', callback: fun(trg: Trigger, data: bob.playerinfo)): Trigger
----@field event_on fun(self: Bob, event: 'The client needs to update ', callback: fun(trg: Trigger)): Trigger
----@overload fun(game_play_id: integer):Bob
+---@field chat_event? Trigger
+---@field event_on fun(self: LobbyBob, event: 'ready ', callback: fun(trg: Trigger)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'online state change ', callback: fun(trg: Trigger, state: Bob.State)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'Match state change ', callback: fun(trg: Trigger, state: boolean)): Trigger
+---@field event_on fun(self: LobbyBob, event:  istartup state change ', callback: fun(trg: Trigger, state: boolean)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'Received message ', callback: fun(trg: Trigger, data: lobbybob.chatinfo)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'team change ', callback: fun(trg: Trigger, data: lobbybob.teaminfo)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'Join team ', callback: fun(trg: Trigger)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'Leave the team ', callback: fun(trg: Trigger, reason: Bob.LeaveReason, last_team_info: LobbyBob.TeamInfo)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'Someone joins the team ', callback: fun(trg: Trigger, data: lobbybob.playerinfo)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'Someone left the queue ', callback: fun(trg: Trigger, data: lobbybob.playerinfo)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'The client needs to update ', callback: fun(trg: Trigger)): Trigger
+---@overload fun(game_play_id: integer):LobbyBob
 local M = Class 'LobbyBob'
 
 local CHANNEL_OP_JOIN = 2
@@ -72,7 +73,7 @@ M.score = 0
 ---@field mode Bob.ChatType
 ---@field time integer
 ---@field message string
----@field chat? Bob.ChatData
+---@field chat? LobbyBob.ChatData
 
 local function to_positive_integer(value)
     if type(value) ~= 'number' then
@@ -120,11 +121,11 @@ function M:__init(game_play_id)
     ---@private
     self.request_handlers = {}
     --Received chat
-    ---@type Bob.ChatInfo[]
+    ---@type LobbyBob.ChatInfo[]
     self.message_history = {}
     --Known player information
     ---@private
-    ---@type table<integer, Bob.PlayerInfo>
+    ---@type table<integer, LobbyBob.PlayerInfo>
     self.player_infos = {}
 
     --The official library is not bound to the project UI. The chat display is handled by subscribing to the "Received Message" event by the project itself.
@@ -587,6 +588,7 @@ end
 
 ---@private
 ---@param done? fun(result: any? , err: any?)
+---@return boolean
 function M:refresh_player_info(done)
     log.debug('[BOB] Request to update player information')
     if self._refreshing_player_info then
@@ -885,6 +887,7 @@ end
 --Join the team
 ---@param team_id integer
 ---@param done? fun(result: any?, err: any?) # It is called after the addition is completed
+---@return boolean? , string?
 function M:join_team(team_id, done)
     log.debug('[BOB] Try to join the team', team_id)
     if self:is_matching() or self:is_launching() then
@@ -911,6 +914,7 @@ end
 
 --Disband the team
 ---@param done? fun(ok?: boolean, err?: string) # It will be invoked after the dissolution is completed
+---@return boolean, string?
 function M:dismiss_team(done)
     log.debug('BOB attempts to disband the team')
     if not self:is_in_team() then
@@ -943,6 +947,7 @@ end
 --Kick out of the team
 ---@param lick_aid integer
 ---@param done? fun(result: any? , err: any?)
+---@return boolean, string?
 function M:team_kick(lick_aid, done)
     log.debug('BOB tried to kick out of the team', lick_aid)
     local target_aid = math.tointeger(lick_aid)
@@ -990,6 +995,7 @@ end
 --Transfer Captain
 ---@param new_leader_aid integer
 ---@param done? fun(result: any?, err: any?) # It is called after the transfer is completed
+---@return boolean, string?
 function M:change_captain(new_leader_aid, done)
     log.debug('[BOB] Try to transfer the captain', new_leader_aid)
     local target_aid = math.tointeger(new_leader_aid)
@@ -1055,7 +1061,7 @@ end
 ---@field team_id integer
 ---@field team_state Bob.TeamState
 ---@field captain integer
----@field members Bob.PlayerInfo[]
+---@field members LobbyBob.PlayerInfo[]
 ---@field version integer
 
 function M:convert_player_info(player_info)
@@ -1074,7 +1080,7 @@ end
 
 ---@private
 ---@param team_info table
----@return Bob.TeamInfo
+---@return LobbyBob.TeamInfo
 function M:convert_team_info(team_info)
     for key, state in pairs(team_state) do
         if state == team_info.state then
@@ -1090,7 +1096,7 @@ end
 
 --Obtain team information
 ---@param aid integer
----@param response fun(result: Bob.TeamInfo? , err: any?)
+---@param response fun(result: LobbyBob.TeamInfo? , err: any?)
 function M:get_team_info(aid, response)
     log.debug('[BOB] Request team information', aid)
     self:request_with_token('Team_GetTeamInfoByAid', function()
@@ -1118,7 +1124,7 @@ end
 
 --Obtain player information
 ---@param aid integer
----@param done fun(result: Bob.PlayerInfo? , err: any?)
+---@param done fun(result: LobbyBob.PlayerInfo? , err: any?)
 function M:get_player_info(aid, done)
     log.debug('[BOB] Request player information', aid)
     if self.player_infos[aid] then
@@ -1168,7 +1174,7 @@ end
 
 ---@param players DungeonPlayerField[]?
 ---@return boolean
----@ the return (' not captain '|' are matching '|' lose connection '|' someone on match '|' starting '|' no qualified players')?
+---@ the return (' current not in the team '|' is not a captain '|' are matching '|' lose connection '|' someone on match '|' starting '|' no qualified players')?
 function M:can_start_private_dungeon_filtered(players)
     if not self:is_in_team() then
         return false, 'Not in the team at the moment'
@@ -1372,6 +1378,7 @@ end
 ---@param dungeon_info DungeonSpaceField
 ---@param players DungeonPlayerField[] Each item contains only the string aid and a fixed version '2.0'
 ---@param done? fun(result: any? , err: any?)
+---@return boolean, string?
 function M:start_private_dungeon_game_filtered(dungeon_info, players, done)
     local can_start, reason = self:can_start_private_dungeon_filtered(players)
     if not can_start then
@@ -1401,7 +1408,7 @@ function M:start_private_dungeon_game_filtered(dungeon_info, players, done)
 end
 
 --Format chat messages
----@param chat_data Bob.ChatInfo
+---@param chat_data LobbyBob.ChatInfo
 ---@return string
 function M:format_message(chat_data)
     if chat_data.mode == 'System' then
@@ -1449,6 +1456,8 @@ end
 
 --Modify your own score
 ---@param score integer
+---@param done? fun(result: any? , err: any?)
+---@return boolean
 function M:set_score(score, done)
     log.debug('[BOB] set score', score)
     self.score = score
@@ -1471,8 +1480,8 @@ end
 ---@field chat_type integer # Information type
 
 ---@private
----@param chat_data Bob.ChatData
----@return Bob.ChatInfo
+---@param chat_data LobbyBob.ChatData
+---@return LobbyBob.ChatInfo
 function M:record_chat(chat_data)
     local message_info = {
         mode    = 'chat',
@@ -1505,7 +1514,7 @@ end
 
 ---@private
 function M:notify_chat(data)
-    ---@type Bob.ChatData
+    ---@type LobbyBob.ChatData
     local chat_data = data.arg1
     if chat_data.sender and chat_data.sender.aid == self.aid then
         log.debug('[BOB] Ignore your own chat messages that have been displayed by the successful reply package', clicli.inspect(chat_data))

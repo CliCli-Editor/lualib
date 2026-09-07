@@ -3,75 +3,75 @@ local const = require "clicli.game.lobby.network.protocol"
 local fsm = require "clicli.game.lobby.network.fsm"
 
 ---@class LobbyClient
----@field public ClientPush_ClientRegister fun(self: Client, aid: integer):boolean, string
+---@field public ClientPush_ClientRegister fun(self: LobbyClient, aid: integer):boolean, string
 ---comment: 'Register the client. After successful registration, you will receive a push message from the server, which will be called during game initialization
 ---param aid player id
 ---return boolean, string
----@field public ClientPush_ClientUnregister fun(self: Client, aid: integer):boolean, string
+---@field public ClientPush_ClientUnregister fun(self: LobbyClient, aid: integer):boolean, string
 ---comment Log Out Client
 ---param aid player id
 ---return boolean, string
----@field public Team_UpdatePlayerInfo fun(self: Client, player_info: PlayerInfo):boolean, string
+---@field public Team_UpdatePlayerInfo fun(self: LobbyClient, player_info: PlayerInfo):boolean, string
 ---comment: 'Report/Update player information. All business relies on player information. Report during game initialization
 ---param player_info Player information
 ---return boolean, string
----@field public Team_Login fun(self: Client, player_info: PlayerInfo): boolean, string
+---@field public Team_Login fun(self: LobbyClient, player_info: PlayerInfo): boolean, string
 ---comment 'Login
 ---param player_info Player information
 ---return boolean, string
----@field public Team_DelPlayerInfo fun(self: Client, aid: integer):boolean, string
+---@field public Team_DelPlayerInfo fun(self: LobbyClient, aid: integer):boolean, string
 ---comment: 'Remove player information. Please call it before exiting the game'
 ---param aid player id
 ---return boolean, string
 ---------------- team related ----------------
----@field public Team_CreateTeam fun(self: Client, aid: integer, member_limit: integer):boolean, string
+---@field public Team_CreateTeam fun(self: LobbyClient, aid: integer, member_limit: integer):boolean, string
 ---comment: Request to create a team, with aid as the team leader
 ---param aid player id
 ---return boolean, string
----@field public Team_LeaveTeam fun(self: Client, aid: integer):boolean, string
+---@field public Team_LeaveTeam fun(self: LobbyClient, aid: integer):boolean, string
 ---comment: 'Request to Leave the Team
 ---param aid player id
 ---return boolean, string
----@field public Team_JoinTeam fun(self: Client, aid: integer, team_id: integer):boolean, string
+---@field public Team_JoinTeam fun(self: LobbyClient, aid: integer, team_id: integer):boolean, string
 ---comment: 'Request to Join the Team
 ---param aid player id
 ---param team_id team id
 ---return boolean, string
----@field public Team_TeamKick fun(self: Client, aid: integer, kicki_aid: integer):boolean, string
+---@field public Team_TeamKick fun(self: LobbyClient, aid: integer, kicki_aid: integer):boolean, string
 ---comment: 'Request to Be Kicked Out of the Team
 ---param aid player id
 ---The target player id kicked out by param kicki_aid
 ---return boolean, string
----@field public Team_ChangeTeamLeader fun(self: Client, aid: integer, new_leader_aid: integer):boolean, string
+---@field public Team_ChangeTeamLeader fun(self: LobbyClient, aid: integer, new_leader_aid: integer):boolean, string
 ---comment: 'Request to Transfer the Captain'
 ---param aid player id
 ---The captain player id transferred by param new_leader_aid
 ---return boolean, string
----@field public Team_GetTeamInfoByAid fun(self: Client, aid: integer):boolean, string
+---@field public Team_GetTeamInfoByAid fun(self: LobbyClient, aid: integer):boolean, string
 ---comment: 'Request Information of the Player is team'
 ---param aid player id
 ---return boolean, string
----@field public Team_DismissTeam fun(self: Client, aid: integer):boolean, string
+---@field public Team_DismissTeam fun(self: LobbyClient, aid: integer):boolean, string
 ---comment: 'Request to Disband the team
 ---param aid player id
 ---return boolean, string
 ---------------- team related ----------------
 ---------------- matches related ----------------
----@field public Match_startMatch fun(self: Client, unit_id: integer, score: integer, is_team: boolean, match_info: MatchInfo):boolean, string
+---@field public Match_startMatch fun(self: LobbyClient, unit_id: integer, score: integer, is_team: boolean, match_info: MatchInfo):boolean, string
 ---comment: 'Request Begins Matching'
 ---param unit_id matches the unit id, with the player id for a single person and the team id for multiple people
 ---param score score
 ---param is_team is not a team
 ---param match_info matching information
 ---return boolean, string
----@field public Match_cancelMatch fun(self: Client, unit_id: integer):boolean, string
+---@field public Match_cancelMatch fun(self: LobbyClient, unit_id: integer):boolean, string
 ---comment: 'Request to Leave the Match
 ---param unit_id matches the unit id, with the player id for a single person and the team id for multiple people
 ---return boolean, string
 ---------------- matches related ----------------
 ---------------- chat-related ----------------
----@field public ApiRouter_SendChatMsg fun(self: Client, sender: integer, chat_msg: string, channel_type: integer, dst_id: integer, flag: integer):boolean, string
----@field public ApiRouter_UpdateChannel fun(self: Client, op_type: integer, channel_type: integer, channel_id: integer, members: integer[], game_play_id: integer):boolean, string
+---@field public ApiRouter_SendChatMsg fun(self: LobbyClient, sender: integer, chat_msg: string, channel_type: integer, dst_id: integer, flag: integer):boolean, string
+---@field public ApiRouter_UpdateChannel fun(self: LobbyClient, op_type: integer, channel_type: integer, channel_id: integer, members: integer[], game_play_id: integer):boolean, string
 ---comment: 'Send Chat Message
 ---param sender Sender player id
 ---param chat_msg chat message
@@ -81,12 +81,12 @@ local fsm = require "clicli.game.lobby.network.fsm"
 ---return boolean, string
 ---------------- chat-related ----------------
 ---------------- start the game ----------------
----@field public BattleCreate_CreateMultiBattleSpace fun(self: Client, battle_info: MultiBattleField):boolean, string
+---@field public BattleCreate_CreateMultiBattleSpace fun(self: LobbyClient, battle_info: MultiBattleField):boolean, string
 ---comment: 'Create a Multiplayer Battlefield (Local Multi-instance)'
 ---param battle_info battlefield information
 ---return boolean, string
 ---@class LobbyClient
----@field public DungeonManager_StartMatchPrivateDungeonGame fun(self: Client, dungeonSpaceInfo: DungeonSpaceField, players: DungeonPlayerField[]):boolean, string
+---@field public DungeonManager_StartMatchPrivateDungeonGame fun(self: LobbyClient, dungeonSpaceInfo: DungeonSpaceField, players: DungeonPlayerField[]):boolean, string
 ---comment: 'Request Multiple People to Switch Copies
 ---param dungeonSpaceInfo copy information
 ---param players list Each item must include "aid" and "version". Currently, "version" is fixed to be passed as '2.0'.
@@ -207,6 +207,7 @@ end
 
 ---Actively close the current connection and reconnect.
 ---@param reason? string
+---@return boolean
 function M:reconnect(reason)
     log.warn('[Client] reconnect:', reason or 'unknown')
     self._closing = false
@@ -582,7 +583,7 @@ local API = {}
 ---@param aid integer # Player id
 ---@param token string # token
 ---@param game_play_id integer # Map fixed id
----@return Client
+---@return LobbyClient
 function API.new_client(ip, port, aid, token, game_play_id)
     local client = New 'LobbyClient' (ip, port, aid, token, game_play_id)
     return client
