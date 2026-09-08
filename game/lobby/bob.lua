@@ -32,12 +32,13 @@ local leave_reason = {
 ---@class LobbyBob: CustomEvent, GCHost
 ---@field chat_event? Trigger
 ---@field event_on fun(self: LobbyBob, event: 'ready ', callback: fun(trg: Trigger)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'Matching service unavailable ', callback: fun(trg: Trigger, reason: any)): Trigger
 ---@field event_on fun(self: LobbyBob, event: 'online state change ', callback: fun(trg: Trigger, state: Bob.State)): Trigger
 ---@field event_on fun(self: LobbyBob, event: 'Match state change ', callback: fun(trg: Trigger, state: boolean)): Trigger
 ---@field event_on fun(self: LobbyBob, event:  istartup state change ', callback: fun(trg: Trigger, state: boolean)): Trigger
 ---@field event_on fun(self: LobbyBob, event: 'Received message ', callback: fun(trg: Trigger, data: lobbybob.chatinfo)): Trigger
 ---@field event_on fun(self: LobbyBob, event: 'team change ', callback: fun(trg: Trigger, data: lobbybob.teaminfo)): Trigger
----@field event_on fun(self: LobbyBob, event: 'Join team ', callback: fun(trg: Trigger)): Trigger
+---@field event_on fun(self: LobbyBob, event: 'Join team ', callback: fun(trg: Trigger, data: lobbybo.teaminfo?) ): Trigger
 ---@field event_on fun(self: LobbyBob, event: 'Leave the team ', callback: fun(trg: Trigger, reason: Bob.LeaveReason, last_team_info: LobbyBob.TeamInfo)): Trigger
 ---@field event_on fun(self: LobbyBob, event: 'Someone joins the team ', callback: fun(trg: Trigger, data: lobbybob.playerinfo)): Trigger
 ---@field event_on fun(self: LobbyBob, event: 'Someone left the queue ', callback: fun(trg: Trigger, data: lobbybob.playerinfo)): Trigger

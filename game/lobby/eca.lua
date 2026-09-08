@@ -12,7 +12,7 @@ M.STATUS_EVENT_NAME = 'The service status of the hall has changed'
 M.STATUS_EVENT_PARAM_NAME = 'Event data'
 
 local function has_completion_event()
-    if clicli.eca and clicli.eca._call_impls and clicli.eca._call_impls[M.EVENT_NAME] then
+    if clicli.eca and clicli.eca.has_custom_event and clicli.eca.has_custom_event(M.EVENT_NAME) then
         return true
     end
     local names = clicli.const and clicli.const.CustomEventName
@@ -40,7 +40,7 @@ local function emit(payload)
 end
 
 local function has_status_event()
-    if clicli.eca and clicli.eca._call_impls and clicli.eca._call_impls[M.STATUS_EVENT_NAME] then
+    if clicli.eca and clicli.eca.has_custom_event and clicli.eca.has_custom_event(M.STATUS_EVENT_NAME) then
         return true
     end
     local names = clicli.const and clicli.const.CustomEventName

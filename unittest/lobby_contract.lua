@@ -141,6 +141,10 @@ local frame_callbacks = {}
 local timeout_callbacks = {}
 local timeout_timers = {}
 local captured_logs = {}
+local eca_call_impls = {
+    "hallServiceRequestCompleted" = function()
+    end,
+}
 local completion_payloads = {}
 local latest_client
 local next_client_options = {}
@@ -278,10 +282,9 @@ _G.clicli = {
         return '{' .. table.concat(parts, ',') .. '}'
     end,
     eca = {
-        _call_impls = {
-            "hallServiceRequestCompleted" = function()
-            end,
-        },
+        has_custom_event = function(name)
+            return not not eca_call_impls[name]
+        end,
         def = function(name)
             eca_names[#eca_names + 1] = name
             local definition = {
@@ -306,7 +309,7 @@ _G.clicli = {
             return builder
         end,
         call = function(name)
-            local fn = clicli.eca._call_impls[name]
+            local fn = eca_call_impls[name]
             if not fn then
                 error('missing event')
             end
@@ -413,6 +416,8 @@ local function get_endpoint_dungeon_info()
     return { env = endpoint_platform_env }
 end
 GameAPI.get_dungeon_info = get_endpoint_dungeon_info
+--Streamline the test stub to only implement the Game interface used in this scenario.
+---@diagnostic disable-next-line: missing-fields
 clicli.game = {
     is_debug_mode = function(_ignore_config)
         return endpoint_debug_mode
@@ -598,9 +603,9 @@ for index, expected in ipairs(expected_eca) do
 end
 assert_equal(eca_definitions['Hall service - Separate rooms for the same room'], nil, 'The ECA interface for the old shared room diversion must not exist')
 assert_equal(eca_definitions['Hall Service - Cross-room convergence'], nil, 'The old cross-house combined ECA interface must not exist')
-assert_equal(lobby.same_room_split, nil, 'The old same_room_split Lua interface must not exist')
-assert_equal(lobby.cross_room_merge, nil, 'The old cross_room_merge Lua interface must not exist')
-assert_equal(lobby.start_private_dungeon, nil, 'private_dungeon must be the unique Lua entry for private replicas')
+for _, function_name in ipairs({ 'same_room_split', 'cross_room_merge', 'start_private_dungeon' }) do
+    assert_equal(lobby[function_name], nil, 'The old' .. function_name .. 'The Lua interface must not exist')
+end
 assert_equal(lobby._get_player_version_for_test(), '2.0', 'Player Agreement Version')
 for _, function_name in ipairs({
     'on_event',
@@ -617,9 +622,13 @@ local before = lobby.get_state()
 assert_equal(before.result_data.status, 'idle', '"Initialization state"')
 assert_equal(factory_calls, 0, 'Initialization does not create a client')
 
+--Intentionally violating the public signature, the verification of missing parameters still returns a rejection result.
+---@diagnostic disable-next-line: missing-parameter
 local invalid_connect_missing = lobby.connect()
 assert_equal(invalid_connect_missing.accepted, false, 'connect was rejected because it lacked a gameplay ID')
 assert_equal(invalid_connect_missing.code, 'invalid_game_play_id', 'connect is missing the gameplay ID code')
+--Intentionally pass in a string to verify the runtime parameter validation.
+---@diagnostic disable-next-line: param-type-mismatch
 local invalid_connect_string = lobby.connect(tostring(TEST_GAME_PLAY_ID))
 assert_equal(invalid_connect_string.accepted, false, 'The connect string gameplay ID was rejected')
 assert_equal(invalid_connect_string.code, 'invalid_game_play_id', 'connect string gameplay ID code')
@@ -629,6 +638,8 @@ assert_equal(invalid_connect_zero.code, 'invalid_game_play_id', 'connect non-pos
 local invalid_connect_negative = lobby.connect(-1)
 assert_equal(invalid_connect_negative.accepted, false, 'The connect negative play ID was rejected')
 assert_equal(invalid_connect_negative.code, 'invalid_game_play_id', 'connect negative number play ID code')
+--Intentionally passing in a decimal to verify the integer constraint.
+---@diagnostic disable-next-line: param-type-mismatch
 local invalid_connect_fraction = lobby.connect(10190356.5)
 assert_equal(invalid_connect_fraction.accepted, false, 'The connect decimal play ID was rejected')
 assert_equal(invalid_connect_fraction.code, 'invalid_game_play_id', 'connect Decimal Play ID code')
@@ -823,6 +834,8 @@ setmetatable(_G, global_metatable)
 rawset(_G, 'GameAPI', raw_game_api)
 client._reset_for_test()
 install_fake_factory()
+--Intentionally using an unsupported options table, the verification of the old calling method was rejected.
+---@diagnostic disable-next-line: param-type-mismatch
 local table_options_connect = lobby.connect(TEST_GAME_PLAY_ID, { in_game = true })
 assert_equal(table_options_connect.accepted, false, 'connect does not disclose the options table')
 assert_equal(table_options_connect.code, 'invalid_argument', 'connect options table code')
@@ -836,7 +849,7 @@ local eca_connect_invalid = bind['Hall Service - Establishing connections']()
 assert_equal(eca_connect_invalid.accepted, false, 'ECA connect was rejected due to the lack of gameplay ID')
 assert_equal(eca_connect_invalid.code, 'invalid_game_play_id', 'ECA connect lacks the gameplay ID code')
 
-Clicli.eca._call_impls['HallServiceRequestCompleted'] = nil
+Eca_call_impls['HallServiceRequestCompleted'] = nil
 local not_connected_result = bind['Hall Service - Send World Chat']('hello')
 assert_equal(not_connected_result.code, 'event_missing', 'The pre-examination for ECA events is missing')
 
@@ -1324,6 +1337,8 @@ assert_equal(bob.game_play_id, tostring(TEST_GAME_PLAY_ID), 'LobbyBob uses the p
 assert_equal(bob.game_play_id_num, TEST_GAME_PLAY_ID, 'LobbyBob Digital Play ID')
 bob._refreshing_player_info = true
 bob._refresh_player_info_callbacks = {}
+--White-box testing: Verify the merging behavior of internal refresh requests.
+---@diagnostic disable-next-line: invisible
 local merged_refresh = bob:refresh_player_info(function()
 end)
 assert_equal(merged_refresh, true, 'When a player has already made a refresh request, the merge and wait will still be considered accepted')
@@ -1331,6 +1346,8 @@ assert_equal(#bob._refresh_player_info_callbacks, 1, 'When an existing player re
 bob._refreshing_player_info = false
 
 local propagated_player_error
+--White-box testing: Clear the internal cache to cover the remote error pass-through path.
+---@diagnostic disable-next-line: invisible
 bob.player_infos = {}
 bob.get_team_info = function(_, _, callback)
     callback(nil, 300123)
@@ -1372,6 +1389,8 @@ do
             first_frame_index = #frame_callbacks + 1,
         }
         local remote_callback
+        --Streamline the test stub to only implement the interfaces required for version checking.
+        ---@diagnostic disable-next-line: missing-fields
         clicli.game = {
             is_debug_mode = function(_ignore_config)
                 return false
@@ -1439,4 +1458,22 @@ assert_not_contains(log_output, 'bob-runtime-sign-secret', 'The BOB initializati
 assert_not_contains(log_output, 'client-runtime-token-secret', 'The client log cannot contain the original token')
 
 completion_listener.remove()
+do
+    ---@type ECAHelper
+    local eca_helper = dofile('util/eca_helper.lua')
+    local calls = 0
+    local event_name = 'lobby-contract-query'
+    assert_equal(eca_helper.has_custom_event(event_name), false, 'ECA query rejects unregistered events')
+    --Simulate the engine registration event to verify that public queries do not trigger callbacks.
+    ---@diagnostic disable-next-line: invisible
+    eca_helper.register_custom_event_impl(event_name, function()
+        calls = calls + 1
+    end)
+    assert_equal(eca_helper.has_custom_event(event_name), true, 'ECA query finds registered events')
+    assert_equal(eca_helper.has_custom_event('missing-event'), false, 'ECA query checks the requested name')
+    assert_equal(calls, 0, 'ECA query does not invoke the event')
+    eca_helper.call(event_name)
+    assert_equal(calls, 1, 'ECA query preserves event invocation')
+end
+
 print('lobby_contract ok')

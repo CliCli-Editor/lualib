@@ -13,6 +13,13 @@ end
 ---@private
 M._call_impls = {}
 
+---Check whether the invocation implementation of the ECA custom event has been registered.
+---@param name string
+---@return boolean
+function M.has_custom_event(name)
+    return not not M._call_impls[name]
+end
+
 M._resolves = {}
 
 ---Invoke custom events defined in the ECA
