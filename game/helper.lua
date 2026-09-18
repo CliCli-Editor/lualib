@@ -199,11 +199,19 @@ end
 ---@param py_object any
 ---@return table
 function M.py_to_table(py_object)
-    if python_len(py_object) > 0 then
-        return M.tuple_to_table(py_object)
-    else
-        return M.dict_to_table(py_object)
+    if type(py_object) ~= 'userdata' then
+        return py_object
     end
+    --When determining the type of a container, one cannot merely look at python_len: if the length of a non-empty dictionary is also greater than 0, it will be treated as a tuple and take the value with the index 0 -> KeyError: 0.
+    --1) Bridge-wrapped lists/tuples with LuaList metatables; 2) The list index 0 of the original py object has a value, and the dictionary index 0 is nil (neither throws an exception).
+    local mt = getmetatable(py_object)
+    if mt and mt.__name == 'LuaList' then
+        return M.tuple_to_table(py_object)
+    end
+    if python_len(py_object) > 0 and py_object[0] ~= nil then
+        return M.tuple_to_table(py_object)
+    end
+    return M.dict_to_table(py_object)
 end
 
 function M.table_to_py(t)
