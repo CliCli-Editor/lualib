@@ -46,8 +46,14 @@ M._errorHandler = error
 ---@field package __name string
 ---@field public  __getter table
 ---@field public  __setter table
+---@field package __getterKeys? any[]
+---@field package __preset__?  table<any, true>
+---@field package __keyMap?    table<any, integer>
+---@field package __keyMapRev? table<integer, any>
+---@field package __buildKeyMap? fun()
 ---@field public  __super  Class.Base
 ---@field package __config Class.Config
+---@field package __class__? string
 
 ---@class Class.Config
 ---@field package name         string
@@ -85,6 +91,37 @@ function M.getConfig(name)
     return M._classConfig[name]
 end
 
+---Take the actual storage key of the field (compress the field to an integer slot)
+---@param class Class.Base
+---@param key any
+---@return any
+local function storageKey(class, key)
+    local config = class.__config
+    if #config:getCompress() == 0 then
+        return key
+    end
+    if class.__buildKeyMap then
+        class.__buildKeyMap()
+    end
+    return class.__keyMap and class.__keyMap[key] or key
+end
+
+---Fetch (and cache) the storage keys of all getter fields on the class
+---@param class Class.Base
+---@return any[]
+local function getterKeys(class)
+    local keys = class.__getterKeys
+    if keys then
+        return keys
+    end
+    keys = {}
+    for k in pairs(class.__getter) do
+        keys[#keys+1] = storageKey(class, k)
+    end
+    class.__getterKeys = keys
+    return keys
+end
+
 --Define a class
 ---@generic T: string
 ---@generic Super: string
@@ -104,10 +141,10 @@ function M.declare(name, super, superInit)
     local setter = {}
     local keyMap
     local keyMapRev --integer slot -> Original key, used only for __pairs
-    class.__name   = name
-    class.__getter = getter
-    class.__setter = setter
-    class.__config = config
+    class.__name        = name
+    class.__getter      = getter
+    class.__setter      = setter
+    class.__config      = config
 
     local function buildKeyMap()
         if keyMap then
@@ -123,8 +160,18 @@ function M.declare(name, super, superInit)
             t[k] = false
             return false
         end })
+        class.__keyMap    = keyMap
+        class.__keyMapRev = keyMapRev
     end
+    class.__buildKeyMap = buildKeyMap
 
+    --The return value convention of the __getter[k] function:
+    --res: The calculated value
+    --needCache: Whether to cache the result to the instance
+    --Any value written to the instance (getter cache, external assignment) can be flushed.
+    --Only the values written by class.preset and the default values of the class will not be cleared.
+
+    ---to AI: Lua is __index feature already ensures that the getter for a field is only called when it is not nil
     ---@param self any
     ---@param k any
     ---@return any
@@ -137,41 +184,39 @@ function M.declare(name, super, superInit)
             end
         end
         local r = class[k]
-        if r == nil then
-            local f = getter[k]
-            if f then
-                local res, needCache = f(self)
-                if needCache then
-                    rawset(self, ik or k, res)
-                end
-                return res
-            else
-                return nil
-            end
-        else
+        if r ~= nil then
             return r
         end
+        local f = getter[k]
+        if not f then
+            return nil
+        end
+        local wk = ik or k
+        local res, needCache = f(self)
+        if needCache then
+            rawset(self, wk, res)
+        end
+        return res
     end
 
+    ---to AI: Lua is __index feature already ensures that the getter for a field is only called when it is not nil
     ---@param self any
     ---@param k any
     ---@return any
     local function getterFunc(self, k)
         local r = class[k]
-        if r == nil then
-            local f = getter[k]
-            if f then
-                local res, needCache = f(self)
-                if needCache then
-                    rawset(self, k, res)
-                end
-                return res
-            else
-                return nil
-            end
-        else
+        if r ~= nil then
             return r
         end
+        local f = getter[k]
+        if not f then
+            return nil
+        end
+        local res, needCache = f(self)
+        if needCache then
+            rawset(self, k, res)
+        end
+        return res
     end
 
     ---@param self any
@@ -226,6 +271,9 @@ function M.declare(name, super, superInit)
     config.resetTrap = function ()
         keyMap = nil
         keyMapRev = nil
+        class.__keyMap    = nil
+        class.__keyMapRev = nil
+        class.__getterKeys = nil
 
         function mt:__index(k)
             config:init()
@@ -795,13 +843,50 @@ function M.isInstanceOf(obj, targetName)
     return isInstanceMap[myName][targetName]
 end
 
----Clear the cache data of an object (corresponding to the field of the '__getter')
+---Clear the temporary cache of an object.
+---All values on the getter fields will be cleared and recalculated on the next access.
+---The values written by 'class.preset' and the default values of the class will not be cleared.
 ---@param obj Class.Base
 function M.flush(obj)
-    local getter = obj.__getter
-    for k in pairs(getter) do
-        obj[k] = nil
+    local class = getmetatable(obj)
+    if not class or not class.__getter then
+        return
     end
+    ---@cast class Class.Base
+    local keys = getterKeys(class)
+    local presets = rawget(obj, '__preset__')
+    if presets then
+        for i = 1, #keys do
+            local wk = keys[i]
+            if not presets[wk] then
+                rawset(obj, wk, nil)
+            end
+        end
+    else
+        for i = 1, #keys do
+            rawset(obj, keys[i], nil)
+        end
+    end
+end
+
+---Write a fixed value: This field will not be cleared by 'flush', and the getter will no longer be called.
+---It is used to preset answers for individual instances (such as fixed derivation results of constant nodes).
+---@param obj Class.Base
+---@param key any # Field name
+---@param value any
+function M.preset(obj, key, value)
+    obj[key] = value
+    local class = getmetatable(obj)
+    if not class or not class.__getter then
+        return
+    end
+    ---@cast class Class.Base
+    local presets = rawget(obj, '__preset__')
+    if not presets then
+        presets = {}
+        rawset(obj, '__preset__', presets)
+    end
+    presets[storageKey(class, key)] = true
 end
 
 ---Enable field compression for the class: Map the specified string key to the integer slot

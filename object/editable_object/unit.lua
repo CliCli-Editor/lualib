@@ -2116,4 +2116,17 @@ function M:is_destroyed()
     return yes
 end
 
+---Set whether the unit sleeps
+---Note that a unit must be revived once after death to be awakened
+---@param is_sleeping boolean
+function M:set_sleeping(is_sleeping)
+    self.handle:api_set_is_sleeping(is_sleeping)
+end
+
+---Gets whether a unit sleeps
+---@return boolean
+function M:is_sleeping()
+    return self.handle:api_get_is_sleeping() or false
+end
+
 return M
