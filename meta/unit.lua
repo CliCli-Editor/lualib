@@ -1698,3 +1698,37 @@ function Unit:api_set_repair_target_unit(repair_target) end
 --Unit - Set maintenance skills
 ---@param ability py.Ability # Maintenance skill
 function Unit:api_set_repair_ability(ability) end
+
+--Obtain the instance-level upper limit of the unit attribute
+---@param key string # Attribute name
+function Unit:api_get_attr_maximun(key) end
+
+--Obtain the instance-level lower limit of the unit attribute
+---@param key string # Attribute name
+function Unit:api_get_attr_minimun(key) end
+
+--Set an instance-level upper limit for unit attributes
+---@param key string # Attribute name
+---@param max_value py.Fixed # Upper limit value
+function Unit:api_set_attr_maximun(key, max_value) end
+
+--Set the instance-level lower limit of the unit attribute
+---@param key string # Attribute name
+---@param min_value py.Fixed # Lower limit value
+function Unit:api_set_attr_minimun(key, min_value) end
+
+--Clear the instance-level cap overwrite of the unit attribute
+---@param key string # Attribute name
+function Unit:api_clear_attr_maximun_override(key) end
+
+--Clear the instance-level lower limit overwrite of the unit attribute
+---@param key string # Attribute name
+function Unit:api_clear_attr_minimun_override(key) end
+
+--After setting the block, if there is no action, wait for the number of frames
+---@param block_holding_frame integer # Wait for the frame count without any action
+function Unit:set_block_holding_frame(block_holding_frame) end
+
+--After setting the block, try to move the upper limit of the frame rate
+---@param max_frozen_frame integer # Try to move the frame rate upper limit
+function Unit:set_rebuild_path_frame(max_frozen_frame) end

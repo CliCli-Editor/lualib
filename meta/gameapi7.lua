@@ -1502,6 +1502,97 @@ function GameAPI.get_object_multilingual_key(data_key, entity_id, name_or_desc) 
 function GameAPI.set_common_atk_quick_cast(role, is_on) end
 
 --Send a custom message to the cloud script
----@param ename string # Event name
----@param data table # Message content
-function GameAPI.send_mlscript_msg(ename, data) end
+---@param event_name string # Cloud script event name
+---@param evalue_tab py.Table # Cloud script event data
+function GameAPI.send_mlscript_msg(event_name, evalue_tab) end
+
+--Switch on automatic garbage collection. By default, the Lua layer will perform step-by-step garbage collection regularly, which may cause occasional frame drops and lag. This switch can turn off the automatic garbage collection to avoid lag, but at the same time, the author needs to call up the garbage cleaning at the appropriate time by themselves; otherwise, it will cause the memory to increase without limit
+---@param enable boolean # Enable or not
+function GameAPI.api_switch_auto_collect_garbage(enable) end
+
+--Set the switch for merging hit caches. When enabled, damage cache consolidation settlement is allowed. When disabled, all damage is directly and immediately settled. Enabled by default.
+---@param enable boolean # Enable or not
+function GameAPI.api_set_merge_hit_enabled(enable) end
+
+--Obtain the switch status of the merged hit cache
+---@return boolean # Enable or not
+function GameAPI.api_get_merge_hit_enabled() end
+
+--Set the lighting intensity of the UI model control
+---@param player py.Role # Player
+---@param comp_name string # UI control
+---@param intensity number # intensity
+function GameAPI.set_ui_model_sun_intensity(player, comp_name, intensity) end
+
+--Obtain the screen coordinates of the center point of the ui control
+---@param comp_path string # Control path
+function GameAPI.get_ui_center_by_path(comp_path) end
+
+--Trigger the click event of the ui control
+---@param comp_path string # Control path
+---@param touch integer # Left button/right button
+function GameAPI.trigger_ui_touch_event_by_path(comp_path, touch) end
+
+--Report the player attribute data
+---@param role py.Role # Player
+---@param commit_key string # Instruction key
+---@param prop_key string # Attribute key
+---@param prop_value string # Attribute value
+---@param prop_name string # Attribute name
+---@param sort integer # Sorting
+function GameAPI.app_commit_prop(role, commit_key, prop_key, prop_value, prop_name, sort) end
+
+--Report dialog box
+---@param role py.Role # Player
+---@param commit_key string # Instruction key
+---@param menu_key string # Menu key
+---@param menu_name string # Menu name
+---@param sort integer # Sorting
+function GameAPI.app_commit_menu(role, commit_key, menu_key, menu_name, sort) end
+
+--Report the player is backpack data
+---@param role py.Role # Player
+---@param commit_key string # Instruction key
+---@param item_key string # Item key
+---@param page integer # Backpack page
+---@param item_count string # Number of items
+---@param item_name string # Item Name
+---@param sort integer # Sorting
+function GameAPI.app_commit_item(role, commit_key, item_key, page, item_count, item_name, sort) end
+
+--Report the current map mode
+---@param commit_key string # Instruction key
+---@param mode_key string # Map Mode id
+---@param mode_name string # Mode name
+function GameAPI.app_commit_mode_id(commit_key, mode_key, mode_name) end
+
+--Report player drops
+---@param role py.Role # Player
+---@param commit_key string # Instruction key
+---@param item_key string # Item key
+---@param item_count string # Number of items
+---@param item_name string # Item Name
+---@param sort integer # Sorting
+function GameAPI.app_commit_item_gain(role, commit_key, item_key, item_count, item_name, sort) end
+
+--Custom dictionary log upload
+---@param d py.Dict # Custom dictionary
+function GameAPI.report_custom_info(d) end
+
+--Upload custom logs
+---@param f1 py.Fixed # Floating-point number 1
+---@param f2 py.Fixed # Floating-point number 2
+---@param f3 py.Fixed # Floating-point number 3
+---@param f4 py.Fixed # Floating-point number 4
+---@param f5 py.Fixed # Floating-point number 5
+---@param f6 py.Fixed # Floating-point number 6
+---@param f7 py.Fixed # Floating-point number 7
+---@param f8 py.Fixed # Floating-point number 8
+---@param f9 py.Fixed # Floating-point number 9
+---@param f10 py.Fixed # Floating-point number 10
+---@param s1 string # String 1
+---@param s2 string # String 2
+---@param s3 string # String 3
+---@param s4 string # String 4
+---@param s5 string # String 5
+function GameAPI.api_upload_custom_info(f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, s1, s2, s3, s4, s5) end

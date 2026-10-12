@@ -1097,3 +1097,8 @@ function GlobalAPI.api_timestamp_to_week(v) end
 ---@param mode integer # Integer mode
 ---@return integer # The value after rounding
 function GlobalAPI.floor_or_ceil(v, mode) end
+
+--Whether players log in to the game using the app
+---@param role py.Role # Player
+---@return boolean # Whether to log in to the game using the app
+function GlobalAPI.api_is_app_login(role) end

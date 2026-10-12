@@ -1156,7 +1156,8 @@ function GameAPI.get_archive_rank_player_archive_value(archive_key, num) end
 function GameAPI.api_change_logic_fps(fps) end
 
 --Enable soft pause
-function GameAPI.api_soft_pause_game() end
+---@param enable_unit_command? boolean # Whether the unit responded to the order during the suspension period
+function GameAPI.api_soft_pause_game(enable_unit_command) end
 
 --Close soft pause
 function GameAPI.api_soft_resume_game() end

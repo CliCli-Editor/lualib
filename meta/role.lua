@@ -590,3 +590,23 @@ function Role:request_join_public_dungeon(level_id, game_mode) end
 --Get player general information
 ---@return py.Table? # Player general information
 function Role:get_role_general_depot() end
+
+--Does the player have a plus membership
+---@return boolean? # Do you have a membership?
+function Role:api_is_plus_vip() end
+
+--Whether the player has pinned the current map to the top of the game lobby
+---@return boolean? # Whether to top the current map
+function Role:api_is_pinned_current_map() end
+
+--Obtain the cumulative boost value of players
+---@return integer? # Cumulative boost value
+function Role:api_get_role_bounty_value() end
+
+--Get the player is ranking on the help board
+---@return integer? # Ranking of the Boost Chart
+function Role:api_get_role_bounty_rank() end
+
+--Obtain the player map membership level
+---@return integer? # Map Membership level
+function Role:api_get_role_vip_level() end

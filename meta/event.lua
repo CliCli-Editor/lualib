@@ -450,6 +450,7 @@ M.config["Game -http return"] = {
 ---@field broadcast_lua_msg_id string # Message id
 ---@field broadcast_lua_msg_content string # Message content
 ---@field player Player # Player
+---@field trigger_by_local boolean # It was triggered locally because the message size exceeded the limit
 ---@alias EventParam.Games - Receive broadcast information EventParam.ET_BROADCAST_LUA_MSG
 --Broadcast a custom Lua message
 M.config["Games - Receive broadcast information"] = {
@@ -482,6 +483,14 @@ M.config["Games - Receive broadcast information"] = {
             lua_type = "Player",
             desc = "Player ID",
             lua_desc = "Player",
+        },
+        [4] = {
+            name = "__trigger_by_local",
+            type = "boolean",
+            lua_name = "trigger_by_local",
+            lua_type = "boolean",
+            desc = "It was triggered locally because the message size exceeded the limit",
+            lua_desc = "It was triggered locally because the message size exceeded the limit",
         },
     },
 }
@@ -2530,8 +2539,6 @@ M.config["Unit-AfterTakingDamage"] = {
 }
 
 ---@class EventParam.ET_UNIT_GET_CURE_BEFORE_APPLY
----@field source_unit Unit # Source of treatment unit
----@field target_unit Unit # The unit being treated
 ---@field cured_value number # The value of treatment received
 ---@field ability Ability # Current healing skills
 ---@field heal_instance HealInstance # Treatment instance
@@ -2547,22 +2554,6 @@ M.config["Unit-BeforeBeingTreated"] = {
     },
     event_params = {
         [1] = {
-            name = "__source_unit",
-            type = "py.Unit",
-            lua_name = "source_unit",
-            lua_type = "Unit",
-            desc = "Source of treatment unit",
-            lua_desc = "Source of treatment unit",
-        },
-        [2] = {
-            name = "__target_unit",
-            type = "py.Unit",
-            lua_name = "target_unit",
-            lua_type = "Unit",
-            desc = "The unit being treated",
-            lua_desc = "The unit being treated",
-        },
-        [3] = {
             name = "__cured_value",
             type = "py.Fixed",
             lua_name = "cured_value",
@@ -2570,7 +2561,7 @@ M.config["Unit-BeforeBeingTreated"] = {
             desc = "The value of treatment received",
             lua_desc = "The value of treatment received",
         },
-        [4] = {
+        [2] = {
             name = "__ability",
             type = "py.Ability",
             lua_name = "ability",
@@ -2578,7 +2569,7 @@ M.config["Unit-BeforeBeingTreated"] = {
             desc = "Current healing skills",
             lua_desc = "Current healing skills",
         },
-        [5] = {
+        [3] = {
             name = nil,
             type = nil,
             lua_name = "heal_instance",
@@ -2593,8 +2584,6 @@ M.config["Unit-BeforeBeingTreated"] = {
 }
 
 ---@class EventParam.ET_UNIT_GET_CURE_FINISH
----@field source_unit Unit # Source of treatment unit
----@field target_unit Unit # The unit being treated
 ---@field cured_value number # The value of treatment received
 ---@field ability Ability # Current healing skills
 ---@alias EventParam.Unit-AfterBeingTreated EventParam.ET_UNIT_GET_CURE_FINISH
@@ -2608,22 +2597,6 @@ M.config["Unit-AfterBeingTreated"] = {
     },
     event_params = {
         [1] = {
-            name = "__source_unit",
-            type = "py.Unit",
-            lua_name = "source_unit",
-            lua_type = "Unit",
-            desc = "Source of treatment unit",
-            lua_desc = "Source of treatment unit",
-        },
-        [2] = {
-            name = "__target_unit",
-            type = "py.Unit",
-            lua_name = "target_unit",
-            lua_type = "Unit",
-            desc = "The unit being treated",
-            lua_desc = "The unit being treated",
-        },
-        [3] = {
             name = "__cured_value",
             type = "py.Fixed",
             lua_name = "cured_value",
@@ -2631,7 +2604,7 @@ M.config["Unit-AfterBeingTreated"] = {
             desc = "The value of treatment received",
             lua_desc = "The value of treatment received",
         },
-        [4] = {
+        [2] = {
             name = "__ability",
             type = "py.Ability",
             lua_name = "ability",
@@ -2643,8 +2616,6 @@ M.config["Unit-AfterBeingTreated"] = {
 }
 
 ---@class EventParam.ET_UNIT_GET_CURE
----@field source_unit Unit # Source of treatment unit
----@field target_unit Unit # The unit being treated
 ---@field cured_value number # The value of treatment received
 ---@field ability Ability # Current healing skills
 ---@field heal_instance HealInstance # Treatment instance
@@ -2660,22 +2631,6 @@ M.config["Unit-WhenBeingTreated"] = {
     },
     event_params = {
         [1] = {
-            name = "__source_unit",
-            type = "py.Unit",
-            lua_name = "source_unit",
-            lua_type = "Unit",
-            desc = "Source of treatment unit",
-            lua_desc = "Source of treatment unit",
-        },
-        [2] = {
-            name = "__target_unit",
-            type = "py.Unit",
-            lua_name = "target_unit",
-            lua_type = "Unit",
-            desc = "The unit being treated",
-            lua_desc = "The unit being treated",
-        },
-        [3] = {
             name = "__cured_value",
             type = "py.Fixed",
             lua_name = "cured_value",
@@ -2683,7 +2638,7 @@ M.config["Unit-WhenBeingTreated"] = {
             desc = "The value of treatment received",
             lua_desc = "The value of treatment received",
         },
-        [4] = {
+        [2] = {
             name = "__ability",
             type = "py.Ability",
             lua_name = "ability",
@@ -2691,7 +2646,7 @@ M.config["Unit-WhenBeingTreated"] = {
             desc = "Current healing skills",
             lua_desc = "Current healing skills",
         },
-        [5] = {
+        [3] = {
             name = nil,
             type = nil,
             lua_name = "heal_instance",
@@ -3221,15 +3176,14 @@ M.config["Unknown-et_unit_create_slave"] = {
     },
 }
 
----@class EventParam.ET_UNIT_TRY_PICK_ITEM_NEW
+---@class EventParam.ET_UNIT_TRY_PICK_ITEM
 ---@field unit Unit # unit
 ---@field equip_slot_type py.SlotType # Backpack type
----@field item Item # Target item
----@alias EventParam.Unit - About to pick up items EventParam.ET_UNIT_TRY_PICK_ITEM_NEW
+---@alias EventParam.Unit - About to pick up items EventParam.ET_UNIT_TRY_PICK_ITEM
 --Unit about to pick up item
 M.config["Unit - About to pick up items"] = {
     desc = "",
-    key = "ET_UNIT_TRY_PICK_ITEM_NEW",
+    key = "ET_UNIT_TRY_PICK_ITEM",
     name = "Unit - About to pick up items",
     object = "Unit",
     params = {
@@ -3251,28 +3205,6 @@ M.config["Unit - About to pick up items"] = {
             desc = "Backpack type",
             lua_desc = "Backpack type",
         },
-        [3] = {
-            name = "__item_id",
-            type = "py.ItemID",
-            lua_name = "item",
-            lua_type = "Item",
-            desc = "Object ID",
-            lua_desc = "Target item",
-        },
-    },
-}
-
----@class EventParam.ET_UNIT_LOAD_DEFAULT_AI
----@alias EventParam.Unit-TogglesDefaultBehavior EventParam.ET_UNIT_LOAD_DEFAULT_AI
---Default behavior of unit switching
-M.config["Unit-TogglesDefaultBehavior"] = {
-    desc = "",
-    key = "ET_UNIT_LOAD_DEFAULT_AI",
-    name = "Unit-TogglesDefaultBehavior",
-    object = "Unit",
-    params = {
-    },
-    event_params = {
     },
 }
 
@@ -3386,7 +3318,6 @@ M.config["Local-BoneCollision"] = {
     },
 }
 
----@class EventParam.ET_DETECT_BONE_COLLISON
 ---@alias EventParam.Physical-BoneCollision EventParam.ET_DETECT_BONE_COLLISON
 --Detect an inverted collision in which bones collide
 M.config["Physical-BoneCollision"] = {
@@ -5067,20 +4998,13 @@ M.config["CastASpell.-BreakTheShot"] = {
 ---@field ability Ability # Skill object
 ---@field unit Unit # Skill Owner
 ---@field ability_target_unit Unit # Skill objective unit
----@alias EventParam.Casting-InterruptionCompleted EventParam.ET_ABILITY_BS_INTERRUPT
+---@alias EventParam.Unknown-et_ability_bs_interrupt EventParam.ET_ABILITY_BS_INTERRUPT
 --The skill roll phase is interrupted
-M.config["Casting-InterruptionCompleted"] = {
-    extraObjs = {
-        [1] = {
-            getter = function (self) return self:get_owner() end,
-            luaType = "Unit",
-        },
-    },
+M.config["Unknown-et_ability_bs_interrupt"] = {
     _deprecated = true,
     desc = "ET_ABILITY_BS_INTERRUPT",
     key = "ET_ABILITY_BS_INTERRUPT",
-    object = "Ability",
-    name = "Casting-InterruptionCompleted",
+    name = "Unknown-et_ability_bs_interrupt",
     params = {
     },
     event_params = {
@@ -5387,40 +5311,6 @@ M.config["Skill - Cooldown ends"] = {
             lua_type = "Unit",
             desc = "Skill Owner",
             lua_desc = "Skill Owner",
-        },
-    },
-}
-
----@class EventParam.ET_ABILITY_SEND_CUE_EVENT
----@field ability Ability # Skill object
----@alias EventParam.Skills-CustomAnimationAxis EventParam.ET_ABILITY_SEND_CUE_EVENT
---Ability to send custom CUE events
-M.config["Skills-CustomAnimationAxis"] = {
-    desc = "",
-    extraObjs = {
-        [1] = {
-            getter = function (self) return self:get_owner() end,
-            luaType = "Unit",
-        },
-    },
-    key = "ET_ABILITY_SEND_CUE_EVENT",
-    name = "Skills-CustomAnimationAxis",
-    object = "Ability",
-    params = {
-        [1] = {
-            desc = "CUE event name",
-            name = "string",
-            type = "string",
-        },
-    },
-    event_params = {
-        [1] = {
-            name = "__ability",
-            type = "py.Ability",
-            lua_name = "ability",
-            lua_type = "Ability",
-            desc = "Skill object",
-            lua_desc = "Skill object",
         },
     },
 }
@@ -6274,48 +6164,6 @@ M.config["Interface - Message"] = {
                 local undumped = clicli.dump.decode(bin)
                 return undumped
             end,
-        },
-    },
-}
-
----@class EventParam.ET_ON_CLICK_MINI_MAP_PANEL
----@field player Player # Player
----@field mini_map_touched_world_pos Point # Click on the corresponding world coordinates
----@alias EventParam.Player-ClickOnTheMini-map EventParam.ET_ON_CLICK_MINI_MAP_PANEL
---Player clicks on minimap event
-M.config["Player-ClickOnTheMini-map"] = {
-    desc = "Triggered when clicking on the mini-map",
-    from_global = true,
-    key = "ET_ON_CLICK_MINI_MAP_PANEL",
-    name = "Player-ClickOnTheMini-map",
-    object = "Player",
-    params = {
-        [1] = {
-            call = false,
-            desc = "Press the key",
-            name = "key",
-            resolve = function (key)
-                return clicli.const.ClickMiniMapKey[key] or key
-            end,
-            type = "clicli.Const.ClickMiniMapKey|integer",
-        },
-    },
-    event_params = {
-        [1] = {
-            name = "__role_id",
-            type = "py.RoleID",
-            lua_name = "player",
-            lua_type = "Player",
-            desc = "Player ID",
-            lua_desc = "Player",
-        },
-        [2] = {
-            name = "__mini_map_touched_world_pos",
-            type = "py.Point",
-            lua_name = "mini_map_touched_world_pos",
-            lua_type = "Point",
-            desc = "Click on the corresponding world coordinates",
-            lua_desc = "Click on the corresponding world coordinates",
         },
     },
 }
@@ -10185,7 +10033,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: self, event: "Unit - enter battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
 ---@field event fun(self: self, event: "Unit - out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
 ---@field event fun(self: self, event: "Unit - item to be picked up ", callback: fun(trg: Trigger, data: EventParam). Unit - About to pick up item)): Trigger
----@field event fun(self: self, event: "unit - switch default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
 ---@field event fun(self: self, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam). Unit - Imminent enemy)): Trigger
 ---@field event fun(self: self, event: "unit - discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
 ---@field event fun(self: self, event: "local-bone collision ", callback: fun(trg: Trigger, data: EventParam). Local - Bone collision)): Trigger
@@ -10221,7 +10068,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: self, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: self, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: self, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
----@field event fun(self: self, event: "Cast - Interrupt completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: self, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: self, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: self, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -10229,7 +10075,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: self, event: "Skill - disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: self, event: "Skill - enabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: self, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: self, event: "Skill - Custom action axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: self, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
 ---@field event fun(self: self, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
 ---@field event fun(self: self, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
@@ -10249,7 +10094,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: self, event: "project-create ", callback: fun(trg: Trigger, data: EventParam). Projectiles - Create)): Trigger
 ---@field event fun(self: self, event: "project-death ", callback: fun(trg: Trigger, data: EventParam). Projectiles - death)): Trigger
 ---@field event fun(self: self, event: "interface-message ", event_name: string, callback: fun(trg: Trigger, data: EventParam). Interface - Message)): Trigger
----@ field event fun (self, self, event: "players - click on the small map", the key: clicli. Const. ClickMiniMapKey | integer, the callback: fun (TRG: Trigger, data: EventParam. Player - Click on the mini-map)): Trigger
 ---@field event fun(self: self, event: "interface-slider change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Slider change)): Trigger
 ---@field event fun(self: self, event: "ui - chat box visibility change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Chat box visibility changes)): Trigger
 ---@field event fun(self: self, event: "interface - device drag ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Equipment Drag)): Trigger
@@ -10353,7 +10197,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: Ability, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: Ability, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: Ability, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
----@field event fun(self: Ability, event: "Cast - Interrupt Completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: Ability, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: Ability, event: "Skill - acquire ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: Ability, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -10361,7 +10204,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: Ability, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: Ability, event: "Skills-enabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: Ability, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: Ability, event: "Skill - Custom animation axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: Ability, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
 ---@field event fun(self: Ability, event: "Skill - Build skill before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
 ---@field event fun(self: Ability, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
@@ -10420,7 +10262,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: Player, event: "Select-Destructible ", callback: fun(trg: Trigger, data: EventParam). Check - Destructible)): Trigger
 ---@field event fun(self: Player, event: "local-select-destructible ", callback: fun(trg: Trigger, data: EventParam). Local - checked - Destructible)): Trigger
 ---@field event fun(self: Player, event: "interface-message ", event_name: string, callback: fun(trg: Trigger, data: EventParam). Interface - Message)): Trigger
----@ field event fun (self: Player, event: "players - click on the small map", the key: clicli. Const. ClickMiniMapKey | integer, the callback: fun (TRG: Trigger, data: EventParam. Player - Click on the mini-map)): Trigger
 ---@field event fun(self: Player, event: "interface-slider change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Slider change)): Trigger
 ---@field event fun(self: Player, event: "ui - chat box visibility change ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Chat box visibility changes)): Trigger
 ---@field event fun(self: Player, event: "interface-device drag ", ui: UI, callback: fun(trg: Trigger, data: EventParam). Interface - Equipment Drag)): Trigger
@@ -10515,7 +10356,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: Unit, event: "Unit - into battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
 ---@field event fun(self: Unit, event: "Unit - out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
 ---@field event fun(self: Unit, event: "Unit - about to pick up item ", callback: fun(trg: Trigger, data: EventParam). Unit - About to pick up item)): Trigger
----@field event fun(self: Unit, event: "unit-switch default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
 ---@field event fun(self: Unit, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam. Unit - Imminent enemy)): Trigger
 ---@field event fun(self: Unit, event: "unit-discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
 ---@field event fun(self: Unit, event: "unit - purchase item ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item)): Trigger
@@ -10542,7 +10382,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: Unit, event: "Cast - interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: Unit, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: Unit, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
----@field event fun(self: Unit, event: "Cast - Interrupt completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: Unit, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: Unit, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: Unit, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -10550,7 +10389,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: Unit, event: "Skill - disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: Unit, event: "Skill - enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: Unit, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: Unit, event: "Skill - Custom action axis ", string: string, callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: Unit, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
 ---@field event fun(self: Unit, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
 ---@field event fun(self: Unit, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
@@ -10584,7 +10422,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: EditorObject.Ability, event: "Spell-interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Cast - interrupt lead ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Cast - Interrupt completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "skills-acquired ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -10592,7 +10429,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: EditorObject.Ability, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skills-enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: EditorObject.Ability, event: "Skill - custom action axis ", callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - open indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Turn on indicator)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - Build skill before release ", callback: fun(trg: Trigger, data: EventParam). Skills - Build skills before releasing)): Trigger
 ---@field event fun(self: EditorObject.Ability, event: "Skill - close indicator ", callback: fun(trg: Trigger, data: EventParam). Skill - Off indicator)): Trigger
@@ -10646,7 +10482,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: EditorObject.Unit, event: "unit-remove ", callback: fun(trg: Trigger, data: EventParam). Unit - remove)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "unit-after removal ", callback: fun(trg: Trigger, data: EventParam. Unit - after removal)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "unit-end of transfer ", callback: fun(trg: Trigger, data: EventParam). Unit - End of transfer)): Trigger
----@field event fun(self: EditorObject.Unit, event: "unit-attribute change ", callback: fun(trg: Trigger, data: EventParam). Unit - Attribute change)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - dying ", callback: fun(trg: Trigger, data: EventParam. Unit - About to die)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "unit-death ", callback: fun(trg: Trigger, data: EventParam). Unit - death)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - before damage ", callback: fun(trg: Trigger, data: EventParam). Unit - Before taking damage)): Trigger
@@ -10667,7 +10502,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: EditorObject.Unit, event: "units-enter battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Enter battle)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "units-out of battle ", callback: fun(trg: Trigger, data: EventParam). Unit - Out of combat)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - about to pick up item ", callback: fun(trg: Trigger, data: EventParam. Unit - About to pick up item)): Trigger
----@field event fun(self: EditorObject.Unit, event: "unit-toggle default behavior ", callback: fun(trg: Trigger, data: EventParam). Unit - Switch default behavior)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - about to call the enemy ", callback: fun(trg: Trigger, data: EventParam. Unit - Imminent enemy)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "unit-discover target ", callback: fun(trg: Trigger, data: EventParam). Unit - Discover target)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Unit - purchase item ", callback: fun(trg: Trigger, data: EventParam). Unit - Purchase item)): Trigger
@@ -10694,7 +10528,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: EditorObject.Unit, event: "Spell-interrupt start ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt start)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Cast - interrupt boot ", callback: fun(trg: Trigger, data: EventParam). Cast - Interrupt lead)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Cast - interrupt shot ", callback: fun(trg: Trigger, data: EventParam). Cast - Break shot)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Cast - Interrupt completed ", callback: fun(trg: Trigger, data: EventParam. Casting - Interrupting completion)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "spell-stop ", callback: fun(trg: Trigger, data: EventParam). Cast - Stop)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Skill - get ", callback: fun(trg: Trigger, data: EventParam). Skill - Get)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Skill - loss ", callback: fun(trg: Trigger, data: EventParam). Skill - lost)): Trigger
@@ -10702,7 +10535,6 @@ M.config["Player-ReceivedACloudScriptMessage"] = {
 ---@field event fun(self: EditorObject.Unit, event: "Skills-disabled ", callback: fun(trg: Trigger, data: EventParam). Skill - Disabled)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Skill - enable ", callback: fun(trg: Trigger, data: EventParam). Skill - Enabled)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Skill - cooldown end ", callback: fun(trg: Trigger, data: EventParam). Skill - Cooldown end)): Trigger
----@field event fun(self: EditorObject.Unit, event: "Skill - Custom action axis ", callback: fun(trg: Trigger, data: EventParam). Skill - Customize animation axis)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "effect - get ", callback: fun(trg: Trigger, data: EventParam). Effect - Obtained)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Effect - loss ", callback: fun(trg: Trigger, data: EventParam). Effect - lost)): Trigger
 ---@field event fun(self: EditorObject.Unit, event: "Effect - heartbeat ", callback: fun(trg: Trigger, data: EventParam). Effect - heartbeat)): Trigger
